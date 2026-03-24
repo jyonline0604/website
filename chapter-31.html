@@ -1,227 +1,222 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>第31章：宇宙和平 - 科技修真傳</title>
-
-    <meta name="description" content="《科技修真傳》第31章：宇宙和平">
-
-    <meta name="keywords" content="第31章, 宇宙和平, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-
-    <meta name="author" content="大肥喵">
-
+    <title>第31章：宇宙和平 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
 
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
-<body class="light-mode">
-
-    <div class="reading-progress-bar" id="progress-bar"></div>
-
-    <header class="reader-header">
-
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-
-        <h2 class="reader-chapter-title">第31章：宇宙和平</h2>
-
-        <div class="header-controls">
-
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-
-        </div>
-
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第31章</span>
+        <a href="chapter-30.html">上一章</a>
     </header>
 
-    <div id="settings-panel" class="settings-panel">
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第31章：宇宙和平 - 科技修真傳</h1>
+        </header>
 
-        <div class="setting-group">
-
-            <h4>字體大小</h4>
-
-            <div id="font-size-options" class="setting-options">
-
-                <button data-size="small">小</button>
-
-                <button data-size="medium">中</button>
-
-                <button data-size="large">大</button>
-
-            </div>
+        <div class="content">
+            <p>混沌吞噬者被消滅後的第三天，紫霄世界迎來了一場久違的慶典。七大仙域的修士們穿上了節日的盛裝，街道上張燈結綵，歡歌笑語迴盪在每一個角落。這是數千年來，紫霄世界第一次真正意義上的和平。</p>
+            <p>林塵站在紫霄仙域最高的「天璇塔」頂層，俯瞰著下方熱鬧的景象。微風拂過他的臉龐，帶來遠處鮮花的芬芳。戰後的這幾天，他一直處於修養的狀態，鴻蒙靈芯的力量雖然強大，但對身體的負擔也極其沉重。</p>
+            <p>「在想什麼？」青陽不知何時走到了他的身邊，手中端著兩杯散发着清香的靈茶。</p>
+            <p>林塵接過茶杯，輕輕抿了一口。「在想這段時間發生的一切。從我穿越時空裂縫來到多元宇宙，到遇見另一個自己，再到加入修真聯盟、對抗混沌吞噬者……這些經歷改變了我對修真的理解。」</p>
+            <p>「你改變了我們所有人的命運。」青陽認真地說，「如果沒有你的量子靈能技術，我們根本不可能擊敗混沌吞噬者。」</p>
+            <p>林塵搖了搖頭。「不，是我們所有人一起做到的。單憑我一個人的力量，什麼都做不了。」</p>
+            <p>這時，碧瑤和赤焰也走上塔來。碧瑤手裡拿著一份卷軸，臉上帶著興奮的神色。</p>
+            <p>「林塵前輩！好消息！」碧瑤將卷軸展開，上面繪製著一張精密的星圖，「根據修真聯盟的最新偵察，混沌吞噬者在各個世界留下的黑暗殘餘正在被自然清除。預計再過三個月，所有受損的世界都將完全恢復。」</p>
+            <p>「太好了。」林塵露出了一個欣慰的笑容，「這意味著多元宇宙終於可以恢復和平了。」</p>
+            <p>赤焰雙手抱胸，靠在塔牆上，語氣中帶著一絲感嘆。「說真的，老赤我活了這麼多年，從來沒想過有一天會和一群不同仙域的傢伙並肩作戰，更沒想過會和一個外來者成為朋友。」</p>
+            <p>「你是在誇我還是在損我？」林塵笑著問道。</p>
+            <p>「當然是誇你。」赤焰咧嘴一笑，「雖然你這個傢伙有時候太過理想主義，但你的能力和為人，我赤焰服氣。」</p>
+            <p>眾人相視而笑，一股溫暖的友情在空氣中流淌。</p>
+            <p>傍晚時分，紫玄真人邀請林塵到天璇殿中進行了一場私下的談話。殿內的燈光柔和，只有他們兩人。</p>
+            <p>「林塵，關於你今後的打算，你有什麼想法？」紫玄真人開門見山地問道。</p>
+            <p>林塵沉思了片刻。「我原本是為了尋找世界之鑰才來到這個世界的。雖然混沌吞噬者已經被消滅，但鴻蒙守護者說過，還有其他的威脅存在。我想繼續我的旅程，去尋找世界之鑰，為多元宇宙的永久和平盡一份力。」</p>
+            <p>紫玄真人點了點頭，眼中帶著理解和不捨。「我就知道你會這樣回答。你的心不屬於任何一個世界，而是屬於整個多元宇宙。」</p>
+            <p>他從懷中取出一枚散發著淡紫色光芒的晶石，遞到林塵手中。「這是我們紫霄世界的「世界之鑰」。既然你是在為多元宇宙而戰，這枚鑰匙理應由你保管。」</p>
+            <p>林塵驚訝地看著手中的晶石，感受到其中蘊含的磅礴力量。「紫玄前輩……」</p>
+            <p>「不用客氣。」紫玄真人擺了擺手，「這是紫霄世界所有修士的決定。你是我們的恩人，這枚世界之鑰交給你，我們放心。」</p>
+            <p>林塵緊緊握住晶石，心中湧起一股難以言喻的感動。他深深地向紫玄真人鞠了一躬。「多謝前輩和紫霄世界的信任。我一定不會辜負大家的期望。」</p>
+            <p>接下來的一個月，林塵在紫霄世界度過了一段平靜而充實的時光。他幫助修真聯盟建立了一套完整的「多元宇宙通訊系統」，讓各個世界之間能夠保持聯繫；他將自己的量子靈能技術與紫霄世界的科技相結合，創造出了一批更加先進的裝備；他還在靈科技學院開設了講座，向年輕的修士們傳授自己的經驗和知識。</p>
+            <p>在這些日子裡，林塵對修真有了更深層次的領悟。他發現，修真的最高境界並不是擁有強大的力量，而是一種對宇宙萬物的理解和尊重。真正的強者，不是能夠摧毀一切的人，而是能夠守護一切的人。</p>
+            <p>這一天，林塵在天機閣的最高層進行了一次深度的冥想。他的意識沉入了靈芯系統的深處，感受著其中流動的每一絲能量。在冥想的過程中，他忽然感覺到一種奇妙的共鳴——鴻蒙靈芯與他體內的靈力產生了一種全新的融合。</p>
+            <p>「這是……」林塵內視自己的丹田，驚訝地發現那裡出現了一顆金色的光球。那顆光球不斷旋轉，散發出溫暖而強大的氣息，每一次旋轉都讓他的修為提升一分。</p>
+            <p>他意識到，這是境界突破的徵兆！在經歷了多元宇宙的戰鬥和領悟之後，他的修為已經自然而然地達到了一個新的高度——從元嬰期突破到了化神期！</p>
+            <p>林塵緩緩睜開眼睛，發現自己的身體發生了微妙的變化。他的皮膚變得更加晶瑩剔透，雙眼如同星辰般閃爍，整個人的氣質都變得超凡脫俗。</p>
+            <p>「恭喜突破。」青陽、碧瑤和赤焰不知何時已經守候在一旁，他們感應到了靈力的波動，特地前來祝賀。</p>
+            <p>「謝謝大家。」林塵站起身來，活動了一下筋骨，感受著體內澎湃的力量，「但這不是結束，而是新的開始。」</p>
+            <p>他走到天機閣的窗前，望向遠方的星空。在那無盡的星海之中，有著無數的世界在等待著他去探索、去守護。</p>
+            <p>第二天清晨，林塵在紫霄仙域的中央廣場上與所有人告別。七大仙域的代表、靈科技學院的師生、修真聯盟的戰士們……幾乎所有人都來送行。</p>
+            <p>「林塵，不管你走到哪裡，紫霄世界永遠是你的家。」紫玄真人代表所有人說道。</p>
+            <p>林塵深深地望了這片紫色的天空一眼，然後啟動了多元通行令。一道金色的光芒將他包圍，空間開始扭曲，一個通往未知世界的通道在他面前打開。</p>
+            <p>「再見了，朋友們。」林塵微笑著揮了挥手，「當多元宇宙需要我們的時候，我們一定會再次相聚。」</p>
+            <p>光芒一閃，林塵的身影消失在通道之中。</p>
+            <p>青陽望著空蕩蕩的天空，嘴角帶著一絲微笑。「一路順風，朋友。」</p>
+            <p>碧瑤的眼中閃爍著期待的光芒。「我相信，我們很快就會再見面的。」</p>
+            <p>赤焰雙手抱胸，大笑了一聲。「下一次見面，我一定要變得更強！到時候，可別被我超過了，林塵！」</p>
+            <p>金色的通道在空中緩緩消散，只留下一片寧靜的紫色雲海。在多元宇宙的某個角落，林塵正踏著堅定的步伐，走向屬於他的下一段旅程。</p>
+            <p>宇宙和平，來之不易。但只要有像林塵這樣的人存在，這份和平就會永遠延續下去。因為在每一個世界、每一個角落，都有人在默默地守護著這片星空。</p>
+            <p>而林塵的故事，也將在多元宇宙的每一個角落繼續書寫……</p>
+            <p>（本章完）</p>
 
         </div>
-
-        <div class="setting-group">
-
-            <h4>背景主題</h4>
-
-            <div id="theme-options" class="setting-options">
-
-                <button data-theme="light-mode">明亮</button>
-
-                <button data-theme="sepia-mode">米黃</button>
-
-                <button data-theme="dark-mode">夜間</button>
-
-                <button data-theme="sky-blue-mode">天空藍</button>
-
-                <button data-theme="light-green-mode">淺綠色</button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <main class="reader-content-area">
-
-        <article class="reader-article">
-
-            <div class="content">
-
-                <h1>第31章：宇宙和平</h1>
-
-                <div class="chapter"><p>混沌吞噬者被消滅後的第三天，紫霄世界迎來了一場久違的慶典。七大仙域的修士們穿上了節日的盛裝，街道上張燈結綵，歡歌笑語迴盪在每一個角落。這是數千年來，紫霄世界第一次真正意義上的和平。</p>
-
-<p>林塵站在紫霄仙域最高的「天璇塔」頂層，俯瞰著下方熱鬧的景象。微風拂過他的臉龐，帶來遠處鮮花的芬芳。戰後的這幾天，他一直處於修養的狀態，鴻蒙靈芯的力量雖然強大，但對身體的負擔也極其沉重。</p>
-
-<p>「在想什麼？」青陽不知何時走到了他的身邊，手中端著兩杯散发着清香的靈茶。</p>
-
-<p>林塵接過茶杯，輕輕抿了一口。「在想這段時間發生的一切。從我穿越時空裂縫來到多元宇宙，到遇見另一個自己，再到加入修真聯盟、對抗混沌吞噬者……這些經歷改變了我對修真的理解。」</p>
-
-<p>「你改變了我們所有人的命運。」青陽認真地說，「如果沒有你的量子靈能技術，我們根本不可能擊敗混沌吞噬者。」</p>
-
-<p>林塵搖了搖頭。「不，是我們所有人一起做到的。單憑我一個人的力量，什麼都做不了。」</p>
-
-<p>這時，碧瑤和赤焰也走上塔來。碧瑤手裡拿著一份卷軸，臉上帶著興奮的神色。</p>
-
-<p>「林塵前輩！好消息！」碧瑤將卷軸展開，上面繪製著一張精密的星圖，「根據修真聯盟的最新偵察，混沌吞噬者在各個世界留下的黑暗殘餘正在被自然清除。預計再過三個月，所有受損的世界都將完全恢復。」</p>
-
-<p>「太好了。」林塵露出了一個欣慰的笑容，「這意味著多元宇宙終於可以恢復和平了。」</p>
-
-<p>赤焰雙手抱胸，靠在塔牆上，語氣中帶著一絲感嘆。「說真的，老赤我活了這麼多年，從來沒想過有一天會和一群不同仙域的傢伙並肩作戰，更沒想過會和一個外來者成為朋友。」</p>
-
-<p>「你是在誇我還是在損我？」林塵笑著問道。</p>
-
-<p>「當然是誇你。」赤焰咧嘴一笑，「雖然你這個傢伙有時候太過理想主義，但你的能力和為人，我赤焰服氣。」</p>
-
-<p>眾人相視而笑，一股溫暖的友情在空氣中流淌。</p>
-
-<p>傍晚時分，紫玄真人邀請林塵到天璇殿中進行了一場私下的談話。殿內的燈光柔和，只有他們兩人。</p>
-
-<p>「林塵，關於你今後的打算，你有什麼想法？」紫玄真人開門見山地問道。</p>
-
-<p>林塵沉思了片刻。「我原本是為了尋找世界之鑰才來到這個世界的。雖然混沌吞噬者已經被消滅，但鴻蒙守護者說過，還有其他的威脅存在。我想繼續我的旅程，去尋找世界之鑰，為多元宇宙的永久和平盡一份力。」</p>
-
-<p>紫玄真人點了點頭，眼中帶著理解和不捨。「我就知道你會這樣回答。你的心不屬於任何一個世界，而是屬於整個多元宇宙。」</p>
-
-<p>他從懷中取出一枚散發著淡紫色光芒的晶石，遞到林塵手中。「這是我們紫霄世界的「世界之鑰」。既然你是在為多元宇宙而戰，這枚鑰匙理應由你保管。」</p>
-
-<p>林塵驚訝地看著手中的晶石，感受到其中蘊含的磅礴力量。「紫玄前輩……」</p>
-
-<p>「不用客氣。」紫玄真人擺了擺手，「這是紫霄世界所有修士的決定。你是我們的恩人，這枚世界之鑰交給你，我們放心。」</p>
-
-<p>林塵緊緊握住晶石，心中湧起一股難以言喻的感動。他深深地向紫玄真人鞠了一躬。「多謝前輩和紫霄世界的信任。我一定不會辜負大家的期望。」</p>
-
-<p>接下來的一個月，林塵在紫霄世界度過了一段平靜而充實的時光。他幫助修真聯盟建立了一套完整的「多元宇宙通訊系統」，讓各個世界之間能夠保持聯繫；他將自己的量子靈能技術與紫霄世界的科技相結合，創造出了一批更加先進的裝備；他還在靈科技學院開設了講座，向年輕的修士們傳授自己的經驗和知識。</p>
-
-<p>在這些日子裡，林塵對修真有了更深層次的領悟。他發現，修真的最高境界並不是擁有強大的力量，而是一種對宇宙萬物的理解和尊重。真正的強者，不是能夠摧毀一切的人，而是能夠守護一切的人。</p>
-
-<p>這一天，林塵在天機閣的最高層進行了一次深度的冥想。他的意識沉入了靈芯系統的深處，感受著其中流動的每一絲能量。在冥想的過程中，他忽然感覺到一種奇妙的共鳴——鴻蒙靈芯與他體內的靈力產生了一種全新的融合。</p>
-
-<p>「這是……」林塵內視自己的丹田，驚訝地發現那裡出現了一顆金色的光球。那顆光球不斷旋轉，散發出溫暖而強大的氣息，每一次旋轉都讓他的修為提升一分。</p>
-
-<p>他意識到，這是境界突破的徵兆！在經歷了多元宇宙的戰鬥和領悟之後，他的修為已經自然而然地達到了一個新的高度——從元嬰期突破到了化神期！</p>
-
-<p>林塵緩緩睜開眼睛，發現自己的身體發生了微妙的變化。他的皮膚變得更加晶瑩剔透，雙眼如同星辰般閃爍，整個人的氣質都變得超凡脫俗。</p>
-
-<p>「恭喜突破。」青陽、碧瑤和赤焰不知何時已經守候在一旁，他們感應到了靈力的波動，特地前來祝賀。</p>
-
-<p>「謝謝大家。」林塵站起身來，活動了一下筋骨，感受著體內澎湃的力量，「但這不是結束，而是新的開始。」</p>
-
-<p>他走到天機閣的窗前，望向遠方的星空。在那無盡的星海之中，有著無數的世界在等待著他去探索、去守護。</p>
-
-<p>第二天清晨，林塵在紫霄仙域的中央廣場上與所有人告別。七大仙域的代表、靈科技學院的師生、修真聯盟的戰士們……幾乎所有人都來送行。</p>
-
-<p>「林塵，不管你走到哪裡，紫霄世界永遠是你的家。」紫玄真人代表所有人說道。</p>
-
-<p>林塵深深地望了這片紫色的天空一眼，然後啟動了多元通行令。一道金色的光芒將他包圍，空間開始扭曲，一個通往未知世界的通道在他面前打開。</p>
-
-<p>「再見了，朋友們。」林塵微笑著揮了挥手，「當多元宇宙需要我們的時候，我們一定會再次相聚。」</p>
-
-<p>光芒一閃，林塵的身影消失在通道之中。</p>
-
-<p>青陽望著空蕩蕩的天空，嘴角帶著一絲微笑。「一路順風，朋友。」</p>
-
-<p>碧瑤的眼中閃爍著期待的光芒。「我相信，我們很快就會再見面的。」</p>
-
-<p>赤焰雙手抱胸，大笑了一聲。「下一次見面，我一定要變得更強！到時候，可別被我超過了，林塵！」</p>
-
-<p>金色的通道在空中緩緩消散，只留下一片寧靜的紫色雲海。在多元宇宙的某個角落，林塵正踏著堅定的步伐，走向屬於他的下一段旅程。</p>
-
-<p>宇宙和平，來之不易。但只要有像林塵這樣的人存在，這份和平就會永遠延續下去。因為在每一個世界、每一個角落，都有人在默默地守護著這片星空。</p>
-
-<p>而林塵的故事，也將在多元宇宙的每一個角落繼續書寫……</p>
-
-<p>（本章完）</p></div>
-
-            </div>
-
-        </article>
-
     </main>
 
-    <footer class="reader-footer-nav">
-
-        <a href="chapter-30.html" class="nav-button">« 上一章</a>
-
-        <a href="chapter-32.html" class="nav-button">下一章 »</a>
-
-    </footer>
-
-    <section class="share-section">
-
-        <h4 class="share-title">分享這個章節</h4>
-
-        <div class="share-buttons">
-
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
-
-        </div>
-
-    </section>
-
-    <footer class="main-footer">
-
-        <p>&copy; 2025 大肥喵. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-
-    </footer>
-
-    
-
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
-
+    <nav class="nav">
+        <a href="chapter-30.html">← 上一章</a>
+        <span class="nav-center">第 31 / 61 章</span>
+        <a href="chapter-32.html">下一章 →</a>
+    </nav>
 </body>
-
 </html>

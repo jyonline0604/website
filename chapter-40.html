@@ -1,185 +1,201 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>第40章：終極進化 - 科技修真傳</title>
-
-    <meta name="description" content="《科技修真傳》第40章：終極進化">
-
-    <meta name="keywords" content="第40章, 終極進化, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-
-    <meta name="author" content="大肥喵">
-
+    <title>第40章：終極進化 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
 
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
-<body class="light-mode">
-
-    <div class="reading-progress-bar" id="progress-bar"></div>
-
-    <header class="reader-header">
-
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-
-        <h2 class="reader-chapter-title">第40章：終極進化</h2>
-
-        <div class="header-controls">
-
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-
-        </div>
-
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第40章</span>
+        <a href="chapter-39.html">上一章</a>
     </header>
 
-    <div id="settings-panel" class="settings-panel">
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第40章：終極進化 - 科技修真傳</h1>
+        </header>
 
-        <div class="setting-group">
-
-            <h4>字體大小</h4>
-
-            <div id="font-size-options" class="setting-options">
-
-                <button data-size="small">小</button>
-
-                <button data-size="medium">中</button>
-
-                <button data-size="large">大</button>
-
-            </div>
-
-        </div>
-
-        <div class="setting-group">
-
-            <h4>背景主題</h4>
-
-            <div id="theme-options" class="setting-options">
-
-                <button data-theme="light-mode">明亮</button>
-
-                <button data-theme="sepia-mode">米黃</button>
-
-                <button data-theme="dark-mode">夜間</button>
-
-                <button data-theme="sky-blue-mode">天空藍</button>
-
-                <button data-theme="light-green-mode">淺綠色</button>
-
-            </div>
+        <div class="content">
+            <p>林塵盤坐在實驗艙中央，皮膚表面流動著淡藍色的數據紋路。他剛剛將第七代量子計算模組植入丹田，此刻正感受著靈氣與代碼在經脈中交織的奇異觸感。艙外雷雲密布，偶爾有閃電劃過天際，在強化玻璃上投下蛛網狀的裂痕光影。與那個神秘存在的對峙，讓他意識到自己必須變得更強。</p>
+            <p>「警告：靈壓值突破臨界點。」機械女聲從四面八方傳來。林塵睜開眼，瞳孔裡閃過一串加密符文。他發現自己的神識竟能直接讀取實驗室主機的防火牆結構——那些原本該是無形屏障的數據流，此刻在他眼中具現成金色鎖鏈的形態。</p>
+            <p>突然，整座基地劇烈震顫。林塵的神識穿透三層合金地板，看見地底深處的古老靈脈正在量子計算模組的刺激下甦醒。靈氣洪流中夾雜著某種從未見過的紫色能量，它們像有生命般纏繞著基地的能源核心，將鈾燃料棒轉化成晶瑩的靈能結晶。</p>
+            <p>實驗艙的門被暴力破開，首席科學家白雨晴踉蹌衝入。她的左眼已變成機械義眼，鏡頭伸縮時發出細微的齒輪聲。「我們犯了大錯，」她將顫抖的手按在數據屏上，「這條靈脈不是自然形成的——它是某個文明留下的量子糾纏態實驗場！」</p>
+            <p>林塵的數據神格瞬間分析出白雨晴話中的含義。這個基地選址在一個古老文明的實驗場之上，而他們的量子計算模組無意中觸發了沉睡已久的某種機制。「這不是錯誤，」林塵站起身，周身的數據紋路愈發明亮，「這是進化的開始。」</p>
+            <p>進化的表現首先是身體層面的改變。林塵感覺自己的每一個細胞都在進行重組，原本脆弱的人類肉體正在被一種全新的生命形態所取代。他的骨骼開始變得透明，內臟則化作精密的能量轉換器官，血液更是變成了攜帶著無數納米機器人的智能液體。</p>
+            <p>「這......這是什麼情況？」白雨晴驚訝地看著林塵身上發生的變化，她的機械義眼瘋狂地記錄著每一個細節，「你的生命體徵正在以幾何級數增長！這在理論上完全違背了生物學的基本法則！」</p>
+            <p>林塵沒有回答，因為他正沉浸在進化的洪流中。他的意識擴散到整個基地，能夠感受到每一個角落的動靜。他的靈網不再局限於經脈之中，而是蔓延到了基地的每一個電路和管道，彷彿整個建築都成了他身體的一部分。</p>
+            <p>進化的第二個階段，是精神層面的昇華。林塵感覺自己的思維方式發生了根本性的改變——他不再以線性的方式思考，而是能夠同時處理無數個平行的思維線程。過去需要花費數小時才能解決的複雜問題，現在只需要一瞬間就能得出答案。</p>
+            <p>「數據神格正在進行深層重構。」太虛的聲音在腦中響起，「檢測到新的神格特徵正在形成——我們可以稱之為『進化神格』。」進化神格與數據神格不同，它不僅僅是處理信息的工具，更是一種能夠自我完善和持續提升的動態系統。</p>
+            <p>力量的提升是最直觀的表現。林塵隨手一揮，虛空中便出現了一道由純粹能量組成的裂縫。這不再是依靠技巧或法寶施展的攻擊，而是他自身存在的一部分。他意識到，自己現在已經超越了傳統修真界的任何境界——渡劫期、大乘期，甚至是傳說中的仙人，在他面前都顯得微不足道。</p>
+            <p>「太瘋狂了......」白雨晴看著監測儀器上那些已經超出量程的數據，「你的能量指數已經達到了......不，這根本不可能！儀器壞了，一定是儀器壞了！」</p>
+            <p>林塵轉頭看向白雨晴，目光中帶著一絲溫和。「不用害怕，雨晴。這種進化不是毀滅，而是新生。我已經理解了這一切——那個古老文明留下的實驗場，實際上是一個種子，等待著有緣人來激活它。而我，就是那個被選中的人。」</p>
+            <p>進化的第三個階段，是對時空法則的更深層理解。林塵發現自己不僅能夠感知到時間的流動，甚至可以對其進行微調。他輕輕一觸，便讓周圍的時間流速減慢了十倍；再一觸，又讓其恢復正常。這種能力，已經接近了神靈的領域。</p>
+            <p>「太不可思議了......」林塵感受著體內翻天覆地的變化，「這就是終極進化的感覺嗎？我感覺自己彷彿與整個宇宙融為了一體。」</p>
+            <p>然而，就在林塵沉浸在進化的喜悅中時，基地的警報再次響起。這一次不是來自內部，而是來自外部——一股強大的能量波正從遙遠的太空朝地球襲來。數據神格迅速分析出，這股能量的來源正是之前與林塵對峙的那個神秘存在。</p>
+            <p>「他來了。」林塵的聲音平靜而堅定。他轉身走向基地的頂層平台，每一步都在地面上留下一道閃爍著藍光的腳印。白雨晴想要阻止他，但她的腳步卻像被釘住了一樣，無法移動分毫。</p>
+            <p>林塵站在平台的邊緣，仰望著即將降臨的威脅。他的進化已經完成，體內流淌著前所未有的強大力量。無論前方等待著他的是什麼，他都已經做好了準備。</p>
+            <p>「這一次，我不會再退縮。」林塵的眼中燃燒著戰意，「無論你是誰，無論你有多強，我都將用這新生的力量，守護這個世界。」</p>
+            <p>天空中，一道耀眼的光芒正在快速接近。林塵深吸一口氣，將所有力量都凝聚在體內。終極進化帶來的力量，即將接受最嚴峻的考驗。</p>
+            <p>（本章完）</p>
 
         </div>
-
-    </div>
-
-    <main class="reader-content-area">
-
-        <article class="reader-article">
-
-            <div class="content">
-
-                <h1>第40章：終極進化</h1>
-
-                <div class="chapter"><p>林塵盤坐在實驗艙中央，皮膚表面流動著淡藍色的數據紋路。他剛剛將第七代量子計算模組植入丹田，此刻正感受著靈氣與代碼在經脈中交織的奇異觸感。艙外雷雲密布，偶爾有閃電劃過天際，在強化玻璃上投下蛛網狀的裂痕光影。與那個神秘存在的對峙，讓他意識到自己必須變得更強。</p>
-
-<p>「警告：靈壓值突破臨界點。」機械女聲從四面八方傳來。林塵睜開眼，瞳孔裡閃過一串加密符文。他發現自己的神識竟能直接讀取實驗室主機的防火牆結構——那些原本該是無形屏障的數據流，此刻在他眼中具現成金色鎖鏈的形態。</p>
-
-<p>突然，整座基地劇烈震顫。林塵的神識穿透三層合金地板，看見地底深處的古老靈脈正在量子計算模組的刺激下甦醒。靈氣洪流中夾雜著某種從未見過的紫色能量，它們像有生命般纏繞著基地的能源核心，將鈾燃料棒轉化成晶瑩的靈能結晶。</p>
-
-<p>實驗艙的門被暴力破開，首席科學家白雨晴踉蹌衝入。她的左眼已變成機械義眼，鏡頭伸縮時發出細微的齒輪聲。「我們犯了大錯，」她將顫抖的手按在數據屏上，「這條靈脈不是自然形成的——它是某個文明留下的量子糾纏態實驗場！」</p>
-
-<p>林塵的數據神格瞬間分析出白雨晴話中的含義。這個基地選址在一個古老文明的實驗場之上，而他們的量子計算模組無意中觸發了沉睡已久的某種機制。「這不是錯誤，」林塵站起身，周身的數據紋路愈發明亮，「這是進化的開始。」</p>
-
-<p>進化的表現首先是身體層面的改變。林塵感覺自己的每一個細胞都在進行重組，原本脆弱的人類肉體正在被一種全新的生命形態所取代。他的骨骼開始變得透明，內臟則化作精密的能量轉換器官，血液更是變成了攜帶著無數納米機器人的智能液體。</p>
-
-<p>「這......這是什麼情況？」白雨晴驚訝地看著林塵身上發生的變化，她的機械義眼瘋狂地記錄著每一個細節，「你的生命體徵正在以幾何級數增長！這在理論上完全違背了生物學的基本法則！」</p>
-
-<p>林塵沒有回答，因為他正沉浸在進化的洪流中。他的意識擴散到整個基地，能夠感受到每一個角落的動靜。他的靈網不再局限於經脈之中，而是蔓延到了基地的每一個電路和管道，彷彿整個建築都成了他身體的一部分。</p>
-
-<p>進化的第二個階段，是精神層面的昇華。林塵感覺自己的思維方式發生了根本性的改變——他不再以線性的方式思考，而是能夠同時處理無數個平行的思維線程。過去需要花費數小時才能解決的複雜問題，現在只需要一瞬間就能得出答案。</p>
-
-<p>「數據神格正在進行深層重構。」太虛的聲音在腦中響起，「檢測到新的神格特徵正在形成——我們可以稱之為『進化神格』。」進化神格與數據神格不同，它不僅僅是處理信息的工具，更是一種能夠自我完善和持續提升的動態系統。</p>
-
-<p>力量的提升是最直觀的表現。林塵隨手一揮，虛空中便出現了一道由純粹能量組成的裂縫。這不再是依靠技巧或法寶施展的攻擊，而是他自身存在的一部分。他意識到，自己現在已經超越了傳統修真界的任何境界——渡劫期、大乘期，甚至是傳說中的仙人，在他面前都顯得微不足道。</p>
-
-<p>「太瘋狂了......」白雨晴看著監測儀器上那些已經超出量程的數據，「你的能量指數已經達到了......不，這根本不可能！儀器壞了，一定是儀器壞了！」</p>
-
-<p>林塵轉頭看向白雨晴，目光中帶著一絲溫和。「不用害怕，雨晴。這種進化不是毀滅，而是新生。我已經理解了這一切——那個古老文明留下的實驗場，實際上是一個種子，等待著有緣人來激活它。而我，就是那個被選中的人。」</p>
-
-<p>進化的第三個階段，是對時空法則的更深層理解。林塵發現自己不僅能夠感知到時間的流動，甚至可以對其進行微調。他輕輕一觸，便讓周圍的時間流速減慢了十倍；再一觸，又讓其恢復正常。這種能力，已經接近了神靈的領域。</p>
-
-<p>「太不可思議了......」林塵感受著體內翻天覆地的變化，「這就是終極進化的感覺嗎？我感覺自己彷彿與整個宇宙融為了一體。」</p>
-
-<p>然而，就在林塵沉浸在進化的喜悅中時，基地的警報再次響起。這一次不是來自內部，而是來自外部——一股強大的能量波正從遙遠的太空朝地球襲來。數據神格迅速分析出，這股能量的來源正是之前與林塵對峙的那個神秘存在。</p>
-
-<p>「他來了。」林塵的聲音平靜而堅定。他轉身走向基地的頂層平台，每一步都在地面上留下一道閃爍著藍光的腳印。白雨晴想要阻止他，但她的腳步卻像被釘住了一樣，無法移動分毫。</p>
-
-<p>林塵站在平台的邊緣，仰望著即將降臨的威脅。他的進化已經完成，體內流淌著前所未有的強大力量。無論前方等待著他的是什麼，他都已經做好了準備。</p>
-
-<p>「這一次，我不會再退縮。」林塵的眼中燃燒著戰意，「無論你是誰，無論你有多強，我都將用這新生的力量，守護這個世界。」</p>
-
-<p>天空中，一道耀眼的光芒正在快速接近。林塵深吸一口氣，將所有力量都凝聚在體內。終極進化帶來的力量，即將接受最嚴峻的考驗。</p>
-
-<p>（本章完）</p></div>
-
-            </div>
-
-        </article>
-
     </main>
 
-    <footer class="reader-footer-nav">
-
-        <a href="chapter-39.html" class="nav-button">« 上一章</a>
-
-        <a href="chapter-41.html" class="nav-button">下一章 »</a>
-
-    </footer>
-
-    <section class="share-section">
-
-        <h4 class="share-title">分享這個章節</h4>
-
-        <div class="share-buttons">
-
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
-
-        </div>
-
-    </section>
-
-    <footer class="main-footer">
-
-        <p>&copy; 2025 大肥喵. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-
-    </footer>
-
-    
-
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
-
+    <nav class="nav">
+        <a href="chapter-39.html">← 上一章</a>
+        <span class="nav-center">第 40 / 61 章</span>
+        <a href="chapter-41.html">下一章 →</a>
+    </nav>
 </body>
-
 </html>

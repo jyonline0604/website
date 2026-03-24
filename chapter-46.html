@@ -1,175 +1,196 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>第46章：終極真相 - 科技修真傳</title>
-
-    <meta name="description" content="《科技修真傳》第46章：終極真相">
-
-    <meta name="keywords" content="第46章, 終極真相, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-
-    <meta name="author" content="大肥瞄">
-
+    <title>第46章：終極真相 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
 
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
-<body class="light-mode">
-
-    <div class="reading-progress-bar" id="progress-bar"></div>
-
-    <header class="reader-header">
-
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-
-        <h2 class="reader-chapter-title">第46章：終極真相</h2>
-
-        <div class="header-controls">
-
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-
-        </div>
-
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第46章</span>
+        <a href="chapter-45.html">上一章</a>
     </header>
 
-    <div id="settings-panel" class="settings-panel">
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第46章：終極真相 - 科技修真傳</h1>
+        </header>
 
-        <div class="setting-group">
-
-            <h4>字體大小</h4>
-
-            <div id="font-size-options" class="setting-options">
-
-                <button data-size="small">小</button>
-
-                <button data-size="medium">中</button>
-
-                <button data-size="large">大</button>
-
-            </div>
-
-        </div>
-
-        <div class="setting-group">
-
-            <h4>背景主題</h4>
-
-            <div id="theme-options" class="setting-options">
-
-                <button data-theme="light-mode">明亮</button>
-
-                <button data-theme="sepia-mode">米黃</button>
-
-                <button data-theme="dark-mode">夜間</button>
-
-                <button data-theme="sky-blue-mode">天空藍</button>
-
-                <button data-theme="light-green-mode">淺綠色</button>
-
-            </div>
+        <div class="content">
+            <p><p>## 第46章 量子金丹</p>
+            <p><p>### 第一節 破碎的晶片</p>
+            <p><p>林塵的指尖在虛擬鍵盤上停頓，全息投影中那枚仿生金丹的結構圖突然閃爍紅光。實驗室的人工智能「太虛」發出警告：「靈子壓縮率突破臨界值，3秒後將發生坍縮。」</p>
+            <p><p>他猛地拍下緊急制動鈕，納米防護罩瞬間包裹住實驗台。金丹晶片在透明罩內扭曲變形，表麵浮現出詭異的量子紋路。林塵的修真靈識與科技儀器同時監測到，某種超出認知的能量正在形成。</p>
+            <p><p>「不對...這不是普通的靈能暴走。」他抹去額頭冷汗，調出三天前從上古遺跡獲得的星圖數據。當兩組數據重疊時，林塵瞳孔驟縮——金丹碎裂的紋路竟與銀河系懸臂結構完全吻合。</p>
+            <p><p>實驗室突然斷電，唯有那枚破碎晶片懸浮半空，投射出無數星光。林塵懷中的古修真玉簡自動飛出，在量子風暴中化為齏粉。粉末卻凝成一行浮空篆文：「見星不拜，真道永晦。」</p>
+            <p><p>### 第二節 雙重天劫</p>
+            <p><p>修真聯盟的警報聲劃破夜空，林塵衝出實驗室時，整片天空已化為數據流與雷雲交織的詭異景象。他的首席助手蘇璃正操縱著靈能無人機群，試圖修復扭曲的空間參數。</p>
+            <p><p>「是量子糾纏引發的連鎖反應！」蘇璃的機械義眼閃爍著藍光，「你的金丹實驗引來了...某種東西。」她指向天空，那裡有團人形黑影正從雷暴中心緩緩降下。</p>
+            <p><p>林塵催動體內科技築基與傳統金丹，兩股力量在經脈中形成莫比烏斯環。當他看清黑影麵容時，呼吸為之一窒——那竟是三百年後的自己，渾身纏繞著破碎的電路與靈脈。</p>
+            <p><p>「時間線收束開始了。」未來林塵的聲音帶著電子雜音，「你必須在黎明前完成量子金丹，否則所有平行世界的修真文明都會...」話未說完，黑影突然被無數數據鏈貫穿，化作漫天光點。</p>
+            <p><p>### 第三節 虛實之門</p>
+            <p><p>地下三百層的禁忌實驗室裡，林塵啟動了塵封的「混元儀」。這台結合了煉器術與量子計算機的裝置，正將他的靈識導入虛擬修真界。蘇璃將神經接駁線路纏繞在他手腕：「記住，無論看到什麼都不要相信，那裡的物理法則會扭曲認知。」</p>
+            <p><p>意識穿越的瞬間，林塵發現自己站在由代碼構建的懸崖邊。腳下是無數破碎的修真文明殘影，而對岸站著七個不同科技路線的「自己」。最左側的蒸汽朋克版林塵舉起銅製義肢：「我們都是被你放棄的可能性。」</p>
+            <p><p>突然，整片虛空開始震顫。林塵體內的量子金丹自動運轉，在虛擬世界投射出真實星辰。他恍然大悟——所謂天劫，其實是高等文明對低維世界的觀測效應。當他伸手觸碰最近的星辰時，指尖傳來劇痛，皮膚下浮現出微型星系紋路。</p>
+            <p><p>「原來如此...」現實中的林塵猛然睜眼，混元儀的屏幕顯示出驚人結論：修真者凝結的金丹，本就是某種跨維度文明的量子觀測裝置。而此刻，無數「天劫之眼」正在銀河系外緩緩睜開。</p>
 
         </div>
-
-    </div>
-
-    <main class="reader-content-area">
-
-        <article class="reader-article">
-
-            <div class="content">
-
-                <h1>第46章：終極真相</h1>
-
-                <div class="chapter"><p><p>## 第46章 量子金丹</p>
-
-<p><p>### 第一節 破碎的晶片</p>
-
-<p><p>林塵的指尖在虛擬鍵盤上停頓，全息投影中那枚仿生金丹的結構圖突然閃爍紅光。實驗室的人工智能「太虛」發出警告：「靈子壓縮率突破臨界值，3秒後將發生坍縮。」</p>
-
-<p><p>他猛地拍下緊急制動鈕，納米防護罩瞬間包裹住實驗台。金丹晶片在透明罩內扭曲變形，表麵浮現出詭異的量子紋路。林塵的修真靈識與科技儀器同時監測到，某種超出認知的能量正在形成。</p>
-
-<p><p>「不對...這不是普通的靈能暴走。」他抹去額頭冷汗，調出三天前從上古遺跡獲得的星圖數據。當兩組數據重疊時，林塵瞳孔驟縮——金丹碎裂的紋路竟與銀河系懸臂結構完全吻合。</p>
-
-<p><p>實驗室突然斷電，唯有那枚破碎晶片懸浮半空，投射出無數星光。林塵懷中的古修真玉簡自動飛出，在量子風暴中化為齏粉。粉末卻凝成一行浮空篆文：「見星不拜，真道永晦。」</p>
-
-<p><p>### 第二節 雙重天劫</p>
-
-<p><p>修真聯盟的警報聲劃破夜空，林塵衝出實驗室時，整片天空已化為數據流與雷雲交織的詭異景象。他的首席助手蘇璃正操縱著靈能無人機群，試圖修復扭曲的空間參數。</p>
-
-<p><p>「是量子糾纏引發的連鎖反應！」蘇璃的機械義眼閃爍著藍光，「你的金丹實驗引來了...某種東西。」她指向天空，那裡有團人形黑影正從雷暴中心緩緩降下。</p>
-
-<p><p>林塵催動體內科技築基與傳統金丹，兩股力量在經脈中形成莫比烏斯環。當他看清黑影麵容時，呼吸為之一窒——那竟是三百年後的自己，渾身纏繞著破碎的電路與靈脈。</p>
-
-<p><p>「時間線收束開始了。」未來林塵的聲音帶著電子雜音，「你必須在黎明前完成量子金丹，否則所有平行世界的修真文明都會...」話未說完，黑影突然被無數數據鏈貫穿，化作漫天光點。</p>
-
-<p><p>### 第三節 虛實之門</p>
-
-<p><p>地下三百層的禁忌實驗室裡，林塵啟動了塵封的「混元儀」。這台結合了煉器術與量子計算機的裝置，正將他的靈識導入虛擬修真界。蘇璃將神經接駁線路纏繞在他手腕：「記住，無論看到什麼都不要相信，那裡的物理法則會扭曲認知。」</p>
-
-<p><p>意識穿越的瞬間，林塵發現自己站在由代碼構建的懸崖邊。腳下是無數破碎的修真文明殘影，而對岸站著七個不同科技路線的「自己」。最左側的蒸汽朋克版林塵舉起銅製義肢：「我們都是被你放棄的可能性。」</p>
-
-<p><p>突然，整片虛空開始震顫。林塵體內的量子金丹自動運轉，在虛擬世界投射出真實星辰。他恍然大悟——所謂天劫，其實是高等文明對低維世界的觀測效應。當他伸手觸碰最近的星辰時，指尖傳來劇痛，皮膚下浮現出微型星系紋路。</p>
-
-<p><p>「原來如此...」現實中的林塵猛然睜眼，混元儀的屏幕顯示出驚人結論：修真者凝結的金丹，本就是某種跨維度文明的量子觀測裝置。而此刻，無數「天劫之眼」正在銀河系外緩緩睜開。</p></div>
-
-            </div>
-
-        </article>
-
     </main>
 
-    <footer class="reader-footer-nav">
-
-        <a href="chapter-45.html" class="nav-button">« 上一章</a>
-
-        <a href="chapter-47.html" class="nav-button">下一章 »</a>
-
-    </footer>
-
-    <section class="share-section">
-
-        <h4 class="share-title">分享這個章節</h4>
-
-        <div class="share-buttons">
-
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
-
-        </div>
-
-    </section>
-
-    <footer class="main-footer">
-
-        <p>&copy; 2025 大肥瞄. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-
-    </footer>
-
-    
-
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
-
+    <nav class="nav">
+        <a href="chapter-45.html">← 上一章</a>
+        <span class="nav-center">第 46 / 61 章</span>
+        <a href="chapter-47.html">下一章 →</a>
+    </nav>
 </body>
-
 </html>

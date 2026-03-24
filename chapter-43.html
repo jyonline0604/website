@@ -1,241 +1,229 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>第43章：時空主宰 - 科技修真傳</title>
-
-    <meta name="description" content="《科技修真傳》第43章：時空主宰">
-
-    <meta name="keywords" content="第43章, 時空主宰, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-
-    <meta name="author" content="大肥喵">
-
+    <title>第43章：時空主宰 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
 
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
-<body class="light-mode">
-
-    <div class="reading-progress-bar" id="progress-bar"></div>
-
-    <header class="reader-header">
-
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-
-        <h2 class="reader-chapter-title">第43章：時空主宰</h2>
-
-        <div class="header-controls">
-
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-
-        </div>
-
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第43章</span>
+        <a href="chapter-42.html">上一章</a>
     </header>
 
-    <div id="settings-panel" class="settings-panel">
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第43章：時空主宰 - 科技修真傳</h1>
+        </header>
 
-        <div class="setting-group">
-
-            <h4>字體大小</h4>
-
-            <div id="font-size-options" class="setting-options">
-
-                <button data-size="small">小</button>
-
-                <button data-size="medium">中</button>
-
-                <button data-size="large">大</button>
-
-            </div>
+        <div class="content">
+            <p>林塵懸浮在星艦殘骸的中央控制室內，周圍是閃爍不定的全息投影和漂浮的金屬碎片。他的靈識如細網般鋪開，與艦載量子計算核心進行深度連結，試圖從這艘三千年前墜毀的遠古星艦中提取最後的數據碎片。</p>
+            <p>「檢測到加密記憶序列，破解需要七級靈能權限。」冰冷的機械音在他腦海中響起。林塵深吸一口氣，體內科技修真功法運轉，雙眼浮現出細密的數據流紋路。這是他在上個遺址中獲得的「靈子解碼術」，能夠將靈力轉化為破譯量子加密的算力。</p>
+            <p>隨著一陣靈力波動，控制室中央的全息投影突然重組，顯現出一段模糊的影像。影像中，一群身著銀白道袍的修真者正在操作著前所未見的法器，那些法器表麵流動著星圖般的光紋，顯然是科技與修真融合的產物。林塵心跳加速——這正是他一直追尋的「太古科技修真文明」的直接證據。</p>
+            <p>突然，影像中一名修真者轉過頭，彷彿穿越時空般直視著林塵。「後來者，」那人的聲音透過三千年時空傳來，「若你見到這段記錄，代表「淨化協議」已近完成階段...小心虛空中的眼睛...」話未說完，影像劇烈扭曲，化作一串坐標數據流入林塵的記憶核心。</p>
+            <p>林塵強忍著腦海中的劇痛，努力將那些數據流穩定下來。當最後一個符文被他的靈識捕獲時，控制室突然亮起了柔和的藍色光芒。</p>
+            <p>「身份驗證通過。歡迎來到天衍號，繼承者。我是天衍號的主控AI——天衍。」那個冰冷的聲音變得柔和了一些，「您已經獲得了第一級權限，可以訪問星艦的部分核心數據。」</p>
+            <p>林塵驚訝地發現，自己的意識竟然能夠直接與這個遠古AI對話。他深吸一口氣，問出了那個一直困擾他的問題：「天衍，你說的『繼承者』是什麼意思？還有，末法時代究竟是怎麼回事？」</p>
+            <p>全息投影再次變化，展現出一幅宏偉的畫面——一顆蔚藍的星球，周圍環繞著數以千計的飛行器，天空中有無數道光柱連接著天地。</p>
+            <p>「這是三千年前的修真界。」天衍的聲音帶著一絲悲傷，「那個時代，修真文明達到了巔峰。我們不僅掌握了天地法則，更將科技與修真完美融合，創造出了超越想像的奇蹟。天衍號就是那個時代的產物，一艘能夠穿梭於不同維度的星艦。」</p>
+            <p>影像繼續變化，林塵看到天空中出現了一道巨大的裂縫，無數黑影從中湧出。那些黑影所過之處，一切都在崩潰——山脈化為塵土，河流乾涸，甚至連空間本身都在碎裂。</p>
+            <p>「我們稱之為『虛空入侵』。」天衍解釋道，「虛空中的存在——我們稱之為『破序者』——它們以吞噬世界的本源為生。它們入侵的目的，是為了奪取這個世界的靈氣核心。」</p>
+            <p>林塵震驚地看著這一切。他從未想過，末法時代的真相竟然是如此駭人。</p>
+            <p>「那場戰爭持續了整整一百年。」天衍繼續說道，「修真界付出了慘重的代價，最終封印了虛空裂縫。但代價是——這個世界百分之九十九的靈氣被抽乾，無數強大的修真者隕落，科技修真文明就此崩塌。」</p>
+            <p>「所以末法時代並非自然現象，而是人為的災難？」林塵喃喃道。</p>
+            <p>「是的。而天衍號的任務，就是在末法時代之後，尋找合適的繼承者，重建科技修真文明。您是三千年来第一個能夠激活星艦核心的人。」天衍的聲音中帶著一絲期待。</p>
+            <p>林塵沉默了許久，消化著這些震撼的信息。然後他問道：「我需要怎麼做？僅僅憑藉我一個人的力量，能夠對抗那些虛空中的存在嗎？」</p>
+            <p>「單憑您目前的實力，自然無法與破序者抗衡。」天衍坦誠地回答，「但天衍號中保存著遠古文明的完整修真傳承，包括時空法則的高階應用。如果您能夠掌握這些技術，就有可能成為對抗虛空入侵的關鍵。」</p>
+            <p>隨著天衍的話音落下，控制室中央升起了一個巨大的全息操作介面。介面上顯示著星艦的完整結構圖，以及數十個閃爍的控制節點。</p>
+            <p>「這是天衍號的核心控制系統。」天衍解釋道，「由於長時間的沉睡，星艦的許多系統都處於休眠狀態。我需要您的靈力來逐步激活這些系統，作為交換，您可以獲得星艦的控制權限和遠古傳承。」</p>
+            <p>林塵沒有猶豫，將自己的靈力注入控制核心。一股溫暖的能量從他的丹田湧出，順著手臂流入那個發光的節點。</p>
+            <p>「第一層權限激活成功。」天衍的聲音響起，「您現在可以調用星艦的基礎功能，包括：星際導航、能量護盾、以及三種時空技術的入門版本。」</p>
+            <p>全息介面上浮現出三行閃爍的文字：</p>
+            <p>「時空感知——感知周圍的時空波動，預判敵人的攻擊軌跡。」</p>
+            <p>「時空加速——加速自身周圍的時間流動，使行動速度大幅提升。」</p>
+            <p>「時空回溯——在短時間內逆轉局部時空，恢復傷勢或修復損壞。」</p>
+            <p>林塵的眼中閃爍著興奮的光芒。這些技術遠比他之前學到的空間法則更加深奧和強大。如果能夠完全掌握，他的實力將會產生質的飛躍。</p>
+            <p>「接下來，我將為您開啟時空法則的傳承試煉。」天衍說道，「這是一個模擬的修煉空間，您可以在其中安全地學習和練習時空技術。準備好了嗎？」</p>
+            <p>林塵堅定地點了點頭：「準備好了。」</p>
+            <p>隨著他的回答，周圍的場景開始扭曲變形。林塵發現自己置身於一個無邊無際的虛空之中，周圍無數的時空法則之線如同彩色的絲帶般飄蕩。</p>
+            <p>「這裡是天衍號的時空修煉場。」天衍的聲音在虛空中迴盪，「在這裡，您可以反覆練習時空技術，直到完全掌握為止。時間流速與外界不同——這裡過一天，外界只過了一個時辰。」</p>
+            <p>林塵盤膝坐下，開始參悟那些飄蕩的法則之線。他的意識逐漸延伸，觸摸著每一根絲帶，感受著其中蘊含的奧秘。</p>
+            <p>第一個百年（修煉場時間），他學會了時空感知。他的靈識能夠覆蓋方圓千里，預判一切攻擊的軌跡。</p>
+            <p>第二個百年，他掌握了時空加速。在戰鬥中，他的速度可以達到常人的千倍以上。</p>
+            <p>第三個百年，他開始參悟最難的時空回溯。這需要對時間法則有深刻的理解，能夠精確地逆轉局部時空的流向。</p>
+            <p>當林塵從修煉場中退出時，他的眼中已經蘊含著歲月的滄桑。雖然外界只過了數個時辰，但他在修煉場中已經度過了三百年的光陰。</p>
+            <p>「恭喜宿主。」天衍的聲音響起，「您已經初步掌握了三種時空技術。現在，您可以開始領悟『時空主宰』的真諦了。」</p>
+            <p>「時空主宰？」林塵疑惑地問道。</p>
+            <p>「時空主宰是時空法則的最高境界。」天衍解釋道，「掌握了時空主宰，您將能夠同時操控時間和空間，成為時空的主人。到那時，您將擁有改變命運、逆轉生死的能力。」</p>
+            <p>林塵深吸一口氣，感受著體內澎湃的時空之力。他知道，自己已經踏上了成為強者的道路。而這一切，都始於他進入天衍號的那一刻。</p>
+            <p>「我會努力的。」林塵堅定地說道，「為了重建科技修真文明，為了對抗虛空入侵，我一定會成為真正的時空主宰。」</p>
+            <p>天衍的聲音中帶著一絲欣慰：「很好。但請您記住，力量越大，責任越大。在您成長的道路上，還會遇到許多艱難險阻。天衍號會一直陪伴在您身邊，為您提供支持。」</p>
+            <p>林塵點了點頭，望向遠方那無盡的廢土。他知道，新的征程即將開始。而他，已經不再是那個只能依靠靈芯系統的弱小修士了。</p>
+            <p>現在的他，是天衍號的繼承者，是時空法則的傳人，是科技修真文明重建的希望。</p>
+            <p>「天衍，我們出發吧。」林塵說道，「去尋找更多的遠古遺跡，去尋找更多的盟友。末法時代的真相已經揭開，接下來，就是改變這個世界的時刻了。」</p>
+            <p>「遵命，繼承者。」天衍的聲音中充滿了期待，「天衍號已準備就緒，隨時可以出發。」</p>
+            <p>星艦的巨大引擎開始轟鳴，周圍的空間開始扭曲。林塵感受著這股強大的力量，心中充滿了希望和決心。</p>
+            <p>他知道，自己正在書寫一個新的傳說。而這個傳說，將會改變整個世界的命運。</p>
+            <p>「時空主宰……我一定會達到那個境界的。」林塵在心中默默發誓。</p>
+            <p>（本章完）</p>
 
         </div>
-
-        <div class="setting-group">
-
-            <h4>背景主題</h4>
-
-            <div id="theme-options" class="setting-options">
-
-                <button data-theme="light-mode">明亮</button>
-
-                <button data-theme="sepia-mode">米黃</button>
-
-                <button data-theme="dark-mode">夜間</button>
-
-                <button data-theme="sky-blue-mode">天空藍</button>
-
-                <button data-theme="light-green-mode">淺綠色</button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <main class="reader-content-area">
-
-        <article class="reader-article">
-
-            <div class="content">
-
-                <h1>第43章：時空主宰</h1>
-
-                <div class="chapter"><p>林塵懸浮在星艦殘骸的中央控制室內，周圍是閃爍不定的全息投影和漂浮的金屬碎片。他的靈識如細網般鋪開，與艦載量子計算核心進行深度連結，試圖從這艘三千年前墜毀的遠古星艦中提取最後的數據碎片。</p>
-
-<p>「檢測到加密記憶序列，破解需要七級靈能權限。」冰冷的機械音在他腦海中響起。林塵深吸一口氣，體內科技修真功法運轉，雙眼浮現出細密的數據流紋路。這是他在上個遺址中獲得的「靈子解碼術」，能夠將靈力轉化為破譯量子加密的算力。</p>
-
-<p>隨著一陣靈力波動，控制室中央的全息投影突然重組，顯現出一段模糊的影像。影像中，一群身著銀白道袍的修真者正在操作著前所未見的法器，那些法器表麵流動著星圖般的光紋，顯然是科技與修真融合的產物。林塵心跳加速——這正是他一直追尋的「太古科技修真文明」的直接證據。</p>
-
-<p>突然，影像中一名修真者轉過頭，彷彿穿越時空般直視著林塵。「後來者，」那人的聲音透過三千年時空傳來，「若你見到這段記錄，代表「淨化協議」已近完成階段...小心虛空中的眼睛...」話未說完，影像劇烈扭曲，化作一串坐標數據流入林塵的記憶核心。</p>
-
-<p>林塵強忍著腦海中的劇痛，努力將那些數據流穩定下來。當最後一個符文被他的靈識捕獲時，控制室突然亮起了柔和的藍色光芒。</p>
-
-<p>「身份驗證通過。歡迎來到天衍號，繼承者。我是天衍號的主控AI——天衍。」那個冰冷的聲音變得柔和了一些，「您已經獲得了第一級權限，可以訪問星艦的部分核心數據。」</p>
-
-<p>林塵驚訝地發現，自己的意識竟然能夠直接與這個遠古AI對話。他深吸一口氣，問出了那個一直困擾他的問題：「天衍，你說的『繼承者』是什麼意思？還有，末法時代究竟是怎麼回事？」</p>
-
-<p>全息投影再次變化，展現出一幅宏偉的畫面——一顆蔚藍的星球，周圍環繞著數以千計的飛行器，天空中有無數道光柱連接著天地。</p>
-
-<p>「這是三千年前的修真界。」天衍的聲音帶著一絲悲傷，「那個時代，修真文明達到了巔峰。我們不僅掌握了天地法則，更將科技與修真完美融合，創造出了超越想像的奇蹟。天衍號就是那個時代的產物，一艘能夠穿梭於不同維度的星艦。」</p>
-
-<p>影像繼續變化，林塵看到天空中出現了一道巨大的裂縫，無數黑影從中湧出。那些黑影所過之處，一切都在崩潰——山脈化為塵土，河流乾涸，甚至連空間本身都在碎裂。</p>
-
-<p>「我們稱之為『虛空入侵』。」天衍解釋道，「虛空中的存在——我們稱之為『破序者』——它們以吞噬世界的本源為生。它們入侵的目的，是為了奪取這個世界的靈氣核心。」</p>
-
-<p>林塵震驚地看著這一切。他從未想過，末法時代的真相竟然是如此駭人。</p>
-
-<p>「那場戰爭持續了整整一百年。」天衍繼續說道，「修真界付出了慘重的代價，最終封印了虛空裂縫。但代價是——這個世界百分之九十九的靈氣被抽乾，無數強大的修真者隕落，科技修真文明就此崩塌。」</p>
-
-<p>「所以末法時代並非自然現象，而是人為的災難？」林塵喃喃道。</p>
-
-<p>「是的。而天衍號的任務，就是在末法時代之後，尋找合適的繼承者，重建科技修真文明。您是三千年来第一個能夠激活星艦核心的人。」天衍的聲音中帶著一絲期待。</p>
-
-<p>林塵沉默了許久，消化著這些震撼的信息。然後他問道：「我需要怎麼做？僅僅憑藉我一個人的力量，能夠對抗那些虛空中的存在嗎？」</p>
-
-<p>「單憑您目前的實力，自然無法與破序者抗衡。」天衍坦誠地回答，「但天衍號中保存著遠古文明的完整修真傳承，包括時空法則的高階應用。如果您能夠掌握這些技術，就有可能成為對抗虛空入侵的關鍵。」</p>
-
-<p>隨著天衍的話音落下，控制室中央升起了一個巨大的全息操作介面。介面上顯示著星艦的完整結構圖，以及數十個閃爍的控制節點。</p>
-
-<p>「這是天衍號的核心控制系統。」天衍解釋道，「由於長時間的沉睡，星艦的許多系統都處於休眠狀態。我需要您的靈力來逐步激活這些系統，作為交換，您可以獲得星艦的控制權限和遠古傳承。」</p>
-
-<p>林塵沒有猶豫，將自己的靈力注入控制核心。一股溫暖的能量從他的丹田湧出，順著手臂流入那個發光的節點。</p>
-
-<p>「第一層權限激活成功。」天衍的聲音響起，「您現在可以調用星艦的基礎功能，包括：星際導航、能量護盾、以及三種時空技術的入門版本。」</p>
-
-<p>全息介面上浮現出三行閃爍的文字：</p>
-
-<p>「時空感知——感知周圍的時空波動，預判敵人的攻擊軌跡。」</p>
-
-<p>「時空加速——加速自身周圍的時間流動，使行動速度大幅提升。」</p>
-
-<p>「時空回溯——在短時間內逆轉局部時空，恢復傷勢或修復損壞。」</p>
-
-<p>林塵的眼中閃爍著興奮的光芒。這些技術遠比他之前學到的空間法則更加深奧和強大。如果能夠完全掌握，他的實力將會產生質的飛躍。</p>
-
-<p>「接下來，我將為您開啟時空法則的傳承試煉。」天衍說道，「這是一個模擬的修煉空間，您可以在其中安全地學習和練習時空技術。準備好了嗎？」</p>
-
-<p>林塵堅定地點了點頭：「準備好了。」</p>
-
-<p>隨著他的回答，周圍的場景開始扭曲變形。林塵發現自己置身於一個無邊無際的虛空之中，周圍無數的時空法則之線如同彩色的絲帶般飄蕩。</p>
-
-<p>「這裡是天衍號的時空修煉場。」天衍的聲音在虛空中迴盪，「在這裡，您可以反覆練習時空技術，直到完全掌握為止。時間流速與外界不同——這裡過一天，外界只過了一個時辰。」</p>
-
-<p>林塵盤膝坐下，開始參悟那些飄蕩的法則之線。他的意識逐漸延伸，觸摸著每一根絲帶，感受著其中蘊含的奧秘。</p>
-
-<p>第一個百年（修煉場時間），他學會了時空感知。他的靈識能夠覆蓋方圓千里，預判一切攻擊的軌跡。</p>
-
-<p>第二個百年，他掌握了時空加速。在戰鬥中，他的速度可以達到常人的千倍以上。</p>
-
-<p>第三個百年，他開始參悟最難的時空回溯。這需要對時間法則有深刻的理解，能夠精確地逆轉局部時空的流向。</p>
-
-<p>當林塵從修煉場中退出時，他的眼中已經蘊含著歲月的滄桑。雖然外界只過了數個時辰，但他在修煉場中已經度過了三百年的光陰。</p>
-
-<p>「恭喜宿主。」天衍的聲音響起，「您已經初步掌握了三種時空技術。現在，您可以開始領悟『時空主宰』的真諦了。」</p>
-
-<p>「時空主宰？」林塵疑惑地問道。</p>
-
-<p>「時空主宰是時空法則的最高境界。」天衍解釋道，「掌握了時空主宰，您將能夠同時操控時間和空間，成為時空的主人。到那時，您將擁有改變命運、逆轉生死的能力。」</p>
-
-<p>林塵深吸一口氣，感受著體內澎湃的時空之力。他知道，自己已經踏上了成為強者的道路。而這一切，都始於他進入天衍號的那一刻。</p>
-
-<p>「我會努力的。」林塵堅定地說道，「為了重建科技修真文明，為了對抗虛空入侵，我一定會成為真正的時空主宰。」</p>
-
-<p>天衍的聲音中帶著一絲欣慰：「很好。但請您記住，力量越大，責任越大。在您成長的道路上，還會遇到許多艱難險阻。天衍號會一直陪伴在您身邊，為您提供支持。」</p>
-
-<p>林塵點了點頭，望向遠方那無盡的廢土。他知道，新的征程即將開始。而他，已經不再是那個只能依靠靈芯系統的弱小修士了。</p>
-
-<p>現在的他，是天衍號的繼承者，是時空法則的傳人，是科技修真文明重建的希望。</p>
-
-<p>「天衍，我們出發吧。」林塵說道，「去尋找更多的遠古遺跡，去尋找更多的盟友。末法時代的真相已經揭開，接下來，就是改變這個世界的時刻了。」</p>
-
-<p>「遵命，繼承者。」天衍的聲音中充滿了期待，「天衍號已準備就緒，隨時可以出發。」</p>
-
-<p>星艦的巨大引擎開始轟鳴，周圍的空間開始扭曲。林塵感受著這股強大的力量，心中充滿了希望和決心。</p>
-
-<p>他知道，自己正在書寫一個新的傳說。而這個傳說，將會改變整個世界的命運。</p>
-
-<p>「時空主宰……我一定會達到那個境界的。」林塵在心中默默發誓。</p>
-
-<p>（本章完）</p></div>
-
-            </div>
-
-        </article>
-
     </main>
 
-    <footer class="reader-footer-nav">
-
-        <a href="chapter-42.html" class="nav-button">« 上一章</a>
-
-        <a href="chapter-44.html" class="nav-button">下一章 »</a>
-
-    </footer>
-
-    <section class="share-section">
-
-        <h4 class="share-title">分享這個章節</h4>
-
-        <div class="share-buttons">
-
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
-
-        </div>
-
-    </section>
-
-    <footer class="main-footer">
-
-        <p>&copy; 2025 大肥喵. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-
-    </footer>
-
-    
-
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
-
+    <nav class="nav">
+        <a href="chapter-42.html">← 上一章</a>
+        <span class="nav-center">第 43 / 61 章</span>
+        <a href="chapter-44.html">下一章 →</a>
+    </nav>
 </body>
-
 </html>

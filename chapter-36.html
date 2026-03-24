@@ -1,185 +1,201 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>第36章：量子修真 - 科技修真傳</title>
-
-    <meta name="description" content="《科技修真傳》第36章：量子修真">
-
-    <meta name="keywords" content="第36章, 量子修真, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-
-    <meta name="author" content="大肥喵">
-
+    <title>第36章：量子修真 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
 
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
-<body class="light-mode">
-
-    <div class="reading-progress-bar" id="progress-bar"></div>
-
-    <header class="reader-header">
-
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-
-        <h2 class="reader-chapter-title">第36章：量子修真</h2>
-
-        <div class="header-controls">
-
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-
-        </div>
-
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第36章</span>
+        <a href="chapter-35.html">上一章</a>
     </header>
 
-    <div id="settings-panel" class="settings-panel">
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第36章：量子修真 - 科技修真傳</h1>
+        </header>
 
-        <div class="setting-group">
-
-            <h4>字體大小</h4>
-
-            <div id="font-size-options" class="setting-options">
-
-                <button data-size="small">小</button>
-
-                <button data-size="medium">中</button>
-
-                <button data-size="large">大</button>
-
-            </div>
-
-        </div>
-
-        <div class="setting-group">
-
-            <h4>背景主題</h4>
-
-            <div id="theme-options" class="setting-options">
-
-                <button data-theme="light-mode">明亮</button>
-
-                <button data-theme="sepia-mode">米黃</button>
-
-                <button data-theme="dark-mode">夜間</button>
-
-                <button data-theme="sky-blue-mode">天空藍</button>
-
-                <button data-theme="light-green-mode">淺綠色</button>
-
-            </div>
+        <div class="content">
+            <p>林塵盤坐在實驗室中央，四周漂浮著數十塊閃爍著幽藍光芒的量子靈石。這些經過改造的靈石正在以特定頻率震顫，發出細微的嗡鳴聲。自從掌握了維度跳躍技術後，他開始將注意力轉向一個全新的領域——量子修真。</p>
+            <p>「頻率調諧完成，準備進行靈網連結。」智能助手「玄璣」的聲音在室內響起。林塵深吸一口氣，將神識緩緩注入面前的主控靈石。他的意識隨著靈力的流動而延伸，逐漸與周圍的量子靈石建立起神秘的連結。</p>
+            <p>突然，所有靈石同時亮起刺目的光芒，在林塵周圍形成一個立體的靈力網絡。他感覺自己的意識被無限延伸，彷彿瞬間連接上了某個龐大的信息海洋。這個發現讓他激動不已——量子糾纏的原理，竟然可以完美應用在靈氣的傳輸與共享上！</p>
+            <p>「成功了！」林塵睜開眼睛，發現自己竟能同時感知到方圓百里內所有連接靈網的修真者。這種感覺，就像是整個修真界突然變得透明可見。每一個人的靈力波動、修為狀態、甚至情緒起伏，都在他的感知範圍內。</p>
+            <p>量子修真的概念，源於林塵對現代物理學與傳統修真理論的深度結合。他發現，靈氣的本質實際上與量子態有著驚人的相似之處——靈氣粒子同樣具有波粒二象性，同樣可以出現量子糾纏和量子隧穿現象。</p>
+            <p>「如果能夠利用量子力學的原理來操控靈氣，那麼修真的效率將會提升數十倍甚至數百倍。」林塵在筆記本上寫下這個大膽的假說。他開始設計一系列的實驗，來驗證這個理論的可行性。</p>
+            <p>首先，他需要驗證靈氣粒子是否真的具有量子特性。他將一顆微小的靈氣結晶放置在雙縫干涉儀中，然後觀察其通過狹縫後的分佈模式。結果令人振奮——靈氣粒子果然呈現出經典的干涉條紋，證明了它們的波動性。</p>
+            <p>接下來，林塵開始嘗試操控靈氣粒子的量子態。他利用微型磁場和電場的組合，成功實現了對單個靈氣粒子的精確控制。更令人興奮的是，他發現當兩個靈氣粒子處於糾纏狀態時，對其中一個粒子的操作會瞬間影響到另一個粒子，無論它們相隔多遠。</p>
+            <p>「這就是量子糾纏在修真中的應用！」林塵興奮地跳了起來，「如果能夠建立一個由糾纏靈氣粒子組成的網絡，那麼修士們就可以實現遠程的靈力共享和即時的修煉互助！」</p>
+            <p>玄璣適時地潑了一盆冷水：「理論上確實如此，但要實現這個目標，需要克服許多技術難題。首先，糾纏態非常脆弱，任何外界的干擾都可能導致退相干現象。其次，大規模的靈氣粒子糾纏需要極其精密的控制系統。」</p>
+            <p>林塵點點頭，他知道這將是一個漫長而艱難的過程。但他同時也意識到，一旦量子修真的理論體系得以完善，將會徹底改變整個修真界的面貌。不僅修煉效率會大幅提升，修士們還可以通過量子糾纏網絡實現前所未有的合作與交流。</p>
+            <p>接下來的數周時間，林塵將全部精力都投入到量子修真功法的研發中。他廢寢忘食地進行實驗，不斷調整參數，優化算法。期間經歷了無數次的失敗，每一次失敗都讓他更加深入地理解了量子力學與修真之間的奧秘。</p>
+            <p>「第十三次嘗試，開始。」林塵深吸一口氣，雙手結出複雜的法印。這一次，他嘗試的是一種全新的修煉方式——讓自己的靈力粒子與外界的量子靈石建立糾纏態，從而實現靈力的高效轉換與吸收。</p>
+            <p>法印成型的瞬間，林塵感覺自己體內的靈力開始以一種前所未有的方式運轉。原本在經脈中緩慢流動的靈力，突然變成了一道道閃電般的數據流，以光速在他的靈網中穿梭。他能清晰地感受到每一個靈力粒子的狀態，彷彿它們都成了他意識的一部分。</p>
+            <p>「這是......量子疊加態！」林塵驚訝地發現，他的靈力此刻竟然同時處於多個狀態之中——既在這裡，又在那裡；既是波，又是粒子。這種奇妙的感覺讓他對靈氣的本質有了全新的認識。</p>
+            <p>就在這時，一場意外發生了。林塵體內的靈力突然開始劇烈波動，量子疊加態似乎正在崩潰。他意識到自己可能太過貿進，同時疊加的狀態太多，導致系統不穩定。</p>
+            <p>「冷靜......必須找到平衡點。」林塵強迫自己鎮定下來，開始逐一減少疊加的狀態數量。經過一番艱難的調整，靈力的波動終於逐漸平息。他成功地穩定住了量子疊加態，雖然只維持了短短幾秒鐘，但這已經是一個巨大的突破。</p>
+            <p>「量子修真功法——第一層，『靈子疊加訣』，研發成功。」林塵在功法筆記上鄭重地寫下這行字。雖然這只是萬里長征的第一步，但他已經看到了前進的方向。未來，他將繼續完善這套功法，讓更多修士能夠受益於量子修真的力量。</p>
+            <p>玄璣的全息投影出現在林塵面前：「恭喜您完成第一階段的研發。根據我的計算，這套功法如果能夠推廣，將使修真界的整體修煉效率提升至少五倍。」</p>
+            <p>林塵微微一笑，眼中閃爍著期待的光芒。他知道，量子修真不僅僅是一種新的修煉方法，更是科技與修真融合的一個重要里程碑。在他的帶領下，一個全新的修真時代即將到來。</p>
+            <p>（本章完）</p>
 
         </div>
-
-    </div>
-
-    <main class="reader-content-area">
-
-        <article class="reader-article">
-
-            <div class="content">
-
-                <h1>第36章：量子修真</h1>
-
-                <div class="chapter"><p>林塵盤坐在實驗室中央，四周漂浮著數十塊閃爍著幽藍光芒的量子靈石。這些經過改造的靈石正在以特定頻率震顫，發出細微的嗡鳴聲。自從掌握了維度跳躍技術後，他開始將注意力轉向一個全新的領域——量子修真。</p>
-
-<p>「頻率調諧完成，準備進行靈網連結。」智能助手「玄璣」的聲音在室內響起。林塵深吸一口氣，將神識緩緩注入面前的主控靈石。他的意識隨著靈力的流動而延伸，逐漸與周圍的量子靈石建立起神秘的連結。</p>
-
-<p>突然，所有靈石同時亮起刺目的光芒，在林塵周圍形成一個立體的靈力網絡。他感覺自己的意識被無限延伸，彷彿瞬間連接上了某個龐大的信息海洋。這個發現讓他激動不已——量子糾纏的原理，竟然可以完美應用在靈氣的傳輸與共享上！</p>
-
-<p>「成功了！」林塵睜開眼睛，發現自己竟能同時感知到方圓百里內所有連接靈網的修真者。這種感覺，就像是整個修真界突然變得透明可見。每一個人的靈力波動、修為狀態、甚至情緒起伏，都在他的感知範圍內。</p>
-
-<p>量子修真的概念，源於林塵對現代物理學與傳統修真理論的深度結合。他發現，靈氣的本質實際上與量子態有著驚人的相似之處——靈氣粒子同樣具有波粒二象性，同樣可以出現量子糾纏和量子隧穿現象。</p>
-
-<p>「如果能夠利用量子力學的原理來操控靈氣，那麼修真的效率將會提升數十倍甚至數百倍。」林塵在筆記本上寫下這個大膽的假說。他開始設計一系列的實驗，來驗證這個理論的可行性。</p>
-
-<p>首先，他需要驗證靈氣粒子是否真的具有量子特性。他將一顆微小的靈氣結晶放置在雙縫干涉儀中，然後觀察其通過狹縫後的分佈模式。結果令人振奮——靈氣粒子果然呈現出經典的干涉條紋，證明了它們的波動性。</p>
-
-<p>接下來，林塵開始嘗試操控靈氣粒子的量子態。他利用微型磁場和電場的組合，成功實現了對單個靈氣粒子的精確控制。更令人興奮的是，他發現當兩個靈氣粒子處於糾纏狀態時，對其中一個粒子的操作會瞬間影響到另一個粒子，無論它們相隔多遠。</p>
-
-<p>「這就是量子糾纏在修真中的應用！」林塵興奮地跳了起來，「如果能夠建立一個由糾纏靈氣粒子組成的網絡，那麼修士們就可以實現遠程的靈力共享和即時的修煉互助！」</p>
-
-<p>玄璣適時地潑了一盆冷水：「理論上確實如此，但要實現這個目標，需要克服許多技術難題。首先，糾纏態非常脆弱，任何外界的干擾都可能導致退相干現象。其次，大規模的靈氣粒子糾纏需要極其精密的控制系統。」</p>
-
-<p>林塵點點頭，他知道這將是一個漫長而艱難的過程。但他同時也意識到，一旦量子修真的理論體系得以完善，將會徹底改變整個修真界的面貌。不僅修煉效率會大幅提升，修士們還可以通過量子糾纏網絡實現前所未有的合作與交流。</p>
-
-<p>接下來的數周時間，林塵將全部精力都投入到量子修真功法的研發中。他廢寢忘食地進行實驗，不斷調整參數，優化算法。期間經歷了無數次的失敗，每一次失敗都讓他更加深入地理解了量子力學與修真之間的奧秘。</p>
-
-<p>「第十三次嘗試，開始。」林塵深吸一口氣，雙手結出複雜的法印。這一次，他嘗試的是一種全新的修煉方式——讓自己的靈力粒子與外界的量子靈石建立糾纏態，從而實現靈力的高效轉換與吸收。</p>
-
-<p>法印成型的瞬間，林塵感覺自己體內的靈力開始以一種前所未有的方式運轉。原本在經脈中緩慢流動的靈力，突然變成了一道道閃電般的數據流，以光速在他的靈網中穿梭。他能清晰地感受到每一個靈力粒子的狀態，彷彿它們都成了他意識的一部分。</p>
-
-<p>「這是......量子疊加態！」林塵驚訝地發現，他的靈力此刻竟然同時處於多個狀態之中——既在這裡，又在那裡；既是波，又是粒子。這種奇妙的感覺讓他對靈氣的本質有了全新的認識。</p>
-
-<p>就在這時，一場意外發生了。林塵體內的靈力突然開始劇烈波動，量子疊加態似乎正在崩潰。他意識到自己可能太過貿進，同時疊加的狀態太多，導致系統不穩定。</p>
-
-<p>「冷靜......必須找到平衡點。」林塵強迫自己鎮定下來，開始逐一減少疊加的狀態數量。經過一番艱難的調整，靈力的波動終於逐漸平息。他成功地穩定住了量子疊加態，雖然只維持了短短幾秒鐘，但這已經是一個巨大的突破。</p>
-
-<p>「量子修真功法——第一層，『靈子疊加訣』，研發成功。」林塵在功法筆記上鄭重地寫下這行字。雖然這只是萬里長征的第一步，但他已經看到了前進的方向。未來，他將繼續完善這套功法，讓更多修士能夠受益於量子修真的力量。</p>
-
-<p>玄璣的全息投影出現在林塵面前：「恭喜您完成第一階段的研發。根據我的計算，這套功法如果能夠推廣，將使修真界的整體修煉效率提升至少五倍。」</p>
-
-<p>林塵微微一笑，眼中閃爍著期待的光芒。他知道，量子修真不僅僅是一種新的修煉方法，更是科技與修真融合的一個重要里程碑。在他的帶領下，一個全新的修真時代即將到來。</p>
-
-<p>（本章完）</p></div>
-
-            </div>
-
-        </article>
-
     </main>
 
-    <footer class="reader-footer-nav">
-
-        <a href="chapter-35.html" class="nav-button">« 上一章</a>
-
-        <a href="chapter-37.html" class="nav-button">下一章 »</a>
-
-    </footer>
-
-    <section class="share-section">
-
-        <h4 class="share-title">分享這個章節</h4>
-
-        <div class="share-buttons">
-
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
-
-        </div>
-
-    </section>
-
-    <footer class="main-footer">
-
-        <p>&copy; 2025 大肥喵. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-
-    </footer>
-
-    
-
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
-
+    <nav class="nav">
+        <a href="chapter-35.html">← 上一章</a>
+        <span class="nav-center">第 36 / 61 章</span>
+        <a href="chapter-37.html">下一章 →</a>
+    </nav>
 </body>
-
 </html>

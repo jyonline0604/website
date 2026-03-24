@@ -1,165 +1,191 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>第48章：命運抉擇 - 科技修真傳</title>
-
-    <meta name="description" content="《科技修真傳》第48章：命運抉擇">
-
-    <meta name="keywords" content="第48章, 命運抉擇, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-
-    <meta name="author" content="大肥瞄">
-
+    <title>第48章：命運抉擇 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
 
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
-<body class="light-mode">
-
-    <div class="reading-progress-bar" id="progress-bar"></div>
-
-    <header class="reader-header">
-
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-
-        <h2 class="reader-chapter-title">第48章：命運抉擇</h2>
-
-        <div class="header-controls">
-
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-
-        </div>
-
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第48章</span>
+        <a href="chapter-47.html">上一章</a>
     </header>
 
-    <div id="settings-panel" class="settings-panel">
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第48章：命運抉擇 - 科技修真傳</h1>
+        </header>
 
-        <div class="setting-group">
-
-            <h4>字體大小</h4>
-
-            <div id="font-size-options" class="setting-options">
-
-                <button data-size="small">小</button>
-
-                <button data-size="medium">中</button>
-
-                <button data-size="large">大</button>
-
-            </div>
-
-        </div>
-
-        <div class="setting-group">
-
-            <h4>背景主題</h4>
-
-            <div id="theme-options" class="setting-options">
-
-                <button data-theme="light-mode">明亮</button>
-
-                <button data-theme="sepia-mode">米黃</button>
-
-                <button data-theme="dark-mode">夜間</button>
-
-                <button data-theme="sky-blue-mode">天空藍</button>
-
-                <button data-theme="light-green-mode">淺綠色</button>
-
-            </div>
+        <div class="content">
+            <p>林塵的指尖剛觸及斬星劍柄，劍身便傳來遠古修真者的神識震盪。那些鑲嵌在劍格上的獵戶座靈石突然融化，順著他的經脈逆流而上，在量子金丹的裂痕處重新凝固。實驗室的地板此刻已變成透明能量膜，下方翻湧著由星辰屍骸組成的「海洋」，每具屍骸眉心都有與金丹相同的十二麵體刻痕。</p>
+            <p>蘇璃殘存的機械軀體突然分解成納米級光點，這些光點在空中重組成銀河系懸臂的微縮模型。林塵發現自己的呼吸節奏正與懸臂旋轉同步，每次吐納都讓實驗室的量子糾纏態更加不穩定。混元儀的屏幕跳出警告：「檢測到第七類文明覆滅特徵——修真者集體量子自殺」。</p>
+            <p>星骸嬰兒的啼哭聲直接震碎了三層防護結界，那些聲波在空氣中具現化成發光的臍帶。林塵驚覺這些臍帶正連接在自己丹田，而原本碎裂的金丹竟在臍帶纏繞下重組為黑洞形態。斬星劍突然自行揮動，劍鋒劃過的軌跡形成克萊因瓶結構，將實驗室內所有靈氣倒灌進林塵的瞳孔深處。</p>
+            <p>地下三百層傳來更劇烈的劍鳴，整座基地開始沿著莫比烏斯環的軌跡扭曲變形。林塵的左手突然插入自己胸腔，從量子黑洞裡拽出一段閃著星光的腸子——那上麵用太古文字寫滿了「混元度厄經」的殘篇。腸子接觸空氣的瞬間，所有文字都化作銀河懸臂的投影，在牆上映照出七個正在坍縮的修真文明。</p>
+            <p>「原來這就是「見星不拜」的代價...」林塵的聲帶突然發射出伽馬射線暴，將實驗室天花板轟出直通太空的隧道。透過破洞可以看見，地球大氣層外懸浮著十二具巨型修真者遺蛻，它們的經脈系統正是銀河系旋臂的微縮景觀。星骸嬰兒的啼哭突然轉為笑聲，那笑聲讓林塵的築基台顯現出超立方體結構。</p>
+            <p>混元儀的量子計算模組終於崩潰，最後顯示的數據流揭示可怕真相：修真文明的靈氣復甦，不過是高維存在播種的實驗場。林塵發現自己的記憶正在被改寫，童年修煉的「紫陽心法」原文，此刻顯現的竟是星際坐標方程式。斬星劍突然折斷，斷裂處噴出的不是金屬碎屑，而是凝結成固態的平行世界殘片。</p>
+            <p>蘇璃的聲音突然從四麵八方響起：「它們在金丹裡埋了觀測者權限...」林塵的視網膜上浮現出倒計時：00:03:17。基地外那些雷雲凝聚的巨掌突然合攏，掌心豎瞳裡映照的正是林塵前世身為星際文明觀測者的記憶畫麵。量子黑洞形態的金丹開始吞噬林塵的臟器，每吞噬一個器官就釋放出某種太古禁術的全息投影。</p>
+            <p>星骸嬰兒的體表浮現出與林塵相同的經脈紋路，祂伸出的小手穿透維度屏障，直接抓住某個平行世界的「林塵」塞進嘴裡咀嚼。林塵的築基台超立方體突然展開，露出內部鑲嵌的九枚逆時針旋轉的靈石——正是當年導致第一個修真文明滅亡的「九曜噬靈陣」。混元儀殘存的零件自動組合成羅盤，指針瘋狂指向林塵正在量子化的左眼。</p>
+            <p>「原來斬星劍是文明重啟器...」林塵的聲帶已被黑洞金丹同化，發出的聲音帶著星際塵埃的摩擦感。他看見自己的影子脫離身體站立起來，影子的丹田處有個正在擴張的微型宇宙。倒計時跳到00:00:42時，實驗室所有金屬表麵都浮現出蘇璃的臉龐，她們異口同聲地尖嘯：「快用九曜靈石刺穿嬰兒囟門！」</p>
+            <p>林塵折斷自己正在量子化的左手，用骨茬蘸著星骸嬰兒的眼淚，在虛空中畫出「混元度厄經」最終章的血符。血符成型的瞬間，十二具太空遺蛻同時睜眼，它們的視線聚焦處產生出微型奇點。黑洞金丹突然吐出林塵被吞噬的臟器，每個器官表麵都刻滿了不同修真文明的滅亡時間表。</p>
+            <p>當倒計時歸零的瞬間，星骸嬰兒的囟門處裂開維度縫隙。林塵將九曜靈石按入縫隙時，看見裡麵蜷縮著無數個正在修煉的自己。斬星劍的殘片突然刺入林塵眉心，劍尖帶出的不是腦漿，而是某個正在重播修真文明滅亡景象的量子存儲器。星骸嬰兒發出最後一聲啼哭，這聲啼哭讓整個銀河系的星辰同時閃爍了三下。</p>
 
         </div>
-
-    </div>
-
-    <main class="reader-content-area">
-
-        <article class="reader-article">
-
-            <div class="content">
-
-                <h1>第48章：命運抉擇</h1>
-
-                <div class="chapter"><p>林塵的指尖剛觸及斬星劍柄，劍身便傳來遠古修真者的神識震盪。那些鑲嵌在劍格上的獵戶座靈石突然融化，順著他的經脈逆流而上，在量子金丹的裂痕處重新凝固。實驗室的地板此刻已變成透明能量膜，下方翻湧著由星辰屍骸組成的「海洋」，每具屍骸眉心都有與金丹相同的十二麵體刻痕。</p>
-
-<p>蘇璃殘存的機械軀體突然分解成納米級光點，這些光點在空中重組成銀河系懸臂的微縮模型。林塵發現自己的呼吸節奏正與懸臂旋轉同步，每次吐納都讓實驗室的量子糾纏態更加不穩定。混元儀的屏幕跳出警告：「檢測到第七類文明覆滅特徵——修真者集體量子自殺」。</p>
-
-<p>星骸嬰兒的啼哭聲直接震碎了三層防護結界，那些聲波在空氣中具現化成發光的臍帶。林塵驚覺這些臍帶正連接在自己丹田，而原本碎裂的金丹竟在臍帶纏繞下重組為黑洞形態。斬星劍突然自行揮動，劍鋒劃過的軌跡形成克萊因瓶結構，將實驗室內所有靈氣倒灌進林塵的瞳孔深處。</p>
-
-<p>地下三百層傳來更劇烈的劍鳴，整座基地開始沿著莫比烏斯環的軌跡扭曲變形。林塵的左手突然插入自己胸腔，從量子黑洞裡拽出一段閃著星光的腸子——那上麵用太古文字寫滿了「混元度厄經」的殘篇。腸子接觸空氣的瞬間，所有文字都化作銀河懸臂的投影，在牆上映照出七個正在坍縮的修真文明。</p>
-
-<p>「原來這就是「見星不拜」的代價...」林塵的聲帶突然發射出伽馬射線暴，將實驗室天花板轟出直通太空的隧道。透過破洞可以看見，地球大氣層外懸浮著十二具巨型修真者遺蛻，它們的經脈系統正是銀河系旋臂的微縮景觀。星骸嬰兒的啼哭突然轉為笑聲，那笑聲讓林塵的築基台顯現出超立方體結構。</p>
-
-<p>混元儀的量子計算模組終於崩潰，最後顯示的數據流揭示可怕真相：修真文明的靈氣復甦，不過是高維存在播種的實驗場。林塵發現自己的記憶正在被改寫，童年修煉的「紫陽心法」原文，此刻顯現的竟是星際坐標方程式。斬星劍突然折斷，斷裂處噴出的不是金屬碎屑，而是凝結成固態的平行世界殘片。</p>
-
-<p>蘇璃的聲音突然從四麵八方響起：「它們在金丹裡埋了觀測者權限...」林塵的視網膜上浮現出倒計時：00:03:17。基地外那些雷雲凝聚的巨掌突然合攏，掌心豎瞳裡映照的正是林塵前世身為星際文明觀測者的記憶畫麵。量子黑洞形態的金丹開始吞噬林塵的臟器，每吞噬一個器官就釋放出某種太古禁術的全息投影。</p>
-
-<p>星骸嬰兒的體表浮現出與林塵相同的經脈紋路，祂伸出的小手穿透維度屏障，直接抓住某個平行世界的「林塵」塞進嘴裡咀嚼。林塵的築基台超立方體突然展開，露出內部鑲嵌的九枚逆時針旋轉的靈石——正是當年導致第一個修真文明滅亡的「九曜噬靈陣」。混元儀殘存的零件自動組合成羅盤，指針瘋狂指向林塵正在量子化的左眼。</p>
-
-<p>「原來斬星劍是文明重啟器...」林塵的聲帶已被黑洞金丹同化，發出的聲音帶著星際塵埃的摩擦感。他看見自己的影子脫離身體站立起來，影子的丹田處有個正在擴張的微型宇宙。倒計時跳到00:00:42時，實驗室所有金屬表麵都浮現出蘇璃的臉龐，她們異口同聲地尖嘯：「快用九曜靈石刺穿嬰兒囟門！」</p>
-
-<p>林塵折斷自己正在量子化的左手，用骨茬蘸著星骸嬰兒的眼淚，在虛空中畫出「混元度厄經」最終章的血符。血符成型的瞬間，十二具太空遺蛻同時睜眼，它們的視線聚焦處產生出微型奇點。黑洞金丹突然吐出林塵被吞噬的臟器，每個器官表麵都刻滿了不同修真文明的滅亡時間表。</p>
-
-<p>當倒計時歸零的瞬間，星骸嬰兒的囟門處裂開維度縫隙。林塵將九曜靈石按入縫隙時，看見裡麵蜷縮著無數個正在修煉的自己。斬星劍的殘片突然刺入林塵眉心，劍尖帶出的不是腦漿，而是某個正在重播修真文明滅亡景象的量子存儲器。星骸嬰兒發出最後一聲啼哭，這聲啼哭讓整個銀河系的星辰同時閃爍了三下。</p></div>
-
-            </div>
-
-        </article>
-
     </main>
 
-    <footer class="reader-footer-nav">
-
-        <a href="chapter-47.html" class="nav-button">« 上一章</a>
-
-        <a href="chapter-49.html" class="nav-button">下一章 »</a>
-
-    </footer>
-
-    <section class="share-section">
-
-        <h4 class="share-title">分享這個章節</h4>
-
-        <div class="share-buttons">
-
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
-
-        </div>
-
-    </section>
-
-    <footer class="main-footer">
-
-        <p>&copy; 2025 大肥瞄. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-
-    </footer>
-
-    
-
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
-
+    <nav class="nav">
+        <a href="chapter-47.html">← 上一章</a>
+        <span class="nav-center">第 48 / 61 章</span>
+        <a href="chapter-49.html">下一章 →</a>
+    </nav>
 </body>
-
 </html>

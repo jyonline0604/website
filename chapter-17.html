@@ -1,263 +1,240 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>第17章：天才行行對決 - 科技修真傳</title>
-
-    <meta name="description" content="《科技修真傳》第17章：天才行行對決">
-
-    <meta name="keywords" content="第17章, 天才行行對決, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-
-    <meta name="author" content="大肥瞄">
-
+    <title>第17章：天才行行對決 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
 
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
-<body class="light-mode">
-
-    <div class="reading-progress-bar" id="progress-bar"></div>
-
-    <header class="reader-header">
-
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-
-        <h2 class="reader-chapter-title">第17章：天才行行對決</h2>
-
-        <div class="header-controls">
-
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-
-        </div>
-
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第17章</span>
+        <a href="chapter-16.html">上一章</a>
     </header>
 
-    <div id="settings-panel" class="settings-panel">
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第17章：天才行行對決 - 科技修真傳</h1>
+        </header>
 
-        <div class="setting-group">
-
-            <h4>字體大小</h4>
-
-            <div id="font-size-options" class="setting-options">
-
-                <button data-size="small">小</button>
-
-                <button data-size="medium">中</button>
-
-                <button data-size="large">大</button>
-
-            </div>
+        <div class="content">
+            <p>天空中的黑雲越來越濃密，遠處傳來陣陣轟鳴聲。林塵站在山巔望去，只見數十架黑色戰艦正朝蓬萊仙境的方向逼近。</p>
+            <p>「他們來了。」蕭衍的聲音從身後傳來，「靈數聯盟的精銳部隊。」</p>
+            <p>林塵轉過身，只見蕭衍、明鏡和玄機都已經做好了戰鬥準備。蕭衍的手中握著一把散發著藍光的長剑，而明鏡則操控著她的專屬戰甲。</p>
+            <p>「師叔祖，讓我和他們拼了！」玄機咬牙切齒地說道。</p>
+            <p>「不可魯莽。」蕭衍說道，「靈數聯盟這次傾巢而出，實力不容小覷。我們需要制定作戰計劃。」</p>
+            <p>「蓬萊仙境有護山大陣。」蕭衍說道，「但是這個大陣已經很久沒有啟動過了，需要足夠的靈氣才行行能激活。」</p>
+            <p>「讓我來。」林塵說道，「我的血脈覺醒已經達到60%，可以提供足夠的靈氣。」</p>
+            <p>蕭衍點點頭：「好。一會我會掩護你，你需要走到蓬萊的核心——靈脈之源，啟動大陣。」</p>
+            <p>林塵深吸一口氣：「明白了。」</p>
+            <p>就在這時，外麵的攻擊已經開始了。數十道雷射光束打在蓬萊仙境的結界上，激起陣陣漣漪。</p>
+            <p>「他們在試探結界的強度。」明鏡說道，「我們必須抓緊時間。」</p>
+            <p>林塵不再猶豫，立刻朝靈脈之源的方向奔去。</p>
+            <p>林塵一路奔馳，沿途看到蓬萊仙境的美景在戰火中變得支離破碎。曾經美麗的竹林變成了焦土，仙鶴們四處逃竄，發出凄慘的鳴叫。</p>
+            <p>「這些混蛋！」林塵心中充滿了怒火，「我一定不會放過他們！」</p>
+            <p>終於，他來到了靈脈之源的山峰之下。那座散發著七彩霞光的神山，如今已經被戰鬥的煙霧所籠罩。</p>
+            <p>林塵咬破手指，將鮮血滴在山腳下的一塊石碑上。</p>
+            <p>「以吾之血，喚醒沉睡的守護者！」林塵大聲喊道。</p>
+            <p>石碑突然發出耀眼的光芒，一股強大的靈氣從山體中湧出。林塵只覺得自己的血液彷彿沸騰了一般，血脈覺醒的程度在不斷提升。</p>
+            <p>然而，林塵卻咬緊牙關，繼續堅持著。他知道，如果現在放棄，蓬萊仙境的所有人都會死在靈數聯盟的手中。</p>
+            <p>「啊——」林塵仰天長嘯，體內的氣息猛然爆發。</p>
+            <p>只見整個蓬萊仙境突然被一道巨大的光柱籠罩，一個透明的結界從天而降，將整個仙境保護在其中。</p>
+            <p>「成功了！」林塵露出一絲欣慰的笑容，然後眼前一黑，昏了過去。</p>
+            <p>當林塵再次睜開眼睛時，發現自己躺在一間簡陋的石屋中。陽光從窗戶照射進來，讓他感到一絲溫暖。</p>
+            <p>「你醒了。」一個柔和的聲音響起。</p>
+            <p>林塵轉過頭，只見明鏡正坐在床邊，手中端著一碗藥湯。</p>
+            <p>「明鏡...」林塵掙扎著想要起身，卻發現全身酸痛，一點力氣都沒有。</p>
+            <p>「別動。」明鏡說道，「你激活大陣的時候，血脈覺醒達到了75%，身體承受了巨大的負荷。需要好好休息。」</p>
+            <p>「蓬萊仙境...怎麼樣了？」林塵連忙問道。</p>
+            <p>明鏡的臉色變得凝重：「靈數聯盟的攻擊被護山大陣擋住了。但是...他們沒有離開，而是在外麵建立了包圍圈。」</p>
+            <p>「什麼？」林塵心中一沉。</p>
+            <p>「他們似乎打算長期圍困。」明鏡說道，「蕭叔叔正在和其他人商議對策。」</p>
+            <p>林塵深吸一口氣：「讓我出去看看。」</p>
+            <p>在明鏡的攙扶下，林塵來到了蓬萊仙境的核心區域。只見蕭衍、玄機以及其他蓬萊的遺民都聚集在一起，臉色凝重。</p>
+            <p>蕭衍搖了搖頭：「不容樂觀。護山大陣雖然強大，但需要持續輸入靈氣才行行能維持。以我們現在的儲備，最多只能撐一個月。」</p>
+            <p>「一個月...」林塵喃喃自語。</p>
+            <p>「而且。」蕭衍繼續說道，「我得到消息，靈數聯盟正在調集更多的增援。他們似乎對蓬萊仙境志在必得。」</p>
+            <p>「他們到底想要什麼？」玄機忍不住問道。</p>
+            <p>蕭衍沉默了片刻，然後說道：「蓬萊仙境蘊含著這個世界最原始的靈氣。如果能夠佔領這裡，他們就可以製造出無數強大的修真者。」</p>
+            <p>「做夢！」林塵咬牙切齒地說道，「我們一定會保護蓬萊仙境！」</p>
+            <p>就在這時，一名蓬萊弟子跑了過來：「報告！外麵有人求見，說是...說是林塵的故人。」</p>
+            <p>「故人？」林塵愣了一下，「是誰？」</p>
+            <p>「他說他叫...林塵。」</p>
+            <p>林塵渾身一震：「林塵？是他？」</p>
+            <p>林塵連忙來到蓬萊仙境的大門口，只見一名身穿白衣的年輕人正站在外麵。正是多年不見的林塵。</p>
+            <p>然而，他注意到林塵的身後，還站著數名靈數聯盟的士兵。</p>
+            <p>林塵連忙搖頭：「不！林塵，你聽我解釋！」</p>
+            <p>「解釋什麼？」林塵冷笑道，「你看看你身後的那些人，他們是靈數聯盟的士兵！」</p>
+            <p>林塵轉過頭，這才行行發現自己被跟蹤了。他連忙轉身，想要驅趕那些士兵，但為時已晚。</p>
+            <p>「我沒有！」林塵大喊。</p>
+            <p>然而，回答他的是一道雷射光束。</p>
+            <p>「小心！」林塵連忙冲上前，將林塵扑倒在在地。</p>
+            <p>轟——！</p>
+            <p>巨大的爆炸聲響起，靈數聯盟的攻擊正式開始了。</p>
+            <p>戰鬥持續了一整天。雖然護山大陣擋住了大部分攻擊，但蓬萊仙境內部也是損失慘重。許多建築被摧毀，無數蓬萊弟子受傷。</p>
+            <p>林塵和林塵背靠背站在戰場上，手中各自握著武器。</p>
+            <p>林塵點點頭：「好！我們一起保護蓬萊仙境！」</p>
+            <p>就在這時，天空中突然出現了一艘巨大的旗艦。旗艦的艦身上，印著一個醒目的標誌——靈數聯盟的最高指揮官專屬標誌。</p>
+            <p>「那是...」林塵的臉色變得慘白，「靈數聯盟的總裁亲自來了？」</p>
+            <p>一個冰冷的聲音從旗艦中傳來：「蓬萊仙境的居民聽著，立即投降！否則，格殺勿論！」</p>
+            <p>蕭衍走上前來，仰頭望向天空：「终于...轮到我們了吗？」</p>
 
         </div>
-
-        <div class="setting-group">
-
-            <h4>背景主題</h4>
-
-            <div id="theme-options" class="setting-options">
-
-                <button data-theme="light-mode">明亮</button>
-
-                <button data-theme="sepia-mode">米黃</button>
-
-                <button data-theme="dark-mode">夜間</button>
-
-                <button data-theme="sky-blue-mode">天空藍</button>
-
-                <button data-theme="light-green-mode">淺綠色</button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <main class="reader-content-area">
-
-        <article class="reader-article">
-
-            <div class="content">
-
-                <h1>第17章：天才行行對決</h1>
-
-                <div class="chapter"><p>天空中的黑雲越來越濃密，遠處傳來陣陣轟鳴聲。林塵站在山巔望去，只見數十架黑色戰艦正朝蓬萊仙境的方向逼近。</p>
-
-<p>「他們來了。」蕭衍的聲音從身後傳來，「靈數聯盟的精銳部隊。」</p>
-
-<p>林塵轉過身，只見蕭衍、明鏡和玄機都已經做好了戰鬥準備。蕭衍的手中握著一把散發著藍光的長剑，而明鏡則操控著她的專屬戰甲。</p>
-
-<p>「師叔祖，讓我和他們拼了！」玄機咬牙切齒地說道。</p>
-
-<p>「不可魯莽。」蕭衍說道，「靈數聯盟這次傾巢而出，實力不容小覷。我們需要制定作戰計劃。」</p>
-
-<p>「蓬萊仙境有護山大陣。」蕭衍說道，「但是這個大陣已經很久沒有啟動過了，需要足夠的靈氣才行行能激活。」</p>
-
-<p>「讓我來。」林塵說道，「我的血脈覺醒已經達到60%，可以提供足夠的靈氣。」</p>
-
-<p>蕭衍點點頭：「好。一會我會掩護你，你需要走到蓬萊的核心——靈脈之源，啟動大陣。」</p>
-
-<p>林塵深吸一口氣：「明白了。」</p>
-
-<p>就在這時，外麵的攻擊已經開始了。數十道雷射光束打在蓬萊仙境的結界上，激起陣陣漣漪。</p>
-
-<p>「他們在試探結界的強度。」明鏡說道，「我們必須抓緊時間。」</p>
-
-<p>林塵不再猶豫，立刻朝靈脈之源的方向奔去。</p>
-
-<p>林塵一路奔馳，沿途看到蓬萊仙境的美景在戰火中變得支離破碎。曾經美麗的竹林變成了焦土，仙鶴們四處逃竄，發出凄慘的鳴叫。</p>
-
-<p>「這些混蛋！」林塵心中充滿了怒火，「我一定不會放過他們！」</p>
-
-<p>終於，他來到了靈脈之源的山峰之下。那座散發著七彩霞光的神山，如今已經被戰鬥的煙霧所籠罩。</p>
-
-<p>林塵咬破手指，將鮮血滴在山腳下的一塊石碑上。</p>
-
-<p>「以吾之血，喚醒沉睡的守護者！」林塵大聲喊道。</p>
-
-<p>石碑突然發出耀眼的光芒，一股強大的靈氣從山體中湧出。林塵只覺得自己的血液彷彿沸騰了一般，血脈覺醒的程度在不斷提升。</p>
-
-<p>然而，林塵卻咬緊牙關，繼續堅持著。他知道，如果現在放棄，蓬萊仙境的所有人都會死在靈數聯盟的手中。</p>
-
-<p>「啊——」林塵仰天長嘯，體內的氣息猛然爆發。</p>
-
-<p>只見整個蓬萊仙境突然被一道巨大的光柱籠罩，一個透明的結界從天而降，將整個仙境保護在其中。</p>
-
-<p>「成功了！」林塵露出一絲欣慰的笑容，然後眼前一黑，昏了過去。</p>
-
-<p>當林塵再次睜開眼睛時，發現自己躺在一間簡陋的石屋中。陽光從窗戶照射進來，讓他感到一絲溫暖。</p>
-
-<p>「你醒了。」一個柔和的聲音響起。</p>
-
-<p>林塵轉過頭，只見明鏡正坐在床邊，手中端著一碗藥湯。</p>
-
-<p>「明鏡...」林塵掙扎著想要起身，卻發現全身酸痛，一點力氣都沒有。</p>
-
-<p>「別動。」明鏡說道，「你激活大陣的時候，血脈覺醒達到了75%，身體承受了巨大的負荷。需要好好休息。」</p>
-
-<p>「蓬萊仙境...怎麼樣了？」林塵連忙問道。</p>
-
-<p>明鏡的臉色變得凝重：「靈數聯盟的攻擊被護山大陣擋住了。但是...他們沒有離開，而是在外麵建立了包圍圈。」</p>
-
-<p>「什麼？」林塵心中一沉。</p>
-
-<p>「他們似乎打算長期圍困。」明鏡說道，「蕭叔叔正在和其他人商議對策。」</p>
-
-<p>林塵深吸一口氣：「讓我出去看看。」</p>
-
-<p>在明鏡的攙扶下，林塵來到了蓬萊仙境的核心區域。只見蕭衍、玄機以及其他蓬萊的遺民都聚集在一起，臉色凝重。</p>
-
-<p>蕭衍搖了搖頭：「不容樂觀。護山大陣雖然強大，但需要持續輸入靈氣才行行能維持。以我們現在的儲備，最多只能撐一個月。」</p>
-
-<p>「一個月...」林塵喃喃自語。</p>
-
-<p>「而且。」蕭衍繼續說道，「我得到消息，靈數聯盟正在調集更多的增援。他們似乎對蓬萊仙境志在必得。」</p>
-
-<p>「他們到底想要什麼？」玄機忍不住問道。</p>
-
-<p>蕭衍沉默了片刻，然後說道：「蓬萊仙境蘊含著這個世界最原始的靈氣。如果能夠佔領這裡，他們就可以製造出無數強大的修真者。」</p>
-
-<p>「做夢！」林塵咬牙切齒地說道，「我們一定會保護蓬萊仙境！」</p>
-
-<p>就在這時，一名蓬萊弟子跑了過來：「報告！外麵有人求見，說是...說是林塵的故人。」</p>
-
-<p>「故人？」林塵愣了一下，「是誰？」</p>
-
-<p>「他說他叫...林塵。」</p>
-
-<p>林塵渾身一震：「林塵？是他？」</p>
-
-<p>林塵連忙來到蓬萊仙境的大門口，只見一名身穿白衣的年輕人正站在外麵。正是多年不見的林塵。</p>
-
-<p>然而，他注意到林塵的身後，還站著數名靈數聯盟的士兵。</p>
-
-<p>林塵連忙搖頭：「不！林塵，你聽我解釋！」</p>
-
-<p>「解釋什麼？」林塵冷笑道，「你看看你身後的那些人，他們是靈數聯盟的士兵！」</p>
-
-<p>林塵轉過頭，這才行行發現自己被跟蹤了。他連忙轉身，想要驅趕那些士兵，但為時已晚。</p>
-
-<p>「我沒有！」林塵大喊。</p>
-
-<p>然而，回答他的是一道雷射光束。</p>
-
-<p>「小心！」林塵連忙冲上前，將林塵扑倒在在地。</p>
-
-<p>轟——！</p>
-
-<p>巨大的爆炸聲響起，靈數聯盟的攻擊正式開始了。</p>
-
-<p>戰鬥持續了一整天。雖然護山大陣擋住了大部分攻擊，但蓬萊仙境內部也是損失慘重。許多建築被摧毀，無數蓬萊弟子受傷。</p>
-
-<p>林塵和林塵背靠背站在戰場上，手中各自握著武器。</p>
-
-<p>林塵點點頭：「好！我們一起保護蓬萊仙境！」</p>
-
-<p>就在這時，天空中突然出現了一艘巨大的旗艦。旗艦的艦身上，印著一個醒目的標誌——靈數聯盟的最高指揮官專屬標誌。</p>
-
-<p>「那是...」林塵的臉色變得慘白，「靈數聯盟的總裁亲自來了？」</p>
-
-<p>一個冰冷的聲音從旗艦中傳來：「蓬萊仙境的居民聽著，立即投降！否則，格殺勿論！」</p>
-
-<p>蕭衍走上前來，仰頭望向天空：「终于...轮到我們了吗？」</p></div>
-
-            </div>
-
-        </article>
-
     </main>
 
-    <footer class="reader-footer-nav">
-
-        <a href="chapter-16.html" class="nav-button">« 上一章</a>
-
-        <a href="chapter-18.html" class="nav-button">下一章 »</a>
-
-    </footer>
-
-    <section class="share-section">
-
-        <h4 class="share-title">分享這個章節</h4>
-
-        <div class="share-buttons">
-
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
-
-        </div>
-
-    </section>
-
-    <footer class="main-footer">
-
-        <p>&copy; 2025 大肥瞄. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-
-    </footer>
-
-    
-
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
-
+    <nav class="nav">
+        <a href="chapter-16.html">← 上一章</a>
+        <span class="nav-center">第 17 / 61 章</span>
+        <a href="chapter-18.html">下一章 →</a>
+    </nav>
 </body>
-
 </html>

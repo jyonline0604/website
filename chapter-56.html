@@ -1,201 +1,206 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>第56章：科技與修真 - 科技修真傳</title>
-
-    <meta name="description" content="《科技修真傳》第56章：科技與修真">
-
-    <meta name="keywords" content="第56章, 科技與修真, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-
-    <meta name="author" content="大肥瞄">
-
+    <title>第56章：科技與修真 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
 
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
-<body class="light-mode">
-
-    <div class="reading-progress-bar" id="progress-bar"></div>
-
-    <header class="reader-header">
-
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-
-        <h2 class="reader-chapter-title">第56章：科技與修真</h2>
-
-        <div class="header-controls">
-
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-
-        </div>
-
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第56章</span>
+        <a href="chapter-55.html">上一章</a>
     </header>
 
-    <div id="settings-panel" class="settings-panel">
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第56章：科技與修真 - 科技修真傳</h1>
+        </header>
 
-        <div class="setting-group">
-
-            <h4>字體大小</h4>
-
-            <div id="font-size-options" class="setting-options">
-
-                <button data-size="small">小</button>
-
-                <button data-size="medium">中</button>
-
-                <button data-size="large">大</button>
-
-            </div>
-
-        </div>
-
-        <div class="setting-group">
-
-            <h4>背景主題</h4>
-
-            <div id="theme-options" class="setting-options">
-
-                <button data-theme="light-mode">明亮</button>
-
-                <button data-theme="sepia-mode">米黃</button>
-
-                <button data-theme="dark-mode">夜間</button>
-
-                <button data-theme="sky-blue-mode">天空藍</button>
-
-                <button data-theme="light-green-mode">淺綠色</button>
-
-            </div>
+        <div class="content">
+            <p>「第二部：深淵紀元」</p>
+            <p>蘇璃的出現，讓林塵開始思考一個前所未有的問題：科技，與修真，究竟能否結合？</p>
+            <p>「妳說的那個『人工智能』，」林塵問道，「它能做什麼？」</p>
+            <p>蘇璃眼睛一亮，開始解釋：「AI可以處理海量數據，進行快速運算，還能學習和模擬人類的思考方式。在我們的世界，它已經滲透到生活的方方麵麵。」</p>
+            <p>「海量數據……」林塵若有所思。</p>
+            <p>「如果將AI與靈網結合，」墨玄突然說，「或許能夠大幅提升靈網的運算能力！」</p>
+            <p>三人的眼睛同時亮起。</p>
+            <p>「首先，」蘇璃說，「我需要了解你們的靈網是什麼運作原理。」</p>
+            <p>在接下來的日子裡，蘇璃開始學習修真基礎，而林塵和墨玄則開始了解科技。</p>
+            <p>「原來，所謂的丹藥煉製，本質上就是精確的化學反應，」蘇璃驚嘆道，「如果用AI來控制溫度、壓力，配比，或許能夠煉製出前所未有的丹藥！」</p>
+            <p>「而你們的陣法，」她繼續說，「本質上就是能量場的佈置。如果用量子計算機來模擬陣法效果，就能預先測試陣法的威力！」</p>
+            <p>林塵越聽越興奮。</p>
+            <p>「如果我們能將修真知識數據化，」他說，「再用AI來分析和優化，那，修真或許能夠變得更加系統化、標準化！」</p>
+            <p>「不僅如此，」墨玄補充道，「或許還能開創出前所未有的修煉方式！」</p>
+            <p>就在此時，一名弟子匆匆來報。</p>
+            <p>「報告師尊！修仙聯盟來人，說是有要緊事商量！」</p>
+            <p>林塵皺起眉頭。這個時候，聯盟來人所為何事？</p>
+            <p>「請他們進來。」</p>
+            <p>來的是聯盟長老——玄機子。</p>
+            <p>「林塵，」玄機子開門見山地說，「我們探測到，深淵殘餘正在暗中集結。他們似乎在策劃一個巨大的陰謀。」</p>
+            <p>「哦？」林塵神色一凜。</p>
+            <p>「根據情報，」玄機子繼續說，「他們正在試圖打開更多維度裂縫，召集其他維度的盟友。如果讓他們成功了，修真界將麵臨前所未有的危機！」</p>
+            <p>林塵看向蘇璃。蘇璃點點頭。</p>
+            <p>「或許，」她說，「是時候讓科技與修真真正結合了。」</p>
+            <p>一場前所未有的變革，即將席捲整個修真界……</p>
+            <p><strong>📝 作者筆記：科技與修真的結合將會開創全新既修煉體系！敬請期待第57章！</strong></p>
 
         </div>
-
-    </div>
-
-    <main class="reader-content-area">
-
-        <article class="reader-article">
-
-            <div class="content">
-
-                <h1>第56章：科技與修真</h1>
-
-                <div class="chapter">
-
-<p>「第二部：深淵紀元」</p>
-
-<p>蘇璃的出現，讓林塵開始思考一個前所未有的問題：科技，與修真，究竟能否結合？</p>
-
-<p>「妳說的那個『人工智能』，」林塵問道，「它能做什麼？」</p>
-
-<p>蘇璃眼睛一亮，開始解釋：「AI可以處理海量數據，進行快速運算，還能學習和模擬人類的思考方式。在我們的世界，它已經滲透到生活的方方麵麵。」</p>
-
-<p>「海量數據……」林塵若有所思。</p>
-
-<p>「如果將AI與靈網結合，」墨玄突然說，「或許能夠大幅提升靈網的運算能力！」</p>
-
-<p>三人的眼睛同時亮起。</p>
-
-<p>「首先，」蘇璃說，「我需要了解你們的靈網是什麼運作原理。」</p>
-
-<p>在接下來的日子裡，蘇璃開始學習修真基礎，而林塵和墨玄則開始了解科技。</p>
-
-<p>「原來，所謂的丹藥煉製，本質上就是精確的化學反應，」蘇璃驚嘆道，「如果用AI來控制溫度、壓力，配比，或許能夠煉製出前所未有的丹藥！」</p>
-
-<p>「而你們的陣法，」她繼續說，「本質上就是能量場的佈置。如果用量子計算機來模擬陣法效果，就能預先測試陣法的威力！」</p>
-
-<p>林塵越聽越興奮。</p>
-
-<p>「如果我們能將修真知識數據化，」他說，「再用AI來分析和優化，那，修真或許能夠變得更加系統化、標準化！」</p>
-
-<p>「不僅如此，」墨玄補充道，「或許還能開創出前所未有的修煉方式！」</p>
-
-<p>就在此時，一名弟子匆匆來報。</p>
-
-<p>「報告師尊！修仙聯盟來人，說是有要緊事商量！」</p>
-
-<p>林塵皺起眉頭。這個時候，聯盟來人所為何事？</p>
-
-<p>「請他們進來。」</p>
-
-<p>來的是聯盟長老——玄機子。</p>
-
-<p>「林塵，」玄機子開門見山地說，「我們探測到，深淵殘餘正在暗中集結。他們似乎在策劃一個巨大的陰謀。」</p>
-
-<p>「哦？」林塵神色一凜。</p>
-
-<p>「根據情報，」玄機子繼續說，「他們正在試圖打開更多維度裂縫，召集其他維度的盟友。如果讓他們成功了，修真界將麵臨前所未有的危機！」</p>
-
-<p>林塵看向蘇璃。蘇璃點點頭。</p>
-
-<p>「或許，」她說，「是時候讓科技與修真真正結合了。」</p>
-
-<p>一場前所未有的變革，即將席捲整個修真界……</p>
-
-<p><strong>📝 作者筆記：科技與修真的結合將會開創全新既修煉體系！敬請期待第57章！</strong></p>
-
-</div>
-
-            </div>
-
-            </article>
-
     </main>
 
-    <footer class="reader-footer-nav">
-
-        <a href="chapter-55.html" class="nav-button">« 上一章</a>
-
-        <a href="chapter-57.html" class="nav-button">下一章 »</a>
-
-    </footer>
-
-    
-
-    <section class="share-section">
-
-        <h4 class="share-title">分享這個章節</h4>
-
-        <div class="share-buttons">
-
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
-
-        </div>
-
-    </section>
-
-    <footer class="main-footer">
-
-        <p>&copy; 2025 大肥瞄. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-
-    </footer>
-
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
-
-    
-
+    <nav class="nav">
+        <a href="chapter-55.html">← 上一章</a>
+        <span class="nav-center">第 56 / 61 章</span>
+        <a href="chapter-57.html">下一章 →</a>
+    </nav>
 </body>
-
 </html>

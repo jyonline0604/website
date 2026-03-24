@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第30章：終極對決 - 科技修真傳 - 科技修真傳</title>
+    <title>第30章：終極對決 - 科技修真傳 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -13,12 +13,58 @@
             --text: #1F2937;
             --accent: #6366F1;
             --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+
+        [data-theme="pink"] {
+            --bg: #FCE4EC;
+            --text: #880E4F;
+            --border: #F48FB1;
+            --panel-bg: #FCE4EC;
         }
 
         [data-theme="dark"] {
             --bg: #1A1F26;
-            --text: #F9FAFB;
+            --text: #E5E7EB;
             --border: #374151;
+            --panel-bg: #242B35;
+        }
+
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
         }
 
         * {
@@ -31,10 +77,11 @@
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.8;
-            padding: 0;
+            line-height: var(--line-height);
+            transition: background 0.3s, color 0.3s;
         }
 
+        /* Header */
         .header {
             position: fixed;
             top: 0;
@@ -46,8 +93,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 24px;
+            padding: 0 16px;
             z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
         }
 
         .header a {
@@ -56,41 +104,69 @@
             font-size: 0.95rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
         }
 
         .header a:hover {
-            text-decoration: underline;
+            background: var(--border);
         }
 
         .chapter-title {
             font-size: 1rem;
-            color: var(--text);
             font-weight: 500;
+            color: var(--text);
         }
 
+        .header-right {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .icon-btn:hover {
+            background: var(--border);
+            border-color: var(--accent);
+        }
+
+        /* Main Content */
         .main {
             max-width: 720px;
             margin: 0 auto;
-            padding: 80px 24px 120px;
+            padding: 80px 24px 80px;
         }
 
         .chapter-header {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 40px;
         }
 
         .chapter-header h1 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--text);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .content {
             text-align: justify;
-            font-size: 1.05rem;
-            line-height: 1.8;
+            font-size: var(--font-size);
+            line-height: var(--line-height);
         }
 
         .content p {
@@ -107,118 +183,534 @@
             color: var(--accent);
         }
 
-        .nav {
+        /* Bottom Navigation */
+        .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 64px;
+            height: 56px;
             background: var(--bg);
             border-top: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 24px;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
         }
 
-        .nav a {
+        .bottom-nav a {
             color: var(--accent);
             text-decoration: none;
             font-size: 0.9rem;
-            padding: 12px 16px;
+            padding: 10px 16px;
             border-radius: 8px;
             transition: background 0.2s;
         }
 
-        .nav a:hover {
+        .bottom-nav a:hover {
             background: var(--border);
         }
 
         .nav-center {
-            color: var(--text);
-            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
 
+        .nav-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Settings Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .settings-modal {
+            width: 100%;
+            max-width: 500px;
+            max-height: 85vh;
+            background: var(--panel-bg);
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .settings-modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .close-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--border);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(85vh - 140px);
+        }
+
+        .setting-section {
+            margin-bottom: 24px;
+        }
+
+        .setting-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .theme-btn {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-btn.active {
+            border-color: var(--accent);
+        }
+
+        .theme-btn.active::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .theme-btn.light { background: #FAFBFC; }
+        .theme-btn.sepia { background: #F4ECD8; }
+        .theme-btn.sky { background: #E8F4FC; }
+        .theme-btn.green { background: #E8F5E9; }
+        .theme-btn.pink { background: #FCE4EC; }
+        .theme-btn.dark { background: #2D3748; }
+        .theme-btn.navy { background: #1A202C; }
+
+        .font-size-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .font-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .font-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .font-slider {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--border);
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .font-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+        }
+
+        .font-preview {
+            text-align: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: var(--font-size);
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            margin: 0 16px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .modal-footer button {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-default {
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .btn-default:hover {
+            background: var(--border);
+        }
+
+        .btn-primary {
+            border: none;
+            background: #10B981;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .main {
-                padding: 72px 16px 100px;
+                padding: 72px 16px 80px;
             }
 
             .chapter-header h1 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
 
-            .content {
-                font-size: 1rem;
+            .theme-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
-        <a href="chapters.html">← 章節目錄</a>
+        <a href="chapters.html">← 章節</a>
         <span class="chapter-title">第30章</span>
-        <a href="chapter-29.html">上一章</a>
+        <div class="header-right">
+            <button class="icon-btn" onclick="openSettings()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </button>
+        </div>
     </header>
 
+    <!-- Main Content -->
     <main class="main">
         <header class="chapter-header">
-            <h1>第30章：終極對決 - 科技修真傳</h1>
+            <h1>第30章：終極對決 - 科技修真傳 - 科技修真傳</h1>
         </header>
-
         <div class="content">
-            <p>金色大門從虛空中緩緩開啟，一道溫暖而神聖的光芒從中傾瀉而出。那光芒彷彿擁有生命一般，輕柔地拂過每一個修士的身體，帶來一種前所未有的寧靜與力量。</p>
-            <p>「那是……」紫玄真人瞪大了眼睛，聲音中帶著難以置信的驚訝，「那是多元宇宙守護者的標記！」</p>
-            <p>從金色大門中走出的，是一個散發著柔和光芒的人形身影。祂的面容模糊不清，但身上穿著的金色長袍卻清晰可見，上面繡著無數旋轉的星圖，每一個星圖都代表著一個平行世界。</p>
-            <p>「我是多元宇宙的守護者——鴻蒙。」那個身影的聲音如同清泉般流淌在每個人的心中，「我觀察你們很久了，林塵。你的勇氣和智慧，證明你就是那個被選中的人。」</p>
-            <p>林塵驚訝地望著眼前的守護者。「被選中的人？您是說……」</p>
-            <p>「靈芯系統的誕生並非偶然。」鴻蒙緩緩說道，「它是多元宇宙為了對抗混沌吞噬者而創造的最終武器。而你，林塵，是唯一一個能夠完全發揮靈芯系統潛力的人。」</p>
-            <p>此時，混沌吞噬者的身體已經完成了部分修復。它那扭曲的形態再次膨脹，紅色的眼睛中燃燒著憤怒與瘋狂的火焰。</p>
-            <p>「鴻蒙！」混沌吞噬者的聲音如同雷鳴，「你這個老東西，竟然還敢出現？上次你將我封印，這次我不會再給你機會！」</p>
-            <p>「吞噬者，你的末日到了。」鴻蒙的聲音依然平靜，「林塵，我將賜予你靈芯系統的最終形態——「鴻蒙靈芯」。有了它，你就能徹底摧毀這個邪惡的存在。」</p>
-            <p>鴻蒙抬起手，一團金色的光芒從祂的掌心飛出，直直地注入林塵的體內。林塵感覺自己像是被扔進了一個宇宙的洪流之中，無數的知識、力量、記憶如同潮水般湧入他的腦海。</p>
-            <p>靈芯系統開始發生劇烈的變化。原本銀灰色的外殼被金色的光芒包裹，內部的運算核心被重組為一種更高維度的存在。林塵感覺自己不再只是一個修士，而是整個多元宇宙的一部分——他可以感知到每一個世界的脈動，每一個生命的呼吸。</p>
-            <p>「這就是……鴻蒙靈芯？」林塵低頭看著自己的雙手，那裡流動著淡淡的金色光芒。</p>
-            <p>「去吧，結束這一切。」鴻蒙的聲音中帶著期望。</p>
-            <p>林塵點了點頭，身形一閃，已經出現在混沌吞噬者的面前。他的速度之快，甚至連空間都來不及反應。</p>
-            <p>「渺小的蟲子！」混沌吞噬者怒吼一聲，數十條觸手同時朝林塵掃來。每一條觸手都攜帶著足以毀滅一個小型世界的能量。</p>
-            <p>然而，林塵只是輕輕一揮手，一道金色的屏障便出現在他面前。那些觸手撞上屏障的瞬間，竟然如同冰塊遇到烈火一般，迅速消融。</p>
-            <p>「怎麼可能？」混沌吞噬者第一次露出了震驚的神色。</p>
-            <p>「吞噬者，你的黑暗力量在鴻蒙之力面前不堪一擊。」林塵的聲音冷冽如冰，「現在，讓我們來做個了斷。」</p>
-            <p>他運轉鴻蒙靈芯，全身的靈力化為一柄巨大的金色長劍。長劍的劍身上刻滿了古老的符文，每一個符文都在散發著令人心悸的威壓。</p>
-            <p>「看劍！」</p>
-            <p>林塵大喝一聲，金色長劍帶著毀天滅地的氣勢朝混沌吞噬者斬去。劍光所過之處，空間被撕裂出無數道裂縫，露出了深不見底的虛空。</p>
-            <p>混沌吞噬者瘋狂地釋放所有的黑暗能量進行抵擋，形成了一个巨大的黑色漩渦。金色劍光與黑色漩渦在空中激烈碰撞，爆發出的能量波動將周圍的懸浮巨石全部化為粉末。</p>
-            <p>「啊——」林塵將所有的力量都注入了這一劍之中。他的經脈在劇烈地疼痛，但他的意志卻前所未有地堅定。</p>
-            <p>金色劍光終於突破了黑色漩渦的防禦，狠狠地劈入了混沌吞噬者的身體之中。一聲淒厲到極致的慘叫響徹整個戰場，混沌吞噬者的身體開始劇烈地顫抖、崩裂。</p>
-            <p>「不……不可能……」混沌吞噬者的聲音越來越虛弱，「我是不會敗給一個渺小的人類的……」</p>
-            <p>「你錯了。」林塵的聲音平靜而有力，「我不是一個人。我的背後，站著修真聯盟的每一個戰士，站著多元宇宙中所有被你傷害過的生命。今天，是我們所有人一起將你消滅。」</p>
-            <p>他舉起金色長劍，做最後的一擊。這一劍，融合了他的全部力量、七位域主的靈力、鴻蒙守護者賜予的鴻蒙之力，以及靈芯系統的終極運算能力。</p>
-            <p>「多元——歸元斬！」</p>
-            <p>一道比太陽還要耀眼的金光從劍尖迸發，將混沌吞噬者徹底吞沒。那團扭曲了千百個世界的黑暗，在這道光芒中如同雪遇到了烈日，迅速消融、瓦解、最終化為虛無。</p>
-            <p>戰場上陷入了短暫的寂静。所有人都屏住呼吸，不敢相信眼前發生的一切。</p>
-            <p>然後——</p>
-            <p>「勝利了！我們勝利了！」不知是誰先喊出了聲，隨後歡呼聲如同海嘯般席捲了整個戰場。修士們互相擁抱、慶祝，許多人甚至流下了激動的淚水。</p>
-            <p>林塵緩緩從空中降落，身體搖搖欲墜。剛才那一擊耗盡了他所有的力量，鴻蒙靈芯也因為超負荷運轉而進入了休眠狀態。</p>
-            <p>「林塵！」青陽和碧瑤連忙飛過來扶住他。</p>
-            <p>「我沒事……」林塵勉強露出一個笑容，「只是有點累。」</p>
-            <p>紫玄真人也走了過來，目光中充滿了讚賞和感激。「林塵，你做到了。你拯救了紫霄世界，拯救了多元宇宙。」</p>
-            <p>「不是我一個人的功勞。」林塵搖了搖頭，「是所有人一起努力的結果。」</p>
-            <p>這時，鴻蒙的身影再次浮現在眾人面前。「戰鬥還沒有結束，林塵。混沌吞噬者雖然被消滅了，但它在各個世界留下的傷痕還需要時間來修復。更重要的是，你還需要去尋找剩下的世界之鑰，以確保多元宇宙的永久和平。」</p>
-            <p>林塵點了點頭，眼中重新燃起了鬥志。「我明白。這只是一個開始。」</p>
-            <p>鴻蒙微微一笑，身形逐漸變得透明。「去吧，年輕人。多元宇宙的未來，就交給你了。」</p>
-            <p>金色的光芒消散，鴻蒙的身影也隨之消失。林塵望向遠方的天空，那裡原本被黑暗籠罩的天際已經重新露出了紫色的雲彩和溫暖的陽光。</p>
-            <p>終極對決結束了，但林塵知道，他的旅程還遠遠沒有結束。在多元宇宙的某個角落，還有更多的挑戰和秘密在等待著他。</p>
-            <p>「走吧，」林塵對著身邊的朋友們說道，「讓我們開始新的旅程。」</p>
-            <p>（本章完）</p>
+            <p>內容載入中...</p>
 
         </div>
     </main>
 
-    <nav class="nav">
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
         <a href="chapter-29.html">← 上一章</a>
-        <span class="nav-center">第 30 / 61 章</span>
+        <div class="nav-center">
+            <button class="nav-btn" onclick="prevChapter()">◀</button>
+            <span id="progress">0%</span>
+            <button class="nav-btn" onclick="nextChapter()">▶</button>
+        </div>
         <a href="chapter-31.html">下一章 →</a>
     </nav>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="settings-modal">
+            <div class="modal-header">
+                <h3>設置</h3>
+                <button class="close-btn" onclick="closeSettings()">×</button>
+            </div>
+            <div class="modal-body">
+                <!-- Theme -->
+                <div class="setting-section">
+                    <div class="setting-label">主題模式</div>
+                    <div class="theme-grid">
+                        <button class="theme-btn light" data-theme="light" onclick="setTheme('light')"></button>
+                        <button class="theme-btn sepia" data-theme="sepia" onclick="setTheme('sepia')"></button>
+                        <button class="theme-btn sky" data-theme="sky" onclick="setTheme('sky')"></button>
+                        <button class="theme-btn green" data-theme="green" onclick="setTheme('green')"></button>
+                        <button class="theme-btn pink" data-theme="pink" onclick="setTheme('pink')"></button>
+                        <button class="theme-btn dark" data-theme="dark" onclick="setTheme('dark')"></button>
+                        <button class="theme-btn navy" data-theme="navy" onclick="setTheme('navy')"></button>
+                    </div>
+                </div>
+
+                <!-- Font Size -->
+                <div class="setting-section">
+                    <div class="setting-label">字體大小</div>
+                    <div class="font-size-control">
+                        <button class="font-btn" onclick="adjustFontSize(-2)">A-</button>
+                        <input type="range" class="font-slider" id="fontSlider" min="14" max="28" value="18" oninput="setFontSize(this.value)">
+                        <button class="font-btn" onclick="adjustFontSize(2)">A+</button>
+                    </div>
+                    <div class="font-preview" id="fontPreview">科技修真傳 - 示範文字</div>
+                </div>
+
+                <!-- Reading Progress -->
+                <div class="setting-section">
+                    <div class="setting-label">閱讀進度</div>
+                    <div class="progress-info">
+                        <span>已讀</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                        </div>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+
+                <!-- Chapter Navigation -->
+                <div class="setting-section">
+                    <div class="setting-label">章節導航</div>
+                    <div style="display: flex; gap: 12px;">
+                        <button class="nav-btn" style="flex:1" onclick="prevChapter(); closeSettings();">◀ 上一章</button>
+                        <button class="nav-btn" style="flex:1" onclick="nextChapter(); closeSettings();">下一章 ▶</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-default" onclick="resetSettings()">恢復默認</button>
+                <button class="btn-primary" onclick="closeSettings()">確定</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Settings
+        const DEFAULT_SETTINGS = {
+            theme: 'light',
+            fontSize: 18
+        };
+
+        let settings = { ...DEFAULT_SETTINGS };
+
+        // Load settings from localStorage
+        function loadSettings() {
+            const saved = localStorage.getItem('reading-settings');
+            if (saved) {
+                settings = JSON.parse(saved);
+            }
+            applySettings();
+        }
+
+        function saveSettings() {
+            localStorage.setItem('reading-settings', JSON.stringify(settings));
+        }
+
+        function applySettings() {
+            document.body.setAttribute('data-theme', settings.theme);
+            document.documentElement.style.setProperty('--font-size', settings.fontSize + 'px');
+            
+            // Update theme buttons
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === settings.theme);
+            });
+            
+            // Update font slider
+            document.getElementById('fontSlider').value = settings.fontSize;
+            document.getElementById('fontPreview').style.fontSize = settings.fontSize + 'px';
+        }
+
+        function setTheme(theme) {
+            settings.theme = theme;
+            saveSettings();
+            applySettings();
+        }
+
+        function setFontSize(size) {
+            settings.fontSize = parseInt(size);
+            saveSettings();
+            applySettings();
+        }
+
+        function adjustFontSize(delta) {
+            const newSize = Math.min(28, Math.max(14, settings.fontSize + delta));
+            setFontSize(newSize);
+        }
+
+        function resetSettings() {
+            settings = { ...DEFAULT_SETTINGS };
+            saveSettings();
+            applySettings();
+        }
+
+        // Modal
+        function openSettings() {
+            document.getElementById('settingsModal').classList.add('active');
+            updateProgress();
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsModal').classList.remove('active');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('settingsModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSettings();
+            }
+        });
+
+        // Chapter Navigation
+        function prevChapter() {
+            window.location.href = 'chapter-29.html';
+        }
+
+        function nextChapter() {
+            window.location.href = 'chapter-31.html';
+        }
+
+        // Reading Progress
+        function updateProgress() {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollTop = window.scrollY;
+            const progress = scrollHeight > 0 ? Math.round((scrollTop / scrollHeight) * 100) : 0;
+            
+            document.getElementById('progress').textContent = progress + '%';
+            document.getElementById('progressPercent').textContent = progress + '%';
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        window.addEventListener('scroll', updateProgress);
+
+        // Initialize
+        loadSettings();
+        updateProgress();
+    </script>
 </body>
 </html>

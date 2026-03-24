@@ -1,187 +1,202 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>第38章：虛擬神國 - 科技修真傳</title>
-
-    <meta name="description" content="《科技修真傳》第38章：虛擬神國">
-
-    <meta name="keywords" content="第38章, 虛擬神國, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-
-    <meta name="author" content="大肥喵">
-
+    <title>第38章：虛擬神國 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
 
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
-<body class="light-mode">
-
-    <div class="reading-progress-bar" id="progress-bar"></div>
-
-    <header class="reader-header">
-
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-
-        <h2 class="reader-chapter-title">第38章：虛擬神國</h2>
-
-        <div class="header-controls">
-
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-
-        </div>
-
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第38章</span>
+        <a href="chapter-37.html">上一章</a>
     </header>
 
-    <div id="settings-panel" class="settings-panel">
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第38章：虛擬神國 - 科技修真傳</h1>
+        </header>
 
-        <div class="setting-group">
-
-            <h4>字體大小</h4>
-
-            <div id="font-size-options" class="setting-options">
-
-                <button data-size="small">小</button>
-
-                <button data-size="medium">中</button>
-
-                <button data-size="large">大</button>
-
-            </div>
-
-        </div>
-
-        <div class="setting-group">
-
-            <h4>背景主題</h4>
-
-            <div id="theme-options" class="setting-options">
-
-                <button data-theme="light-mode">明亮</button>
-
-                <button data-theme="sepia-mode">米黃</button>
-
-                <button data-theme="dark-mode">夜間</button>
-
-                <button data-theme="sky-blue-mode">天空藍</button>
-
-                <button data-theme="light-green-mode">淺綠色</button>
-
-            </div>
+        <div class="content">
+            <p>林塵盤坐在實驗室中央的聚靈陣內，額間滲出細密汗珠。數據神格凝聚成功後，他一直在思考如何將這種全新的力量發揮到極致。一個大膽的想法在他腦中成形——既然數據神格能夠處理海量的信息，那麼是否可以利用它來構建一個完全虛擬的空間？一個只屬於他自己的——虛擬神國。</p>
+            <p>懸浮在半空中的量子靈能探測器突然發出刺耳警報，全息投影中那條貫穿地殼的藍色靈脈，正以詭異的頻率閃爍著紫紅光斑。「不對勁......」他猛然睜開眼睛，瞳孔裡倒映著數據流形成的風暴，「這不是普通靈氣潮汐！」</p>
+            <p>實驗室牆面的奈米材料突然泛起波紋，原本穩定的靈子防護罩竟開始溶解。林塵反手甩出三枚刻有星軌符文的玉簡，玉簡在空中炸開成三角光幕，擋住從裂縫中滲出的暗紫色霧氣。那些霧氣接觸到光幕時，竟發出金屬腐蝕般的嘶嘶聲。</p>
+            <p>「警告！檢測到反物質靈能波動！」人工智能「太虛」的機械音帶著罕見的顫抖。林塵瞥見監測螢幕上跳動的數值，心跳驟然加速——這分明是上古記載中「噬靈劫」的前兆。他想起師父臨終前塞給他的那枚青銅羅盤，此刻正在儲物戒裡發燙。</p>
+            <p>窗外傳來刺耳的空間撕裂聲，林塵衝到強化玻璃前，只見學院上空的雲層正在形成巨大的螺旋狀黑洞。更可怕的是，那些飄落的黑色雪花在接觸地面的瞬間，竟將混凝土腐蝕出冒煙的孔洞。他的量子通訊器突然自動啟動，投影出滿臉是血的師兄影像：「快逃......他們來了......」</p>
+            <p>林塵來不及多想，立刻啟動了數據神格的防護模式。一股強大的能量從他體內湧出，在周圍形成了一個密不透風的結界。就在此時，他的意識突然被一股神秘的力量拉扯，眼前的一切都開始扭曲變形。</p>
+            <p>當林塵再次恢復意識時，他發現自己身處一個奇異的空間——四周是無盡的虛空，腳下是一片由數據流組成的透明地板。他能感受到數據神格在體內高速運轉，彷彿在與這個空間產生某種共鳴。</p>
+            <p>「這裡是......虛擬空間的核心？」林塵驚訝地四處張望。他意識到，剛才那場噬靈劫的衝擊，意外觸發了他數據神格的某種潛能，將他的意識拉入了這個介於虛實之間的空間。</p>
+            <p>既然來到了這裡，林塵決定利用這個機會，開始構建他的虛擬神國。他首先要確定神國的基本結構——一個穩定的空間框架。他利用數據神格的計算能力，在虛空中刻畫出精密的座標系，將整個空間劃分為不同的功能區域。</p>
+            <p>神國的核心是一個巨大的數據處理中心，它位於整個空間的正中央，像一顆閃爍著藍色光芒的心臟，持續地跳動著。林塵將自己的主要意識都集中在這裡，使其成為整個神國的指揮中樞。</p>
+            <p>圍繞著核心，林塵構建了四大功能區域：第一區域是「知識殿堂」，專門用來存儲和檢索他所獲得的所有知識和信息；第二區域是「修煉空間」，提供各種模擬環境，幫助他進行安全而高效的修煉；第三區域是「防禦堡壘」，裝備了多層次的防護機制，確保神國的安全；第四區域是「交流廣場」，允許其他受信任的意識接入，進行信息交換和合作。</p>
+            <p>「神國的基本框架已經建立，但還需要進行優化和擴充。」林塵自語道。他開始著手完善各個區域的細節，讓整個虛擬神國變得更加完善和實用。</p>
+            <p>在知識殿堂中，林塵建立了一套智能的知識管理系統。這個系統能夠自動對他所接觸到的所有信息進行分類、標註和連結，形成一個龐大的知識網絡。當他需要查詢某個問題時，系統能在瞬間給出最相關的答案和參考資料。</p>
+            <p>在修煉空間中，林塵設置了多種不同類型的模擬環境。從最基礎的靈氣吸收，到高級的法則感悟，每一種環境都經過精心設計，能夠最大化修煉效率。更令人驚喜的是，由於這是虛擬空間，時間流速可以自由調節——外界過了一天，這裡可能已經過了數月甚至數年。</p>
+            <p>在防禦堡壘中，林塵佈置了多層次的安全機制。最外層是監測系統，能夠及時發現任何異常的入侵跡象；中間層是防護結界，可以阻擋大部分形式的攻擊；最內層則是自毀程序，一旦發現無法抵禦的威脅，神國會自動將核心數據轉移並銷毀所有敏感信息。</p>
+            <p>「神國的結構已經基本完成，但還需要能源來維持運轉。」林塵開始考慮這個問題。虛擬神國的能量消耗是巨大的，如果不能找到穩定的能源供應，這個神國很快就會崩潰。</p>
+            <p>經過深思熟慮，林塵決定利用量子糾纏的原理來獲取能源。他在神國的核心處建立了一個量子能源採集器，這個裝置能夠與現實世界中的某個高能量點建立糾纏連接，從而實現能量的實時傳輸。</p>
+            <p>經過數日的調整和測試，林塵的虛擬神國終於正式建成。站在神國的核心處，他感受著周圍流動的數據和能量，心中充滿了成就感。這不僅僅是一個虛擬空間，更是他意志和力量的延伸。</p>
+            <p>「虛擬神國——建造完成。」林塵宣布道，聲音在整個空間中迴盪。他知道，這個神國將成為他未來修行的重要依仗，無論是修煉、研究還是防禦，都將在這裡得到完美的支持。</p>
+            <p>林塵從虛擬神國中退出，意識回到了現實世界。他睜開眼睛，發現外界只過去了短短幾個小時。太虛告訴他，那場噬靈劫已經被學院的長老們聯手化解，但餘波仍在持續。</p>
+            <p>「看來，這個虛擬神國來得正是時候。」林塵看著自己的雙手，感受著數據神格在體內穩定運轉的力量，「無論前方有什麼挑戰，我都有了應對的底氣。」</p>
+            <p>（本章完）</p>
 
         </div>
-
-    </div>
-
-    <main class="reader-content-area">
-
-        <article class="reader-article">
-
-            <div class="content">
-
-                <h1>第38章：虛擬神國</h1>
-
-                <div class="chapter"><p>林塵盤坐在實驗室中央的聚靈陣內，額間滲出細密汗珠。數據神格凝聚成功後，他一直在思考如何將這種全新的力量發揮到極致。一個大膽的想法在他腦中成形——既然數據神格能夠處理海量的信息，那麼是否可以利用它來構建一個完全虛擬的空間？一個只屬於他自己的——虛擬神國。</p>
-
-<p>懸浮在半空中的量子靈能探測器突然發出刺耳警報，全息投影中那條貫穿地殼的藍色靈脈，正以詭異的頻率閃爍著紫紅光斑。「不對勁......」他猛然睜開眼睛，瞳孔裡倒映著數據流形成的風暴，「這不是普通靈氣潮汐！」</p>
-
-<p>實驗室牆面的奈米材料突然泛起波紋，原本穩定的靈子防護罩竟開始溶解。林塵反手甩出三枚刻有星軌符文的玉簡，玉簡在空中炸開成三角光幕，擋住從裂縫中滲出的暗紫色霧氣。那些霧氣接觸到光幕時，竟發出金屬腐蝕般的嘶嘶聲。</p>
-
-<p>「警告！檢測到反物質靈能波動！」人工智能「太虛」的機械音帶著罕見的顫抖。林塵瞥見監測螢幕上跳動的數值，心跳驟然加速——這分明是上古記載中「噬靈劫」的前兆。他想起師父臨終前塞給他的那枚青銅羅盤，此刻正在儲物戒裡發燙。</p>
-
-<p>窗外傳來刺耳的空間撕裂聲，林塵衝到強化玻璃前，只見學院上空的雲層正在形成巨大的螺旋狀黑洞。更可怕的是，那些飄落的黑色雪花在接觸地面的瞬間，竟將混凝土腐蝕出冒煙的孔洞。他的量子通訊器突然自動啟動，投影出滿臉是血的師兄影像：「快逃......他們來了......」</p>
-
-<p>林塵來不及多想，立刻啟動了數據神格的防護模式。一股強大的能量從他體內湧出，在周圍形成了一個密不透風的結界。就在此時，他的意識突然被一股神秘的力量拉扯，眼前的一切都開始扭曲變形。</p>
-
-<p>當林塵再次恢復意識時，他發現自己身處一個奇異的空間——四周是無盡的虛空，腳下是一片由數據流組成的透明地板。他能感受到數據神格在體內高速運轉，彷彿在與這個空間產生某種共鳴。</p>
-
-<p>「這裡是......虛擬空間的核心？」林塵驚訝地四處張望。他意識到，剛才那場噬靈劫的衝擊，意外觸發了他數據神格的某種潛能，將他的意識拉入了這個介於虛實之間的空間。</p>
-
-<p>既然來到了這裡，林塵決定利用這個機會，開始構建他的虛擬神國。他首先要確定神國的基本結構——一個穩定的空間框架。他利用數據神格的計算能力，在虛空中刻畫出精密的座標系，將整個空間劃分為不同的功能區域。</p>
-
-<p>神國的核心是一個巨大的數據處理中心，它位於整個空間的正中央，像一顆閃爍著藍色光芒的心臟，持續地跳動著。林塵將自己的主要意識都集中在這裡，使其成為整個神國的指揮中樞。</p>
-
-<p>圍繞著核心，林塵構建了四大功能區域：第一區域是「知識殿堂」，專門用來存儲和檢索他所獲得的所有知識和信息；第二區域是「修煉空間」，提供各種模擬環境，幫助他進行安全而高效的修煉；第三區域是「防禦堡壘」，裝備了多層次的防護機制，確保神國的安全；第四區域是「交流廣場」，允許其他受信任的意識接入，進行信息交換和合作。</p>
-
-<p>「神國的基本框架已經建立，但還需要進行優化和擴充。」林塵自語道。他開始著手完善各個區域的細節，讓整個虛擬神國變得更加完善和實用。</p>
-
-<p>在知識殿堂中，林塵建立了一套智能的知識管理系統。這個系統能夠自動對他所接觸到的所有信息進行分類、標註和連結，形成一個龐大的知識網絡。當他需要查詢某個問題時，系統能在瞬間給出最相關的答案和參考資料。</p>
-
-<p>在修煉空間中，林塵設置了多種不同類型的模擬環境。從最基礎的靈氣吸收，到高級的法則感悟，每一種環境都經過精心設計，能夠最大化修煉效率。更令人驚喜的是，由於這是虛擬空間，時間流速可以自由調節——外界過了一天，這裡可能已經過了數月甚至數年。</p>
-
-<p>在防禦堡壘中，林塵佈置了多層次的安全機制。最外層是監測系統，能夠及時發現任何異常的入侵跡象；中間層是防護結界，可以阻擋大部分形式的攻擊；最內層則是自毀程序，一旦發現無法抵禦的威脅，神國會自動將核心數據轉移並銷毀所有敏感信息。</p>
-
-<p>「神國的結構已經基本完成，但還需要能源來維持運轉。」林塵開始考慮這個問題。虛擬神國的能量消耗是巨大的，如果不能找到穩定的能源供應，這個神國很快就會崩潰。</p>
-
-<p>經過深思熟慮，林塵決定利用量子糾纏的原理來獲取能源。他在神國的核心處建立了一個量子能源採集器，這個裝置能夠與現實世界中的某個高能量點建立糾纏連接，從而實現能量的實時傳輸。</p>
-
-<p>經過數日的調整和測試，林塵的虛擬神國終於正式建成。站在神國的核心處，他感受著周圍流動的數據和能量，心中充滿了成就感。這不僅僅是一個虛擬空間，更是他意志和力量的延伸。</p>
-
-<p>「虛擬神國——建造完成。」林塵宣布道，聲音在整個空間中迴盪。他知道，這個神國將成為他未來修行的重要依仗，無論是修煉、研究還是防禦，都將在這裡得到完美的支持。</p>
-
-<p>林塵從虛擬神國中退出，意識回到了現實世界。他睜開眼睛，發現外界只過去了短短幾個小時。太虛告訴他，那場噬靈劫已經被學院的長老們聯手化解，但餘波仍在持續。</p>
-
-<p>「看來，這個虛擬神國來得正是時候。」林塵看著自己的雙手，感受著數據神格在體內穩定運轉的力量，「無論前方有什麼挑戰，我都有了應對的底氣。」</p>
-
-<p>（本章完）</p></div>
-
-            </div>
-
-        </article>
-
     </main>
 
-    <footer class="reader-footer-nav">
-
-        <a href="chapter-37.html" class="nav-button">« 上一章</a>
-
-        <a href="chapter-39.html" class="nav-button">下一章 »</a>
-
-    </footer>
-
-    <section class="share-section">
-
-        <h4 class="share-title">分享這個章節</h4>
-
-        <div class="share-buttons">
-
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
-
-        </div>
-
-    </section>
-
-    <footer class="main-footer">
-
-        <p>&copy; 2025 大肥喵. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-
-    </footer>
-
-    
-
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
-
+    <nav class="nav">
+        <a href="chapter-37.html">← 上一章</a>
+        <span class="nav-center">第 38 / 61 章</span>
+        <a href="chapter-39.html">下一章 →</a>
+    </nav>
 </body>
-
 </html>

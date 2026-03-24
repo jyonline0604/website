@@ -1,209 +1,210 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>第54章：時空裂縫 - 科技修真傳</title>
-
-    <meta name="description" content="《科技修真傳》第54章：時空裂縫">
-
-    <meta name="keywords" content="第54章, 時空裂縫, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-
-    <meta name="author" content="大肥瞄">
-
+    <title>第54章：時空裂縫 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
 
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
-<body class="light-mode">
-
-    <div class="reading-progress-bar" id="progress-bar"></div>
-
-    <header class="reader-header">
-
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-
-        <h2 class="reader-chapter-title">第54章：時空裂縫</h2>
-
-        <div class="header-controls">
-
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-
-        </div>
-
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第54章</span>
+        <a href="chapter-53.html">上一章</a>
     </header>
 
-    <div id="settings-panel" class="settings-panel">
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第54章：時空裂縫 - 科技修真傳</h1>
+        </header>
 
-        <div class="setting-group">
-
-            <h4>字體大小</h4>
-
-            <div id="font-size-options" class="setting-options">
-
-                <button data-size="small">小</button>
-
-                <button data-size="medium">中</button>
-
-                <button data-size="large">大</button>
-
-            </div>
+        <div class="content">
+            <p>「第二部：深淵紀元」</p>
+            <p>林塵站在城牆之上，望向遠方的星空。自從發現量子幽靈的存在後，他已經連續三晚無法安眠。</p>
+            <p>「這些裂縫……究竟是什麼？」他喃喃自語。</p>
+            <p>三天前，他在修煉時突然感受到一股強大的時空波動。那不是普通的靈力震動，而是一種更高維度的空間撕裂。</p>
+            <p>「師兄……」墨玄的全息影像出現在他身旁，「我查到了一些關於時空裂縫的資料。」</p>
+            <p>「說。」</p>
+            <p>「根據遠古典籍記載，當修真者的修為達到某個臨界點時，就會觸發時空裂縫。這些裂縫連接著不同的維度空間，有的通往仙境，有的通往深淵。」</p>
+            <p>林塵眉頭緊皺，「你的意思是……這裂縫是我修為突破導致的？」</p>
+            <p>「不完全是。」墨玄搖頭，「更像是有什麼東西……正在試圖通過裂縫來到我們的世界。」</p>
+            <p>就在此時，天空突然裂開了一道金色的光芒。</p>
+            <p>「那是什麼？」城牆上的修士們紛紛驚呼。</p>
+            <p>那道光芒越來越大，最終形成了一個巨大的人影。那是一位身穿金色戰甲的強者，周身環繞著七彩靈力。</p>
+            <p>「本座乃天庭使者，」那強者的聲音如雷鳴般響起，「奉命下界，尋找有緣之人。」</p>
+            <p>林塵心中一凜。天庭——這個只在遠古傳說中出現過的勢力，竟然真的存在？</p>
+            <p>「林塵，」那強者的目光直射向他，「你與本座有緣，隨我去吧。」</p>
+            <p>還沒等林塵反應，一股巨大的吸力就將他卷入了一道光門之中。</p>
+            <p>當他再次睜開眼睛時，已經身處一個完全陌生的世界。這裡靈氣充裕到幾乎化為實質，天空中漂浮著無數島嶼，島嶼上建滿了宮殿樓閣。</p>
+            <p>「這裡……就是天庭？」林塵震驚地問道。</p>
+            <p>「不，」一個溫柔的聲音從他身後響起，「這裡是三十三重天外天，是比天庭更高維度的存在。」</p>
+            <p>林塵轉身，只見一位白衣女子飄然而立。她的容顏絕美，氣質空靈，彷彿不食人間煙火。</p>
+            <p>「妳是誰？」</p>
+            <p>「我是這裡的守護者，妳可以叫我瑤池仙子。」女子微微一笑，「你被時空裂縫選中，來到了這個維度的邊緣地帶。」</p>
+            <p>「為什麼選中我？」</p>
+            <p>「因為你體內的靈根與這個維度有共鳴。」仙子說，「簡單來說……你是這個時代最有可能突破維度限制的人。」</p>
+            <p>林塵深吸一口氣。他原本以為自己已經足夠強大，沒想到在真正的強者眼中，他還有更大的潛力可挖。</p>
+            <p>「在這裡，我能學到什麼？」</p>
+            <p>仙子玉手一揮，前方浮現出無數金色文字：</p>
+            <p>「天階修煉法、丹藥煉製術、陣法佈置精髓……只要你願意學，這些都可以傳授於你。」</p>
+            <p>林塵的心跳加速。這是多少修真者夢寐以求的機遇！</p>
+            <p><strong>📝 作者筆記：林塵被傳送到天外天，修煉三十年後會回來。敬請期待第55章！</strong></p>
 
         </div>
-
-        <div class="setting-group">
-
-            <h4>背景主題</h4>
-
-            <div id="theme-options" class="setting-options">
-
-                <button data-theme="light-mode">明亮</button>
-
-                <button data-theme="sepia-mode">米黃</button>
-
-                <button data-theme="dark-mode">夜間</button>
-
-                <button data-theme="sky-blue-mode">天空藍</button>
-
-                <button data-theme="light-green-mode">淺綠色</button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <main class="reader-content-area">
-
-        <article class="reader-article">
-
-            <div class="content">
-
-                <h1>第54章：時空裂縫</h1>
-
-                <div class="chapter">
-
-<p>「第二部：深淵紀元」</p>
-
-<p>林塵站在城牆之上，望向遠方的星空。自從發現量子幽靈的存在後，他已經連續三晚無法安眠。</p>
-
-<p>「這些裂縫……究竟是什麼？」他喃喃自語。</p>
-
-<p>三天前，他在修煉時突然感受到一股強大的時空波動。那不是普通的靈力震動，而是一種更高維度的空間撕裂。</p>
-
-<p>「師兄……」墨玄的全息影像出現在他身旁，「我查到了一些關於時空裂縫的資料。」</p>
-
-<p>「說。」</p>
-
-<p>「根據遠古典籍記載，當修真者的修為達到某個臨界點時，就會觸發時空裂縫。這些裂縫連接著不同的維度空間，有的通往仙境，有的通往深淵。」</p>
-
-<p>林塵眉頭緊皺，「你的意思是……這裂縫是我修為突破導致的？」</p>
-
-<p>「不完全是。」墨玄搖頭，「更像是有什麼東西……正在試圖通過裂縫來到我們的世界。」</p>
-
-<p>就在此時，天空突然裂開了一道金色的光芒。</p>
-
-<p>「那是什麼？」城牆上的修士們紛紛驚呼。</p>
-
-<p>那道光芒越來越大，最終形成了一個巨大的人影。那是一位身穿金色戰甲的強者，周身環繞著七彩靈力。</p>
-
-<p>「本座乃天庭使者，」那強者的聲音如雷鳴般響起，「奉命下界，尋找有緣之人。」</p>
-
-<p>林塵心中一凜。天庭——這個只在遠古傳說中出現過的勢力，竟然真的存在？</p>
-
-<p>「林塵，」那強者的目光直射向他，「你與本座有緣，隨我去吧。」</p>
-
-<p>還沒等林塵反應，一股巨大的吸力就將他卷入了一道光門之中。</p>
-
-<p>當他再次睜開眼睛時，已經身處一個完全陌生的世界。這裡靈氣充裕到幾乎化為實質，天空中漂浮著無數島嶼，島嶼上建滿了宮殿樓閣。</p>
-
-<p>「這裡……就是天庭？」林塵震驚地問道。</p>
-
-<p>「不，」一個溫柔的聲音從他身後響起，「這裡是三十三重天外天，是比天庭更高維度的存在。」</p>
-
-<p>林塵轉身，只見一位白衣女子飄然而立。她的容顏絕美，氣質空靈，彷彿不食人間煙火。</p>
-
-<p>「妳是誰？」</p>
-
-<p>「我是這裡的守護者，妳可以叫我瑤池仙子。」女子微微一笑，「你被時空裂縫選中，來到了這個維度的邊緣地帶。」</p>
-
-<p>「為什麼選中我？」</p>
-
-<p>「因為你體內的靈根與這個維度有共鳴。」仙子說，「簡單來說……你是這個時代最有可能突破維度限制的人。」</p>
-
-<p>林塵深吸一口氣。他原本以為自己已經足夠強大，沒想到在真正的強者眼中，他還有更大的潛力可挖。</p>
-
-<p>「在這裡，我能學到什麼？」</p>
-
-<p>仙子玉手一揮，前方浮現出無數金色文字：</p>
-
-<p>「天階修煉法、丹藥煉製術、陣法佈置精髓……只要你願意學，這些都可以傳授於你。」</p>
-
-<p>林塵的心跳加速。這是多少修真者夢寐以求的機遇！</p>
-
-<p><strong>📝 作者筆記：林塵被傳送到天外天，修煉三十年後會回來。敬請期待第55章！</strong></p>
-
-</div>
-
-            </div>
-
-            </article>
-
     </main>
 
-    <footer class="reader-footer-nav">
-
-        <a href="chapter-53.html" class="nav-button">« 上一章</a>
-
-        <a href="chapter-55.html" class="nav-button">下一章 »</a>
-
-    </footer>
-
-    
-
-    <section class="share-section">
-
-        <h4 class="share-title">分享這個章節</h4>
-
-        <div class="share-buttons">
-
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
-
-        </div>
-
-    </section>
-
-    <footer class="main-footer">
-
-        <p>&copy; 2025 大肥瞄. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-
-    </footer>
-
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
-
-    
-
+    <nav class="nav">
+        <a href="chapter-53.html">← 上一章</a>
+        <span class="nav-center">第 54 / 61 章</span>
+        <a href="chapter-55.html">下一章 →</a>
+    </nav>
 </body>
-
 </html>

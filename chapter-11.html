@@ -1,251 +1,234 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>第11章：宗門測試 - 科技修真傳</title>
-
-    <meta name="description" content="《科技修真傳》第11章：宗門測試">
-
-    <meta name="keywords" content="第11章, 宗門測試, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-
-    <meta name="author" content="大肥瞄">
-
+    <title>第11章：宗門測試 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
 
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
-<body class="light-mode">
-
-    <div class="reading-progress-bar" id="progress-bar"></div>
-
-    <header class="reader-header">
-
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-
-        <h2 class="reader-chapter-title">第11章：宗門測試</h2>
-
-        <div class="header-controls">
-
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-
-        </div>
-
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第11章</span>
+        <a href="chapter-10.html">上一章</a>
     </header>
 
-    <div id="settings-panel" class="settings-panel">
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第11章：宗門測試 - 科技修真傳</h1>
+        </header>
 
-        <div class="setting-group">
-
-            <h4>字體大小</h4>
-
-            <div id="font-size-options" class="setting-options">
-
-                <button data-size="small">小</button>
-
-                <button data-size="medium">中</button>
-
-                <button data-size="large">大</button>
-
-            </div>
+        <div class="content">
+            <p>槍口對準林塵的瞬間，時間彷彿凝固了。</p>
+            <p>靈脈連接進度：91%...92%...93%...</p>
+            <p>「住手！」明鏡擋在林塵身前，雙手結印，一道靈氣屏障瞬間展開。</p>
+            <p>吞靈者指揮官冷笑一聲：「螳臂當車。」</p>
+            <p>他扣下扳機，一道暗紅色的能量光束射向屏障。明鏡的屏障只堅持了不到三秒就碎裂了，但他爭取到了寶貴的時間。</p>
+            <p>靈脈連接進度：97%...98%...99%...</p>
+            <p>「林塵，就是現在！」明鏡大喊。</p>
+            <p>林塵睜開眼睛，眼中不再是痛苦，而是前所未有的清明。他感覺到自己與靈脈核心完全連接，無數的數據流和靈氣在他體內交織。</p>
+            <p>「不可能...」指揮官的聲音中第一次出現了動搖，「靈氣抑制劑晶片應該是不可逆的！」</p>
+            <p>林塵緩緩站起，身上的連接線自動脫落。他胸口的晶片發出刺眼的藍光，然後「啪」的一聲碎裂。</p>
+            <p>「你們對靈氣的理解太膚淺了。」林塵的聲音平靜而充滿力量，「靈氣不是能量，而是信息。數據可以重寫，靈氣也可以重構。」</p>
+            <p>隨著晶片的碎裂，林塵感到一股前所未有的力量湧入體內。這不是單純的靈氣，而是經過數據化處理的「信息靈氣」。</p>
+            <p>指揮官後退一步，對部下下令：「全體開火！不能讓他完成覺醒！」</p>
+            <p>十幾道能量光束同時射向林塵。但這一次，林塵甚至沒有移動。他只是抬起手，那些光束就在他麵前停住了。</p>
+            <p>「還給你們。」林塵輕輕一揮手，那些能量光束以更快的速度反射回去。</p>
+            <p>吞靈者們的裝甲在反射光束的攻擊下紛紛失效，指揮官勉強擋住了攻擊，但他的裝甲已經出現了裂痕。</p>
+            <p>「這...這是什麼力量？」指揮官的聲音充滿了恐懼。</p>
+            <p>「靈脈的真正力量。」林塵走向他，「天樞會一直在錯誤的方向上研究靈氣。你們試圖控制它、吸收它、商品化它，但你們從未真正理解它。」</p>
+            <p>「胡說！我們掌握了最先進的靈氣科技！」</p>
+            <p>「科技？」林塵笑了，「你們的科技建立在對靈氣的壓榨上。而真正的科技，應該與靈氣共生。」</p>
+            <p>林塵伸出手，掌心浮現出一個複雜的數據靈氣結構。它不斷變化，時而像電路圖，時而像經脈圖，時而又像某種未知的符文。</p>
+            <p>「不可能...這違反了所有已知的靈氣法則...」指揮官喃喃自語。</p>
+            <p>「不，這只是開啟了新的法則。」林塵收起手中的結構，「告訴天樞會的高層：靈數聯盟回來了。這一次，我們不會再躲藏。」</p>
+            <p>指揮官還想說什麼，但控制室突然劇烈震動起來。整個靈脈核心開始發出耀眼的光芒。</p>
+            <p>「靈脈...在覺醒？」明鏡震驚地看著周圍。</p>
+            <p>林塵點頭：「我重構的不只是自己的靈脈，還有這個靈脈核心。它現在有了自己的意識。」</p>
+            <p>「意識？靈脈怎麼可能有意識？」</p>
+            <p>「當足夠的信息和靈氣結合，意識就會自然產生。」林塵解釋道，「就像人類的大腦，只不過這個「大腦」是由靈氣和數據構成的。」</p>
+            <p>控制室的牆壁上開始浮現出發光的紋路，這些紋路不斷變化，組成了一種未知的語言。</p>
+            <p>吞靈者指揮官終於意識到情況的嚴重性，他下令撤退：「所有單位，立即撤離！把這裡的情況報告給總部！」</p>
+            <p>但已經太遲了。靈脈核心的光芒越來越強，整個地下設施都在震動。</p>
+            <p>「林塵，我們也該走了！」明鏡喊道。</p>
+            <p>林塵卻搖頭：「不，我要留下來。靈脈需要一個引導者。」</p>
+            <p>「你瘋了？這裡馬上就要塌了！」</p>
+            <p>「不會的。」林塵微笑，「靈脈會保護這裡。而且，我需要完成最後的連接。」</p>
+            <p>他走向靈脈核心，將手放在上麵。光芒將他完全包裹。</p>
+            <p>明鏡和其他守脈人不得不撤離。當他們回到地麵時，整個區域都被一層柔和的光芒籠罩。</p>
+            <p>「這是...靈脈的保護結界？」顧澄驚訝地看著周圍。</p>
+            <p>林塵檢查著數據：「不止是結界。整個區域的靈氣濃度正在指數級增長，而且...這些靈氣是「活」的。」</p>
+            <p>「活的是什麼意思？」</p>
+            <p>「它們會響應思維，會自我組織，會...學習。」林塵的聲音充滿了敬畏，「林塵創造了一種全新的靈氣生態系統。」</p>
+            <p>就在這時，他們收到了林塵的訊息。不是通過通訊設備，而是直接出現在他們的腦海中。</p>
+            <p>訊息結束後，光芒漸漸收斂，形成一個穩定的保護罩。地下設施的入口被一層發光的屏障封閉。</p>
+            <p>「他成功了...」明鏡喃喃道，「他真的重構了靈脈。」</p>
+            <p>顧澄看著手中的探測器，上麵的讀數已經超出了儀器的測量範圍：「不只是重構。他創造了某種...全新的東西。」</p>
+            <p>林塵收起設備，表情嚴肅：「我們得回去了。天樞會很快就會知道這裡發生的事，我們需要準備應對他們的報復。」</p>
+            <p>三人最後看了一眼被光芒籠罩的區域，然後轉身離開。</p>
+            <p>在他們離開後不久，靈脈保護罩內，一個身影緩緩浮現。那是林塵，但又不太像原來的林塵。他的眼中閃爍著數據流和靈氣的光芒，整個人都散發著一種超凡的氣息。</p>
+            <p>「信息靈脈...」他低聲自語，「這只是開始。」</p>
+            <p>他抬起手，掌心浮現出一個複雜的界麵。上麵顯示著各種數據：靈氣濃度、信息流動、能量分佈...還有遠方，天樞會總部的座標。</p>
+            <p>林塵關閉界麵，望向遠方。他知道，天樞會不會就此罷休。但這一次，他有了對抗的力量。</p>
+            <p>「來吧，」他輕聲說，「讓我看看你們還有什麼手段。」</p>
+            <p>靈脈核心在他身後發出共鳴的光芒，彷彿在回應他的話。</p>
+            <p>新的時代，就此開啟。</p>
 
         </div>
-
-        <div class="setting-group">
-
-            <h4>背景主題</h4>
-
-            <div id="theme-options" class="setting-options">
-
-                <button data-theme="light-mode">明亮</button>
-
-                <button data-theme="sepia-mode">米黃</button>
-
-                <button data-theme="dark-mode">夜間</button>
-
-                <button data-theme="sky-blue-mode">天空藍</button>
-
-                <button data-theme="light-green-mode">淺綠色</button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <main class="reader-content-area">
-
-        <article class="reader-article">
-
-            <div class="content">
-
-                <h1>第11章：宗門測試</h1>
-
-                <div class="chapter"><p>槍口對準林塵的瞬間，時間彷彿凝固了。</p>
-
-<p>靈脈連接進度：91%...92%...93%...</p>
-
-<p>「住手！」明鏡擋在林塵身前，雙手結印，一道靈氣屏障瞬間展開。</p>
-
-<p>吞靈者指揮官冷笑一聲：「螳臂當車。」</p>
-
-<p>他扣下扳機，一道暗紅色的能量光束射向屏障。明鏡的屏障只堅持了不到三秒就碎裂了，但他爭取到了寶貴的時間。</p>
-
-<p>靈脈連接進度：97%...98%...99%...</p>
-
-<p>「林塵，就是現在！」明鏡大喊。</p>
-
-<p>林塵睜開眼睛，眼中不再是痛苦，而是前所未有的清明。他感覺到自己與靈脈核心完全連接，無數的數據流和靈氣在他體內交織。</p>
-
-<p>「不可能...」指揮官的聲音中第一次出現了動搖，「靈氣抑制劑晶片應該是不可逆的！」</p>
-
-<p>林塵緩緩站起，身上的連接線自動脫落。他胸口的晶片發出刺眼的藍光，然後「啪」的一聲碎裂。</p>
-
-<p>「你們對靈氣的理解太膚淺了。」林塵的聲音平靜而充滿力量，「靈氣不是能量，而是信息。數據可以重寫，靈氣也可以重構。」</p>
-
-<p>隨著晶片的碎裂，林塵感到一股前所未有的力量湧入體內。這不是單純的靈氣，而是經過數據化處理的「信息靈氣」。</p>
-
-<p>指揮官後退一步，對部下下令：「全體開火！不能讓他完成覺醒！」</p>
-
-<p>十幾道能量光束同時射向林塵。但這一次，林塵甚至沒有移動。他只是抬起手，那些光束就在他麵前停住了。</p>
-
-<p>「還給你們。」林塵輕輕一揮手，那些能量光束以更快的速度反射回去。</p>
-
-<p>吞靈者們的裝甲在反射光束的攻擊下紛紛失效，指揮官勉強擋住了攻擊，但他的裝甲已經出現了裂痕。</p>
-
-<p>「這...這是什麼力量？」指揮官的聲音充滿了恐懼。</p>
-
-<p>「靈脈的真正力量。」林塵走向他，「天樞會一直在錯誤的方向上研究靈氣。你們試圖控制它、吸收它、商品化它，但你們從未真正理解它。」</p>
-
-<p>「胡說！我們掌握了最先進的靈氣科技！」</p>
-
-<p>「科技？」林塵笑了，「你們的科技建立在對靈氣的壓榨上。而真正的科技，應該與靈氣共生。」</p>
-
-<p>林塵伸出手，掌心浮現出一個複雜的數據靈氣結構。它不斷變化，時而像電路圖，時而像經脈圖，時而又像某種未知的符文。</p>
-
-<p>「不可能...這違反了所有已知的靈氣法則...」指揮官喃喃自語。</p>
-
-<p>「不，這只是開啟了新的法則。」林塵收起手中的結構，「告訴天樞會的高層：靈數聯盟回來了。這一次，我們不會再躲藏。」</p>
-
-<p>指揮官還想說什麼，但控制室突然劇烈震動起來。整個靈脈核心開始發出耀眼的光芒。</p>
-
-<p>「靈脈...在覺醒？」明鏡震驚地看著周圍。</p>
-
-<p>林塵點頭：「我重構的不只是自己的靈脈，還有這個靈脈核心。它現在有了自己的意識。」</p>
-
-<p>「意識？靈脈怎麼可能有意識？」</p>
-
-<p>「當足夠的信息和靈氣結合，意識就會自然產生。」林塵解釋道，「就像人類的大腦，只不過這個「大腦」是由靈氣和數據構成的。」</p>
-
-<p>控制室的牆壁上開始浮現出發光的紋路，這些紋路不斷變化，組成了一種未知的語言。</p>
-
-<p>吞靈者指揮官終於意識到情況的嚴重性，他下令撤退：「所有單位，立即撤離！把這裡的情況報告給總部！」</p>
-
-<p>但已經太遲了。靈脈核心的光芒越來越強，整個地下設施都在震動。</p>
-
-<p>「林塵，我們也該走了！」明鏡喊道。</p>
-
-<p>林塵卻搖頭：「不，我要留下來。靈脈需要一個引導者。」</p>
-
-<p>「你瘋了？這裡馬上就要塌了！」</p>
-
-<p>「不會的。」林塵微笑，「靈脈會保護這裡。而且，我需要完成最後的連接。」</p>
-
-<p>他走向靈脈核心，將手放在上麵。光芒將他完全包裹。</p>
-
-<p>明鏡和其他守脈人不得不撤離。當他們回到地麵時，整個區域都被一層柔和的光芒籠罩。</p>
-
-<p>「這是...靈脈的保護結界？」顧澄驚訝地看著周圍。</p>
-
-<p>林塵檢查著數據：「不止是結界。整個區域的靈氣濃度正在指數級增長，而且...這些靈氣是「活」的。」</p>
-
-<p>「活的是什麼意思？」</p>
-
-<p>「它們會響應思維，會自我組織，會...學習。」林塵的聲音充滿了敬畏，「林塵創造了一種全新的靈氣生態系統。」</p>
-
-<p>就在這時，他們收到了林塵的訊息。不是通過通訊設備，而是直接出現在他們的腦海中。</p>
-
-<p>訊息結束後，光芒漸漸收斂，形成一個穩定的保護罩。地下設施的入口被一層發光的屏障封閉。</p>
-
-<p>「他成功了...」明鏡喃喃道，「他真的重構了靈脈。」</p>
-
-<p>顧澄看著手中的探測器，上麵的讀數已經超出了儀器的測量範圍：「不只是重構。他創造了某種...全新的東西。」</p>
-
-<p>林塵收起設備，表情嚴肅：「我們得回去了。天樞會很快就會知道這裡發生的事，我們需要準備應對他們的報復。」</p>
-
-<p>三人最後看了一眼被光芒籠罩的區域，然後轉身離開。</p>
-
-<p>在他們離開後不久，靈脈保護罩內，一個身影緩緩浮現。那是林塵，但又不太像原來的林塵。他的眼中閃爍著數據流和靈氣的光芒，整個人都散發著一種超凡的氣息。</p>
-
-<p>「信息靈脈...」他低聲自語，「這只是開始。」</p>
-
-<p>他抬起手，掌心浮現出一個複雜的界麵。上麵顯示著各種數據：靈氣濃度、信息流動、能量分佈...還有遠方，天樞會總部的座標。</p>
-
-<p>林塵關閉界麵，望向遠方。他知道，天樞會不會就此罷休。但這一次，他有了對抗的力量。</p>
-
-<p>「來吧，」他輕聲說，「讓我看看你們還有什麼手段。」</p>
-
-<p>靈脈核心在他身後發出共鳴的光芒，彷彿在回應他的話。</p>
-
-<p>新的時代，就此開啟。</p></div>
-
-            </div>
-
-        </article>
-
     </main>
 
-    <footer class="reader-footer-nav">
-
-        <a href="chapter-10.html" class="nav-button">« 上一章</a>
-
-        <a href="chapter-12.html" class="nav-button">下一章 »</a>
-
-    </footer>
-
-    <section class="share-section">
-
-        <h4 class="share-title">分享這個章節</h4>
-
-        <div class="share-buttons">
-
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
-
-        </div>
-
-    </section>
-
-    <footer class="main-footer">
-
-        <p>&copy; 2025 大肥瞄. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-
-    </footer>
-
-    
-
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
-
+    <nav class="nav">
+        <a href="chapter-10.html">← 上一章</a>
+        <span class="nav-center">第 11 / 61 章</span>
+        <a href="chapter-12.html">下一章 →</a>
+    </nav>
 </body>
-
 </html>

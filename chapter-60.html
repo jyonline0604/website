@@ -1,54 +1,173 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第60章：破序者來襲 - 科技修真傳</title>
-    <meta name="description" content="《科技修真傳》第60章：破序者來襲">
-    <meta name="keywords" content="第60章, 破序者來襲, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-    <meta name="author" content="大肥喵">
+    <title>第60章：破序者來襲 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-<body class="light-mode">
-    <div class="reading-progress-bar" id="progress-bar"></div>
-    <header class="reader-header">
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-        <h2 class="reader-chapter-title">第60章：破序者來襲</h2>
-        <div class="header-controls">
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-        </div>
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第60章</span>
+        <a href="chapter-59.html">上一章</a>
     </header>
-    <div id="settings-panel" class="settings-panel">
-        <div class="setting-group">
-            <h4>字體大小</h4>
-            <div id="font-size-options" class="setting-options">
-                <button data-size="small">小</button>
-                <button data-size="medium">中</button>
-                <button data-size="large">大</button>
-            </div>
-        </div>
-        <div class="setting-group">
-            <h4>背景主題</h4>
-            <div id="theme-options" class="setting-options">
-                <button data-theme="light-mode">明亮</button>
-                <button data-theme="sepia-mode">米黃</button>
-                <button data-theme="dark-mode">夜間</button>
-                <button data-theme="sky-blue-mode">天空藍</button>
-                <button data-theme="light-green-mode">淺綠色</button>
-            </div>
-        </div>
-    </div>
-    <main class="reader-content-area">
-        <article class="reader-article">
-            <div class="content">
-                <h1>第60章：破序者來襲</h1>
-                <div class="chapter">
-<p>三天過去了。
+
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第60章：破序者來襲 - 科技修真傳</h1>
+        </header>
+
+        <div class="content">
+            <p>三天過去了。
 
 林塵躲在廢棄大樓頂層的機房裡，已經連續修煉了整整七十二個小時。
 
@@ -65,8 +184,7 @@
 從練氣期二層突破到三層，只用了三天時間！
 
 在末法世界，這種速度簡直不可思議。要知道，普通的修士往往需要數月甚至數年才能完成一次小境界的突破。</p>
-
-<p>「天靈珠的效果比我想像的還要好。」林塵滿意地看著界面上的數據。
+            <p>「天靈珠的效果比我想像的還要好。」林塵滿意地看著界面上的數據。
 
 現在的他，已經具備了接取更高級任務的實力。
 
@@ -79,8 +197,7 @@
 「守護任務：保護一名關鍵人物——獎勵：積分+25」
 
 林塵正在思考要接哪個任務，突然，靈芯系統發出了尖銳的警報。</p>
-
-<p>「警告！警告！偵測到多名高級靈壓接近！」
+            <p>「警告！警告！偵測到多名高級靈壓接近！」
 
 「威脅等級：極高！」
 
@@ -95,8 +212,7 @@
 這意味著，對方的實力至少是他的一倍以上！
 
 他立刻衝到窗邊，朝著樓下望去。只見七道黑影正從四面八方包抄過來，每個人身上都散發著強大的靈壓。</p>
-
-<p>「是破序者！」林塵咬牙切齒地說道。
+            <p>「是破序者！」林塵咬牙切齒地說道。
 
 看來，之前在靈池洞穴中遇到的那個中年人，已經把他的消息賣給了破序者。
 
@@ -109,8 +225,7 @@
 「方案二：地下通道逃脫——成功率：27%」
 
 「方案三：利用建築結構設伏——成功率：41%」</p>
-
-<p>林塵果斷選擇了方案三。
+            <p>林塵果斷選擇了方案三。
 
 他迅速在腦海中規劃出一條逃脫路線，然後衝向樓梯間，朝著大樓的地下停車場跑去。
 
@@ -123,8 +238,7 @@
 根據靈芯系統的指引，他找到了一根搖搖欲墜的承重柱。
 
 「就是這裡。」</p>
-
-<p>林塵深吸一口氣，將天靈珠中的靈氣集中到一拳之上。
+            <p>林塵深吸一口氣，將天靈珠中的靈氣集中到一拳之上。
 
 「轟！」
 
@@ -137,8 +251,7 @@
 林塵沒有停歇，繼續朝著停車場的深處跑去。
 
 他知道，這種程度的阻礙只能拖延一會兒，那些破序者很快就會挖通通道。</p>
-
-<p>停車場的盡頭有一扇生鏽的鐵門，上面寫著「緊急出口」的字樣。
+            <p>停車場的盡頭有一扇生鏽的鐵門，上面寫著「緊急出口」的字樣。
 
 林塵用力推開鐵門，外面是一條狹窄的後巷。
 
@@ -147,8 +260,7 @@
 「左轉三百公尺，有一座廢棄的工廠。建議進入躲避。」
 
 林塵點點頭，改變了方向。</p>
-
-<p>廢棄工廠的大門虛掩著，裡面漆黑一片。
+            <p>廢棄工廠的大門虛掩著，裡面漆黑一片。
 
 林塵小心翼翼地走了進去，手中的能量刀時刻準備著應對突發狀況。
 
@@ -161,8 +273,7 @@
 林塵稍微鬆了一口氣，靠在一台生鏽的機器旁邊休息。
 
 但就在這時，一道冰冷的聲音從背後響起。</p>
-
-<p>「找到你了。」
+            <p>「找到你了。」
 
 林塵猛然轉身，只見一個身穿黑色長袍的年輕人正站在陰影中，臉上帶著冷酷的笑容。
 
@@ -171,8 +282,7 @@
 年輕人緩緩走出陰影，露出一張俊美但毫無生氣的臉。
 
 「我叫墨影，是這次追捕行動的負責人。」他微微一笑，「不得不說，你這個小蟲子還挺能跑的。」</p>
-
-<p>林塵握緊了能量刀，同時讓靈芯系統分析對方的實力。
+            <p>林塵握緊了能量刀，同時讓靈芯系統分析對方的實力。
 
 「目標修為：練氣期四層。」
 
@@ -185,16 +295,14 @@
 林塵心中稍微有了底。以他現在的實力加上天靈珠，應該有一戰的機會。
 
 「你們為什麼要追殺我？」林塵冷冷地問道。</p>
-
-<p>墨影聳了聳肩：「因為你身上有我們想要的東西——靈芯。那可是舊時代最頂尖的科技，落入你這種小人物手裡，簡直是暴殄天物。」
+            <p>墨影聳了聳肩：「因為你身上有我們想要的東西——靈芯。那可是舊時代最頂尖的科技，落入你這種小人物手裡，簡直是暴殄天物。」
 
 「所以，你打算把我抓回去，然後挖出靈芯？」
 
 「可以這麼理解。」墨影露出一個殘忍的笑容，「當然，如果你願意配合，我可以考慮給你一個痛快的死法。」
 
 林塵冷笑一聲：「那就看你有沒有這個本事了！」</p>
-
-<p>話音剛落，林塵便率先發起進攻！
+            <p>話音剛落，林塵便率先發起進攻！
 
 他將天靈珠中的靈氣注入能量刀，刀身上瞬間亮起耀眼的藍色光芒。
 
@@ -205,8 +313,7 @@
 林塵被震退數步，虎口發麻。對方的實力比他想像的要強得多！
 
 「不錯嘛，居然能接住我一拳。」墨影似乎有些意外，「看來你比我想像的要有趣一些。」</p>
-
-<p>他收起了輕蔑的表情，開始認真起來。
+            <p>他收起了輕蔑的表情，開始認真起來。
 
 兩人在黑暗的工廠中展開了激烈的戰鬥。
 
@@ -217,8 +324,7 @@
 「你的身法倒是不錯，但你能撐多久？」墨影的攻擊越來越猛烈。
 
 林塵喘著粗氣，知道自己不能繼續這樣消耗下去。</p>
-
-<p>「靈芯，有沒有反擊的方案？」
+            <p>「靈芯，有沒有反擊的方案？」
 
 「建議：利用對方的慣性思維，在第十七招時故意露出破破綻，誘使對方深入，然後以天靈珠進行反擊。」
 
@@ -229,8 +335,7 @@
 就是現在！
 
 林塵故意賣了一個破綻，墨影果然上當，一拳直取他的胸口。</p>
-
-<p>但就在拳頭即將擊中的瞬間，林塵側身一讓，同時將天靈珠的全部靈氣釋放出來！
+            <p>但就在拳頭即將擊中的瞬間，林塵側身一讓，同時將天靈珠的全部靈氣釋放出來！
 
 「天靈珠·靈氣衝擊！」
 
@@ -239,16 +344,14 @@
 墨影重重撞在牆上，嘴角溢出一絲鮮血。
 
 「你……竟然有上品靈器？」他的臉上露出了驚訝的表情。</p>
-
-<p>林塵沒有給他反應的機會，趁勢追擊，能量刀帶著藍色的刀芒直取墨影的咽喉。
+            <p>林塵沒有給他反應的機會，趁勢追擊，能量刀帶著藍色的刀芒直取墨影的咽喉。
 
 但墨影畢竟是練氣期四層的修士，反應速度極快。
 
 他狼狽地滾到一旁，躲過了這致命一擊。
 
 「好，很好。」墨影站起身來，臉上不再有輕蔑之色，取而代之的是凝重，「看來我低估你了。」</p>
-
-<p>他從懷中掏出一顆黑色的丹藥，吞了下去。
+            <p>他從懷中掏出一顆黑色的丹藥，吞了下去。
 
 頓時，他的氣息開始瘋狂攀升！
 
@@ -259,8 +362,7 @@
 「既然你不肯乖乖就擒，那就別怪我不客氣了！」墨影的聲音變得沙啞而瘋狂。
 
 他的身形如同鬼魅般消失，下一秒便出現在林塵面前，一拳轟向他的面門！</p>
-
-<p>林塵來不及閃避，只能雙手交叉擋在面前。
+            <p>林塵來不及閃避，只能雙手交叉擋在面前。
 
 「砰！」
 
@@ -271,8 +373,7 @@
 「現在，該結束了。」墨影一步步走來，拳頭上凝聚著駭人的靈氣光芒。
 
 就在這千鈞一髮之際，一道蒼老的聲音從工廠深處傳來。</p>
-
-<p>「夠了。」
+            <p>「夠了。」
 
 墨影的動作突然停住，臉上露出了驚恐的表情。
 
@@ -283,8 +384,7 @@
 老者淡淡地掃了他一眼：「我說夠了，你沒聽到嗎？」
 
 僅僅是一個眼神，墨影就感覺自己彷彿被一頭洪荒巨獸盯上，全身的血液都凝固了。</p>
-
-<p>「滾。」
+            <p>「滾。」
 
 只有一個字。
 
@@ -295,8 +395,7 @@
 「能在這種修為下擊退服用爆氣丹的敵人，你這個小傢伙，有點意思。」
 
 林塵掙扎著站起身來，警惕地看著對方。</p>
-
-<p>「你是誰？」
+            <p>「你是誰？」
 
 老者微微一笑：「我是誰不重要。重要的是，你身上那枚靈芯……」
 
@@ -307,28 +406,15 @@
 林塵瞳孔劇縮。
 
 這枚靈芯，是這個老者留下的？</p>
+            <p>（本章完）</p>
 
-<p>（本章完）</p>
-                </div>
-            </div>
-        </article>
-    </main>
-    <footer class="reader-footer-nav">
-        <a href="chapter-59.html" class="nav-button">« 上一章</a>
-        <a href="chapter-61.html" class="nav-button">下一章 »</a>
-    </footer>
-    <section class="share-section">
-        <h4 class="share-title">分享這個章節</h4>
-        <div class="share-buttons">
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
         </div>
-    </section>
-    <footer class="main-footer">
-        <p>&copy; 2025 大肥喵. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-    </footer>
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
+    </main>
+
+    <nav class="nav">
+        <a href="chapter-59.html">← 上一章</a>
+        <span class="nav-center">第 60 / 61 章</span>
+        <a href="chapter-61.html">下一章 →</a>
+    </nav>
 </body>
 </html>

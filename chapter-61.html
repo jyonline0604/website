@@ -1,54 +1,173 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第61章：靈芯之主 - 科技修真傳</title>
-    <meta name="description" content="《科技修真傳》第61章：靈芯之主">
-    <meta name="keywords" content="第61章, 靈芯之主, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-    <meta name="author" content="大肥喵">
+    <title>第61章：靈芯之主 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-<body class="light-mode">
-    <div class="reading-progress-bar" id="progress-bar"></div>
-    <header class="reader-header">
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-        <h2 class="reader-chapter-title">第61章：靈芯之主</h2>
-        <div class="header-controls">
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-        </div>
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第61章</span>
+        <a href="chapter-60.html">上一章</a>
     </header>
-    <div id="settings-panel" class="settings-panel">
-        <div class="setting-group">
-            <h4>字體大小</h4>
-            <div id="font-size-options" class="setting-options">
-                <button data-size="small">小</button>
-                <button data-size="medium">中</button>
-                <button data-size="large">大</button>
-            </div>
-        </div>
-        <div class="setting-group">
-            <h4>背景主題</h4>
-            <div id="theme-options" class="setting-options">
-                <button data-theme="light-mode">明亮</button>
-                <button data-theme="sepia-mode">米黃</button>
-                <button data-theme="dark-mode">夜間</button>
-                <button data-theme="sky-blue-mode">天空藍</button>
-                <button data-theme="light-green-mode">淺綠色</button>
-            </div>
-        </div>
-    </div>
-    <main class="reader-content-area">
-        <article class="reader-article">
-            <div class="content">
-                <h1>第61章：靈芯之主</h1>
-                <div class="chapter">
-<p>工廠內的空氣彷彿凝固了。
+
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第61章：靈芯之主 - 科技修真傳</h1>
+        </header>
+
+        <div class="content">
+            <p>工廠內的空氣彷彿凝固了。
 
 林塵瞪大眼睛，不敢置信地看著眼前的老者。
 
@@ -59,16 +178,14 @@
 「數百年前，我還是一名靈芯研究者。那時的科技遠比現在發達，靈芯系統是我們最傑出的發明。」
 
 他輕輕抬起手，一縷微弱的靈氣從指尖溢出，在空中形成了一個精巧的圖案。</p>
-
-<p>「靈芯系統的核心原理，是將修仙功法數據化，讓普通人也能通過科技手段進行修煉。」
+            <p>「靈芯系統的核心原理，是將修仙功法數據化，讓普通人也能通過科技手段進行修煉。」
 
 「但這個發明，卻引來了無貪婪的目光。」
 
 「為了不讓靈芯落入壞人手中，我在靈氣大爆發之前，將所有靈芯晶片分散隱藏到了世界各地。」
 
 老者的聲音充滿了滄桑，彷彿在訴說一段被塵封的歷史。</p>
-
-<p>林塵聽得入神，忍不住問道：「那……為什麼這枚靈芯會被我激活？」
+            <p>林塵聽得入神，忍不住問道：「那……為什麼這枚靈芯會被我激活？」
 
 老者看向他，眼中閃過一絲讚許。
 
@@ -77,8 +194,7 @@
 靈芯之主？
 
 這個稱呼讓林塵心中一震。</p>
-
-<p>「前輩，您到底是誰？」
+            <p>「前輩，您到底是誰？」
 
 老者沉默了片刻，然後緩緩說道：「我的名字叫做玄元。在靈氣大爆發之前，我是這片土地上最強的修士之一。」
 
@@ -87,8 +203,7 @@
 林塵努力在記憶中搜索這個名字，但一無所獲。
 
 似乎看出了他的困惑，玄元微微一笑：「你不認識我很正常。在末法降臨之後，我們這些老傢伙的名字，早就被歷史遺忘了。」</p>
-
-<p>「末法降臨……到底是怎麼回事？」林塵追問道。
+            <p>「末法降臨……到底是怎麼回事？」林塵追問道。
 
 這是困擾了他很久的問題。
 
@@ -97,14 +212,12 @@
 玄元嘆了口氣，走到工廠的窗邊，望向外面灰濛濛的天空。
 
 「末法降臨，其實是一場人為的災難。」</p>
-
-<p>「數百年前，修仙文明達到了巔峰。修士們通過靈芯技術，讓修仙變得普及化。但這也帶來了一個嚴重的問題——貪婪。」
+            <p>「數百年前，修仙文明達到了巔峰。修士們通過靈芯技術，讓修仙變得普及化。但這也帶來了一個嚴重的問題——貪婪。」
 
 「為了爭奪更多的靈氣資源，各大勢力之間爆發了一場毀天滅地的大戰。那場戰爭，幾乎摧毀了整個文明。」
 
 「而所謂的末法時代，其實是大戰之後的產物——靈氣被某種強大的禁制封印了，導致整個世界陷入了靈氣枯竭的狀態。」</p>
-
-<p>林塵震驚得說不出話來。
+            <p>林塵震驚得說不出話來。
 
 原來，末法時代竟然是一場戰爭的結果！
 
@@ -115,8 +228,7 @@
 「因為封印正在鬆動。」
 
 「經過數百年的消耗，那道封印的能量已經所剩無幾。用不了多久，靈氣就會徹底恢復到大戰之前的水平。」</p>
-
-<p>「這聽起來不是好事嗎？」林塵有些不解。
+            <p>「這聽起來不是好事嗎？」林塵有些不解。
 
 玄元搖了搖頭：「你太天真了。靈氣恢復，意味著那些在大戰中沉睡的古老存在也將陸續甦醒。」
 
@@ -125,8 +237,7 @@
 林塵的心沉了下去。
 
 「那……我該怎麼辦？」</p>
-
-<p>玄元看著他，眼中閃過一絲期待。
+            <p>玄元看著他，眼中閃過一絲期待。
 
 「變得更強。」
 
@@ -135,8 +246,7 @@
 「這套功法，可以讓你將科技與修仙完美結合，發揮出超越同境界修士數倍的戰力。」
 
 「只要你能完全掌握它，就算面對那些古老的存在，也有一戰之力。」</p>
-
-<p>靈芯變？
+            <p>靈芯變？
 
 林塵的靈芯系統界面上突然彈出了一個新的窗口：
 
@@ -149,8 +259,7 @@
 「效果：將靈芯與肉身融合，大幅增強戰鬥力。」
 
 「當前掌握程度：0%」</p>
-
-<p>林塵看著界面上的數據，心跳加速。
+            <p>林塵看著界面上的數據，心跳加速。
 
 這就是靈芯系統的真正力量嗎？
 
@@ -159,8 +268,7 @@
 「另外，我還有一個任務要交給你。」
 
 玄元從懷中取出一塊古樸的玉珮，遞給林塵。</p>
-
-<p>「這塊玉珮是我當年留下的信物。你帶著它，去尋找其他散落的靈芯晶片。」
+            <p>「這塊玉珮是我當年留下的信物。你帶著它，去尋找其他散落的靈芯晶片。」
 
 「每找到一枚靈芯，靈芯系統就會解鎖一層新的功能。當你集齊七枚靈芯之時，就能夠……」
 
@@ -169,8 +277,7 @@
 「就能夠怎麼樣？」
 
 「到時候你就知道了。」</p>
-
-<p>林塵還想再問，卻發現玄元的身影正在逐漸變淡。
+            <p>林塵還想再問，卻發現玄元的身影正在逐漸變淡。
 
 「前輩！」
 
@@ -181,8 +288,7 @@
 話音剛落，玄元的身影便徹底消散在空氣中。
 
 只留下那塊玉珮，靜靜地躺在林塵的手心裡。</p>
-
-<p>林塵站在原地，久久不能回神。
+            <p>林塵站在原地，久久不能回神。
 
 今天所經歷的一切，給他帶來的震撼實在太大了。
 
@@ -193,8 +299,7 @@
 不管未來有多艱難，他都必須變強。
 
 不為別的，只為在這個即將到來的亂世中，保護自己和身邊的人。</p>
-
-<p>「靈芯系統，更新任務目標。」
+            <p>「靈芯系統，更新任務目標。」
 
 界面上顯示出新的任務：
 
@@ -223,28 +328,15 @@
 遠方，朝陽終於穿透了厚重的雲層，灑下了一縷金色的光芒。
 
 林塵的身影沐浴在光芒中，朝著未知的前方，堅定地走去。</p>
+            <p>（本章完）</p>
 
-<p>（本章完）</p>
-                </div>
-            </div>
-        </article>
-    </main>
-    <footer class="reader-footer-nav">
-        <a href="chapter-60.html" class="nav-button">« 上一章</a>
-        <a href="chapter-62.html" class="nav-button">下一章 »</a>
-    </footer>
-    <section class="share-section">
-        <h4 class="share-title">分享這個章節</h4>
-        <div class="share-buttons">
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
         </div>
-    </section>
-    <footer class="main-footer">
-        <p>&copy; 2025 大肥喵. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-    </footer>
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
+    </main>
+
+    <nav class="nav">
+        <a href="chapter-60.html">← 上一章</a>
+        <span class="nav-center">第 61 / 61 章</span>
+        <a href="chapter-61.html">下一章 →</a>
+    </nav>
 </body>
 </html>

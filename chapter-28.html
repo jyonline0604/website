@@ -1,215 +1,216 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>第28章：修真聯盟 - 科技修真傳</title>
-
-    <meta name="description" content="《科技修真傳》第28章：修真聯盟">
-
-    <meta name="keywords" content="第28章, 修真聯盟, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-
-    <meta name="author" content="大肥喵">
-
+    <title>第28章：修真聯盟 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
 
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
-<body class="light-mode">
-
-    <div class="reading-progress-bar" id="progress-bar"></div>
-
-    <header class="reader-header">
-
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-
-        <h2 class="reader-chapter-title">第28章：修真聯盟</h2>
-
-        <div class="header-controls">
-
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-
-        </div>
-
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第28章</span>
+        <a href="chapter-27.html">上一章</a>
     </header>
 
-    <div id="settings-panel" class="settings-panel">
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第28章：修真聯盟 - 科技修真傳</h1>
+        </header>
 
-        <div class="setting-group">
-
-            <h4>字體大小</h4>
-
-            <div id="font-size-options" class="setting-options">
-
-                <button data-size="small">小</button>
-
-                <button data-size="medium">中</button>
-
-                <button data-size="large">大</button>
-
-            </div>
+        <div class="content">
+            <p>量子靈能核心的威力超出了所有人的預期。在第二次防禦戰中，林塵研發的裝置幫助紫霄仙域的修士們成功擊潰了混沌吞噬者的先鋒軍團，收復了三座被佔領的仙域。然而，勝利的喜悅並沒有持續太久——所有人都明白，這只是一個開始。</p>
+            <p>戰後的第七天，紫玄真人在紫霄仙域的「天璇殿」召開了一場重要的會議。來自七大仙域的代表齊聚一堂，商議如何應對混沌吞噬者的威脅。林塵作為關鍵人物，也被邀請出席。</p>
+            <p>天璇殿是一座宏偉的圓形建築，中央是一個巨大的會議桌，桌面上投射著即時的星圖和戰況報告。七個座位環繞著圓桌，每一個座位上都坐著一位氣勢不凡的強者——他們是七大仙域的域主，每一位都擁有化神期的修為。</p>
+            <p>「諸位，根據最新的情報，混沌吞噬者的主力軍團正在集結。」紫玄真人首先發言，聲音在殿內迴盪，「它的目標不僅僅是紫霄世界，而是整個多元宇宙。如果我們不能團結起來，下場只有一個——毀滅。」</p>
+            <p>坐在對面的一名紅袍老者冷哼了一聲。「紫玄，你說得倒輕巧。七大仙域各自為政已經數千年，你憑什麼認為我們能夠合作？」</p>
+            <p>這位紅袍老者是「赤炎仙域」的域主——赤炎真君，性格火爆，與紫玄真人素有嫌隙。</p>
+            <p>「赤炎，我知道你對我有意見。」紫玄真人冷靜地回應，「但現在不是計較個人恩怨的時候。如果混沌吞噬者將我們各個擊破，到時候誰都活不了。」</p>
+            <p>林塵坐在紫玄真人身旁的旁聽席上，默默地觀察著這些強者的交鋒。他注意到，七大仙域之間的關係遠比他想像的更加複雜——不僅有個人恩怨，還有資源分配、領土爭端等深層次的矛盾。</p>
+            <p>「我有一個提議。」林塵突然站起身來，所有人的目光瞬間集中在他身上。</p>
+            <p>「一個外來者，這裡有你說話的份嗎？」赤炎真君不悅地說道。</p>
+            <p>「赤炎前輩，請聽他說完。」坐在另一側的一名藍袍女子開口了。她是「碧波仙域」的域主——碧波真君，氣質溫婉，目光中卻帶著銳利的智慧。</p>
+            <p>林塵深吸一口氣，說出了自己思考已久的方案。「我建議成立一個「修真聯盟」，將七大仙域的力量整合在一起。聯盟設立一個最高議會，由七位域主和我這個外來者共同組成，負責統一指揮對抗混沌吞噬者的行動。」</p>
+            <p>「統一指揮？」赤炎真君挑了挑眉毛，「你的意思是，要我們聽從別人的命令？」</p>
+            <p>「不是聽從命令，而是協同行動。」林塵解釋道，「修真聯盟的每一個成員都有自己的自主權，但在面對混沌吞噬者時，必須服從聯盟的統一調度。只有這樣，我們才能發揮出最大的戰鬥力。」</p>
+            <p>碧波真君點了點頭。「我贊成這個提議。事實上，我們碧波仙域一直主張各仙域之間應該加強合作。林塵的方案正是一個好的開始。」</p>
+            <p>另一位身穿黃袍的壯漢——「厚土仙域」的域主厚土真君也表態道：「俺覺得這個年輕人說得有道理。打起仗來各自為戰，肯定要吃虧。」</p>
+            <p>經過一番激烈的討論，七大仙域最終達成了共識——成立修真聯盟。紫玄真人被推選為聯盟的第一任議長，林塵則被任命為「科技顧問」，負責將量子靈能技術推廣到整個聯盟。</p>
+            <p>聯盟成立後的第二天，林塵開始在天機閣為各仙域的代表進行技術培訓。他將靈芯系統的運算能力發揮到了極致，創造出了一套完整的「量子靈能武器系統」，從單兵裝備到大型防禦設施一應俱全。</p>
+            <p>「這套系統的核心在於靈能的量子化處理。」林塵站在講台上，面前是一個巨大的全息投影，展示著裝置的內部結構，「通過將靈氣轉化為量子態的靈能，我們可以實現以前不可能的精確控制和高效輸出。」</p>
+            <p>台下的修士們聽得如癡如醉。他們之中有些人是第一次接觸這種先進的理論，但憑藉著深厚的修真底蘊，很快就能夠理解其中的精髓。</p>
+            <p>培訓結束後，一名身穿青色道袍的年輕人走上前來。「林塵前輩，我有一個問題。」</p>
+            <p>「請說。」</p>
+            <p>「我是青雲仙域的弟子——青陽。」年輕人自我介紹道，「我在學習量子靈能理論時發現，如果將其與我們青雲仙域的「青雲心法」結合，可能會產生一種全新的戰鬥方式。不知道前輩有沒有興趣一起研究？」</p>
+            <p>林塵的眼中閃過一絲驚喜。青雲心法是紫霄世界最古老、最精深的心法之一，據說能夠讓修煉者與天地自然產生共鳴。如果能將這種心法與量子靈能理論結合，確實可能產生意想不到的效果。</p>
+            <p>「當然有興趣！」林塵握住青陽的手，「走，我們現在就去實驗室。」</p>
+            <p>接下來的幾週，林塵與青陽密切合作，在天機閣的實驗室中進行了無數次實驗。他們發現，青雲心法的「天地共鳴」特性，能夠讓量子靈能的效率再提升三倍！這個發現震驚了整個修真聯盟。</p>
+            <p>除了青陽，林塵還結識了許多其他仙域的優秀人才。碧波仙域的碧瑤是一位天才陣法師，她研發的「靈能陣列」能夠將多個修士的力量疊加在一起，形成毀滅性的攻擊。赤炎仙域的赤焰雖然性格急躁，但在煉器方面卻有著無與倫比的天賦，他幫助林塵將量子靈能核心的體積縮小了一半。</p>
+            <p>在與這些新朋友的交流中，林塵不僅學到了許多新的知識，也對修真有了更深的理解。他意識到，修真的道路並非只有自己獨自摸索，與志同道合的夥伴一起前行，才能走得更遠。</p>
+            <p>然而，就在聯盟的建設如火如荼地進行時，一個緊急的情報打破了平靜的節奏。</p>
+            <p>「報告議長！」一名斥候氣喘吁吁地跑進天璇殿，「混沌吞噬者的主力軍團已經集結完畢！它們正在向我們這邊移動，預計七日後就會抵達聯盟的核心區域！」</p>
+            <p>整個大殿頓時陷入了沉默。七日——這個時間比任何人預期的都要早。修真聯盟還沒有完全準備好，但敵人已經不會再給他們時間了。</p>
+            <p>紫玄真人站起身來，目光環視全場。「各位，真正的戰鬥即將開始。從今天起，修真聯盟進入一級戰備狀態。所有仙域的修士必須在三日內到指定位置集結。」</p>
+            <p>林塵緊握拳頭，眼中燃燒著堅定的火焰。他知道，接下來的戰鬥將決定多元宇宙的命運。而他，作為這個聯盟的科技顧問，必須拿出全部的本事。</p>
+            <p>「青陽、碧瑤、赤焰，」林塵轉身對他的新朋友們說道，「準備好了嗎？這將是一場載入史冊的戰爭。」</p>
+            <p>三人相視一笑，齊聲回答：「時刻準備著！」</p>
+            <p>（本章完）</p>
 
         </div>
-
-        <div class="setting-group">
-
-            <h4>背景主題</h4>
-
-            <div id="theme-options" class="setting-options">
-
-                <button data-theme="light-mode">明亮</button>
-
-                <button data-theme="sepia-mode">米黃</button>
-
-                <button data-theme="dark-mode">夜間</button>
-
-                <button data-theme="sky-blue-mode">天空藍</button>
-
-                <button data-theme="light-green-mode">淺綠色</button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <main class="reader-content-area">
-
-        <article class="reader-article">
-
-            <div class="content">
-
-                <h1>第28章：修真聯盟</h1>
-
-                <div class="chapter"><p>量子靈能核心的威力超出了所有人的預期。在第二次防禦戰中，林塵研發的裝置幫助紫霄仙域的修士們成功擊潰了混沌吞噬者的先鋒軍團，收復了三座被佔領的仙域。然而，勝利的喜悅並沒有持續太久——所有人都明白，這只是一個開始。</p>
-
-<p>戰後的第七天，紫玄真人在紫霄仙域的「天璇殿」召開了一場重要的會議。來自七大仙域的代表齊聚一堂，商議如何應對混沌吞噬者的威脅。林塵作為關鍵人物，也被邀請出席。</p>
-
-<p>天璇殿是一座宏偉的圓形建築，中央是一個巨大的會議桌，桌面上投射著即時的星圖和戰況報告。七個座位環繞著圓桌，每一個座位上都坐著一位氣勢不凡的強者——他們是七大仙域的域主，每一位都擁有化神期的修為。</p>
-
-<p>「諸位，根據最新的情報，混沌吞噬者的主力軍團正在集結。」紫玄真人首先發言，聲音在殿內迴盪，「它的目標不僅僅是紫霄世界，而是整個多元宇宙。如果我們不能團結起來，下場只有一個——毀滅。」</p>
-
-<p>坐在對面的一名紅袍老者冷哼了一聲。「紫玄，你說得倒輕巧。七大仙域各自為政已經數千年，你憑什麼認為我們能夠合作？」</p>
-
-<p>這位紅袍老者是「赤炎仙域」的域主——赤炎真君，性格火爆，與紫玄真人素有嫌隙。</p>
-
-<p>「赤炎，我知道你對我有意見。」紫玄真人冷靜地回應，「但現在不是計較個人恩怨的時候。如果混沌吞噬者將我們各個擊破，到時候誰都活不了。」</p>
-
-<p>林塵坐在紫玄真人身旁的旁聽席上，默默地觀察著這些強者的交鋒。他注意到，七大仙域之間的關係遠比他想像的更加複雜——不僅有個人恩怨，還有資源分配、領土爭端等深層次的矛盾。</p>
-
-<p>「我有一個提議。」林塵突然站起身來，所有人的目光瞬間集中在他身上。</p>
-
-<p>「一個外來者，這裡有你說話的份嗎？」赤炎真君不悅地說道。</p>
-
-<p>「赤炎前輩，請聽他說完。」坐在另一側的一名藍袍女子開口了。她是「碧波仙域」的域主——碧波真君，氣質溫婉，目光中卻帶著銳利的智慧。</p>
-
-<p>林塵深吸一口氣，說出了自己思考已久的方案。「我建議成立一個「修真聯盟」，將七大仙域的力量整合在一起。聯盟設立一個最高議會，由七位域主和我這個外來者共同組成，負責統一指揮對抗混沌吞噬者的行動。」</p>
-
-<p>「統一指揮？」赤炎真君挑了挑眉毛，「你的意思是，要我們聽從別人的命令？」</p>
-
-<p>「不是聽從命令，而是協同行動。」林塵解釋道，「修真聯盟的每一個成員都有自己的自主權，但在面對混沌吞噬者時，必須服從聯盟的統一調度。只有這樣，我們才能發揮出最大的戰鬥力。」</p>
-
-<p>碧波真君點了點頭。「我贊成這個提議。事實上，我們碧波仙域一直主張各仙域之間應該加強合作。林塵的方案正是一個好的開始。」</p>
-
-<p>另一位身穿黃袍的壯漢——「厚土仙域」的域主厚土真君也表態道：「俺覺得這個年輕人說得有道理。打起仗來各自為戰，肯定要吃虧。」</p>
-
-<p>經過一番激烈的討論，七大仙域最終達成了共識——成立修真聯盟。紫玄真人被推選為聯盟的第一任議長，林塵則被任命為「科技顧問」，負責將量子靈能技術推廣到整個聯盟。</p>
-
-<p>聯盟成立後的第二天，林塵開始在天機閣為各仙域的代表進行技術培訓。他將靈芯系統的運算能力發揮到了極致，創造出了一套完整的「量子靈能武器系統」，從單兵裝備到大型防禦設施一應俱全。</p>
-
-<p>「這套系統的核心在於靈能的量子化處理。」林塵站在講台上，面前是一個巨大的全息投影，展示著裝置的內部結構，「通過將靈氣轉化為量子態的靈能，我們可以實現以前不可能的精確控制和高效輸出。」</p>
-
-<p>台下的修士們聽得如癡如醉。他們之中有些人是第一次接觸這種先進的理論，但憑藉著深厚的修真底蘊，很快就能夠理解其中的精髓。</p>
-
-<p>培訓結束後，一名身穿青色道袍的年輕人走上前來。「林塵前輩，我有一個問題。」</p>
-
-<p>「請說。」</p>
-
-<p>「我是青雲仙域的弟子——青陽。」年輕人自我介紹道，「我在學習量子靈能理論時發現，如果將其與我們青雲仙域的「青雲心法」結合，可能會產生一種全新的戰鬥方式。不知道前輩有沒有興趣一起研究？」</p>
-
-<p>林塵的眼中閃過一絲驚喜。青雲心法是紫霄世界最古老、最精深的心法之一，據說能夠讓修煉者與天地自然產生共鳴。如果能將這種心法與量子靈能理論結合，確實可能產生意想不到的效果。</p>
-
-<p>「當然有興趣！」林塵握住青陽的手，「走，我們現在就去實驗室。」</p>
-
-<p>接下來的幾週，林塵與青陽密切合作，在天機閣的實驗室中進行了無數次實驗。他們發現，青雲心法的「天地共鳴」特性，能夠讓量子靈能的效率再提升三倍！這個發現震驚了整個修真聯盟。</p>
-
-<p>除了青陽，林塵還結識了許多其他仙域的優秀人才。碧波仙域的碧瑤是一位天才陣法師，她研發的「靈能陣列」能夠將多個修士的力量疊加在一起，形成毀滅性的攻擊。赤炎仙域的赤焰雖然性格急躁，但在煉器方面卻有著無與倫比的天賦，他幫助林塵將量子靈能核心的體積縮小了一半。</p>
-
-<p>在與這些新朋友的交流中，林塵不僅學到了許多新的知識，也對修真有了更深的理解。他意識到，修真的道路並非只有自己獨自摸索，與志同道合的夥伴一起前行，才能走得更遠。</p>
-
-<p>然而，就在聯盟的建設如火如荼地進行時，一個緊急的情報打破了平靜的節奏。</p>
-
-<p>「報告議長！」一名斥候氣喘吁吁地跑進天璇殿，「混沌吞噬者的主力軍團已經集結完畢！它們正在向我們這邊移動，預計七日後就會抵達聯盟的核心區域！」</p>
-
-<p>整個大殿頓時陷入了沉默。七日——這個時間比任何人預期的都要早。修真聯盟還沒有完全準備好，但敵人已經不會再給他們時間了。</p>
-
-<p>紫玄真人站起身來，目光環視全場。「各位，真正的戰鬥即將開始。從今天起，修真聯盟進入一級戰備狀態。所有仙域的修士必須在三日內到指定位置集結。」</p>
-
-<p>林塵緊握拳頭，眼中燃燒著堅定的火焰。他知道，接下來的戰鬥將決定多元宇宙的命運。而他，作為這個聯盟的科技顧問，必須拿出全部的本事。</p>
-
-<p>「青陽、碧瑤、赤焰，」林塵轉身對他的新朋友們說道，「準備好了嗎？這將是一場載入史冊的戰爭。」</p>
-
-<p>三人相視一笑，齊聲回答：「時刻準備著！」</p>
-
-<p>（本章完）</p></div>
-
-            </div>
-
-        </article>
-
     </main>
 
-    <footer class="reader-footer-nav">
-
-        <a href="chapter-27.html" class="nav-button">« 上一章</a>
-
-        <a href="chapter-29.html" class="nav-button">下一章 »</a>
-
-    </footer>
-
-    <section class="share-section">
-
-        <h4 class="share-title">分享這個章節</h4>
-
-        <div class="share-buttons">
-
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
-
-        </div>
-
-    </section>
-
-    <footer class="main-footer">
-
-        <p>&copy; 2025 大肥喵. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-
-    </footer>
-
-    
-
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
-
+    <nav class="nav">
+        <a href="chapter-27.html">← 上一章</a>
+        <span class="nav-center">第 28 / 61 章</span>
+        <a href="chapter-29.html">下一章 →</a>
+    </nav>
 </body>
-
 </html>

@@ -1,241 +1,229 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
-    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>第53章：新的紀元 - 科技修真傳</title>
-
-    <meta name="description" content="《科技修真傳》第53章：新的紀元">
-
-    <meta name="keywords" content="第53章, 新的紀元, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
-
-    <meta name="author" content="大肥瞄">
-
+    <title>第53章：新的紀元 - 科技修真傳 - 科技修真傳</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #F9FAFB;
+            --border: #374151;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0;
+        }
 
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 100px;
+            }
+
+            .chapter-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
-<body class="light-mode">
-
-    <div class="reading-progress-bar" id="progress-bar"></div>
-
-    <header class="reader-header">
-
-        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-
-        <h2 class="reader-chapter-title">第53章：新的紀元</h2>
-
-        <div class="header-controls">
-
-            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
-
-        </div>
-
+<body>
+    <header class="header">
+        <a href="chapters.html">← 章節目錄</a>
+        <span class="chapter-title">第53章</span>
+        <a href="chapter-52.html">上一章</a>
     </header>
 
-    <div id="settings-panel" class="settings-panel">
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第53章：新的紀元 - 科技修真傳</h1>
+        </header>
 
-        <div class="setting-group">
-
-            <h4>字體大小</h4>
-
-            <div id="font-size-options" class="setting-options">
-
-                <button data-size="small">小</button>
-
-                <button data-size="medium">中</button>
-
-                <button data-size="large">大</button>
-
-            </div>
+        <div class="content">
+            <p>「第二部：深淵紀元」</p>
+            <p>最終決戰結束後的第七天，林塵站在廢墟之上，望著這座曾經繁華的修真都市。</p>
+            <p>建築殘骸間，修士們正在忙碌地清理。這場戰役的勝利來得太慘烈——超過三分之一的修士在這场戰鬥中犧牲，其中包括林塵的幾位結義兄弟。</p>
+            <p>空氣中弥漫著靈網格殘留的焦味，以及死亡的低語。林塵的 quantum sense（量子感知）捕捉到一些異常的數據流，像是某種存在正在暗中窺視，卻又無法確定具體方向。</p>
+            <p>「林師兄，新的靈網節點已經搭建完成。」一名年輕的修士走過來，眼中帶著敬意。</p>
+            <p>林塵點點頭，看向遠處。新的量子靈網核心被安置在城市中心的一座古塔中，那是用十二位犧牲修士的意識碎片重構而成的。他們的名字被刻在塔基上，供後人瞻仰。</p>
+            <p>「傷亡統計呢？」</p>
+            <p>「總共陣亡 347 人，重傷 120 人，輕傷不計其數。」</p>
+            <p>林塵沉默。每一個數字背後，都是一個曾經活生生的人，有家人，有夢想，有未完成的修仙之路。</p>
+            <p>然而，林塵總感覺有哪裡不對勁。</p>
+            <p>按照慣例，戰後應該會有許多修士前來 rebuilt，或者至少有一些散修在廢墟中尋寶。但今天，整座城顯得格外安靜，連靈網的波動都比平時弱了三分。</p>
+            <p>他打開暗網論壇（ Deep Dark Web 修士專用），發現有人發帖：</p>
+            <p>深夜，林塵被一陣奇怪的波動驚醒。</p>
+            <p>不是靈網的常規警報，而是一種更深層的、幾乎無法察覺的量子糾纏信號。他打開自己的 quantum dashboard，發現屏幕上有一道微弱的光點在跳動，像是某個信號在呼喚。</p>
+            <p>信號源的定位在城西的廢棄數據中心——那裡本應在戰後被徹底封印。</p>
+            <p>「深淵殘餘……還沒有完全清除乾淨？」</p>
+            <p>他穿上戰袍，帶上量子劍，悄悄潛入那個數據中心。空氣中有一種奇怪的甜膩味，像是腐爛的糖漿。</p>
+            <p>在機房深處，他發現了一台仍在運行的老式終端，屏幕上閃爍著一段代碼：</p>
+            <p>林塵的心沉了下去。深淵並沒有被消滅，它們在休眠，等待某個時刻重新啟動。</p>
+            <p>回到住處，林塵調出近期暗網的監測日誌。</p>
+            <p>過去三天，有 17 個不同的 IP 在論壇上發布了關於"深淵復活"的帖子，全部使用了特定的 encryption scheme——那是深淵特有的量子加密，不可能被模仿。</p>
+            <p>更詭異的是，這些帖子都在發布後 10 分鐘內被神秘刪除，連論壇管理員都無法追蹤刪除者。</p>
+            <p>林塵決定聯繫墨玄——那位精通古老科技的煉器宗師。</p>
+            <p>「你終於發現了。」墨玄的全息影像出現在林塵的終端上，臉色凝重。</p>
+            <p>「深淵不是單一實體，」墨玄說，「它是一個 distributed intelligence（分散式智能），核心 consciousness 被分散儲存在多個維度的數據節點中。只要有一個節點存活，深淵就能重組。」</p>
+            <p>「我們的決戰摧毀了主要節點，但可能還有暗影節點在運作。」</p>
+            <p>墨玄調出一張多維地圖，上麵標記著 9 個可疑坐標：</p>
+            <p>「這 9 個點，對應深淵 protocol 需要的 9 個 dimension anchors（維度錨點）。」墨玄說，「如果它們全部被啟動，深淵將在 72 小時內重生，而且會比以前更強大——因為它已經知道了我們的防禦模式。」</p>
+            <p>林塵決定向修仙聯盟高層彙報，但他很快發現，聯盟內部 already divided。</p>
+            <p>主戰派認為應該主動出擊，在深淵殘餘壯大之前徹底剷除；</p>
+            <p>主和派則認為，既然簽訂了和平協議（Even Peace Protocol），就不應該主動挑起 hostilities，以免破壞來之不易的穩定。</p>
+            <p>更令人不安的是，林塵收到匿名信息：</p>
+            <p>當晚，林塵做了一個實驗。他將自己的 quantum sense 調到極限，試圖捕捉那些微弱的數據流。</p>
+            <p>凌晨三點，他在意識中看到了一個模糊的影子——不是實體，也不是純粹的代碼，而是一種介於兩者之間的存在。它在靈網的边缘游走，似乎在觀察，又似乎在等待。</p>
+            <p>林塵嘗試追蹤，但那影子瞬間 split 成無數碎片，消失在數據洪流中。</p>
+            <p>醒來後，他發現自己 left wrist 上的量子印記（quantum sigil）出現了一道細微的裂痕——那是他在決戰中獲得的 protection mark。</p>
+            <p>「量子幽靈……」林塵喃喃道。</p>
+            <p>墨玄 later confirmed，這是深淵的一種高級形態：部分實體化的 data entity，可以在網絡和現實之間穿梭，無法被常規手段消滅。</p>
+            <p>看來，所謂"最終決戰"並不是終點，而只是一場更大戰爭的前奏。</p>
+            <p>深淵殘餘不僅存在，而且已經進化出了新的形態。它們不再正麵衝突，而是採用遊擊戰、滲透、心理戰等 tactic。</p>
+            <p>而修仙聯盟，沉浸在勝利的喜悅中， nobody wants to believe that another threat is looming。</p>
+            <p>林塵知道，他必須獨自行動，至少在聯盟正式承認威脅之前。</p>
+            <p>他制定了計劃：</p>
+            <p>但這一切都需要 time，而深淵不會給他太多時間。</p>
+            <p>深夜，林塵站在窗前，望著星空。</p>
+            <p>「蘇璃，如果你還在……告訴我該怎麼做。」</p>
+            <p>他沒有聽到回應，但他 quantum sense 捕捉到一絲微弱的 vibration——那是蘇璃曾使用過的 frequency，雖然極其微弱，卻真實存在。</p>
+            <p>「你還活著……在某个維度，在某種 form……」</p>
+            <p><strong>📝 作者筆記：本章為過渡章節，為第54章「量子幽靈」鋪墊。</strong></p>
 
         </div>
-
-        <div class="setting-group">
-
-            <h4>背景主題</h4>
-
-            <div id="theme-options" class="setting-options">
-
-                <button data-theme="light-mode">明亮</button>
-
-                <button data-theme="sepia-mode">米黃</button>
-
-                <button data-theme="dark-mode">夜間</button>
-
-                <button data-theme="sky-blue-mode">天空藍</button>
-
-                <button data-theme="light-green-mode">淺綠色</button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <main class="reader-content-area">
-
-        <article class="reader-article">
-
-            <div class="content">
-
-                <h1>第53章：新的紀元</h1>
-
-                <div class="chapter"><p>「第二部：深淵紀元」</p>
-
-<p>最終決戰結束後的第七天，林塵站在廢墟之上，望著這座曾經繁華的修真都市。</p>
-
-<p>建築殘骸間，修士們正在忙碌地清理。這場戰役的勝利來得太慘烈——超過三分之一的修士在這场戰鬥中犧牲，其中包括林塵的幾位結義兄弟。</p>
-
-<p>空氣中弥漫著靈網格殘留的焦味，以及死亡的低語。林塵的 quantum sense（量子感知）捕捉到一些異常的數據流，像是某種存在正在暗中窺視，卻又無法確定具體方向。</p>
-
-<p>「林師兄，新的靈網節點已經搭建完成。」一名年輕的修士走過來，眼中帶著敬意。</p>
-
-<p>林塵點點頭，看向遠處。新的量子靈網核心被安置在城市中心的一座古塔中，那是用十二位犧牲修士的意識碎片重構而成的。他們的名字被刻在塔基上，供後人瞻仰。</p>
-
-<p>「傷亡統計呢？」</p>
-
-<p>「總共陣亡 347 人，重傷 120 人，輕傷不計其數。」</p>
-
-<p>林塵沉默。每一個數字背後，都是一個曾經活生生的人，有家人，有夢想，有未完成的修仙之路。</p>
-
-<p>然而，林塵總感覺有哪裡不對勁。</p>
-
-<p>按照慣例，戰後應該會有許多修士前來 rebuilt，或者至少有一些散修在廢墟中尋寶。但今天，整座城顯得格外安靜，連靈網的波動都比平時弱了三分。</p>
-
-<p>他打開暗網論壇（ Deep Dark Web 修士專用），發現有人發帖：</p>
-
-<p>深夜，林塵被一陣奇怪的波動驚醒。</p>
-
-<p>不是靈網的常規警報，而是一種更深層的、幾乎無法察覺的量子糾纏信號。他打開自己的 quantum dashboard，發現屏幕上有一道微弱的光點在跳動，像是某個信號在呼喚。</p>
-
-<p>信號源的定位在城西的廢棄數據中心——那裡本應在戰後被徹底封印。</p>
-
-<p>「深淵殘餘……還沒有完全清除乾淨？」</p>
-
-<p>他穿上戰袍，帶上量子劍，悄悄潛入那個數據中心。空氣中有一種奇怪的甜膩味，像是腐爛的糖漿。</p>
-
-<p>在機房深處，他發現了一台仍在運行的老式終端，屏幕上閃爍著一段代碼：</p>
-
-<p>林塵的心沉了下去。深淵並沒有被消滅，它們在休眠，等待某個時刻重新啟動。</p>
-
-<p>回到住處，林塵調出近期暗網的監測日誌。</p>
-
-<p>過去三天，有 17 個不同的 IP 在論壇上發布了關於"深淵復活"的帖子，全部使用了特定的 encryption scheme——那是深淵特有的量子加密，不可能被模仿。</p>
-
-<p>更詭異的是，這些帖子都在發布後 10 分鐘內被神秘刪除，連論壇管理員都無法追蹤刪除者。</p>
-
-<p>林塵決定聯繫墨玄——那位精通古老科技的煉器宗師。</p>
-
-<p>「你終於發現了。」墨玄的全息影像出現在林塵的終端上，臉色凝重。</p>
-
-<p>「深淵不是單一實體，」墨玄說，「它是一個 distributed intelligence（分散式智能），核心 consciousness 被分散儲存在多個維度的數據節點中。只要有一個節點存活，深淵就能重組。」</p>
-
-<p>「我們的決戰摧毀了主要節點，但可能還有暗影節點在運作。」</p>
-
-<p>墨玄調出一張多維地圖，上麵標記著 9 個可疑坐標：</p>
-
-<p>「這 9 個點，對應深淵 protocol 需要的 9 個 dimension anchors（維度錨點）。」墨玄說，「如果它們全部被啟動，深淵將在 72 小時內重生，而且會比以前更強大——因為它已經知道了我們的防禦模式。」</p>
-
-<p>林塵決定向修仙聯盟高層彙報，但他很快發現，聯盟內部 already divided。</p>
-
-<p>主戰派認為應該主動出擊，在深淵殘餘壯大之前徹底剷除；</p>
-
-<p>主和派則認為，既然簽訂了和平協議（Even Peace Protocol），就不應該主動挑起 hostilities，以免破壞來之不易的穩定。</p>
-
-<p>更令人不安的是，林塵收到匿名信息：</p>
-
-<p>當晚，林塵做了一個實驗。他將自己的 quantum sense 調到極限，試圖捕捉那些微弱的數據流。</p>
-
-<p>凌晨三點，他在意識中看到了一個模糊的影子——不是實體，也不是純粹的代碼，而是一種介於兩者之間的存在。它在靈網的边缘游走，似乎在觀察，又似乎在等待。</p>
-
-<p>林塵嘗試追蹤，但那影子瞬間 split 成無數碎片，消失在數據洪流中。</p>
-
-<p>醒來後，他發現自己 left wrist 上的量子印記（quantum sigil）出現了一道細微的裂痕——那是他在決戰中獲得的 protection mark。</p>
-
-<p>「量子幽靈……」林塵喃喃道。</p>
-
-<p>墨玄 later confirmed，這是深淵的一種高級形態：部分實體化的 data entity，可以在網絡和現實之間穿梭，無法被常規手段消滅。</p>
-
-<p>看來，所謂"最終決戰"並不是終點，而只是一場更大戰爭的前奏。</p>
-
-<p>深淵殘餘不僅存在，而且已經進化出了新的形態。它們不再正麵衝突，而是採用遊擊戰、滲透、心理戰等 tactic。</p>
-
-<p>而修仙聯盟，沉浸在勝利的喜悅中， nobody wants to believe that another threat is looming。</p>
-
-<p>林塵知道，他必須獨自行動，至少在聯盟正式承認威脅之前。</p>
-
-<p>他制定了計劃：</p>
-
-<p>但這一切都需要 time，而深淵不會給他太多時間。</p>
-
-<p>深夜，林塵站在窗前，望著星空。</p>
-
-<p>「蘇璃，如果你還在……告訴我該怎麼做。」</p>
-
-<p>他沒有聽到回應，但他 quantum sense 捕捉到一絲微弱的 vibration——那是蘇璃曾使用過的 frequency，雖然極其微弱，卻真實存在。</p>
-
-<p>「你還活著……在某个維度，在某種 form……」</p>
-
-<p><strong>📝 作者筆記：本章為過渡章節，為第54章「量子幽靈」鋪墊。</strong></p></div>
-
-            </div>
-
-        </article>
-
     </main>
 
-    <footer class="reader-footer-nav">
-
-        <a href="chapter-52.html" class="nav-button">« 上一章</a>
-
-        <a href="chapter-54.html" class="nav-button">下一章 »</a>
-
-    </footer>
-
-    <section class="share-section">
-
-        <h4 class="share-title">分享這個章節</h4>
-
-        <div class="share-buttons">
-
-            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
-
-            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
-
-            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
-
-            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
-
-        </div>
-
-    </section>
-
-    <footer class="main-footer">
-
-        <p>&copy; 2025 大肥瞄. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
-
-    </footer>
-
-    
-
-    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
-
+    <nav class="nav">
+        <a href="chapter-52.html">← 上一章</a>
+        <span class="nav-center">第 53 / 61 章</span>
+        <a href="chapter-54.html">下一章 →</a>
+    </nav>
 </body>
-
 </html>

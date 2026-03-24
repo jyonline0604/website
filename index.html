@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林風的修仙之旅 - 小說閱讀</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Mode */
+            --bg-primary: #FAFBFC;
+            --bg-secondary: #FFFFFF;
+            --bg-tertiary: #F3F4F6;
+            --text-primary: #1F2937;
+            --text-secondary: #4B5563;
+            --text-tertiary: #9CA3AF;
+            --accent: #6366F1;
+            --accent-hover: #4F46E5;
+            --border: #E5E7EB;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --progress: linear-gradient(90deg, #6366F1, #818CF8);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0F1419;
+            --bg-secondary: #1A1F26;
+            --bg-tertiary: #242B35;
+            --text-primary: #F9FAFB;
+            --text-secondary: #D1D5DB;
+            --text-tertiary: #6B7280;
+            --accent: #818CF8;
+            --accent-hover: #A5B4FC;
+            --border: #374151;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            transition: background 0.3s, color 0.3s;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(var(--bg-secondary), 0.9);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Reading Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--bg-tertiary);
+            z-index: 999;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--progress);
+            transition: width 0.1s ease-out;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 24px 120px;
+        }
+
+        /* Chapter Navigation */
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .chapter-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .chapter-nav a:hover {
+            background: var(--bg-tertiary);
+            color: var(--accent);
+        }
+
+        .chapter-nav a.disabled {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .chapter-title-mobile {
+            display: none;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* Article Content */
+        .article-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .chapter-number {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--accent);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .article-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .article-meta {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--text-primary);
+        }
+
+        .article-content p {
+            margin-bottom: 1.5em;
+            text-align: justify;
+            text-indent: 2em;
+        }
+
+        .article-content p:first-child {
+            text-indent: 0;
+        }
+
+        .article-content p:first-child::first-letter {
+            font-size: 1.5em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 4px;
+            color: var(--accent);
+        }
+
+        /* Reading Settings Panel */
+        .settings-panel {
+            position: fixed;
+            right: -300px;
+            top: 60px;
+            bottom: 0;
+            width: 300px;
+            background: var(--bg-secondary);
+            border-left: 1px solid var(--border);
+            padding: 24px;
+            transition: right 0.3s ease;
+            z-index: 998;
+            overflow-y: auto;
+        }
+
+        .settings-panel.active {
+            right: 0;
+        }
+
+        .settings-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .setting-group {
+            margin-bottom: 28px;
+        }
+
+        .setting-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .font-size-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .font-size-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .font-size-btn:hover,
+        .font-size-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .theme-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .theme-btn {
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            text-align: center;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover,
+        .theme-btn.active {
+            border-color: var(--accent);
+        }
+
+        .theme-btn.light {
+            background: #FAFBFC;
+            color: #1F2937;
+        }
+
+        .theme-btn.sepia {
+            background: #F4ECD8;
+            color: #5C4B37;
+        }
+
+        .theme-btn.dark {
+            background: #1A1F26;
+            color: #F9FAFB;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .bottom-nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.75rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .bottom-nav-btn:hover {
+            color: var(--accent);
+            background: var(--bg-tertiary);
+        }
+
+        .bottom-nav-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* Chapter List */
+        .chapter-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .chapter-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .chapter-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .chapter-card-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .chapter-card-meta {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--accent) 0%, #8B5CF6 100%);
+            color: white;
+            padding: 80px 24px;
+            text-align: center;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 48px;
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 32px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 0 16px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .chapter-nav {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .chapter-nav a:not(.disabled) {
+                flex: 1;
+                justify-content: center;
+                min-width: 120px;
+            }
+
+            .chapter-title-mobile {
+                display: block;
+                width: 100%;
+                text-align: center;
+                order: -1;
+            }
+
+            .article-title {
+                font-size: 1.5rem;
+            }
+
+            .main {
+                padding: 80px 16px 100px;
+            }
+
+            .hero {
+                padding: 48px 16px;
+                border-radius: 0 0 24px 24px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-stats {
+                gap: 24px;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .settings-panel {
+                width: 100%;
+                right: -100%;
+            }
+
+            .bottom-nav {
+                padding: 0 8px;
+            }
+
+            .bottom-nav-btn {
+                padding: 8px 12px;
+                font-size: 0.7rem;
+            }
+
+            .bottom-nav-btn span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <a href="index.html" class="logo">📖 修仙物語</a>
+            <nav class="nav-links">
+                <a href="index.html">首頁</a>
+                <a href="chapters.html">章節</a>
+                <a href="#">作者</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-outline" onclick="toggleSettings()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+                設定
+            </button>
+            <button class="btn btn-primary">登入</button>
+        </div>
+    </header>
+
+    <!-- Reading Progress -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+        <h3 class="settings-title">閱讀設定</h3>
+        
+        <div class="setting-group">
+            <div class="setting-label">
+                <span>字體大小</span>
+            </div>
+            <div class="font-size-buttons">
+                <button class="font-size-btn" onclick="setFontSize(0.9)">A-</button>
+                <button class="font-size-btn active" onclick="setFontSize(1.1)">A</button>
+                <button class="font-size-btn" onclick="setFontSize(1.3)">A+</button>
+            </div>
+        </div>
+
+        <div class="setting-group">
+            <div class="setting-label">
+                <span>主題</span>
+            </div>
+            <div class="theme-buttons">
+                <button class="theme-btn light active" onclick="setTheme('light')">☀️ 淺色</button>
+                <button class="theme-btn sepia" onclick="setTheme('sepia')">📜 護眼</button>
+                <button class="theme-btn dark" onclick="setTheme('dark')">🌙 深色</button>
+            </div>
+        </div>
+
+        <div class="setting-group">
+            <div class="setting-label">
+                <span>行距</span>
+            </div>
+            <div class="font-size-buttons">
+                <button class="font-size-btn" onclick="setLineHeight(1.5)">窄</button>
+                <button class="font-size-btn active" onclick="setLineHeight(1.8)">中</button>
+                <button class="font-size-btn" onclick="setLineHeight(2.2)">寬</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Chapter Navigation -->
+        <nav class="chapter-nav">
+            <a href="chapter-59.html" id="prevChapter">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+                上一章
+            </a>
+            <span class="chapter-title-mobile">第60章 時空之門</span>
+            <a href="chapter-61.html" id="nextChapter">
+                下一章
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </a>
+        </nav>
+
+        <!-- Article -->
+        <article>
+            <header class="article-header">
+                <span class="chapter-number">第60章</span>
+                <h1 class="article-title">時空之門</h1>
+                <p class="article-meta">更新於 2026年3月24日 · 3,247 字</p>
+            </header>
+
+            <div class="article-content" id="articleContent">
+                <p>虛空之中，寧塵與鴻鈞道祖相對而立。</p>
+                <p>道祖看著寧塵，眼中滿是讚賞。</p>
+                <p>「神界壁壘的法則極其堅固。」</p>
+                <p>「吾推算過，三千年後，壁壘會出現一個相對薄弱的節點。」</p>
+                <p>「屆時便是我們進入神界的最佳時機。」</p>
+                <p>寧塵點頭應下。</p>
+                <p>「晚輩明白。」</p>
+                <p>「這三千年，我正好處理一下凡塵的俗事。」</p>
+                <p>道祖沒有多言，身形化作點點星光消散。</p>
+                <p>寧塵立在原地，心中思緒翻湧。</p>
+                <p>他突破大道境後，對天地法則的感知更加清晰。</p>
+                <p>神界是一個完全未知的領域。</p>
+                <p>一旦踏入其中，再想返回九天十地，絕對難如登天。</p>
+                <p>他原本的打算是讓父母在地球安穩度過一生。</p>
+                <p>凡人有凡人的快樂。</p>
+                <p>可前提是他能一直留在這一界庇護他們。</p>
+                <p>如今他要離開，地球雖然有陣法保護，但終究存在變數。</p>
+                <p>他不能把父母的安危寄托在虛無縹緲的運氣上。</p>
+                <p>「唉，沒辦法，是時候讓他們踏入仙途了。」</p>
+                <p>寧塵打定主意，一步跨出，直接回到了地球的青州市。</p>
+                <p>寧家的小院裡，陳蘭和寧昌茂正在澆花。</p>
+                <p>寧塵推開院門走了進去。</p>
+                <p>「爸，媽。」</p>
+                <p>老兩口看到兒子回來，臉上立刻堆滿了笑容。</p>
+                <p>寧塵沒有拐彎抹角，直接說明了來意。</p>
+                <p>他將自己修仙的事情，以及即將離開這個世界的情況，簡單講述了一遍。</p>
+                <p>陳蘭和寧昌茂聽得目瞪口呆。</p>
+                <p>他們雖然知道兒子有些特殊本事，卻沒想過兒子竟然是傳說中的神仙。</p>
+                <p>「小塵，你說的都是真的？」</p>
+                <p>寧昌茂咽了一口唾沫。</p>
+                <p>寧塵抬起手，指尖綻放出一朵金色的蓮花。</p>
+                <p>蓮花散發著濃郁的生機，讓老兩口感到渾身舒泰。</p>
+                <p>隨後手一揮，三人出現在了木乃伊國，站在了金字塔上面。</p>
+                <p>往前走一步，三人又出現了馬爾地夫的沙灘上。</p>
+                <p>沒多久，寧塵將父母重新帶回了青州的住所。</p>
+                <p>「爸，媽，現在相信了吧？」</p>
+                <p>「現如今，我想帶你們去一個新地方生活。」</p>
+                <p>「那裡沒有生老病死。」</p>
+                <p>陳蘭有些猶豫。</p>
+                <p>「可是我們在地球生活了一輩子，去了那邊連個熟人都沒有。」</p>
+                <p>寧塵早就考慮到了這一點。</p>
+                <p>「媽，你放心，我會把你們熟悉的人一起帶過去。」</p>
+                <p>「只要是你們想帶的，親戚朋友，全都能帶走。」</p>
+                <p>寧塵神念一動，覆蓋了整個青州。</p>
+                <p>除了父母的親朋以外，他還找到了李梅和蘇晚晚。</p>
+                <p>又找到了母親的好閨蜜喬姨。</p>
+                <p>寧塵施展大神通，直接將她們帶到了寧家小院。</p>
+                <p>眾人只覺得眼前一花，就換了地方，全都嚇了一跳。</p>
+                <p>蘇晚晚看到寧塵，眼中閃過一絲驚喜。</p>
+                <p>她如今已經開始修行了，修為到了築基期。</p>
+                <p>「寧塵，這是怎麼回事？」</p>
+                <p>寧塵微笑著安撫眾人。</p>
+                <p>就在這時，地球的破界陣法綻放出了亮光，黑龍和薑糖收到消息，立馬從純陽仙界趕了過來。</p>
+                <p>不過在途徑靈界的時候，黑龍和薑糖還找到了許舒顏。</p>
+                <p>許舒顏這些年一直在中央靈界修行。</p>
+                <p>在海量資源的堆砌下，她如今已經擁有了大乘期的修為。</p>
+                <p>「媽！」</p>
+                <p>許舒顏看到喬姨，立刻撲了過去。</p>
+                <p>喬姨抱著女兒，滿臉不可思議。</p>
+                <p>「舒顏，你這幾年跑哪去了，怎麼變得這麼漂亮了？」</p>
+                <p>許舒顏周身靈氣繚繞，早已脫胎換骨。</p>
+                <p>她拉著母親的手，興奮地解釋起來。</p>
+                <p>「媽，我現在已經修行了。」</p>
+                <p>許舒顏隨手一揮，院子裡的枯樹立刻抽出新芽，開出了滿樹繁花。</p>
+                <p>這一手直接把李梅和喬姨看傻了。</p>
+                <p>寧塵看著眾人震驚的模樣，開口說道。</p>
+                <p>「各位，地球的靈氣終究有限。」</p>
+                <p>「我將帶你們去純陽仙界。」</p>
+                <p>說完，寧塵又將目光落在了薑糖的身上，告訴她也可以將父母帶過去，若是和她父親還有過不去的心裡疙瘩，可以帶她母親前去。</p>
+                <p>同時寧塵還交代了一下黑龍，讓其將葉孤樓的親人，還有落落……等從地球走出去的故人的親朋，願意離開的，都可以一次性帶過去。</p>
+                <p>現如今，葉孤樓和落落都正在閉關，寧塵不想打擾他們。</p>
+                <p>數日之後，寧塵大袖一揮，一股柔和的力量將眾人包裹。</p>
+                <p>空間裂開一道縫隙。</p>
+                <p>眾人只覺得一陣天旋地轉。</p>
+                <p>等他們再次睜開眼睛時，已經來到了一片浩瀚無垠的仙家福地。</p>
+                <p>這裡靈氣化雨，仙鶴飛舞。</p>
+                <p>天空中懸浮著一座座宏偉的宮殿。</p>
+                <p>「這……這就是仙界？」</p>
+                <p>寧昌茂張大了嘴巴。</p>
+                <p>陳蘭和李梅也是滿臉震撼。</p>
+                <p>寧塵帶著他們登上一艘仙舟。</p>
+                <p>仙舟在雲海中穿梭。</p>
+                <p>寧塵指著下方的仙山和城池，為他們一一介紹。</p>
+                <p>「這裡是純陽仙界，是我等開闢的道場。」</p>
+                <p>「以後你們就住在這裡。」</p>
+                <p>眾人看著那些御劍飛行的修士，看著那些體型龐大的靈獸，心中充滿了敬畏。</p>
+                <p>接下來的幾個月，寧塵什麼都沒做。</p>
+                <p>他專心陪著父母和這些親友，在純陽仙界各處遊歷。</p>
+                <p>他們去了仙池看仙蓮，去了劍山看萬劍齊飛。</p>
+                <p>在寧塵的陪伴下，眾人漸漸適應了仙界的環境。</p>
+                <p>他們不再對那些飛天遁地的修士感到恐懼。</p>
+                <p>反而對這種神奇的生活产生了濃厚的興趣。</p>
+                <p>陳蘭拉著喬姨的手，笑得合不攏嘴。</p>
+                <p>「咱們這也算是沾了孩子的光了。」</p>
+                <p>喬姨連連點頭。</p>
+                <p>「是啊，以前做夢都不敢想這種事。」</p>
+                <p>寧塵看著他們開心的樣子，心中十分踏實。</p>
+                <p>他知道，安頓好大後方，他才能毫無顧忌地前往神界。</p>
+            </div>
+        </article>
+
+        <!-- Chapter Navigation Bottom -->
+        <nav class="chapter-nav" style="margin-top: 48px;">
+            <a href="chapter-59.html" id="prevChapterBottom">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+                上一章
+            </a>
+            <a href="chapters.html" style="color: var(--accent);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                </svg>
+                目錄
+            </a>
+            <a href="chapter-61.html" id="nextChapterBottom">
+                下一章
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </a>
+        </nav>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="bottom-nav-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>首頁</span>
+        </a>
+        <a href="chapters.html" class="bottom-nav-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+            </svg>
+            <span>目錄</span>
+        </a>
+        <button class="bottom-nav-btn" onclick="toggleSettings()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            <span>設定</span>
+        </button>
+        <button class="bottom-nav-btn" onclick="scrollToTop()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+            <span>頂部</span>
+        </button>
+    </nav>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">設定已保存</div>
+
+    <script>
+        // Theme Management
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            // Update active state
+            document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.theme-btn.${theme}`).classList.add('active');
+            
+            showToast('主題已更換');
+        }
+
+        // Font Size
+        function setFontSize(size) {
+            document.getElementById('articleContent').style.fontSize = size + 'rem';
+            localStorage.setItem('fontSize', size);
+            
+            document.querySelectorAll('.font-size-buttons:first-of-type .font-size-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            showToast('字體已調整');
+        }
+
+        // Line Height
+        function setLineHeight(height) {
+            document.getElementById('articleContent').style.lineHeight = height;
+            localStorage.setItem('lineHeight', height);
+            
+            showToast('行距已調整');
+        }
+
+        // Settings Panel
+        function toggleSettings() {
+            document.getElementById('settingsPanel').classList.toggle('active');
+        }
+
+        // Reading Progress
+        function updateProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        // Scroll to Top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+        // Initialize
+        window.addEventListener('scroll', updateProgress);
+        
+        // Load saved settings
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.theme-btn.${savedTheme}`).classList.add('active');
+        }
+
+        const savedFontSize = localStorage.getItem('fontSize');
+        if (savedFontSize) {
+            document.getElementById('articleContent').style.fontSize = savedFontSize + 'rem';
+        }
+
+        const savedLineHeight = localStorage.getItem('lineHeight');
+        if (savedLineHeight) {
+            document.getElementById('articleContent').style.lineHeight = savedLineHeight;
+        }
+    </script>
+</body>
+</html>

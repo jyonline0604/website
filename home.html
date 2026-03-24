@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>林風的修仙之旅 - 首頁</title>
+    <title>科技修真傳 - 首頁</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -50,7 +50,6 @@
             line-height: 1.6;
         }
 
-        /* Header */
         .header {
             position: fixed;
             top: 0;
@@ -124,6 +123,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            text-decoration: none;
         }
 
         .btn-outline {
@@ -149,7 +149,6 @@
             box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
         }
 
-        /* Hero Section */
         .hero {
             padding: 140px 32px 80px;
             text-align: center;
@@ -235,7 +234,6 @@
             margin-top: 4px;
         }
 
-        /* Latest Chapters */
         .section {
             padding: 80px 32px;
             max-width: 1200px;
@@ -366,52 +364,6 @@
             font-weight: 500;
         }
 
-        /* Features */
-        .features {
-            background: var(--bg-secondary);
-            padding: 80px 32px;
-            margin-top: 40px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            text-align: center;
-            padding: 32px;
-        }
-
-        .feature-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--accent-light);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.8rem;
-        }
-
-        .feature-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .feature-desc {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Footer */
         .footer {
             background: var(--bg-secondary);
             border-top: 1px solid var(--border);
@@ -438,24 +390,6 @@
             margin-bottom: 24px;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Mobile Responsive */
         @media (max-width: 768px) {
             .header {
                 padding: 0 16px;
@@ -497,11 +431,6 @@
                 gap: 16px;
             }
 
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-
             .chapter-grid {
                 grid-template-columns: 1fr;
             }
@@ -509,27 +438,23 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
-        <a href="home.html" class="logo">📖 修仙物語</a>
+        <a href="home.html" class="logo">📖 科技修真傳</a>
         <nav class="nav">
             <a href="home.html" class="active">首頁</a>
             <a href="chapters.html">章節</a>
             <a href="#">作者</a>
-            <a href="#">關於</a>
         </nav>
         <div class="header-actions">
-            <button class="btn btn-outline">登入</button>
-            <button class="btn btn-primary">開始閱讀</button>
+            <a href="chapter-1.html" class="btn btn-primary">開始閱讀</a>
         </div>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="hero-badge">
-            ✨ 科技修真題材
+            ✨ 科技 × 修真
         </div>
-        <h1>林風的修仙之旅</h1>
+        <h1>科技修真傳</h1>
         <p>當科技與修仙相遇，會擦出怎樣的火花？一個關於成長、友情與超越自我的故事。</p>
         <div class="hero-actions">
             <a href="chapter-1.html" class="btn btn-primary" style="padding: 14px 32px; font-size: 1rem;">
@@ -545,17 +470,16 @@
                 <div class="stat-label">章節總數</div>
             </div>
             <div class="stat">
-                <div class="stat-value">186K</div>
+                <div class="stat-value">190K</div>
                 <div class="stat-label">總字數</div>
             </div>
             <div class="stat">
-                <div class="stat-value">12.8K</div>
+                <div class="stat-value">15K</div>
                 <div class="stat-label">閱讀次數</div>
             </div>
         </div>
     </section>
 
-    <!-- Latest Chapters -->
     <section class="section">
         <div class="section-header">
             <h2 class="section-title">最新章節</h2>
@@ -566,75 +490,47 @@
         <div class="chapter-grid">
             <a href="chapter-61.html" class="chapter-card">
                 <div class="chapter-number">第61章</div>
-                <h3 class="chapter-title">時空之門</h3>
-                <p class="chapter-excerpt">虛空之中，寧塵與鴻鈞道祖相對而立，探討著通往神界的可能性...</p>
+                <h3 class="chapter-title">靈芯之主</h3>
+                <p class="chapter-excerpt">主角終於掌控靈芯的力量，開創新紀元...</p>
                 <div class="chapter-meta">
-                    <span class="chapter-date">2026年3月24日</span>
+                    <span class="chapter-date">2026年3月</span>
                     <span class="chapter-read">閱讀全文 →</span>
                 </div>
             </a>
             <a href="chapter-60.html" class="chapter-card">
                 <div class="chapter-number">第60章</div>
-                <h3 class="chapter-title">新的紀元</h3>
-                <p class="chapter-excerpt">神界壁壘即將出現薄弱節點，寧塵決定帶父母踏上仙途...</p>
+                <h3 class="chapter-title">破序者來襲</h3>
+                <p class="chapter-excerpt">神秘的破序者出現，給修真界帶來前所未有的危機...</p>
                 <div class="chapter-meta">
-                    <span class="chapter-date">2026年3月23日</span>
+                    <span class="chapter-date">2026年3月</span>
                     <span class="chapter-read">閱讀全文 →</span>
                 </div>
             </a>
             <a href="chapter-59.html" class="chapter-card">
                 <div class="chapter-number">第59章</div>
-                <h3 class="chapter-title">純陽飛升</h3>
-                <p class="chapter-excerpt">經過漫長的修煉，眾人終於迎來了飛升的時刻...</p>
+                <h3 class="chapter-title">靈池傳承</h3>
+                <p class="chapter-excerpt">古老的靈池蘊含著什麼秘密？...</p>
                 <div class="chapter-meta">
-                    <span class="chapter-date">2026年3月22日</span>
+                    <span class="chapter-date">2026年3月</span>
                     <span class="chapter-read">閱讀全文 →</span>
                 </div>
             </a>
             <a href="chapter-58.html" class="chapter-card">
                 <div class="chapter-number">第58章</div>
-                <h3 class="chapter-title">靈界之巔</h3>
-                <p class="chapter-excerpt">中央靈界迎來了前所未有的盛況，各方勢力齊聚一堂...</p>
+                <h3 class="chapter-title">黑市探險</h3>
+                <p class="chapter-excerpt">在黑市中探尋機緣，結識神秘的盟友...</p>
                 <div class="chapter-meta">
-                    <span class="chapter-date">2026年3月21日</span>
+                    <span class="chapter-date">2026年3月</span>
                     <span class="chapter-read">閱讀全文 →</span>
                 </div>
             </a>
         </div>
     </section>
 
-    <!-- Features -->
-    <section class="features">
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📱</div>
-                <h3 class="feature-title">跨設備閱讀</h3>
-                <p class="feature-desc">支援手機、平板、電腦無縫切換，隨時隨地繼續閱讀</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🌙</div>
-                <h3 class="feature-title">深色模式</h3>
-                <p class="feature-desc">護眼深色主題，長時間閱讀也不累</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3 class="feature-title">流暢體驗</h3>
-                <p class="feature-desc">精心優化的頁面載入速度，告別等待</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-logo">📖 修仙物語</div>
-            <p class="footer-text">版權所有 © 2026 林風的修仙之旅 | 科技修真題材小說</p>
-            <div class="footer-links">
-                <a href="#">首頁</a>
-                <a href="#">章節目錄</a>
-                <a href="#">隱私政策</a>
-                <a href="#">聯絡我們</a>
-            </div>
+            <div class="footer-logo">📖 科技修真傳</div>
+            <p class="footer-text">版權所有 © 2026 科技修真傳</p>
         </div>
     </footer>
 </body>

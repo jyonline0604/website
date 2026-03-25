@@ -150,23 +150,11 @@
         }
 
         .hero {
+            min-height: 85vh;
             padding: 140px 32px 80px;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url("assets/hero-bg.jpg") center/cover no-repeat;
+            background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%), url("assets/hero-bg.jpg") center/cover no-repeat;
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
-            pointer-events: none;
         }
 
         .hero-badge {
@@ -236,6 +224,8 @@
             padding: 80px 32px;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .section-header {
@@ -285,7 +275,7 @@
         }
 
         .chapter-card {
-            background: var(--bg-secondary);
+            background: rgba(255,255,255,0.95);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 24px;
@@ -478,7 +468,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" style="background: var(--bg-primary); border-radius: 20px 20px 0 0; margin-top: -40px; position: relative; z-index: 2;">
         <div class="section-header">
             <h2 class="section-title">最新章節</h2>
             <a href="chapters.html" class="view-all">

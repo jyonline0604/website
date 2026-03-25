@@ -84,19 +84,19 @@
         .author-section {
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 100px 24px 60px;
+            align-items: flex-end;
+            justify-content: flex-end;
+            padding: 80px 40px 40px;
             position: relative;
         }
 
         .author-card {
-            max-width: 800px;
-            background: rgba(255, 255, 255, 0.92);
-            border-radius: 32px;
-            padding: 60px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            text-align: center;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            text-align: left;
             position: relative;
             overflow: hidden;
         }
@@ -112,44 +112,47 @@
         }
 
         .author-avatar {
-            width: 140px;
-            height: 140px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background: linear-gradient(135deg, #e8d5c4, #f5ebe0);
-            margin: 0 auto 24px;
+            margin: 0 0 16px 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            border: 4px solid white;
+            font-size: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 3px solid white;
+            float: left;
+            margin-right: 16px;
         }
 
         .author-name {
             font-family: 'Noto Serif TC', serif;
-            font-size: 2rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: #2d2d2d;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
+            padding-top: 12px;
         }
 
         .author-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #888;
-            margin-bottom: 32px;
-            letter-spacing: 2px;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+            clear: both;
         }
 
         .author-bio {
-            font-size: 1.1rem;
-            line-height: 1.9;
+            font-size: 0.9rem;
+            line-height: 1.7;
             color: #555;
-            margin-bottom: 32px;
-            text-align: left;
+            margin-bottom: 20px;
         }
 
         .author-bio p {
-            margin-bottom: 16px;
+            margin-bottom: 10px;
         }
 
         .author-bio p:last-child {
@@ -158,23 +161,22 @@
 
         .author-links {
             display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-top: 32px;
-            padding-top: 32px;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
             border-top: 1px solid rgba(0,0,0,0.08);
         }
 
         .author-link {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
+            gap: 6px;
+            padding: 10px 16px;
             background: linear-gradient(135deg, #6366f1, #8b5cf6);
             color: white;
             text-decoration: none;
-            border-radius: 12px;
-            font-size: 0.9rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: all 0.2s;
             box-shadow: 0 4px 12px rgba(99,102,241,0.3);

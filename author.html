@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於作者 - 科技修真傳</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fef6f0 0%, #fdf2eb 50%, #f8e8dc 100%);
+            color: #3d3d3d;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav { display: flex; gap: 8px; }
+
+        .nav a {
+            color: #666;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .nav a:hover { background: rgba(99,102,241,0.1); color: #6366f1; }
+
+        .author-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 24px 60px;
+            position: relative;
+        }
+
+        .author-card {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 32px;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .author-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #f8b4c4, #a8d8ea, #98d9a8, #f9d89c);
+        }
+
+        .author-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e8d5c4, #f5ebe0);
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            border: 4px solid white;
+        }
+
+        .author-name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d2d2d;
+            margin-bottom: 8px;
+        }
+
+        .author-label {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 32px;
+            letter-spacing: 2px;
+        }
+
+        .author-bio {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .author-bio p {
+            margin-bottom: 16px;
+        }
+
+        .author-bio p:last-child {
+            margin-bottom: 0;
+        }
+
+        .author-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .author-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(99,102,241,0.3);
+        }
+
+        .author-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99,102,241,0.4);
+        }
+
+        .works-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .works-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            color: #2d2d2d;
+            margin-bottom: 40px;
+        }
+
+        .work-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .work-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .work-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #f8b4c4, #a8d8ea);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .work-info { flex: 1; }
+
+        .work-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d2d2d;
+            margin-bottom: 8px;
+        }
+
+        .work-desc {
+            font-size: 0.95rem;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .work-arrow {
+            color: #ccc;
+            font-size: 1.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 0 16px; }
+            .nav { display: none; }
+            .author-card { padding: 40px 24px; margin: 0 16px; }
+            .author-name { font-size: 1.6rem; }
+            .author-bio { font-size: 1rem; }
+            .work-card { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="logo">
+            <div class="logo-icon">📖</div>
+            科技修真傳
+        </a>
+        <nav class="nav">
+            <a href="home.html">首頁</a>
+            <a href="chapters.html">章節</a>
+            <a href="news.html">AI 新聞</a>
+            <a href="author.html" style="background: rgba(99,102,241,0.1); color: #6366f1;">作者</a>
+        </nav>
+    </header>
+
+    <section class="author-section">
+        <div class="author-card">
+            <div class="author-avatar">🐱</div>
+            <h1 class="author-name">大肥喵</h1>
+            <p class="author-label">TONG TOMMY</p>
+            
+            <div class="author-bio">
+                <p>👋 你好！我是大肥喵，係香港土生土長嘅科幻同修真小說愛好者。</p>
+                
+                <p>📚 從小就鍾意睇科幻小說同埋武俠修真漫畫，夢想係創作出屬於自己嘅科技修真世界。《科技修真傳》就係我嘅第一部長篇小說，融合咗我最鍾意嘅兩個元素——高科技同埋傳統修真。</p>
+                
+                <p>💡 我相信未來嘅世界，人類同AI會共同進化，呢個故事就係探索呢個可能性。希望你鍾意林風嘅冒險旅程！</p>
+                
+                <p>🔧 業餘時間都會整下網站、寫下code，或者探索新嘅AI技術。</p>
+            </div>
+
+            <div class="author-links">
+                <a href="home.html" class="author-link">
+                    📖 開始閱讀
+                </a>
+                <a href="chapters.html" class="author-link">
+                    📚 章節目錄
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="works-section">
+        <h2 class="works-title">📖 作品</h2>
+        
+        <a href="home.html" class="work-card">
+            <div class="work-icon">🚀</div>
+            <div class="work-info">
+                <div class="work-name">科技修真傳</div>
+                <div class="work-desc">當科技與修仙相遇，會擦出怎樣的火花？林風在末法時代覺醒靈芯，開啟修真之路，融合科幻與修真元素的长篇小說。目前已有 62 章，持續更新中。</div>
+            </div>
+            <div class="work-arrow">→</div>
+        </a>
+    </section>
+
+    <footer class="footer">
+        <p>版權所有 © 2026 大肥喵 | 科技修真傳</p>
+    </footer>
+</body>
+</html>

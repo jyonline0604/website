@@ -715,15 +715,13 @@
     </main>
 
     <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-        <a href="chapter-60.html">← 上一章</a>
+    <a href="chapter-60.html">← 上一章</a>
         <div class="nav-center">
             <button class="nav-btn" onclick="prevChapter()">◀</button>
             <span id="progress">0%</span>
             <button class="nav-btn" onclick="nextChapter()">▶</button>
         </div>
-        <a href="chapter-62.html">下一章 →</a>
-    </nav>
+        <a href="chapter-62.html">下一章 →</a></nav>
 
     <!-- Settings Modal -->
     <div class="modal-overlay" id="settingsModal">
@@ -863,13 +861,9 @@
         });
 
         // Chapter Navigation
-        function prevChapter() {
-            window.location.href = 'chapter-60.html';
-        }
+        function prevChapter() { window.location.href = 'chapter-60.html'; }
 
-        function nextChapter() {
-            window.location.href = 'chapter-61.html';
-        }
+        function nextChapter() { window.location.href = 'chapter-62.html'; }
 
         // Reading Progress
         function updateProgress() {

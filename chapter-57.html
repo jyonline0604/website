@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第57章：輪迴之謎 - 科技修真傳</title>
+    <title>第57章：輪迴之謎</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -588,15 +588,13 @@
     </main>
 
     <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-        <a href="chapter-56.html">← 上一章</a>
+    <a href="chapter-56.html">← 上一章</a>
         <div class="nav-center">
             <button class="nav-btn" onclick="prevChapter()">◀</button>
             <span id="progress">0%</span>
             <button class="nav-btn" onclick="nextChapter()">▶</button>
         </div>
-        <a href="chapter-58.html">下一章 →</a>
-    </nav>
+        <a href="chapter-58.html">下一章 →</a></nav>
 
     <!-- Settings Modal -->
     <div class="modal-overlay" id="settingsModal">
@@ -736,13 +734,9 @@
         });
 
         // Chapter Navigation
-        function prevChapter() {
-            window.location.href = 'chapter-56.html';
-        }
+        function prevChapter() { window.location.href = 'chapter-56.html'; }
 
-        function nextChapter() {
-            window.location.href = 'chapter-58.html';
-        }
+        function nextChapter() { window.location.href = 'chapter-58.html'; }
 
         // Reading Progress
         function updateProgress() {

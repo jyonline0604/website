@@ -362,12 +362,7 @@
             } catch {
                 return '';
             }
-        }
-        
-        function getThumbnailUrl(url) {
-            if (!url) return '';
-            const domain = url.replace(/^https?:\/\//, '').split('/')[0].replace('www.', '');
-            return `https://logo.clearbit.com/${domain}`;
+        }`;
         }
 
         function createNewsCard(item, isFeatured = false) {
@@ -376,13 +371,10 @@
             const bgColor = CATEGORY_COLORS[item.category] || 'linear-gradient(135deg, #1a1a25, #2d1b4e)';
             const faviconUrl = getFaviconUrl(item.link);
             const domain = item.link ? item.link.replace(/^https?:\/\//, '').split('/')[0].replace('www.', '') : '';
-            const thumbnailUrl = domain ? `https://logo.clearbit.com/${domain}` : '';
 
             return `
                 <a href="${item.link}" target="_blank" class="news-card ${isFeatured ? 'featured' : ''}" data-category="${item.category}">
-                    <div class="news-card-image" style="background: ${bgColor}">
-                        <img class="news-card-img" src="${thumbnailUrl}" alt="" onerror="this.style.opacity='0';this.src='';">
-                        <span class="news-card-icon" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;"><span style="font-size: ${isFeatured ? '4rem' : '2.5rem'}">${icon}</span></span>
+                    <div class="news-card-image" style="background: ${bgColor}">                        <span class="news-card-icon" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;"><span style="font-size: ${isFeatured ? '4rem' : '2.5rem'}">${icon}</span></span>
                         <img class="news-card-favicon" src="${getFaviconUrl(item.link)}" alt="" onerror="this.style.display='none';" style="position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:6px;z-index:3;background:white;padding:3px;box-shadow:0 2px 4px rgba(0,0,0,0.2);">
                         <span class="news-card-category">${icon} ${categoryName}</span>
                         <span class="news-card-source">${getSourceDomain(item.link)}</span>
@@ -397,66 +389,6 @@
                 </a>
             `;
         }
-            const categoryName = CATEGORY_NAMES[item.category] || '其他';
-            const icon = CATEGORY_ICONS[item.category] || '📰';
-            const bgColor = CATEGORY_COLORS[item.category] || 'linear-gradient(135deg, #1a1a25, #2d1b4e)';
-
-            return `
-                <a href="${item.link}" target="_blank" class="news-card ${isFeatured ? 'featured' : ''}" data-category="${item.category}">
-                    <div class="news-card-image" style="background: ${bgColor}">
-                        <img class="news-card-favicon" src="${getFaviconUrl(item.link)}" alt="" onerror="this.style.display='none';" style="position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:6px;z-index:3;background:white;padding:3px;box-shadow:0 2px 4px rgba(0,0,0,0.2);">
-                        <span class="news-card-category">${icon} ${categoryName}</span>
-                        <span class="news-card-source">${getSourceDomain(item.link)}</span>
-                        <span style="font-size: ${isFeatured ? '4rem' : '2.5rem'}">${icon}</span>
-                    </div>
-                    <div class="news-card-body">
-                        <h3 class="news-card-title">${item.title}</h3>
-                        <p class="news-card-desc">${item.description || '點擊閱讀全文...'}</p>
-                        <div class="news-card-meta">
-                            <span class="news-card-date">${item.pubDate ? timeAgo(item.pubDate) : '最近更新'}</span>
-                        </div>
-                    </div>
-                </a>
-            `;
-        }
-
-        function renderNews(category = 'all') {
-            const grid = document.getElementById('newsGrid');
-            const filtered = category === 'all'
-                ? allNews
-                : allNews.filter(n => n.category === category);
-
-            if (filtered.length === 0) {
-                grid.innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:60px;">暫無此分類新聞</p>';
-                return;
-            }
-
-            // 第一條為 featured
-            let html = createNewsCard(filtered[0], true);
-            for (let i = 1; i < filtered.length; i++) {
-                html += createNewsCard(filtered[i]);
-            }
-            grid.innerHTML = html;
-        }
-
-        function updateCounts() {
-            document.getElementById('count-all').textContent = allNews.length;
-            document.getElementById('count-model').textContent = allNews.filter(n => n.category === 'model').length;
-            document.getElementById('count-research').textContent = allNews.filter(n => n.category === 'research').length;
-            document.getElementById('count-industry').textContent = allNews.filter(n => n.category === 'industry').length;
-            document.getElementById('count-tools').textContent = allNews.filter(n => n.category === 'tools').length;
-        }
-
-        // Filter buttons
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                renderNews(btn.dataset.category);
-            });
-        });
-
-        // Load news
         async function loadNews() {
             try {
                 const response = await fetch('news-data.json');

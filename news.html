@@ -345,11 +345,7 @@
             return date.toLocaleDateString('zh-TW');
         }
 
-        // 從 URL 提取域名並獲取 favicon
-        function getFaviconUrl(url) {
-            try {
-                const domain = new URL(url).hostname;
-                return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+        // 從 URL 提取域名並獲取 favicon&sz=64`;
             } catch {
                 return '';
             }
@@ -369,15 +365,15 @@
             const categoryName = CATEGORY_NAMES[item.category] || '其他';
             const icon = CATEGORY_ICONS[item.category] || '📰';
             const bgColor = CATEGORY_COLORS[item.category] || 'linear-gradient(135deg, #1a1a25, #2d1b4e)';
-            const faviconUrl = getFaviconUrl(item.link);
+            
             const domain = item.link ? item.link.replace(/^https?:\/\//, '').split('/')[0].replace('www.', '') : '';
 
             return `
                 <a href="${item.link}" target="_blank" class="news-card ${isFeatured ? 'featured' : ''}" data-category="${item.category}">
                     <div class="news-card-image" style="background: ${bgColor}">                        <span class="news-card-icon" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;"><span style="font-size: ${isFeatured ? '4rem' : '2.5rem'}">${icon}</span></span>
-                        <img class="news-card-favicon" src="${getFaviconUrl(item.link)}" alt="" onerror="this.style.display='none';" style="position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:6px;z-index:3;background:white;padding:3px;box-shadow:0 2px 4px rgba(0,0,0,0.2);">
+                        
                         <span class="news-card-category">${icon} ${categoryName}</span>
-                        <span class="news-card-source">${getSourceDomain(item.link)}</span>
+                        <span class="news-card-source" style="position:absolute;top:10px;right:10px;font-size:0.7rem;background:rgba(0,0,0,0.5);color:white;padding:2px 6px;border-radius:4px;z-index:3;">${getSourceDomain(item.link)}</span>
                     </div>
                     <div class="news-card-body">
                         <h3 class="news-card-title">${item.title}</h3>

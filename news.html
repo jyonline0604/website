@@ -137,7 +137,7 @@
         }
 
         .news-card {
-            background: rgba(18, 18, 26, 0.92);
+            background: rgba(18, 18, 26, 0.5);
             border: 1px solid var(--border);
             border-radius: 16px; overflow: hidden;
             transition: all 0.3s ease; cursor: pointer;
@@ -154,12 +154,12 @@
             height: 180px;
             display: flex; align-items: center; justify-content: center;
             font-size: 3rem; position: relative;
-            background: linear-gradient(135deg, var(--bg-tertiary), var(--accent-light));
+            background: transparent;
         }
 
         .news-card-image::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.6) 100%);
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
         }
 
         .news-card-category {
@@ -336,7 +336,7 @@
         function createNewsCard(item, isFeatured = false) {
             const categoryName = CATEGORY_NAMES[item.category] || '其他';
             const icon = CATEGORY_ICONS[item.category] || '📰';
-            const bgColor = CATEGORY_COLORS[item.category] || 'linear-gradient(135deg, #1a1a25, #2d1b4e)';
+            const bgColor = 'transparent';
 
             return `
                 <a href="${item.link}" target="_blank" class="news-card ${isFeatured ? 'featured' : ''}" data-category="${item.category}">

@@ -1292,6 +1292,66 @@
                 }
             }
         }
+            // 章節範圍過濾功能
+        function filterChapters(range) {
+            const items = document.getElementsByClassName('chapter-item');
+            const tabs = document.getElementsByClassName('filter-tab');
+            
+            // 更新 tab 狀態
+            for (let tab of tabs) {
+                tab.classList.remove('active');
+                if (tab.getAttribute('href') === '#' + range || (range === 'all' && tab.getAttribute('href') === 'chapters.html')) {
+                    tab.classList.add('active');
+                }
+            }
+            
+            // 顯示/隱藏章節
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                const chapterNum = parseInt(item.getAttribute('data-chapter') || '0');
+                
+                if (range === 'all') {
+                    item.style.display = "";
+                } else if (range === 'ch1-20') {
+                    item.style.display = (chapterNum >= 1 && chapterNum <= 20) ? "" : "none";
+                } else if (range === 'ch21-40') {
+                    item.style.display = (chapterNum >= 21 && chapterNum <= 40) ? "" : "none";
+                } else if (range === 'ch41-64') {
+                    item.style.display = (chapterNum >= 41 && chapterNum <= 64) ? "" : "none";
+                }
+            }
+        }
+        
+        // 為每個章節添加 data-chapter 屬性
+        function initChapterData() {
+            const items = document.getElementsByClassName('chapter-item');
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                const chapterNum = item.getElementsByClassName('chapter-num')[0];
+                if (chapterNum) {
+                    const match = chapterNum.textContent.match(/第(\d+)章/);
+                    if (match) {
+                        item.setAttribute('data-chapter', match[1]);
+                    }
+                }
+            }
+        }
+        
+        // 頁面載入時初始化
+        document.addEventListener('DOMContentLoaded', initChapterData);
+        
+        // 監聽 filter-tab 按鈕點擊
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('filter-tab')) {
+                e.preventDefault();
+                const href = e.target.getAttribute('href');
+                if (href === 'chapters.html') {
+                    filterChapters('all');
+                } else if (href.startsWith('#')) {
+                    filterChapters(href.substring(1));
+                }
+            }
+        });
     </script>
 </body>
 </html>

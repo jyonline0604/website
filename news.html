@@ -333,7 +333,48 @@
             return date.toLocaleDateString('zh-TW');
         }
 
+        // 從 URL 提取域名並獲取 favicon
+        function getFaviconUrl(url) {
+            try {
+                const domain = new URL(url).hostname;
+                return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+            } catch {
+                return '';
+            }
+        }
+        
+        function getThumbnailUrl(url) {
+            if (!url) return '';
+            const domain = url.replace(/^https?:\/\//, '').split('/')[0].replace('www.', '');
+            return `https://logo.clearbit.com/${domain}`;
+        }
+
         function createNewsCard(item, isFeatured = false) {
+            const categoryName = CATEGORY_NAMES[item.category] || '其他';
+            const icon = CATEGORY_ICONS[item.category] || '📰';
+            const bgColor = CATEGORY_COLORS[item.category] || 'linear-gradient(135deg, #1a1a25, #2d1b4e)';
+            const faviconUrl = getFaviconUrl(item.link);
+            const domain = item.link ? item.link.replace(/^https?:\/\//, '').split('/')[0].replace('www.', '') : '';
+            const thumbnailUrl = domain ? `https://logo.clearbit.com/${domain}` : '';
+
+            return `
+                <a href="${item.link}" target="_blank" class="news-card ${isFeatured ? 'featured' : ''}" data-category="${item.category}">
+                    <div class="news-card-image" style="background: ${bgColor}">
+                        <img class="news-card-img" src="${thumbnailUrl}" alt="" onerror="this.style.opacity='0';this.src='';">
+                        <span class="news-card-icon" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;"><span style="font-size: ${isFeatured ? '4rem' : '2.5rem'}">${icon}</span></span>
+                        <span class="news-card-category">${icon} ${categoryName}</span>
+                        <img class="news-card-favicon" src="${faviconUrl}" alt="source" onerror="this.style.display='none';" style="position:absolute;top:10px;right:10px;width:24px;height:24px;border-radius:4px;z-index:3;background:white;padding:2px;">
+                    </div>
+                    <div class="news-card-body">
+                        <h3 class="news-card-title">${item.title}</h3>
+                        <p class="news-card-desc">${item.description || '點擊閱讀全文...'}</p>
+                        <div class="news-card-meta">
+                            <span class="news-card-date">${item.pubDate ? timeAgo(item.pubDate) : '最近更新'}</span>
+                        </div>
+                    </div>
+                </a>
+            `;
+        }
             const categoryName = CATEGORY_NAMES[item.category] || '其他';
             const icon = CATEGORY_ICONS[item.category] || '📰';
             const bgColor = CATEGORY_COLORS[item.category] || 'linear-gradient(135deg, #1a1a25, #2d1b4e)';

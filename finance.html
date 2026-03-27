@@ -844,303 +844,303 @@
             border: 1px solid var(--border);
         }
         
-        /* 市場類別布局 - 類別垂直，內容橫向 */
-        .market-categories-container {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
+        /* 市場類別布局 - 類別垂直，內容橫向 - 強制樣式 */
+        #market-overview .market-categories-container {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 30px !important;
         }
         
-        .market-category {
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            border: 2px solid var(--border);
-            overflow: hidden;
-            transition: all 0.3s ease;
+        #market-overview .market-category {
+            background: var(--bg-secondary) !important;
+            border-radius: 16px !important;
+            border: 2px solid var(--border) !important;
+            overflow: hidden !important;
+            transition: all 0.3s ease !important;
         }
         
-        .market-category:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        #market-overview .market-category:hover {
+            transform: translateY(-5px) !important;
+            border-color: var(--accent) !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
         }
         
         /* 不同類別的邊框顏色 */
-        .crypto-category {
-            border-left: 6px solid #f7931a; /* 比特幣橙色 */
+        #market-overview .crypto-category {
+            border-left: 6px solid #f7931a !important; /* 比特幣橙色 */
         }
         
-        .stock-category {
-            border-left: 6px solid #3b82f6; /* 藍色 */
+        #market-overview .stock-category {
+            border-left: 6px solid #3b82f6 !important; /* 藍色 */
         }
         
-        .commodity-category {
-            border-left: 6px solid #f59e0b; /* 黃金黃色 */
+        #market-overview .commodity-category {
+            border-left: 6px solid #f59e0b !important; /* 黃金黃色 */
         }
         
-        .forex-category {
-            border-left: 6px solid #8b5cf6; /* 紫色 */
+        #market-overview .forex-category {
+            border-left: 6px solid #8b5cf6 !important; /* 紫色 */
         }
         
-        .bond-category {
-            border-left: 6px solid #10b981; /* 綠色 */
+        #market-overview .bond-category {
+            border-left: 6px solid #10b981 !important; /* 綠色 */
         }
         
-        .sentiment-category {
-            border-left: 6px solid #ec4899; /* 粉色 */
+        #market-overview .sentiment-category {
+            border-left: 6px solid #ec4899 !important; /* 粉色 */
         }
         
-        .category-header {
-            padding: 20px;
-            background: var(--bg-tertiary);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        #market-overview .category-header {
+            padding: 20px !important;
+            background: var(--bg-tertiary) !important;
+            border-bottom: 1px solid var(--border) !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
         }
         
-        .category-header h3 {
-            margin: 0;
-            font-size: 1.3rem;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        #market-overview .category-header h3 {
+            margin: 0 !important;
+            font-size: 1.3rem !important;
+            color: var(--text-primary) !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
         }
         
-        .category-icon {
-            font-size: 1.5rem;
+        #market-overview .category-icon {
+            font-size: 1.5rem !important;
         }
         
-        .category-update {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--accent);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
+        #market-overview .category-update {
+            background: rgba(16, 185, 129, 0.1) !important;
+            color: var(--accent) !important;
+            padding: 4px 12px !important;
+            border-radius: 20px !important;
+            font-size: 0.85rem !important;
+            font-weight: 500 !important;
         }
         
-        .category-content {
-            padding: 25px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: flex-start;
-            align-items: stretch;
+        #market-overview .category-content {
+            padding: 25px !important;
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 20px !important;
+            justify-content: flex-start !important;
+            align-items: stretch !important;
         }
         
         /* 當內容橫向排列時，調整卡片寬度 */
-        .category-content .market-data-item {
-            flex: 1;
-            min-width: 250px;
-            max-width: 350px;
+        #market-overview .category-content .market-data-item {
+            flex: 1 !important;
+            min-width: 250px !important;
+            max-width: 350px !important;
         }
         
-        .loading-data {
-            color: var(--text-secondary);
-            font-style: italic;
-            text-align: center;
-            padding: 20px;
+        #market-overview .loading-data {
+            color: var(--text-secondary) !important;
+            font-style: italic !important;
+            text-align: center !important;
+            padding: 20px !important;
         }
         
-        /* 市場數據卡片樣式 - 橫向排列優化 */
-        .market-data-item {
-            background: var(--bg-tertiary);
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid var(--border);
-            transition: all 0.2s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
+        /* 市場數據卡片樣式 - 橫向排列優化 - 強制樣式 */
+        #market-overview .market-data-item {
+            background: var(--bg-tertiary) !important;
+            border-radius: 12px !important;
+            padding: 20px !important;
+            border: 1px solid var(--border) !important;
+            transition: all 0.2s !important;
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100% !important;
         }
         
-        .market-data-item:hover {
-            background: rgba(16, 185, 129, 0.05);
-            border-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        #market-overview .market-data-item:hover {
+            background: rgba(16, 185, 129, 0.05) !important;
+            border-color: var(--accent) !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
         }
         
-        .market-data-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            flex-shrink: 0;
+        #market-overview .market-data-header {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: flex-start !important;
+            margin-bottom: 15px !important;
+            flex-shrink: 0 !important;
         }
         
-        .market-data-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            line-height: 1.3;
+        #market-overview .market-data-name {
+            font-size: 1.1rem !important;
+            font-weight: 600 !important;
+            color: var(--text-primary) !important;
+            line-height: 1.3 !important;
         }
         
-        .market-data-symbol {
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-            padding: 3px 10px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            white-space: nowrap;
+        #market-overview .market-data-symbol {
+            background: var(--bg-secondary) !important;
+            color: var(--text-secondary) !important;
+            padding: 3px 10px !important;
+            border-radius: 4px !important;
+            font-size: 0.85rem !important;
+            font-weight: 500 !important;
+            white-space: nowrap !important;
         }
         
-        .market-data-price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-            flex-shrink: 0;
+        #market-overview .market-data-price {
+            font-size: 1.8rem !important;
+            font-weight: 700 !important;
+            color: var(--text-primary) !important;
+            margin-bottom: 8px !important;
+            flex-shrink: 0 !important;
         }
         
-        .market-data-change {
-            font-size: 1.1rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 15px;
-            flex-shrink: 0;
+        #market-overview .market-data-change {
+            font-size: 1.1rem !important;
+            font-weight: 600 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            margin-bottom: 15px !important;
+            flex-shrink: 0 !important;
         }
         
-        .change-positive {
-            color: #10b981;
+        #market-overview .change-positive {
+            color: #10b981 !important;
         }
         
-        .change-negative {
-            color: #ef4444;
+        #market-overview .change-negative {
+            color: #ef4444 !important;
         }
         
-        .change-neutral {
-            color: var(--text-secondary);
+        #market-overview .change-neutral {
+            color: var(--text-secondary) !important;
         }
         
-        .market-data-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: auto;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            flex-shrink: 0;
+        #market-overview .market-data-details {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 12px !important;
+            margin-top: auto !important;
+            padding-top: 15px !important;
+            border-top: 1px solid rgba(255,255,255,0.1) !important;
+            flex-shrink: 0 !important;
         }
         
-        .market-data-detail {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+        #market-overview .market-data-detail {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 4px !important;
         }
         
-        .detail-label {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            white-space: nowrap;
+        #market-overview .detail-label {
+            color: var(--text-secondary) !important;
+            font-size: 0.85rem !important;
+            white-space: nowrap !important;
         }
         
-        .detail-value {
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            font-weight: 500;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        #market-overview .detail-value {
+            color: var(--text-primary) !important;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
         }
         
-        .category-footer {
-            padding: 15px 20px;
-            background: var(--bg-tertiary);
-            border-top: 1px solid var(--border);
-            text-align: center;
+        #market-overview .category-footer {
+            padding: 15px 20px !important;
+            background: var(--bg-tertiary) !important;
+            border-top: 1px solid var(--border) !important;
+            text-align: center !important;
         }
         
-        .data-source {
-            color: var(--text-tertiary);
-            font-size: 0.85rem;
+        #market-overview .data-source {
+            color: var(--text-tertiary) !important;
+            font-size: 0.85rem !important;
         }
         
-        /* 市場情緒特殊樣式 */
-        .sentiment-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            height: 100%;
+        /* 市場情緒特殊樣式 - 強制樣式 */
+        #market-overview .sentiment-content {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            height: 100% !important;
         }
         
-        .sentiment-index {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 10px;
+        #market-overview .sentiment-index {
+            font-size: 3.5rem !important;
+            font-weight: 800 !important;
+            margin-bottom: 10px !important;
         }
         
-        .sentiment-label {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 15px;
+        #market-overview .sentiment-label {
+            font-size: 1.4rem !important;
+            font-weight: 700 !important;
+            margin-bottom: 15px !important;
         }
         
-        .sentiment-meter {
-            width: 100%;
-            margin: 20px 0;
+        #market-overview .sentiment-meter {
+            width: 100% !important;
+            margin: 20px 0 !important;
         }
         
-        .meter-bar {
-            height: 12px;
-            background: var(--bg-tertiary);
-            border-radius: 6px;
-            overflow: hidden;
-            margin-bottom: 8px;
+        #market-overview .meter-bar {
+            height: 12px !important;
+            background: var(--bg-tertiary) !important;
+            border-radius: 6px !important;
+            overflow: hidden !important;
+            margin-bottom: 8px !important;
         }
         
-        .meter-fill {
-            height: 100%;
-            border-radius: 6px;
-            transition: width 1s ease;
+        #market-overview .meter-fill {
+            height: 100% !important;
+            border-radius: 6px !important;
+            transition: width 1s ease !important;
         }
         
-        .meter-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+        #market-overview .meter-labels {
+            display: flex !important;
+            justify-content: space-between !important;
+            font-size: 0.9rem !important;
+            color: var(--text-secondary) !important;
         }
         
-        .sentiment-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            max-width: 300px;
+        #market-overview .sentiment-description {
+            color: var(--text-secondary) !important;
+            font-size: 0.95rem !important;
+            line-height: 1.5 !important;
+            max-width: 300px !important;
         }
         
-        /* 市場圖例 */
-        .market-legend {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
+        /* 市場圖例 - 強制樣式 */
+        #market-overview .market-legend {
+            display: flex !important;
+            justify-content: center !important;
+            gap: 30px !important;
+            margin-top: 30px !important;
+            padding-top: 20px !important;
+            border-top: 1px solid var(--border) !important;
         }
         
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        #market-overview .legend-item {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
         }
         
-        .legend-color {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
+        #market-overview .legend-color {
+            width: 20px !important;
+            height: 20px !important;
+            border-radius: 4px !important;
         }
         
-        .legend-text {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        #market-overview .legend-text {
+            color: var(--text-secondary) !important;
+            font-size: 0.9rem !important;
         }
         
         /* 財經新聞樣式 */
@@ -1412,81 +1412,81 @@
                 font-size: 0.95rem;
             }
             
-            /* 市場類別布局響應式 */
-            .section-header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
+            /* 市場類別布局響應式 - 強制樣式 */
+            #market-overview .section-header {
+                flex-direction: column !important;
+                gap: 15px !important;
+                text-align: center !important;
             }
             
-            .section-header h2 {
-                font-size: 1.5rem;
+            #market-overview .section-header h2 {
+                font-size: 1.5rem !important;
             }
             
-            .section-controls {
-                flex-direction: column;
-                gap: 15px;
-                width: 100%;
+            #market-overview .section-controls {
+                flex-direction: column !important;
+                gap: 15px !important;
+                width: 100% !important;
             }
             
-            .btn-refresh {
-                width: 100%;
-                justify-content: center;
+            #market-overview .btn-refresh {
+                width: 100% !important;
+                justify-content: center !important;
             }
             
-            .last-update {
-                width: 100%;
-                text-align: center;
+            #market-overview .last-update {
+                width: 100% !important;
+                text-align: center !important;
             }
             
-            .market-categories-container {
-                gap: 20px;
+            #market-overview .market-categories-container {
+                gap: 20px !important;
             }
             
-            .category-header {
-                padding: 15px;
+            #market-overview .category-header {
+                padding: 15px !important;
             }
             
-            .category-header h3 {
-                font-size: 1.1rem;
+            #market-overview .category-header h3 {
+                font-size: 1.1rem !important;
             }
             
-            .category-content {
-                padding: 20px;
-                flex-direction: column; /* 手機上改為垂直排列 */
-                gap: 15px;
+            #market-overview .category-content {
+                padding: 20px !important;
+                flex-direction: column !important; /* 手機上改為垂直排列 */
+                gap: 15px !important;
             }
             
-            .category-content .market-data-item {
-                min-width: 100%; /* 手機上卡片佔滿寬度 */
-                max-width: 100%;
+            #market-overview .category-content .market-data-item {
+                min-width: 100% !important; /* 手機上卡片佔滿寬度 */
+                max-width: 100% !important;
             }
             
-            .market-data-item {
-                padding: 15px;
+            #market-overview .market-data-item {
+                padding: 15px !important;
             }
             
-            .market-data-price {
-                font-size: 1.5rem;
+            #market-overview .market-data-price {
+                font-size: 1.5rem !important;
             }
             
-            .market-data-details {
-                grid-template-columns: 1fr;
-                gap: 10px;
+            #market-overview .market-data-details {
+                grid-template-columns: 1fr !important;
+                gap: 10px !important;
             }
             
-            .sentiment-index {
-                font-size: 2.5rem;
+            #market-overview .sentiment-index {
+                font-size: 2.5rem !important;
             }
             
-            .sentiment-label {
-                font-size: 1.1rem;
+            #market-overview .sentiment-label {
+                font-size: 1.1rem !important;
             }
             
-            .market-legend {
-                flex-direction: column;
-                gap: 15px;
-                align-items: center;
+            #market-overview .market-legend {
+                flex-direction: column !important;
+                gap: 15px !important;
+                align-items: center !important;
             }
         }</style>
 </head>
@@ -1518,7 +1518,7 @@
     <!-- 主要內容 -->
     <main class="container">
                 <!-- 市場概況 -->
-        <section class="market-overview">
+        <section class="market-overview" id="market-overview">
             <div class="section-header">
                 <h2>📈 全球市場實時概況</h2>
                 <div class="section-controls">

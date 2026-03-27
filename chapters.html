@@ -9,32 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #FAFBFC;
-            --bg-secondary: #FFFFFF;
-            --bg-tertiary: #F3F4F6;
+            --bg-primary: #0a0a0f;
+            --bg-secondary: rgba(255, 255, 255, 0.95);
             --text-primary: #1F2937;
             --text-secondary: #4B5563;
-            --text-tertiary: #9CA3AF;
             --accent: #6366F1;
-            --accent-hover: #4F46E5;
-            --accent-light: rgba(99, 102, 241, 0.1);
-            --border: #E5E7EB;
-            --shadow: rgba(0, 0, 0, 0.08);
-            --gradient: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #A78BFA 100%);
-        }
-
-        [data-theme="dark"] {
-            --bg-primary: #0F1419;
-            --bg-secondary: #1A1F26;
-            --bg-tertiary: #242B35;
-            --text-primary: #F9FAFB;
-            --text-secondary: #D1D5DB;
-            --text-tertiary: #6B7280;
-            --accent: #818CF8;
-            --accent-hover: #A5B4FC;
-            --accent-light: rgba(129, 140, 248, 0.15);
-            --border: #374151;
-            --shadow: rgba(0, 0, 0, 0.3);
+            --border: rgba(255, 255, 255, 0.1);
         }
 
         * {
@@ -48,15 +28,17 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
+            min-height: 100vh;
         }
 
+        /* 導航列樣式 */
         .header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             height: 64px;
-            background: var(--bg-secondary);
+            background: rgba(10, 10, 15, 0.95);
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
@@ -70,10 +52,9 @@
             font-family: 'Noto Serif TC', serif;
             font-size: 1.5rem;
             font-weight: 700;
-            background: var(--gradient);
+            background: linear-gradient(135deg, #6366f1, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
             text-decoration: none;
         }
 
@@ -83,17 +64,24 @@
         }
 
         .nav a {
-            color: var(--text-secondary);
+            color: #ffffff;
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: color 0.2s;
+            transition: all 0.2s;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: transparent;
             position: relative;
         }
 
-        .nav a:hover,
+        .nav a:hover {
+            background: rgba(99, 102, 241, 0.3);
+        }
+
         .nav a.active {
-            color: var(--accent);
+            background: rgba(99, 102, 241, 0.5);
+            color: #ffffff;
         }
 
         .nav a.active::after {
@@ -107,1176 +95,232 @@
             border-radius: 1px;
         }
 
-        .page-header {
-            padding: 120px 32px 40px;
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .page-header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .breadcrumb {
+        .header-actions {
             display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            color: var(--text-tertiary);
-            margin-bottom: 16px;
+            gap: 12px;
         }
 
-        .breadcrumb a {
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            color: var(--accent);
-        }
-
-        .page-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-        }
-
-        .page-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        .chapter-count {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .filters {
-            padding: 24px 32px;
-            background: var(--bg-primary);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 64px;
-            z-index: 100;
-        }
-
-        .filters-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .filter-tabs {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .filter-tab {
-            padding: 8px 16px;
+        .btn {
+            padding: 10px 20px;
             border-radius: 8px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            background: var(--bg-tertiary);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
             border: none;
             cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
+            font-size: 0.95rem;
         }
 
-        .filter-tab:hover,
-        .filter-tab.active {
-            background: var(--accent);
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #818cf8);
             color: white;
         }
 
-        .search-box {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 8px 16px;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
         }
 
-        .search-box input {
-            border: none;
-            background: transparent;
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            outline: none;
-            width: 200px;
-        }
-
-        .search-box input::placeholder {
-            color: var(--text-tertiary);
-        }
-
-        .chapter-list {
+        /* 主要內容 */
+        .container {
             max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
-            padding: 32px;
+            padding: 0 20px;
+            padding-top: 84px; /* 為導航列留出空間 */
         }
 
-        .chapter-list-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 16px;
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
         }
 
-        .chapter-item {
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        /* 章節列表 */
+        .chapter-list {
             background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            text-decoration: none;
-            transition: all 0.2s;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+        }
+
+        .chapter-list-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .chapter-list-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .total-chapters {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .chapter-list-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chapter-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s;
         }
 
         .chapter-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             border-color: var(--accent);
-            background: var(--accent-light);
         }
 
         .chapter-info {
-            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .chapter-num {
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 1rem;
             color: var(--accent);
-            margin-bottom: 4px;
+            font-weight: 600;
+            min-width: 80px;
         }
 
         .chapter-name {
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 1.1rem;
+            font-weight: 500;
             color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-
-        .chapter-date {
-            font-size: 0.8rem;
-            color: var(--text-tertiary);
         }
 
         .chapter-arrow {
-            color: var(--text-tertiary);
-            transition: all 0.2s;
+            color: var(--accent);
             font-size: 1.2rem;
+            font-weight: 700;
+            opacity: 0.7;
+            transition: opacity 0.2s;
         }
 
         .chapter-item:hover .chapter-arrow {
-            color: var(--accent);
+            opacity: 1;
             transform: translateX(4px);
         }
 
+        /* 頁腳 */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        /* 響應式設計 */
         @media (max-width: 768px) {
             .header {
                 padding: 0 16px;
             }
-
+            
             .nav {
-                display: none;
+                gap: 16px;
             }
-
-            .page-header {
-                padding: 100px 16px 32px;
+            
+            .nav a {
+                padding: 6px 12px;
+                font-size: 0.85rem;
             }
-
+            
+            .container {
+                padding: 0 16px;
+                padding-top: 74px;
+            }
+            
             .page-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
-
-            .filters {
-                padding: 16px;
-            }
-
-            .filters-content {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .filter-tabs {
-                overflow-x: auto;
-                padding-bottom: 8px;
-            }
-
-            .search-box {
-                width: 100%;
-            }
-
-            .search-box input {
-                width: 100%;
-            }
-
+            
             .chapter-list {
-                padding: 16px;
+                padding: 24px;
             }
-
-            .chapter-list-grid {
-                grid-template-columns: 1fr;
+            
+            .chapter-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .chapter-num {
+                min-width: auto;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 導航列 -->
     <header class="header">
         <a href="home.html" class="logo">📖 科技修真傳</a>
         <nav class="nav">
             <a href="home.html">首頁</a>
             <a href="chapters.html" class="active">章節</a>
             <a href="news.html">AI 新聞</a>
+            <a href="https://itv.kofhk.com/" target="_blank">ITV</a>
             <a href="author.html">作者</a>
         </nav>
+        <div class="header-actions">
+            <a href="chapter-1.html" class="btn btn-primary">開始閱讀</a>
+        </div>
     </header>
 
-    <div class="page-header">
-        <div class="page-header-content">
-            <div class="breadcrumb">
-                <a href="home.html">首頁</a>
-                <span>/</span>
-                <span>章節目錄</span>
-            </div>
+    <!-- 主要內容 -->
+    <div class="container">
+        <header class="page-header">
             <h1 class="page-title">章節目錄</h1>
-            <p class="page-subtitle">共 <span class="chapter-count">64 章</span> | 科技修真傳</p>
-        </div>
-    </div>
+            <p class="page-subtitle">探索科技與修真交織的奇幻世界</p>
+        </header>
 
-    <div class="filters">
-        <div class="filters-content">
-            <div class="filter-tabs">
-                <a href="chapters.html" class="filter-tab active">全部</a>
-                <a href="#ch1-20" class="filter-tab">第1-20章</a>
-                <a href="#ch21-40" class="filter-tab">第21-40章</a>
-                <a href="#ch41-64" class="filter-tab">第41-64章</a>
-            </div>
-            <div class="search-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <path d="M21 21l-4.35-4.35"></path>
-                </svg>
-                <input type="text" id="searchInput" placeholder="搜尋章節..." onkeyup="searchChapters()">
-            </div>
-        </div>
-    </div>
-
-    <div class="chapter-list">
-        <div class="chapter-list-grid" id="chapterGrid">
+        <main>
+            <section class="chapter-list">
+                <div class="chapter-list-header">
+                    <h2 class="chapter-list-title">所有章節</h2>
+                    <div class="total-chapters" id="totalChapters">共 67 章</div>
+                </div>
+                <div class="chapter-list-grid" id="chapterGrid">
 
             <a href="chapter-1.html" class="chapter-item">
                 <div class="chapter-info">
                     <div class="chapter-num">第1章</div>
-                    <div class="chapter-name">靈芯覺醒 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-2.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第2章</div>
-                    <div class="chapter-name">數據修仙之路 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-3.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第3章</div>
-                    <div class="chapter-name">末法廢土 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-4.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第4章</div>
-                    <div class="chapter-name">上古靈芯 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-5.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第5章</div>
-                    <div class="chapter-name">系統啟動 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-6.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第6章</div>
-                    <div class="chapter-name">第一個任務 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-7.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第7章</div>
-                    <div class="chapter-name">修煉初體驗 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-8.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第8章</div>
-                    <div class="chapter-name">廢墟探索 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-9.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第9章</div>
-                    <div class="chapter-name">神秘遺跡 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-10.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第10章</div>
-                    <div class="chapter-name">靈氣復甦 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-11.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第11章</div>
-                    <div class="chapter-name">宗門測試 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-12.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第12章</div>
-                    <div class="chapter-name">天賦覺醒 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-13.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第13章</div>
-                    <div class="chapter-name">秘境試煉 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-14.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第14章</div>
-                    <div class="chapter-name">功法傳承 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-15.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第15章</div>
-                    <div class="chapter-name">突破瓶頸 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-16.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第16章</div>
-                    <div class="chapter-name">宗門大比 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-17.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第17章</div>
-                    <div class="chapter-name">天才行行對決 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-18.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第18章</div>
-                    <div class="chapter-name">暗流湧動 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-19.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第19章</div>
-                    <div class="chapter-name">陰謀初現 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-20.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第20章</div>
-                    <div class="chapter-name">生死之戰 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-21.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第21章</div>
-                    <div class="chapter-name">真相大白 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-22.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第22章</div>
-                    <div class="chapter-name">新的征程 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-23.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第23章</div>
-                    <div class="chapter-name">異界之門 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-24.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第24章</div>
-                    <div class="chapter-name">時空穿梭 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-25.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第25章</div>
-                    <div class="chapter-name">多元宇宙 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-26.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第26章</div>
-                    <div class="chapter-name">平行世界 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-27.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第27章</div>
-                    <div class="chapter-name">科技文明 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-28.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第28章</div>
-                    <div class="chapter-name">修真聯盟 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-29.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第29章</div>
-                    <div class="chapter-name">星際戰爭 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-30.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第30章</div>
-                    <div class="chapter-name">終極對決 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-31.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第31章</div>
-                    <div class="chapter-name">宇宙和平 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-32.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第32章</div>
-                    <div class="chapter-name">新的開始 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-33.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第33章</div>
-                    <div class="chapter-name">傳承使命 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-34.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第34章</div>
-                    <div class="chapter-name">時空守護者 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-35.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第35章</div>
-                    <div class="chapter-name">維度跳躍 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-36.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第36章</div>
-                    <div class="chapter-name">量子修真 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-37.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第37章</div>
-                    <div class="chapter-name">數據神格 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-38.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第38章</div>
-                    <div class="chapter-name">虛擬神國 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-39.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第39章</div>
-                    <div class="chapter-name">現實融合 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-40.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第40章</div>
-                    <div class="chapter-name">終極進化 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-41.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第41章</div>
-                    <div class="chapter-name">創世之力 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-42.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第42章</div>
-                    <div class="chapter-name">法則掌控 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-43.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第43章</div>
-                    <div class="chapter-name">時空主宰 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-44.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第44章</div>
-                    <div class="chapter-name">多元宇宙的守望者 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-45.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第45章</div>
-                    <div class="chapter-name">維度戰爭 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-46.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第46章</div>
-                    <div class="chapter-name">終極真相 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-47.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第47章</div>
-                    <div class="chapter-name">創世之謎 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-48.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第48章</div>
-                    <div class="chapter-name">命運抉擇 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-49.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第49章</div>
-                    <div class="chapter-name">永恆之道 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-50.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第50章</div>
-                    <div class="chapter-name">最終覺醒 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-51.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第51章</div>
-                    <div class="chapter-name">黎明前夕 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-52.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第52章</div>
-                    <div class="chapter-name">最終決戰 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-53.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第53章</div>
-                    <div class="chapter-name">新的紀元 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-54.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第54章</div>
-                    <div class="chapter-name">時空裂縫 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-55.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第55章</div>
-                    <div class="chapter-name">異世界來客 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-56.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第56章</div>
-                    <div class="chapter-name">科技與修真 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-57.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第57章</div>
-                    <div class="chapter-name">輪迴之謎 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-58.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第58章</div>
-                    <div class="chapter-name">黑市探險 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-59.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第59章</div>
-                    <div class="chapter-name">靈池傳承 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-60.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第60章</div>
-                    <div class="chapter-name">破序者來襲 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-61.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第61章</div>
-                    <div class="chapter-name">靈芯之主 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-62.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第62章</div>
-                    <div class="chapter-name">靈芯觉醒 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-63.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第63章</div>
-                    <div class="chapter-name">火種通道 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-64.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第64章</div>
-                    <div class="chapter-name">火種之核 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-65.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第65章</div>
-                    <div class="chapter-name">觀察者的低語 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-66.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第66章</div>
-                    <div class="chapter-name">火種覺醒 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-67.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第67章</div>
-                    <div class="chapter-name">虛空試煉 - 科技修真傳</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-        </div>
-    </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-        </div>
-    </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-64.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第64章</div>
-                    <div class="chapter-name">火種之核</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-63.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第63章</div>
-                    <div class="chapter-name">火種通道</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-62.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第62章</div>
-                    <div class="chapter-name">靈芯觉醒</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-60.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第60章</div>
-                    <div class="chapter-name">破序者來襲</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-59.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第59章</div>
-                    <div class="chapter-name">靈池傳承</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-58.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第58章</div>
-                    <div class="chapter-name">黑市探險</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-57.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第57章</div>
-                    <div class="chapter-name">科技與修真</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-56.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第56章</div>
-                    <div class="chapter-name">科技與修真</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-55.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第55章</div>
-                    <div class="chapter-name">異世界來客</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-54.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第54章</div>
-                    <div class="chapter-name">時空裂縫</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-53.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第53章</div>
-                    <div class="chapter-name">新的紀元</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-52.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第52章</div>
-                    <div class="chapter-name">最終決戰</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-51.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第51章</div>
-                    <div class="chapter-name">黎明前夕</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-50.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第50章</div>
-                    <div class="chapter-name">最終覺醒</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-49.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第49章</div>
-                    <div class="chapter-name">永恆之道</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-48.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第48章</div>
-                    <div class="chapter-name">命運抉擇</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-47.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第47章</div>
-                    <div class="chapter-name">創世之謎</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-46.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第46章</div>
-                    <div class="chapter-name">終極真相</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-45.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第45章</div>
-                    <div class="chapter-name">維度戰爭</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-44.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第44章</div>
-                    <div class="chapter-name">多元宇宙的守望者</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-43.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第43章</div>
-                    <div class="chapter-name">時空主宰</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-42.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第42章</div>
-                    <div class="chapter-name">法則掌控</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-41.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第41章</div>
-                    <div class="chapter-name">創世之力</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-40.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第40章</div>
-                    <div class="chapter-name">終極進化</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-39.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第39章</div>
-                    <div class="chapter-name">現實融合</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-38.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第38章</div>
-                    <div class="chapter-name">虛擬神國</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-37.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第37章</div>
-                    <div class="chapter-name">數據神格</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-36.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第36章</div>
-                    <div class="chapter-name">量子修真</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-35.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第35章</div>
-                    <div class="chapter-name">維度跳躍</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-34.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第34章</div>
-                    <div class="chapter-name">時空守護者</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-33.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第33章</div>
-                    <div class="chapter-name">傳承使命</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-32.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第32章</div>
-                    <div class="chapter-name">新的開始</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-31.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第31章</div>
-                    <div class="chapter-name">宇宙和平</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-30.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第30章</div>
-                    <div class="chapter-name">終極對決</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-29.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第29章</div>
-                    <div class="chapter-name">星際戰爭</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-28.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第28章</div>
-                    <div class="chapter-name">修真聯盟</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-27.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第27章</div>
-                    <div class="chapter-name">科技文明</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-26.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第26章</div>
-                    <div class="chapter-name">平行世界</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-25.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第25章</div>
-                    <div class="chapter-name">多元宇宙</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-24.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第24章</div>
-                    <div class="chapter-name">時空穿梭</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-23.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第23章</div>
-                    <div class="chapter-name">異界之門</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-22.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第22章</div>
-                    <div class="chapter-name">新的征程</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-21.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第21章</div>
-                    <div class="chapter-name">真相大白</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-20.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第20章</div>
-                    <div class="chapter-name">生死之戰</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-19.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第19章</div>
-                    <div class="chapter-name">陰謀初現</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-18.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第18章</div>
-                    <div class="chapter-name">暗流湧動</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-17.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第17章</div>
-                    <div class="chapter-name">天才行行對決</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-16.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第16章</div>
-                    <div class="chapter-name">宗門大比</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-15.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第15章</div>
-                    <div class="chapter-name">突破瓶頸</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-14.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第14章</div>
-                    <div class="chapter-name">功法傳承</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-13.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第13章</div>
-                    <div class="chapter-name">秘境試煉</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-12.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第12章</div>
-                    <div class="chapter-name">天賦覺醒</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-11.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第11章</div>
-                    <div class="chapter-name">宗門測試</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-10.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第10章</div>
-                    <div class="chapter-name">靈氣復甦</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-9.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第9章</div>
-                    <div class="chapter-name">神秘遺跡</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-8.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第8章</div>
-                    <div class="chapter-name">廢墟探索</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-7.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第7章</div>
-                    <div class="chapter-name">修煉初體驗</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-6.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第6章</div>
-                    <div class="chapter-name">第一個任務</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-5.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第5章</div>
-                    <div class="chapter-name">系統啟動</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-4.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第4章</div>
-                    <div class="chapter-name">上古靈芯</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-3.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第3章</div>
-                    <div class="chapter-name">末法廢土</div>
+                    <div class="chapter-name">靈芯覺醒</div>
                 </div>
                 <div class="chapter-arrow">→</div>
             </a>
@@ -1287,94 +331,482 @@
                 </div>
                 <div class="chapter-arrow">→</div>
             </a>
-            <a href="chapter-1.html" class="chapter-item">
+            <a href="chapter-3.html" class="chapter-item">
                 <div class="chapter-info">
-                    <div class="chapter-num">第1章</div>
-                    <div class="chapter-name">靈芯覺醒</div>
+                    <div class="chapter-num">第3章</div>
+                    <div class="chapter-name">末法廢土</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-4.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第4章</div>
+                    <div class="chapter-name">上古靈芯</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-5.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第5章</div>
+                    <div class="chapter-name">系統啟動</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-6.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第6章</div>
+                    <div class="chapter-name">第一個任務</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-7.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第7章</div>
+                    <div class="chapter-name">修煉初體驗</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-8.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第8章</div>
+                    <div class="chapter-name">廢墟探索</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-9.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第9章</div>
+                    <div class="chapter-name">神秘遺跡</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-10.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第10章</div>
+                    <div class="chapter-name">靈氣復甦</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-11.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第11章</div>
+                    <div class="chapter-name">宗門測試</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-12.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第12章</div>
+                    <div class="chapter-name">天賦覺醒</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-13.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第13章</div>
+                    <div class="chapter-name">秘境試煉</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-14.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第14章</div>
+                    <div class="chapter-name">功法傳承</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-15.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第15章</div>
+                    <div class="chapter-name">突破瓶頸</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-16.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第16章</div>
+                    <div class="chapter-name">宗門大比</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-17.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第17章</div>
+                    <div class="chapter-name">天才行行對決</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-18.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第18章</div>
+                    <div class="chapter-name">暗流湧動</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-19.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第19章</div>
+                    <div class="chapter-name">陰謀初現</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-20.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第20章</div>
+                    <div class="chapter-name">生死之戰</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-21.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第21章</div>
+                    <div class="chapter-name">真相大白</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-22.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第22章</div>
+                    <div class="chapter-name">新的征程</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-23.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第23章</div>
+                    <div class="chapter-name">異界之門</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-24.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第24章</div>
+                    <div class="chapter-name">時空穿梭</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-25.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第25章</div>
+                    <div class="chapter-name">多元宇宙</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-26.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第26章</div>
+                    <div class="chapter-name">平行世界</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-27.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第27章</div>
+                    <div class="chapter-name">科技文明</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-28.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第28章</div>
+                    <div class="chapter-name">修真聯盟</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-29.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第29章</div>
+                    <div class="chapter-name">星際戰爭</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-30.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第30章</div>
+                    <div class="chapter-name">終極對決</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-31.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第31章</div>
+                    <div class="chapter-name">宇宙和平</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-32.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第32章</div>
+                    <div class="chapter-name">新的開始</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-33.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第33章</div>
+                    <div class="chapter-name">傳承使命</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-34.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第34章</div>
+                    <div class="chapter-name">時空守護者</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-35.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第35章</div>
+                    <div class="chapter-name">維度跳躍</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-36.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第36章</div>
+                    <div class="chapter-name">量子修真</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-37.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第37章</div>
+                    <div class="chapter-name">數據神格</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-38.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第38章</div>
+                    <div class="chapter-name">虛擬神國</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-39.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第39章</div>
+                    <div class="chapter-name">現實融合</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-40.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第40章</div>
+                    <div class="chapter-name">終極進化</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-41.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第41章</div>
+                    <div class="chapter-name">創世之力</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-42.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第42章</div>
+                    <div class="chapter-name">法則掌控</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-43.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第43章</div>
+                    <div class="chapter-name">時空主宰</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-44.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第44章</div>
+                    <div class="chapter-name">多元宇宙的守望者</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-45.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第45章</div>
+                    <div class="chapter-name">維度戰爭</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-46.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第46章</div>
+                    <div class="chapter-name">終極真相</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-47.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第47章</div>
+                    <div class="chapter-name">創世之謎</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-48.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第48章</div>
+                    <div class="chapter-name">命運抉擇</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-49.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第49章</div>
+                    <div class="chapter-name">永恆之道</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-50.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第50章</div>
+                    <div class="chapter-name">最終覺醒</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-51.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第51章</div>
+                    <div class="chapter-name">黎明前夕</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-52.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第52章</div>
+                    <div class="chapter-name">最終決戰</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-53.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第53章</div>
+                    <div class="chapter-name">新的紀元</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-54.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第54章</div>
+                    <div class="chapter-name">時空裂縫</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-55.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第55章</div>
+                    <div class="chapter-name">異世界來客</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-56.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第56章</div>
+                    <div class="chapter-name">科技與修真</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-57.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第57章</div>
+                    <div class="chapter-name">輪迴之謎</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-58.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第58章</div>
+                    <div class="chapter-name">黑市探險</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-59.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第59章</div>
+                    <div class="chapter-name">靈池傳承</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-60.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第60章</div>
+                    <div class="chapter-name">破序者來襲</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-61.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第61章</div>
+                    <div class="chapter-name">靈芯之主</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-62.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第62章</div>
+                    <div class="chapter-name">靈芯觉醒</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-63.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第63章</div>
+                    <div class="chapter-name">火種通道</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-64.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第64章</div>
+                    <div class="chapter-name">火種之核</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-65.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第65章</div>
+                    <div class="chapter-name">觀察者的低語</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-66.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第66章</div>
+                    <div class="chapter-name">火種覺醒</div>
+                </div>
+                <div class="chapter-arrow">→</div>
+            </a>
+            <a href="chapter-67.html" class="chapter-item">
+                <div class="chapter-info">
+                    <div class="chapter-num">第67章</div>
+                    <div class="chapter-name">虛空試煉</div>
                 </div>
                 <div class="chapter-arrow">→</div>
             </a>
         </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 科技修真傳 | 作者：大肥喵 | 每日自動更新</p>
+            <p>最後更新時間：<span id="last-update">2026-03-27</span></p>
+        </footer>
     </div>
 
     <script>
-        function searchChapters() {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toLowerCase();
-            const items = document.getElementsByClassName('chapter-item');
-
-            for (let i = 0; i < items.length; i++) {
-                const name = items[i].getElementsByClassName('chapter-name')[0];
-                const num = items[i].getElementsByClassName('chapter-num')[0];
-                const text = (name.textContent + ' ' + num.textContent).toLowerCase();
-                
-                if (text.indexOf(filter) > -1) {
-                    items[i].style.display = "";
-                } else {
-                    items[i].style.display = "none";
-                }
-            }
-        }
-            // 章節範圍過濾功能
-        function filterChapters(range) {
-            const items = document.getElementsByClassName('chapter-item');
-            const tabs = document.getElementsByClassName('filter-tab');
-            
-            // 更新 tab 狀態
-            for (let tab of tabs) {
-                tab.classList.remove('active');
-                if (tab.getAttribute('href') === '#' + range || (range === 'all' && tab.getAttribute('href') === 'chapters.html')) {
-                    tab.classList.add('active');
-                }
-            }
-            
-            // 顯示/隱藏章節
-            for (let i = 0; i < items.length; i++) {
-                const item = items[i];
-                const chapterNum = parseInt(item.getAttribute('data-chapter') || '0');
-                
-                if (range === 'all') {
-                    item.style.display = "";
-                } else if (range === 'ch1-20') {
-                    item.style.display = (chapterNum >= 1 && chapterNum <= 20) ? "" : "none";
-                } else if (range === 'ch21-40') {
-                    item.style.display = (chapterNum >= 21 && chapterNum <= 40) ? "" : "none";
-                } else if (range === 'ch41-64') {
-                    item.style.display = (chapterNum >= 41 && chapterNum <= 64) ? "" : "none";
-                }
-            }
-        }
-        
-        // 為每個章節添加 data-chapter 屬性
-        function initChapterData() {
-            const items = document.getElementsByClassName('chapter-item');
-            for (let i = 0; i < items.length; i++) {
-                const item = items[i];
-                const chapterNum = item.getElementsByClassName('chapter-num')[0];
-                if (chapterNum) {
-                    const match = chapterNum.textContent.match(/第(\d+)章/);
-                    if (match) {
-                        item.setAttribute('data-chapter', match[1]);
-                    }
-                }
-            }
-        }
-        
-        // 頁面載入時初始化
-        document.addEventListener('DOMContentLoaded', initChapterData);
-        
-        // 監聽 filter-tab 按鈕點擊
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('filter-tab')) {
-                e.preventDefault();
-                const href = e.target.getAttribute('href');
-                if (href === 'chapters.html') {
-                    filterChapters('all');
-                } else if (href.startsWith('#')) {
-                    filterChapters(href.substring(1));
-                }
-            }
+        // 更新最後更新時間
+        document.getElementById('last-update').textContent = new Date().toLocaleDateString('zh-TW', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
         });
+        
+        // 更新章節總數
+        const chapterItems = document.querySelectorAll('.chapter-item');
+        document.getElementById('totalChapters').textContent = `共 ${chapterItems.length} 章`;
     </script>
 </body>
 </html>

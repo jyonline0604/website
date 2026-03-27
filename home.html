@@ -6,7 +6,7 @@
     <title>科技修真傳 - 首頁</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #0a0a0f;
@@ -31,6 +31,97 @@
             min-height: 100vh;
         }
 
+        /* 導航列樣式 */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(10, 10, 15, 0.95);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+        }
+
+        .logo {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: transparent;
+            position: relative;
+        }
+
+        .nav a:hover {
+            background: rgba(99, 102, 241, 0.3);
+        }
+
+        .nav a.active {
+            background: rgba(99, 102, 241, 0.5);
+            color: #ffffff;
+        }
+
+        .nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #818cf8);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        /* 英雄區域（背景圖） */
         .hero {
             min-height: 100vh;
             padding: 80px 32px 60px;
@@ -59,9 +150,10 @@
             z-index: 2;
             max-width: 800px;
             width: 100%;
+            margin-top: 64px; /* 為導航列留出空間 */
         }
 
-        .logo {
+        .hero-title {
             font-size: 3.5rem;
             font-weight: 700;
             color: white;
@@ -69,13 +161,14 @@
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-        .subtitle {
+        .hero-subtitle {
             color: rgba(255, 255, 255, 0.9);
             font-size: 1.3rem;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
         }
 
+        /* 主要內容區域 */
         .container {
             max-width: 1200px;
             width: 100%;
@@ -100,7 +193,7 @@
             align-items: center;
             margin-bottom: 24px;
             padding-bottom: 16px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .section-title {
@@ -121,6 +214,7 @@
             text-decoration: underline;
         }
 
+        /* 章節卡片 */
         .chapter-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -182,6 +276,7 @@
             font-weight: 500;
         }
 
+        /* 頁腳 */
         .footer {
             text-align: center;
             margin-top: 60px;
@@ -192,16 +287,30 @@
             width: 100%;
         }
 
+        /* 響應式設計 */
         @media (max-width: 768px) {
+            .header {
+                padding: 0 16px;
+            }
+            
+            .nav {
+                gap: 16px;
+            }
+            
+            .nav a {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+            
             .hero {
                 padding: 60px 20px 40px;
             }
             
-            .logo {
+            .hero-title {
                 font-size: 2.5rem;
             }
             
-            .subtitle {
+            .hero-subtitle {
                 font-size: 1.1rem;
             }
             
@@ -213,17 +322,40 @@
             .chapter-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- 導航列 -->
+    <header class="header">
+        <a href="home.html" class="logo">📖 科技修真傳</a>
+        <nav class="nav">
+            <a href="home.html" class="active">首頁</a>
+            <a href="chapters.html">章節</a>
+            <a href="news.html">AI 新聞</a>
+            <a href="https://itv.kofhk.com/" target="_blank">ITV</a>
+            <a href="author.html">作者</a>
+        </nav>
+        <div class="header-actions">
+            <a href="chapter-1.html" class="btn btn-primary">開始閱讀</a>
+        </div>
+    </header>
+
+    <!-- 英雄區域（背景圖） -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="logo">科技修真傳</h1>
-            <p class="subtitle">科技與修真交織的奇幻世界</p>
+            <h1 class="hero-title">科技修真傳</h1>
+            <p class="hero-subtitle">科技與修真交織的奇幻世界</p>
         </div>
     </section>
 
+    <!-- 主要內容 -->
     <div class="container">
         <main>
             <section class="section">

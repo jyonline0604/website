@@ -32,7 +32,7 @@
             right: 0;
             bottom: 0;
             background: 
-                linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)), /* 更深的黑色遮罩 */
+                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), /* 調亮30%：從85%-90%改為40%-50% */
                 url("assets/news-bg.jpg") center center / cover;
             z-index: -1;
         }
@@ -46,11 +46,11 @@
 
         .header {
             position: sticky; top: 0; z-index: 100;
-            background: rgba(15, 15, 20, 0.9);
-            backdrop-filter: blur(25px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(20, 20, 30, 0.8); /* 稍微調亮 */
+            backdrop-filter: blur(30px); /* 增強毛玻璃 */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             padding: 0 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
         }
 
         .header-inner {
@@ -73,21 +73,23 @@
         .nav { display: flex; gap: 8px; }
 
         .nav a {
-            color: rgba(220, 220, 240, 0.9); text-decoration: none;
+            color: rgba(230, 230, 250, 0.95); text-decoration: none;
             padding: 10px 18px; border-radius: 10px;
             font-size: 0.95rem; font-weight: 500; transition: all 0.2s;
         }
 
         .nav a:hover { 
             color: #fff; 
-            background: rgba(99, 102, 241, 0.25); 
+            background: rgba(255, 255, 255, 0.15); 
             transform: translateY(-1px);
+            backdrop-filter: blur(10px);
         }
         .nav a.active { 
             color: #fff; 
-            background: linear-gradient(135deg, #6366f1, #818cf8);
-            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(129, 140, 248, 0.8));
+            box-shadow: 0 2px 10px rgba(99, 102, 241, 0.25);
             font-weight: 600;
+            backdrop-filter: blur(5px);
         }
 
         .hero {
@@ -130,27 +132,29 @@
 
         .filter-btn {
             padding: 12px 22px; border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.15); 
-            background: rgba(40, 40, 50, 0.7);
-            color: rgba(220, 220, 240, 0.9); font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            background: rgba(255, 255, 255, 0.1); /* 更透明的背景 */
+            color: rgba(240, 240, 255, 0.95); font-size: 0.95rem;
             cursor: pointer; white-space: nowrap; transition: all 0.2s;
             display: flex; align-items: center; gap: 8px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px); /* 增強毛玻璃 */
         }
 
         .filter-btn:hover { 
-            border-color: rgba(99, 102, 241, 0.6); 
+            border-color: rgba(255, 255, 255, 0.3); 
             color: #fff; 
-            background: rgba(50, 50, 60, 0.9);
+            background: rgba(255, 255, 255, 0.15);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
         }
         .filter-btn.active { 
-            background: linear-gradient(135deg, #6366f1, #818cf8); 
-            border-color: rgba(99, 102, 241, 0.8); 
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(129, 140, 248, 0.8)); 
+            border-color: rgba(255, 255, 255, 0.3); 
             color: #fff; 
-            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
             font-weight: 600;
+            backdrop-filter: blur(10px);
         }
 
         .filter-btn .count {
@@ -167,20 +171,21 @@
         }
 
         .news-card {
-            background: rgba(30, 30, 40, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.08); /* 全透明，只保留微弱白色背景 */
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 16px; overflow: hidden;
             transition: all 0.3s ease; cursor: pointer;
             text-decoration: none; display: block;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px); /* 增強毛玻璃效果，讓背景圖透過 */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
         .news-card:hover {
-            border-color: rgba(99, 102, 241, 0.6);
-            transform: translateY(-6px);
-            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.3);
-            background: rgba(35, 35, 45, 0.98);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.12); /* 懸停時稍微增加不透明度 */
+            backdrop-filter: blur(25px); /* 懸停時增強毛玻璃效果 */
         }
 
         .news-card-image {
@@ -193,11 +198,12 @@
         .news-card-category {
             position: absolute; top: 12px; left: 12px;
             padding: 6px 14px; 
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(129, 140, 248, 0.9));
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.85), rgba(129, 140, 248, 0.85));
             border-radius: 8px; font-size: 0.75rem; font-weight: 700;
             color: #fff; z-index: 1;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* 增強陰影 */
+            border: 1px solid rgba(255, 255, 255, 0.3); /* 更明顯的邊框 */
+            backdrop-filter: blur(5px); /* 添加毛玻璃效果 */
         }
 
         .news-card-body {
@@ -206,18 +212,19 @@
 
         .news-card-title {
             font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;
-            line-height: 1.5; color: rgba(255, 255, 255, 0.95);
+            line-height: 1.5; color: rgba(255, 255, 255, 0.98); /* 更白的文字 */
             display: -webkit-box; -webkit-line-clamp: 2;
             -webkit-box-orient: vertical; overflow: hidden;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* 增強文字陰影 */
         }
 
         .news-card-desc {
-            font-size: 0.9rem; color: rgba(200, 200, 220, 0.9);
+            font-size: 0.9rem; color: rgba(230, 230, 240, 0.9); /* 更亮的描述文字 */
             line-height: 1.6;
             display: -webkit-box; -webkit-line-clamp: 3;
             -webkit-box-orient: vertical; overflow: hidden;
             margin-bottom: 16px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* 添加文字陰影 */
         }
 
         .news-card-meta {

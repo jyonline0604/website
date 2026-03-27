@@ -188,6 +188,8 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
             margin-bottom: 40px;
+            overflow-x: visible;
+            width: 100%;
         }
 
         .market-card {
@@ -845,19 +847,24 @@
         }
         
         /* === 橫向布局核心CSS === */
-        /* 1. 市場類別容器 */
+        /* 1. 市場類別容器 - 允許橫向擴展 */
         .market-categories-container {
             display: flex;
             flex-direction: column;
             gap: 30px;
+            overflow: visible;
         }
         
-        /* 2. 每個市場類別 */
+        /* 2. 每個市場類別 - 自適應內容寬度 */
         .market-category {
             background: var(--bg-secondary);
             border-radius: 16px;
             border: 2px solid var(--border);
             overflow: visible;
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            min-width: 100%;
         }
         
         /* 3. 類別標題 */
@@ -879,28 +886,26 @@
             gap: 10px;
         }
         
-        /* 4. 類別內容 - 橫向緊湊排列 */
+        /* 4. 類別內容 - 橫向自適應排列 */
         .category-content {
             padding: 16px;
             display: flex;           /* 橫向排列 */
-            flex-wrap: nowrap;       /* 不換行，橫向滾動 */
+            flex-wrap: nowrap;       /* 不換行 */
             gap: 12px;               /* 卡片間距 */
             justify-content: flex-start; /* 左對齊 */
             align-items: stretch;    /* 等高對齊 */
-            overflow-x: auto;        /* 橫向滾動條 */
-            scrollbar-width: thin;  /* Firefox 滾動條 */
-            -webkit-overflow-scrolling: touch; /* iOS 滾動流暢 */
+            overflow: visible;
         }
         
-        /* 5. 市場數據卡片 - 緊湊尺寸 */
+        /* 5. 市場數據卡片 - 精簡尺寸 */
         .market-data-item {
             background: var(--bg-tertiary);
-            border-radius: 12px;
-            padding: 14px;
+            border-radius: 10px;
+            padding: 12px;
             border: 1px solid var(--border);
-            flex: 0 0 auto;          /* 不自動伸展，固定寬度 */
-            min-width: 160px;        /* 最小寬度 */
-            max-width: 180px;        /* 最大寬度 */
+            flex: 0 0 auto;          /* 不自動伸展 */
+            min-width: 140px;        /* 最小寬度 */
+            max-width: 160px;        /* 最大寬度 */
             display: flex;
             flex-direction: column;
         }

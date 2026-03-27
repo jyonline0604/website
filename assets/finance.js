@@ -112,31 +112,36 @@ class FinanceDataManager {
     }
     
     createCryptoCard(crypto) {
-        const changeClass = crypto.change_24h >= 0 ? 'change-positive' : 'change-negative';
-        const changeIcon = crypto.change_24h >= 0 ? '↗' : '↘';
+        const changeClass = crypto.change_24h > 0 ? 'change-positive' : crypto.change_24h < 0 ? 'change-negative' : 'change-neutral';
+        const changeIcon = crypto.change_24h > 0 ? '↗' : crypto.change_24h < 0 ? '↘' : '→';
+        const changeSign = crypto.change_24h > 0 ? '+' : '';
         
         return `
-            <div class="market-card">
-                <div class="market-header">
-                    <h3>${crypto.name} (${crypto.symbol})</h3>
-                    <span class="market-category">加密貨幣</span>
+            <div class="market-data-item">
+                <div class="market-data-header">
+                    <div class="market-data-name">${crypto.name}</div>
+                    <div class="market-data-symbol">${crypto.symbol}</div>
                 </div>
-                <div class="market-price">$${this.formatNumber(crypto.price, 2)}</div>
-                <div class="market-change ${changeClass}">
-                    ${changeIcon} ${crypto.change_24h >= 0 ? '+' : ''}${crypto.change_24h.toFixed(2)}%
+                <div class="market-data-price">$${this.formatNumber(crypto.price, 2)}</div>
+                <div class="market-data-change ${changeClass}">
+                    ${changeIcon} ${changeSign}${crypto.change_24h.toFixed(2)}%
                 </div>
-                <div class="market-details">
-                    <div class="market-detail">
-                        <span class="detail-label">市值:</span>
+                <div class="market-data-details">
+                    <div class="market-data-detail">
+                        <span class="detail-label">市值</span>
                         <span class="detail-value">$${this.formatNumber(crypto.market_cap, 0)}</span>
                     </div>
-                    <div class="market-detail">
-                        <span class="detail-label">24h交易量:</span>
+                    <div class="market-data-detail">
+                        <span class="detail-label">24h交易量</span>
                         <span class="detail-value">$${this.formatNumber(crypto.volume, 0)}</span>
                     </div>
-                    <div class="market-detail">
-                        <span class="detail-label">24h高/低:</span>
-                        <span class="detail-value">$${this.formatNumber(crypto.high_24h, 0)} / $${this.formatNumber(crypto.low_24h, 0)}</span>
+                    <div class="market-data-detail">
+                        <span class="detail-label">24h高點</span>
+                        <span class="detail-value">$${this.formatNumber(crypto.high_24h, 0)}</span>
+                    </div>
+                    <div class="market-data-detail">
+                        <span class="detail-label">24h低點</span>
+                        <span class="detail-value">$${this.formatNumber(crypto.low_24h, 0)}</span>
                     </div>
                 </div>
             </div>
@@ -164,27 +169,36 @@ class FinanceDataManager {
     }
     
     createStockCard(stock) {
-        const changeClass = stock.change >= 0 ? 'change-positive' : 'change-negative';
-        const changeIcon = stock.change >= 0 ? '↗' : '↘';
+        const changeClass = stock.change > 0 ? 'change-positive' : stock.change < 0 ? 'change-negative' : 'change-neutral';
+        const changeIcon = stock.change > 0 ? '↗' : stock.change < 0 ? '↘' : '→';
+        const changeSign = stock.change > 0 ? '+' : '';
         
         return `
-            <div class="market-card">
-                <div class="market-header">
-                    <h3>${stock.name} (${stock.symbol})</h3>
-                    <span class="market-category">股票指數</span>
+            <div class="market-data-item">
+                <div class="market-data-header">
+                    <div class="market-data-name">${stock.name}</div>
+                    <div class="market-data-symbol">${stock.symbol}</div>
                 </div>
-                <div class="market-price">${this.formatNumber(stock.price, 2)}</div>
-                <div class="market-change ${changeClass}">
-                    ${changeIcon} ${stock.change >= 0 ? '+' : ''}${stock.change.toFixed(2)}
+                <div class="market-data-price">${this.formatNumber(stock.price, 2)}</div>
+                <div class="market-data-change ${changeClass}">
+                    ${changeIcon} ${changeSign}${stock.change.toFixed(2)}
                 </div>
-                <div class="market-details">
-                    <div class="market-detail">
-                        <span class="detail-label">成交量:</span>
+                <div class="market-data-details">
+                    <div class="market-data-detail">
+                        <span class="detail-label">變化</span>
+                        <span class="detail-value">${changeSign}${stock.change.toFixed(2)}</span>
+                    </div>
+                    <div class="market-data-detail">
+                        <span class="detail-label">成交量</span>
                         <span class="detail-value">${this.formatNumber(stock.volume, 0)}</span>
                     </div>
-                    <div class="market-detail">
-                        <span class="detail-label">當日高/低:</span>
-                        <span class="detail-value">${this.formatNumber(stock.high, 2)} / ${this.formatNumber(stock.low, 2)}</span>
+                    <div class="market-data-detail">
+                        <span class="detail-label">當日高點</span>
+                        <span class="detail-value">${this.formatNumber(stock.high, 2)}</span>
+                    </div>
+                    <div class="market-data-detail">
+                        <span class="detail-label">當日低點</span>
+                        <span class="detail-value">${this.formatNumber(stock.low, 2)}</span>
                     </div>
                 </div>
             </div>
@@ -212,22 +226,27 @@ class FinanceDataManager {
     }
     
     createCommodityCard(commodity) {
-        const changeClass = commodity.change >= 0 ? 'change-positive' : 'change-negative';
-        const changeIcon = commodity.change >= 0 ? '↗' : '↘';
+        const changeClass = commodity.change > 0 ? 'change-positive' : commodity.change < 0 ? 'change-negative' : 'change-neutral';
+        const changeIcon = commodity.change > 0 ? '↗' : commodity.change < 0 ? '↘' : '→';
+        const changeSign = commodity.change > 0 ? '+' : '';
         
         return `
-            <div class="market-card">
-                <div class="market-header">
-                    <h3>${commodity.name} (${commodity.symbol})</h3>
-                    <span class="market-category">商品</span>
+            <div class="market-data-item">
+                <div class="market-data-header">
+                    <div class="market-data-name">${commodity.name}</div>
+                    <div class="market-data-symbol">${commodity.symbol}</div>
                 </div>
-                <div class="market-price">$${this.formatNumber(commodity.price, 2)}</div>
-                <div class="market-change ${changeClass}">
-                    ${changeIcon} ${commodity.change >= 0 ? '+' : ''}${commodity.change.toFixed(2)}
+                <div class="market-data-price">$${this.formatNumber(commodity.price, 2)}</div>
+                <div class="market-data-change ${changeClass}">
+                    ${changeIcon} ${changeSign}${commodity.change.toFixed(2)}
                 </div>
-                <div class="market-details">
-                    <div class="market-detail">
-                        <span class="detail-label">單位:</span>
+                <div class="market-data-details">
+                    <div class="market-data-detail">
+                        <span class="detail-label">變化</span>
+                        <span class="detail-value">${changeSign}${commodity.change.toFixed(2)}</span>
+                    </div>
+                    <div class="market-data-detail">
+                        <span class="detail-label">單位</span>
                         <span class="detail-value">${commodity.unit}</span>
                     </div>
                 </div>
@@ -256,22 +275,27 @@ class FinanceDataManager {
     }
     
     createForexCard(forex) {
-        const changeClass = forex.change >= 0 ? 'change-positive' : 'change-negative';
-        const changeIcon = forex.change >= 0 ? '↗' : '↘';
+        const changeClass = forex.change > 0 ? 'change-positive' : forex.change < 0 ? 'change-negative' : 'change-neutral';
+        const changeIcon = forex.change > 0 ? '↗' : forex.change < 0 ? '↘' : '→';
+        const changeSign = forex.change > 0 ? '+' : '';
         
         return `
-            <div class="market-card">
-                <div class="market-header">
-                    <h3>${forex.name}</h3>
-                    <span class="market-category">外匯</span>
+            <div class="market-data-item">
+                <div class="market-data-header">
+                    <div class="market-data-name">${forex.name}</div>
+                    <div class="market-data-symbol">${forex.from_currency}/${forex.to_currency}</div>
                 </div>
-                <div class="market-price">${forex.rate.toFixed(4)}</div>
-                <div class="market-change ${changeClass}">
-                    ${changeIcon} ${forex.change >= 0 ? '+' : ''}${forex.change.toFixed(4)}
+                <div class="market-data-price">${forex.rate.toFixed(4)}</div>
+                <div class="market-data-change ${changeClass}">
+                    ${changeIcon} ${changeSign}${forex.change.toFixed(4)}
                 </div>
-                <div class="market-details">
-                    <div class="market-detail">
-                        <span class="detail-label">貨幣對:</span>
+                <div class="market-data-details">
+                    <div class="market-data-detail">
+                        <span class="detail-label">變化</span>
+                        <span class="detail-value">${changeSign}${forex.change.toFixed(4)}</span>
+                    </div>
+                    <div class="market-data-detail">
+                        <span class="detail-label">貨幣對</span>
                         <span class="detail-value">${forex.from_currency}/${forex.to_currency}</span>
                     </div>
                 </div>
@@ -300,27 +324,32 @@ class FinanceDataManager {
     }
     
     createBondCard(bond) {
-        const changeClass = bond.change >= 0 ? 'change-positive' : 'change-negative';
-        const changeIcon = bond.change >= 0 ? '↗' : '↘';
+        const changeClass = bond.change > 0 ? 'change-positive' : bond.change < 0 ? 'change-negative' : 'change-neutral';
+        const changeIcon = bond.change > 0 ? '↗' : bond.change < 0 ? '↘' : '→';
+        const changeSign = bond.change > 0 ? '+' : '';
         
         return `
-            <div class="market-card">
-                <div class="market-header">
-                    <h3>${bond.name}</h3>
-                    <span class="market-category">債券</span>
+            <div class="market-data-item">
+                <div class="market-data-header">
+                    <div class="market-data-name">${bond.name}</div>
+                    <div class="market-data-symbol">${bond.country}</div>
                 </div>
-                <div class="market-price">${bond.yield.toFixed(2)}%</div>
-                <div class="market-change ${changeClass}">
-                    ${changeIcon} ${bond.change >= 0 ? '+' : ''}${bond.change.toFixed(2)}%
+                <div class="market-data-price">${bond.yield.toFixed(2)}%</div>
+                <div class="market-data-change ${changeClass}">
+                    ${changeIcon} ${changeSign}${bond.change.toFixed(2)}%
                 </div>
-                <div class="market-details">
-                    <div class="market-detail">
-                        <span class="detail-label">國家:</span>
-                        <span class="detail-value">${bond.country}</span>
+                <div class="market-data-details">
+                    <div class="market-data-detail">
+                        <span class="detail-label">變化</span>
+                        <span class="detail-value">${changeSign}${bond.change.toFixed(2)}%</span>
                     </div>
-                    <div class="market-detail">
-                        <span class="detail-label">期限:</span>
+                    <div class="market-data-detail">
+                        <span class="detail-label">期限</span>
                         <span class="detail-value">${bond.maturity}</span>
+                    </div>
+                    <div class="market-data-detail">
+                        <span class="detail-label">國家</span>
+                        <span class="detail-value">${bond.country}</span>
                     </div>
                 </div>
             </div>
@@ -339,11 +368,9 @@ class FinanceDataManager {
         const color = sentimentData.color || '#666666';
         
         container.innerHTML = `
-            <div class="sentiment-card" style="border-left-color: ${color}">
-                <div class="sentiment-header">
-                    <h3>市場情緒指數</h3>
-                    <span class="sentiment-label" style="color: ${color}">${sentiment}</span>
-                </div>
+            <div class="sentiment-content">
+                <div class="sentiment-index" style="color: ${color}">${index}</div>
+                <div class="sentiment-label" style="color: ${color}">${sentiment}</div>
                 <div class="sentiment-meter">
                     <div class="meter-bar">
                         <div class="meter-fill" style="width: ${index}%; background: ${color}"></div>
@@ -356,9 +383,8 @@ class FinanceDataManager {
                         <span>極度貪婪</span>
                     </div>
                 </div>
-                <div class="sentiment-index" style="color: ${color}">${index}/100</div>
                 <div class="sentiment-description">${description}</div>
-                <div class="sentiment-update">
+                <div class="sentiment-update" style="color: ${color}">
                     更新時間: ${new Date(sentimentData.timestamp).toLocaleString('zh-HK')}
                 </div>
             </div>

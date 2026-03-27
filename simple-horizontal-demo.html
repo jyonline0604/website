@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>橫向布局演示</title>
+    <style>
+        body { font-family: Arial; background: #f0f0f0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #333; text-align: center; }
+        
+        /* 橫向布局核心 */
+        .market-category {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #f7931a;
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        /* 這是關鍵：橫向排列 */
+        .cards-container {
+            display: flex;           /* 橫向排列 */
+            flex-wrap: wrap;         /* 允許換行 */
+            gap: 15px;               /* 卡片間距 */
+        }
+        
+        .card {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            flex: 1;                 /* 彈性寬度 */
+            min-width: 200px;        /* 最小寬度 */
+            max-width: 300px;        /* 最大寬度 */
+        }
+        
+        .card-name {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .card-price {
+            font-size: 1.2rem;
+            color: #222;
+            margin: 8px 0;
+        }
+        
+        .card-change {
+            color: #e74c3c;
+        }
+        
+        .change-up { color: #27ae60; }
+        
+        /* 手機上改為垂直 */
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+            }
+            .card {
+                min-width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐱 橫向布局演示</h1>
+        <p>每個市場類別內的卡片橫向排列</p>
+        
+        <!-- 加密貨幣 -->
+        <div class="market-category">
+            <div class="category-title">🪙 加密貨幣</div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-name">Bitcoin (BTC)</div>
+                    <div class="card-price">$66,177</div>
+                    <div class="card-change">-4.02%</div>
+                </div>
+                <div class="card">
+                    <div class="card-name">Ethereum (ETH)</div>
+                    <div class="card-price">$1,992.95</div>
+                    <div class="card-change">-3.38%</div>
+                </div>
+                <div class="card">
+                    <div class="card-name">Solana (SOL)</div>
+                    <div class="card-price">$83.23</div>
+                    <div class="card-change">-4.66%</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 股票指數 -->
+        <div class="market-category">
+            <div class="category-title">📊 股票指數</div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-name">NASDAQ</div>
+                    <div class="card-price">18,432.15</div>
+                    <div class="card-change change-up">+0.85%</div>
+                </div>
+                <div class="card">
+                    <div class="card-name">DJIA</div>
+                    <div class="card-price">39,876.42</div>
+                    <div class="card-change change-up">+0.62%</div>
+                </div>
+                <div class="card">
+                    <div class="card-name">S&P 500</div>
+                    <div class="card-price">5,234.18</div>
+                    <div class="card-change change-up">+0.74%</div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px; padding: 20px; background: #e3f2fd; border-radius: 10px;">
+            <h3>🎯 這就是你要的橫向布局嗎？</h3>
+            <p><strong>每個市場類別內的卡片在同一行橫向排列</strong></p>
+            <p>• 加密貨幣：BTC、ETH、SOL 在同一行</p>
+            <p>• 股票指數：NASDAQ、DJIA、S&P 500 在同一行</p>
+            <p>• 桌面：卡片橫向排列</p>
+            <p>• 手機：卡片垂直排列</p>
+        </div>
+    </div>
+</body>
+</html>

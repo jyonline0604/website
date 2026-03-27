@@ -154,12 +154,7 @@
             height: 180px;
             display: flex; align-items: center; justify-content: center;
             font-size: 3rem; position: relative;
-            background: transparent;
-        }
-
-        .news-card-image::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
+            background: transparent; /* 完全透明 */
         }
 
         .news-card-category {
@@ -169,19 +164,9 @@
             color: #fff; z-index: 1;
         }
 
-        .news-card-body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("assets/news-bg.jpg") center center / cover;
-            z-index: -1;
-            opacity: 0.6;
+        .news-card-body {
+            padding: 20px;
         }
-
-        body { padding: 20px; }
 
         .news-card-title {
             font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;
@@ -211,7 +196,10 @@
         .news-card-date { font-size: 0.8rem; color: var(--text-tertiary); }
 
         .news-card.featured { grid-column: span 2; }
-        .news-card.featured .news-card-image { height: 280px; }
+        .news-card.featured .news-card-image { 
+            height: 280px; 
+            background: transparent; /* 保持一致 */
+        }
         .news-card.featured .news-card-title { font-size: 1.4rem; }
 
         .loading {
@@ -313,12 +301,7 @@
             model: 'AI模型', research: '研究突破', industry: '業界動態', tools: '工具更新'
         };
 
-        const CATEGORY_COLORS = {
-            model: 'linear-gradient(135deg, #2d1b4e, #1a1a25)',
-            research: 'linear-gradient(135deg, #0f4c3a, #1a1a25)',
-            industry: 'linear-gradient(135deg, #4a1942, #1a1a25)',
-            tools: 'linear-gradient(135deg, #1a1a25, #0f4c3a)'
-        };
+
 
         let allNews = [];
 
@@ -336,11 +319,10 @@
         function createNewsCard(item, isFeatured = false) {
             const categoryName = CATEGORY_NAMES[item.category] || '其他';
             const icon = CATEGORY_ICONS[item.category] || '📰';
-            const bgColor = 'transparent';
 
             return `
                 <a href="${item.link}" target="_blank" class="news-card ${isFeatured ? 'featured' : ''}" data-category="${item.category}">
-                    <div class="news-card-image" style="background: ${bgColor}">
+                    <div class="news-card-image">
                         <span class="news-card-category">${icon} ${categoryName}</span>
                         <span style="font-size: ${isFeatured ? '4rem' : '2.5rem'}">${icon}</span>
                     </div>

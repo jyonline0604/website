@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="財經資訊 - 加密貨幣與美股市場分析，最新行情、技術分析、投資策略">
+    <meta name="keywords" content="加密貨幣, 美股, 財經, 投資, 比特幣, 以太坊, 納斯達克, 道瓊斯, 市場分析">
+    <meta name="author" content="大肥喵">
+    <meta property="og:title" content="財經資訊 - 加密貨幣與美股">
+    <meta property="og:description" content="最新加密貨幣與美股市場分析，投資策略與技術分析">
+    <meta property="og:type" content="website">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>財經資訊 - 加密貨幣與美股</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-tertiary: #606070;
+            --accent: #10b981;
+            --accent-light: rgba(16, 185, 129, 0.15);
+            --gradient: linear-gradient(135deg, #10b981, #059669);
+            --border: rgba(255,255,255,0.08);
+            --card-shadow: 0 4px 24px rgba(0,0,0,0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* 導航列樣式 */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(10, 10, 15, 0.95);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+        }
+
+        .logo {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #10b981, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: transparent;
+            position: relative;
+        }
+
+        .nav a:hover {
+            background: var(--accent-light);
+            color: var(--text-primary);
+        }
+
+        .nav a.active {
+            background: var(--accent);
+            color: var(--text-primary);
+        }
+
+        .nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        /* 英雄區域 */
+        .hero {
+            min-height: 70vh;
+            padding: 80px 32px 60px;
+            text-align: center;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+                url("assets/finance-bg.jpg") center center / cover no-repeat;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            width: 100%;
+            margin-top: 64px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 主要內容 */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* 市場概況 */
+        .market-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .market-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .market-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-shadow);
+            border-color: var(--accent);
+        }
+
+        .market-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .market-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .market-change {
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .change-positive {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+
+        .change-negative {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        .market-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .market-info {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* 新聞區塊 */
+        .news-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .news-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-shadow);
+            border-color: var(--accent);
+        }
+
+        .news-card-image {
+            height: 180px;
+            background: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--accent);
+        }
+
+        .news-card-body {
+            padding: 20px;
+        }
+
+        .news-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-card-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .news-card-source {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+        }
+
+        .news-card-date {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+        }
+
+        /* 技術分析 */
+        .analysis-section {
+            margin-bottom: 40px;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .analysis-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .analysis-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .analysis-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .analysis-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .analysis-content {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* 頁腳 */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px 20px;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            width: 100%;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .header {
+                padding: 0 16px;
+            }
+            
+            .nav {
+                gap: 16px;
+            }
+            
+            .nav a {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .market-overview,
+            .news-grid,
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .market-price {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航列 -->
+    <header class="header">
+        <a href="home.html" class="logo">科技修真傳</a>
+        <nav class="nav">
+            <a href="home.html">首頁</a>
+            <a href="chapters.html">章節</a>
+            <a href="news.html">AI 新聞</a>
+            <a href="finance.html" class="active">財經</a>
+            <a href="https://itv.kofhk.com/" target="_blank">ITV</a>
+            <a href="author.html">作者</a>
+        </nav>
+        <div class="header-actions">
+            <a href="chapter-1.html" class="btn btn-primary">開始閱讀</a>
+        </div>
+    </header>
+
+    <!-- 英雄區域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">財經資訊</h1>
+            <p class="hero-subtitle">加密貨幣與美股市場分析 · 投資策略 · 技術分析</p>
+        </div>
+    </section>
+
+    <!-- 主要內容 -->
+    <main class="container">
+        <!-- 市場概況 -->
+        <section class="market-overview">
+            <div class="market-card">
+                <div class="market-header">
+                    <h3 class="market-title">比特幣 (BTC)</h3>
+                    <span class="market-change change-positive">+2.5%</span>
+                </div>
+                <div class="market-price">$68,450.32</div>
+                <div class="market-info">24小時交易量: $32.4B · 市值: $1.34T</div>
+            </div>
+            
+            <div class="market-card">
+                <div class="market-header">
+                    <h3 class="market-title">以太坊 (ETH)</h3>
+                    <span class="market-change change-positive">+1.8%</span>
+                </div>
+                <div class="market-price">$3,425.67</div>
+                <div class="market-info">24小時交易量: $18.7B · 市值: $411B</div>
+            </div>
+            
+            <div class="market-card">
+                <div class="market-header">
+                    <h3 class="market-title">納斯達克</h3>
+                    <span class="market-change change-positive">+0.7%</span>
+                </div>
+                <div class="market-price">16,245.83</div>
+                <div class="market-info">漲跌: +113.45 · 成交量: 4.2B</div>
+            </div>
+            
+            <div class="market-card">
+                <div class="market-header">
+                    <h3 class="market-title">道瓊斯</h3>
+                    <span class="market-change change-negative">-0.3%</span>
+                </div>
+                <div class="market-price">38,942.15</div>
+                <div class="market-info">漲跌: -117.28 · 成交量: 285M</div>
+            </div>
+        </section>
+
+        <!-- 加密貨幣新聞 -->
+        <section class="news-section">
+            <h2 class="section-title">加密貨幣新聞</h2>
+            <div class="news-grid">
+                <a href="#" class="news-card">
+                    <div class="news-card-image">₿</div>
+                    <div class="news-card-body">
+                        <h3 class="news-card-title">比特幣ETF資金持續流入，機構投資者加速布局</h3>
+                        <p class="news-card-desc">美國比特幣現貨ETF本周淨流入達8.7億美元，創下單周新高，顯示機構投資者對加密貨幣市場信心增強。</p>
+                        <div class="news-card-meta">
+                            <div class="news-card-source">CoinDesk</div>
+                            <div class="news-card-date">2026-03-27</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="#" class="news-card">
+                    <div class="news-card-image">Ξ</div>
+                    <div class="news-card-body">
+                        <h3 class="news-card-title">以太坊2.0升級完成，交易速度提升300%</h3>
+                        <p class="news-card-desc">以太坊最新升級大幅提升網絡性能，交易處理速度從15TPS提升至60TPS，為DeFi和NFT應用提供更好基礎設施。</p>
+                        <div class="news-card-meta">
+                            <div class="news-card-source">CryptoSlate</div>
+                            <div class="news-card-date">2026-03-26</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="#" class="news-card">
+                    <div class="news-card-image">💎</div>
+                    <div class="news-card-body">
+                        <h3 class="news-card-title">Solana網絡恢復正常，中斷問題已解決</h3>
+                        <p class="news-card-desc">Solana網絡在經歷5小時中斷後已完全恢復，開發團隊表示已找到根本原因並實施永久性修復方案。</p>
+                        <div class="news-card-meta">
+                            <div class="news-card-source">The Block</div>
+                            <div class="news-card-date">2026-03-25</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 美股新聞 -->
+        <section class="news-section">
+            <h2 class="section-title">美股市場動態</h2>
+            <div class="news-grid">
+                <a href="#" class="news-card">
+                    <div class="news-card-image">📈</div>
+                    <div class="news-card-body">
+                        <h3 class="news-card-title">科技股領漲，納斯達克創歷史新高</h3>
+                        <p class="news-card-desc">AI相關科技股強勢上漲，帶動納斯達克指數突破16,200點，創下歷史新高，市場對科技行業前景樂觀。</p>
+                        <div class="news-card-meta">
+                            <div class="news-card-source">CNBC</div>
+                            <div class="news-card-date">2026-03-27</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="#" class="news-card">
+                    <div class="news-card-image">🏦</div>
+                    <div class="news-card-body">
+                        <h3 class="news-card-title">美聯儲維持利率不變，暗示年內可能降息</h3>
+                        <p class="news-card-desc">美聯儲宣布維持基準利率在5.25%-5.5%區間，但暗示如果通脹持續下降，可能在今年晚些時候開始降息。</p>
+                        <div class="news-card-meta">
+                            <div class="news-card-source">Bloomberg</div>
+                            <div class="news-card-date">2026-03-26</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="#" class="news-card">
+                    <div class="news-card-image">🛒</div>
+                    <div class="news-card-body">
+                        <h3 class="news-card-title">零售股財報超預期，消費市場表現強勁</h3>
+                        <p class="news-card-desc">多家零售巨頭公布財報，營收和利潤均超市場預期，顯示美國消費市場依然強勁，經濟軟著陸可能性增加。</p>
+                        <div class="news-card-meta">
+                            <div class="news-card-source">Reuters</div>
+                            <div class="news-card-date">2026-03-25</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 技術分析 -->
+        <section class="analysis-section">
+            <h2 class="section-title">技術分析與策略</h2>
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <div class="analysis-header">
+                        <div class="analysis-icon">📊</div>
+                        <h3 class="analysis-title">比特幣技術分析</h3>
+                    </div>
+                    <div class="analysis-content">
+                        <p>比特幣在$65,000-$70,000區間震盪，關鍵支撐位在$65,000，阻力位在$70,000。RSI指標顯示中性偏多，MACD金叉向上，短期內有望測試阻力位。</p>
+                        <p><strong>操作建議：</strong>在$65,000附近逢低買入，目標$70,000，止損$63,500。</p>
+                    </div>
+                </div>
+                
+                <div class="analysis-card">
+                    <div class="analysis-header">
+                        <div class="analysis-icon">📈</div>
+                        <h3 class="analysis-title">納斯達克趨勢分析</h3>
+                    </div>
+                    <div class="analysis-content">
+                        <p>納斯達克指數突破前期高點，形成上升趨勢。科技股龍頭表現強勢，AI、雲計算、半導體等板塊領漲。指數在16,000點有強力支撐。</p>
+                        <p><strong>操作建議：</strong>關注科技龍頭股，分批建倉，長期持有。注意16,500點附近可能出現技術性回調。</p>
+                    </div>
+                </div>
+                
+                <div class="analysis-card">
+                    <div class="analysis-header">
+                        <div class="analysis-icon">💰</div>
+                        <h3 class="analysis-title">投資組合建議</h3>
+                    </div>
+                    <div class="analysis-content">
+                        <p><strong>保守型：</strong>60%美股ETF + 20%債券 + 15%黃金 + 5%比特幣</p>
+                        <p><strong>平衡型：</strong>50%科技股 + 20%加密貨幣 + 20%美股ETF + 10%現金</p>
+                        <p><strong>積極型：</strong>40%AI相關股票 + 30%加密貨幣 + 20%科技股 + 10%期權策略</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁腳 -->
+    <footer class="footer">
+        <p>© 2026 科技修真傳 · 財經資訊頁面 · 數據僅供參考，投資有風險，請謹慎決策</p>
+        <p>最後更新: 2026-03-27 16:30 HKT</p>
+    </footer>
+
+    <script>
+        // 簡單的市場數據更新（模擬）
+        function updateMarketData() {
+            const prices = [
+                { id: 'btc-price', min: 68000, max: 69000 },
+                { id: 'eth-price', min: 3400, max: 3500 },
+                { id: 'nasdaq-price', min: 16200, max: 16250 },
+                { id: 'dow-price', min: 38900, max: 39000 }
+            ];
+            
+            prices.forEach(item => {
+                const element = document.querySelector(`.market-card:nth-child(${prices.indexOf(item)+1}) .market-price`);
+                if (element) {
+                    const current = parseFloat(element.textContent.replace(/[^0-9.]/g, ''));
+                    const change = (Math.random() - 0.5) * 0.02; // ±1%變化
+                    const newPrice = current * (1 + change);
+                    element.textContent = formatPrice(newPrice, item.id.includes('price'));
+                    
+                    // 更新漲跌幅
+                    const changeElement = element.parentElement.querySelector('.market-change');
+                    if (changeElement) {
+                        const percent = change * 100;
+                        changeElement.textContent = `${percent >= 0 ? '+' : ''}${percent.toFixed(2)}%`;
+                        changeElement.className = `market-change ${percent >= 0 ? 'change-positive' : 'change-negative'}`;
+                    }
+                }
+            });
+        }
+        
+        function formatPrice(price, isCrypto) {
+            if (isCrypto) {
+                return `$${price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            } else {
+                return price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+        }
+        
+        // 每30秒更新一次市場數據
+        setInterval(updateMarketData, 30000);
+        
+        // 頁面加載時初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            updateMarketData();
+            
+            // 更新最後更新時間
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: '2-digit', 
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZone: 'Asia/Hong_Kong'
+            };
+            const timeString = now.toLocaleString('zh-HK', options);
+            const timeElement = document.querySelector('.footer p:last-child');
+            if (timeElement) {
+                timeElement.textContent = `最後更新: ${timeString} HKT`;
+            }
+        });
+    </script>
+</body>
+</html>

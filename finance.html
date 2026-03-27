@@ -411,138 +411,246 @@
         /* 投資工具樣式 */
         .investment-tools {
             margin: 40px 0;
-            padding: 30px;
+            padding: 40px;
             background: var(--bg-secondary);
-            border-radius: 12px;
+            border-radius: 16px;
             border: 1px solid var(--border);
+        }
+        
+        .investment-tools .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .investment-tools .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+        
+        .investment-tools .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
         }
         
         .tool-card {
             background: var(--bg-tertiary);
-            border-radius: 12px;
-            padding: 25px;
+            border-radius: 16px;
+            padding: 30px;
             border: 1px solid var(--border);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(16, 185, 129, 0.15);
             border-color: var(--accent);
         }
         
         .tool-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--border);
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border);
         }
         
         .tool-header h3 {
             margin: 0;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: var(--text-primary);
+            flex: 1;
         }
         
         .tool-icon {
-            font-size: 1.5rem;
+            font-size: 2rem;
+            margin-left: 15px;
         }
         
         .tool-description {
             color: var(--text-secondary);
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            line-height: 1.5;
+            margin-bottom: 25px;
+            font-size: 1rem;
+            line-height: 1.6;
+            flex: 0 0 auto;
         }
         
         .tool-form {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            flex: 1;
         }
         
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
         
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 10px 12px;
+            padding: 12px 16px;
             background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 6px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
             color: var(--text-primary);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            transition: all 0.2s;
         }
         
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
             border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        .form-group input[type="range"] {
+            padding: 0;
+            height: 6px;
+            background: var(--bg-secondary);
+            border-radius: 3px;
+            -webkit-appearance: none;
+        }
+        
+        .form-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        
+        .slider-container {
+            position: relative;
+            margin-top: 5px;
+        }
+        
+        .slider-value {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
         }
         
         .range-labels {
             display: flex;
             justify-content: space-between;
-            margin-top: 5px;
-            font-size: 0.8rem;
+            margin-top: 25px;
+            font-size: 0.85rem;
             color: var(--text-secondary);
+        }
+        
+        .form-group .hint {
+            display: block;
+            margin-top: 5px;
+            color: var(--text-tertiary);
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+        
+        .btn-icon {
+            margin-right: 8px;
+        }
+        
+        .result-item.highlight {
+            background: rgba(16, 185, 129, 0.1);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 3px solid var(--accent);
+        }
+        
+        .result-item.highlight .result-label {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .result-item.highlight .result-value {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+        
+        .tip-icon {
+            margin-right: 10px;
         }
         
         .btn-calculate {
             width: 100%;
-            padding: 12px;
-            background: var(--accent);
+            padding: 14px;
+            background: linear-gradient(135deg, var(--accent), #059669);
             color: white;
             border: none;
-            border-radius: 6px;
-            font-size: 1rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.3s;
+            margin-top: 10px;
         }
         
         .btn-calculate:hover {
-            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-calculate:active {
+            transform: translateY(0);
         }
         
         .tool-results {
             background: var(--bg-secondary);
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 20px;
-            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+            border: 2px solid var(--border);
+            flex: 0 0 auto;
         }
         
         .tool-results h4 {
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: var(--text-primary);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            text-align: center;
         }
         
         .result-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
         .result-item:last-child {
@@ -553,52 +661,73 @@
         
         .result-label {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
         
         .result-value {
             color: var(--text-primary);
-            font-weight: 600;
-            font-size: 1rem;
+            font-weight: 700;
+            font-size: 1.1rem;
         }
         
         .tool-chart {
-            margin-top: 20px;
-            height: 200px;
+            margin-top: 25px;
+            height: 220px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--bg-secondary);
+            padding: 15px;
+            flex: 0 0 auto;
         }
         
         .tool-tips {
-            background: var(--bg-tertiary);
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 30px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 40px;
             border-left: 4px solid var(--accent);
         }
         
         .tool-tips h4 {
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: var(--text-primary);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .tool-tips ul {
             margin: 0;
             padding-left: 20px;
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 1rem;
         }
         
         .tool-tips li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        .tool-tips li:before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: -20px;
         }
         
         .disclaimer {
-            margin-top: 15px;
-            padding-top: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
             border-top: 1px solid var(--border);
             color: var(--text-tertiary);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-style: italic;
+            text-align: center;
         }
 
         /* 響應式設計 */
@@ -1044,8 +1173,24 @@
             }
             
             /* 投資工具響應式 */
+            .investment-tools {
+                padding: 20px;
+                margin: 20px 0;
+            }
+            
+            .investment-tools .section-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .investment-tools .section-subtitle {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+            
             .tools-grid {
                 grid-template-columns: 1fr;
+                gap: 25px;
+                margin: 25px 0;
             }
             
             .tool-card {
@@ -1056,14 +1201,72 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 10px;
+                padding-bottom: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .tool-header h3 {
+                font-size: 1.2rem;
+                width: 100%;
+                text-align: center;
             }
             
             .tool-icon {
-                align-self: flex-start;
+                align-self: center;
+                margin-left: 0;
+                font-size: 1.8rem;
+            }
+            
+            .tool-description {
+                font-size: 0.95rem;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .form-group label {
+                font-size: 0.9rem;
+            }
+            
+            .form-group input,
+            .form-group select {
+                padding: 10px 14px;
+                font-size: 0.95rem;
+            }
+            
+            .btn-calculate {
+                padding: 12px;
+                font-size: 1rem;
+            }
+            
+            .tool-results {
+                padding: 20px;
+            }
+            
+            .tool-results h4 {
+                font-size: 1.1rem;
+            }
+            
+            .result-label,
+            .result-value {
+                font-size: 0.9rem;
             }
             
             .tool-chart {
-                height: 150px;
+                height: 180px;
+                padding: 10px;
+            }
+            
+            .tool-tips {
+                padding: 20px;
+                margin-top: 30px;
+            }
+            
+            .tool-tips h4 {
+                font-size: 1.1rem;
+            }
+            
+            .tool-tips ul {
+                font-size: 0.95rem;
             }
         }</style>
 </head>
@@ -1350,8 +1553,8 @@
     <!-- 投資工具部分 -->
     <section class="investment-tools">
         <div class="section-header">
-            <h2>🛠️ 投資工具</h2>
-            <p class="section-subtitle">專業投資分析工具，助您做出明智決策</p>
+            <h2>🛠️ 專業投資工具</h2>
+            <p class="section-subtitle">智能計算與風險分析，助您做出更明智的投資決策</p>
         </div>
         
         <div class="tools-grid">
@@ -1362,46 +1565,53 @@
                     <span class="tool-icon">📈</span>
                 </div>
                 <div class="tool-description">
-                    計算您的投資在複利作用下的未來價值
+                    計算長期投資在複利作用下的驚人增長，了解時間和金錢的魔力
                 </div>
                 
                 <form id="compound-interest-form" class="tool-form">
                     <div class="form-group">
-                        <label for="principal">初始本金 ($)</label>
-                        <input type="number" id="principal" value="10000" min="0" step="100">
+                        <label for="principal">💰 初始本金 (USD)</label>
+                        <input type="number" id="principal" value="10000" min="0" step="100" placeholder="例如: 10000">
                     </div>
                     
                     <div class="form-group">
-                        <label for="monthly-contribution">每月追加投資 ($)</label>
-                        <input type="number" id="monthly-contribution" value="500" min="0" step="50">
+                        <label for="monthly-contribution">📅 每月追加投資 (USD)</label>
+                        <input type="number" id="monthly-contribution" value="500" min="0" step="50" placeholder="例如: 500">
                     </div>
                     
                     <div class="form-group">
-                        <label for="annual-rate">年化收益率 (%)</label>
-                        <input type="number" id="annual-rate" value="8" min="0" max="100" step="0.1">
+                        <label for="annual-rate">📊 年化收益率 (%)</label>
+                        <input type="number" id="annual-rate" value="8" min="0" max="100" step="0.1" placeholder="例如: 8">
+                        <small class="hint">歷史平均: 股市7-10%, 債券3-5%</small>
                     </div>
                     
                     <div class="form-group">
-                        <label for="years">投資年限 (年)</label>
-                        <input type="number" id="years" value="10" min="1" max="50" step="1">
+                        <label for="years">⏳ 投資年限 (年)</label>
+                        <input type="number" id="years" value="10" min="1" max="50" step="1" placeholder="例如: 10">
                     </div>
                     
-                    <button type="submit" class="btn-calculate">計算</button>
+                    <button type="submit" class="btn-calculate">
+                        <span class="btn-icon">🧮</span> 立即計算
+                    </button>
                 </form>
                 
                 <div class="tool-results">
-                    <h4>計算結果</h4>
+                    <h4>📋 計算結果</h4>
                     <div class="result-item">
                         <span class="result-label">最終金額:</span>
-                        <span class="result-value" id="final-amount">$0.00</span>
+                        <span class="result-value" id="final-amount">$21,589.25</span>
                     </div>
                     <div class="result-item">
                         <span class="result-label">總投入本金:</span>
-                        <span class="result-value" id="total-contributions">$0.00</span>
+                        <span class="result-value" id="total-contributions">$70,000.00</span>
                     </div>
                     <div class="result-item">
                         <span class="result-label">總利息收入:</span>
-                        <span class="result-value" id="total-interest">$0.00</span>
+                        <span class="result-value" id="total-interest">$51,589.25</span>
+                    </div>
+                    <div class="result-item highlight">
+                        <span class="result-label">複利效應:</span>
+                        <span class="result-value" id="compound-effect">+73.7%</span>
                     </div>
                 </div>
                 
@@ -1413,81 +1623,90 @@
             <!-- 風險評估 -->
             <div class="tool-card">
                 <div class="tool-header">
-                    <h3>⚖️ 風險評估</h3>
+                    <h3>⚖️ 風險評估工具</h3>
                     <span class="tool-icon">📊</span>
                 </div>
                 <div class="tool-description">
-                    評估您的風險承受能力，獲取個性化投資建議
+                    了解您的風險承受能力，獲取個性化的資產配置建議
                 </div>
                 
                 <form id="risk-assessment-form" class="tool-form">
                     <div class="form-group">
-                        <label for="risk-age">您的年齡</label>
+                        <label for="risk-age">👤 您的年齡</label>
                         <select id="risk-age">
-                            <option value="20">20-30歲</option>
-                            <option value="30" selected>30-40歲</option>
-                            <option value="40">40-50歲</option>
-                            <option value="50">50-60歲</option>
-                            <option value="60">60歲以上</option>
+                            <option value="20">20-30歲 (年輕積極)</option>
+                            <option value="30" selected>30-40歲 (事業成長)</option>
+                            <option value="40">40-50歲 (家庭穩定)</option>
+                            <option value="50">50-60歲 (準備退休)</option>
+                            <option value="60">60歲以上 (退休生活)</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="investment-horizon">投資期限 (年)</label>
+                        <label for="investment-horizon">⏰ 投資期限</label>
                         <select id="investment-horizon">
-                            <option value="3">3年以下</option>
-                            <option value="5">3-5年</option>
-                            <option value="10" selected>5-10年</option>
-                            <option value="15">10年以上</option>
+                            <option value="3">3年以下 (短期)</option>
+                            <option value="5">3-5年 (中期)</option>
+                            <option value="10" selected>5-10年 (長期)</option>
+                            <option value="15">10年以上 (超長期)</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="investment-experience">投資經驗 (年)</label>
+                        <label for="investment-experience">🎓 投資經驗</label>
                         <select id="investment-experience">
-                            <option value="1">1年以下</option>
-                            <option value="3" selected>1-5年</option>
-                            <option value="5">5-10年</option>
-                            <option value="10">10年以上</option>
+                            <option value="1">新手 (1年以下)</option>
+                            <option value="3" selected>初學者 (1-5年)</option>
+                            <option value="5">有經驗 (5-10年)</option>
+                            <option value="10">資深投資者 (10年以上)</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="risk-tolerance">風險容忍度 (1-10)</label>
-                        <input type="range" id="risk-tolerance" min="1" max="10" value="5">
-                        <div class="range-labels">
-                            <span>保守</span>
-                            <span>平衡</span>
-                            <span>積極</span>
+                        <label for="risk-tolerance">🎯 風險容忍度</label>
+                        <div class="slider-container">
+                            <input type="range" id="risk-tolerance" min="1" max="10" value="5">
+                            <div class="range-labels">
+                                <span>保守</span>
+                                <span>平衡</span>
+                                <span>積極</span>
+                            </div>
+                            <div class="slider-value" id="risk-tolerance-value">5</div>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="investment-goals">投資目標</label>
+                        <label for="investment-goals">🏆 投資目標</label>
                         <select id="investment-goals">
-                            <option value="1">保本為主</option>
-                            <option value="3" selected>穩健增長</option>
-                            <option value="5">積極增長</option>
-                            <option value="7">高風險高回報</option>
+                            <option value="1">保本為主 (低風險)</option>
+                            <option value="3" selected>穩健增長 (中等風險)</option>
+                            <option value="5">積極增長 (中高風險)</option>
+                            <option value="7">高風險高回報 (高風險)</option>
                         </select>
                     </div>
                     
-                    <button type="submit" class="btn-calculate">評估風險</button>
+                    <button type="submit" class="btn-calculate">
+                        <span class="btn-icon">🔍</span> 開始評估
+                    </button>
                 </form>
                 
                 <div class="tool-results">
-                    <h4>評估結果</h4>
+                    <h4>📊 評估結果</h4>
                     <div class="result-item">
                         <span class="result-label">風險分數:</span>
-                        <span class="result-value" id="risk-score">0/100</span>
+                        <span class="result-value" id="risk-score">65/100</span>
                     </div>
                     <div class="result-item">
                         <span class="result-label">風險等級:</span>
-                        <span class="result-value" id="risk-level">未知</span>
+                        <span class="result-value" id="risk-level">成長型</span>
                     </div>
                     <div class="result-item">
+                        <span class="result-label">投資風格:</span>
+                        <span class="result-value" id="risk-style">平衡增長</span>
+                    </div>
+                    <div class="result-item highlight">
                         <span class="result-label">建議:</span>
-                        <span class="result-value" id="risk-description">請完成評估</span>
+                        <span class="result-value" id="risk-description">適合追求穩健增長的投資者</span>
                     </div>
                 </div>
                 
@@ -1498,14 +1717,15 @@
         </div>
         
         <div class="tool-tips">
-            <h4>💡 投資提示</h4>
+            <h4><span class="tip-icon">💡</span> 投資智慧錦囊</h4>
             <ul>
-                <li>長期投資通常比短期交易更穩定</li>
-                <li>分散投資可以降低風險</li>
-                <li>定期檢視和調整投資組合</li>
-                <li>不要把所有資金投入單一資產</li>
+                <li><strong>時間是您最好的朋友</strong> - 長期投資讓複利發揮最大威力</li>
+                <li><strong>不要把所有雞蛋放在一個籃子裡</strong> - 分散投資是降低風險的關鍵</li>
+                <li><strong>市場時機難以預測</strong> - 定期定額投資勝過試圖擇時進出</li>
+                <li><strong>情緒是投資的大敵</strong> - 保持理性，避免恐慌性買賣</li>
+                <li><strong>知識就是力量</strong> - 持續學習是成功投資的基礎</li>
             </ul>
-            <p class="disclaimer">⚠️ 投資有風險，過往表現不代表未來收益，請謹慎決策</p>
+            <p class="disclaimer">⚠️ 重要聲明：本工具提供的計算結果和建議僅供參考，不構成投資建議。投資涉及風險，過往表現不代表未來收益。在做出任何投資決策前，請諮詢專業財務顧問。</p>
         </div>
     </section>
     

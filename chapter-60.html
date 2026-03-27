@@ -801,6 +801,9 @@
             <button class="nav-btn" onclick="nextChapter()">▶</button>
         </div>
         <a href="chapter-61.html">下一章 →</a></nav>
+    <div style="text-align:center; margin-top:20px;">
+        <a href="chapters.html" style="display:inline-block; padding:10px 20px; background:#6366f1; color:white; text-decoration:none; border-radius:8px; font-weight:500;">返回目錄</a>
+    </div>
 
     <!-- Settings Modal -->
     <div class="modal-overlay" id="settingsModal">
@@ -940,9 +943,13 @@
         });
 
         // Chapter Navigation
-        function prevChapter() { window.location.href = 'chapter-59.html'; }
+        function prevChapter() {
+    window.location.href = "chapter-59.html";
+}
 
-        function nextChapter() { window.location.href = 'chapter-61.html'; }
+        function nextChapter() {
+    window.location.href = "chapter-61.html";
+}
 
         // Reading Progress
         function updateProgress() {

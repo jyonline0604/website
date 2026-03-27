@@ -609,8 +609,11 @@
             <span id="progress">0%</span>
             <button class="nav-btn" onclick="nextChapter()">▶</button>
         </div>
-        <span style="opacity:0.3; padding:10px 16px; display:inline-block;">下一章 →</span>
+        <a href="chapter-67.html">下一章 →</a>
     </nav>
+    <div style="text-align:center; margin-top:20px;">
+        <a href="chapters.html" style="display:inline-block; padding:10px 20px; background:#6366f1; color:white; text-decoration:none; border-radius:8px; font-weight:500;">返回目錄</a>
+    </div>
 
     <div class="modal-overlay" id="settingsModal">
         <div class="settings-modal">
@@ -696,7 +699,9 @@
         function openSettings() { document.getElementById('settingsModal').classList.add('active'); updateProgress(); }
         function closeSettings() { document.getElementById('settingsModal').classList.remove('active'); }
         document.getElementById('settingsModal').addEventListener('click', function(e) { if (e.target === this) closeSettings(); });
-        function prevChapter() { window.location.href = 'chapter-65.html'; }
+        function prevChapter() {
+    window.location.href = "chapter-65.html";
+}
         function nextChapter() { }
         function updateProgress() {
             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;

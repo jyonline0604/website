@@ -879,25 +879,27 @@
             gap: 10px;
         }
         
-        /* 4. 類別內容 - 這是關鍵：橫向排列！ */
+        /* 4. 類別內容 - 橫向緊湊排列 */
         .category-content {
-            padding: 25px;
+            padding: 20px;
             display: flex;           /* 橫向排列 */
-            flex-wrap: wrap;         /* 允許換行 */
-            gap: 20px;               /* 卡片間距 */
+            flex-wrap: nowrap;       /* 不換行，橫向滾動 */
+            gap: 16px;               /* 卡片間距 */
             justify-content: flex-start; /* 左對齊 */
             align-items: stretch;    /* 等高對齊 */
+            overflow-x: auto;        /* 橫向滾動條 */
+            scrollbar-width: thin;  /* Firefox 滾動條 */
         }
         
-        /* 5. 市場數據卡片 */
+        /* 5. 市場數據卡片 - 緊湊尺寸 */
         .market-data-item {
             background: var(--bg-tertiary);
             border-radius: 12px;
-            padding: 20px;
+            padding: 16px;
             border: 1px solid var(--border);
-            flex: 1;                 /* 彈性寬度 */
-            min-width: 250px;        /* 最小寬度 */
-            max-width: 350px;        /* 最大寬度 */
+            flex: 0 0 auto;          /* 不自動伸展，固定寬度 */
+            min-width: 180px;       /* 最小寬度 */
+            max-width: 200px;        /* 最大寬度 */
             display: flex;
             flex-direction: column;
         }
@@ -906,11 +908,11 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
         .market-data-name {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-primary);
         }
@@ -925,19 +927,19 @@
         }
         
         .market-data-price {
-            font-size: 1.8rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         
         .market-data-change {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 15px;
+            gap: 6px;
+            margin-bottom: 10px;
         }
         
         .change-positive { color: #10b981; }
@@ -947,10 +949,11 @@
         .market-data-details {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 8px;
             margin-top: auto;
-            padding-top: 15px;
+            padding-top: 10px;
             border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
         }
         
         /* 6. 不同類別的邊框顏色 */
@@ -1333,14 +1336,18 @@
                 font-size: 0.95rem;
             }
             
-            /* 響應式設計：手機上卡片垂直排列 */
+            /* 響應式設計：手機上保持橫向滾動但用更小卡片 */
             .category-content {
-                flex-direction: column;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding: 15px;
+                gap: 12px;
             }
             
             .category-content .market-data-item {
-                min-width: 100%;
-                max-width: 100%;
+                min-width: 150px;
+                max-width: 160px;
+                padding: 12px;
             }
             
             .market-data-price {

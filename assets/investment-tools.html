@@ -1,0 +1,234 @@
+<!-- 投資工具 -->
+<section class="investment-tools">
+    <div class="section-header">
+        <h2>🛠️ 投資工具</h2>
+        <p class="section-subtitle">專業投資分析工具，助您做出明智決策</p>
+    </div>
+    
+    <div class="tools-grid">
+        <!-- 複利計算器 -->
+        <div class="tool-card">
+            <div class="tool-header">
+                <h3>💰 複利計算器</h3>
+                <span class="tool-icon">📈</span>
+            </div>
+            <div class="tool-description">
+                計算您的投資在複利作用下的未來價值
+            </div>
+            
+            <form id="compound-interest-form" class="tool-form">
+                <div class="form-group">
+                    <label for="principal">初始本金 ($)</label>
+                    <input type="number" id="principal" value="10000" min="0" step="100">
+                </div>
+                
+                <div class="form-group">
+                    <label for="monthly-contribution">每月追加投資 ($)</label>
+                    <input type="number" id="monthly-contribution" value="500" min="0" step="50">
+                </div>
+                
+                <div class="form-group">
+                    <label for="annual-rate">年化收益率 (%)</label>
+                    <input type="number" id="annual-rate" value="8" min="0" max="100" step="0.1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="years">投資年限 (年)</label>
+                    <input type="number" id="years" value="10" min="1" max="50" step="1">
+                </div>
+                
+                <button type="submit" class="btn-calculate">計算</button>
+            </form>
+            
+            <div class="tool-results">
+                <h4>計算結果</h4>
+                <div class="result-item">
+                    <span class="result-label">最終金額:</span>
+                    <span class="result-value" id="final-amount">$0.00</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">總投入本金:</span>
+                    <span class="result-value" id="total-contributions">$0.00</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">總利息收入:</span>
+                    <span class="result-value" id="total-interest">$0.00</span>
+                </div>
+            </div>
+            
+            <div class="tool-chart">
+                <canvas id="compound-interest-chart"></canvas>
+            </div>
+        </div>
+        
+        <!-- 風險評估 -->
+        <div class="tool-card">
+            <div class="tool-header">
+                <h3>⚖️ 風險評估</h3>
+                <span class="tool-icon">📊</span>
+            </div>
+            <div class="tool-description">
+                評估您的風險承受能力，獲取個性化投資建議
+            </div>
+            
+            <form id="risk-assessment-form" class="tool-form">
+                <div class="form-group">
+                    <label for="risk-age">您的年齡</label>
+                    <select id="risk-age">
+                        <option value="20">20-30歲</option>
+                        <option value="30" selected>30-40歲</option>
+                        <option value="40">40-50歲</option>
+                        <option value="50">50-60歲</option>
+                        <option value="60">60歲以上</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="investment-horizon">投資期限 (年)</label>
+                    <select id="investment-horizon">
+                        <option value="3">3年以下</option>
+                        <option value="5">3-5年</option>
+                        <option value="10" selected>5-10年</option>
+                        <option value="15">10年以上</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="investment-experience">投資經驗 (年)</label>
+                    <select id="investment-experience">
+                        <option value="1">1年以下</option>
+                        <option value="3" selected>1-5年</option>
+                        <option value="5">5-10年</option>
+                        <option value="10">10年以上</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="risk-tolerance">風險容忍度 (1-10)</label>
+                    <input type="range" id="risk-tolerance" min="1" max="10" value="5">
+                    <div class="range-labels">
+                        <span>保守</span>
+                        <span>平衡</span>
+                        <span>積極</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="investment-goals">投資目標</label>
+                    <select id="investment-goals">
+                        <option value="1">保本為主</option>
+                        <option value="3" selected>穩健增長</option>
+                        <option value="5">積極增長</option>
+                        <option value="7">高風險高回報</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn-calculate">評估風險</button>
+            </form>
+            
+            <div class="tool-results">
+                <h4>評估結果</h4>
+                <div class="result-item">
+                    <span class="result-label">風險分數:</span>
+                    <span class="result-value" id="risk-score">0/100</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">風險等級:</span>
+                    <span class="result-value" id="risk-level">未知</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">建議:</span>
+                    <span class="result-value" id="risk-description">請完成評估</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">推薦配置:</span>
+                    <div class="result-value" id="recommended-allocation">
+                        <ul>
+                            <li>請完成風險評估</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tool-chart">
+                <canvas id="risk-allocation-chart"></canvas>
+            </div>
+        </div>
+        
+        <!-- 技術分析工具 -->
+        <div class="tool-card">
+            <div class="tool-header">
+                <h3>📊 技術分析</h3>
+                <span class="tool-icon">🔬</span>
+            </div>
+            <div class="tool-description">
+                常用技術指標計算器，輔助交易決策
+            </div>
+            
+            <div class="technical-tools">
+                <!-- RSI計算器 -->
+                <div class="technical-tool">
+                    <h4>RSI (相對強弱指數)</h4>
+                    <form id="rsi-calculator" class="tech-form">
+                        <div class="form-group">
+                            <label for="rsi-prices">價格序列 (逗號分隔)</label>
+                            <input type="text" id="rsi-prices" value="100,102,101,103,105,104,106,108,107,109,111,110,112,113,115">
+                            <small>示例: 100,102,101,103,105...</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="rsi-period">計算周期</label>
+                            <input type="number" id="rsi-period" value="14" min="2" max="30">
+                        </div>
+                        <button type="submit" class="btn-tech">計算RSI</button>
+                    </form>
+                    <div class="tech-result">
+                        <strong>RSI值:</strong> <span id="rsi-result">--</span>
+                        <div class="tech-interpretation" id="rsi-interpretation"></div>
+                    </div>
+                </div>
+                
+                <!-- MACD計算器 -->
+                <div class="technical-tool">
+                    <h4>MACD (指數平滑移動平均線)</h4>
+                    <form id="macd-calculator" class="tech-form">
+                        <div class="form-group">
+                            <label for="macd-prices">價格序列 (逗號分隔)</label>
+                            <input type="text" id="macd-prices" placeholder="輸入至少26個價格數據">
+                        </div>
+                        <button type="submit" class="btn-tech">計算MACD</button>
+                    </form>
+                    <div class="tech-result">
+                        <strong>MACD:</strong> <span id="macd-result">--</span>
+                        <div class="tech-interpretation" id="macd-interpretation"></div>
+                    </div>
+                </div>
+                
+                <!-- 布林帶計算器 -->
+                <div class="technical-tool">
+                    <h4>布林帶 (Bollinger Bands)</h4>
+                    <form id="bollinger-calculator" class="tech-form">
+                        <div class="form-group">
+                            <label for="bollinger-prices">價格序列 (逗號分隔)</label>
+                            <input type="text" id="bollinger-prices" placeholder="輸入至少20個價格數據">
+                        </div>
+                        <button type="submit" class="btn-tech">計算布林帶</button>
+                    </form>
+                    <div class="tech-result">
+                        <strong>布林帶:</strong> <span id="bollinger-result">--</span>
+                        <div class="tech-interpretation" id="bollinger-interpretation"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tool-tips">
+                <h4>💡 技術指標說明</h4>
+                <ul>
+                    <li><strong>RSI:</strong> 衡量價格變動速度和變化，70以上為超買，30以下為超賣</li>
+                    <li><strong>MACD:</strong> 顯示價格趨勢的變化和強度，金叉買入，死叉賣出</li>
+                    <li><strong>布林帶:</strong> 顯示價格波動範圍，上軌壓力，下軌支撐</li>
+                </ul>
+                <p class="disclaimer">⚠️ 技術分析僅供參考，投資有風險，請謹慎決策</p>
+            </div>
+        </div>
+    </div>
+</section>

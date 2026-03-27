@@ -844,17 +844,11 @@
             border: 1px solid var(--border);
         }
         
-        /* 橫向市場布局 */
-        .horizontal-market-layout {
+        /* 市場類別布局 - 類別垂直，內容橫向 */
+        .market-categories-container {
             display: flex;
             flex-direction: column;
-            gap: 25px;
-        }
-        
-        .market-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
+            gap: 30px;
         }
         
         .market-category {
@@ -863,9 +857,6 @@
             border: 2px solid var(--border);
             overflow: hidden;
             transition: all 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
         }
         
         .market-category:hover {
@@ -932,10 +923,18 @@
         
         .category-content {
             padding: 25px;
-            flex: 1;
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: flex-start;
+            align-items: stretch;
+        }
+        
+        /* 當內容橫向排列時，調整卡片寬度 */
+        .category-content .market-data-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
         }
         
         .loading-data {
@@ -945,31 +944,38 @@
             padding: 20px;
         }
         
-        /* 市場數據卡片樣式 */
+        /* 市場數據卡片樣式 - 橫向排列優化 */
         .market-data-item {
             background: var(--bg-tertiary);
             border-radius: 12px;
             padding: 20px;
             border: 1px solid var(--border);
             transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .market-data-item:hover {
             background: rgba(16, 185, 129, 0.05);
             border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .market-data-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 15px;
+            flex-shrink: 0;
         }
         
         .market-data-name {
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-primary);
+            line-height: 1.3;
         }
         
         .market-data-symbol {
@@ -979,6 +985,7 @@
             border-radius: 4px;
             font-size: 0.85rem;
             font-weight: 500;
+            white-space: nowrap;
         }
         
         .market-data-price {
@@ -986,6 +993,7 @@
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 8px;
+            flex-shrink: 0;
         }
         
         .market-data-change {
@@ -994,6 +1002,8 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            margin-bottom: 15px;
+            flex-shrink: 0;
         }
         
         .change-positive {
@@ -1012,9 +1022,10 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin-top: 15px;
+            margin-top: auto;
             padding-top: 15px;
             border-top: 1px solid rgba(255,255,255,0.1);
+            flex-shrink: 0;
         }
         
         .market-data-detail {
@@ -1026,12 +1037,16 @@
         .detail-label {
             color: var(--text-secondary);
             font-size: 0.85rem;
+            white-space: nowrap;
         }
         
         .detail-value {
             color: var(--text-primary);
             font-size: 0.95rem;
             font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .category-footer {
@@ -1397,7 +1412,7 @@
                 font-size: 0.95rem;
             }
             
-            /* 橫向市場布局響應式 */
+            /* 市場類別布局響應式 */
             .section-header {
                 flex-direction: column;
                 gap: 15px;
@@ -1424,13 +1439,8 @@
                 text-align: center;
             }
             
-            .market-row {
-                grid-template-columns: 1fr;
+            .market-categories-container {
                 gap: 20px;
-            }
-            
-            .market-category {
-                margin-bottom: 0;
             }
             
             .category-header {
@@ -1443,6 +1453,13 @@
             
             .category-content {
                 padding: 20px;
+                flex-direction: column; /* 手機上改為垂直排列 */
+                gap: 15px;
+            }
+            
+            .category-content .market-data-item {
+                min-width: 100%; /* 手機上卡片佔滿寬度 */
+                max-width: 100%;
             }
             
             .market-data-item {
@@ -1512,105 +1529,96 @@
             
             <div id="error-message" style="display: none;"></div>
             
-            <!-- 橫向市場數據布局 -->
-            <div class="horizontal-market-layout">
+            <!-- 市場類別容器 - 類別垂直，內容橫向 -->
+            <div class="market-categories-container">
                 
-                <!-- 第一行：加密貨幣 + 股票指數 -->
-                <div class="market-row">
-                    <!-- 加密貨幣區域 -->
-                    <div class="market-category crypto-category">
-                        <div class="category-header">
-                            <h3><span class="category-icon">🪙</span> 加密貨幣</h3>
-                            <span class="category-update">實時更新</span>
-                        </div>
-                        <div class="category-content" id="crypto-data">
-                            <!-- 由JavaScript動態生成 -->
-                            <div class="loading-data">載入加密貨幣數據...</div>
-                        </div>
-                        <div class="category-footer">
-                            <span class="data-source">數據來源: CoinGecko API</span>
-                        </div>
+                <!-- 加密貨幣區域 -->
+                <div class="market-category crypto-category">
+                    <div class="category-header">
+                        <h3><span class="category-icon">🪙</span> 加密貨幣</h3>
+                        <span class="category-update">實時更新</span>
                     </div>
-                    
-                    <!-- 股票指數區域 -->
-                    <div class="market-category stock-category">
-                        <div class="category-header">
-                            <h3><span class="category-icon">📊</span> 股票指數</h3>
-                            <span class="category-update">延遲15分鐘</span>
-                        </div>
-                        <div class="category-content" id="stock-data">
-                            <!-- 由JavaScript動態生成 -->
-                            <div class="loading-data">載入股票數據...</div>
-                        </div>
-                        <div class="category-footer">
-                            <span class="data-source">數據來源: 市場數據API</span>
-                        </div>
+                    <div class="category-content" id="crypto-data">
+                        <!-- 由JavaScript動態生成 -->
+                        <div class="loading-data">載入加密貨幣數據...</div>
+                    </div>
+                    <div class="category-footer">
+                        <span class="data-source">數據來源: CoinGecko API</span>
                     </div>
                 </div>
                 
-                <!-- 第二行：商品 + 外匯 -->
-                <div class="market-row">
-                    <!-- 商品區域 -->
-                    <div class="market-category commodity-category">
-                        <div class="category-header">
-                            <h3><span class="category-icon">🛢️</span> 商品市場</h3>
-                            <span class="category-update">實時更新</span>
-                        </div>
-                        <div class="category-content" id="commodity-data">
-                            <!-- 由JavaScript動態生成 -->
-                            <div class="loading-data">載入商品數據...</div>
-                        </div>
-                        <div class="category-footer">
-                            <span class="data-source">數據來源: 商品交易所</span>
-                        </div>
+                <!-- 股票指數區域 -->
+                <div class="market-category stock-category">
+                    <div class="category-header">
+                        <h3><span class="category-icon">📊</span> 股票指數</h3>
+                        <span class="category-update">延遲15分鐘</span>
                     </div>
-                    
-                    <!-- 外匯區域 -->
-                    <div class="market-category forex-category">
-                        <div class="category-header">
-                            <h3><span class="category-icon">💱</span> 外匯市場</h3>
-                            <span class="category-update">實時更新</span>
-                        </div>
-                        <div class="category-content" id="forex-data">
-                            <!-- 由JavaScript動態生成 -->
-                            <div class="loading-data">載入外匯數據...</div>
-                        </div>
-                        <div class="category-footer">
-                            <span class="data-source">數據來源: 外匯市場</span>
-                        </div>
+                    <div class="category-content" id="stock-data">
+                        <!-- 由JavaScript動態生成 -->
+                        <div class="loading-data">載入股票數據...</div>
+                    </div>
+                    <div class="category-footer">
+                        <span class="data-source">數據來源: 市場數據API</span>
                     </div>
                 </div>
                 
-                <!-- 第三行：債券 + 市場情緒 -->
-                <div class="market-row">
-                    <!-- 債券區域 -->
-                    <div class="market-category bond-category">
-                        <div class="category-header">
-                            <h3><span class="category-icon">📜</span> 債券市場</h3>
-                            <span class="category-update">每日更新</span>
-                        </div>
-                        <div class="category-content" id="bond-data">
-                            <!-- 由JavaScript動態生成 -->
-                            <div class="loading-data">載入債券數據...</div>
-                        </div>
-                        <div class="category-footer">
-                            <span class="data-source">數據來源: 債券市場</span>
-                        </div>
+                <!-- 商品區域 -->
+                <div class="market-category commodity-category">
+                    <div class="category-header">
+                        <h3><span class="category-icon">🛢️</span> 商品市場</h3>
+                        <span class="category-update">實時更新</span>
                     </div>
-                    
-                    <!-- 市場情緒區域 -->
-                    <div class="market-category sentiment-category">
-                        <div class="category-header">
-                            <h3><span class="category-icon">😊</span> 市場情緒</h3>
-                            <span class="category-update">實時計算</span>
-                        </div>
-                        <div class="category-content" id="market-sentiment">
-                            <!-- 由JavaScript動態生成 -->
-                            <div class="loading-data">分析市場情緒...</div>
-                        </div>
-                        <div class="category-footer">
-                            <span class="data-source">恐懼與貪婪指數</span>
-                        </div>
+                    <div class="category-content" id="commodity-data">
+                        <!-- 由JavaScript動態生成 -->
+                        <div class="loading-data">載入商品數據...</div>
+                    </div>
+                    <div class="category-footer">
+                        <span class="data-source">數據來源: 商品交易所</span>
+                    </div>
+                </div>
+                
+                <!-- 外匯區域 -->
+                <div class="market-category forex-category">
+                    <div class="category-header">
+                        <h3><span class="category-icon">💱</span> 外匯市場</h3>
+                        <span class="category-update">實時更新</span>
+                    </div>
+                    <div class="category-content" id="forex-data">
+                        <!-- 由JavaScript動態生成 -->
+                        <div class="loading-data">載入外匯數據...</div>
+                    </div>
+                    <div class="category-footer">
+                        <span class="data-source">數據來源: 外匯市場</span>
+                    </div>
+                </div>
+                
+                <!-- 債券區域 -->
+                <div class="market-category bond-category">
+                    <div class="category-header">
+                        <h3><span class="category-icon">📜</span> 債券市場</h3>
+                        <span class="category-update">每日更新</span>
+                    </div>
+                    <div class="category-content" id="bond-data">
+                        <!-- 由JavaScript動態生成 -->
+                        <div class="loading-data">載入債券數據...</div>
+                    </div>
+                    <div class="category-footer">
+                        <span class="data-source">數據來源: 債券市場</span>
+                    </div>
+                </div>
+                
+                <!-- 市場情緒區域 -->
+                <div class="market-category sentiment-category">
+                    <div class="category-header">
+                        <h3><span class="category-icon">😊</span> 市場情緒</h3>
+                        <span class="category-update">實時計算</span>
+                    </div>
+                    <div class="category-content" id="market-sentiment">
+                        <!-- 由JavaScript動態生成 -->
+                        <div class="loading-data">分析市場情緒...</div>
+                    </div>
+                    <div class="category-footer">
+                        <span class="data-source">恐懼與貪婪指數</span>
                     </div>
                 </div>
                 

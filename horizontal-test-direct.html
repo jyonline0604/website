@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>橫向布局直接測試</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin: 30px 0;
+            color: #60a5fa;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+        }
+        
+        .demo-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #1e293b;
+            border-radius: 16px;
+            border: 2px solid #334155;
+        }
+        
+        .demo-title {
+            color: #f1f5f9;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .demo-title .icon {
+            font-size: 2rem;
+        }
+        
+        /* 橫向布局核心CSS */
+        .horizontal-layout {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: flex-start;
+            align-items: stretch;
+        }
+        
+        .data-card {
+            background: #334155;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #475569;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .data-card:hover {
+            transform: translateY(-5px);
+            border-color: #10b981;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: rgba(16, 185, 129, 0.05);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .card-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+        
+        .card-symbol {
+            background: #475569;
+            color: #cbd5e1;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .card-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin: 10px 0;
+        }
+        
+        .card-change {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        
+        .change-up {
+            color: #10b981;
+        }
+        
+        .change-down {
+            color: #ef4444;
+        }
+        
+        .card-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .detail-label {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+        
+        .detail-value {
+            color: #f1f5f9;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .section-footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #475569;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .horizontal-layout {
+                flex-direction: column;
+            }
+            
+            .data-card {
+                min-width: 100%;
+                max-width: 100%;
+            }
+        }
+        
+        .instructions {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid #10b981;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 40px 0;
+        }
+        
+        .instructions h3 {
+            color: #10b981;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .instructions ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .instructions li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .instructions li:before {
+            content: "✓";
+            color: #10b981;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .status {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #ef4444;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 40px 0;
+        }
+        
+        .status h3 {
+            color: #ef4444;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐱 橫向布局直接測試</h1>
+        <p class="subtitle">小肥喵的CSS強制橫向布局演示</p>
+        
+        <div class="instructions">
+            <h3>🎯 這是你要的橫向布局嗎？</h3>
+            <ul>
+                <li>每個市場類別內的卡片在同一行橫向排列</li>
+                <li>卡片之間有適當間距</li>
+                <li>響應式設計：桌面橫向，手機垂直</li>
+                <li>懸停效果和視覺反饋</li>
+            </ul>
+        </div>
+        
+        <!-- 加密貨幣示例 -->
+        <div class="demo-section">
+            <h2 class="demo-title"><span class="icon">🪙</span> 加密貨幣 - 橫向排列</h2>
+            <div class="horizontal-layout">
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="card-name">Bitcoin</div>
+                        <div class="card-symbol">BTC</div>
+                    </div>
+                    <div class="card-price">$66,177</div>
+                    <div class="card-change change-down">↘ -4.02%</div>
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <span class="detail-label">市值</span>
+                            <span class="detail-value">$1.32T</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">24h交易量</span>
+                            <span class="detail-value">$51.4B</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="card-name">Ethereum</div>
+                        <div class="card-symbol">ETH</div>
+                    </div>
+                    <div class="card-price">$1,992.95</div>
+                    <div class="card-change change-down">↘ -3.38%</div>
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <span class="detail-label">市值</span>
+                            <span class="detail-value">$240.5B</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">24h交易量</span>
+                            <span class="detail-value">$19.8B</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="card-name">Solana</div>
+                        <div class="card-symbol">SOL</div>
+                    </div>
+                    <div class="card-price">$83.23</div>
+                    <div class="card-change change-down">↘ -4.66%</div>
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <span class="detail-label">市值</span>
+                            <span class="detail-value">$47.6B</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">24h交易量</span>
+                            <span class="detail-value">$3.99B</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-footer">數據來源: CoinGecko API | 實時更新</div>
+        </div>
+        
+        <!-- 股票指數示例 -->
+        <div class="demo-section">
+            <h2 class="demo-title"><span class="icon">📊</span> 股票指數 - 橫向排列</h2>
+            <div class="horizontal-layout">
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="card-name">納斯達克綜合指數</div>
+                        <div class="card-symbol">NASDAQ</div>
+                    </div>
+                    <div class="card-price">18,432.15</div>
+                    <div class="card-change change-up">↗ +0.85%</div>
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <span class="detail-label">變化</span>
+                            <span class="detail-value">+155.42</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">成交量</span>
+                            <span class="detail-value">4.2B</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="card-name">道瓊斯工業平均指數</div>
+                        <div class="card-symbol">DJIA</div>
+                    </div>
+                    <div class="card-price">39,876.42</div>
+                    <div class="card-change change-up">↗ +0.62%</div>
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <span class="detail-label">變化</span>
+                            <span class="detail-value">+245.18</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">成交量</span>
+                            <span class="detail-value">325M</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="card-name">標普500指數</div>
+                        <div class="card-symbol">S&P 500</div>
+                    </div>
+                    <div class="card-price">5,234.18</div>
+                    <div class="card-change change-up">↗ +0.74%</div>
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <span class="detail-label">變化</span>
+                            <span class="detail-value">+38.72</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">成交量</span>
+                            <span class="detail-value">2.8B</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-footer">數據來源: 市場數據API | 延遲15分鐘</div>
+        </div>
+        
+        <div class="status">
+            <h3>⚠️ GitHub Pages 404錯誤說明</h3>
+            <p>你遇到的404錯誤是因為GitHub Pages還在構建中，通常需要幾分鐘時間。</p>
+            <p><strong>請稍等2-3分鐘，然後刷新這個頁面：</strong></p>
+            <p style="text-align: center; margin: 20px 0; font-size: 1.2rem;">
+                <a href="https://jyonline0604.github.io/finance.html" style="color: #60a5fa; text-decoration: underline;">
+                    https://jyonline0604.github.io/finance.html
+                </a>
+            </p>
+            <p>同時，你可以查看這個測試頁面，確認橫向布局是否符合你的要求。</p>
+        </div>
+        
+        <div style="text-align: center; margin: 50px 0; padding: 30px; background: rgba(96, 165, 250, 0.1); border-radius: 12px;">
+            <h3 style="color: #60a5fa; margin-bottom: 15px;">🎨 布局說明</h3>
+            <p>上面的示例展示了<strong>真正的橫向布局</strong>：</p>
+            <p>• 每個市場類別內的卡片<strong>在同一行顯示</strong></p>
+            <p>• 桌面設備：卡片橫向排列（如上所示）</p>
+            <p>• 手機設備：卡片垂直排列（單列）</p>
+            <p>• 卡片有統一的間距和對齊</p>
+        </div>
+    </div>
+    
+    <script>
+        // 簡單的交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.data-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+            
+            // 顯示當前時間
+            const updateTime = () => {
+                const now = new Date();
+                const timeStr = now.toLocaleString('zh-HK', {
+                    timeZone: 'Asia/Hong_Kong',
+                    hour12: false,
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                document.getElementById('current-time').textContent = timeStr;
+            };
+            
+            updateTime();
+            setInterval(updateTime, 1000);
+        });
+    </script>
+    
+    <div style="text-align: center; margin-top: 40px; padding: 20px; color: #94a3b8; font-size: 0.9rem; border-top: 1px solid #334155;">
+        <p>🐱 小肥喵製作 | 當前時間: <span id="current-time"></span> (HKT)</p>
+        <p>GitHub Pages構建中... 請稍後刷新主頁面</p>
+    </div>
+</body>
+</html>

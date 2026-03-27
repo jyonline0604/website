@@ -121,31 +121,62 @@
             box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
         }
 
+        /* 英雄區域（背景圖） */
+        .hero {
+            min-height: 70vh;
+            padding: 80px 32px 60px;
+            text-align: center;
+            background: url("assets/chapters-bg.jpg") center center / cover no-repeat;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 15, 0.7);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            width: 100%;
+            margin-top: 64px; /* 為導航列留出空間 */
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
         /* 主要內容 */
         .container {
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
             padding: 0 20px;
-            padding-top: 84px; /* 為導航列留出空間 */
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 40px 0;
-        }
-
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .page-subtitle {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.1rem;
+            margin-top: -80px; /* 讓內容區域懸浮在背景圖上方 */
+            position: relative;
+            z-index: 3;
         }
 
         /* 章節分組按鈕 */
@@ -156,41 +187,47 @@
             justify-content: center;
             margin-bottom: 30px;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .group-btn {
             padding: 10px 20px;
-            background: rgba(99, 102, 241, 0.1);
-            color: #818cf8;
+            background: rgba(255, 255, 255, 0.9);
+            color: #6366f1;
             border: 1px solid rgba(99, 102, 241, 0.3);
             border-radius: 8px;
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
             transition: all 0.2s;
+            backdrop-filter: blur(5px);
         }
 
         .group-btn:hover {
-            background: rgba(99, 102, 241, 0.2);
+            background: rgba(255, 255, 255, 1);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
         }
 
         .group-btn.active {
             background: linear-gradient(135deg, #6366f1, #818cf8);
             color: white;
             border-color: #6366f1;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
         }
 
         /* 章節列表 */
         .chapter-list {
-            background: var(--bg-secondary);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
             padding: 32px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
             margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .chapter-list-header {
@@ -324,13 +361,22 @@
                 font-size: 0.85rem;
             }
             
-            .container {
-                padding: 0 16px;
-                padding-top: 74px;
+            .hero {
+                min-height: 50vh;
+                padding: 60px 20px 40px;
             }
             
-            .page-title {
-                font-size: 2rem;
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .container {
+                padding: 0 16px;
+                margin-top: -60px;
             }
             
             .chapter-groups {
@@ -379,12 +425,16 @@
         </div>
     </header>
 
+    <!-- 英雄區域（背景圖） -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">章節目錄</h1>
+            <p class="hero-subtitle">探索科技與修真交織的奇幻世界</p>
+        </div>
+    </section>
+
     <!-- 主要內容 -->
     <div class="container">
-        <header class="page-header">
-            <h1 class="page-title">章節目錄</h1>
-            <p class="page-subtitle">探索科技與修真交織的奇幻世界</p>
-        </header>
 
         <!-- 章節分組按鈕 -->
         <div class="chapter-groups" id="chapterGroups">

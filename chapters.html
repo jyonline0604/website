@@ -127,14 +127,14 @@
             box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
         }
 
-        /* 英雄區域（背景圖） */
+        /* 英雄區域（新背景圖） */
         .hero {
             min-height: 80vh; /* 增加高度 */
             padding: 80px 32px 60px;
             text-align: center;
             background: 
-                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), /* 添加漸變遮罩，調亮背景圖 */
-                url("assets/chapters-bg.jpg") center center / cover no-repeat;
+                linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), /* 較淺的漸變遮罩，讓新圖片更明顯 */
+                url("assets/chapters-new-bg.jpg") center center / cover no-repeat; /* 新背景圖 */
             position: relative;
             display: flex;
             flex-direction: column;
@@ -158,14 +158,14 @@
             font-weight: 700;
             color: white;
             margin-bottom: 20px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.7); /* 增強陰影 */
         }
 
         .hero-subtitle {
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
             font-size: 1.3rem;
             margin-bottom: 40px;
-            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* 增強陰影 */
         }
 
         /* 主要內容 */

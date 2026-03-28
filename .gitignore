@@ -1,7 +1,54 @@
-
-# Sensitive API keys
+# Sensitive API keys and configuration
 .env
 .env.local
 .env.*.secret
-OPENROUTER_API_KEY=*
-chapter-template.html
+.backup-pass
+openclaw.json
+notify-config.json
+twitter_last_post.json
+openclaw-version.json
+
+# API keys in any form
+*API_KEY*
+*_KEY=*
+sk-*
+
+# Logs and temporary files
+logs/
+*.log
+*.tmp
+*.temp
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv*/
+env*/
+.venv/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.backup
+*.backup*
+backups/
+
+# Test files
+test-*
+*.test.py
+
+# Workspace configuration
+.openclaw/

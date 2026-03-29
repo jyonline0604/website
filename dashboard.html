@@ -60,10 +60,6 @@
             gap: 10px;
         }
 
-        .logo-icon {
-            font-size: 1.8rem;
-        }
-
         nav {
             display: flex;
             gap: 5px;
@@ -92,14 +88,14 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             background: linear-gradient(180deg, rgba(0, 212, 255, 0.1) 0%, transparent 100%);
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             background: linear-gradient(90deg, #00d4ff, #00ff88);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -108,21 +104,19 @@
 
         .hero p {
             color: #888;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1rem;
         }
 
         .last-update {
-            margin-top: 20px;
-            color: #666;
+            margin-top: 15px;
+            color: #00d4ff;
             font-size: 0.9rem;
         }
 
         /* Dashboard Grid */
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 25px;
             padding: 20px 0;
         }
@@ -155,7 +149,7 @@
         }
 
         .card-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: #fff;
         }
@@ -199,126 +193,63 @@
             display: inline-block;
         }
 
-        .risk-low { color: #00ff88; background: rgba(0, 255, 136, 0.2); }
-        .risk-moderate { color: #ffcc00; background: rgba(255, 204, 0, 0.2); }
-        .risk-high { color: #ff6600; background: rgba(255, 102, 0, 0.2); }
-        .risk-very-high { color: #ff0044; background: rgba(255, 0, 68, 0.2); }
+        /* Traffic Light Colors */
+        .light-green { color: #00ff88; } /* 暢通 */
+        .light-yellow { color: #ffcc00; } /* 正常 */
+        .light-red { color: #ff4444; } /* 緩慢 */
+        .light-purple { color: #aa44ff; } /* 嚴重 */
 
-        /* Data List */
-        .data-list {
+        /* Journey Time List */
+        .journey-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            max-height: 300px;
+            gap: 10px;
+            max-height: 400px;
             overflow-y: auto;
         }
 
-        .data-list::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .data-list::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 3px;
-        }
-
-        .data-list::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-        }
-
-        .data-item {
+        .journey-item {
             background: rgba(0, 0, 0, 0.2);
             border-radius: 12px;
-            padding: 15px;
+            padding: 12px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             transition: background 0.3s;
         }
 
-        .data-item:hover {
+        .journey-item:hover {
             background: rgba(0, 0, 0, 0.3);
         }
 
-        .data-item-info {
+        .journey-route {
             flex: 1;
         }
 
-        .data-item-name {
+        .journey-from {
             font-weight: 500;
+            color: #fff;
             margin-bottom: 4px;
-            color: #fff;
         }
 
-        .data-item-sub {
+        .journey-to {
             font-size: 0.8rem;
-            color: #666;
+            color: #888;
         }
 
-        .data-item-value {
+        .journey-time {
             text-align: right;
+            margin-left: 15px;
         }
 
-        .data-value {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #00d4ff;
+        .journey-minutes {
+            font-size: 1.5rem;
+            font-weight: 700;
         }
 
-        .data-unit {
+        .journey-unit {
             font-size: 0.75rem;
-            color: #666;
-        }
-
-        /* Weather Grid */
-        .weather-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
-        }
-
-        .weather-item {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 12px;
-            text-align: center;
-            font-size: 0.85rem;
-        }
-
-        .weather-name {
             color: #888;
-            margin-bottom: 5px;
-        }
-
-        .weather-district {
-            color: #666;
-            font-size: 0.75rem;
-        }
-
-        /* Parking List */
-        .parking-item {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 10px;
-        }
-
-        .parking-name {
-            font-weight: 500;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .parking-info {
-            display: flex;
-            gap: 15px;
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        .parking-district {
-            color: #00d4ff;
         }
 
         /* Footer */
@@ -336,40 +267,12 @@
             text-decoration: none;
         }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav {
-                justify-content: center;
-            }
-
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .aqhi-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
         /* Loading State */
         .loading {
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 200px;
+            min-height: 150px;
             color: #666;
         }
 
@@ -394,19 +297,62 @@
             padding: 40px;
             color: #666;
         }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .aqhi-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
             <a href="home.html" class="logo">
-                <span class="logo-icon">📖</span>
+                <span>📖</span>
                 <span>科技修真傳</span>
             </a>
             <nav>
                 <a href="home.html">首頁</a>
                 <a href="chapters.html">章節</a>
-                <a href="news.html">資訊</a>
+                <a href="news.html">AI 新聞</a>
+                <a href="finance.html">財經</a>
+                <a href="https://itv.kofhk.com/" target="_blank">ITV</a>
+                <a href="author.html">作者</a>
                 <a href="dashboard.html" class="active">城市儀表板</a>
             </nav>
         </div>
@@ -414,7 +360,7 @@
 
     <section class="hero">
         <h1>🌆 香港城市儀表板</h1>
-        <p>整合來自香港政府開放數據平台的實時城市數據</p>
+        <p>實時城市數據｜每2分鐘更新</p>
         <div class="last-update" id="lastUpdate">載入中...</div>
     </section>
 
@@ -434,59 +380,23 @@
                 </div>
             </div>
 
-            <!-- 行車時間指示 -->
-            <div class="card">
+            <!-- 行車時間顯示器 -->
+            <div class="card" style="grid-column: 1 / -1;">
                 <div class="card-header">
                     <span class="card-icon">🚗</span>
                     <div>
-                        <div class="card-title">行車時間指示</div>
-                        <div class="card-subtitle">運輸署 | 實時路況</div>
+                        <div class="card-title">行車時間顯示器（第二代）</div>
+                        <div class="card-subtitle">運輸署 | 每2分鐘更新</div>
                     </div>
                 </div>
-                <div class="data-list" id="journeyData">
-                    <div class="loading">載入數據</div>
+                <div class="journey-list" id="journeyData">
+                    <div class="loading">載入實時數據</div>
                 </div>
-            </div>
-
-            <!-- 交通車速 -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">📊</span>
-                    <div>
-                        <div class="card-title">主要幹道車速</div>
-                        <div class="card-subtitle">運輸署 | 實時車速</div>
-                    </div>
-                </div>
-                <div class="data-list" id="trafficData">
-                    <div class="loading">載入數據</div>
-                </div>
-            </div>
-
-            <!-- 停車場資訊 -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">🅿️</span>
-                    <div>
-                        <div class="card-title">停車場資訊</div>
-                        <div class="card-subtitle">運輸署 | 全港主要停車場</div>
-                    </div>
-                </div>
-                <div class="data-list" id="parkingData">
-                    <div class="loading">載入數據</div>
-                </div>
-            </div>
-
-            <!-- 天氣站 -->
-            <div class="card" style="grid-column: 1 / -1;">
-                <div class="card-header">
-                    <span class="card-icon">🌡️</span>
-                    <div>
-                        <div class="card-title">香港天文台氣象站網絡</div>
-                        <div class="card-subtitle">天文台 | 27個氣象站覆蓋全港</div>
-                    </div>
-                </div>
-                <div class="weather-grid" id="weatherData">
-                    <div class="loading">載入數據</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="light-green">●</span> 暢通</div>
+                    <div class="legend-item"><span class="light-yellow">●</span> 正常</div>
+                    <div class="legend-item"><span class="light-red">●</span> 緩慢</div>
+                    <div class="legend-item"><span class="light-purple">●</span> 嚴重</div>
                 </div>
             </div>
         </div>
@@ -499,7 +409,107 @@
 
     <script>
         // 更新時間
-        document.getElementById('lastUpdate').textContent = `最後更新：${new Date().toLocaleString('zh-TW')}`;
+        const now = new Date();
+        document.getElementById('lastUpdate').textContent = `最後更新：${now.toLocaleString('zh-TW')}`;
+
+        // 位置代碼映射
+        const locationNames = {
+            'H1': '告士打道(中環)',
+            'H2': '告士打道(灣仔)',
+            'H3': '干諾道中',
+            'H4': '海底隧道口',
+            'H5': '西隧入口',
+            'H6': '東隧入口',
+            'H7': '獅子山隧道',
+            'H8': '城門隧道',
+            'H9': '大老山隧道',
+            'H10': '海底隧道-香港',
+            'H11': '海底隧道-九龍',
+            'H12': '大潭道',
+            'H13': '淺水灣道',
+            'H14': '赤柱道',
+            'K01': '九龍幹道A',
+            'K02': '九龍幹道B',
+            'K03': '九龍幹道C',
+            'K04': '九龍幹道D',
+            'K05': '九龍幹道E',
+            'K06': '九龍幹道F',
+            'K07': '九龍幹道G',
+            'K08': '九龍幹道H',
+            'N01': '北區幹道A',
+            'N02': '北區幹道B',
+            'N03': '北區幹道C',
+            'N05': '北區幹道E',
+            'N06': '北區幹道F',
+            'N07': '北區幹道G',
+            'N08': '將軍澳道',
+            'N09': '環保大道',
+            'N10': '寶順路',
+            'N11': '環保大道(南)',
+            'N12': '將軍澳隧道',
+            'N13': '環保大道(東)',
+            'SJ1': '將軍澳南',
+            'SJ2': '將軍澳中央',
+            'SJ3': '觀塘道(東)',
+            'SJ4': '將軍澳(北)',
+            'SJ5': '將軍澳(西)',
+        };
+
+        // 目的地代碼映射
+        const destNames = {
+            'CH': '紅隧',
+            'EH': '東隧',
+            'WH': '西隧',
+            'SHT': '獅隧',
+            'CTT': '城隧',
+            'TTL': '大老山',
+            'ABT': '機場',
+            'WNCG': '東涌',
+            'PFL': '坪石',
+            'ATL': '屯門',
+            'TMCLK': '天水圍',
+            'SSCPR': '上水',
+            'SSYLH': '石湖墟',
+            'TLH': '大埔',
+            'TPR': '大埔(北)',
+            'KTPR': '科學園',
+            'TSCA': '科技園',
+            'CWBR': '長江',
+            'MOS': '馬鞍山',
+            'TKOLTT': '將軍澳市中心',
+            'TKOT': '調景嶺',
+            'ATL': '屯門',
+            'LRT': '輕鐵',
+            'SMT': '坑口',
+            'TCT': '翠琳',
+            'TWCP': '屯門(西)',
+            'TWTM': '屯門(東)',
+            'TKTM': '將軍澳(東)',
+            'TKTL': '將軍澳(南)',
+            'ACT': '數據中心',
+            'ATSCA': '科技園(北)',
+        };
+
+        // 顏色類別
+        function getColorClass(colourId) {
+            switch(colourId) {
+                case '1': return 'light-green';
+                case '2': return 'light-yellow';
+                case '3': return 'light-red';
+                case '4': return 'light-purple';
+                default: return 'light-yellow';
+            }
+        }
+
+        function getColorDot(colourId) {
+            switch(colourId) {
+                case '1': return '🟢';
+                case '2': return '🟡';
+                case '3': return '🔴';
+                case '4': return '🟣';
+                default: return '⚪';
+            }
+        }
 
         // 載入 AQHI 數據
         async function loadAQHI() {
@@ -512,17 +522,17 @@
                     const typeName = item.type === 'general' ? '一般地區' : '路邊';
                     const aqhiValue = item.aqhi_max;
                     
-                    let riskClass = 'risk-low';
+                    let riskClass = 'light-green';
                     let riskText = item.health_risk_max;
-                    if (aqhiValue >= 4) riskClass = 'risk-moderate';
-                    if (aqhiValue >= 7) riskClass = 'risk-high';
-                    if (aqhiValue >= 10) riskClass = 'risk-very-high';
+                    if (aqhiValue >= 4) riskClass = 'light-yellow';
+                    if (aqhiValue >= 7) riskClass = 'light-red';
+                    if (aqhiValue >= 10) riskClass = 'light-purple';
                     
                     html += `
                         <div class="aqhi-item">
                             <div class="aqhi-label">${typeName}</div>
-                            <div class="aqhi-value">${aqhiValue}</div>
-                            <span class="aqhi-risk ${riskClass}">${riskText}</span>
+                            <div class="aqhi-value ${riskClass}">${aqhiValue}</div>
+                            <span class="aqhi-risk">${riskText}</span>
                         </div>
                     `;
                 }
@@ -535,105 +545,76 @@
         // 載入行車時間數據
         async function loadJourneyTime() {
             try {
-                const response = await fetch('https://datagovhk.blob.core.windows.net/dataset/journey-time/journey-time-info.json');
-                const data = await response.json();
+                const response = await fetch('https://resource.data.one.gov.hk/td/jss/Journeytimev2.xml');
+                const text = await response.text();
                 
+                // 解析 XML
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, 'text/xml');
+                const items = xml.querySelectorAll('jtis_journey_time');
+                
+                // 過濾有意義的路線（避免重複太多）
+                const seen = new Set();
+                const routes = [];
+                
+                items.forEach(item => {
+                    const locId = item.querySelector('LOCATION_ID').textContent;
+                    const destId = item.querySelector('DESTINATION_ID').textContent;
+                    const key = locId + '-' + destId;
+                    
+                    if (!seen.has(key)) {
+                        seen.add(key);
+                        routes.push({
+                            locId,
+                            destId,
+                            time: item.querySelector('JOURNEY_DATA').textContent,
+                            colour: item.querySelector('COLOUR_ID').textContent
+                        });
+                    }
+                });
+                
+                // 顯示前30條主要路線
                 let html = '';
-                for (const item of data) {
+                const displayRoutes = routes.slice(0, 30);
+                
+                displayRoutes.forEach(route => {
+                    const fromName = locationNames[route.locId] || route.locId;
+                    const toName = destNames[route.destId] || route.destId;
+                    const colorClass = getColorClass(route.colour);
+                    const colorDot = getColorDot(route.colour);
+                    
                     html += `
-                        <div class="data-item">
-                            <div class="data-item-info">
-                                <div class="data-item-name">${item.location_name_tc || item.location_name_en}</div>
+                        <div class="journey-item">
+                            <div class="journey-route">
+                                <div class="journey-from">${fromName}</div>
+                                <div class="journey-to">→ ${toName}</div>
+                            </div>
+                            <div class="journey-time">
+                                <div class="journey-minutes ${colorClass}">${route.time}</div>
+                                <div class="journey-unit">分鐘</div>
                             </div>
                         </div>
                     `;
+                });
+                
+                if (html === '') {
+                    html = '<div class="empty-state">暫無數據</div>';
                 }
-                if (html === '') html = '<div class="empty-state">暫無數據</div>';
+                
                 document.getElementById('journeyData').innerHTML = html;
+                
             } catch (error) {
+                console.error('Error loading journey time:', error);
                 document.getElementById('journeyData').innerHTML = '<div class="empty-state">無法載入數據</div>';
-            }
-        }
-
-        // 載入交通車速數據
-        async function loadTrafficSpeed() {
-            try {
-                const response = await fetch('https://datagovhk.blob.core.windows.net/dataset/traffic-speed/traffic-speed-info.json');
-                const data = await response.json();
-                
-                let html = '';
-                for (const item of data) {
-                    html += `
-                        <div class="data-item">
-                            <div class="data-item-info">
-                                <div class="data-item-name">${item.link_name_tc || item.link_name_en}</div>
-                            </div>
-                        </div>
-                    `;
-                }
-                if (html === '') html = '<div class="empty-state">暫無數據</div>';
-                document.getElementById('trafficData').innerHTML = html;
-            } catch (error) {
-                document.getElementById('trafficData').innerHTML = '<div class="empty-state">無法載入數據</div>';
-            }
-        }
-
-        // 載入停車場數據
-        async function loadParking() {
-            try {
-                const response = await fetch('https://datagovhk.blob.core.windows.net/dataset/parking-vacancy/parking-vacancy-info.json');
-                const data = await response.json();
-                
-                let html = '';
-                // 只顯示前20個
-                const displayData = data.slice(0, 20);
-                
-                for (const item of displayData) {
-                    html += `
-                        <div class="parking-item">
-                            <div class="parking-name">${item.parking_name_tc || item.parking_name_en}</div>
-                            <div class="parking-info">
-                                <span class="parking-district">${item.parking_district_tc || item.parking_district_en}</span>
-                                <span>${item.parking_contactNo || '無電話'}</span>
-                            </div>
-                        </div>
-                    `;
-                }
-                if (html === '') html = '<div class="empty-state">暫無數據</div>';
-                document.getElementById('parkingData').innerHTML = html;
-            } catch (error) {
-                document.getElementById('parkingData').innerHTML = '<div class="empty-state">無法載入數據</div>';
-            }
-        }
-
-        // 載入天氣站數據
-        async function loadWeatherStations() {
-            try {
-                const response = await fetch('https://datagovhk.blob.core.windows.net/dataset/weather-station/weather-station-info.json');
-                const data = await response.json();
-                
-                let html = '';
-                for (const item of data) {
-                    html += `
-                        <div class="weather-item">
-                            <div class="weather-name">${item.station_name_tc || item.station_name_en}</div>
-                            <div class="weather-district">${item.station_code}</div>
-                        </div>
-                    `;
-                }
-                if (html === '') html = '<div class="empty-state">暫無數據</div>';
-                document.getElementById('weatherData').innerHTML = html;
-            } catch (error) {
-                document.getElementById('weatherData').innerHTML = '<div class="empty-state">無法載入數據</div>';
             }
         }
 
         // 初始化
         loadAQHI();
         loadJourneyTime();
-        loadTrafficSpeed();
-        loadParking();
-        loadWeatherStations();
+        
+        // 每2分鐘刷新行車時間
+        setInterval(loadJourneyTime, 120000);
     </script>
 </body>
 </html>

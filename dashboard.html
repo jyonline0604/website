@@ -676,17 +676,16 @@
         </footer>
     </main>
 
+    <script src="aqhi-data.js"></script>
     <script>
         // 更新時間
         document.getElementById('updateTime').textContent = `最後更新：${new Date().toLocaleString('zh-TW')}`;
 
         // ========== AQHI ==========
-        async function loadAQHI() {
+        function loadAQHI() {
             try {
-                // 從同域獲取本地緩存數據（由cron定時更新）
-                const r = await fetch('aqhi-data.json');
-                const json = await r.json();
-                const data = json.data;
+                // 使用全域變數（由 aqhi-data.js 載入）
+                const data = AQHI_DATA.data;
                 
                 let html = '';
                 for (const item of data) {

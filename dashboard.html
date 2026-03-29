@@ -337,6 +337,56 @@
             align-items: center;
             gap: 5px;
         }
+
+        /* MTR Section */
+        .mtr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .mtr-line {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+        .mtr-line-name {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .mtr-station {
+            margin-bottom: 8px;
+        }
+
+        .mtr-station-name {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 3px;
+        }
+
+        .mtr-trains {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .mtr-train {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+        }
+
+        .mtr-train-time {
+            color: #00d4ff;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -377,6 +427,20 @@
                 </div>
                 <div class="aqhi-content" id="aqhiData">
                     <div class="loading">載入數據</div>
+                </div>
+            </div>
+
+            <!-- MTR 港鐵列車到站 -->
+            <div class="card" style="grid-column: 1 / -1;">
+                <div class="card-header">
+                    <span class="card-icon">🚇</span>
+                    <div>
+                        <div class="card-title">港鐵列車到站時間</div>
+                        <div class="card-subtitle">MTR 實時數據</div>
+                    </div>
+                </div>
+                <div class="mtr-grid" id="mtrData">
+                    <div class="loading">載入港鐵數據</div>
                 </div>
             </div>
 
@@ -609,10 +673,98 @@
             }
         }
 
+        // MTR 線路配置
+        const mtrLines = [
+            { name: '將軍澳線', line: 'TKL', stations: [{code: 'TKO', name: '將軍澳'}, {code: 'LHP', name: '寶琳'}] },
+            { name: '港島線', line: 'ISL', stations: [{code: 'CEN', name: '中環'}, {code: 'CAB', name: '銅鑼灣'}] },
+            { name: '觀塘線', line: 'KLT', stations: [{code: 'KOT', name: '觀塘'}] },
+            { name: '東鐵線', line: 'EAL', stations: [{code: 'KOW', name: '九龍塘'}, {code: 'FAN', name: '火炭'}] },
+            { name: '荃灣線', line: 'TWL', stations: [{code: 'TST', name: '尖沙咀'}] },
+            { name: '東涌線', line: 'TCL', stations: [{code: 'KOW', name: '九龍'}] },
+        ];
+
+        // MTR 目的地翻譯
+        const mtrDestNames = {
+            'POA': '寶琳', 'LHP': '康城', 'TIK': '調景嶺', 'NOP': '北角',
+            'TST': '尖沙咀', 'CEN': '中環', 'ADM': '金鐘', 'CAB': '銅鑼灣',
+            'SYP': '筲箕灣', 'CHW': '柴灣', 'KOT': '觀塘', 'WHA': '黃埔',
+            'HRT': '紅磡', 'KOW': '九龍', 'SHT': '沙田', 'FAN': '火炭',
+            'TWO': '上水', 'LOR': '羅湖', 'LMC': '落馬洲', 'MOS': '馬鞍山',
+            'SKM': '石門', 'YAT': '油塘', 'NTK': '牛頭山', 'KWH': '葵涌',
+            'CSI': '南昌', 'STY': '洪水橋', 'TUM': '屯門', 'SIH': '石崗',
+            'AOM': '元朗', 'ETS': '東鐵', 'SHA': '大嶼山', 'OCL': '東涌'
+        };
+
+        // 載入 MTR 數據
+        async function loadMTR() {
+            try {
+                let html = '';
+                
+                for (const mtrLine of mtrLines) {
+                    for (const station of mtrLine.stations) {
+                        try {
+                            const url = `https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${mtrLine.line}&sta=${station.code}&lang=tc`;
+                            const response = await fetch(url);
+                            const data = await response.json();
+                            
+                            if (data.data) {
+                                const stationKey = `${mtrLine.line}-${station.code}`;
+                                const stationData = data.data[stationKey];
+                                
+                                if (stationData) {
+                                    const upTrains = stationData.UP || [];
+                                    const downTrains = stationData.DOWN || [];
+                                    
+                                    // 只顯示有數據的方向
+                                    const upHTML = upTrains.slice(0, 2).map(t => {
+                                        const dest = mtrDestNames[t.dest] || t.dest;
+                                        const ttnt = parseInt(t.ttnt);
+                                        if (ttnt <= 0 || ttnt > 30) return '';
+                                        return `<span class="mtr-train">${dest} ${ttnt}分</span>`;
+                                    }).join('');
+                                    
+                                    const downHTML = downTrains.slice(0, 2).map(t => {
+                                        const dest = mtrDestNames[t.dest] || t.dest;
+                                        const ttnt = parseInt(t.ttnt);
+                                        if (ttnt <= 0 || ttnt > 30) return '';
+                                        return `<span class="mtr-train">${dest} ${ttnt}分</span>`;
+                                    }).join('');
+                                    
+                                    if (upHTML || downHTML) {
+                                        html += `
+                                            <div class="mtr-line">
+                                                <div class="mtr-line-name">${mtrLine.name} - ${station.name}</div>
+                                                ${upHTML ? `<div class="mtr-trains">${upHTML}</div>` : ''}
+                                                ${downHTML ? `<div class="mtr-trains" style="margin-top:5px;">↓ ${downHTML}</div>` : ''}
+                                            </div>
+                                        `;
+                                    }
+                                }
+                            }
+                        } catch (e) {
+                            console.error(`Error loading ${mtrLine.name} ${station.name}:`, e);
+                        }
+                    }
+                }
+                
+                if (html === '') {
+                    html = '<div class="empty-state">無法載入數據</div>';
+                }
+                
+                document.getElementById('mtrData').innerHTML = html;
+            } catch (error) {
+                console.error('Error loading MTR:', error);
+                document.getElementById('mtrData').innerHTML = '<div class="empty-state">無法載入數據</div>';
+            }
+        }
+
         // 初始化
         loadAQHI();
+        loadMTR();
         loadJourneyTime();
         
+        // 每1分鐘刷新 MTR 數據
+        setInterval(loadMTR, 60000);
         // 每2分鐘刷新行車時間
         setInterval(loadJourneyTime, 120000);
     </script>

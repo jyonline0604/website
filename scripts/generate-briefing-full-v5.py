@@ -16,15 +16,18 @@ import feedparser
 WORKSPACE = "/home/openclaw/.openclaw/workspace"
 LOG_FILE = os.path.join(WORKSPACE, "logs/briefing-full-v5.log")
 
-def log(message):
-    """寫入日誌"""
+def log(message, print_to_stdout=False):
+    """寫入日誌（，生產環境不輸出到stdout）"""
     timestamp = datetime.now().strftime("[%Y-%m-%d %H:%M:%S]")
     log_line = f"{timestamp} {message}"
     
     with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(log_line + "\n")
     
-    print(log_line)
+    # 只在明確要求時才輸出到 stdout
+    if print_to_stdout:
+        print(log_line)
+    
     return log_line
 
 class FullBriefingGeneratorV5:

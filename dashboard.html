@@ -615,6 +615,20 @@
                 </div>
             </div>
 
+            <!-- 醫院急症室 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🏥</span>
+                    <div>
+                        <div class="card-title">醫院急症室</div>
+                        <div class="card-subtitle">醫管局 | 18間醫院</div>
+                    </div>
+                </div>
+                <div class="facilities-grid" id="hospitalData">
+                    <div class="loading">載入醫院數據</div>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -1078,6 +1092,45 @@
             }
         }
 
+        // 載入醫院數據
+        async function loadHospitals() {
+            try {
+                const datasetId = 'fhb_rcd_1636947932221_94410';
+                const url = `https://portal.csdi.gov.hk/server/services/common/${datasetId}/MapServer/WFSServer?service=wfs&version=2.0.0&request=GetFeature&typename=geotagging&outputFormat=geojson`;
+
+                const response = await fetch(url);
+                const data = await response.json();
+
+                const features = data.features || [];
+                let html = '';
+
+                for (const f of features.slice(0, 18)) {
+                    const props = f.properties || {};
+                    const name = props.hospName_TC || props.hospName_EN || '';
+                    const link = props.JSON_TC || '#';
+                    const lat = props.LATITUDE || '';
+                    const lon = props.LONGITUDE || '';
+
+                    if (name) {
+                        html += `
+                            <div class="facility-item">
+                                <div class="facility-name">${name}</div>
+                                <div class="facility-info">
+                                    <a href="${link}" target="_blank" style="color:#00d4ff;">📊 急症室等候時間</a>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
+
+                if (html === '') html = '<div class="empty-state">暫無醫院數據</div>';
+                document.getElementById('hospitalData').innerHTML = html;
+            } catch (error) {
+                console.error('Error loading hospitals:', error);
+                document.getElementById('hospitalData').innerHTML = '<div class="empty-state">無法載入醫院數據</div>';
+            }
+        }
+
         // 初始化
         loadAQHI();
         loadMTR();
@@ -1086,6 +1139,7 @@
         loadForecast();
         loadEvents();
         loadFacilities();
+        loadHospitals();
 
         // 每1分鐘刷新 MTR 數據
         setInterval(loadMTR, 60000);

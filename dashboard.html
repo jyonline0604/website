@@ -683,8 +683,10 @@
         // ========== AQHI ==========
         async function loadAQHI() {
             try {
-                const r = await fetch('https://api.allorigins.win/raw?url=https://datagovhk.blob.core.windows.net/dataset/aqhi/aqhi.json');
-                const data = await r.json();
+                // 從同域獲取本地緩存數據（由cron定時更新）
+                const r = await fetch('aqhi-data.json');
+                const json = await r.json();
+                const data = json.data;
                 
                 let html = '';
                 for (const item of data) {

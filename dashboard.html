@@ -146,39 +146,94 @@
             font-size: 1.1rem;
         }
 
-        /* AQHI */
-        .aqhi-box {
+        /* AQHI - App Style */
+        .aqhi-main {
             display: flex;
-            gap: 15px;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
-        .aqhi-item {
+        .aqhi-card {
             flex: 1;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            padding: 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
+
+        .aqhi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .aqhi-card.general::before { background: linear-gradient(90deg, #4CAF50, #8BC34A); }
+        .aqhi-card.roadside::before { background: linear-gradient(90deg, #FF9800, #FFC107); }
 
         .aqhi-label {
-            font-size: 0.8rem;
-            color: #666;
-            margin-bottom: 8px;
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 10px;
+            font-weight: 500;
         }
 
         .aqhi-value {
-            font-size: 2.5rem;
+            font-size: 4rem;
             font-weight: 700;
             line-height: 1;
+            margin-bottom: 10px;
         }
 
         .aqhi-risk {
-            font-size: 0.75rem;
-            margin-top: 5px;
-            padding: 2px 8px;
-            border-radius: 10px;
+            font-size: 0.8rem;
+            padding: 4px 16px;
+            border-radius: 20px;
             display: inline-block;
+            font-weight: 500;
         }
+
+        .aqhi-risk.green { background: rgba(76, 175, 80, 0.2); color: #4CAF50; }
+        .aqhi-risk.yellow { background: rgba(255, 152, 0, 0.2); color: #FF9800; }
+        .aqhi-risk.orange { background: rgba(255, 87, 34, 0.2); color: #FF5722; }
+        .aqhi-risk.red { background: rgba(244, 67, 54, 0.2); color: #F44336; }
+        .aqhi-risk.purple { background: rgba(156, 39, 176, 0.2); color: #9C27B0; }
+        .aqhi-risk.black { background: rgba(0, 0, 0, 0.5); color: #fff; }
+
+        /* District Grid */
+        .district-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .district-item {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 12px 8px;
+            text-align: center;
+        }
+
+        .district-name {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .district-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .aqhi-green { color: #4CAF50; }
+        .aqhi-yellow { color: #FF9800; }
+        .aqhi-orange { color: #FF5722; }
+        .aqhi-red { color: #F44336; }
+        .aqhi-purple { color: #9C27B0; }
 
         .risk-low { color: #00ff88; background: rgba(0, 255, 136, 0.15); }
         .risk-moderate { color: #ffcc00; background: rgba(255, 204, 0, 0.15); }
@@ -475,10 +530,11 @@
                     <span class="icon">🌬️</span>
                     空氣質素健康指數 (AQHI)
                 </div>
-                <div class="aqhi-box" id="aqhiData">
+                <div class="aqhi-main" id="aqhiMain">
                     <div class="loading">載入 AQHI</div>
                 </div>
-                <div class="district-aqhi" id="districtAQHI">
+                <div class="district-title" style="font-size:0.85rem;color:#888;margin-bottom:12px;">各區監測站</div>
+                <div class="district-grid" id="districtAQHI">
                     <div class="loading">載入各區數據</div>
                 </div>
             </div>
@@ -562,26 +618,27 @@
                 
                 let html = '';
                 for (const item of data) {
-                    const type = item.type === 'general' ? '一般' : '路邊';
+                    const type = item.type === 'general' ? '一般監測站' : '路邊監測站';
                     const val = item.aqhi_max;
                     const risk = item.health_risk_max;
                     
                     let cls = 'aqhi-green';
-                    if (val >= 4) cls = 'aqhi-yellow';
-                    if (val >= 7) cls = 'aqhi-orange';
-                    if (val >= 10) cls = 'aqhi-red';
+                    let riskCls = 'green';
+                    if (val >= 4) { cls = 'aqhi-yellow'; riskCls = 'yellow'; }
+                    if (val >= 7) { cls = 'aqhi-orange'; riskCls = 'orange'; }
+                    if (val >= 10) { cls = 'aqhi-red'; riskCls = 'red'; }
                     
                     html += `
-                        <div class="aqhi-item">
+                        <div class="aqhi-card ${item.type === 'general' ? 'general' : 'roadside'}">
                             <div class="aqhi-label">${type}</div>
                             <div class="aqhi-value ${cls}">${val}</div>
-                            <span class="aqhi-risk risk-${val < 4 ? 'low' : val < 7 ? 'moderate' : 'high'}">${risk}</span>
+                            <span class="aqhi-risk ${riskCls}">${risk}</span>
                         </div>
                     `;
                 }
-                document.getElementById('aqhiData').innerHTML = html;
+                document.getElementById('aqhiMain').innerHTML = html;
             } catch (e) {
-                document.getElementById('aqhiData').innerHTML = '<div class="loading">無法載入</div>';
+                document.getElementById('aqhiMain').innerHTML = '<div class="loading">無法載入</div>';
             }
         }
 

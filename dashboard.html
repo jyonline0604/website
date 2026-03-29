@@ -438,7 +438,72 @@
             }
         }
 
-        /* Footer */
+        
+        /* AQHI 風險視覺化 */
+        .aqhi-levels {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .aqhi-level {
+            flex: 1;
+            text-align: center;
+            padding: 10px 5px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .aqhi-level-icon {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .aqhi-level-text {
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .aqhi-level-nums {
+            display: flex;
+            justify-content: center;
+            gap: 2px;
+            flex-wrap: wrap;
+        }
+        
+        .aqhi-level-num {
+            font-size: 0.65rem;
+            padding: 2px 5px;
+            border-radius: 4px;
+            margin: 1px;
+        }
+        
+        .aqhi-level.low { background: rgba(76,175,80,0.15); }
+        .aqhi-level.moderate { background: rgba(255,152,0,0.15); }
+        .aqhi-level.high { background: rgba(244,67,54,0.15); }
+        .aqhi-level.very-high { background: rgba(121,85,72,0.25); }
+        .aqhi-level.serious { background: rgba(0,0,0,0.4); }
+        
+        .aqhi-level-num.low { background: #4CAF50; color: #fff; }
+        .aqhi-level-num.moderate { background: #FF9800; color: #fff; }
+        .aqhi-level-num.high { background: #F44336; color: #fff; }
+        .aqhi-level-num.very-high { background: #795548; color: #fff; }
+        .aqhi-level-num.serious { background: #212121; color: #fff; }
+        
+        .aqhi-risk-low { color: #4CAF50; }
+        .aqhi-risk-moderate { color: #FF9800; }
+        .aqhi-risk-high { color: #F44336; }
+        .aqhi-risk-very-high { color: #8D6E63; }
+        .aqhi-risk-serious { color: #616161; }
+        
+        .aqhi-icon-low { filter: hue-rotate(0deg) saturate(1.5); }
+        .aqhi-icon-moderate { filter: hue-rotate(30deg) saturate(1.5); }
+        .aqhi-icon-high { filter: hue-rotate(120deg) saturate(2); }
+
+/* Footer */
         footer {
             text-align: center;
             padding: 30px 20px;
@@ -497,6 +562,50 @@
                     空氣質素健康指數 (AQHI)
                 </div>
                 <div class="aqhi-main" id="aqhiMain">
+                <div class="aqhi-levels">
+                    <div class="aqhi-level low">
+                        <div class="aqhi-level-icon">😊</div>
+                        <div class="aqhi-level-text aqhi-risk-low">低 LOW</div>
+                        <div class="aqhi-level-nums">
+                            <span class="aqhi-level-num low">1</span>
+                            <span class="aqhi-level-num low">2</span>
+                            <span class="aqhi-level-num low">3</span>
+                        </div>
+                    </div>
+                    <div class="aqhi-level moderate">
+                        <div class="aqhi-level-icon">😐</div>
+                        <div class="aqhi-level-text aqhi-risk-moderate">中 MODERATE</div>
+                        <div class="aqhi-level-nums">
+                            <span class="aqhi-level-num moderate">4</span>
+                            <span class="aqhi-level-num moderate">5</span>
+                            <span class="aqhi-level-num moderate">6</span>
+                        </div>
+                    </div>
+                    <div class="aqhi-level high">
+                        <div class="aqhi-level-icon">😷</div>
+                        <div class="aqhi-level-text aqhi-risk-high">高 HIGH</div>
+                        <div class="aqhi-level-nums">
+                            <span class="aqhi-level-num high">7</span>
+                        </div>
+                    </div>
+                    <div class="aqhi-level very-high">
+                        <div class="aqhi-level-icon">🤢</div>
+                        <div class="aqhi-level-text aqhi-risk-very-high">甚高 V.HIGH</div>
+                        <div class="aqhi-level-nums">
+                            <span class="aqhi-level-num very-high">8</span>
+                            <span class="aqhi-level-num very-high">9</span>
+                            <span class="aqhi-level-num very-high">10</span>
+                        </div>
+                    </div>
+                    <div class="aqhi-level serious">
+                        <div class="aqhi-level-icon">😱</div>
+                        <div class="aqhi-level-text aqhi-risk-serious">嚴重 SERIOUS</div>
+                        <div class="aqhi-level-nums">
+                            <span class="aqhi-level-num serious">10+</span>
+                        </div>
+                    </div>
+                </div>
+                
                     <div class="loading">載入 AQHI</div>
                 </div>
                 

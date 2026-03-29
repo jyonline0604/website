@@ -444,6 +444,20 @@
                 </div>
             </div>
 
+            <!-- 輕鐵 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🚊</span>
+                    <div>
+                        <div class="card-title">輕鐵到站</div>
+                        <div class="card-subtitle">屯門碼頭 | MTR 實時</div>
+                    </div>
+                </div>
+                <div class="mtr-grid" id="lrtData">
+                    <div class="loading">載入輕鐵數據</div>
+                </div>
+            </div>
+
             <!-- 行車時間顯示器 -->
             <div class="card" style="grid-column: 1 / -1;">
                 <div class="card-header">
@@ -683,6 +697,11 @@
             { name: '東涌線', line: 'TCL', stations: [{code: 'KOW', name: '九龍'}] },
         ];
 
+        // 輕鐵站點
+        const lrtStations = [
+            { id: '1', name: '屯門碼頭' },
+        ];
+
         // MTR 目的地翻譯
         const mtrDestNames = {
             'POA': '寶琳', 'LHP': '康城', 'TIK': '調景嶺', 'NOP': '北角',
@@ -758,13 +777,61 @@
             }
         }
 
+        // 載入輕鐵數據
+        async function loadLRT() {
+            try {
+                let html = '';
+                
+                for (const station of lrtStations) {
+                    try {
+                        const url = `https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule?station_id=${station.id}`;
+                        const response = await fetch(url);
+                        const data = await response.json();
+                        
+                        if (data.platform_list && data.platform_list.length > 0) {
+                            const trains = [];
+                            for (const platform of data.platform_list) {
+                                for (const route of platform.route_list || []) {
+                                    if (route.dest_ch && route.time_ch && trains.length < 6) {
+                                        trains.push(`${route.route_no}→${route.dest_ch} ${route.time_ch}`);
+                                    }
+                                }
+                            }
+                            
+                            if (trains.length > 0) {
+                                html += `
+                                    <div class="mtr-line">
+                                        <div class="mtr-line-name">🚊 輕鐵 ${station.name}</div>
+                                        <div class="mtr-trains">
+                                            ${trains.map(t => `<span class="mtr-train">${t}</span>`).join('')}
+                                        </div>
+                                    </div>
+                                `;
+                            }
+                        }
+                    } catch (e) {
+                        console.error(`Error loading LRT ${station.name}:`, e);
+                    }
+                }
+                
+                if (html !== '') {
+                    document.getElementById('lrtData').innerHTML = html;
+                }
+            } catch (error) {
+                console.error('Error loading LRT:', error);
+            }
+        }
+
         // 初始化
         loadAQHI();
         loadMTR();
+        loadLRT();
         loadJourneyTime();
         
         // 每1分鐘刷新 MTR 數據
         setInterval(loadMTR, 60000);
+        // 每1分鐘刷新輕鐵數據
+        setInterval(loadLRT, 60000);
         // 每2分鐘刷新行車時間
         setInterval(loadJourneyTime, 120000);
     </script>

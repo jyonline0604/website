@@ -1052,14 +1052,14 @@
                 document.getElementById('eventsData').innerHTML = html;
             } catch (error) {
                 console.error('Error loading events:', error);
-                document.getElementById('eventsData').innerHTML = '<div class="empty-state">無法載入活動</div>';
+                document.getElementById('eventsData').innerHTML = '<div class="empty-state">無法載入活動（跨域限制）<br><small>如需查看，請訪問康文署網站</small></div>';
             }
         }
 
         // 載入康樂設施
         async function loadFacilities() {
             try {
-                const response = await fetch('http://www.lcsd.gov.hk/datagovhk/facility/facility-hssp5.json');
+                const response = await fetch('https://www.lcsd.gov.hk/datagovhk/facility/facility-hssp5.json');
                 const data = await response.json();
 
                 let html = '';
@@ -1088,7 +1088,7 @@
                 document.getElementById('facilitiesData').innerHTML = html;
             } catch (error) {
                 console.error('Error loading facilities:', error);
-                document.getElementById('facilitiesData').innerHTML = '<div class="empty-state">無法載入設施</div>';
+                document.getElementById('facilitiesData').innerHTML = '<div class="empty-state">無法載入設施（跨域限制）<br><small>如需查看，請訪問康文署網站</small></div>';
             }
         }
 

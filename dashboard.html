@@ -189,6 +189,42 @@
         .aqhi-red { color: #ff4444; }
         .aqhi-purple { color: #aa44ff; }
 
+        /* District AQHI */
+        .district-aqhi {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .district-title {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .district-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+        
+        .district-item {
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        .district-name {
+            font-size: 0.75rem;
+            color: #888;
+        }
+        
+        .district-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
         /* Weather Forecast */
         .forecast-list {
             display: flex;
@@ -442,6 +478,9 @@
                 <div class="aqhi-box" id="aqhiData">
                     <div class="loading">載入 AQHI</div>
                 </div>
+                <div class="district-aqhi" id="districtAQHI">
+                    <div class="loading">載入各區數據</div>
+                </div>
             </div>
         </div>
 
@@ -543,6 +582,50 @@
                 document.getElementById('aqhiData').innerHTML = html;
             } catch (e) {
                 document.getElementById('aqhiData').innerHTML = '<div class="loading">無法載入</div>';
+            }
+        }
+
+        // ========== AQHI 各區 ==========
+        async function loadDistrictAQHI() {
+            try {
+                const r = await fetch('https://www.aqhi.gov.hk/epd/ddata/html/out/aqhi_ind_rss_ChT.xml');
+                const text = await r.text();
+                
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, 'application/xml');
+                const items = xml.querySelectorAll('item');
+                
+                let html = '<div class="district-title">各區監測站</div><div class="district-grid">';
+                let count = 0;
+                
+                for (const item of items) {
+                    const title = item.querySelector('title').textContent;
+                    const desc = item.querySelector('description').textContent;
+                    
+                    // 提取 AQHI 數值
+                    const match = desc.match(/(\d+)\s*-/);
+                    if (match && count < 16) {
+                        const val = parseInt(match[1]);
+                        let cls = 'aqhi-green';
+                        if (val >= 4) cls = 'aqhi-yellow';
+                        if (val >= 7) cls = 'aqhi-orange';
+                        if (val >= 10) cls = 'aqhi-red';
+                        
+                        html += `
+                            <div class="district-item">
+                                <div class="district-name">${title}</div>
+                                <div class="district-value ${cls}">${val}</div>
+                            </div>
+                        `;
+                        count++;
+                    }
+                }
+                
+                html += '</div>';
+                document.getElementById('districtAQHI').innerHTML = html;
+            } catch (e) {
+                console.error('District AQHI error:', e);
+                document.getElementById('districtAQHI').innerHTML = '<div class="loading">無法載入</div>';
             }
         }
 
@@ -732,6 +815,7 @@
 
         // 初始化
         loadAQHI();
+        loadDistrictAQHI();
         loadForecast();
         loadMTR();
         loadLRT();

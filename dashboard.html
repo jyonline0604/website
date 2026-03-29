@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香港城市儀表板 | 科技修真傳</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e4e4e4;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #a0a0a0;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #00d4ff;
+        }
+
+        nav a.active {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, rgba(0, 212, 255, 0.1) 0%, transparent 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            color: #888;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .last-update {
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+        }
+
+        /* Card Styles */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* AQHI Card */
+        .aqhi-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .aqhi-item {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .aqhi-label {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .aqhi-value {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .aqhi-risk {
+            font-size: 0.9rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .risk-low { color: #00ff88; background: rgba(0, 255, 136, 0.2); }
+        .risk-moderate { color: #ffcc00; background: rgba(255, 204, 0, 0.2); }
+        .risk-high { color: #ff6600; background: rgba(255, 102, 0, 0.2); }
+        .risk-very-high { color: #ff0044; background: rgba(255, 0, 68, 0.2); }
+
+        /* Data List */
+        .data-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .data-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .data-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .data-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        .data-item {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .data-item:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .data-item-info {
+            flex: 1;
+        }
+
+        .data-item-name {
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        .data-item-sub {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .data-item-value {
+            text-align: right;
+        }
+
+        .data-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #00d4ff;
+        }
+
+        .data-unit {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        /* Weather Grid */
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+        }
+
+        .weather-item {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .weather-name {
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .weather-district {
+            color: #666;
+            font-size: 0.75rem;
+        }
+
+        /* Parking List */
+        .parking-item {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .parking-name {
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .parking-info {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .parking-district {
+            color: #00d4ff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .aqhi-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: #666;
+        }
+
+        .loading::after {
+            content: '';
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(0, 212, 255, 0.3);
+            border-top-color: #00d4ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="home.html" class="logo">
+                <span class="logo-icon">📖</span>
+                <span>科技修真傳</span>
+            </a>
+            <nav>
+                <a href="home.html">首頁</a>
+                <a href="chapters.html">章節</a>
+                <a href="news.html">資訊</a>
+                <a href="dashboard.html" class="active">城市儀表板</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>🌆 香港城市儀表板</h1>
+        <p>整合來自香港政府開放數據平台的實時城市數據</p>
+        <div class="last-update" id="lastUpdate">載入中...</div>
+    </section>
+
+    <main class="container">
+        <div class="dashboard-grid">
+            <!-- AQHI 空氣質素健康指數 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🌬️</span>
+                    <div>
+                        <div class="card-title">空氣質素健康指數 (AQHI)</div>
+                        <div class="card-subtitle">環境保護署 | 每小時更新</div>
+                    </div>
+                </div>
+                <div class="aqhi-content" id="aqhiData">
+                    <div class="loading">載入數據</div>
+                </div>
+            </div>
+
+            <!-- 行車時間指示 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🚗</span>
+                    <div>
+                        <div class="card-title">行車時間指示</div>
+                        <div class="card-subtitle">運輸署 | 實時路況</div>
+                    </div>
+                </div>
+                <div class="data-list" id="journeyData">
+                    <div class="loading">載入數據</div>
+                </div>
+            </div>
+
+            <!-- 交通車速 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    <div>
+                        <div class="card-title">主要幹道車速</div>
+                        <div class="card-subtitle">運輸署 | 實時車速</div>
+                    </div>
+                </div>
+                <div class="data-list" id="trafficData">
+                    <div class="loading">載入數據</div>
+                </div>
+            </div>
+
+            <!-- 停車場資訊 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🅿️</span>
+                    <div>
+                        <div class="card-title">停車場資訊</div>
+                        <div class="card-subtitle">運輸署 | 全港主要停車場</div>
+                    </div>
+                </div>
+                <div class="data-list" id="parkingData">
+                    <div class="loading">載入數據</div>
+                </div>
+            </div>
+
+            <!-- 天氣站 -->
+            <div class="card" style="grid-column: 1 / -1;">
+                <div class="card-header">
+                    <span class="card-icon">🌡️</span>
+                    <div>
+                        <div class="card-title">香港天文台氣象站網絡</div>
+                        <div class="card-subtitle">天文台 | 27個氣象站覆蓋全港</div>
+                    </div>
+                </div>
+                <div class="weather-grid" id="weatherData">
+                    <div class="loading">載入數據</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>數據來源：<a href="https://data.gov.hk" target="_blank">DATA.GOV.HK</a> 香港政府開放數據平台</p>
+        <p>© 2026 科技修真傳 | 作者：大肥喵</p>
+    </footer>
+
+    <script>
+        // 更新時間
+        document.getElementById('lastUpdate').textContent = `最後更新：${new Date().toLocaleString('zh-TW')}`;
+
+        // 載入 AQHI 數據
+        async function loadAQHI() {
+            try {
+                const response = await fetch('https://datagovhk.blob.core.windows.net/dataset/aqhi/aqhi.json');
+                const data = await response.json();
+                
+                let html = '';
+                for (const item of data) {
+                    const typeName = item.type === 'general' ? '一般地區' : '路邊';
+                    const aqhiValue = item.aqhi_max;
+                    
+                    let riskClass = 'risk-low';
+                    let riskText = item.health_risk_max;
+                    if (aqhiValue >= 4) riskClass = 'risk-moderate';
+                    if (aqhiValue >= 7) riskClass = 'risk-high';
+                    if (aqhiValue >= 10) riskClass = 'risk-very-high';
+                    
+                    html += `
+                        <div class="aqhi-item">
+                            <div class="aqhi-label">${typeName}</div>
+                            <div class="aqhi-value">${aqhiValue}</div>
+                            <span class="aqhi-risk ${riskClass}">${riskText}</span>
+                        </div>
+                    `;
+                }
+                document.getElementById('aqhiData').innerHTML = html;
+            } catch (error) {
+                document.getElementById('aqhiData').innerHTML = '<div class="empty-state">無法載入數據</div>';
+            }
+        }
+
+        // 載入行車時間數據
+        async function loadJourneyTime() {
+            try {
+                const response = await fetch('https://datagovhk.blob.core.windows.net/dataset/journey-time/journey-time-info.json');
+                const data = await response.json();
+                
+                let html = '';
+                for (const item of data) {
+                    html += `
+                        <div class="data-item">
+                            <div class="data-item-info">
+                                <div class="data-item-name">${item.location_name_tc || item.location_name_en}</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                if (html === '') html = '<div class="empty-state">暫無數據</div>';
+                document.getElementById('journeyData').innerHTML = html;
+            } catch (error) {
+                document.getElementById('journeyData').innerHTML = '<div class="empty-state">無法載入數據</div>';
+            }
+        }
+
+        // 載入交通車速數據
+        async function loadTrafficSpeed() {
+            try {
+                const response = await fetch('https://datagovhk.blob.core.windows.net/dataset/traffic-speed/traffic-speed-info.json');
+                const data = await response.json();
+                
+                let html = '';
+                for (const item of data) {
+                    html += `
+                        <div class="data-item">
+                            <div class="data-item-info">
+                                <div class="data-item-name">${item.link_name_tc || item.link_name_en}</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                if (html === '') html = '<div class="empty-state">暫無數據</div>';
+                document.getElementById('trafficData').innerHTML = html;
+            } catch (error) {
+                document.getElementById('trafficData').innerHTML = '<div class="empty-state">無法載入數據</div>';
+            }
+        }
+
+        // 載入停車場數據
+        async function loadParking() {
+            try {
+                const response = await fetch('https://datagovhk.blob.core.windows.net/dataset/parking-vacancy/parking-vacancy-info.json');
+                const data = await response.json();
+                
+                let html = '';
+                // 只顯示前20個
+                const displayData = data.slice(0, 20);
+                
+                for (const item of displayData) {
+                    html += `
+                        <div class="parking-item">
+                            <div class="parking-name">${item.parking_name_tc || item.parking_name_en}</div>
+                            <div class="parking-info">
+                                <span class="parking-district">${item.parking_district_tc || item.parking_district_en}</span>
+                                <span>${item.parking_contactNo || '無電話'}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+                if (html === '') html = '<div class="empty-state">暫無數據</div>';
+                document.getElementById('parkingData').innerHTML = html;
+            } catch (error) {
+                document.getElementById('parkingData').innerHTML = '<div class="empty-state">無法載入數據</div>';
+            }
+        }
+
+        // 載入天氣站數據
+        async function loadWeatherStations() {
+            try {
+                const response = await fetch('https://datagovhk.blob.core.windows.net/dataset/weather-station/weather-station-info.json');
+                const data = await response.json();
+                
+                let html = '';
+                for (const item of data) {
+                    html += `
+                        <div class="weather-item">
+                            <div class="weather-name">${item.station_name_tc || item.station_name_en}</div>
+                            <div class="weather-district">${item.station_code}</div>
+                        </div>
+                    `;
+                }
+                if (html === '') html = '<div class="empty-state">暫無數據</div>';
+                document.getElementById('weatherData').innerHTML = html;
+            } catch (error) {
+                document.getElementById('weatherData').innerHTML = '<div class="empty-state">無法載入數據</div>';
+            }
+        }
+
+        // 初始化
+        loadAQHI();
+        loadJourneyTime();
+        loadTrafficSpeed();
+        loadParking();
+        loadWeatherStations();
+    </script>
+</body>
+</html>

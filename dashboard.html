@@ -189,6 +189,53 @@
         .aqhi-red { color: #ff4444; }
         .aqhi-purple { color: #aa44ff; }
 
+        /* AQHI 健康風險視覺化指南 */
+        .aqhi-guide {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+
+        .aqhi-level {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 4px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .aqhi-emoji {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+
+        .aqhi-level-text {
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .aqhi-nums {
+            font-size: 0.65rem;
+            color: #888;
+        }
+
+        .aqhi-level:nth-child(1) { background: rgba(0, 255, 136, 0.1); }
+        .aqhi-level:nth-child(1) .aqhi-level-text { color: #00ff88; }
+        .aqhi-level:nth-child(2) { background: rgba(255, 204, 0, 0.1); }
+        .aqhi-level:nth-child(2) .aqhi-level-text { color: #ffcc00; }
+        .aqhi-level:nth-child(3) { background: rgba(255, 102, 0, 0.1); }
+        .aqhi-level:nth-child(3) .aqhi-level-text { color: #ff6600; }
+        .aqhi-level:nth-child(4) { background: rgba(255, 68, 68, 0.1); }
+        .aqhi-level:nth-child(4) .aqhi-level-text { color: #ff4444; }
+        .aqhi-level:nth-child(5) { background: rgba(170, 68, 255, 0.1); }
+        .aqhi-level:nth-child(5) .aqhi-level-text { color: #aa44ff; }
+
         /* Weather Forecast */
         .forecast-list {
             display: flex;
@@ -438,6 +485,34 @@
                 <div class="card-title">
                     <span class="icon">🌬️</span>
                     空氣質素健康指數 (AQHI)
+                </div>
+                <!-- AQHI 健康風險視覺化指南 -->
+                <div class="aqhi-guide">
+                    <div class="aqhi-level">
+                        <span class="aqhi-emoji">😊</span>
+                        <span class="aqhi-level-text">低</span>
+                        <span class="aqhi-nums">1-3</span>
+                    </div>
+                    <div class="aqhi-level">
+                        <span class="aqhi-emoji">😐</span>
+                        <span class="aqhi-level-text">中</span>
+                        <span class="aqhi-nums">4-6</span>
+                    </div>
+                    <div class="aqhi-level">
+                        <span class="aqhi-emoji">😷</span>
+                        <span class="aqhi-level-text">高</span>
+                        <span class="aqhi-nums">7</span>
+                    </div>
+                    <div class="aqhi-level">
+                        <span class="aqhi-emoji">🤢</span>
+                        <span class="aqhi-level-text">甚高</span>
+                        <span class="aqhi-nums">8-10</span>
+                    </div>
+                    <div class="aqhi-level">
+                        <span class="aqhi-emoji">😱</span>
+                        <span class="aqhi-level-text">嚴重</span>
+                        <span class="aqhi-nums">10+</span>
+                    </div>
                 </div>
                 <div class="aqhi-box" id="aqhiData">
                     <div class="loading">載入 AQHI</div>

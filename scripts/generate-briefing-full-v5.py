@@ -189,50 +189,83 @@ class FullBriefingGeneratorV5:
         return []
     
     def fetch_mtr_next_train(self):
-        """獲取港鐵下一班列車數據"""
+        """獲取港鐵多條線路的下一班列車數據"""
         try:
-            log("獲取港鐵下一班列車數據...")
+            log("獲取港鐵多條線路列車數據...")
             
-            # 檢查將軍澳站
-            url = "https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=TKL&sta=TKO&lang=tc"
-            response = requests.get(url, timeout=5)
+            # 可用的 MTR 線路和站點
+            mtr_lines = [
+                {"name": "港島線", "line": "ISL", "station": "CEN", "station_name": "中環"},
+                {"name": "港島線", "line": "ISL", "station": "CAB", "station_name": "銅鑼灣"},
+                {"name": "將軍澳線", "line": "TKL", "station": "TKO", "station_name": "將軍澳"},
+                {"name": "將軍澳線", "line": "TKL", "station": "LHP", "station_name": "寶琳"},
+                {"name": "東鐵線", "line": "EAL", "station": "FAN", "station_name": "粉嶺"},
+                {"name": "東鐵線", "line": "EAL", "station": "TWO", "station_name": "上水"},
+            ]
             
-            if response.status_code == 200:
-                data = response.json()
-                
-                if data.get("status") == 1 and data.get("data"):
-                    station_data = data["data"].get("TKL-TKO")
+            results = []
+            dest_map = {
+                # 港島線
+                "CHW": "柴灣", "KET": "堅尼地城", "SYP": "筲箕灣", "TAP": "太古城",
+                "HFC": "杏花邨", "SKT": "石塘咀", "BRH": "寶翠園",
+                # 將軍澳線
+                "POA": "寶琳", "LHP": "康城", "TIK": "調景嶺", "NOP": "北角",
+                # 東鐵線
+                "ADM": "金鐘", "HRT": "紅磡", "KOT": "九龍塘", "SHT": "沙田",
+                "FAN": "火炭", "TWO": "上水", "LOW": "羅湖", "LMC": "落馬洲",
+                # 觀塘線
+                "YAT": "油塘", "NTK": "牛頭山", "KWH": "觀塘", "SKM": "石門",
+                "WHA": "黃埔", "HPH": "何文田"
+            }
+            
+            for mtr in mtr_lines[:6]:  # 最多6條線路
+                try:
+                    url = f"https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line={mtr['line']}&sta={mtr['station']}&lang=tc"
+                    response = requests.get(url, timeout=5)
                     
-                    if station_data:
-                        # 獲取上行方向列車
-                        up_trains = station_data.get("UP", [])
+                    if response.status_code == 200:
+                        data = response.json()
                         
-                        if up_trains:
-                            nearest = up_trains[0]
-                            train_time = nearest.get("time", "")
-                            dest = nearest.get("dest", "")
+                        if data.get("data"):
+                            station_key = f"{mtr['line']}-{mtr['station']}"
+                            station_data = data["data"].get(station_key)
                             
-                            # 計算分鐘差
-                            try:
-                                train_dt = datetime.strptime(train_time, "%Y-%m-%d %H:%M:%S")
-                                now = datetime.now()
-                                minutes = int((train_dt - now).total_seconds() / 60)
+                            if station_data:
+                                # 獲取上行方向列車
+                                up_trains = station_data.get("UP", [])
                                 
-                                if minutes >= 0:
-                                    dest_map = {
-                                        "POA": "寶琳", "LHP": "康城", "TIK": "調景嶺",
-                                        "NOP": "北角", "TST": "尖沙咀", "CEN": "中環"
-                                    }
-                                    dest_name = dest_map.get(dest, dest)
+                                if up_trains:
+                                    nearest = up_trains[0]
+                                    dest = nearest.get("dest", "")
                                     
-                                    return [{
-                                        "station": "將軍澳站",
-                                        "minutes": minutes,
-                                        "destination": dest_name,
-                                        "direction": "上行"
-                                    }]
-                            except:
-                                pass
+                                    # 使用 ttnt (time to next train)
+                                    try:
+                                        ttnt = nearest.get("ttnt", "0")
+                                        minutes = int(ttnt) if ttnt else 0
+                                        
+                                        # 如果 ttnt 是 0，表示列車已到站，使用下一班
+                                        if minutes == 0 and len(up_trains) > 1:
+                                            nearest = up_trains[1]
+                                            dest = nearest.get("dest", "")
+                                            ttnt = nearest.get("ttnt", "0")
+                                            minutes = int(ttnt) if ttnt else 1
+                                        
+                                        if minutes > 0 and minutes < 30:
+                                            dest_name = dest_map.get(dest, dest)
+                                            line_station = f"{mtr['name']} {mtr['station_name']}"
+                                            
+                                            results.append({
+                                                "line_station": line_station,
+                                                "minutes": minutes,
+                                                "destination": dest_name,
+                                                "direction": "→"
+                                            })
+                                    except:
+                                        pass
+                except:
+                    pass
+            
+            return results[:6]  # 最多6條
                     
         except Exception as e:
             log(f"獲取港鐵列車數據異常: {str(e)}")
@@ -240,54 +273,65 @@ class FullBriefingGeneratorV5:
         return []
     
     def fetch_kmb_bus_eta(self):
-        """獲取九巴實時到站數據"""
+        """獲取九巴多條路線的實時到站數據"""
         try:
             log("獲取九巴實時到站數據...")
             
-            # 九巴 1 號線竹園邨總站
-            stop_id = "18492910339410B1"
-            route = "1"
+            # 九巴熱門路線和站點
+            kmb_routes = [
+                {"route": "1", "stop_id": "RI5fgPrP", "name": "1", "stop": "竹園邨總站"},
+                {"route": "203", "stop_id": "RI5fgPrP", "name": "203", "stop": "竹園邨總站"},
+                {"route": "208", "stop_id": "RI5fgPrP", "name": "208", "stop": "竹園邨總站"},
+            ]
             
-            url = f"https://data.etabus.gov.hk/v1/transport/kmb/eta/{stop_id}/{route}/1"
-            response = requests.get(url, timeout=5)
+            results = []
             
-            if response.status_code == 200:
-                data = response.json()
-                
-                if data.get("data"):
-                    etas = data["data"]
+            for kmb in kmb_routes:
+                try:
+                    url = f"https://data.etabus.gov.hk/v1/transport/kmb/eta/{kmb['route']}/{kmb['stop_id']}/1"
+                    response = requests.get(url, timeout=5)
                     
-                    valid_etas = []
-                    for eta in etas:
-                        eta_time = eta.get("eta")
-                        remark = eta.get("rmk_tc", eta.get("rmk_en", ""))
+                    if response.status_code == 200:
+                        data = response.json()
                         
-                        if eta_time:
-                            try:
-                                eta_dt = datetime.fromisoformat(eta_time.replace('Z', '+00:00'))
-                                now = datetime.now().astimezone()
-                                time_diff = (eta_dt - now).total_seconds() / 60
+                        if data.get("data"):
+                            etas = data["data"]
+                            
+                            valid_etas = []
+                            for eta in etas:
+                                eta_time = eta.get("eta")
+                                remark = eta.get("rmk_tc", eta.get("rmk_en", ""))
                                 
-                                if time_diff >= 0:
-                                    minutes = int(time_diff)
-                                    if minutes <= 30:
-                                        valid_etas.append({
-                                            "minutes": minutes,
-                                            "remark": remark
-                                        })
-                            except:
-                                continue
-                    
-                    if valid_etas:
-                        valid_etas.sort(key=lambda x: x["minutes"])
-                        nearest = valid_etas[0]
-                        
-                        return [{
-                            "route_name": "1號線 (竹園邨 ↔ 尖沙咀碼頭)",
-                            "stop_name": "竹園邨總站",
-                            "minutes": nearest["minutes"],
-                            "remark": nearest["remark"]
-                        }]
+                                if eta_time:
+                                    try:
+                                        eta_dt = datetime.fromisoformat(eta_time.replace('Z', '+00:00'))
+                                        now = datetime.now().astimezone()
+                                        time_diff = (eta_dt - now).total_seconds() / 60
+                                        
+                                        if time_diff >= 0:
+                                            minutes = int(time_diff)
+                                            if minutes <= 30:
+                                                valid_etas.append({
+                                                    "minutes": minutes,
+                                                    "remark": remark
+                                                })
+                                    except:
+                                        continue
+                            
+                            if valid_etas:
+                                valid_etas.sort(key=lambda x: x["minutes"])
+                                nearest = valid_etas[0]
+                                
+                                results.append({
+                                    "route_name": f"{kmb['name']}號線",
+                                    "stop_name": kmb['stop'],
+                                    "minutes": nearest["minutes"],
+                                    "remark": nearest["remark"]
+                                })
+                except:
+                    pass
+            
+            return results[:4]  # 最多4條路線
                     
         except Exception as e:
             log(f"獲取九巴 ETA 異常: {str(e)}")
@@ -530,11 +574,11 @@ class FullBriefingGeneratorV5:
         
         briefing += f"""
 
-【港鐵下一班列車】🚇 data.gov.hk 實時數據"""
+【港鐵列車到站】🚇 data.gov.hk 實時數據"""
         
         if mtr_trains:
             for train in mtr_trains:
-                station = train["station"]
+                line_station = train["line_station"]
                 minutes = train["minutes"]
                 destination = train["destination"]
                 direction = train["direction"]
@@ -546,9 +590,9 @@ class FullBriefingGeneratorV5:
                 else:
                     train_emoji = "🔵"
                 
-                briefing += f"\n{train_emoji} {station}: {minutes}分鐘 → {destination} ({direction})"
+                briefing += f"\n{train_emoji} {line_station}: {minutes}分鐘 {direction} {destination}"
         else:
-            briefing += "\n📊 列車數據更新中"
+            briefing += "\n📊 港鐵列車數據更新中"
         
         briefing += f"""
 
@@ -575,7 +619,7 @@ class FullBriefingGeneratorV5:
                     briefing += f" ({remark})"
                 briefing += "\n"
         else:
-            briefing += "\n📊 九巴數據更新中"
+            briefing += "\n📊 九巴 ETA 數據暫時無法取得\n🔗 請使用《香港出行易》APP 查詢"
         
         briefing += f"""
 

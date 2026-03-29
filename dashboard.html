@@ -683,7 +683,7 @@
         // ========== AQHI ==========
         async function loadAQHI() {
             try {
-                const r = await fetch('https://datagovhk.blob.core.windows.net/dataset/aqhi/aqhi.json');
+                const r = await fetch('https://api.allorigins.win/raw?url=https://datagovhk.blob.core.windows.net/dataset/aqhi/aqhi.json');
                 const data = await r.json();
                 
                 let html = '';

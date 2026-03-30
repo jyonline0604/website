@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有聲畫小説 - 科技修真傳</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e5e5e5;
+        }
+        .header {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header p {
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .stat-box {
+            background: rgba(255,255,255,0.05);
+            padding: 20px 30px;
+            border-radius: 16px;
+            text-align: center;
+            min-width: 150px;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .chapter-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .chapter-card-image {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+        .chapter-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .chapter-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(102, 126, 234, 0.9);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .chapter-card-content {
+            padding: 20px;
+        }
+        .chapter-number {
+            font-size: 0.85rem;
+            color: #667eea;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .chapter-title {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+        .chapter-desc {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+        .chapter-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: #e5e5e5;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        .nav-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .nav-btn:hover {
+            transform: scale(1.1);
+        }
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            opacity: 0.7;
+        }
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 768px) {
+            .chapter-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats {
+                gap: 15px;
+            }
+            .stat-box {
+                min-width: 120px;
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🎬 有聲畫小説</h1>
+        <p>《科技修真傳》有聲畫版本 - 圖文並茂 + 完整朗讀</p>
+    </header>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number" id="totalChapters">4</div>
+                <div class="stat-label">已完成章節</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">70</div>
+                <div class="stat-label">總章節數</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">6%</div>
+                <div class="stat-label">完成度</div>
+            </div>
+        </div>
+
+        <div class="chapter-grid" id="chapterGrid">
+            <!-- Chapter 1 -->
+            <div class="chapter-card">
+                <div class="chapter-card-image">
+                    <img src="assets/chapter-1-scene1.jpg" alt="第1章">
+                    <span class="chapter-badge">🆕 New</span>
+                </div>
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 1 章</div>
+                    <h3 class="chapter-title">靈芯覺醒</h3>
+                    <p class="chapter-desc">末法元年一百四十二年，林塵在廢墟中獲得神秘的靈芯系統，踏上修真之路。</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-1-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-1.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 2 -->
+            <div class="chapter-card">
+                <div class="chapter-card-image">
+                    <img src="assets/chapter-2-scene1.jpg" alt="第2章">
+                </div>
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 2 章</div>
+                    <h3 class="chapter-title">破序者</h3>
+                    <p class="chapter-desc">林塵深入研究靈芯技術，揭開末法時代的真相，開始數據化修煉之路。</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-2-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-2.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 3 -->
+            <div class="chapter-card">
+                <div class="chapter-card-image">
+                    <img src="assets/chapter-3-scene1.jpg" alt="第3章">
+                </div>
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 3 章</div>
+                    <h3 class="chapter-title">廢墟求生</h3>
+                    <p class="chapter-desc">林塵在廢墟城市中探索，面對靈化獸的威脅，運用靈芯系統戰鬥。</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-3-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-3.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 4 -->
+            <div class="chapter-card">
+                <div class="chapter-card-image">
+                    <img src="assets/chapter-4-scene1.jpg" alt="第4章">
+                </div>
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 4 章</div>
+                    <h3 class="chapter-title">上古靈芯</h3>
+                    <p class="chapter-desc">林塵發現上古天機閣的遺址，獲得傳說中的SSS級靈芯，遇見天機子殘魂。</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-4-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-4.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <h3>敬請期待</h3>
+            <p>更多章節正在製作中...</p>
+        </div>
+    </div>
+
+    <div class="nav-fixed">
+        <a href="chapters.html" class="nav-btn" title="返回章節目錄">📚</a>
+    </div>
+</body>
+</html>

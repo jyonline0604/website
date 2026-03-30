@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第6章：有聲畫小説 - 科技修真傳</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: #0a0a0f;
+            color: #e5e5e5;
+            line-height: 1.8;
+        }
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+        }
+        .hero-content {
+            position: absolute;
+            bottom: 120px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(99, 102, 241, 0.9);
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        .audio-control:hover {
+            background: rgba(99, 102, 241, 1);
+            transform: translateX(-50%) scale(1.05);
+        }
+        .audio-control.playing {
+            background: #10b981;
+        }
+        .scenes {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .scene {
+            margin-bottom: 100px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        .scene.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scene-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .scene:nth-child(even) .scene-grid {
+            direction: rtl;
+        }
+        .scene:nth-child(even) .scene-grid > * {
+            direction: ltr;
+        }
+        .scene-image {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .scene-image img {
+            width: 100%;
+            display: block;
+        }
+        .scene-text {
+            padding: 20px;
+        }
+        .scene-number {
+            color: #6366f1;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .scene-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .scene-desc {
+            color: #9ca3af;
+            font-size: 1rem;
+        }
+        .nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .nav a:hover {
+            background: rgba(99, 102, 241, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="chapter-6.html">← 文字版</a>
+        <a href="chapter-5-av.html">第5章</a>
+        <a href="av-novels.html">📚 目錄</a>
+    </nav>
+
+    <section class="hero" id="hero">
+        <img src="assets/chapter-6-scene1.jpg" alt="任務系統">
+        <div class="hero-content">
+            <h1>第6章：主線任務</h1>
+            <p>🎧 點擊播放有聲朗讀</p>
+        </div>
+    </section>
+
+    <div class="audio-control" id="audioBtn" onclick="toggleAudio()">
+        <span id="playIcon">▶</span>
+        <span id="audioText">播放朗讀</span>
+    </div>
+    <audio id="audio" src="assets/chapter6_edge_tts.mp3"></audio>
+
+    <section class="scenes">
+        <div class="scene">
+            <div class="scene-grid">
+                <div class="scene-image">
+                    <img src="assets/chapter-6-scene1.jpg" alt="場景1">
+                </div>
+                <div class="scene-text">
+                    <div class="scene-number">場景 1</div>
+                    <h2 class="scene-title">📋 任務系統</h2>
+                    <p class="scene-desc">
+                        突破練氣期中階後，林塵的靈芯系統突然發出了前所未有的提示音。<br><br>
+                        「檢測到宿主實力提升——太初系統·任務模塊啟動」
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="scene">
+            <div class="scene-grid">
+                <div class="scene-image">
+                    <img src="assets/chapter-6-scene2.jpg" alt="場景2">
+                </div>
+                <div class="scene-text">
+                    <div class="scene-number">場景 2</div>
+                    <h2 class="scene-title">💎 靈氣結晶</h2>
+                    <p class="scene-desc">
+                        主線任務：收集靈氣結晶 × 10<br><br>
+                        靈氣結晶是靈氣在極端條件下凝結而成的晶體，蘊含的能量相當於普通靈氣的數百倍。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="scene">
+            <div class="scene-grid">
+                <div class="scene-image">
+                    <img src="assets/chapter-6-scene3.jpg" alt="場景3">
+                </div>
+                <div class="scene-text">
+                    <div class="scene-number">場景 3</div>
+                    <h2 class="scene-title">🛡️ 靈罡護體</h2>
+                    <p class="scene-desc">
+                        林塵選定了「靈罡護體」防禦型功法，在身體表面形成一層靈氣護盾，可以抵禦普通攻擊。<br><br>
+                        「功法等級：練氣期·中階，修煉時間：24小時」
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const audio = document.getElementById('audio');
+        const audioBtn = document.getElementById('audioBtn');
+        const playIcon = document.getElementById('playIcon');
+        const audioText = document.getElementById('audioText');
+        let isPlaying = false;
+
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                playIcon.textContent = '▶';
+                audioText.textContent = '播放朗讀';
+                audioBtn.classList.remove('playing');
+            } else {
+                audio.play();
+                playIcon.textContent = '⏸';
+                audioText.textContent = '暫停';
+                audioBtn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            playIcon.textContent = '▶';
+            audioText.textContent = '播放朗讀';
+            audioBtn.classList.remove('playing');
+        });
+
+        const scenes = document.querySelectorAll('.scene');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        scenes.forEach(scene => observer.observe(scene));
+    </script>
+</body>
+</html>

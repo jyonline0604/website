@@ -642,24 +642,6 @@ class FullBriefingGeneratorV5:
         for i, item in enumerate(finance, 1):
             briefing += f"\n📈 {item}"
         
-        # 添加數據來源
-        update_time = current_weather.get('update_time', '')
-        if update_time:
-            try:
-                dt = datetime.fromisoformat(update_time.replace('+08:00', ''))
-                update_str = dt.strftime('%H:%M')
-            except:
-                update_str = "最新"
-        else:
-            update_str = datetime.now().strftime('%H:%M')
-        
-        briefing += f"""
-
----
-📡 數據來源：香港天文台、運輸署特別交通消息、data.gov.hk 港鐵列車、data.gov.hk 九巴 ETA、Google 新聞
-⏰ 天氣數據更新：{update_str}
-🔗 官方網站：data.gov.hk、hko.gov.hk、td.gov.hk、mtr.com.hk、kmb.hk"""
-        
         log(f"完整官方數據簡報生成完成，長度: {len(briefing)} 字符")
         return briefing
 

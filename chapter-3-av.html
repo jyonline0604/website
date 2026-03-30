@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第3章：有聲畫小説 - 科技修真傳</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: #0a0a0f;
+            color: #e5e5e5;
+            line-height: 1.8;
+        }
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+        }
+        .hero-content {
+            position: absolute;
+            bottom: 120px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(99, 102, 241, 0.9);
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        .audio-control:hover {
+            background: rgba(99, 102, 241, 1);
+            transform: translateX(-50%) scale(1.05);
+        }
+        .audio-control.playing {
+            background: #10b981;
+        }
+        .scenes {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .scene {
+            margin-bottom: 100px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        .scene.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scene-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .scene:nth-child(even) .scene-grid {
+            direction: rtl;
+        }
+        .scene:nth-child(even) .scene-grid > * {
+            direction: ltr;
+        }
+        .scene-image {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .scene-image img {
+            width: 100%;
+            display: block;
+        }
+        .scene-text {
+            padding: 20px;
+        }
+        .scene-number {
+            color: #6366f1;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .scene-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .scene-desc {
+            color: #9ca3af;
+            font-size: 1rem;
+        }
+        .nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .nav a:hover {
+            background: rgba(99, 102, 241, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="chapter-3.html">← 文字版</a>
+        <a href="chapter-2-av.html">第2章</a>
+        <a href="chapter-1-av.html">第1章</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <img src="assets/chapter-3-scene1.jpg" alt="廢墟塔頂">
+        <div class="hero-content">
+            <h1>第3章：廢墟求生</h1>
+            <p>🎧 點擊播放有聲朗讀</p>
+        </div>
+    </section>
+
+    <!-- Audio Player -->
+    <div class="audio-control" id="audioBtn" onclick="toggleAudio()">
+        <span id="playIcon">▶</span>
+        <span id="audioText">播放朗讀</span>
+    </div>
+    <audio id="audio" src="assets/chapter3_edge_tts.mp3"></audio>
+
+    <!-- Scenes -->
+    <section class="scenes">
+        <div class="scene">
+            <div class="scene-grid">
+                <div class="scene-image">
+                    <img src="assets/chapter-3-scene1.jpg" alt="場景1">
+                </div>
+                <div class="scene-text">
+                    <div class="scene-number">場景 1</div>
+                    <h2 class="scene-title">🏚️ 廢墟塔頂</h2>
+                    <p class="scene-desc">
+                        寒風從破舊的光纖塔骨架縫隙中穿過。林塵站在塔頂，低頭看向腳下密密麻麻的廢舊機箱與裂縫中蠕動的雜草。<br><br>
+                        末法時代已持續超過一百五十年。曾經繁華的都市如今只剩下鋼筋水泥的骨架。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="scene">
+            <div class="scene-grid">
+                <div class="scene-image">
+                    <img src="assets/chapter-3-scene2.jpg" alt="場景2">
+                </div>
+                <div class="scene-text">
+                    <div class="scene-number">場景 2</div>
+                    <h2 class="scene-title">📡 環境掃描</h2>
+                    <p class="scene-desc">
+                        靈芯系統在他視野中投射出一幅環境掃描圖。<br>
+                        「地形分析：廢棄城市核心區，建築損毀率87%」<br>
+                        「生物跡象：檢測到多個移動目標，威脅等級待評估」<br>
+                        「資源標記：可用水源（北方200米）」
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="scene">
+            <div class="scene-grid">
+                <div class="scene-image">
+                    <img src="assets/chapter-3-scene3.jpg" alt="場景3">
+                </div>
+                <div class="scene-text">
+                    <div class="scene-number">場景 3</div>
+                    <h2 class="scene-title">🐺 靈化獸</h2>
+                    <p class="scene-desc">
+                        「警告：偵測到異常生物接近」<br>
+                        「威脅等級：中等」<br>
+                        「生物類型：靈化獸——輻射灰狼（變異體）」<br><br>
+                        一頭體型碩大的灰狼正從廢墟中竄出，雙眼泛著詭異的綠光，身上的皮毛隱隱有電弧跳動。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const audio = document.getElementById('audio');
+        const audioBtn = document.getElementById('audioBtn');
+        const playIcon = document.getElementById('playIcon');
+        const audioText = document.getElementById('audioText');
+        let isPlaying = false;
+
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                playIcon.textContent = '▶';
+                audioText.textContent = '播放朗讀';
+                audioBtn.classList.remove('playing');
+            } else {
+                audio.play();
+                playIcon.textContent = '⏸';
+                audioText.textContent = '暫停';
+                audioBtn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            playIcon.textContent = '▶';
+            audioText.textContent = '播放朗讀';
+            audioBtn.classList.remove('playing');
+        });
+
+        // Scroll animations
+        const scenes = document.querySelectorAll('.scene');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        scenes.forEach(scene => observer.observe(scene));
+    </script>
+</body>
+</html>

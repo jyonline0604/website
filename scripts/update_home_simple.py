@@ -7,7 +7,7 @@
 import os
 import sys
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 
 WORKSPACE = "/home/openclaw/.openclaw/workspace"
 NOVEL_DIR = WORKSPACE
@@ -73,19 +73,14 @@ def get_chapter_excerpt(filename):
     
     return "林塵的修真科技之旅繼續展開..."
 
-def calculate_date(chapter_num):
-    """計算章節發布日期（從第60章開始為3月26日）"""
-    # 第60章 = 3月26日，第61章 = 3月27日，依此類推
-    base_day = 26  # 3月26日
-    base_chapter = 60
+def calculate_date(chapter_num, latest_num, today):
+    """計算章節發布日期（根據與最新章節的天數差計算）"""
+    # 最新章節 = 今天，以此往前推算
+    days_diff = latest_num - chapter_num
+    chapter_date = today - timedelta(days=days_diff)
     
-    day = base_day + (chapter_num - base_chapter)
-    month = 3
-    
-    # 處理月份轉換：3月最多31日
-    if day > 31:
-        month = 4
-        day = day - 31
+    month = chapter_date.month
+    day = chapter_date.day
     
     return f"2026年{month}月{day}日"
 
@@ -109,9 +104,14 @@ def update_home_html():
     
     print(f"找到 {len(valid_chapters)} 個章節")
     
-    # 取最新5章
+    # 取最新6章
     latest_chapters = valid_chapters[-6:]  # 顯示6個最新章節
-    print(f"最新6章: {[c['num'] for c in latest_chapters]}")
+    latest_num = latest_chapters[-1]["num"]  # 最新章節號
+    
+    # 今天日期
+    today = datetime.now()
+    print(f"今天: {today.strftime('%Y-%m-%d')}")
+    print(f"最新章節: 第{latest_num}章")
     
     # 生成章節卡片HTML
     chapter_cards_html = ""
@@ -125,13 +125,15 @@ def update_home_html():
         else:
             chapter_name = full_title
         
+        chapter_date = calculate_date(chap["num"], latest_num, today)
+        
         chapter_cards_html += f'''
             <a href="{chap['filename']}" class="chapter-card">
                 <div class="chapter-number">第{chap['num']}章</div>
                 <h3 class="chapter-title">{chapter_name}</h3>
                 <p class="chapter-excerpt">{excerpt}</p>
                 <div class="chapter-meta">
-                    <span class="chapter-date">{calculate_date(chap['num'])}</span>
+                    <span class="chapter-date">{chapter_date}</span>
                     <span class="chapter-read">閱讀全文 →</span>
                 </div>
             </a>'''

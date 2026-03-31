@@ -27,6 +27,21 @@ EXIT_CODE=$?
 
 if [ $EXIT_CODE -eq 0 ]; then
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✅ 多模型生成成功" >> "$LOG_FILE"
+    
+    # 推送新章節到 GitHub
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] 推送章節到 GitHub..." >> "$LOG_FILE"
+    cd "$NOVEL_DIR" || exit 1
+    git add -A >> "$LOG_FILE" 2>&1
+    git commit -m "docs: auto-generate chapter $(date '+%Y-%m-%d')" >> "$LOG_FILE" 2>&1
+    git push origin main >> "$LOG_FILE" 2>&1
+    
+    if [ $? -eq 0 ]; then
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✅ 已推送到 GitHub" >> "$LOG_FILE"
+    else
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] ⚠️ GitHub 推送失敗" >> "$LOG_FILE"
+    fi
+    
+    cd "$WORKSPACE" || exit 1
 else
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] ❌ 多模型生成失敗，退出碼: $EXIT_CODE" >> "$LOG_FILE"
     

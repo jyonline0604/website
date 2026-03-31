@@ -11,7 +11,7 @@ import requests
 from datetime import datetime
 
 WORKSPACE = "/home/openclaw/.openclaw/workspace"
-NOVEL_DIR = os.path.join(WORKSPACE, "my-novel")
+NOVEL_DIR = WORKSPACE
 LOG_FILE = os.path.join(WORKSPACE, "logs/novel-generator.log")
 
 def log(message):

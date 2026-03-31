@@ -53,7 +53,7 @@ def main():
     exclude_args = " ".join([f"--exclude='{e}'" for e in excludes])
     
     # 建立tar加密 (修正: my-novel 而非 my-novel-website)
-    cmd = f"""cd {WORKSPACE} && tar czf - my-novel scripts memory AGENTS.md SOUL.md USER.md MEMORY.md TOOLS.md HEARTBEAT.md {exclude_args} 2>/dev/null | openssl enc -aes-256-cbc -salt -pbkdf2 -pass pass:"{backup_pass}" -out {backup_file}"""
+    cmd = f"""cd {WORKSPACE} && tar czf - chapter-*.html *.html assets scripts memory AGENTS.md SOUL.md USER.md MEMORY.md TOOLS.md HEARTBEAT.md {exclude_args} 2>/dev/null | openssl enc -aes-256-cbc -salt -pbkdf2 -pass pass:"{backup_pass}" -out {backup_file}"""
     
     code, out, err = run_cmd(cmd)
     if code != 0:

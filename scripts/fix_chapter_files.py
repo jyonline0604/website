@@ -10,7 +10,7 @@ import re
 import glob
 import shutil
 
-NOVEL_DIR = "/home/openclaw/.openclaw/workspace/my-novel"
+NOVEL_DIR = "/home/openclaw/.openclaw/workspace"
 
 def extract_first_chapter(html_content):
     """從拼接的HTML中提取第一個章節"""

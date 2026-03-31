@@ -16,7 +16,7 @@ class FinanceDataFetcher:
     """財經數據獲取類"""
     
     def __init__(self):
-        self.cache_file = '/home/openclaw/.openclaw/workspace/my-novel/finance-data.json'
+        self.cache_file = '/home/openclaw/.openclaw/workspace/finance-data.json'
         self.cache_duration = 300  # 5分鐘緩存
         
     def fetch_all_data(self) -> Dict[str, Any]:

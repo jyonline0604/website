@@ -74,7 +74,7 @@ def check_setup():
     
     # 4. 檢查小說目錄
     print("\n4. 檢查小說目錄結構...")
-    novel_dir = os.path.join(WORKSPACE, "my-novel")
+    novel_dir = WORKSPACE
     if os.path.exists(novel_dir):
         chapters = [f for f in os.listdir(novel_dir) if f.startswith("chapter-") and f.endswith(".html")]
         chapters.sort()

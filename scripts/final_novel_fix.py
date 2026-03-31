@@ -11,7 +11,7 @@ import random
 from datetime import datetime
 
 WORKSPACE = "/home/openclaw/.openclaw/workspace"
-NOVEL_DIR = os.path.join(WORKSPACE, "my-novel")
+NOVEL_DIR = WORKSPACE
 
 def get_chapter_stats(chapter_num):
     """獲取章節統計信息"""

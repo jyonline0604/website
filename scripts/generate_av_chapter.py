@@ -53,6 +53,10 @@ def extract_chapter_text(chapter_num):
     # 清理多餘空白
     text = ' '.join(text.split())
     
+    # 分析適合的場景圖數量（根據內容長度）
+    num_scenes = min(6, max(3, len(text) // 2000))
+    print(f"   建議場景圖數量: {num_scenes} 張")
+    
     return text[:50000]  # 限制長度
 
 def generate_tts_edge(text, output_file):

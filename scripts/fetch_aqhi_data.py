@@ -36,7 +36,7 @@ const AQHI_DATA = {json.dumps({
     'data': data
 }, ensure_ascii=False, indent=2)};
 '''
-        output_file = '/home/openclaw/.openclaw/workspace/my-novel/aqhi-data.js'
+        output_file = '/home/openclaw/.openclaw/workspace/aqhi-data.js'
         with open(output_file, 'w', encoding='utf-8') as f:
             f.write(js_content)
         print(f"✅ AQHI數據已更新: {output_file}")
@@ -44,7 +44,7 @@ const AQHI_DATA = {json.dumps({
         # 自動提交到GitHub
         import subprocess
         import os
-        os.chdir('/home/openclaw/.openclaw/workspace/my-novel')
+        os.chdir('/home/openclaw/.openclaw/workspace')
         subprocess.run(['git', 'add', 'aqhi-data.js'], check=False)
         result = subprocess.run(['git', 'status', '--porcelain'], capture_output=True, text=True)
         if result.stdout.strip():

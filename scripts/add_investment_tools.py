@@ -5,8 +5,8 @@
 
 def add_investment_tools():
     """添加投資工具部分到財經頁面"""
-    finance_file = '/home/openclaw/.openclaw/workspace/my-novel/finance.html'
-    tools_file = '/home/openclaw/.openclaw/workspace/my-novel/assets/investment-tools.html'
+    finance_file = '/home/openclaw/.openclaw/workspace/finance.html'
+    tools_file = '/home/openclaw/.openclaw/workspace/assets/investment-tools.html'
     
     print("🛠️ 開始添加投資工具到財經頁面...")
     

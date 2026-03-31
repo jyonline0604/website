@@ -7,7 +7,7 @@ import os
 import re
 import glob
 
-NOVEL_DIR = "/home/openclaw/.openclaw/workspace/my-novel"
+NOVEL_DIR = "/home/openclaw/.openclaw/workspace"
 
 def fix_nav_structure(filepath):
     """修復單個文件的底部導航"""

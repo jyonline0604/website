@@ -18,7 +18,7 @@ class FinanceNewsFetcher:
     """財經新聞抓取類"""
     
     def __init__(self):
-        self.news_file = '/home/openclaw/.openclaw/workspace/my-novel/finance-news.json'
+        self.news_file = '/home/openclaw/.openclaw/workspace/finance-news.json'
         self.max_news_items = 20
         
     def fetch_all_news(self) -> Dict[str, Any]:

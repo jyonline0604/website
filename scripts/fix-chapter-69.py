@@ -6,7 +6,7 @@
 import os
 import re
 
-novel_dir = "/home/openclaw/.openclaw/workspace/my-novel"
+novel_dir = "/home/openclaw/.openclaw/workspace"
 chapter_file = os.path.join(novel_dir, "chapter-69.html")
 backup_file = chapter_file + ".backup"
 

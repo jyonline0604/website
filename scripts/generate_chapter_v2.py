@@ -16,7 +16,7 @@ import requests
 os.environ['PATH'] = '/home/openclaw/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 
 WORKSPACE = "/home/openclaw/.openclaw/workspace"
-NOVEL_DIR = os.path.join(WORKSPACE, "my-novel")
+NOVEL_DIR = WORKSPACE
 LOG_FILE = os.path.join(WORKSPACE, "logs/novel-generator.log")
 
 # 從環境變量獲取API密鑰

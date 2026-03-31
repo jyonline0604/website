@@ -8,7 +8,7 @@ import re
 
 def update_finance_page():
     """更新財經頁面"""
-    finance_file = '/home/openclaw/.openclaw/workspace/my-novel/finance.html'
+    finance_file = '/home/openclaw/.openclaw/workspace/finance.html'
     
     print("📄 開始更新財經頁面...")
     

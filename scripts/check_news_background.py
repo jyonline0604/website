@@ -8,7 +8,7 @@ import re
 import sys
 
 WORKSPACE = "/home/openclaw/.openclaw/workspace"
-NOVEL_DIR = os.path.join(WORKSPACE, "my-novel")
+NOVEL_DIR = WORKSPACE
 
 def check_news_background():
     """檢查新聞頁面背景圖"""

@@ -1,6 +1,6 @@
 #!/bin/bash
 # 記憶備份腳本
-# 在模型切換前自動執行，備份所有記憶文件到 Max-backup
+# 在模型切換前自動執行，備份所有記憶文件到 Max-backup 和 Second-brain
 
 set -e
 
@@ -33,18 +33,26 @@ fi
 # 壓縮
 tar -czf "/tmp/${BACKUP_NAME}.tar.gz" -C "$TEMP_DIR" . 2>/dev/null
 
-# 加密
-openssl enc -aes-256-cbc -pbkdf2 -iter 100000 -salt -in "/tmp/${BACKUP_NAME}.tar.gz" -out "/tmp/${BACKUP_NAME}.tar.gz.enc" -pass file:"$WORKSPACE/.backup-pass" 2>> "$LOG_FILE"
+# 加密（使用較舊但相容的方法）
+openssl enc -aes-256-cbc -salt -in "/tmp/${BACKUP_NAME}.tar.gz" -out "/tmp/${BACKUP_NAME}.tar.gz.enc" -pass file:"$WORKSPACE/.backup-pass" 2>> "$LOG_FILE"
 
 # 複製到 Second-brain 並推送
-if [ -d "$WORKSPACE/Second-brain" ]; then
-    cd "$WORKSPACE/Second-brain"
+if [ -d "/home/openclaw/Second-brain" ]; then
+    cd "/home/openclaw/Second-brain"
     cp "/tmp/${BACKUP_NAME}.tar.gz.enc" "./memory-backup-${BACKUP_NAME}.tar.gz.enc"
     git add "memory-backup-${BACKUP_NAME}.tar.gz.enc" 2>/dev/null
     git commit -m "memory: auto backup $(date +%Y-%m-%d\ %H:%M)" 2>/dev/null || true
-    # 推送到 Max-backup
-    git push Max-backup main 2>> "$LOG_FILE" || true
-    # 推送到 Second-brain (origin)
+    # 推送到 Second-brain (origin) - main 分支
+    git push origin main 2>> "$LOG_FILE" || true
+fi
+
+# 複製到 Max-backup 並推送
+if [ -d "/home/openclaw/Max-backup" ]; then
+    cd "/home/openclaw/Max-backup"
+    cp "/tmp/${BACKUP_NAME}.tar.gz.enc" "./memory-backup-${BACKUP_NAME}.tar.gz.enc"
+    git add "memory-backup-${BACKUP_NAME}.tar.gz.enc" 2>/dev/null
+    git commit -m "memory: auto backup $(date +%Y-%m-%d\ %H:%M)" 2>/dev/null || true
+    # 推送到 Max-backup - main 分支
     git push origin main 2>> "$LOG_FILE" || true
 fi
 

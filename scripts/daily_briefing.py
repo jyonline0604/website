@@ -75,7 +75,7 @@ def fetch_news_data():
     """獲取新聞數據"""
     try:
         # 從AI新聞系統讀取最新新聞
-        news_file = '/home/openclaw/.openclaw/workspace/my-novel/news-data.json'
+        news_file = '/home/openclaw/.openclaw/workspace/news-data.json'
         if os.path.exists(news_file):
             with open(news_file, 'r', encoding='utf-8') as f:
                 news_data = json.load(f)
@@ -394,7 +394,7 @@ def generate_text_briefing(time_info, briefing_type, weather, traffic, news, fin
 def save_briefing_files(html_content, text_content, timestamp):
     """保存簡報文件"""
     # 確保目錄存在
-    output_dir = '/home/openclaw/.openclaw/workspace/my-novel'
+    output_dir = '/home/openclaw/.openclaw/workspace'
     os.makedirs(output_dir, exist_ok=True)
     
     # 保存HTML文件

@@ -17,7 +17,7 @@ import feedparser
 # 設置環境變量
 os.environ['PATH'] = '/home/openclaw/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 
-WORKSPACE = "/home/openclaw/.openclaw/workspace/my-novel"
+WORKSPACE = "/home/openclaw/.openclaw/workspace"
 AI_NEWS_FILE = os.path.join(WORKSPACE, "news.html")
 
 # 擴展的新聞來源（20+來源）

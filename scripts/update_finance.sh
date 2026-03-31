@@ -12,7 +12,7 @@ echo "🔄 開始更新財經數據 $(date '+%Y-%m-%d %H:%M:%S')"
 python3 scripts/fetch_finance_data.py
 
 # 如果有Git變更，提交並推送
-cd my-novel
+# cd my-novel (now in website repo directly)
 
 if [[ -n $(git status --porcelain finance-data.json) ]]; then
     echo "📝 檢測到財經數據更新"

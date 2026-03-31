@@ -16,7 +16,7 @@ import xml.etree.ElementTree as ET
 # 設置環境變量 (cron 需要)
 os.environ['PATH'] = '/home/openclaw/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 
-WORKSPACE = "/home/openclaw/.openclaw/workspace/my-novel"
+WORKSPACE = "/home/openclaw/.openclaw/workspace"
 AI_NEWS_FILE = os.path.join(WORKSPACE, "news.html")
 
 # 更多可靠既新聞來源

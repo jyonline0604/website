@@ -16,7 +16,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from ai_multimodel import MultiModelAI
 
 WORKSPACE = "/home/openclaw/.openclaw/workspace"
-NOVEL_DIR = os.path.join(WORKSPACE, "my-novel")
+NOVEL_DIR = WORKSPACE
 LOG_FILE = os.path.join(WORKSPACE, "logs/novel-multimodel.log")
 
 def log(message):

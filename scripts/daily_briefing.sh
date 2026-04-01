@@ -11,7 +11,7 @@ cd /home/openclaw/.openclaw/workspace
 python3 scripts/daily_briefing.py
 
 # 自动推送到 GitHub
-cd my-novel
+cd /home/openclaw/.openclaw/workspace
 
 # Add and commit the briefing files
 git add daily-briefing.html briefing.txt

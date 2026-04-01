@@ -324,7 +324,7 @@ def update_news_data(news_list):
         "news": news_list
     }
     
-    # 保存到my-novel目錄
+    # 保存到workspace目錄
     json_path_my_novel = os.path.join(WORKSPACE, "news-data.json")
     with open(json_path_my_novel, 'w', encoding='utf-8') as f:
         json.dump(json_data, f, ensure_ascii=False, indent=2)

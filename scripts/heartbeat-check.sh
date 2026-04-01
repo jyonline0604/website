@@ -10,7 +10,7 @@ echo "[$(date '+%Y-%m-%d %H:%M:%S')] 心跳檢查開始..." >> "$LOG_FILE"
 
 # 檢查目錄是否存在
 DIRS=(
-    "/home/openclaw/.openclaw/workspace/my-novel-website"
+    "/home/openclaw/.openclaw/workspace/workspace"
     "/home/openclaw/.openclaw/workspace/logs"
     "/home/openclaw/.openclaw/workspace/scripts"
 )
@@ -25,9 +25,9 @@ done
 
 # 檢查關鍵文件
 FILES=(
-    "/home/openclaw/.openclaw/workspace/my-novel-website/index.html"
-    "/home/openclaw/.openclaw/workspace/my-novel-website/style.css"
-    "/home/openclaw/.openclaw/workspace/my-novel-website/main.js"
+    "/home/openclaw/.openclaw/workspace/workspace/index.html"
+    "/home/openclaw/.openclaw/workspace/workspace/style.css"
+    "/home/openclaw/.openclaw/workspace/workspace/main.js"
 )
 
 for FILE in "${FILES[@]}"; do
@@ -39,7 +39,7 @@ for FILE in "${FILES[@]}"; do
 done
 
 # 檢查章節數量
-CHAPTER_COUNT=$(ls -1 /home/openclaw/.openclaw/workspace/my-novel-website/chapter-*.html 2>/dev/null | wc -l)
+CHAPTER_COUNT=$(ls -1 /home/openclaw/.openclaw/workspace/workspace/chapter-*.html 2>/dev/null | wc -l)
 echo "📚 當前章節總數: $CHAPTER_COUNT" >> "$LOG_FILE"
 
 # 檢查最近一次自動更新的時間

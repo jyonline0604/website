@@ -1,6 +1,6 @@
 #!/bin/bash
 # 修复 chapter-34 并添加笔记
-cd /home/openclaw/.openclaw/workspace/my-novel-website
+cd /home/openclaw/.openclaw/workspace/workspace
 
 # 直接重新生成 chapter-34 为完整格式
 python3 << 'PYEOF'

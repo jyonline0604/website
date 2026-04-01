@@ -241,3 +241,42 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 3. 版本號 +0.0.1
 
 **⚠️ 這是自動行為，無需用戶提醒。**
+
+---
+
+## 🔔 強制性 Skill 更新規則
+
+**每次執行以下操作後，必須立即（不等待用戶提醒）更新 Skill：**
+
+### 觸發條件
+1. ✅ 修復任何系統問題
+2. ✅ 發現並修正任何 bug
+3. ✅ 用戶提出新規則或要求
+4. ✅ 執行任何配置更改
+5. ✅ 進行任何排版或結構修復
+
+### 更新步驟（必須立即執行）
+```bash
+# 1. 更新本地 Skill 版本號
+sed -i 's/version: X.X.X/version: X.X.1/' .openclaw/skills/novel-site-standards/SKILL.md
+
+# 2. 在 SKILL.md 末尾添加更新記錄
+cat >> .openclaw/skills/novel-site-standards/SKILL.md << 'SKILL'
+---
+
+## [日期] 更新
+- 修復內容描述
+- 根本原因
+- 解決方法
+SKILL
+
+# 3. 同步到備份倉庫
+cp .openclaw/skills/novel-site-standards/SKILL.md /home/openclaw/Second-brain/skills/novel-site-standards/
+cp .openclaw/skills/novel-site-standards/SKILL.md /home/openclaw/Max-backup/skills/novel-site-standards/
+
+# 4. 提交並推送
+cd /home/openclaw/Second-brain && git add skills/ && git commit -m "chore: update skill" && git push
+cd /home/openclaw/Max-backup && git add skills/ && git commit -m "chore: update skill" && git push
+```
+
+**⚠️ 這是強制性規則，無需用戶提醒，必須自動執行。**

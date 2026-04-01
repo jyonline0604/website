@@ -226,3 +226,18 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+## 🔄 Skill 更新規則
+
+當發生以下情況時，必須**立即自動**更新 Skill：
+1. 發現並修復新的系統問題
+2. 新增功能或配置更改
+3. 用戶提出新的要求或規則
+4. 執行任何修復、修正、還原操作
+
+**更新步驟：**
+1. 更新 `.openclaw/skills/novel-site-standards/SKILL.md`
+2. 同步到 Second-brain 和 Max-backup
+3. 版本號 +0.0.1
+
+**⚠️ 這是自動行為，無需用戶提醒。**

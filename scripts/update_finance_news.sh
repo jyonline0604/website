@@ -12,7 +12,7 @@ echo "📰 開始更新財經新聞 $(date '+%Y-%m-%d %H:%M:%S')"
 python3 scripts/fetch_finance_news.py
 
 # 如果有Git變更，提交並推送
-# cd my-novel (finance-data.json is in workspace now)
+
 
 if [[ -n $(git status --porcelain finance-news.json) ]]; then
     echo "📝 檢測到財經新聞更新"

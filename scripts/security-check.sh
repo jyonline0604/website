@@ -5,7 +5,7 @@
 set -e
 
 LOG_FILE="/home/openclaw/.openclaw/workspace/logs/security-check.log"
-REPO_DIR="/home/openclaw/.openclaw/workspace/my-novel-website"
+REPO_DIR="/home/openclaw/.openclaw/workspace/workspace"
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] 開始安全檢查..." >> "$LOG_FILE"
 

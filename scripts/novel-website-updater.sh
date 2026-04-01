@@ -4,7 +4,7 @@
 
 set -e
 
-REPO_DIR="/home/openclaw/.openclaw/workspace/my-novel-website"
+REPO_DIR="/home/openclaw/.openclaw/workspace/workspace"
 cd "$REPO_DIR"
 
 LOG_FILE="/home/openclaw/.openclaw/workspace/logs/novel-update.log"

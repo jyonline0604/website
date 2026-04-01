@@ -2,8 +2,8 @@
 import re
 import os
 
-template_path = '/home/openclaw/.openclaw/workspace/my-novel/chapter-template.html'
-chapters_dir = '/home/openclaw/.openclaw/workspace/my-novel/'
+template_path = '/home/openclaw/.openclaw/workspace/workspace/chapter-template.html'
+chapters_dir = '/home/openclaw/.openclaw/workspace/workspace/'
 
 with open(template_path, 'r', encoding='utf-8') as f:
     template = f.read()

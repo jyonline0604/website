@@ -6,7 +6,7 @@
 
 ## 每日章節結構檢查
 
-每天自動檢查 `my-novel/` 目錄下的 HTML 文件是否有拼接問題：
+每天自動檢查 workspace/ 目錄下的 HTML 文件是否有拼接問題：
 
 - 每個 `chapter-*.html` 文件應該只有 1 個 `<html>` 標籤（不含 chapter-template.html）
 - 每個文件只應包含 1 個章節（每個文件只有 1 個 `<h1>` 標題）

@@ -11,7 +11,7 @@ set +a
 export PATH="/home/openclaw/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 WORKSPACE="/home/openclaw/.openclaw/workspace"
-NOVEL_DIR="$WORKSPACE/my-novel"
+NOVEL_DIR="$WORKSPACE"
 LOG_FILE="$WORKSPACE/logs/novel-daily.log"
 
 echo "==========================================================" >> "$LOG_FILE"

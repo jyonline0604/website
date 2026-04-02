@@ -26,175 +26,34 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .header p {
-            opacity: 0.7;
-            font-size: 0.95rem;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        .stat-box {
-            background: rgba(255,255,255,0.05);
-            padding: 20px 30px;
-            border-radius: 16px;
-            text-align: center;
-            min-width: 150px;
-        }
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .stat-label {
-            font-size: 0.85rem;
-            opacity: 0.7;
-            margin-top: 5px;
-        }
-        .chapter-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
-        }
-        .chapter-card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .chapter-card:hover {
-            transform: translateY(-5px);
-            border-color: #667eea;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        .chapter-card-image {
-            height: 180px;
-            overflow: hidden;
-            position: relative;
-        }
-        .chapter-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .chapter-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(102, 126, 234, 0.9);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        .chapter-card-content {
-            padding: 20px;
-        }
-        .chapter-number {
-            font-size: 0.85rem;
-            color: #667eea;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .chapter-title {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-        .chapter-desc {
-            font-size: 0.9rem;
-            color: #9ca3af;
-            margin-bottom: 16px;
-            line-height: 1.6;
-        }
-        .chapter-actions {
-            display: flex;
-            gap: 10px;
-        }
-        .btn {
-            flex: 1;
-            padding: 12px 16px;
-            border-radius: 10px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-        .btn-primary:hover {
-            opacity: 0.9;
-            transform: scale(1.02);
-        }
-        .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            color: #e5e5e5;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.15);
-        }
-        .nav-fixed {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 100;
-        }
-        .nav-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .nav-btn:hover {
-            transform: scale(1.1);
-        }
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            opacity: 0.7;
-        }
-        .empty-state h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        @media (max-width: 768px) {
-            .chapter-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats {
-                gap: 15px;
-            }
-            .stat-box {
-                min-width: 120px;
-                padding: 15px 20px;
-            }
-        }
+        .header p { opacity: 0.7; font-size: 0.95rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .stats { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; flex-wrap: wrap; }
+        .stat-box { background: rgba(255,255,255,0.05); padding: 20px 30px; border-radius: 16px; text-align: center; min-width: 150px; }
+        .stat-number { font-size: 2.5rem; font-weight: bold; background: linear-gradient(90deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .stat-label { font-size: 0.85rem; opacity: 0.7; margin-top: 5px; }
+        .chapter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+        .chapter-card { background: rgba(255,255,255,0.05); border-radius: 20px; overflow: hidden; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
+        .chapter-card:hover { transform: translateY(-5px); border-color: #667eea; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .chapter-card-image { height: 180px; overflow: hidden; position: relative; }
+        .chapter-card-image img { width: 100%; height: 100%; object-fit: cover; }
+        .chapter-badge { position: absolute; top: 12px; right: 12px; background: rgba(102, 126, 234, 0.9); padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .chapter-card-content { padding: 20px; }
+        .chapter-number { font-size: 0.85rem; color: #667eea; margin-bottom: 8px; font-weight: 600; }
+        .chapter-title { font-size: 1.2rem; margin-bottom: 12px; color: #fff; }
+        .chapter-desc { font-size: 0.9rem; color: #9ca3af; margin-bottom: 16px; line-height: 1.6; }
+        .chapter-actions { display: flex; gap: 10px; }
+        .btn { flex: 1; padding: 12px 16px; border-radius: 10px; text-align: center; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; }
+        .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .btn-primary:hover { opacity: 0.9; transform: scale(1.02); }
+        .btn-secondary { background: rgba(255,255,255,0.1); color: #e5e5e5; border: 1px solid rgba(255,255,255,0.2); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.15); }
+        .nav-fixed { position: fixed; bottom: 20px; right: 20px; z-index: 100; }
+        .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; }
+        .nav-btn:hover { transform: scale(1.1); }
+        .empty-state { text-align: center; padding: 60px 20px; opacity: 0.7; }
+        .empty-state h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        @media (max-width: 768px) { .chapter-grid { grid-template-columns: 1fr; } .stats { gap: 15px; } .stat-box { min-width: 120px; padding: 15px 20px; } }
     </style>
 </head>
 <body>
@@ -202,7 +61,6 @@
         <h1>🎬 有聲畫小説</h1>
         <p>《科技修真傳》有聲畫版本 - 圖文並茂 + 完整朗讀</p>
     </header>
-
     <div class="container">
         <div class="stats">
             <div class="stat-box">
@@ -218,7 +76,6 @@
                 <div class="stat-label">完成度</div>
             </div>
         </div>
-
         <div class="chapter-grid" id="chapterGrid">
             <div class="chapter-card">
                 <div class="chapter-card-image">
@@ -231,89 +88,238 @@
                     <p class="chapter-desc">林塵與天才學院第一天才歐陽雲在蓬萊仙境太極競技場上巔峰對決！靈芯系統能否戰勝傳統修真？</p>
                     <div class="chapter-actions">
                         <a href="chapter-17-av.html" class="btn btn-primary">🎬 有聲畫</a>
-                        <a href("chapter-17.html" class="btn btn-secondary">文字版</a>
+                        <a href="chapter-17.html" class="btn btn-secondary">文字版</a>
                     </div>
                 </div>
             </div>
-
             <div class="chapter-card">
-                <div class="chapter-card-image>
+                <div class="chapter-card-image">
                     <img src="assets/chapter-16-scene1.jpg" alt="第16章">
                 </div>
-                <div class="chapter-card-content>
+                <div class="chapter-card-content">
                     <div class="chapter-number">第 16 章</div>
                     <h3 class="chapter-title">宗門大比</h3>
                     <p class="chapter-desc">蓬萊仙境舉行宗門大比，林塵在決賽中大放異彩！戰後慶功宴熱鬧非凡，修煉之路更上一層樓。</p>
                     <div class="chapter-actions">
                         <a href="chapter-16-av.html" class="btn btn-primary">🎬 有聲畫</a>
-                        <a href("chapter-16.html" class="btn btn-secondary">文字版</a>
+                        <a href="chapter-16.html" class="btn btn-secondary">文字版</a>
                     </div>
                 </div>
             </div>
-
             <div class="chapter-card">
-                <div class="chapter-card-image>
+                <div class="chapter-card-image">
                     <img src="assets/chapter-15-scene1.jpg" alt="第15章">
                 </div>
-                <div class="chapter-card-content>
+                <div class="chapter-card-content">
                     <div class="chapter-number">第 15 章</div>
                     <h3 class="chapter-title">突破瓶頸</h3>
                     <p class="chapter-desc">林塵血脈覺醒，得知靈根真相——原來是上古基因編輯的產物！眾人傳送至蓬萊仙境，展開修煉之路。</p>
-                    <div class("chapter-actions">
+                    <div class="chapter-actions">
                         <a href="chapter-15-av.html" class="btn btn-primary">🎬 有聲畫</a>
-                        <a href("chapter-15.html" class="btn btn-secondary">文字版</a>
+                        <a href="chapter-15.html" class="btn btn-secondary">文字版</a>
                     </div>
                 </div>
             </div>
-
             <div class="chapter-card">
-                <div class="chapter-card-image>
+                <div class="chapter-card-image">
                     <img src="assets/chapter-14-scene1.jpg" alt="第14章">
                 </div>
-                <div class="chapter-card-content>
+                <div class="chapter-card-content">
                     <div class="chapter-number">第 14 章</div>
                     <h3 class="chapter-title">安全屋</h3>
                     <p class="chapter-desc">明鏡等人來到安全屋，意外遇見失蹤二十年的蕭衍——靈數聯盟的長老！</p>
-                    <div class("chapter-actions">
-                        <a href("chapter-14-av.html" class="btn btn-primary">🎬 有聲畫</a>
-                        <a href("chapter-14.html" class="btn btn-secondary">文字版</a>
+                    <div class="chapter-actions">
+                        <a href="chapter-14-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-14.html" class="btn btn-secondary">文字版</a>
                     </div>
                 </div>
             </div>
-
             <div class="chapter-card">
-                <div class="chapter-card-image>
+                <div class="chapter-card-image">
                     <img src="assets/chapter-13-scene1.jpg" alt="第13章">
                 </div>
-                <div class="chapter-card-content>
+                <div class="chapter-card-content">
                     <div class="chapter-number">第 13 章</div>
                     <h3 class="chapter-title">廢棄隧道</h3>
                     <p class="chapter-desc">林塵、明鏡、顧澄三人穿越廢棄地鐵隧道，遭遇自動防禦炮台攻擊！</p>
-                    <div class("chapter-actions">
-                        <a href("chapter-13-av.html" class="btn btn-primary">🎬 有聲畫</a>
-                        <a href("chapter-13.html" class="btn btn-secondary">文字版</a>
+                    <div class="chapter-actions">
+                        <a href="chapter-13-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-13.html" class="btn btn-secondary">文字版</a>
                     </div>
                 </div>
             </div>
-
             <div class="chapter-card">
-                <div class="chapter-card-image>
+                <div class="chapter-card-image">
                     <img src="assets/chapter-12-scene1.jpg" alt="第12章">
                 </div>
-                <div class="chapter-card-content>
+                <div class="chapter-card-content">
                     <div class="chapter-number">第 12 章</div>
                     <h3 class="chapter-title">天樞會</h3>
                     <p class="chapter-desc">林塵在靈脈核心進行前所未有的工程，開始建立覆蓋全城的靈數網絡。</p>
-                    <div class("chapter-actions">
-                        <a href("chapter-12-av.html" class="btn btn-primary">🎬 有聲畫</a>
-                        <a href("chapter-12.html" class="btn btn-secondary">文字版</a>
+                    <div class="chapter-actions">
+                        <a href="chapter-12-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-12.html" class="btn btn-secondary">文字版</a>
                     </div>
                 </div>
             </div>
-
             <div class="chapter-card">
-                <div class="chapter-card-image>
+                <div class="chapter-card-image">
                     <img src="assets/chapter-11-scene1.jpg" alt="第11章">
                 </div>
-                <div class="chapter-card-content>
-                    <div class="chapter-number">第 11 章</div
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 11 章</div>
+                    <h3 class="chapter-title">覺醒</h3>
+                    <p class="chapter-desc">林塵覺醒，胸口晶片碎裂。信息靈氣覺醒，以手擋下敵人攻擊並反彈。</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-11-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-11.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-card-image">
+                    <img src="assets/chapter-10-scene1.jpg" alt="第10章">
+                </div>
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 10 章</div>
+                    <h3 class="chapter-title">心鏡迷宮</h3>
+                    <p class="chapter-desc">林塵進入心鏡迷宮，在記憶迴廊中重溫三年前的噩夢。隨後墜入黑暗虛無，聽到自己充滿絕望的聲音。</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-10-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-10.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-card-image">
+                    <img src="assets/chapter-9-scene1.jpg" alt="第9章">
+                </div>
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 9 章</div>
+                    <h3 class="chapter-title">末法真相</h3>
+                    <p class="chapter-desc">林塵揭示末法時代的真相：靈氣是可編程粒子，修仙的本質是生命體與粒子的諧振。新成員們感受到靈氣覺醒。</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-9-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-9.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-card-image">
+                    <img src="assets/chapter-8-scene1.jpg" alt="第8章">
+                </div>
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 8 章</div>
+                    <h3 class="chapter-title">數據宗</h3>
+                    <p class="chapter-desc">林塵來到數據宗臨時基地，見證第二代靈啟機原型測試。卻遭遇六個敵人快速接近！</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-8-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-8.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-card-image">
+                    <img src="assets/chapter-7-scene1.jpg" alt="第7章">
+                </div>
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 7 章</div>
+                    <h3 class="chapter-title">修煉蛻變</h3>
+                    <p class="chapter-desc">林塵康復後，利用靈氣結晶加速修煉，掌握靈罡護體和靈刃兩門功法，實力大進。</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-7-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-7.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-card-image">
+                    <img src="assets/chapter-6-scene1.jpg" alt="第6章">
+                </div>
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 6 章</div>
+                    <h3 class="chapter-title">主線任務</h3>
+                    <p class="chapter-desc">太初系統任務模塊啟動，第一個主線任務：收集靈氣結晶 × 10。林塵開始修煉靈罡護體功法。</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-6-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-6.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-card-image">
+                    <img src="assets/chapter-5-scene1.jpg" alt="第5章">
+                </div>
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 5 章</div>
+                    <h3 class="chapter-title">太初系統</h3>
+                    <p class="chapter-desc">林塵啟動太初系統，進入由數據構成的虛擬空間，天機子再現傳授修煉法門。</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-5-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-5.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-card-image">
+                    <img src="assets/chapter-4-scene1.jpg" alt="第4章">
+                </div>
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 4 章</div>
+                    <h3 class="chapter-title">上古靈芯</h3>
+                    <p class="chapter-desc">林塵發現上古天機閣的遺址，獲得傳說中的SSS級靈芯，遇見天機子殘魂。</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-4-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-4.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-card-image">
+                    <img src="assets/chapter-3-scene1.jpg" alt="第3章">
+                </div>
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 3 章</div>
+                    <h3 class="chapter-title">廢墟求生</h3>
+                    <p class="chapter-desc">林塵在廢墟城市中探索，面對靈化獸的威脅，運用靈芯系統戰鬥。</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-3-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-3.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-card-image">
+                    <img src="assets/chapter-2-scene1.jpg" alt="第2章">
+                </div>
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 2 章</div>
+                    <h3 class="chapter-title">破序者</h3>
+                    <p class="chapter-desc">林塵深入研究靈芯技術，揭開末法時代的真相，開始數據化修煉之路。</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-2-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-2.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-card">
+                <div class="chapter-card-image">
+                    <img src="assets/chapter-1-scene1.jpg" alt="第1章">
+                </div>
+                <div class="chapter-card-content">
+                    <div class="chapter-number">第 1 章</div>
+                    <h3 class="chapter-title">靈芯覺醒</h3>
+                    <p class="chapter-desc">末法元年一百四十二年，林塵在廢墟中獲得神秘的靈芯系統，踏上修真之路。</p>
+                    <div class="chapter-actions">
+                        <a href="chapter-1-av.html" class="btn btn-primary">🎬 有聲畫</a>
+                        <a href="chapter-1.html" class="btn btn-secondary">文字版</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-fixed">
+        <a href="chapters.html" class="nav-btn" title="返回章節目錄">📚</a>
+    </div>
+</body>
+</html>

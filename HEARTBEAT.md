@@ -47,7 +47,29 @@
       "time": "11:00",
       "check": "檢查OpenClaw是否有新版本可用",
       "action_if_fail": "記錄到日誌，可選擇手動或自動更新"
+    },
+    {
+      "name": "Skill更新檢查",
+      "schedule": "daily",
+      "time": "18:00",
+      "check": "檢查上次任務中是否有遺留未更新的Skill更新日誌",
+      "action_if_fail": "補更新並同步到Second-brain和Max-backup"
     }
   ]
 }
+
+## ⚠️ 強制規則
+
+**每次執行以下操作後，必須立即更新 Skill（不等用戶提醒）：**
+1. ✅ 修復任何系統問題
+2. ✅ 發現並修正任何 bug
+3. ✅ 用戶提出新規則或要求
+4. ✅ 執行任何配置更改
+5. ✅ 進行任何排版或結構修復
+
+**更新後必須同步到：**
+- `.openclaw/skills/novel-site-standards/`
+- `.openclaw/skills/novel-av-generator/`
+- Second-brain (git push)
+- Max-backup (git push)
 ```

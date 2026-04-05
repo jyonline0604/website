@@ -442,16 +442,13 @@
 
     <!-- 主要內容 -->
     <div class="container">
-
-        
-        <!-- 章節分組錨點 (僅用於跳轉，不顯示) -->
-        <div id="group-61-70" style="display:none"></div>
-        <div id="group-51-60" style="display:none"></div>
-        <div id="group-41-50" style="display:none"></div>
-        <div id="group-31-40" style="display:none"></div>
-        <div id="group-21-30" style="display:none"></div>
-        <div id="group-11-20" style="display:none"></div>
-        <div id="group-1-10" style="display:none"></div>
+        <div id="group-61-70" style="position:absolute; opacity:0; pointer-events:none; height:1px; overflow:hidden;"></div>
+        <div id="group-51-60" style="position:absolute; opacity:0; pointer-events:none; height:1px; overflow:hidden;"></div>
+        <div id="group-41-50" style="position:absolute; opacity:0; pointer-events:none; height:1px; overflow:hidden;"></div>
+        <div id="group-31-40" style="position:absolute; opacity:0; pointer-events:none; height:1px; overflow:hidden;"></div>
+        <div id="group-21-30" style="position:absolute; opacity:0; pointer-events:none; height:1px; overflow:hidden;"></div>
+        <div id="group-11-20" style="position:absolute; opacity:0; pointer-events:none; height:1px; overflow:hidden;"></div>
+        <div id="group-1-10" style="position:absolute; opacity:0; pointer-events:none; height:1px; overflow:hidden;"></div>
 
         <!-- 章節分組按鈕 -->
         <div class="chapter-groups" id="chapterGroups">
@@ -1075,7 +1072,27 @@
             items.forEach(item => grid.appendChild(item));
         }
         
-        // 章節分組跳轉
+        
+        
+        // 章節分組過濾功能
+        function filterChapters(range) {
+            const grid = document.getElementById('chapterGrid');
+            const items = Array.from(grid.querySelectorAll('.chapter-item'));
+            const [min, max] = range.split('-').map(Number);
+            
+            items.forEach(item => {
+                const chapterNum = parseInt(item.querySelector('.chapter-num').textContent.match(/\d+/)[0]);
+                if (chapterNum >= min && chapterNum <= max) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // 滾動到頂部
+            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
         document.querySelectorAll('.group-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1088,18 +1105,11 @@
                 // 設置當前按鈕為active
                 this.classList.add('active');
                 
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                const range = this.textContent;
+                filterChapters(range);
             });
         });
-        
+
         // 初始更新計數
         updateChapterCount();
     </script>

@@ -1100,7 +1100,7 @@
             items.forEach(item => {
                 const chapterNum = parseInt(item.querySelector('.chapter-num').textContent.match(/\d+/)[0]);
                 if (chapterNum >= min && chapterNum <= max) {
-                    item.style.display = '';
+                    item.style.display = 'flex';
                 } else {
                     item.style.display = 'none';
                 }

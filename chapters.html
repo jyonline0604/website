@@ -453,6 +453,7 @@
 
         <!-- 章節分組按鈕 -->
         <div class="chapter-groups" id="chapterGroups">
+            <a href="#" class="group-btn active" onclick="showAllChapters(); return false;">全部</a>
             <a href="#group-71-78" class="group-btn" onclick="filterChapters('71-78')">71-78</a>
             <a href="#group-61-70" class="group-btn" onclick="filterChapters('61-70')">61-70</a>
             <a href="#group-51-60" class="group-btn" onclick="filterChapters('51-60')" aria-label="跳轉到第51-60章">51-60</a>
@@ -1077,6 +1078,20 @@
         
         
         // 章節分組過濾功能
+        function showAllChapters() {
+            const grid = document.getElementById('chapterGrid');
+            const items = Array.from(grid.querySelectorAll('.chapter-item'));
+            
+            items.forEach(item => {
+                item.style.display = '';
+            });
+            
+            document.querySelectorAll('.group-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+            document.querySelector('.group-btn').classList.add('active');
+        }
+        
         function filterChapters(range) {
             const grid = document.getElementById('chapterGrid');
             const items = Array.from(grid.querySelectorAll('.chapter-item'));

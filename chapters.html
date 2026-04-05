@@ -453,15 +453,15 @@
 
         <!-- 章節分組按鈕 -->
         <div class="chapter-groups" id="chapterGroups">
-            <a href="#" class="group-btn active" onclick="showAllChapters(); return false;">全部</a>
-            <a href="#group-71-78" class="group-btn" onclick="filterChapters('71-78')">71-78</a>
-            <a href="#group-61-70" class="group-btn" onclick="filterChapters('61-70')">61-70</a>
-            <a href="#group-51-60" class="group-btn" onclick="filterChapters('51-60')" aria-label="跳轉到第51-60章">51-60</a>
-            <a href="#group-41-50" class="group-btn" onclick="filterChapters('41-50')" aria-label="跳轉到第41-50章">41-50</a>
-            <a href="#group-31-40" class="group-btn" onclick="filterChapters('31-40')" aria-label="跳轉到第31-40章">31-40</a>
-            <a href="#group-21-30" class="group-btn" onclick="filterChapters('21-30')" aria-label="跳轉到第21-30章">21-30</a>
-            <a href="#group-11-20" class="group-btn" onclick="filterChapters('11-20')" aria-label="跳轉到第11-20章">11-20</a>
-            <a href="#group-1-10" class="group-btn" onclick="filterChapters('1-10')" aria-label="跳轉到第1-10章">1-10</a>
+            <a href="#" class="group-btn active" >全部</a>
+            <a href="#group-71-78" class="group-btn" >71-78</a>
+            <a href="#group-61-70" class="group-btn" >61-70</a>
+            <a href="#group-51-60" class="group-btn"  aria-label="跳轉到第51-60章">51-60</a>
+            <a href="#group-41-50" class="group-btn"  aria-label="跳轉到第41-50章">41-50</a>
+            <a href="#group-31-40" class="group-btn"  aria-label="跳轉到第31-40章">31-40</a>
+            <a href="#group-21-30" class="group-btn"  aria-label="跳轉到第21-30章">21-30</a>
+            <a href="#group-11-20" class="group-btn"  aria-label="跳轉到第11-20章">11-20</a>
+            <a href="#group-1-10" class="group-btn"  aria-label="跳轉到第1-10章">1-10</a>
         </div>
 
         <main>
@@ -1114,16 +1114,21 @@
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // 移除所有按鈕的active類
-                document.querySelectorAll('.group-btn').forEach(b => {
-                    b.classList.remove('active');
-                });
-                
-                // 設置當前按鈕為active
-                this.classList.add('active');
-                
                 const range = this.textContent;
-                filterChapters(range);
+                
+                if (range === '全部') {
+                    showAllChapters();
+                } else {
+                    // 移除所有按鈕的active類
+                    document.querySelectorAll('.group-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    
+                    // 設置當前按鈕為active
+                    this.classList.add('active');
+                    
+                    filterChapters(range);
+                }
             });
         });
 

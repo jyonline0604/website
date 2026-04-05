@@ -21,7 +21,7 @@ cd "$WORKSPACE" || exit 1
 
 # 執行多模型章節生成器
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] 執行多模型生成器..." >> "$LOG_FILE"
-python3 "$WORKSPACE/scripts/novel_generator_multimodel.py" --daily >> "$LOG_FILE" 2>&1
+python3 "$WORKSPACE/scripts/novel_generator_multimodel.py" --daily --count 3 >> "$LOG_FILE" 2>&1
 
 EXIT_CODE=$?
 

@@ -219,38 +219,42 @@ def update_novel_lists():
         log(f"❌ 調用更新腳本錯誤: {e}")
         return False
 
-def generate_daily_chapter():
-    """生成每日章節"""
+def generate_daily_chapter(count=3):
+    """生成每日章節（預設3章）"""
     log("=" * 60)
-    log("開始多模型小說章節生成...")
+    log(f"開始多模型小說章節生成...（目標：{count}章）")
     
     # 初始化多模型 AI
     ai = MultiModelAI()
     
-    # 獲取下一個章節號
-    next_chapter = get_next_chapter_number()
-    log(f"準備生成: 第{next_chapter}章")
+    success_count = 0
     
-    # 獲取已使用的標題
-    used_titles = get_used_titles()
-    log(f"已使用的標題數: {len(used_titles)}")
-    
-    # 生成唯一標題
-    chapter_title = generate_unique_title(next_chapter, used_titles)
-    log(f"生成標題: 第{next_chapter}章：{chapter_title}")
-    
-    # 獲取前一章內容作為上下文
-    previous_context = get_previous_chapter_content(next_chapter)
-    log(f"上下文長度: {len(previous_context)} 字符")
-    
-    # 使用多模型 AI 生成章節
-    log("使用多模型 AI 生成章節內容...")
-    result = ai.generate_novel_chapter(next_chapter, previous_context, chapter_title)
-    
-    if not result["success"]:
-        log("❌ AI 生成失敗，使用備用內容")
-        # 使用備用內容
-        backup_content = f"""第{next_chapter}章：{chapter_title}
+    for i in range(count):
+        log(f"\n--- 生成第 {i+1}/{count} 章 ---")
+        
+        # 獲取下一個章節號
+        next_chapter = get_next_chapter_number()
+        log(f"準備生成: 第{next_chapter}章")
+        
+        # 獲取已使用的標題
+        used_titles = get_used_titles()
+        log(f"已使用的標題數: {len(used_titles)}")
+        
+        # 生成唯一標題
+        chapter_title = generate_unique_title(next_chapter, used_titles)
+        log(f"生成標題: 第{next_chapter}章：{chapter_title}")
+        
+        # 獲取前一章內容作為上下文
+        previous_context = get_previous_chapter_content(next_chapter)
+        log(f"上下文長度: {len(previous_context)} 字符")
+        
+        # 使用多模型 AI 生成章節
+        log("使用多模型 AI 生成章節內容...")
+        result = ai.generate_novel_chapter(next_chapter, previous_context, chapter_title)
+        
+        if not result["success"]:
+            log("❌ AI 生成失敗，使用備用內容")
+            backup_content = f"""第{next_chapter}章：{chapter_title}
 
 <p>林塵站在星艦的觀景窗前，凝視著窗外無垠的星空。</p>
 
@@ -273,27 +277,28 @@ def generate_daily_chapter():
 <p>星艦引擎發出低沉的轟鳴，開始調整航向。新的冒險，即將開始。</p>
 
 <p>（本章完）</p>"""
-        ai_content = backup_content
-    else:
-        ai_content = result["content"]
-        log("✅ AI 生成成功")
-    
-    # 創建章節文件
-    filename = create_chapter_file(next_chapter, ai_content, chapter_title)
-    
-    if filename:
-        log(f"✅ 第{next_chapter}章生成成功")
+            ai_content = backup_content
+        else:
+            ai_content = result["content"]
+            log("✅ AI 生成成功")
         
-        # 更新網站列表
-        log("更新網站列表...")
+        # 創建章節文件
+        filename = create_chapter_file(next_chapter, ai_content, chapter_title)
+        
+        if filename:
+            log(f"✅ 第{next_chapter}章生成成功")
+            success_count += 1
+        else:
+            log(f"❌ 第{next_chapter}章生成失敗")
+    
+    # 更新網站列表
+    if success_count > 0:
+        log("\n更新網站列表...")
         update_novel_lists()
-        
-        log(f"✅ 任務完成！已生成第{next_chapter}章：{chapter_title}")
-    else:
-        log(f"❌ 第{next_chapter}章生成失敗")
     
     log("=" * 60)
-    return filename is not None
+    log(f"✅ 任務完成！成功生成 {success_count}/{count} 章")
+    return success_count > 0
 
 def regenerate_specific_chapter(chapter_num, new_title=None):
     """重新生成特定章節（用於修復）"""
@@ -359,7 +364,8 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description="多模型小說章節生成器")
-    parser.add_argument("--daily", action="store_true", help="生成每日章節")
+    parser.add_argument("--daily", action="store_true", help="生成每日章節（預設3章）")
+    parser.add_argument("--count", type=int, default=3, help="每日生成章節數量（預設3）")
     parser.add_argument("--regenerate", type=int, help="重新生成特定章節")
     parser.add_argument("--title", type=str, help="指定章節標題（與--regenerate一起使用）")
     
@@ -377,7 +383,7 @@ def main():
     
     elif args.daily:
         # 生成每日章節
-        success = generate_daily_chapter()
+        success = generate_daily_chapter(count=args.count)
         if success:
             print("\n✅ 每日章節生成完成！")
         else:
@@ -385,7 +391,7 @@ def main():
     
     else:
         # 默認生成下一章
-        success = generate_daily_chapter()
+        success = generate_daily_chapter(count=args.count)
         if success:
             print("\n✅ 章節生成完成！")
         else:

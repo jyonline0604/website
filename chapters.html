@@ -1086,8 +1086,8 @@
             
             // 排序
             items.sort((a, b) => {
-                const aNum = parseInt(a.querySelector('.chapter-num').textContent.match(/\d+/)[0]);
-                const bNum = parseInt(b.querySelector('.chapter-num').textContent.match(/\d+/)[0]);
+                const aNum = parseInt(a.querySelector('.chapter-num').textContent.match(/\d+/)[0].trim()[0]);
+                const bNum = parseInt(b.querySelector('.chapter-num').textContent.match(/\d+/)[0].trim()[0]);
                 
                 return order === 'desc' ? bNum - aNum : aNum - bNum;
             });
@@ -1119,7 +1119,7 @@
             const [min, max] = range.split('-').map(Number);
             
             items.forEach(item => {
-                const chapterNum = parseInt(item.querySelector('.chapter-num').textContent.match(/\d+/)[0]);
+                const chapterNum = parseInt(item.querySelector('.chapter-num').textContent.match(/\d+/)[0].trim()[0]);
                 if (chapterNum >= min && chapterNum <= max) {
                     item.style.display = 'flex';
                 } else {

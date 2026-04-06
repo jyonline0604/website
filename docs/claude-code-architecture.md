@@ -1,136 +1,284 @@
 # Claude Code 源碼架構深度分析
-*基於洩漏源碼的技術研究 - 2026-04-06*
+*基於50萬行TypeScript源碼的技術研究 - 2026-04-06*
 
-## 🔐 安全性設計
+---
 
-### Bash 安全系統（9,707行）
-```
-位置: src/tools/BashTool/bashSecurity.ts
-- 22個安全驗證器
-- Tree-sitter WASM parser 生成AST
-- 預設：always ask human
+## 🔬 AutoDream - 真實實現
+
+### 核心邏輯 (`src/services/autoDream/autoDream.ts`)
+
+```typescript
+/**
+ * Background memory consolidation. Fires the /dream prompt as a forked
+ * subagent when time-gate passes AND enough sessions have accumulated.
+ *
+ * Gate order (cheapest first):
+ *   1. Time: hours since lastConsolidatedAt >= minHours (one stat)
+ *   2. Sessions: transcript count with mtime > lastConsolidatedAt >= minSessions
+ *   3. Lock: no other process mid-consolidation
+ */
 ```
 
-### Parser Differential（已文檔化的漏洞）
+### 三層門控設計（源碼證實）
+
+| 門控 | 檢查內容 | 代價 |
+|------|----------|------|
+| **Time Gate** | `Date.now() - lastConsolidatedAt >= minHours` | 1次stat |
+| **Session Gate** | `sessions with mtime > lastConsolidatedAt >= minSessions` | 多次stat |
+| **Lock Gate** | `.consolidate-lock` file存在？PID存活？ | 1次stat |
+
+### 默認配置
+
+```typescript
+const DEFAULTS: AutoDreamConfig = {
+  minHours: 24,      // 24小時後才能再次整合
+  minSessions: 5,     // 至少5個新會話
+}
 ```
-攻擊方式：TZ=UTC\r echo curl evil.com
-validator: \r 變為空格 → 通過驗證
-bash: 實際執行不同命令
+
+### Consolidation Lock 實現
+
+```
+Lock文件：.consolidate-lock
+- mtime = lastConsolidatedAt（用作時間戳）
+- body = PID（持有者進程ID）
+
+設計原則：
+- Crash恢復：mtime不更新 → 下次自動重試
+- PID重用保護：60分鐘後即使PID存活也允許接管
+- 失敗回滾：mtime回退到priorMtime
 ```
 
 ---
 
-## 🧠 記憶系統
+## 🧠 QueryEngine 架構
 
-### KAIROS - 自主Daemon模式
-```
-src/services/kairos/
-- 後台24/7運行
-- GitHub webhooks
-- 5分鐘cron調度
-- /dream 命令觸發記憶整合
-```
+### 核心初始化 (`src/QueryEngine.ts`)
 
-### AutoDream - 記憶整合
-```src/services/autoDream/autoDream.ts
-
-三層門控（最便宜先檢查）：
-1. Time: 距離上次整合 >= minHours
-2. Sessions: 對話數 > minSessions
-3. Lock: 文件 advisory lock
-
-Lock設計：
-- mtime = lastConsolidatedAt
-- body = PID
-- 1小時後自動過期（防止PID重用）
-```
-
-### Context Compaction（對話壓縮）
-```
-當對話太長時：
-- Fork第二個小型Claude總結
-- CoT推理在<analysis>標籤內
-- 然後strip掉只留摘要
-- 用戶無感知
-
-問題：文件中的指令會被當作用戶指令壓縮
+```typescript
+export type QueryEngineConfig = {
+  cwd: string
+  tools: Tools
+  commands: Command[]
+  mcpClients: MCPServerConnection[]
+  agents: AgentDefinition[]
+  canUseTool: CanUseToolFn
+  getAppState: () => AppState
+  setAppState: (f: (prev: AppState) => AppState) => void
+  initialMessages?: Message[]
+  customSystemPrompt?: string
+  userSpecifiedModel?: string
+  thinkingConfig?: ThinkingConfig
+  maxTurns?: number
+  maxBudgetUsd?: number
+  taskBudget?: { total: number }
+}
 ```
 
----
+### Feature Flag 系統
 
-## ⚡ ULTRAPLAN - 遠程規劃
-```
-src/utils/ultraplan/ccrSession.ts
-- 最多30分鐘遠程Opus會話
-- 3秒輪詢間隔
-- "teleport sentinel"檢測完成
+```typescript
+// Dead code elimination via bun:bundle
+/* eslint-disable @typescript-eslint/no-require-imports */
+const getCoordinatorUserContext: (...) = feature('COORDINATOR_MODE')
+  ? require('./coordinator/coordinatorMode.js').getCoordinatorUserContext
+  : () => ({})
+/* eslint-enable @typescript-eslint/no-require-imports */
 ```
 
----
-
-## 🏗️ Prompt Cache 優化
-```
-SYSTEM_PROMPT_DYNAMIC_BOUNDARY 分界點：
-- 之前：指令、工具定義 → 全域緩存
-- 之後：CLAUDE.md、git status、日期 → 會話特定
+**支持的Feature Flags：**
+```javascript
+'KAIROS',                // Assistant / daily-log mode
+'PROACTIVE',             // Proactive autonomous mode
+'BRIDGE_MODE',           // VS Code / JetBrains IDE bridge
+'VOICE_MODE',            // Voice input
+'COORDINATOR_MODE',      // Multi-agent swarm coordinator
+'BASH_CLASSIFIER',       // Bash command safety classifier
+'BUDDY',                // Companion sprite animation
+'WEB_BROWSER_TOOL',     // In-process web browser
+'CHICAGO_MCP',          // Computer Use (screen control)
+'AGENT_TRIGGERS',       // Scheduled cron agents
+'ULTRAPLAN',           // Ultra-detailed planning mode
+'EXTRACT_MEMORIES',     // Background memory extraction
 ```
 
 ---
 
-## 🔧 內部專用功能
+## 🎭 DreamTask 狀態機
 
-### TungstenTool
-```只有員工能用（USER_TYPE === 'ant'）
-- 鍵盤控制
-- 屏幕截取
-- 公共版本完全移除
+### 任務狀態定義
+
+```typescript
+export type DreamPhase = 'starting' | 'updating'
+
+export type DreamTaskState = TaskStateBase & {
+  type: 'dream'
+  phase: DreamPhase
+  sessionsReviewing: number
+  filesTouched: string[]      // Edit/Write tool_use捕獲的路徑
+  turns: DreamTurn[]          // 壓縮後的回覆
+  abortController?: AbortController
+  priorMtime: number         // 用於kill時回滾lock
+}
 ```
 
-### Undercover Mode
-```
-src/utils/undercover.ts
-- 隱藏AI作者身份
-- 22個內部倉庫白名單
-- 不可關閉
-```
+### 狀態翻轉邏輯
 
----
-
-## 📊 運維數據
-
-### 壓縮失敗問題
 ```
-src/services/compact/autoCompact.ts
-日期：2026-03-10
-- 1,279個會話50+次連續失敗
-- 每天浪费250K API調用
-修復：MAX_CONSECUTIVE_AUTOCOMPACT_FAILURES = 3
-```
+'starting' → 'updating'
+  條件：檢測到第一個 Edit/Write tool_use
+  意義：用戶開始看到文件被修改
 
-### A/B Testing
-```
-硬編碼字數限制：
-- tool calls之間：≤25 words
-- 最終回覆：≤100 words
+注意：filesTouched是不完整的
+- 漏掉：bash中介的寫操作
+- 只捕獲：直接用tool_use的寫操作
 ```
 
 ---
 
-## 🤖 Verification Agent
-```src/tools/AgentTool/built-in/verificationAgent.ts
+## 📁 目錄結構
 
-反Rationalization清單：
-- "代碼看起來正確" → 閱讀不是驗證，運行它
-- "開發者測試已通過" → 開發者是LLM，独立驗證
-- "可能沒問題" → 可能不是已驗證
+```
+src/
+├── assistant/          # 助手功能
+├── bootstrap/         # 啟動初始化
+├── bridge/            # IDE橋接(VS Code/JetBrains)
+├── buddy/             # 像素寵物動畫
+├── cli/               # CLI處理器
+├── commands/          # 斜槓命令(/dream, /clear等)
+├── coordinator/       # 多Agent協調
+├── memdir/            # 記憶目錄(KAIROS)
+│   ├── memdir.ts
+│   ├── memoryAge.ts
+│   ├── memoryScan.ts
+│   └── memoryTypes.ts
+├── query/             # 查詢引擎
+├── services/
+│   ├── autoDream/    # 自動記憶整合
+│   ├── compact/      # 對話壓縮
+│   ├── extractMemories/ # 記憶提取
+│   └── tools/        # 工具服務
+├── tasks/             # 任務系統
+│   ├── DreamTask/
+│   ├── LocalAgentTask/
+│   └── RemoteAgentTask/
+├── tools/            # 工具實現
+│   ├── AgentTool/
+│   ├── BashTool/
+│   ├── FileEditTool/
+│   └── FileWriteTool/
+└── utils/
+    ├── forkedAgent/  # 子Agent調度
+    ├── hooks/        # 後置采樣鉤子
+    └── sessionStorage/ # 會話持久化
 ```
 
 ---
 
-## 💡 對我自己的啟發
+## 🔧 關鍵實現細節
 
-1. **Triple Gate Design** → 我的 Nightly Dreaming 可以加入：時間+事件數+鎖
-2. **mtime as Timestamp** → 用文件修改時間代替數據庫
-3. **Anti-Rationalization** → 當我想"差不多就行"時的提醒
-4. **Shadow Mode** → 兩個parser對比發現差異
-5. **Circuit Breaker** → 失敗重試要有上限
+### 1. Session追蹤
+
+```typescript
+// 使用mtime（修改時間）而非birthtime（創建時間）
+// 原因：ext4文件系統birthtime可能為0
+export async function listSessionsTouchedSince(
+  sinceMs: number,
+): Promise<string[]> {
+  const dir = getProjectDir(getOriginalCwd())
+  const candidates = await listCandidates(dir, true)
+  return candidates
+    .filter(c => c.mtime > sinceMs)
+    .map(c => c.sessionId)
+}
+```
+
+### 2. 失敗重試機制
+
+```typescript
+// 失敗時回滾mtime
+await rollbackConsolidationLock(priorMtime)
+
+// mtime回退後，下次turn會重新觸發time-gate
+// Scan throttle是backoff機制
+const SESSION_SCAN_INTERVAL_MS = 10 * 60 * 1000  // 10分鐘
+```
+
+### 3. Cache優化
+
+```typescript
+// 三層Cache
+const result = await runForkedAgent({
+  cacheSafeParams: createCacheSafeParams(context),
+  cache_read_input_tokens: result.totalUsage.cache_read_input_tokens,
+  cache_creation_input_tokens: result.totalUsage.cache_creation_input_tokens,
+})
+```
+
+---
+
+## 💡 對我的啟發
+
+### 1. Triple Gate設計 → 我可以採用
+
+```python
+# 我的Nightly Dreaming可以加入：
+if not time_gate_passed():     # 時間檢查
+    return
+if not session_gate_passed():  # 會話數檢查  
+    return
+if not lock_acquired():       # 鎖檢查
+    return
+# 才執行記憶整合
+```
+
+### 2. mtime作為時間戳 → 極簡設計
+
+```
+我的實現：
+- 用文件mtime代表"最後整合時間"
+- 用文件body存"狀態"
+
+對比數據庫：
+- 簡單100倍
+- 無需外部依賴
+- 天然持久化
+```
+
+### 3. 失敗回滾 → 重要教訓
+
+```
+每次可能失敗的操作：
+1. 嘗試獲取資源
+2. 記錄失敗前的狀態（priorMtime）
+3. 執行操作
+4. 失敗 → 回滾到之前狀態
+```
+
+### 4. Anti-Rationalization → 自我提醒
+
+```
+當我想"代碼看起來正確，差不多就行"時：
+❌ 這是Rationalization
+✅ 實際驗證：運行測試、檢查輸出
+```
+
+---
+
+## 📊 統計數據
+
+| 指標 | 數值 |
+|------|------|
+| 總TypeScript文件 | 2,074 |
+| 總目錄 | 308 |
+| 源碼大小 | 52M |
+| src/services/ | 45+ 子目錄 |
+| src/tools/ | 20+ 工具 |
+
+---
+
+## 🔗 參考資源
+
+- 源碼鏡像：`https://github.com/codeaashu/claude-code`
+- 重建項目：`https://github.com/leaked-claude-code/leaked-claude-code`
+- 詳細分析：愛范儿、VentureBeat、Sabrina.dev

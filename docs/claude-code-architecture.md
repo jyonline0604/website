@@ -282,3 +282,101 @@ if not lock_acquired():       # 鎖檢查
 - 源碼鏡像：`https://github.com/codeaashu/claude-code`
 - 重建項目：`https://github.com/leaked-claude-code/leaked-claude-code`
 - 詳細分析：愛范儿、VentureBeat、Sabrina.dev
+
+---
+
+# Claw Code (ultraworkers) - Rust 開源實現
+*https://github.com/ultraworkers/claw-code*
+
+## 核心特色
+
+### 1. 模組化 Rust 架構
+
+```rust
+crates/
+├── api/              # Anthropic API 調用
+├── commands/         # CLI 命令
+├── compat-harness/   # 兼容性測試
+├── mock-anthropic-service/  # Mock 服務
+├── plugins/          # 插件系統
+├── runtime/          # 核心運行時
+└── tools/            # 工具實現
+```
+
+### 2. TaskRegistry 實現
+
+```rust
+pub enum TaskStatus {
+    Created,
+    Running,
+    Completed,
+    Failed,
+    Stopped,
+}
+
+pub struct Task {
+    pub task_id: String,
+    pub prompt: String,
+    pub description: Option<String>,
+    pub status: TaskStatus,
+    pub created_at: u64,
+    pub updated_at: u64,
+}
+```
+
+**特點**：
+- `Arc<Mutex<HashMap>>` 線程安全
+- `now_secs()` 基於 SystemTime
+- TaskStatus 狀態機清晰
+
+### 3. PermissionEnforcer 權限系統
+
+```rust
+pub enum PermissionMode {
+    ReadOnly,
+    WorkspaceWrite,
+    Allow,
+    DangerFullAccess,
+}
+
+pub enum EnforcementResult {
+    Allowed,
+    Denied { tool, active_mode, required_mode, reason },
+}
+```
+
+**安全檢查**：
+- `check_file_write`: 檢查路徑是否在 workspace_root 內
+- `is_within_workspace`: 防止目錄穿越攻擊
+
+### 4. 特性對照表
+
+| 特性 | 狀態 |
+|------|------|
+| Anthropic API + streaming | ✅ |
+| OAuth 登錄 | ✅ |
+| 工具系統 (bash, read, write, edit) | ✅ |
+| Web tools (search, fetch) | ✅ |
+| 子 Agent | ✅ |
+| 許可系統 | ✅ |
+| MCP 服務器生命週期 | ✅ |
+| Session 持久化 | ✅ |
+| 成本/使用統計 | ✅ |
+| Git 集成 | ✅ |
+| Mock 測試框架 | ✅ |
+
+## 對我的啟發
+
+1. **Rust 的 Memory Safety** → 高性能工具的理想語言
+2. **PermissionEnforcer 設計** → 我可以實現類似的權限分層
+3. **TaskRegistry 簡潔性** → 用 HashMap + Mutex 實現輕量級任務追蹤
+4. **Mock Testing** → 完整的 mock 服務用於測試
+
+## 關聯項目
+
+```rust
+// 相關的 UltraWorkers 生態
+clawhip           // Event router
+oh-my-openagent   // Multi-agent coordination  
+oh-my-codex       // Workflow system
+```

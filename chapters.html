@@ -454,7 +454,7 @@
         <!-- 章節分組按鈕 -->
         <div class="chapter-groups" id="chapterGroups">
             <a href="#" class="group-btn active" >全部</a>
-            <a href="#group-71-78" class="group-btn" >71-78</a>
+            <a href="#group-71-78" class="group-btn" >71-81</a>
             <a href="#group-61-70" class="group-btn" >61-70</a>
             <a href="#group-51-60" class="group-btn"  aria-label="跳轉到第51-60章">51-60</a>
             <a href="#group-41-50" class="group-btn"  aria-label="跳轉到第41-50章">41-50</a>
@@ -1086,8 +1086,8 @@
             
             // 排序
             items.sort((a, b) => {
-                const aNum = parseInt(a.querySelector('.chapter-num').textContent.match(/\d+/)[0]);
-                const bNum = parseInt(b.querySelector('.chapter-num').textContent.match(/\d+/)[0]);
+                const aNum = parseInt(a.querySelector('.chapter-num').textContent.match(/\d+/)[0].trim()[0]);
+                const bNum = parseInt(b.querySelector('.chapter-num').textContent.match(/\d+/)[0].trim()[0]);
                 
                 return order === 'desc' ? bNum - aNum : aNum - bNum;
             });
@@ -1119,7 +1119,7 @@
             const [min, max] = range.split('-').map(Number);
             
             items.forEach(item => {
-                const chapterNum = parseInt(item.querySelector('.chapter-num').textContent.match(/\d+/)[0]);
+                const chapterNum = parseInt(item.querySelector('.chapter-num').textContent.match(/\d+/)[0].trim()[0]);
                 if (chapterNum >= min && chapterNum <= max) {
                     item.style.display = 'flex';
                 } else {

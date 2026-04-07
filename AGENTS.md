@@ -337,3 +337,55 @@ cd /home/openclaw/Max-backup && git add skills/ && git commit -m "chore: update 
 ### 違反後果
 如果忘記讀 Skill 或驗證，視為嚴重失誤，必須立即補正。
 
+---
+
+## 🛠️ Claude Code 啟發的工具系統
+
+### 1. TaskRegistry - 任務追蹤
+```bash
+# 查看任務報告
+python3 scripts/task_registry.py
+
+# 創建任務
+python3 scripts/task_registry.py create novel-gen-47 "生成第47章 AV" "有聲畫版本"
+
+# 更新狀態
+python3 scripts/task_registry.py running novel-gen-47
+python3 scripts/task_registry.py complete novel-gen-47
+```
+
+### 2. PermissionEnforcer - 權限控制
+```bash
+# 設定為只讀模式
+python3 scripts/permission_enforcer.py mode readonly
+
+# 檢查命令安全性
+python3 scripts/permission_enforcer.py check "rm -rf /"
+
+# 檢查路徑是否在 workspace 內
+python3 scripts/permission_enforcer.py workspace /home/user/../etc/passwd
+```
+
+### 3. BashValidator - 命令驗證
+```bash
+# 驗證命令（示範模式）
+python3 scripts/bash_validator.py check "curl https://example.com"
+
+# 查看命令歷史
+python3 scripts/bash_validator.py history
+```
+
+### 使用場景
+
+**開始任務前：**
+1. 使用 TaskRegistry 創建任務
+2. 設定為 RUNNING 狀態
+
+**執行命令前：**
+1. 用 BashValidator 驗證安全性
+2. 用 PermissionEnforcer 設定適當權限
+
+**任務完成後：**
+1. 更新 TaskRegistry 為 COMPLETED
+2. 記錄到日誌
+

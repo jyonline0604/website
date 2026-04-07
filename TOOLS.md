@@ -67,3 +67,14 @@ python3 .../generate_image.py --prompt "描述" --model "seedream-4-5-251128"
 ---
 
 Add whatever helps you do your job. This is your cheat sheet.
+
+---
+
+## 🎤 語音合成（收藏）
+
+### OmniVoice（待測試）
+- **URL**: https://github.com/k2-fsa/OmniVoice
+- **功能**: 600+語言零樣本TTS、聲音克隆、屬性控制
+- **優勢**: 聲音質量可能比 Edge TTS 更好
+- **需求**: GPU 或 Apple Silicon
+- **狀態**: 收藏中

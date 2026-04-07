@@ -219,7 +219,7 @@ class FullBriefingGeneratorV5:
                 "WHA": "黃埔", "HPH": "何文田"
             }
             
-            for mtr in mtr_lines[:6]:  # 最多6條線路
+            for mtr in mtr_lines[:7]:  # 最多7條線路
                 try:
                     url = f"https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line={mtr['line']}&sta={mtr['station']}&lang=tc"
                     response = requests.get(url, timeout=5)

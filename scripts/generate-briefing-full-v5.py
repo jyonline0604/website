@@ -199,6 +199,7 @@ class FullBriefingGeneratorV5:
                 {"name": "港島線", "line": "ISL", "station": "CAB", "station_name": "銅鑼灣"},
                 {"name": "將軍澳線", "line": "TKL", "station": "TKO", "station_name": "將軍澳"},
                 {"name": "將軍澳線", "line": "TKL", "station": "LHP", "station_name": "寶琳"},
+                {"name": "荃灣線", "line": "TWL", "station": "TST", "station_name": "尖沙咀"},
                 {"name": "東鐵線", "line": "EAL", "station": "FAN", "station_name": "粉嶺"},
                 {"name": "東鐵線", "line": "EAL", "station": "TWO", "station_name": "上水"},
             ]

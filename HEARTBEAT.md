@@ -73,3 +73,24 @@
 - Second-brain (git push)
 - Max-backup (git push)
 ```
+
+## 敏感資料外洩檢查（每天）
+
+每天檢查 workspace/ 目錄是否有敏感資料意外推送到 GitHub：
+
+```bash
+# 檢查是否有敏感檔案被追蹤
+cd /home/openclaw/.openclaw/workspace
+git status --short | grep -E "openclaw.json|\.backup-pass|api_key|github_pat|sk-"
+
+# 檢查 git 歷史是否有敏感資料
+git log --all --oneline --source --remotes --grep="sk-\|ghp_" 2>/dev/null | head -5
+```
+
+**檢查重點：**
+- `.backup-pass` 文件是否被追蹤？
+- `openclaw.json` 是否被推送到 GitHub？
+- API Keys 是否外洩？
+
+**如發現問題**：立即生成報告並通知
+

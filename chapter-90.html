@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第90章：修真科技 - 科技修真傳</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+
+        [data-theme="pink"] {
+            --bg: #FCE4EC;
+            --text: #880E4F;
+            --border: #F48FB1;
+            --panel-bg: #FCE4EC;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .header a:hover {
+            background: var(--border);
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .header-right {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .icon-btn:hover {
+            background: var(--border);
+            border-color: var(--accent);
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 160px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .chapter-header h1 {
+        }
+
+        .chapter-header .author {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 8px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .bottom-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .bottom-nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Settings Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .settings-modal {
+            width: 100%;
+            max-width: 500px;
+            max-height: 85vh;
+            background: var(--panel-bg);
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .settings-modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .close-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--border);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(85vh - 140px);
+        }
+
+        .setting-section {
+            margin-bottom: 24px;
+        }
+
+        .setting-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .theme-btn {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-btn.active {
+            border-color: var(--accent);
+        }
+
+        .theme-btn.active::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .theme-btn.light { background: #FAFBFC; }
+        .theme-btn.sepia { background: #F4ECD8; }
+        .theme-btn.sky { background: #E8F4FC; }
+        .theme-btn.green { background: #E8F5E9; }
+        .theme-btn.pink { background: #FCE4EC; }
+        .theme-btn.dark { background: #2D3748; }
+        .theme-btn.navy { background: #1A202C; }
+
+        .font-size-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .font-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .font-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .font-slider {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--border);
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .font-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+        }
+
+        .font-preview {
+            text-align: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: var(--font-size);
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            margin: 0 16px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .modal-footer button {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-default {
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .btn-default:hover {
+            background: var(--border);
+        }
+
+        .btn-primary {
+            border: none;
+            background: #10B981;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 160px;
+            }
+
+            .chapter-header h1 {
+        }
+
+        .chapter-header .author {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 8px;
+                font-size: 1.4rem;
+            }
+
+            .theme-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="chapters.html">← 章節</a>
+        <span class="chapter-title">第90章</span>
+        <div class="header-right">
+            <button class="icon-btn" onclick="openSettings()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第90章：修真科技</h1>
+            <p class="author">作者：大肥喵</p>
+        </header>
+        <div class="content">
+<p># 第90章：修真科技</p>
+<p>林塵站在實驗室中央，全息投影在他周圍旋轉著複雜的靈氣流動模型。他的左手懸浮著一顆散發著淡藍色光芒的靈石，右手則握著一個巴掌大小的量子計算單元。</p>
+<p>“靈芯系統，啟動靈氣-能量轉換模擬。”林塵低聲說道。</p>
+<p>【指令確認。正在載入修真科技融合模型...】</p>
+<p>靈芯系統的機械音在腦海中響起，林塵眼前的視野被層層疊疊的數據流覆蓋。左側是傳統修真功法中靈氣運行的經脈圖，右側則是現代物理學中的能量傳導方程。兩者之間，數百條紅色的連接線正在不斷建立、斷裂、重組。</p>
+<p>這是林塵閉關研究的第七天。</p>
+<p>自從在廢墟遺跡中發現那塊記載著上古修真文明與科技文明交匯的石碑後，他就一直在嘗試將兩者真正融合。石碑上記載的理論碎片顯示，上古時期曾有一個短暫的“修真科技”黃金時代——修士們用靈氣驅動法器，而法器又能反過來增幅靈氣運轉效率，形成良性循環。</p>
+<p>但那個時代因某場大災變而終結，所有相關技術幾乎全部失傳。</p>
+<p>“問題在於介質。”林塵喃喃自語，手指在空中劃過，調出一組新的參數，“靈氣是波還是粒子？或者兩者都是？”</p>
+<p>傳統修真理論認為靈氣是天地間流動的能量，可以被人體經脈吸收、煉化。而現代物理學告訴他，能量必須有載體。如果靈氣真的存在，它必然遵循某種物理規律。</p>
+<p>【警告：第347次模擬實驗即將超出安全閾值】</p>
+<p>靈芯系統的提示音打斷了林塵的思考。他面前的靈石開始劇烈震動，表面出現細密的裂紋。與此同時，量子計算單元的散熱風扇發出尖銳的嘯叫。</p>
+<p>“降低靈氣輸入強度，增加磁場約束。”林塵快速下達指令。</p>
+<p>實驗室牆壁上，十二個銀白色的圓環同時亮起，生成一個交錯的磁力網格。震動的靈石逐漸穩定下來，但裂紋已經無法修復。</p>
+<p>林塵嘆了口氣，將報廢的靈石放在一旁的工作臺上。工作臺上已經堆積了數十顆同樣佈滿裂紋的靈石，它們都是失敗實驗的見證。</p>
+<p>“又失敗了。”他揉了揉太陽穴，感到一陣疲憊。</p>
+<p>但就在這時，靈芯系統突然發出不同尋常的提示音：</p>
+<p>【檢測到異常數據模式。正在分析...分析完成。發現靈氣衰變過程中的規律性波動，波動頻率與量子計算單元散熱風扇的共振頻率存在93.7%的匹配度】</p>
+<p>林塵猛地抬頭：“調出詳細數據！”</p>
+<p>全息投影瞬間切換，顯示出靈石碎裂前0.3秒的微觀監測記錄。畫面中，靈石內部的靈氣結構正在崩解，但崩解的方式並非隨機——那些靈氣粒子（如果它們真的是粒子的話）的運動軌跡呈現出明顯的干涉條紋。</p>
+<p>“這是...波粒二象性？”林塵屏住呼吸。</p>
+<p>他迅速調出量子力學的雙縫實驗資料進行對比。雖然不完全相同，但兩者之間存在驚人的相似性。靈氣在特定條件下表現出波動性，而在其他條件下又表現出粒子性。</p>
+<p>更重要的是，當量子計算單元的振動頻率與靈氣波動頻率接近時，兩者產生了某種共振效應。這種效應雖然導致了靈石結構崩潰，但也證明了一件事：科技造物確實可以與靈氣相互作用。</p>
+<p>“所以關鍵不是強行轉換，而是找到共振點。”林塵眼中閃過明悟的光芒，“就像音叉共振一樣——不需要巨大的能量，只需要正確的頻率。”</p>
+<p>他重新坐回控制臺前，手指在虛擬鍵盤上飛快敲擊。新的模型開始構建，這次他不再試圖用科技手段“控制”靈氣，而是尋找讓兩者“和諧共鳴”的方法。</p>
+<p>【新模型構建完成。理論效率預估：傳統修真功法吸收靈氣效率的2.3倍】</p>
+<p>“才2.3倍？”林塵皺眉，“不夠。上古石碑記載的修真科技文明，靈氣利用效率至少是傳統方法的十倍以上。”</p>
+<p>他閉上眼睛，回憶石碑上的那些殘缺符文。那些符文既不像純粹的修真符籙，也不像現代電路圖，而是某種介於兩者之間的設計。</p>
+<p>突然，一個念頭閃過腦海。</p>
+<p>“如果...如果把經脈系統看作生物電路呢？”</p>
+<p>林塵睜開眼睛，迅速調出人體經脈圖和集成電路設計軟件。他開始嘗試將兩者疊加——手太陰肺經對應電源輸入端，足少陽膽經對應信號輸出端，任督二脈作為主幹線路...</p>
+<p>隨著設計的進行，一個前所未有的模型逐漸成形。這不是單純的科技，也不是單純的修真，而是兩者交融產生的全新體系。</p>
+<p>【警告：模型存在137處邏輯衝突】</p>
+<p>“我知道。”林塵沒有停手，“但這些衝突可能正是關鍵。修真本來就違背常規物理規律，如果完全遵循現有科學體系，反而可能走錯方向。”</p>
+<p>他繼續完善設計，將那些“邏輯衝突”點標記出來，然後嘗試用不同的理論去解釋。有些衝突可以用量子隧穿效應解釋，有些則需要引入弦理論的額外維度假說，還有一些...目前完全無法用任何已知科學理論解釋。</p>
+<p>這就是修真科技的奧秘所在——它站在已知與未知的邊界上。</p>
+<p>六個小時後，林塵完成了初步設計。他從儲物戒中取出一塊全新的中品靈石，又從材料櫃裡拿出最新型的生物相容性納米導線。</p>
+<p>“靈芯系統，準備進行第一次實體測試。”</p>
+<p>【收到。啟動實驗室三級防護，所有監測設備就位】</p>
+<p>實驗室的天花板降下透明的能量護盾，將測試區域完全隔離。林塵深吸一口氣，將納米導線的一端連接在靈石上，另一端則輕輕貼在自己手腕的經脈入口處。</p>
+<p>“開始。”</p>
+<p>靈石亮起溫和的光芒，靈氣順著納米導線流入林塵體內。與傳統的靈氣吸收不同，這次的靈氣流動更加有序、更加高效。林塵能清晰感覺到，靈氣在進入經脈後並沒有像往常那樣四散開來，而是沿著某種預設的“路徑”流動。</p>
+<p>【實時監測：靈氣吸收效率達到傳統方法的4.8倍，且仍在上升】</p>
+<p>林塵心中一喜，但不敢有絲毫鬆懈。他小心地引導著靈氣在體內循環，同時監測著每一個節點的數據變化。</p>
+<p>當靈氣完成第一個小周天循環時，效率已經達到6.2倍。</p>
+<p>第二個循環，7.5倍。</p>
+<p>第三個循環——</p>
+<p>【警告！檢測到經脈節點過載！建議立即終止實驗！】</p>
+<p>林塵感到經脈傳來灼熱的刺痛感，但他咬緊牙關：“再堅持三秒！記錄峰值數據！”</p>
+<p>靈氣流動速度繼續攀升，實驗室內的監測儀器發出刺耳的警報聲。就在林塵幾乎要支撐不住時，某個臨界點被突破了。</p>
+<p>靈氣流動突然變得順暢無比，所有阻力瞬間消失。效率指數飆升至11.3倍，然後穩定在10倍左右。</p>
+<p>林塵緩緩吐出一口濁氣，切斷了靈石連接。他低頭看向自己的手掌，皮膚表面隱約有淡藍色的光紋一閃而過。</p>
+<p>“成功了...”他喃喃道，聲音中帶著難以置信的激動。</p>
+<p>這不僅僅是效率的提升。在剛才的巔峰時刻，林塵感覺到靈氣與科技造物之間產生了某種更深層次的聯繫——納米導線彷彿成了他經脈的延伸，靈石則像是另一個丹田。</p>
+<p>這就是修真科技：不是用科技取代修真，也不是用修真否定科技，而是讓兩者相輔相成，創造出超越單一體系的可能性。</p>
+<p>林塵調出完整的實驗數據，開始撰寫研究報告。他知道，這項發現一旦公開，將徹底改變整個修真界的格局。但同時，他也清楚這項技術可能帶來的風險——如果落入錯誤的人手中，後果不堪設想。</p>
+<p>“靈芯系統，將所有研究數據加密，設定為最高權限訪問。”林塵下令道，“另外，開始設計第二代修真科技原型——我要一個可以實戰應用的版本。”</p>
+<p>【指令確認。需要提醒的是，根據剛才的實驗數據，修真科技可能對使用者的神魂產生未知影響，建議進行更全面的安全性測試】</p>
+<p>林塵點點頭，目光投向窗外。夜幕下的城市燈火輝煌，霓虹招牌與御劍飛行的修士身影交錯而過。這就是他生活的世界，一個科技與修真並存的時代。</p>
+<p>而現在，他剛剛為這個時代打開了一扇全新的大門。</p>
+<p>“修真科技...”林塵輕聲重複著這個詞，眼中閃爍著對未來的好奇與期待。</p>
+<p>他知道，這條路才剛剛開始。前方還有無數的奧秘等待探索，無數的難題等待解決。但至少現在，他已經邁出了第一步。</p>
+<p>實驗室裡，那顆參與實驗的靈石靜靜躺在工作臺上，表面流淌著科技與修真交融的微光。</p>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="chapter-89.html">← 上一章</a>
+        <div class="nav-center">
+            <button class="nav-btn" onclick="prevChapter()">◀</button>
+            <span id="progress">0%</span>
+            <button class="nav-btn" onclick="nextChapter()">▶</button>
+        </div>
+        <a href="chapter-91.html">下一章 →</a>
+    </nav>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="settings-modal">
+            <div class="modal-header">
+                <h3>設置</h3>
+                <button class="close-btn" onclick="closeSettings()">×</button>
+            </div>
+            <div class="modal-body">
+                <!-- Theme -->
+                <div class="setting-section">
+                    <div class="setting-label">主題模式</div>
+                    <div class="theme-grid">
+                        <button class="theme-btn light" data-theme="light" onclick="setTheme('light')"></button>
+                        <button class="theme-btn sepia" data-theme="sepia" onclick="setTheme('sepia')"></button>
+                        <button class="theme-btn sky" data-theme="sky" onclick="setTheme('sky')"></button>
+                        <button class="theme-btn green" data-theme="green" onclick="setTheme('green')"></button>
+                        <button class="theme-btn pink" data-theme="pink" onclick="setTheme('pink')"></button>
+                        <button class="theme-btn dark" data-theme="dark" onclick="setTheme('dark')"></button>
+                        <button class="theme-btn navy" data-theme="navy" onclick="setTheme('navy')"></button>
+                    </div>
+                </div>
+
+                <!-- Font Size -->
+                <div class="setting-section">
+                    <div class="setting-label">字體大小</div>
+                    <div class="font-size-control">
+                        <button class="font-btn" onclick="adjustFontSize(-2)">A-</button>
+                        <input type="range" class="font-slider" id="fontSlider" min="14" max="28" value="18" oninput="setFontSize(this.value)">
+                        <button class="font-btn" onclick="adjustFontSize(2)">A+</button>
+                    </div>
+                    <div class="font-preview" id="fontPreview">科技修真傳 - 示範文字</div>
+                </div>
+
+                <!-- Reading Progress -->
+                <div class="setting-section">
+                    <div class="setting-label">閱讀進度</div>
+                    <div class="progress-info">
+                        <span>已讀</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                        </div>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+
+                <!-- Chapter Navigation -->
+                <div class="setting-section">
+                    <div class="setting-label">章節導航</div>
+                    <div style="display: flex; gap: 12px;">
+                        <button class="nav-btn" style="flex:1" onclick="prevChapter(); closeSettings();">◀ 上一章</button>
+                        <button class="nav-btn" style="flex:1" onclick="nextChapter(); closeSettings();">下一章 ▶</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-default" onclick="resetSettings()">恢復默認</button>
+                <button class="btn-primary" onclick="closeSettings()">確定</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Settings
+        const DEFAULT_SETTINGS = {
+            theme: 'light',
+            fontSize: 18
+        };
+
+        let settings = { ...DEFAULT_SETTINGS };
+
+        // Load settings from localStorage
+        function loadSettings() {
+            const saved = localStorage.getItem('reading-settings');
+            if (saved) {
+                settings = JSON.parse(saved);
+            }
+            applySettings();
+        }
+
+        function saveSettings() {
+            localStorage.setItem('reading-settings', JSON.stringify(settings));
+        }
+
+        function applySettings() {
+            document.body.setAttribute('data-theme', settings.theme);
+            document.documentElement.style.setProperty('--font-size', settings.fontSize + 'px');
+            
+            // Update theme buttons
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === settings.theme);
+            });
+            
+            // Update font slider
+            document.getElementById('fontSlider').value = settings.fontSize;
+            document.getElementById('fontPreview').style.fontSize = settings.fontSize + 'px';
+        }
+
+        function setTheme(theme) {
+            settings.theme = theme;
+            saveSettings();
+            applySettings();
+        }
+
+        function setFontSize(size) {
+            settings.fontSize = parseInt(size);
+            saveSettings();
+            applySettings();
+        }
+
+        function adjustFontSize(delta) {
+            const newSize = Math.min(28, Math.max(14, settings.fontSize + delta));
+            setFontSize(newSize);
+        }
+
+        function resetSettings() {
+            settings = { ...DEFAULT_SETTINGS };
+            saveSettings();
+            applySettings();
+        }
+
+        // Modal
+        function openSettings() {
+            document.getElementById('settingsModal').classList.add('active');
+            updateProgress();
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsModal').classList.remove('active');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('settingsModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSettings();
+            }
+        });
+
+        // Chapter Navigation
+        function prevChapter() {
+            window.location.href = 'chapter-89.html';
+        }
+
+        function nextChapter() {
+            window.location.href = 'chapter-91.html';
+        }
+
+        // Reading Progress
+        function updateProgress() {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollTop = window.scrollY;
+            const progress = scrollHeight > 0 ? Math.round((scrollTop / scrollHeight) * 100) : 0;
+            
+            document.getElementById('progress').textContent = progress + '%';
+            document.getElementById('progressPercent').textContent = progress + '%';
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        window.addEventListener('scroll', updateProgress);
+
+        // Initialize
+        loadSettings();
+        updateProgress();
+    </script>
+</body>
+</html>

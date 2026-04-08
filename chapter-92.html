@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第92章：靈網入侵 - 科技修真傳</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+
+        [data-theme="pink"] {
+            --bg: #FCE4EC;
+            --text: #880E4F;
+            --border: #F48FB1;
+            --panel-bg: #FCE4EC;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .header a:hover {
+            background: var(--border);
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .header-right {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .icon-btn:hover {
+            background: var(--border);
+            border-color: var(--accent);
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 160px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .chapter-header h1 {
+        }
+
+        .chapter-header .author {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 8px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .bottom-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .bottom-nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Settings Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .settings-modal {
+            width: 100%;
+            max-width: 500px;
+            max-height: 85vh;
+            background: var(--panel-bg);
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .settings-modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .close-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--border);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(85vh - 140px);
+        }
+
+        .setting-section {
+            margin-bottom: 24px;
+        }
+
+        .setting-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .theme-btn {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-btn.active {
+            border-color: var(--accent);
+        }
+
+        .theme-btn.active::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .theme-btn.light { background: #FAFBFC; }
+        .theme-btn.sepia { background: #F4ECD8; }
+        .theme-btn.sky { background: #E8F4FC; }
+        .theme-btn.green { background: #E8F5E9; }
+        .theme-btn.pink { background: #FCE4EC; }
+        .theme-btn.dark { background: #2D3748; }
+        .theme-btn.navy { background: #1A202C; }
+
+        .font-size-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .font-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .font-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .font-slider {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--border);
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .font-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+        }
+
+        .font-preview {
+            text-align: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: var(--font-size);
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            margin: 0 16px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .modal-footer button {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-default {
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .btn-default:hover {
+            background: var(--border);
+        }
+
+        .btn-primary {
+            border: none;
+            background: #10B981;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 160px;
+            }
+
+            .chapter-header h1 {
+        }
+
+        .chapter-header .author {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 8px;
+                font-size: 1.4rem;
+            }
+
+            .theme-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="chapters.html">← 章節</a>
+        <span class="chapter-title">第92章</span>
+        <div class="header-right">
+            <button class="icon-btn" onclick="openSettings()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第92章：靈網入侵</h1>
+            <p class="author">作者：大肥喵</p>
+        </header>
+        <div class="content">
+<p># 第92章：靈網入侵</p>
+<p>靈網的數據流在虛擬空間中奔騰如銀河。</p>
+<p>林塵盤膝坐在天樞城最高層的靜修室內，額前的靈芯散發著幽藍光芒。他的意識已經完全接入靈網核心節點——這是修真聯盟與科技公司聯合打造的全球靈氣監測網絡，覆蓋整個東亞修真區。</p>
+<p>「警告：異常數據流正在滲透第三防護層。」</p>
+<p>靈芯系統的提示音在腦海中響起。林塵睜開雙眼，虛擬界面在視網膜上展開。數以億計的數據點中，一縷暗紅色的異常信號正在緩慢擴散，像病毒般侵蝕著靈網的防禦體系。</p>
+<p>「溯源分析啟動。」林塵低語。</p>
+<p>靈芯的算力全開，沿著數據流反向追蹤。虛擬空間中，無數光纖般的光路在眼前展開，最終匯聚向一個坐標——舊上海廢墟區，那座被稱為「數字墳場」的廢棄服務器集群。</p>
+<p>「果然在那裡。」林塵站起身，納米戰甲從手腕的儲物環中湧出，瞬間覆蓋全身。</p>
+<p>三小時前，修真聯盟接到十七起異常報告：三名築基期修士在冥想時靈氣逆流，五座聚靈陣突然失效，九個修真學院的虛擬訓練系統集體崩潰。所有跡象都指向靈網遭受攻擊。</p>
+<p>「林顧問，指揮中心已授權您全權處理此次事件。」通訊頻道傳來聯盟技術部長的聲音，「但務必小心，對方能繞過三重量子加密，絕非普通黑客。」</p>
+<p>「明白。」</p>
+<p>林塵從三百層的高台一躍而下，戰甲背後的靈能推進器噴出湛藍火焰。城市在腳下飛速掠過，霓虹燈光與浮空車流交織成賽博朋克的夜景。遠處，舊城區的黑暗輪廓像一頭匍匐的巨獸。</p>
+<p>降落時，林塵開啟了全頻段隱形模式。納米戰甲表面泛起波紋，與周圍環境完美融合。他落在廢棄數據中心的屋頂，腳下是鏽蝕的鋼板和破碎的光伏板。</p>
+<p>「靈芯，掃描生命跡象與靈氣波動。」</p>
+<p>「掃描中……檢測到地下三層有高強度靈能反應，同時伴隨異常的量子信號。警告：該區域存在空間扭曲現象。」</p>
+<p>空間扭曲？林塵皺眉。這意味著對方不僅精通黑客技術，還掌握了高階空間法術。</p>
+<p>他悄無聲息地潛入建築內部。走廊裡佈滿塵埃和廢棄的服務器機櫃，但某些區域異常乾淨——有人近期在此活動。牆壁上，用靈力刻畫的符文隱約可見，是某種古老的禁制陣法，卻與電路線路詭異地融合在一起。</p>
+<p>「科技與修真的混合運用……」林塵低聲自語，「這手法，讓我想起一個人。」</p>
+<p>三年前，修真聯盟曾追捕過一名代號「靈駭客」的逃犯。此人原是頂尖的量子計算專家，靈氣復甦後自行領悟了將代碼與法訣結合的邪道。他在被捕前銷毀了所有數據，從此下落不明。</p>
+<p>地下三層的入口被一道光膜封鎖。林塵伸手觸碰，指尖傳來刺痛——這是摻雜了電擊術法的防護結界。</p>
+<p>「暴力破解會觸發警報。」靈芯系統分析道，「建議使用相位穿透。」</p>
+<p>林塵點頭，雙手結印。靈芯輔助下，他體內的靈氣以特定頻率震盪，整個人逐漸變得透明。這是他在遺跡中學到的上古遁術「虛空穿行」，配合靈芯的精密計算，能暫時將自身量子態與現實空間錯位。</p>
+<p>穿過光膜的瞬間，眼前的景象讓林塵呼吸一滯。</p>
+<p>巨大的地下空間被改造成詭異的實驗室。數百台服務器閃爍著紅光，組成環形陣列。陣列中央，懸浮著一顆直徑三米的黑色晶體——「虛空靈核」，這是理論上能穩定連接靈網與現實空間的禁忌法器，修真聯盟早在五年前就禁止了相關研究。</p>
+<p>晶體前，一個身披破舊道袍的身影正在操作全息控制台。那人轉過身，露出半張被機械改造的臉。</p>
+<p>「林塵，你來得比預期快。」聲音沙啞，帶著電子合成的雜音。</p>
+<p>「果然是你，李玄機。」林塵解除隱形，戰甲表面流光轉動，「三年前你應該在靈獄服刑。」</p>
+<p>「靈獄？」李玄機發出刺耳的笑聲，「那不過是聯盟圈養修士的籠子。我找到了更偉大的道路——你看。」</p>
+<p>他揮手，全息屏幕展開。畫面顯示著靈網的核心架構，那縷暗紅色數據流已經滲透到第七層，即將觸及「靈源數據庫」——那裡儲存著全東亞修士的修煉數據、功法秘錄，甚至包括各大門派的護山大陣結構。</p>
+<p>「你在盜取靈源數據？」林塵握緊拳頭。</p>
+<p>「盜取？不，我在解放。」李玄機的機械眼閃爍紅光，「修真聯盟壟斷靈網，控制修煉資源，制定所謂的『正道標準』。但憑什麼？靈氣屬於全人類，功法知識應該共享！」</p>
+<p>「所以你就要摧毀整個靈網？你知道數據庫崩潰會導致什麼後果嗎？數百萬正在閉關的修士會靈氣暴走，城市聚靈陣會爆炸，整個修真文明會倒退五十年！」</p>
+<p>「必要的陣痛而已。」李玄機冷漠地說，「舊系統崩潰，新秩序才能建立。而我，將成為新秩序的締造者。」</p>
+<p>他按下控制鍵。黑色晶體驟然亮起，無數符文從表面浮現，與服務器的數據流交織。靈網中的暗紅色病毒開始加速擴散。</p>
+<p>「靈芯，緊急協議『天羅』，授權碼塵-7749。」林塵低喝。</p>
+<p>「協議確認。啟動反制程序，需要三分鐘計算病毒核心演算法。」</p>
+<p>「我給你爭取時間。」</p>
+<p>林塵身形暴起，納米戰甲表面浮現出金色紋路——這是將修真符籙刻印在納米單元上的最新技術。他右手虛握，靈氣凝聚成一柄光劍，左手則彈出等離子腕刃。</p>
+<p>李玄機冷笑，道袍鼓動。他身後，服務器陣列射出一道道數據流實體化的鎖鏈，每條鎖鏈上都閃爍著禁制符文。</p>
+<p>光劍與數據鎖鏈碰撞，爆發出刺眼的火花。林塵感到手臂發麻——這些鎖鏈不僅是虛擬攻擊，還攜帶著真實的靈壓衝擊。</p>
+<p>「你以為我這三年只在逃亡嗎？」李玄機雙手結印，地下空間的牆壁上浮現出巨大的陣圖，「我找到了上古『械靈宗』的遺產，他們早在千年前就探索過科技與修真融合的道路！」</p>
+<p>陣圖亮起，所有服務器同時超頻運轉。黑色晶體投射出無數光影，凝聚成三具機械與血肉結合的傀儡——它們有著金屬骨架，表面覆蓋著仿生皮膚，眼中跳動著靈火。</p>
+<p>「生化傀儡？」林塵後退半步，靈芯快速掃描，「生命信號混雜，核心有金丹級別的靈能反應……」</p>
+<p>「正確。它們的『金丹』是我用量子處理器模擬的偽丹，但威力不輸真正的金丹修士。」李玄機揮手，「殺了他。」</p>
+<p>三具傀儡同時撲來。它們的速度快得驚人，攻擊軌跡刁鑽，且配合默契。</p>
+<p>林塵陷入苦戰。光劍格擋住一具傀儡的利爪，等離子刃切開另一具的胸膛，但第三具傀儡從死角襲來，金屬手臂貫穿了他的左肩。</p>
+<p>劇痛傳來，納米戰甲的自愈功能立即啟動。林塵咬牙，催動靈芯的戰鬥模塊：「啟動『劍陣演算』。」</p>
+<p>視野中，傀儡的動作被分解成無數數據流。靈芯預判出它們下一步的攻擊軌跡，並給出七十二種反制方案。林塵選擇了第七種——他故意賣出破綻，在傀儡襲來的瞬間側身，光劍劃出完美弧線，同時斬斷三具傀儡的能量傳導核心。</p>
+<p>傀儡倒地，眼中的靈火熄滅。</p>
+<p>「反制程序完成度85%，」靈芯匯報，「已解析病毒核心演算法，但需要物理接入主服務器才能注入殺毒程序。」</p>
+<p>林塵看向李玄機身後的控制台。黑色晶體的光芒越來越盛，靈網中的暗紅色已經覆蓋了十分之一的區域。</p>
+<p>時間不多了。</p>
+<p>「你阻止不了的，林塵。」李玄機張開雙臂，黑色晶體開始與他的身體建立連接，「當虛空靈核完全激活，我的意識將上傳至靈網，成為網絡中的神明。屆時，我將重塑整個修真文明！」</p>
+<p>他的身體逐漸數據化，化作光點流向晶體。</p>
+<p>林塵衝向控制台，但一道強大的靈壓屏障將他彈開。李玄機已經開始上傳過程，屏障強度隨著上傳進度不斷增強。</p>
+<p>「靈芯，計算屏障弱點！」</p>
+<p>「計算中……屏障由量子糾纏態維持，常規攻擊無效。建議使用『靈氣逆熵』攻擊，但需要消耗80%的靈芯算力，期間系統將進入休眠。」</p>
+<p>「執行。」</p>
+<p>林塵閉上眼，將全部心神沉入靈芯。戰甲表面的金色紋路瘋狂閃爍，周圍的靈氣開始逆流——這是違反修真常理的操作，強行讓靈氣從有序變為無序，產生短暫的規則崩壞。</p>
+<p>他睜開眼，瞳孔中流轉著數據流光。右手緩緩推出，掌心前方，空間開始扭曲、碎裂。</p>
+<p>屏障發出玻璃破碎般的聲音。</p>
+<p>林塵衝到控制台前，將手掌按在接口上。靈芯的殺毒程序化作銀色數據流，逆著暗紅色的病毒洪流，衝向靈網深處。</p>
+<p>「不——！」李玄機的慘叫聲在空間中迴盪。</p>
+<p>黑色晶體劇烈震動，表面出現裂痕。李玄機數據化的身體開始崩解，他試圖中斷上傳，但已經太遲——殺毒程序不僅清除了病毒，還順著連接反向入侵，將他的意識困在了虛擬空間中。</p>
+<p>晶體爆炸，化作漫天光點。</p>
+<p>林塵單膝跪地，大口喘息。靈芯系統因過載進入冷卻狀態，戰甲的多處損傷開始報警。</p>
+<p>通訊頻道恢復：「林顧問！靈網異常數據流正在消退，病毒被清除了！您那邊情況如何？」</p>
+<p>「目標已清除。」林塵看著消散的光點，低聲說，「但這只是開始。有人提供了李玄機技術和資源，他背後還有更大的勢力。」</p>
+<p>他站起身，環視這座詭異的實驗室。牆上的陣圖、融合科技與修真的傀儡、禁忌的虛空靈核……這一切都需要龐大的資金和技術支持。</p>
+<p>靈網的入侵被阻止了，但陰影才剛剛浮現。</p>
+<p>林塵走出廢棄數據中心時，東方已泛起魚肚白。城市上空的靈網節點重新閃爍起穩定的藍光，但他知道，這平靜之下，暗流正在湧動。</p>
+<p>靈芯系統傳來一條新訊息，來源是加密頻道：</p>
+<p>「林塵，你做得很好。但真正的戰爭尚未開始。『破曉計劃』正在進行，我們需要你的力量。——『守夜人』」</p>
+<p>訊息末尾，附著一個座標：北緯35.68，東經139.76。</p>
+<p>東京。</p>
+<p>林塵刪除訊息，望向遠方。戰甲推進器點火，他化作一道流光，消失在黎明前的夜色中。</p>
+<p>新的征程，即將開始。</p>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="chapter-91.html">← 上一章</a>
+        <div class="nav-center">
+            <button class="nav-btn" onclick="prevChapter()">◀</button>
+            <span id="progress">0%</span>
+            <button class="nav-btn" onclick="nextChapter()">▶</button>
+        </div>
+        <a href="chapter-93.html">下一章 →</a>
+    </nav>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="settings-modal">
+            <div class="modal-header">
+                <h3>設置</h3>
+                <button class="close-btn" onclick="closeSettings()">×</button>
+            </div>
+            <div class="modal-body">
+                <!-- Theme -->
+                <div class="setting-section">
+                    <div class="setting-label">主題模式</div>
+                    <div class="theme-grid">
+                        <button class="theme-btn light" data-theme="light" onclick="setTheme('light')"></button>
+                        <button class="theme-btn sepia" data-theme="sepia" onclick="setTheme('sepia')"></button>
+                        <button class="theme-btn sky" data-theme="sky" onclick="setTheme('sky')"></button>
+                        <button class="theme-btn green" data-theme="green" onclick="setTheme('green')"></button>
+                        <button class="theme-btn pink" data-theme="pink" onclick="setTheme('pink')"></button>
+                        <button class="theme-btn dark" data-theme="dark" onclick="setTheme('dark')"></button>
+                        <button class="theme-btn navy" data-theme="navy" onclick="setTheme('navy')"></button>
+                    </div>
+                </div>
+
+                <!-- Font Size -->
+                <div class="setting-section">
+                    <div class="setting-label">字體大小</div>
+                    <div class="font-size-control">
+                        <button class="font-btn" onclick="adjustFontSize(-2)">A-</button>
+                        <input type="range" class="font-slider" id="fontSlider" min="14" max="28" value="18" oninput="setFontSize(this.value)">
+                        <button class="font-btn" onclick="adjustFontSize(2)">A+</button>
+                    </div>
+                    <div class="font-preview" id="fontPreview">科技修真傳 - 示範文字</div>
+                </div>
+
+                <!-- Reading Progress -->
+                <div class="setting-section">
+                    <div class="setting-label">閱讀進度</div>
+                    <div class="progress-info">
+                        <span>已讀</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                        </div>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+
+                <!-- Chapter Navigation -->
+                <div class="setting-section">
+                    <div class="setting-label">章節導航</div>
+                    <div style="display: flex; gap: 12px;">
+                        <button class="nav-btn" style="flex:1" onclick="prevChapter(); closeSettings();">◀ 上一章</button>
+                        <button class="nav-btn" style="flex:1" onclick="nextChapter(); closeSettings();">下一章 ▶</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-default" onclick="resetSettings()">恢復默認</button>
+                <button class="btn-primary" onclick="closeSettings()">確定</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Settings
+        const DEFAULT_SETTINGS = {
+            theme: 'light',
+            fontSize: 18
+        };
+
+        let settings = { ...DEFAULT_SETTINGS };
+
+        // Load settings from localStorage
+        function loadSettings() {
+            const saved = localStorage.getItem('reading-settings');
+            if (saved) {
+                settings = JSON.parse(saved);
+            }
+            applySettings();
+        }
+
+        function saveSettings() {
+            localStorage.setItem('reading-settings', JSON.stringify(settings));
+        }
+
+        function applySettings() {
+            document.body.setAttribute('data-theme', settings.theme);
+            document.documentElement.style.setProperty('--font-size', settings.fontSize + 'px');
+            
+            // Update theme buttons
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === settings.theme);
+            });
+            
+            // Update font slider
+            document.getElementById('fontSlider').value = settings.fontSize;
+            document.getElementById('fontPreview').style.fontSize = settings.fontSize + 'px';
+        }
+
+        function setTheme(theme) {
+            settings.theme = theme;
+            saveSettings();
+            applySettings();
+        }
+
+        function setFontSize(size) {
+            settings.fontSize = parseInt(size);
+            saveSettings();
+            applySettings();
+        }
+
+        function adjustFontSize(delta) {
+            const newSize = Math.min(28, Math.max(14, settings.fontSize + delta));
+            setFontSize(newSize);
+        }
+
+        function resetSettings() {
+            settings = { ...DEFAULT_SETTINGS };
+            saveSettings();
+            applySettings();
+        }
+
+        // Modal
+        function openSettings() {
+            document.getElementById('settingsModal').classList.add('active');
+            updateProgress();
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsModal').classList.remove('active');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('settingsModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSettings();
+            }
+        });
+
+        // Chapter Navigation
+        function prevChapter() {
+            window.location.href = 'chapter-91.html';
+        }
+
+        function nextChapter() {
+            window.location.href = 'chapter-93.html';
+        }
+
+        // Reading Progress
+        function updateProgress() {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollTop = window.scrollY;
+            const progress = scrollHeight > 0 ? Math.round((scrollTop / scrollHeight) * 100) : 0;
+            
+            document.getElementById('progress').textContent = progress + '%';
+            document.getElementById('progressPercent').textContent = progress + '%';
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        window.addEventListener('scroll', updateProgress);
+
+        // Initialize
+        loadSettings();
+        updateProgress();
+    </script>
+</body>
+</html>

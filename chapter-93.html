@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第93章：虛擬道場 - 科技修真傳</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+
+        [data-theme="pink"] {
+            --bg: #FCE4EC;
+            --text: #880E4F;
+            --border: #F48FB1;
+            --panel-bg: #FCE4EC;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .header a:hover {
+            background: var(--border);
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .header-right {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .icon-btn:hover {
+            background: var(--border);
+            border-color: var(--accent);
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 160px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .chapter-header h1 {
+        }
+
+        .chapter-header .author {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 8px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .bottom-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .bottom-nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Settings Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .settings-modal {
+            width: 100%;
+            max-width: 500px;
+            max-height: 85vh;
+            background: var(--panel-bg);
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .settings-modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .close-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--border);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(85vh - 140px);
+        }
+
+        .setting-section {
+            margin-bottom: 24px;
+        }
+
+        .setting-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .theme-btn {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-btn.active {
+            border-color: var(--accent);
+        }
+
+        .theme-btn.active::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .theme-btn.light { background: #FAFBFC; }
+        .theme-btn.sepia { background: #F4ECD8; }
+        .theme-btn.sky { background: #E8F4FC; }
+        .theme-btn.green { background: #E8F5E9; }
+        .theme-btn.pink { background: #FCE4EC; }
+        .theme-btn.dark { background: #2D3748; }
+        .theme-btn.navy { background: #1A202C; }
+
+        .font-size-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .font-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .font-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .font-slider {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--border);
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .font-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+        }
+
+        .font-preview {
+            text-align: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: var(--font-size);
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            margin: 0 16px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .modal-footer button {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-default {
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .btn-default:hover {
+            background: var(--border);
+        }
+
+        .btn-primary {
+            border: none;
+            background: #10B981;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 160px;
+            }
+
+            .chapter-header h1 {
+        }
+
+        .chapter-header .author {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 8px;
+                font-size: 1.4rem;
+            }
+
+            .theme-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="chapters.html">← 章節</a>
+        <span class="chapter-title">第93章</span>
+        <div class="header-right">
+            <button class="icon-btn" onclick="openSettings()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第93章：虛擬道場</h1>
+            <p class="author">作者：大肥喵</p>
+        </header>
+        <div class="content">
+<p># 第93章：虛擬道場</p>
+<p>靈芯系統的提示音在林塵腦海中響起時，他正盤坐在天樞城第七十三層的出租屋內。窗外，全息廣告的光影在夜空中交織成絢爛的霓虹海洋，懸浮車流如螢火蟲般穿梭於摩天大樓之間。</p>
+<p>“檢測到‘虛擬道場’接入許可，是否連接？”</p>
+<p>林塵睜開眼睛，瞳孔深處閃過一串藍色數據流。三天前，他通過黑市渠道獲得了這個名為“虛擬道場”的非法接入資格——據說這是某個神秘組織搭建的量子修真模擬網絡，能夠在虛擬空間中重現上古修真時代的修煉環境。</p>
+<p>“連接。”</p>
+<p>指令下達的瞬間，林塵感到意識被一股溫和的力量牽引。眼前的現實景象開始扭曲、分解，化作無數像素點消散。取而代之的是一片蒼茫的雲海，腳下是懸浮在虛空中的青石平台，四周環繞著九座形態各異的山峰，每座山峰頂端都閃爍著不同顏色的靈光。</p>
+<p>“歡迎來到虛擬道場，編號C-7429。”一個中性的電子音在空間中迴盪，“當前在線修士：317人。道場規則：禁止現實身份洩露，禁止永久性神識傷害，其餘不限。”</p>
+<p>林塵低頭看了看自己的虛擬化身——系統自動生成了一副普通青年的模樣，穿著樸素的青色道袍，與他現實中的賽博裝扮截然不同。他調出靈芯的掃描功能，眼前浮現出半透明的數據面板：</p>
+<p>【虛擬道場·基礎層】</p>
+<p>【靈氣濃度：現實世界12.7倍】</p>
+<p>【時間流速比：3:1（道場3小時=現實1小時）】</p>
+<p>【道場貨幣：靈點（可通過完成任務、交易獲得）】</p>
+<p>“有意思。”林塵喃喃自語。時間流速差異意味著他可以在這裡獲得三倍的修煉時間，而高濃度靈氣環境更是現實中難以尋覓的寶地。</p>
+<p>他走向平台邊緣，那裡立著一塊巨大的玉碑，上面滾動顯示著各種任務信息：</p>
+<p>“採集雲霧峰千年雪蓮，獎勵：500靈點”</p>
+<p>“破解古劍陣殘圖，獎勵：800靈點”</p>
+<p>“煉製三品凝神丹，材料自備，獎勵：300靈點”</p>
+<p>正當林塵瀏覽任務時，一個身影從旁邊的山峰御劍飛來，穩穩落在平台上。那是個戴著狐狸面具的女子，身著水藍色長裙，腰間掛著一串鈴鐺法器——當然，都是虛擬投影。</p>
+<p>“新來的？”女子的聲音經過處理，帶著些許電子雜音。</p>
+<p>林塵點頭：“第一天接入。”</p>
+<p>“勸你從簡單任務開始。”狐狸面具女子指了指玉碑最下方的幾行字，“採藥、挖礦、護送物資——這些雖然報酬低，但安全。虛擬道場裡死亡雖然不會真的死，但神識受創的滋味可不好受，而且會扣除大量靈點。”</p>
+<p>“多謝提醒。”林塵拱手道，“在下林塵，請問姑娘如何稱呼？”</p>
+<p>“叫我‘狐影’就好。”女子擺擺手，“對了，如果你對陣法有研究，可以去東邊的‘演武峰’，那裡經常有陣法師交流切磋，運氣好還能學到幾手。”</p>
+<p>話音剛落，狐影腰間的鈴鐺突然響起。她看了一眼，語氣變得急促：“我的隊伍在召喚，先走了。記住，在道場裡不要輕易相信任何人——這裡的‘死亡’雖是虛擬，但背叛和欺騙可是真實的。”</p>
+<p>說完，她御劍而起，化作一道藍光消失在雲海深處。</p>
+<p>林塵若有所思地站在原地。靈芯系統在此時彈出新提示：</p>
+<p>【檢測到高頻率靈氣波動源，方位：正北方向，距離：2.3公里。波動特徵符合‘上古禁制殘留’】</p>
+<p>“上古禁制？”林塵眼睛一亮。在現實世界中，上古修真文明的遺跡大多已被挖掘殆盡，或是被各大勢力嚴密控制。而在這虛擬道場中，或許能有機會接觸到那些失傳的傳承。</p>
+<p>他按照靈芯的指引，御使剛用10靈點租來的基礎飛劍，朝正北方飛去。穿過層層雲霧後，一座破敗的古殿出現在眼前。殿宇大半已經坍塌，殘存的石柱上刻滿了模糊的符文，散發著微弱的靈光。</p>
+<p>林塵降落在地，仔細觀察那些符文。靈芯系統開始高速運算，將掃描到的圖案與數據庫中的古籍記載進行比對。</p>
+<p>【符文解析中...】</p>
+<p>【識別出17種基礎陣紋，3種已失傳的變體】</p>
+<p>【推測為‘小五行顛倒陣’的殘缺版本】</p>
+<p>“小五行顛倒陣？”林塵回憶起在古籍中看過的記載。這是一種困敵陣法，能擾亂陣中人的五行感知，使其真元運轉紊亂。若是完整版本，甚至能困住金丹期修士。</p>
+<p>他伸出手指，嘗試按照靈芯推算出的軌跡，在虛空中勾勒陣紋。隨著真元（虛擬道場模擬出的）注入，那些殘破的石柱竟開始微微震動，表面的符文逐一亮起。</p>
+<p>但就在陣法即將被激活的瞬間，異變突生。</p>
+<p>三道黑影從古殿的陰影中竄出，呈三角之勢將林塵包圍。為首的是個戴著惡鬼面具的壯漢，手持一柄門板大小的巨斧虛影；左側是個瘦高個，十指間纏繞著幽藍的絲線；右側則是個侏儒，腳下踩著一具傀儡機關獸。</p>
+<p>“小子，這處遺跡是我們‘陰煞團’先發現的。”惡鬼面具壯漢聲音沙啞，“交出你剛才激活陣法的方法，可以饒你不死。”</p>
+<p>林塵神色不變，靈芯系統已經開始分析三人的實力：</p>
+<p>【目標一：體修路線，虛擬境界約築基中期，弱點：神識防禦薄弱】</p>
+<p>【目標二：傀儡師，操控類法器，建議優先擊殺本體】</p>
+<p>【目標三：疑似毒修，絲線含有神經毒素模擬效果】</p>
+<p>“如果我說不呢？”林塵平靜地問。</p>
+<p>“那就去復活點待著吧！”壯漢怒吼一聲，巨斧帶著破空之聲劈下。</p>
+<p>幾乎同時，林塵動了。他沒有後退，反而向前踏出一步，右手在腰間虛擬儲物袋上一拍——一柄銀白色的長劍出現在手中。這是他在現實中慣用的“流光劍”的虛擬複製品，雖然只有本體三成的威力，但足夠了。</p>
+<p>劍光如電，後發先至。</p>
+<p>不是攻向壯漢，而是直取左側的瘦高傀儡師。那人顯然沒料到林塵會選擇最難纏的目標，匆忙間操控絲線回防，但已經晚了。銀白劍光穿透絲線的縫隙，精準地刺入他的咽喉。</p>
+<p>虛擬身體化作光點消散，只留下一句系統提示：“玩家‘絲線鬼’已死亡，將在復活點重生。”</p>
+<p>“老二！”壯漢目眥欲裂，巨斧改劈為掃，橫斬林塵腰間。</p>
+<p>林塵身形如柳絮般飄起，腳尖在斧面上輕輕一點，借力翻到壯漢身後。同時左手掐訣，剛才勾勒到一半的陣紋驟然亮起——雖然只是殘陣，但困住一人片刻已經足夠。</p>
+<p>五行顛倒的錯亂感讓壯漢動作一滯。就這剎那的破綻，流光劍已經刺穿了他的後心。</p>
+<p>第三個侏儒見勢不妙，操控機關獸噴出一團毒霧，自己則轉身欲逃。林塵哪會給他機會，劍光分化成三道虛影，封死了所有退路。三息之後，戰鬥結束。</p>
+<p>【戰鬥評估：用時17秒，真元消耗32%，無傷】</p>
+<p>【獲得戰利品：靈點x210，殘破的機關獸核心x1，陰煞團令牌碎片x1】</p>
+<p>林塵收起戰利品，目光重新投向古殿深處。靈芯的掃描顯示，在那片殘垣斷壁之下，還隱藏著更強烈的靈氣反應。</p>
+<p>正當他準備深入探索時，整個虛擬道場突然劇烈震動起來。天空中的雲海翻滾，九座山峰同時發出嗡鳴。那個中性的電子音再次響徹空間：</p>
+<p>“緊急通告：檢測到異常數據入侵，道場核心區域‘天機閣’即將開啟。所有修士可前往爭奪‘天機秘寶’，持續時間：現實世界1小時，道場內3小時。”</p>
+<p>玉碑上的任務列表全部刷新，最頂端出現了一行金色大字：</p>
+<p>【天機閣爭奪戰：奪取秘寶者，獎勵：靈點x10000，現實世界稀有材料‘星隕鐵’x1，上古功法殘卷（任選）】</p>
+<p>道場內的修士們沸騰了。無數道劍光、遁光從各個山峰升起，朝著中央最高處那座籠罩在雷雲中的山峰飛去。</p>
+<p>林塵看著這一幕，嘴角微微上揚。</p>
+<p>“天機閣...來得正是時候。”</p>
+<p>他御劍而起，化作一道銀色流光，匯入那漫天飛遁的洪流之中。而在現實世界，出租屋內，林塵本體的手指微微顫動，靈芯系統的運行負荷悄然提升了37%。</p>
+<p>虛擬道場的深處，某個無法被普通修士感知的數據層面，一行隱藏日誌悄然生成：</p>
+<p>【異常協議觸發：測試體C-7429表現超出預期，建議提升監控等級】</p>
+<p>【天機閣開啟倒計時：02:59:47】</p>
+<p>夜還很長。而這場虛擬與現實交織的修真之路，才剛剛揭開序幕的一角。</p>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="chapter-92.html">← 上一章</a>
+        <div class="nav-center">
+            <button class="nav-btn" onclick="prevChapter()">◀</button>
+            <span id="progress">0%</span>
+            <button class="nav-btn" onclick="nextChapter()">▶</button>
+        </div>
+        <a href="chapter-94.html">下一章 →</a>
+    </nav>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="settings-modal">
+            <div class="modal-header">
+                <h3>設置</h3>
+                <button class="close-btn" onclick="closeSettings()">×</button>
+            </div>
+            <div class="modal-body">
+                <!-- Theme -->
+                <div class="setting-section">
+                    <div class="setting-label">主題模式</div>
+                    <div class="theme-grid">
+                        <button class="theme-btn light" data-theme="light" onclick="setTheme('light')"></button>
+                        <button class="theme-btn sepia" data-theme="sepia" onclick="setTheme('sepia')"></button>
+                        <button class="theme-btn sky" data-theme="sky" onclick="setTheme('sky')"></button>
+                        <button class="theme-btn green" data-theme="green" onclick="setTheme('green')"></button>
+                        <button class="theme-btn pink" data-theme="pink" onclick="setTheme('pink')"></button>
+                        <button class="theme-btn dark" data-theme="dark" onclick="setTheme('dark')"></button>
+                        <button class="theme-btn navy" data-theme="navy" onclick="setTheme('navy')"></button>
+                    </div>
+                </div>
+
+                <!-- Font Size -->
+                <div class="setting-section">
+                    <div class="setting-label">字體大小</div>
+                    <div class="font-size-control">
+                        <button class="font-btn" onclick="adjustFontSize(-2)">A-</button>
+                        <input type="range" class="font-slider" id="fontSlider" min="14" max="28" value="18" oninput="setFontSize(this.value)">
+                        <button class="font-btn" onclick="adjustFontSize(2)">A+</button>
+                    </div>
+                    <div class="font-preview" id="fontPreview">科技修真傳 - 示範文字</div>
+                </div>
+
+                <!-- Reading Progress -->
+                <div class="setting-section">
+                    <div class="setting-label">閱讀進度</div>
+                    <div class="progress-info">
+                        <span>已讀</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                        </div>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+
+                <!-- Chapter Navigation -->
+                <div class="setting-section">
+                    <div class="setting-label">章節導航</div>
+                    <div style="display: flex; gap: 12px;">
+                        <button class="nav-btn" style="flex:1" onclick="prevChapter(); closeSettings();">◀ 上一章</button>
+                        <button class="nav-btn" style="flex:1" onclick="nextChapter(); closeSettings();">下一章 ▶</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-default" onclick="resetSettings()">恢復默認</button>
+                <button class="btn-primary" onclick="closeSettings()">確定</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Settings
+        const DEFAULT_SETTINGS = {
+            theme: 'light',
+            fontSize: 18
+        };
+
+        let settings = { ...DEFAULT_SETTINGS };
+
+        // Load settings from localStorage
+        function loadSettings() {
+            const saved = localStorage.getItem('reading-settings');
+            if (saved) {
+                settings = JSON.parse(saved);
+            }
+            applySettings();
+        }
+
+        function saveSettings() {
+            localStorage.setItem('reading-settings', JSON.stringify(settings));
+        }
+
+        function applySettings() {
+            document.body.setAttribute('data-theme', settings.theme);
+            document.documentElement.style.setProperty('--font-size', settings.fontSize + 'px');
+            
+            // Update theme buttons
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === settings.theme);
+            });
+            
+            // Update font slider
+            document.getElementById('fontSlider').value = settings.fontSize;
+            document.getElementById('fontPreview').style.fontSize = settings.fontSize + 'px';
+        }
+
+        function setTheme(theme) {
+            settings.theme = theme;
+            saveSettings();
+            applySettings();
+        }
+
+        function setFontSize(size) {
+            settings.fontSize = parseInt(size);
+            saveSettings();
+            applySettings();
+        }
+
+        function adjustFontSize(delta) {
+            const newSize = Math.min(28, Math.max(14, settings.fontSize + delta));
+            setFontSize(newSize);
+        }
+
+        function resetSettings() {
+            settings = { ...DEFAULT_SETTINGS };
+            saveSettings();
+            applySettings();
+        }
+
+        // Modal
+        function openSettings() {
+            document.getElementById('settingsModal').classList.add('active');
+            updateProgress();
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsModal').classList.remove('active');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('settingsModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSettings();
+            }
+        });
+
+        // Chapter Navigation
+        function prevChapter() {
+            window.location.href = 'chapter-92.html';
+        }
+
+        function nextChapter() {
+            window.location.href = 'chapter-94.html';
+        }
+
+        // Reading Progress
+        function updateProgress() {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollTop = window.scrollY;
+            const progress = scrollHeight > 0 ? Math.round((scrollTop / scrollHeight) * 100) : 0;
+            
+            document.getElementById('progress').textContent = progress + '%';
+            document.getElementById('progressPercent').textContent = progress + '%';
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        window.addEventListener('scroll', updateProgress);
+
+        // Initialize
+        loadSettings();
+        updateProgress();
+    </script>
+</body>
+</html>

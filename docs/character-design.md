@@ -300,3 +300,12 @@ Middle-aged Asian male, 30 years old appearance but actually 500 years old, 180c
 | 日期 | 更新內容 |
 |------|----------|
 | 2026-04-09 | 初始版本，包含8個主要角色的詳細描述（年齡、性別、身高、體型、臉型、眼睛、眉毛、頭髮、皮膚、嘴巴、表情、衣著細節、標誌性特徵、姿勢示例） |
+
+---
+
+## 📷 角色參照圖片
+
+### 林塵（戰鬥姿態）
+![林塵-戰鬥](assets/character-linchen-combat.jpg)
+
+*Generated: 2026-04-09 | Prompt: See Lin Chen (combat) section above*

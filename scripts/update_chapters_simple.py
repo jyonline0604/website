@@ -64,6 +64,45 @@ def update_chapters_html():
     
     print(f"找到 {len(valid_chapters)} 個章節")
     
+    # 動態生成按鈕組（每10章為一組）
+    max_chapter = max(c["num"] for c in valid_chapters)
+    
+    # 計算按鈕組
+    button_groups = []
+    
+    # 從最大章節往下計算每10章一組
+    # 例如 93 章 → 第一組是 81-93，第二組是 71-80...
+    next_group_end = ((max_chapter - 1) // 10) * 10 + 10  # 90
+    if next_group_end > max_chapter:
+        next_group_end = max_chapter
+    next_group_start = next_group_end - 9  # 82 (for 90) or max_chapter - 9
+    
+    first_group_start = ((max_chapter - 1) // 10) * 10 + 1  # 81
+    first_group_end = max_chapter  # 93
+    
+    button_groups.append(f"{first_group_start}-{first_group_end}")
+    
+    # 生成其餘按鈕組
+    for start in range(first_group_start - 10, 0, -10):
+        end = start + 9
+        if end >= 1:
+            button_groups.append(f"{start}-{end}")
+    
+    # 生成按鈕 HTML
+    buttons_html = '<div class="chapter-groups" id="chapterGroups">\n'
+    buttons_html += '            <a href="#" class="group-btn active" >全部</a>\n'
+    for group in button_groups:
+        group_id = f"group-{group}"
+        group_aria = f"跳轉到第{group}章"
+        buttons_html += f'            <a href="#{group_id}" class="group-btn" aria-label="{group_aria}">{group}</a>\n'
+    buttons_html += '        </div>'
+    
+    # 替換按鈕區域
+    old_buttons_pattern = r'<div class="chapter-groups" id="chapterGroups">.*?</div>\s*</div>'
+    if re.search(old_buttons_pattern, content, re.DOTALL):
+        content = re.sub(old_buttons_pattern, buttons_html + '\n        </div>', content, flags=re.DOTALL)
+        print(f"✅ 已更新按鈕組: {button_groups[0]}, 71-80, 61-70...")
+    
     # 生成章節列表HTML（從第1章到最新章）
     chapters_html = ""
     for chap in valid_chapters:

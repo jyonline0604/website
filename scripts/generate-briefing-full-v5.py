@@ -273,72 +273,6 @@ class FullBriefingGeneratorV5:
         
         return []
     
-    def fetch_kmb_bus_eta(self):
-        """獲取九巴多條路線的實時到站數據"""
-        try:
-            log("獲取九巴實時到站數據...")
-            
-            # 九巴熱門路線和站點
-            kmb_routes = [
-                {"route": "1", "stop_id": "RI5fgPrP", "name": "1", "stop": "竹園邨總站"},
-                {"route": "203", "stop_id": "RI5fgPrP", "name": "203", "stop": "竹園邨總站"},
-                {"route": "208", "stop_id": "RI5fgPrP", "name": "208", "stop": "竹園邨總站"},
-            ]
-            
-            results = []
-            
-            for kmb in kmb_routes:
-                try:
-                    url = f"https://data.etabus.gov.hk/v1/transport/kmb/eta/{kmb['route']}/{kmb['stop_id']}/1"
-                    response = requests.get(url, timeout=5)
-                    
-                    if response.status_code == 200:
-                        data = response.json()
-                        
-                        if data.get("data"):
-                            etas = data["data"]
-                            
-                            valid_etas = []
-                            for eta in etas:
-                                eta_time = eta.get("eta")
-                                remark = eta.get("rmk_tc", eta.get("rmk_en", ""))
-                                
-                                if eta_time:
-                                    try:
-                                        eta_dt = datetime.fromisoformat(eta_time.replace('Z', '+00:00'))
-                                        now = datetime.now().astimezone()
-                                        time_diff = (eta_dt - now).total_seconds() / 60
-                                        
-                                        if time_diff >= 0:
-                                            minutes = int(time_diff)
-                                            if minutes <= 30:
-                                                valid_etas.append({
-                                                    "minutes": minutes,
-                                                    "remark": remark
-                                                })
-                                    except:
-                                        continue
-                            
-                            if valid_etas:
-                                valid_etas.sort(key=lambda x: x["minutes"])
-                                nearest = valid_etas[0]
-                                
-                                results.append({
-                                    "route_name": f"{kmb['name']}號線",
-                                    "stop_name": kmb['stop'],
-                                    "minutes": nearest["minutes"],
-                                    "remark": nearest["remark"]
-                                })
-                except:
-                    pass
-            
-            return results[:4]  # 最多4條路線
-                    
-        except Exception as e:
-            log(f"獲取九巴 ETA 異常: {str(e)}")
-        
-        return []
-    
     def fetch_news_rss(self, category, num_items=3):
         """獲取新聞 RSS（增強版，每項3條）"""
         try:
@@ -519,9 +453,6 @@ class FullBriefingGeneratorV5:
         # 港鐵下一班列車數據
         mtr_trains = self.fetch_mtr_next_train()
         
-        # 九巴 ETA 數據
-        kmb_etas = self.fetch_kmb_bus_eta()
-        
         # 新聞數據（每項3條）
         entertainment = self.fetch_with_cache(
             "entertainment_news",
@@ -594,33 +525,6 @@ class FullBriefingGeneratorV5:
                 briefing += f"\n{train_emoji} {line_station}: {minutes}分鐘 {direction} {destination}"
         else:
             briefing += "\n📊 港鐵列車數據更新中"
-        
-        briefing += f"""
-
-【九巴實時到站】🚌 data.gov.hk 官方數據"""
-        
-        if kmb_etas:
-            for eta in kmb_etas:
-                route_name = eta["route_name"]
-                stop_name = eta["stop_name"]
-                minutes = eta["minutes"]
-                remark = eta["remark"]
-                
-                if minutes <= 3:
-                    bus_emoji = "🟢"
-                elif minutes <= 10:
-                    bus_emoji = "🟡"
-                else:
-                    bus_emoji = "🔵"
-                
-                briefing += f"\n{bus_emoji} {route_name}"
-                briefing += f"\n  站點: {stop_name}"
-                briefing += f"\n  預計: {minutes}分鐘"
-                if remark:
-                    briefing += f" ({remark})"
-                briefing += "\n"
-        else:
-            briefing += "\n📊 九巴 ETA 數據暫時無法取得\n🔗 請使用《香港出行易》APP 查詢"
         
         briefing += f"""
 

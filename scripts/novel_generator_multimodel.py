@@ -185,8 +185,9 @@ def create_chapter_file(chapter_num, ai_content, chapter_title):
         
         chapter_content = '\n'.join(html_paragraphs)
         
-        # 替換模板中的佔位符
-        template = template.replace('{CHAPTER_TITLE}', chapter_title)
+        # 替換模板中的佔位符（去除 " - 科技修真傳" 後綴避免重複）
+        clean_title = chapter_title.replace(" - 科技修真傳", "").strip()
+        template = template.replace('{CHAPTER_TITLE}', clean_title)
         template = template.replace('{CHAPTER_NUM}', str(chapter_num))
         template = template.replace('{CONTENT}', chapter_content)
         

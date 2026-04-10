@@ -170,7 +170,7 @@
 
         /* 主要內容 */
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             width: 100%;
             margin: 0 auto;
             padding: 0 20px;
@@ -187,10 +187,10 @@
         .chapter-groups {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 12px;
             justify-content: center;
-            margin-bottom: 24px;
-            padding: 16px;
+            margin-bottom: 30px;
+            padding: 20px;
             background: rgba(255, 255, 255, 0.05); /* 更透明的背景 */
             border-radius: 12px;
             backdrop-filter: blur(5px); /* 減少模糊效果 */
@@ -227,7 +227,7 @@
         .chapter-list {
             background: rgba(255, 255, 255, 0.98); /* 更白的背景 */
             border-radius: 16px;
-            padding: 24px 16px;
+            padding: 32px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* 更淺的陰影 */
             margin-bottom: 40px;
             border: 1px solid rgba(0, 0, 0, 0.08); /* 深色邊框在白色背景下 */
@@ -284,51 +284,46 @@
         .chapter-list-grid {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            width: 100%;
-            box-sizing: border-box;
+            gap: 12px;
         }
 
         .chapter-item {
-            display: block;
-            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
             background: white;
             border-radius: 12px;
             text-decoration: none;
             color: inherit;
-            border: 1px solid #f3f4f6; /* 更淺的邊框 */
+            border: 1px solid #e5e7eb;
             transition: all 0.3s;
-            box-sizing: border-box;
-            width: 100%;
-            position: relative;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* 更輕的陰影 */
         }
 
         .chapter-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+            transform: translateX(4px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.15);
             border-color: var(--accent);
-            background: rgba(99, 102, 241, 0.02); /* 更淺的懸停背景 */
+            background: rgba(99, 102, 241, 0.03); /* 添加紫色透明懸停背景 */
         }
 
         .chapter-info {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin: 0 auto;
+            gap: 20px;
         }
 
         .chapter-num {
             font-size: 1rem;
-            color: #4F46E5; /* 更深的紫色確保對比度 */
+            color: var(--accent);
             font-weight: 600;
-            min-width: 60px;
+            min-width: 80px;
         }
 
         .chapter-name {
             font-size: 1.1rem;
             font-weight: 500;
-            color: #111827; /* 更深的顏色確保對比度 */
+            color: var(--text-primary);
         }
 
         .chapter-arrow {
@@ -337,8 +332,6 @@
             font-weight: 700;
             opacity: 0.7;
             transition: opacity 0.2s;
-            position: absolute;
-            right: 20px;
         }
 
         .chapter-item:hover .chapter-arrow {
@@ -402,24 +395,13 @@
             }
             
             .chapter-list {
-                padding: 24px 16px;
+                padding: 24px;
             }
             
             .chapter-info {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
                 gap: 8px;
-                margin: 0 auto;
-            }
-            
-            .chapter-item {
-                padding: 12px 16px;
-                justify-content: center;
-            }
-            
-            .chapter-arrow {
-                position: absolute;
-                right: 16px;
             }
             
             .chapter-num {

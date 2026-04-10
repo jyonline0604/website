@@ -170,7 +170,7 @@
 
         /* 主要內容 */
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             width: 100%;
             margin: 0 auto;
             padding: 0 20px;
@@ -298,18 +298,19 @@
             border-radius: 12px;
             text-decoration: none;
             color: inherit;
-            border: 1px solid #e5e7eb;
+            border: 1px solid #f3f4f6; /* 更淺的邊框 */
             transition: all 0.3s;
             box-sizing: border-box;
             width: 100%;
             position: relative;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* 更輕的陰影 */
         }
 
         .chapter-item:hover {
-            transform: translateX(4px);
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
             border-color: var(--accent);
-            background: rgba(99, 102, 241, 0.03); /* 添加紫色透明懸停背景 */
+            background: rgba(99, 102, 241, 0.02); /* 更淺的懸停背景 */
         }
 
         .chapter-info {
@@ -321,7 +322,7 @@
 
         .chapter-num {
             font-size: 1rem;
-            color: var(--accent);
+            color: #4F46E5; /* 更深的紫色確保對比度 */
             font-weight: 600;
             min-width: 60px;
         }
@@ -329,7 +330,7 @@
         .chapter-name {
             font-size: 1.1rem;
             font-weight: 500;
-            color: var(--text-primary);
+            color: #111827; /* 更深的顏色確保對比度 */
         }
 
         .chapter-arrow {

@@ -53,10 +53,23 @@
         .nav-btn:hover { transform: scale(1.1); }
         .empty-state { text-align: center; padding: 60px 20px; opacity: 0.7; }
         .empty-state h3 { font-size: 1.5rem; margin-bottom: 10px; }
-        @media (max-width: 768px) { .chapter-grid { grid-template-columns: 1fr; } .stats { gap: 15px; } .stat-box { min-width: 120px; padding: 15px 20px; } }
+        .nav { background: rgba(0,0,0,0.4); padding: 12px 20px; display: flex; justify-content: center; gap: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 100; }
+        .nav a { color: rgba(255,255,255,0.7); text-decoration: none; padding: 8px 16px; border-radius: 8px; font-size: 0.95rem; transition: all 0.2s; }
+        .nav a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+        .nav a.active { background: rgba(102,126,234,0.3); color: #667eea; }
+        @media (max-width: 768px) { .chapter-grid { grid-template-columns: 1fr; } .stats { gap: 15px; } .stat-box { min-width: 120px; padding: 15px 20px; } .nav { flex-wrap: wrap; gap: 8px; } .nav a { padding: 6px 12px; font-size: 0.85rem; } }
     </style>
 </head>
 <body>
+    <nav class="nav">
+        <a href="home.html">首頁</a>
+        <a href="chapters.html">章節</a>
+        <a href="av-novels.html" class="active">🎬 有聲畫</a>
+        <a href="news.html">AI 新聞</a>
+        <a href="finance.html">財經</a>
+        <a href="https://itv.kofhk.com/" target="_blank">ITV</a>
+        <a href="author.html">作者</a>
+    </nav>
     <header class="header">
         <h1>🎬 有聲畫小説</h1>
         <p>《科技修真傳》有聲畫版本 - 圖文並茂 + 完整朗讀</p>

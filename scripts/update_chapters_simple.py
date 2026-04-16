@@ -97,11 +97,38 @@ def update_chapters_html():
         buttons_html += f'            <a href="#{group_id}" class="group-btn" aria-label="{group_aria}">{group}</a>\n'
     buttons_html += '        </div>'
     
-    # 替換按鈕區域
-    old_buttons_pattern = r'<div class="chapter-groups" id="chapterGroups">.*?</div>\s*</div>'
-    if re.search(old_buttons_pattern, content, re.DOTALL):
-        content = re.sub(old_buttons_pattern, buttons_html + '\n        </div>', content, flags=re.DOTALL)
-        print(f"✅ 已更新按鈕組: {button_groups[0]}, 71-80, 61-70...")
+    # 替換按鈕區域 - 使用棧正確解析嵌套的 HTML 標籤
+    groups_id = '<div class="chapter-groups" id="chapterGroups">'
+    groups_start = content.find(groups_id)
+    if groups_start == -1:
+        print("❌ 找不到章節按鈕區域")
+        return False
+    
+    groups_content_start = groups_start + len(groups_id)
+    
+    # 使用棧找到匹配的 </div>
+    open_count = 1
+    pos = groups_content_start
+    while open_count > 0 and pos < len(content):
+        next_open = content.find('<div', pos)
+        next_close = content.find('</div>', pos)
+        
+        if next_close == -1:
+            print("❌ 找不到按鈕區域關閉標籤")
+            return False
+        
+        if next_open != -1 and next_open < next_close:
+            open_count += 1
+            pos = next_open + 1
+        else:
+            open_count -= 1
+            if open_count == 0:
+                groups_end = next_close + 6  # After </div>
+            pos = next_close + 6
+    
+    # 保留 groups_start 之前的內容 + 新的按鈕 HTML + groups_end 之後的內容
+    content = content[:groups_start] + buttons_html + '\n        ' + content[groups_end:]
+    print(f"✅ 已更新按鈕組: {button_groups[0]}, 71-80, 61-70...")
     
     # 生成章節列表HTML（從第1章到最新章）
     chapters_html = ""

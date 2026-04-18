@@ -28,42 +28,44 @@ const urlsToCache = [
 
 // 安裝Service Worker
 self.addEventListener('install', event => {
-  console.log('[Service Worker] 安裝中...');
+  // 只在需要時才記錄
+  if (typeof console !== 'undefined') {
+    console.log('[Service Worker] 安裝中...');
+  }
   
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('[Service Worker] 緩存核心文件');
         return cache.addAll(urlsToCache);
       })
       .then(() => {
-        console.log('[Service Worker] 安裝完成');
         return self.skipWaiting();
       })
       .catch(error => {
-        console.error('[Service Worker] 安裝失敗:', error);
+        if (typeof console !== 'undefined') {
+          console.error('[Service Worker] 安裝失敗:', error);
+        }
       })
   );
 });
 
 // 激活Service Worker
 self.addEventListener('activate', event => {
-  console.log('[Service Worker] 激活中...');
-  
   // 清理舊緩存
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
           if (cacheName !== CACHE_NAME) {
-            console.log('[Service Worker] 刪除舊緩存:', cacheName);
+            if (typeof console !== 'undefined') {
+              console.log('[Service Worker] 刪除舊緩存:', cacheName);
+            }
             return caches.delete(cacheName);
           }
         })
       );
     })
     .then(() => {
-      console.log('[Service Worker] 激活完成');
       return self.clients.claim();
     })
   );
@@ -82,12 +84,10 @@ self.addEventListener('fetch', event => {
       .then(response => {
         // 如果有緩存，返回緩存
         if (response) {
-          console.log('[Service Worker] 從緩存返回:', event.request.url);
           return response;
         }
         
         // 否則從網絡獲取
-        console.log('[Service Worker] 從網絡獲取:', event.request.url);
         return fetch(event.request)
           .then(networkResponse => {
             // 檢查是否有效響應
@@ -100,14 +100,11 @@ self.addEventListener('fetch', event => {
             caches.open(CACHE_NAME)
               .then(cache => {
                 cache.put(event.request, responseToCache);
-                console.log('[Service Worker] 緩存新資源:', event.request.url);
               });
             
             return networkResponse;
           })
           .catch(error => {
-            console.error('[Service Worker] 網絡請求失敗:', error);
-            
             // 對於HTML頁面，返回離線頁面
             if (event.request.headers.get('accept').includes('text/html')) {
               return caches.match('/offline.html')

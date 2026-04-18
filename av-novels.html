@@ -88,7 +88,69 @@
         .nav a:hover { background: rgba(255,255,255,0.1); color: #fff; }
         .nav a.active { background: rgba(102,126,234,0.3); color: #667eea; }
         @media (max-width: 768px) { .chapter-grid { grid-template-columns: 1fr; } .stats { gap: 15px; } .stat-box { min-width: 120px; padding: 15px 20px; } .nav { flex-wrap: wrap; gap: 8px; } .nav a { padding: 6px 12px; font-size: 0.85rem; } }
-    </style>
+    
+        /* 離線狀態樣式 */
+        .offline .network-status {
+            display: block !important;
+        }
+        
+        .network-status {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            font-weight: 500;
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        .network-status.online {
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* 添加到主屏幕按鈕 */
+        .install-pwa-btn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #6366f1, #818cf8);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .install-pwa-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+        
+        .install-pwa-btn:active {
+            transform: translateY(0);
+        }</style>
 
     <!-- Schema.org WebPage 結構化數據 -->
     <script type="application/ld+json">
@@ -145,7 +207,7 @@
         <div class="chapter-grid" id="chapterGrid">
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-70-scene1.jpg" alt="第70章">
+                    <img src="assets/chapter-70-scene1.jpg" alt="第70章" loading="lazy">
                     <div class="chapter-badge">New</div>
                 </div>
                 <div class="chapter-card-content">
@@ -160,7 +222,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-69-scene1.jpg" alt="第69章">
+                    <img src="assets/chapter-69-scene1.jpg" alt="第69章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 69 章</div>
@@ -174,7 +236,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-68-scene1.jpg" alt="第68章">
+                    <img src="assets/chapter-68-scene1.jpg" alt="第68章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 68 章</div>
@@ -188,7 +250,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-67-scene1.jpg" alt="第67章">
+                    <img src="assets/chapter-67-scene1.jpg" alt="第67章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 67 章</div>
@@ -202,7 +264,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-66-scene1.jpg" alt="第66章">
+                    <img src="assets/chapter-66-scene1.jpg" alt="第66章" loading="lazy">
                     </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 66 章</div>
@@ -216,7 +278,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-65-scene1.jpg" alt="第65章">
+                    <img src="assets/chapter-65-scene1.jpg" alt="第65章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 65 章</div>
@@ -230,7 +292,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-64-scene1.jpg" alt="第64章">
+                    <img src="assets/chapter-64-scene1.jpg" alt="第64章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 64 章</div>
@@ -244,7 +306,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-63-scene1.jpg" alt="第63章">
+                    <img src="assets/chapter-63-scene1.jpg" alt="第63章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 63 章</div>
@@ -258,7 +320,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-62-scene1.jpg" alt="第62章">
+                    <img src="assets/chapter-62-scene1.jpg" alt="第62章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 62 章</div>
@@ -272,7 +334,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-61-scene1.jpg" alt="第61章">
+                    <img src="assets/chapter-61-scene1.jpg" alt="第61章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 61 章</div>
@@ -286,7 +348,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-60-scene1.jpg" alt="第60章">
+                    <img src="assets/chapter-60-scene1.jpg" alt="第60章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 60 章</div>
@@ -300,7 +362,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-59-scene1.jpg" alt="第59章">
+                    <img src="assets/chapter-59-scene1.jpg" alt="第59章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 59 章</div>
@@ -314,7 +376,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-58-scene1.jpg" alt="第58章">
+                    <img src="assets/chapter-58-scene1.jpg" alt="第58章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 58 章</div>
@@ -328,7 +390,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-57-scene1.jpg" alt="第57章">
+                    <img src="assets/chapter-57-scene1.jpg" alt="第57章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 57 章</div>
@@ -342,7 +404,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-56-scene1.jpg" alt="第56章">
+                    <img src="assets/chapter-56-scene1.jpg" alt="第56章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -357,7 +419,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-55-scene1.jpg" alt="第55章">
+                    <img src="assets/chapter-55-scene1.jpg" alt="第55章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 55 章</div>
@@ -371,7 +433,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-54-scene1.jpg" alt="第54章">
+                    <img src="assets/chapter-54-scene1.jpg" alt="第54章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 54 章</div>
@@ -385,7 +447,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-53-scene1.jpg" alt="第53章">
+                    <img src="assets/chapter-53-scene1.jpg" alt="第53章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 53 章</div>
@@ -399,7 +461,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-52-scene1.jpg" alt="第52章">
+                    <img src="assets/chapter-52-scene1.jpg" alt="第52章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 52 章</div>
@@ -413,7 +475,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-51-scene1.jpg" alt="第51章">
+                    <img src="assets/chapter-51-scene1.jpg" alt="第51章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 51 章</div>
@@ -427,7 +489,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-50-scene1.jpg" alt="第50章">
+                    <img src="assets/chapter-50-scene1.jpg" alt="第50章" loading="lazy">
                 </div>
                 <div class="chapter-card-content">
                     <div class="chapter-number">第 50 章</div>
@@ -441,7 +503,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-49-scene1.jpg" alt="第49章">
+                    <img src="assets/chapter-49-scene1.jpg" alt="第49章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -456,7 +518,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-48-scene1.jpg" alt="第48章">
+                    <img src="assets/chapter-48-scene1.jpg" alt="第48章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -471,7 +533,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-47-scene1.jpg" alt="第47章">
+                    <img src="assets/chapter-47-scene1.jpg" alt="第47章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -486,7 +548,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-46-scene1.jpg" alt="第46章">
+                    <img src="assets/chapter-46-scene1.jpg" alt="第46章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -501,7 +563,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-45-scene1.jpg" alt="第45章">
+                    <img src="assets/chapter-45-scene1.jpg" alt="第45章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -516,7 +578,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-44-scene1.jpg" alt="第44章">
+                    <img src="assets/chapter-44-scene1.jpg" alt="第44章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -531,7 +593,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-43-scene1.jpg" alt="第43章">
+                    <img src="assets/chapter-43-scene1.jpg" alt="第43章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -546,7 +608,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-42-scene1.jpg" alt="第42章">
+                    <img src="assets/chapter-42-scene1.jpg" alt="第42章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -561,7 +623,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-41-scene1.jpg" alt="第41章">
+                    <img src="assets/chapter-41-scene1.jpg" alt="第41章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -576,7 +638,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-40-scene1.jpg" alt="第40章">
+                    <img src="assets/chapter-40-scene1.jpg" alt="第40章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -591,7 +653,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-39-scene1.jpg" alt="第39章">
+                    <img src="assets/chapter-39-scene1.jpg" alt="第39章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -606,7 +668,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-38-scene1.jpg" alt="第38章">
+                    <img src="assets/chapter-38-scene1.jpg" alt="第38章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -621,7 +683,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-37-scene1.jpg" alt="第37章">
+                    <img src="assets/chapter-37-scene1.jpg" alt="第37章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -636,7 +698,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-36-scene1.jpg" alt="第36章">
+                    <img src="assets/chapter-36-scene1.jpg" alt="第36章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -651,7 +713,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-35-scene1.jpg" alt="第35章">
+                    <img src="assets/chapter-35-scene1.jpg" alt="第35章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -666,7 +728,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-34-scene1.jpg" alt="第34章">
+                    <img src="assets/chapter-34-scene1.jpg" alt="第34章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -681,7 +743,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-33-scene1.jpg" alt="第33章">
+                    <img src="assets/chapter-33-scene1.jpg" alt="第33章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -696,7 +758,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-32-scene1.jpg" alt="第32章">
+                    <img src="assets/chapter-32-scene1.jpg" alt="第32章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -711,7 +773,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-31-scene1.jpg" alt="第31章">
+                    <img src="assets/chapter-31-scene1.jpg" alt="第31章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -726,7 +788,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-30-scene1.jpg" alt="第30章">
+                    <img src="assets/chapter-30-scene1.jpg" alt="第30章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -741,7 +803,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-29-scene1.jpg" alt="第29章">
+                    <img src="assets/chapter-29-scene1.jpg" alt="第29章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -756,7 +818,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-28-scene1.jpg" alt="第28章">
+                    <img src="assets/chapter-28-scene1.jpg" alt="第28章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -771,7 +833,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-27-scene1.jpg" alt="第27章">
+                    <img src="assets/chapter-27-scene1.jpg" alt="第27章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -786,7 +848,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-26-scene1.jpg" alt="第26章">
+                    <img src="assets/chapter-26-scene1.jpg" alt="第26章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -801,7 +863,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-25-scene1.jpg" alt="第25章">
+                    <img src="assets/chapter-25-scene1.jpg" alt="第25章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -816,7 +878,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-24-scene1.jpg" alt="第24章">
+                    <img src="assets/chapter-24-scene1.jpg" alt="第24章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -831,7 +893,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-23-scene1.jpg" alt="第23章">
+                    <img src="assets/chapter-23-scene1.jpg" alt="第23章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -846,7 +908,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-22-scene1.jpg" alt="第22章">
+                    <img src="assets/chapter-22-scene1.jpg" alt="第22章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -861,7 +923,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-21-scene1.jpg" alt="第21章">
+                    <img src="assets/chapter-21-scene1.jpg" alt="第21章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -876,7 +938,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-20-scene1.jpg" alt="第20章">
+                    <img src="assets/chapter-20-scene1.jpg" alt="第20章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -891,7 +953,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-19-scene1.jpg" alt="第19章">
+                    <img src="assets/chapter-19-scene1.jpg" alt="第19章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -906,7 +968,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-18-scene1.jpg" alt="第18章">
+                    <img src="assets/chapter-18-scene1.jpg" alt="第18章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -921,7 +983,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-17-scene1.jpg" alt="第17章">
+                    <img src="assets/chapter-17-scene1.jpg" alt="第17章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -936,7 +998,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-16-scene1.jpg" alt="第16章">
+                    <img src="assets/chapter-16-scene1.jpg" alt="第16章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -951,7 +1013,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-15-scene1.jpg" alt="第15章">
+                    <img src="assets/chapter-15-scene1.jpg" alt="第15章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -966,7 +1028,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-14-scene1.jpg" alt="第14章">
+                    <img src="assets/chapter-14-scene1.jpg" alt="第14章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -981,7 +1043,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-13-scene1.jpg" alt="第13章">
+                    <img src="assets/chapter-13-scene1.jpg" alt="第13章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -996,7 +1058,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-12-scene1.jpg" alt="第12章">
+                    <img src="assets/chapter-12-scene1.jpg" alt="第12章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -1011,7 +1073,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-11-scene1.jpg" alt="第11章">
+                    <img src="assets/chapter-11-scene1.jpg" alt="第11章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -1026,7 +1088,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-10-scene1.jpg" alt="第10章">
+                    <img src="assets/chapter-10-scene1.jpg" alt="第10章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -1041,7 +1103,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-9-scene1.jpg" alt="第9章">
+                    <img src="assets/chapter-9-scene1.jpg" alt="第9章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -1056,7 +1118,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-8-scene1.jpg" alt="第8章">
+                    <img src="assets/chapter-8-scene1.jpg" alt="第8章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -1071,7 +1133,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-7-scene1.jpg" alt="第7章">
+                    <img src="assets/chapter-7-scene1.jpg" alt="第7章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -1086,7 +1148,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-6-scene1.jpg" alt="第6章">
+                    <img src="assets/chapter-6-scene1.jpg" alt="第6章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -1101,7 +1163,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-5-scene1.jpg" alt="第5章">
+                    <img src="assets/chapter-5-scene1.jpg" alt="第5章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -1116,7 +1178,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-4-scene1.jpg" alt="第4章">
+                    <img src="assets/chapter-4-scene1.jpg" alt="第4章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -1131,7 +1193,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-3-scene1.jpg" alt="第3章">
+                    <img src="assets/chapter-3-scene1.jpg" alt="第3章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -1146,7 +1208,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-2-scene1.jpg" alt="第2章">
+                    <img src="assets/chapter-2-scene1.jpg" alt="第2章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -1161,7 +1223,7 @@
             </div>
             <div class="chapter-card">
                 <div class="chapter-card-image">
-                    <img src="assets/chapter-1-scene1.jpg" alt="第1章">
+                    <img src="assets/chapter-1-scene1.jpg" alt="第1章" loading="lazy">
                     
                 </div>
                 <div class="chapter-card-content">
@@ -1176,5 +1238,132 @@
             </div>
         </div>
     </div>
-</body>
+
+    <!-- 圖片懶加載腳本 -->
+    <script>
+        // 圖片懶加載實現
+        document.addEventListener('DOMContentLoaded', function() {
+            // 使用IntersectionObserver API
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
+            });
+            
+            // 觀察所有懶加載圖片
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+            
+            // 如果瀏覽器不支持IntersectionObserver，使用備用方案
+            if (!('IntersectionObserver' in window)) {
+                const lazyImages = document.querySelectorAll('img[data-src]');
+                let lazyImageObserver;
+                
+                // 簡單的滾動檢測
+                function lazyLoad() {
+                    lazyImages.forEach(img => {
+                        if (img.getBoundingClientRect().top <= window.innerHeight + 100) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                    });
+                    
+                    // 如果所有圖片都加載了，移除事件監聽
+                    if (document.querySelectorAll('img[data-src]').length === 0) {
+                        window.removeEventListener('scroll', lazyLoad);
+                        window.removeEventListener('resize', lazyLoad);
+                    }
+                }
+                
+                window.addEventListener('scroll', lazyLoad);
+                window.addEventListener('resize', lazyLoad);
+                lazyLoad(); // 初始加載
+            }
+        });
+    </script>
+    
+    <!-- PWA Service Worker 註冊 -->
+    <script>
+        // 註冊Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/assets/service-worker.js')
+                    .then(function(registration) {
+                        console.log('Service Worker 註冊成功:', registration.scope);
+                        
+                        // 檢查更新
+                        registration.addEventListener('updatefound', function() {
+                            const newWorker = registration.installing;
+                            console.log('Service Worker 更新發現:', newWorker.state);
+                            
+                            newWorker.addEventListener('statechange', function() {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    console.log('新Service Worker已安裝，需要刷新頁面');
+                                    // 這裡可以顯示更新提示
+                                }
+                            });
+                        });
+                    })
+                    .catch(function(error) {
+                        console.log('Service Worker 註冊失敗:', error);
+                    });
+            });
+            
+            // 離線狀態檢測
+            window.addEventListener('online', function() {
+                console.log('網絡已恢復');
+                document.documentElement.classList.remove('offline');
+            });
+            
+            window.addEventListener('offline', function() {
+                console.log('網絡已斷開');
+                document.documentElement.classList.add('offline');
+            });
+            
+            // 初始檢查
+            if (!navigator.onLine) {
+                document.documentElement.classList.add('offline');
+            }
+        }
+        
+        // 添加到主屏幕提示（僅在移動端顯示）
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', function(e) {
+            // 防止Chrome 67及更早版本自動顯示提示
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // 顯示添加到主屏幕按鈕
+            const installBtn = document.getElementById('install-pwa-btn');
+            if (installBtn) {
+                installBtn.style.display = 'block';
+                installBtn.addEventListener('click', function() {
+                    // 顯示安裝提示
+                    deferredPrompt.prompt();
+                    
+                    // 等待用戶選擇
+                    deferredPrompt.userChoice.then(function(choiceResult) {
+                        if (choiceResult.outcome === 'accepted') {
+                            console.log('用戶接受安裝');
+                        } else {
+                            console.log('用戶拒絕安裝');
+                        }
+                        deferredPrompt = null;
+                    });
+                });
+            }
+        });
+    </script>
+    </body>
 </html>

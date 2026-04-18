@@ -1378,6 +1378,68 @@
                 grid-template-columns: 1fr;
                 font-size: 0.75rem;
             }
+        }
+        /* 離線狀態樣式 */
+        .offline .network-status {
+            display: block !important;
+        }
+        
+        .network-status {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            font-weight: 500;
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        .network-status.online {
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* 添加到主屏幕按鈕 */
+        .install-pwa-btn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #6366f1, #818cf8);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .install-pwa-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+        
+        .install-pwa-btn:active {
+            transform: translateY(0);
         }</style>
 </head>
 <body>
@@ -1835,5 +1897,132 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/investment-calculator.js"></script>
     <script src="assets/finance.js"></script>
-</body>
+
+    <!-- 圖片懶加載腳本 -->
+    <script>
+        // 圖片懶加載實現
+        document.addEventListener('DOMContentLoaded', function() {
+            // 使用IntersectionObserver API
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
+            });
+            
+            // 觀察所有懶加載圖片
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+            
+            // 如果瀏覽器不支持IntersectionObserver，使用備用方案
+            if (!('IntersectionObserver' in window)) {
+                const lazyImages = document.querySelectorAll('img[data-src]');
+                let lazyImageObserver;
+                
+                // 簡單的滾動檢測
+                function lazyLoad() {
+                    lazyImages.forEach(img => {
+                        if (img.getBoundingClientRect().top <= window.innerHeight + 100) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                    });
+                    
+                    // 如果所有圖片都加載了，移除事件監聽
+                    if (document.querySelectorAll('img[data-src]').length === 0) {
+                        window.removeEventListener('scroll', lazyLoad);
+                        window.removeEventListener('resize', lazyLoad);
+                    }
+                }
+                
+                window.addEventListener('scroll', lazyLoad);
+                window.addEventListener('resize', lazyLoad);
+                lazyLoad(); // 初始加載
+            }
+        });
+    </script>
+    
+    <!-- PWA Service Worker 註冊 -->
+    <script>
+        // 註冊Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/assets/service-worker.js')
+                    .then(function(registration) {
+                        console.log('Service Worker 註冊成功:', registration.scope);
+                        
+                        // 檢查更新
+                        registration.addEventListener('updatefound', function() {
+                            const newWorker = registration.installing;
+                            console.log('Service Worker 更新發現:', newWorker.state);
+                            
+                            newWorker.addEventListener('statechange', function() {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    console.log('新Service Worker已安裝，需要刷新頁面');
+                                    // 這裡可以顯示更新提示
+                                }
+                            });
+                        });
+                    })
+                    .catch(function(error) {
+                        console.log('Service Worker 註冊失敗:', error);
+                    });
+            });
+            
+            // 離線狀態檢測
+            window.addEventListener('online', function() {
+                console.log('網絡已恢復');
+                document.documentElement.classList.remove('offline');
+            });
+            
+            window.addEventListener('offline', function() {
+                console.log('網絡已斷開');
+                document.documentElement.classList.add('offline');
+            });
+            
+            // 初始檢查
+            if (!navigator.onLine) {
+                document.documentElement.classList.add('offline');
+            }
+        }
+        
+        // 添加到主屏幕提示（僅在移動端顯示）
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', function(e) {
+            // 防止Chrome 67及更早版本自動顯示提示
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // 顯示添加到主屏幕按鈕
+            const installBtn = document.getElementById('install-pwa-btn');
+            if (installBtn) {
+                installBtn.style.display = 'block';
+                installBtn.addEventListener('click', function() {
+                    // 顯示安裝提示
+                    deferredPrompt.prompt();
+                    
+                    // 等待用戶選擇
+                    deferredPrompt.userChoice.then(function(choiceResult) {
+                        if (choiceResult.outcome === 'accepted') {
+                            console.log('用戶接受安裝');
+                        } else {
+                            console.log('用戶拒絕安裝');
+                        }
+                        deferredPrompt = null;
+                    });
+                });
+            }
+        });
+    </script>
+    </body>
 </html>

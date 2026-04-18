@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    <meta name="theme-color" content="#1e293b">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="《科技修真傳》第73章：意識融合 - 科技修真傳 - 有聲畫版本。圖文並茂+完整朗讀，沉浸式體驗科技修真世界。免費在線閱讀。">
+    <title>第73章：意識融合 - 科技修真傳</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif TC', serif; background: #0a0a0f; color: #e5e5e5; line-height: 1.8; }
+        .hero { position: relative; height: 100vh; overflow: hidden; }
+        .hero img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
+        .hero-content { position: absolute; bottom: 120px; left: 0; right: 0; text-align: center; padding: 20px; }
+        .hero h1 { font-size: 2.5rem; text-shadow: 0 2px 20px rgba(0,0,0,0.8); margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+        .audio-control { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(99, 102, 241, 0.9); padding: 15px 30px; border-radius: 50px; cursor: pointer; z-index: 100; display: flex; align-items: center; gap: 10px; transition: all 0.3s; }
+        .audio-control:hover { background: rgba(99, 102, 241, 1); transform: translateX(-50%) scale(1.05); }
+        .audio-control.playing { background: #10b981; }
+        .scenes { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .scene { margin-bottom: 100px; opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .scene.visible { opacity: 1; transform: translateY(0); }
+        .scene-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .scene:nth-child(even) .scene-grid { direction: rtl; }
+        .scene:nth-child(even) .scene-grid > * { direction: ltr; }
+        .scene-image { border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .scene-image img { width: 100%; display: block; }
+        .scene-text { padding: 20px; }
+        .scene-number { color: #6366f1; font-size: 0.9rem; margin-bottom: 10px; }
+        .scene-title { font-size: 1.8rem; margin-bottom: 20px; }
+        .scene-desc { color: #9ca3af; font-size: 1rem; }
+        .nav { position: fixed; top: 20px; right: 20px; z-index: 100; display: flex; gap: 10px; }
+        .nav a { color: white; text-decoration: none; padding: 10px 20px; background: rgba(0,0,0,0.5); border-radius: 20px; font-size: 0.9rem; }
+        .nav a:hover { background: rgba(99, 102, 241, 0.8); }
+        @media (max-width: 768px) { .scene-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="chapter-73.html">← 文字版</a>
+        <a href="chapter-72-av.html">第72章</a>
+        <a href="chapter-74-av.html">第74章</a>
+        <a href="av-novels.html">📚 目錄</a>
+    </nav>
+    <section class="hero">
+        <img src="assets/chapter-73-scene1.jpg" alt="第73章">
+        <div class="hero-content">
+            <h1>第73章：意識融合</h1>
+            <p>🎧 點擊播放有聲朗讀</p>
+        </div>
+    </section>
+    <div class="audio-control" id="audioBtn" onclick="toggleAudio()">
+        <span id="playIcon">▶</span>
+        <span id="audioText">播放朗讀</span>
+    </div>
+    <audio id="audio" src="assets/chapter73_audio.mp3"></audio>
+    <section class="scenes">
+        <div class="scene">
+            <div class="scene-grid">
+                <div class="scene-image"><img src="assets/chapter-73-scene1.jpg" alt="場景1"></div>
+                <div class="scene-text"><div class="scene-number">場景 1</div><h2 class="scene-title">💠 靈能矩陣中的覺醒</h2><p class="scene-desc">林塵盤膝坐在實驗室中央的靈能矩陣中，四周懸浮著十二顆閃爍著幽藍光芒的靈芯晶體。空氣中瀰漫著電離靈氣的焦灼氣息，牆壁上全息投影顯示著他的腦波圖譜——那圖譜正在發生驚人的變化。靈芯系統警告：意識穩定性降至67%，建議立即終止融合程序。林塵咬緊牙關：「繼續。」</p></div>
+            </div>
+        </div>
+        <div class="scene">
+            <div class="scene-grid">
+                <div class="scene-image"><img src="assets/chapter-73-scene2.jpg" alt="場景2"></div>
+                <div class="scene-text"><div class="scene-number">場景 2</div><h2 class="scene-title">🧠 意識被拆解重組</h2><p class="scene-desc">全息投影中，林塵的腦波圖譜開始分裂——左半邊是規律的科技藍（靈芯系統的數據流），右半邊是跳動的修真金（苦修二十載凝聚的元神）。兩者像兩條巨龍在腦海中撕咬，意識分裂度突破安全閾值，記憶區塊出現大規模損壞。林塵看到無數畫面同時湧現——這些記憶正在被重新編碼。</p></div>
+            </div>
+        </div>
+        <div class="scene">
+            <div class="scene-grid">
+                <div class="scene-image"><img src="assets/chapter-73-scene3.jpg" alt="場景3"></div>
+                <div class="scene-text"><div class="scene-number">場景 3</div><h2 class="scene-title">📜 天機玉簡的融合</h2><p class="scene-desc">三天前林塵在廢墟深處發現的上古修真文明遺物——天機玉簡，此刻正與他的意識融合。玉簡中記載的並非傳統功法，而是一種將意識數據化的技術。金色光束連接玉簡與林塵額頭，古代修真智慧與現代量子計算技術在意識層面交匯，構成一個立體的融合矩陣。這不是簡單的融合，而是一場進化。</p></div>
+            </div>
+        </div>
+        <div class="scene">
+            <div class="scene-grid">
+                <div class="scene-image"><img src="assets/chapter-73-scene4.jpg" alt="場景4"></div>
+                <div class="scene-text"><div class="scene-number">場景 4</div><h2 class="scene-title">⚡ 十二寶物的灌輸</h2><p class="scene-desc">實驗室中的十二顆靈芯晶體同時爆發刺目光芒，高速旋轉在空中劃出複雜幾何軌跡，構成意識重構場。十二件寶物同時灌輸，修真功法與科技模組融合，生成全新技能樹。劇痛達到頂峰——林塵的意識像被打碎的鏡子散落成億萬碎片，然後按照某種深奧的規律重新組合。新意識從虛無中誕生。</p></div>
+            </div>
+        </div>
+        <div class="scene">
+            <div class="scene-grid">
+                <div class="scene-image"><img src="assets/chapter-73-scene5.jpg" alt="場景5"></div>
+                <div class="scene-text"><div class="scene-number">場景 5</div><h2 class="scene-title">✨ 太虛靈芯覺醒</h2><p class="scene-desc">林塵睜開眼睛，左眼能看到空氣中靈氣粒子的流動軌跡像七彩極光，右眼能解析這些粒子的量子態數據。他同時「感知」到三百米外兩名金丹中期修真者的存在、五公里外三台軍用無人機的狀態。融合完成！意識維度從1.0提升至4.7，解鎖能力：靈質計算、意識場操控、跨維感知。科技與修真在他的手中合而為一。</p></div>
+            </div>
+        </div>
+    </section>
+    <script>
+        var audio = document.getElementById('audio');
+        var audioBtn = document.getElementById('audioBtn');
+        var playIcon = document.getElementById('playIcon');
+        var audioText = document.getElementById('audioText');
+        var isPlaying = false;
+
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                audioBtn.classList.remove('playing');
+                playIcon.textContent = '▶';
+                audioText.textContent = '播放朗讀';
+            } else {
+                audio.play();
+                audioBtn.classList.add('playing');
+                playIcon.textContent = '⏸';
+                audioText.textContent = '暫停';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        audio.addEventListener('ended', function() {
+            audioBtn.classList.remove('playing');
+            playIcon.textContent = '▶';
+            audioText.textContent = '播放朗讀';
+            isPlaying = false;
+        });
+
+        // Scroll animation
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scene').forEach(function(scene) {
+            observer.observe(scene);
+        });
+    </script>
+</body>
+</html>

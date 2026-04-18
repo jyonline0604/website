@@ -356,7 +356,7 @@
         <div class="news-grid" id="newsGrid" style="display:none;"></div>
     </main>
 
-    <div class="last-update" id="lastUpdate"></div>
+    <div class="last-update" id="last-update"></div>
 
     <footer class="footer">
         <p>版權所有 © 2026 科技修真傳 | 作者：大肥喵 | AI 新聞每日更新</p>
@@ -457,7 +457,7 @@
                 document.getElementById('newsGrid').style.display = 'grid';
 
                 if (data.lastUpdate) {
-                    document.getElementById('lastUpdate').textContent =
+                    document.getElementById('last-update').textContent =
                         `最後更新: ${new Date(data.lastUpdate).toLocaleString('zh-TW')}`;
                 }
             } catch (error) {

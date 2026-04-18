@@ -140,7 +140,7 @@
             min-height: 100vh;
             padding: 80px 32px 60px;
             text-align: center;
-            background: url("assets/hero-bg.jpg") center center / cover no-repeat;
+            background: url("assets/book-cover.png") center center / cover no-repeat;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -155,16 +155,69 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(10, 10, 15, 0.5); /* 亮度增加30% (0.7 → 0.5) */
+            background: linear-gradient(
+                to bottom,
+                rgba(10, 10, 15, 0.4) 0%,
+                rgba(10, 10, 15, 0.6) 50%,
+                rgba(10, 10, 15, 0.8) 100%
+            );
             z-index: 1;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
-            margin-top: 64px; /* 為導航列留出空間 */
+            margin-top: 64px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 封面標題覆蓋層 */
+        .cover-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .cover-title-main {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #FFD700;
+            text-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.5),
+                0 4px 8px rgba(0, 0, 0, 0.8),
+                0 8px 16px rgba(0, 0, 0, 0.6);
+            margin-bottom: 16px;
+            letter-spacing: 0.1em;
+        }
+
+        .cover-title-en {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            letter-spacing: 0.2em;
+            margin-bottom: 24px;
+        }
+
+        .cover-title-divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            margin: 0 auto 24px;
+        }
+
+        .cover-title-author {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
         }
 
         .hero-title {
@@ -320,6 +373,21 @@
                 padding: 60px 20px 40px;
             }
             
+            /* 響應式封面標題 */
+            .cover-title-main {
+                font-size: 2.8rem !important;
+                letter-spacing: 0.05em;
+            }
+            
+            .cover-title-en {
+                font-size: 1.1rem !important;
+                letter-spacing: 0.1em;
+            }
+            
+            .cover-title-author {
+                font-size: 1rem !important;
+            }
+            
             .hero-title {
                 font-size: 2.5rem;
             }
@@ -366,7 +434,14 @@
     <!-- 英雄區域（背景圖） -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">科技修真傳</h1>
+            <!-- 封面標題覆蓋層 -->
+            <div class="cover-title">
+                <h1 class="cover-title-main">科技修真傳</h1>
+                <p class="cover-title-en">TECHNOLOGY CULTIVATION CHRONICLES</p>
+                <div class="cover-title-divider"></div>
+                <p class="cover-title-author">作者：大肥喵</p>
+            </div>
+            <h1 class="hero-title" style="display:none;">科技修真傳</h1>
             <p class="hero-subtitle">科技與修真交織的奇幻世界</p>
         </div>
     </section>

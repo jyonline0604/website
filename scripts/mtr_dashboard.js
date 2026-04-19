@@ -44,10 +44,9 @@ async function fetchMTRData(line, station) {
             console.warn('Direct fetch failed, trying CORS proxy...');
         }
         
-        // Fallback to CORS proxies
+        // Fallback to CORS proxies (corsproxy.io is dead since 2025, removed)
         const proxies = [
             `https://api.allorigins.win/raw?url=${encodeURIComponent(directUrl)}`,
-            `https://corsproxy.io/?${encodeURIComponent(directUrl)}`
         ];
         
         for (const proxyUrl of proxies) {

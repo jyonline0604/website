@@ -855,39 +855,9 @@
                 <div class="card-title">
                     <span class="icon">🚊</span>
                     輕鐵到站（屯門碼頭）
-                    <span class="badge">示例數據</span>
                 </div>
                 <div class="transport-list" id="lrtData">
-                    <div class="transport-item">
-                        <span class="line-icon" style="background-color: #F58220;">505</span>
-                        <span class="station">屯門碼頭</span>
-                        <span class="time">3分鐘</span>
-                        <span class="destination">→ 兆康</span>
-                    </div>
-                    <div class="transport-item">
-                        <span class="line-icon" style="background-color: #00A94F;">507</span>
-                        <span class="station">屯門碼頭</span>
-                        <span class="time">5分鐘</span>
-                        <span class="destination">→ 田景</span>
-                    </div>
-                    <div class="transport-item">
-                        <span class="line-icon" style="background-color: #8E3FB0;">610</span>
-                        <span class="station">屯門碼頭</span>
-                        <span class="time">7分鐘</span>
-                        <span class="destination">→ 元朗</span>
-                    </div>
-                    <div class="transport-item">
-                        <span class="line-icon" style="background-color: #F58220;">505</span>
-                        <span class="station">屯門碼頭</span>
-                        <span class="time">10分鐘</span>
-                        <span class="destination">→ 三聖</span>
-                    </div>
-                    <div class="transport-item">
-                        <span class="line-icon" style="background-color: #00A94F;">507</span>
-                        <span class="station">屯門碼頭</span>
-                        <span class="time">12分鐘</span>
-                        <span class="destination">→ 屯門</span>
-                    </div>
+                    <div class="loading">載入中...</div>
                 </div>
             </div>
             <div class="card">
@@ -1035,8 +1005,41 @@
         // ========== 輕鐵 (LRT) ==========
         async function loadLRT() {
             try {
-                const r = await fetch('https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule?station_id=1');
-                const data = await r.json();
+                const directUrl = 'https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule?station_id=1';
+                
+                // Try direct fetch first, then CORS proxies as fallback
+                let data;
+                let response;
+                try {
+                    response = await fetch(directUrl);
+                    if (response.ok) {
+                        data = await response.json();
+                    } else {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                } catch (corsError) {
+                    console.warn('Direct LRT fetch failed, trying CORS proxy...');
+                    const proxies = [
+                        `https://api.allorigins.win/raw?url=${encodeURIComponent(directUrl)}`,
+                        `https://corsproxy.io/?${encodeURIComponent(directUrl)}`
+                    ];
+                    
+                    for (const proxyUrl of proxies) {
+                        try {
+                            response = await fetch(proxyUrl);
+                            if (response.ok) {
+                                data = await response.json();
+                                break;
+                            }
+                        } catch (e) {
+                            continue;
+                        }
+                    }
+                    
+                    if (!data) {
+                        throw new Error('All LRT fetch attempts failed');
+                    }
+                }
                 
                 let html = '';
                 if (data.platform_list) {

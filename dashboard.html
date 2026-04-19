@@ -1031,197 +1031,60 @@
             }
         }
 
-        // ========== MTR ==========
-        // API 支援路線：TKL(將軍澳線), ISL(港島線), TWL(荃灣線)
-        const mtrLines = [
-            // 將軍澳線 (3 stations)
-            { name: '將軍澳線', line: 'TKL', sta: 'TKO', staName: '將軍澳' },
-            { name: '將軍澳線', line: 'TKL', sta: 'POA', staName: '寶琳' },
-            { name: '將軍澳線', line: 'TKL', sta: 'TIK', staName: '調景嶺' },
-            
-            // 港島線 (5 stations)
-            { name: '港島線', line: 'ISL', sta: 'CEN', staName: '中環' },
-            { name: '港島線', line: 'ISL', sta: 'NOP', staName: '北角' },
-            { name: '港島線', line: 'ISL', sta: 'ADM', staName: '金鐘' },
-            { name: '港島線', line: 'ISL', sta: 'CHW', staName: '柴灣' },
-            { name: '港島線', line: 'ISL', sta: 'CAB', staName: '銅鑼灣' },
-            
-            // 荃灣線 (2 stations)
-            { name: '荃灣線', line: 'TWL', sta: 'TST', staName: '尖沙咀' },
-            { name: '荃灣線', line: 'TWL', sta: 'TSW', staName: '荃灣' },
-        ];
-        
-        const destNames = {
-            // 將軍澳線目的地
-            'POA': '寶琳', 'LHP': '康城', 'TIK': '調景嶺',
-            // 港島線目的地
-            'NOP': '北角', 'CEN': '中環', 'ADM': '金鐘', 'CAB': '銅鑼灣',
-            'CHW': '柴灣', 'HRT': '紅磡',
-            // 荃灣線目的地
-            'TST': '尖沙咀', 'TSW': '荃灣', 'YAT': '油塘',
-            // 其他可能目的地
-            'KOT': '觀塘', 'KOW': '九龍塘', 'LMC': '落馬洲',
-            'LOW': '羅湖', 'FAN': '火炭', 'SHT': '沙田', 'TWO': '上水'
+        // ========== MTR Line Status ==========
+        const mtrLineColors = {
+            '觀塘線': '#F68220',
+            '荃灣線': '#B12D33',
+            '港島線': '#005B9E',
+            '將軍澳線': '#A85DC6',
+            '東涌線': '#7C8C97',
+            '迪士尼線': '#F44EAE',
+            '東鐵線': '#AA367D',
+            '屯馬線': '#B20A2B',
+            '南港島線': '#5DBCD2',
+            '機場快綫': '#005B9E'
         };
 
-        async function loadMTR() {
-            let html = '';
-            for (const l of mtrLines) {
-                try {
-                    const r = await fetch(`https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${l.line}&sta=${l.sta}&lang=tc`);
-                    const data = await r.json();
-                    
-                    if (data.data) {
-                        const key = `${l.line}-${l.sta}`;
-                        const sd = data.data[key];
-                        if (sd) {
-                            const trains = [...(sd.UP || []), ...(sd.DOWN || [])].slice(0, 2);
-                            for (const t of trains) {
-                                const dest = destNames[t.dest] || t.dest;
-                                const ttnt = parseInt(t.ttnt);
-                                if (ttnt > 0 && ttnt <= 30) {
-                                    html += `
-                                        <div class="transport-item">
-                                            <span class="transport-name">${l.name} ${l.staName}</span>
-                                            <span class="transport-time">→ ${dest} ${ttnt}分</span>
-                                        </div>
-                                    `;
-                                }
-                            }
-                        }
-                    }
-                } catch (e) {
-                    console.warn('MTR API error:', e.message);
-                }
-            }
-            if (!html) html = '<div class="loading">⚠️ 港鐵數據暫時無法載入</div>';
-            document.getElementById('mtrData').innerHTML = html;
-        }
-
-        // ========== 輕鐵 ==========
-        async function loadLRT() {
+        async function loadMTRStatus() {
             try {
-                const r = await fetch('https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule?station_id=1');
+                const r = await fetch('https://api.mtr.com.hk/V2/service/line/');
+                if (!r.ok) throw new Error('Network response was not ok');
                 const data = await r.json();
                 
-                let html = '';
-                if (data.platform_list) {
-                    let count = 0;
-                    for (const p of data.platform_list) {
-                        for (const route of (p.route_list || [])) {
-                            if (route.dest_ch && route.time_ch && count < 6) {
-                                html += `
-                                    <div class="transport-item">
-                                        <span class="transport-name">輕鐵 ${route.route_no}</span>
-                                        <span class="transport-time">→ ${route.dest_ch} ${route.time_ch}</span>
-                                    </div>
-                                `;
-                                count++;
-                            }
-                        }
-                    }
-                }
-                if (!html) html = '<div class="loading">⚠️ 輕鐵數據暫時無法載入</div>';
-                document.getElementById('lrtData').innerHTML = html;
-            } catch (e) {
-                console.warn('LRT API error:', e.message);
-                document.getElementById('lrtData').innerHTML = '<div class="loading">⚠️ 輕鐵數據暫時無法載入</div>';
-            }
-        }
-
-        // ========== 行車時間 ==========
-        const locNames = {
-            'H1': '告士打道→', 'H2': '告士打道→', 'H3': '干諾道中→',
-            'H4': '海底隧道→', 'H5': '西隧→', 'H6': '東隧→',
-            'H7': '獅隧→', 'H8': '城隧→', 'H9': '大老山→'
-        };
-        const destMap = {
-            'CH': '紅隧', 'EH': '東隧', 'WH': '西隧', 'SHT': '獅隧',
-            'CTT': '城隧', 'TTL': '大老山', 'ABT': '機場'
-        };
-
-        async function loadJourney() {
-            try {
-                const r = await fetch('https://resource.data.one.gov.hk/td/jss/Journeytimev2.xml');
-                const text = await r.text();
+                let html = '<div class="mtr-lines-grid">';
                 
-                const parser = new DOMParser();
-                const xml = parser.parseFromString(text, 'text/xml');
-                const items = xml.querySelectorAll('jtis_journey_time');
+                // MTR has 10 lines: Kwun Tong, Tsuen Wan, Island, Tseung Kwan O, Tung Chung, Disneyland Resort, East Rail, Tuen Ma, South Island Line, Airport Express
+                const lineNames = ['觀塘線', '荃灣線', '港島線', '將軍澳線', '東涌線', '迪士尼線', '東鐵線', '屯馬線', '南港島線', '機場快綫'];
                 
-                let html = '';
-                let count = 0;
-                for (const item of items) {
-                    const loc = item.querySelector('LOCATION_ID').textContent;
-                    const dest = item.querySelector('DESTINATION_ID').textContent;
-                    const time = item.querySelector('JOURNEY_DATA').textContent;
-                    const color = item.querySelector('COLOUR_ID').textContent;
+                for (const name of lineNames) {
+                    const lineData = data.lines?.find(l => l.name === name || l.name.includes(name)) || {};
+                    const status = lineData.status || '未知';
+                    const color = mtrLineColors[name] || '#666';
                     
-                    const locName = locNames[loc] || loc + '→';
-                    const destName = destMap[dest] || dest;
-                    
-                    const colorCls = color === '1' ? 'journey-green' : color === '2' ? 'journey-yellow' : color === '3' ? 'journey-red' : 'journey-purple';
+                    let statusColor = '#4CAF50'; // Green for normal
+                    if (status.includes('暫停') || status.includes('延誤')) statusColor = '#F44336'; // Red
+                    else if (status.includes('緩慢')) statusColor = '#FF9800'; // Orange
                     
                     html += `
-                        <div class="journey-item">
-                            <div class="journey-route">
-                                <div class="journey-from">${locName} ${destName}</div>
-                            </div>
-                            <div class="journey-time">
-                                <span class="journey-mins ${colorCls}">${time}</span>
-                                <span class="journey-unit">分鐘</span>
-                            </div>
+                        <div class="mtr-line-card" style="border-left: 4px solid ${color};">
+                            <span class="line-name">${name}</span>
+                            <span class="line-status" style="color: ${statusColor};">${status}</span>
                         </div>
                     `;
-                    count++;
-                    if (count >= 25) break;
                 }
-                if (!html) html = '<div class="loading">無數據</div>';
-                document.getElementById('journeyData').innerHTML = html;
-            } catch (e) {
-                document.getElementById('journeyData').innerHTML = '<div class="loading">無法載入</div>';
-            }
-        }
-
-        // ========== 醫院 ==========
-        async function loadHospitals() {
-            try {
-                const datasetId = 'fhb_rcd_1636947932221_94410';
-                const r = await fetch(`https://portal.csdi.gov.hk/server/services/common/${datasetId}/MapServer/WFSServer?service=wfs&version=2.0.0&request=GetFeature&typename=geotagging&outputFormat=geojson`);
-                const data = await r.json();
                 
-                let html = '';
-                for (const f of data.features.slice(0, 18)) {
-                    const p = f.properties;
-                    const name = p.hospName_TC || p.hospName_EN || '';
-                    const link = p.JSON_TC || '#';
-                    
-                    if (name) {
-                        html += `
-                            <div class="hospital-item">
-                                <span class="hospital-name">${name}</span>
-                                <a href="${link}" target="_blank" class="hospital-link">急症室等候 →</a>
-                            </div>
-                        `;
-                    }
-                }
-                if (!html) html = '<div class="loading">無數據</div>';
-                document.getElementById('hospitalData').innerHTML = html;
+                html += '</div>';
+                document.getElementById('mtrData').innerHTML = html;
             } catch (e) {
-                document.getElementById('hospitalData').innerHTML = '<div class="loading">無法載入</div>';
+                console.warn('MTR API error:', e.message);
+                document.getElementById('mtrData').innerHTML = '<div class="loading">⚠️ 港鐵數據暫時無法載入</div>';
             }
         }
 
-        // 初始化
-        loadAQHI();
-        loadForecast();
-        loadMTR();
-        loadLRT();
-        loadJourney();
-        loadHospitals();
+        // Load MTR status on page load and refresh every 2 minutes
+        loadMTRStatus();
+        setInterval(loadMTRStatus, 120000);
 
-        // 每分鐘刷新
-        setInterval(loadMTR, 60000);
         setInterval(loadLRT, 60000);
         setInterval(loadJourney, 120000);
     </script>

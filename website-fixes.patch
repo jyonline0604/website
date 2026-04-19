@@ -1,0 +1,1438 @@
+diff --git a/_redirects b/_redirects
+new file mode 100644
+index 00000000..98256f93
+--- /dev/null
++++ b/_redirects
+@@ -0,0 +1 @@
++/ /home.html 301
+diff --git a/apply_fixes.py b/apply_fixes.py
+new file mode 100644
+index 00000000..628ebbea
+--- /dev/null
++++ b/apply_fixes.py
+@@ -0,0 +1,316 @@
++#!/usr/bin/env python3
++"""Apply all website fixes to kofhk.com repository."""
++import re, os, glob
++
++BASE = '/tmp/kofhk-fix'
++
++# ============================================================
++# FIX 1: chapters.html — Remove stray closing brace in Script #3
++# ============================================================
++print("=== FIX 1: Fix JS syntax error in chapters.html ===")
++with open(f'{BASE}/chapters.html', 'r') as f:
++    content = f.read()
++
++# The issue: after the offline/online event listeners and if (!navigator.onLine),
++# there's a stray } that doesn't match any opening brace.
++old_block = '''            // 初始檢查
++            if (!navigator.onLine) {
++                document.documentElement.classList.add('offline');
++            }
++        }
++        
++        // 添加到主屏幕提示（僅在移動端顯示）'''
++
++new_block = '''            // 初始檢查
++            if (!navigator.onLine) {
++                document.documentElement.classList.add('offline');
++            }
++            
++            // 添加到主屏幕提示（僅在移動端顯示）'''
++
++if old_block in content:
++    content = content.replace(old_block, new_block)
++    print("  ✅ Removed stray closing brace")
++else:
++    print("  ⚠️ Pattern not found — checking alternative...")
++    # Try a more flexible approach
++    lines = content.split('\n')
++    fixed_lines = []
++    skip_next_brace = False
++    for i, line in enumerate(lines):
++        stripped = line.strip()
++        if stripped == '}' and i > 0 and \
++           'if (!navigator.onLine)' in '\n'.join(lines[max(0,i-5):i]):
++            print(f"  ✅ Found stray }} at line {i+1}, removing")
++            continue
++        fixed_lines.append(line)
++    content = '\n'.join(fixed_lines)
++
++with open(f'{BASE}/chapters.html', 'w') as f:
++    f.write(content)
++
++# ============================================================
++# FIX 2: Create _redirects file for root URL 301 redirect
++# ============================================================
++print("\n=== FIX 2: Create _redirects for root URL ===")
++with open(f'{BASE}/_redirects', 'w') as f:
++    f.write('/ /home.html 301\n')
++print("  ✅ Created _redirects file")
++
++# ============================================================
++# FIX 3: Fix PWA manifest icon paths (relative -> absolute)
++# ============================================================
++print("\n=== FIX 3: Fix PWA manifest icon paths ===")
++with open(f'{BASE}/assets/site.webmanifest', 'r') as f:
++    manifest = f.read()
++
++sizes = [72, 96, 128, 144, 152, 192, 384, 512]
++for size in sizes:
++    old = f'"src": "favicon-{size}x{size}.png"'
++    new = f'"src": "/assets/favicon-{size}x{size}.png"'
++    manifest = manifest.replace(old, new)
++
++# Also fix start_url to point to home.html
++manifest = manifest.replace('"start_url": "/"', '"start_url": "/home.html"')
++
++with open(f'{BASE}/assets/site.webmanifest', 'w') as f:
++    f.write(manifest)
++print("  ✅ Fixed icon paths and start_url")
++
++# ============================================================
++# FIX 4: Add canonical tags + robots meta to all main pages
++# ============================================================
++print("\n=== FIX 4: Add canonical tags + robots meta ===")
++
++main_pages = {
++    'home.html': '/home.html',
++    'chapters.html': '/chapters.html', 
++    'news.html': '/news.html',
++    'finance.html': '/finance.html',
++    'dashboard.html': '/dashboard.html',
++    'author.html': '/author.html',
++    'av-novels.html': '/av-novels.html',
++}
++
++for page, canonical in main_pages.items():
++    path = f'{BASE}/{page}'
++    if not os.path.exists(path):
++        print(f"  ⚠️ {page} not found")
++        continue
++    
++    with open(path, 'r') as f:
++        html = f.read()
++    
++    modified = False
++    
++    # Add canonical tag (after <title> closing)
++    if '<link rel="canonical"' not in html:
++        title_pattern = r'</title>'
++        replacement = f'</title>\n    <link rel="canonical" href="{canonical}">'
++        html = re.sub(title_pattern, replacement, html, count=1)
++        modified = True
++    
++    # Add robots meta (after viewport meta or after charset)
++    if '<meta name="robots"' not in html:
++        # Insert after <title> line
++        title_line = f'<link rel="canonical" href="{canonical}">'
++        insertion = '\n    <meta name="robots" content="index, follow, max-image-preview:large">'
++        pos = html.find(title_line)
++        if pos >= 0:
++            end_pos = html.find('>', pos) + 1
++            html = html[:end_pos] + insertion + html[end_pos:]
++            modified = True
++    
++    # Fix manifest path to absolute
++    if 'href="assets/site.webmanifest"' in html:
++        html = html.replace('href="assets/site.webmanifest"', 'href="/assets/site.webmanifest"')
++        modified = True
++    
++    # Fix favicon paths to absolute (in head section)
++    for fav in ['favicon.ico', 'favicon-32x32.png', 'favicon-16x16.png', 'apple-touch-icon.png']:
++        old_href = f'href="assets/{fav}"'
++        new_href = f'href="/assets/{fav}"'
++        if old_href in html:
++            html = html.replace(old_href, new_href)
++            modified = True
++    
++    if modified:
++        with open(path, 'w') as f:
++            f.write(html)
++        print(f"  ✅ {page}: Added canonical + robots meta + fixed asset paths")
++    else:
++        print(f"  ⏭️ {page}: Already up to date")
++
++# ============================================================
++# FIX 5: Fix dashboard.html lang attribute (zh-TW -> zh-Hant)
++# ============================================================
++print("\n=== FIX 5: Fix dashboard.html lang attribute ===")
++with open(f'{BASE}/dashboard.html', 'r') as f:
++    html = f.read()
++
++if 'lang="zh-TW"' in html:
++    html = html.replace('lang="zh-TW"', 'lang="zh-Hant"')
++    with open(f'{BASE}/dashboard.html', 'w') as f:
++        f.write(html)
++    print("  ✅ Changed lang from zh-TW to zh-Hant")
++else:
++    print("  ⏭️ Already correct")
++
++# ============================================================
++# FIX 6: Fix av-novels.html navigation order (add missing dashboard link)
++# ============================================================
++print("\n=== FIX 6: Fix av-novels.html navigation ===")
++with open(f'{BASE}/av-novels.html', 'r') as f:
++    html = f.read()
++
++# Check if dashboard link exists in nav
++if '<a href="/dashboard.html"' not in html and '<a href="dashboard.html"' not in html:
++    # Find the author link in navigation and add dashboard before it
++    old_nav = '<a href="author.html" class="nav-link">作者</a>'
++    new_nav = '''<a href="dashboard.html" class="nav-link">城市儀表板</a>
++                    <a href="author.html" class="nav-link">作者</a>'''
++    
++    # Try both relative and absolute paths
++    if old_nav in html:
++        html = html.replace(old_nav, new_nav)
++        with open(f'{BASE}/av-novels.html', 'w') as f:
++            f.write(html)
++        print("  ✅ Added dashboard link to navigation")
++    else:
++        # Try different nav structure
++        if '<a href="author.html"' in html and '<a href="/dashboard.html"' not in html:
++            html = re.sub(
++                r'<a href=["\']author\.html["\'][^>]*>作者</a>',
++                new_nav,
++                html
++            )
++            with open(f'{BASE}/av-novels.html', 'w') as f:
++                f.write(html)
++            print("  ✅ Added dashboard link to navigation (alt pattern)")
++        else:
++            print("  ⚠️ Could not find nav structure to fix")
++else:
++    print("  ⏭️ Dashboard link already exists")
++
++# ============================================================
++# FIX 7: Batch fix chapter titles (chapter-66 through chapter-123)
++# Remove " - 科技修真傳" suffix from <title> and <h1> tags
++# ============================================================
++print("\n=== FIX 7: Fix chapter title format (chapters 66-123) ===")
++
++fixed_count = 0
++for i in range(66, 124):
++    path = f'{BASE}/chapter-{i}.html'
++    if not os.path.exists(path):
++        continue
++    
++    with open(path, 'r') as f:
++        html = f.read()
++    
++    original = html
++    
++    # Fix <title> — remove " - 科技修真傳" suffix
++    title_pattern = r'<title>(第\d+章[^<]*)\s*-\s*科技修真傳</title>'
++    replacement = r'<title>\1</title>'
++    html = re.sub(title_pattern, replacement, html)
++    
++    # Fix <h1> — remove " - 科技修真傳" suffix  
++    h1_pattern = r'<h1>(第\d+章[^<]*)\s*-\s*科技修真傳</h1>'
++    replacement_h1 = r'<h1>\1</h1>'
++    html = re.sub(h1_pattern, replacement_h1, html)
++    
++    if html != original:
++        with open(path, 'w') as f:
++            f.write(html)
++        fixed_count += 1
++
++print(f"  ✅ Fixed {fixed_count} chapter files")
++
++# ============================================================
++# FIX 8: Check and fix service worker registration
++# ============================================================
++print("\n=== FIX 8: Fix Service Worker registration ===")
++
++# Check if sw.js exists
++sw_path = f'{BASE}/sw.js'
++if os.path.exists(sw_path):
++    print(f"  ✅ sw.js already exists at root")
++else:
++    # Create a basic service worker
++    with open(sw_path, 'w') as f:
++        f.write('''const CACHE_NAME = 'kofhk-v2';
++const ASSETS_TO_CACHE = [
++    '/',
++    '/home.html',
++    '/chapters.html',
++    '/news.html',
++    '/finance.html',
++    '/dashboard.html',
++    '/author.html',
++    '/av-novels.html',
++    '/assets/site.webmanifest',
++];
++
++self.addEventListener('install', (event) => {
++    event.waitUntil(
++        caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
++    );
++});
++
++self.addEventListener('activate', (event) => {
++    event.waitUntil(
++        caches.keys().then((keys) => Promise.all(
++            keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
++        ))
++    );
++});
++
++self.addEventListener('fetch', (event) => {
++    event.respondWith(
++        caches.match(event.request).then((cached) => {
++            return cached || fetch(event.request).then((response) => {
++                if (response.status === 200) {
++                    const clone = response.clone();
++                    caches.open(CACHE_NAME).then((c) => c.put(event.request, clone));
++                }
++                return response;
++            });
++        })
++    );
++});
++''')
++    print("  ✅ Created sw.js service worker")
++
++# Fix SW registration in all pages to point to /sw.js instead of /assets/sw.js
++for page in main_pages:
++    path = f'{BASE}/{page}'
++    if not os.path.exists(path):
++        continue
++    
++    with open(path, 'r') as f:
++        html = f.read()
++    
++    # Fix SW registration path
++    old_sw = "navigator.serviceWorker.register('/assets/sw.js'"
++    new_sw = "navigator.serviceWorker.register('/sw.js'"
++    if old_sw in html:
++        html = html.replace(old_sw, new_sw)
++        with open(path, 'w') as f:
++            f.write(html)
++        print(f"  ✅ Fixed SW registration path in {page}")
++
++# ============================================================
++# FIX 9: Fix root page (index.html / home.html redirect issue)
++# Make sure index.html redirects properly
++# ============================================================
++print("\n=== FIX 9: Check root page handling ===")
++if os.path.exists(f'{BASE}/index.html'):
++    with open(f'{BASE}/index.html', 'r') as f:
++        html = f.read()
++    
++    # If index.html is a redirect page, update it to use meta refresh instead of JS
++    if 'window.location.href' in html or 'location.href' in html:
++        print("  ⚠️ index.html uses JS redirect — _redirects file should handle this")
++        print("  ✅ GitHub Pages + _redirects will serve /home.html for root URL")
++
++print("\n=== ALL FIXES APPLIED ===")
+diff --git a/assets/site.webmanifest b/assets/site.webmanifest
+index c40ba317..c4b9b098 100644
+--- a/assets/site.webmanifest
++++ b/assets/site.webmanifest
+@@ -2,48 +2,48 @@
+   "name": "科技修真傳",
+   "short_name": "科技修真傳",
+   "description": "融合科技與修真的AI生成小說",
+-  "start_url": "/",
++  "start_url": "/home.html",
+   "display": "standalone",
+   "background_color": "#1e293b",
+   "theme_color": "#1e293b",
+   "icons": [
+     {
+-      "src": "favicon-72x72.png",
++      "src": "/assets/favicon-72x72.png",
+       "sizes": "72x72",
+       "type": "image/png"
+     },
+     {
+-      "src": "favicon-96x96.png",
++      "src": "/assets/favicon-96x96.png",
+       "sizes": "96x96",
+       "type": "image/png"
+     },
+     {
+-      "src": "favicon-128x128.png",
++      "src": "/assets/favicon-128x128.png",
+       "sizes": "128x128",
+       "type": "image/png"
+     },
+     {
+-      "src": "favicon-144x144.png",
++      "src": "/assets/favicon-144x144.png",
+       "sizes": "144x144",
+       "type": "image/png"
+     },
+     {
+-      "src": "favicon-152x152.png",
++      "src": "/assets/favicon-152x152.png",
+       "sizes": "152x152",
+       "type": "image/png"
+     },
+     {
+-      "src": "favicon-192x192.png",
++      "src": "/assets/favicon-192x192.png",
+       "sizes": "192x192",
+       "type": "image/png"
+     },
+     {
+-      "src": "favicon-384x384.png",
++      "src": "/assets/favicon-384x384.png",
+       "sizes": "384x384",
+       "type": "image/png"
+     },
+     {
+-      "src": "favicon-512x512.png",
++      "src": "/assets/favicon-512x512.png",
+       "sizes": "512x512",
+       "type": "image/png"
+     }
+diff --git a/author.html b/author.html
+index 89a12f6d..7a276c5a 100644
+--- a/author.html
++++ b/author.html
+@@ -2,17 +2,19 @@
+ <html lang="zh-Hant">
+ <head>
+     <!-- Favicon -->
+-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+-    <link rel="manifest" href="assets/site.webmanifest">
++    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
++    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
++    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
++    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
++    <link rel="manifest" href="/assets/site.webmanifest">
+     <meta name="theme-color" content="#1e293b">
+ 
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="大肥喵 - 《科技修真傳》作者介紹。創作理念、作品集、聯繫方式。">
+     <title>關於作者 - 科技修真傳</title>
++    <link rel="canonical" href="/author.html">
++    <meta name="robots" content="index, follow, max-image-preview:large">
+     <!-- Open Graph 標籤 -->
+     <meta property="og:type" content="website">
+     <meta property="og:site_name" content="科技修真傳">
+diff --git a/av-novels.html b/av-novels.html
+index 4923ba9d..2fc3d6bc 100644
+--- a/av-novels.html
++++ b/av-novels.html
+@@ -2,17 +2,19 @@
+ <html lang="zh-Hant">
+ <head>
+     <!-- Favicon -->
+-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+-    <link rel="manifest" href="assets/site.webmanifest">
++    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
++    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
++    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
++    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
++    <link rel="manifest" href="/assets/site.webmanifest">
+     <meta name="theme-color" content="#1e293b">
+ 
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》有聲畫版本 - 71章圖文並茂+完整朗讀。沉浸式體驗科技修真世界，免費在線觀看。">
+     <title>🎬 有聲畫版本 - 科技修真傳 | 71章圖文並茂+完整朗讀</title>
++    <link rel="canonical" href="/av-novels.html">
++    <meta name="robots" content="index, follow, max-image-preview:large">
+     <!-- Open Graph 標籤 -->
+     <meta property="og:type" content="website">
+     <meta property="og:site_name" content="科技修真傳">
+diff --git a/chapter-100.html b/chapter-100.html
+index 3ad6ff94..459b27dd 100644
+--- a/chapter-100.html
++++ b/chapter-100.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第100章：虛空試煉 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第100章：虛空試煉 - 科技修真傳。第100章：虛空試煉 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第100章：虛空試煉 - 科技修真傳</title>
++    <title>第100章：虛空試煉 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-101.html b/chapter-101.html
+index 78dcf6ad..2d8a9d9f 100644
+--- a/chapter-101.html
++++ b/chapter-101.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第101章：科技修真 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第101章：科技修真 - 科技修真傳。第101章：科技修真 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第101章：科技修真 - 科技修真傳</title>
++    <title>第101章：科技修真 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-102.html b/chapter-102.html
+index b0e846a6..d76bf60c 100644
+--- a/chapter-102.html
++++ b/chapter-102.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第102章：奇蹟逆轉 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第102章：奇蹟逆轉 - 科技修真傳。第102章：奇蹟逆轉 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第102章：奇蹟逆轉 - 科技修真傳</title>
++    <title>第102章：奇蹟逆轉 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-103.html b/chapter-103.html
+index 93286555..1ce2e9c9 100644
+--- a/chapter-103.html
++++ b/chapter-103.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第103章：多維空間 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第103章：多維空間 - 科技修真傳。第103章：多維空間 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第103章：多維空間 - 科技修真傳</title>
++    <title>第103章：多維空間 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-104.html b/chapter-104.html
+index dbece6cf..57609949 100644
+--- a/chapter-104.html
++++ b/chapter-104.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第104章：神經網絡 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第104章：神經網絡 - 科技修真傳。第104章：神經網絡 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第104章：神經網絡 - 科技修真傳</title>
++    <title>第104章：神經網絡 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-105.html b/chapter-105.html
+index 40cadc28..28f6e76b 100644
+--- a/chapter-105.html
++++ b/chapter-105.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第105章：納米意識 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第105章：納米意識 - 科技修真傳。第105章：納米意識 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第105章：納米意識 - 科技修真傳</title>
++    <title>第105章：納米意識 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-106.html b/chapter-106.html
+index 94c914c8..a7ee703d 100644
+--- a/chapter-106.html
++++ b/chapter-106.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第106章：數據元神 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第106章：數據元神 - 科技修真傳。第106章：數據元神 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第106章：數據元神 - 科技修真傳</title>
++    <title>第106章：數據元神 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-107.html b/chapter-107.html
+index 557cfa56..199803ea 100644
+--- a/chapter-107.html
++++ b/chapter-107.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第107章：絕地反擊 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第107章：絕地反擊 - 科技修真傳。第107章：絕地反擊 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第107章：絕地反擊 - 科技修真傳</title>
++    <title>第107章：絕地反擊 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-108.html b/chapter-108.html
+index d4f08680..7dab9ba3 100644
+--- a/chapter-108.html
++++ b/chapter-108.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第108章：數據傳輸 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第108章：數據傳輸 - 科技修真傳。第108章：數據傳輸 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第108章：數據傳輸 - 科技修真傳</title>
++    <title>第108章：數據傳輸 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-109.html b/chapter-109.html
+index 32497ad2..7275f170 100644
+--- a/chapter-109.html
++++ b/chapter-109.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第109章：能量耗盡 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第109章：能量耗盡 - 科技修真傳。第109章：能量耗盡 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第109章：能量耗盡 - 科技修真傳</title>
++    <title>第109章：能量耗盡 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-110.html b/chapter-110.html
+index 4c544f3e..acefcfe7 100644
+--- a/chapter-110.html
++++ b/chapter-110.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第110章：天劫降臨 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第110章：天劫降臨 - 科技修真傳。第110章：天劫降臨 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第110章：天劫降臨 - 科技修真傳</title>
++    <title>第110章：天劫降臨 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-111.html b/chapter-111.html
+index 959e258b..0b0dcf5d 100644
+--- a/chapter-111.html
++++ b/chapter-111.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第111章：腦機接口 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第111章：腦機接口 - 科技修真傳。第111章：腦機接口 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第111章：腦機接口 - 科技修真傳</title>
++    <title>第111章：腦機接口 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-112.html b/chapter-112.html
+index 4f1e1fa7..3604e6a0 100644
+--- a/chapter-112.html
++++ b/chapter-112.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第112章：量子晶片 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第112章：量子晶片 - 科技修真傳。第112章：量子晶片 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第112章：量子晶片 - 科技修真傳</title>
++    <title>第112章：量子晶片 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-113.html b/chapter-113.html
+index 3ab0249e..c86c0666 100644
+--- a/chapter-113.html
++++ b/chapter-113.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第113章：遠古密碼 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第113章：遠古密碼 - 科技修真傳。第113章：遠古密碼 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第113章：遠古密碼 - 科技修真傳</title>
++    <title>第113章：遠古密碼 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-114.html b/chapter-114.html
+index 7061c786..de164281 100644
+--- a/chapter-114.html
++++ b/chapter-114.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第114章：超弦理論 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第114章：超弦理論 - 科技修真傳。第114章：超弦理論 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第114章：超弦理論 - 科技修真傳</title>
++    <title>第114章：超弦理論 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-115.html b/chapter-115.html
+index 09476847..2b43e05d 100644
+--- a/chapter-115.html
++++ b/chapter-115.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第115章：異世界 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第115章：異世界 - 科技修真傳。第115章：異世界 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第115章：異世界 - 科技修真傳</title>
++    <title>第115章：異世界 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-116.html b/chapter-116.html
+index a1d68e1b..9dd9cfe7 100644
+--- a/chapter-116.html
++++ b/chapter-116.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第116章：最後一搏 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第116章：最後一搏 - 科技修真傳。第116章：最後一搏 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第116章：最後一搏 - 科技修真傳</title>
++    <title>第116章：最後一搏 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-117.html b/chapter-117.html
+index 8ee1ba46..e31d8678 100644
+--- a/chapter-117.html
++++ b/chapter-117.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第117章：靈魂下載 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第117章：靈魂下載 - 科技修真傳。第117章：靈魂下載 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第117章：靈魂下載 - 科技修真傳</title>
++    <title>第117章：靈魂下載 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-118.html b/chapter-118.html
+index 70224729..47d424fc 100644
+--- a/chapter-118.html
++++ b/chapter-118.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第118章：意識投射 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第118章：意識投射 - 科技修真傳。第118章：意識投射 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第118章：意識投射 - 科技修真傳</title>
++    <title>第118章：意識投射 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-119.html b/chapter-119.html
+index 6181490f..127ac57f 100644
+--- a/chapter-119.html
++++ b/chapter-119.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第119章：數據修仙 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第119章：數據修仙 - 科技修真傳。第119章：數據修仙 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第119章：數據修仙 - 科技修真傳</title>
++    <title>第119章：數據修仙 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-120.html b/chapter-120.html
+index ce20b8c2..d1e229f7 100644
+--- a/chapter-120.html
++++ b/chapter-120.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第120章：量子意識 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第120章：量子意識 - 科技修真傳。第120章：量子意識 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --t... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第120章：量子意識 - 科技修真傳</title>
++    <title>第120章：量子意識 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-121.html b/chapter-121.html
+index 99afd761..a0f1c209 100644
+--- a/chapter-121.html
++++ b/chapter-121.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第1章：科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第0章：第0章。第121章：神秘遺跡 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"]... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第121章：神秘遺跡 - 科技修真傳</title>
++    <title>第121章：神秘遺跡 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-122.html b/chapter-122.html
+index 38add67b..a5b6e3d4 100644
+--- a/chapter-122.html
++++ b/chapter-122.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第1章：科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第0章：第0章。第122章：虛擬實境 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"]... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第122章：虛擬實境 - 科技修真傳</title>
++    <title>第122章：虛擬實境 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-123.html b/chapter-123.html
+index 3ff45b37..0ea190e1 100644
+--- a/chapter-123.html
++++ b/chapter-123.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第1章：科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第0章：第0章。第123章：終極對決 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"]... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第123章：終極對決 - 科技修真傳</title>
++    <title>第123章：終極對決 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-66.html b/chapter-66.html
+index 08f23f7a..ad155f5c 100644
+--- a/chapter-66.html
++++ b/chapter-66.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第66章：人工智能 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第66章：人工智能 - 科技修真傳。第66章：人工智能 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第66章：人工智能 - 科技修真傳</title>
++    <title>第66章：人工智能 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-67.html b/chapter-67.html
+index a8d67532..86b9ee39 100644
+--- a/chapter-67.html
++++ b/chapter-67.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第67章：數字元神 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第67章：數字元神 - 科技修真傳。第67章：數字元神 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第67章：數字元神 - 科技修真傳</title>
++    <title>第67章：數字元神 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-68.html b/chapter-68.html
+index 48ff6637..8d849d6d 100644
+--- a/chapter-68.html
++++ b/chapter-68.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第68章：納米修真 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第68章：納米修真 - 科技修真傳。第68章：納米修真 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第68章：納米修真 - 科技修真傳</title>
++    <title>第68章：納米修真 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-69.html b/chapter-69.html
+index 26cec7b5..86e8d1ef 100644
+--- a/chapter-69.html
++++ b/chapter-69.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第69章：能量風暴 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第69章：能量風暴 - 科技修真傳。第69章：能量風暴 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第69章：能量風暴 - 科技修真傳</title>
++    <title>第69章：能量風暴 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-70.html b/chapter-70.html
+index f2e1ffec..517c3fda 100644
+--- a/chapter-70.html
++++ b/chapter-70.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第70章：靈芯共鳴 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第70章：靈芯共鳴 - 科技修真傳。第70章：靈芯共鳴 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第70章：靈芯共鳴 - 科技修真傳</title>
++    <title>第70章：靈芯共鳴 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-71.html b/chapter-71.html
+index ea68b46c..7b25c88c 100644
+--- a/chapter-71.html
++++ b/chapter-71.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第71章：數據築基 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第71章：數據築基 - 科技修真傳。第71章：數據築基 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第71章：數據築基 - 科技修真傳</title>
++    <title>第71章：數據築基 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-72.html b/chapter-72.html
+index e1b1240b..6343e107 100644
+--- a/chapter-72.html
++++ b/chapter-72.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第72章：修真奇遇 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第72章：修真奇遇 - 科技修真傳。第72章：修真奇遇 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第72章：修真奇遇 - 科技修真傳</title>
++    <title>第72章：修真奇遇 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-73.html b/chapter-73.html
+index 2874f8e7..148e6c5d 100644
+--- a/chapter-73.html
++++ b/chapter-73.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第73章：意識融合 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第73章：意識融合 - 科技修真傳。第73章：意識融合 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第73章：意識融合 - 科技修真傳</title>
++    <title>第73章：意識融合 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-74.html b/chapter-74.html
+index 26a6b485..ca490afb 100644
+--- a/chapter-74.html
++++ b/chapter-74.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第74章：數據彼岸 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第74章：數據彼岸 - 科技修真傳。第74章：數據彼岸 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第74章：數據彼岸 - 科技修真傳</title>
++    <title>第74章：數據彼岸 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-75.html b/chapter-75.html
+index dfffb345..112a467a 100644
+--- a/chapter-75.html
++++ b/chapter-75.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第75章：靈魂編程 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第75章：靈魂編程 - 科技修真傳。第75章：靈魂編程 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第75章：靈魂編程 - 科技修真傳</title>
++    <title>第75章：靈魂編程 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-76.html b/chapter-76.html
+index 9f796086..2bb03bd8 100644
+--- a/chapter-76.html
++++ b/chapter-76.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第76章：修真科技 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第76章：修真科技 - 科技修真傳。第76章：修真科技 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第76章：修真科技 - 科技修真傳</title>
++    <title>第76章：修真科技 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-77.html b/chapter-77.html
+index 05d45b8b..4ffddffd 100644
+--- a/chapter-77.html
++++ b/chapter-77.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第77章：虛擬道場 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第77章：虛擬道場 - 科技修真傳。第77章：虛擬道場 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第77章：虛擬道場 - 科技修真傳</title>
++    <title>第77章：虛擬道場 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-78.html b/chapter-78.html
+index 9069a210..793c2b79 100644
+--- a/chapter-78.html
++++ b/chapter-78.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第78章：量子網關 - 科技修真傳 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第78章：量子網關 - 科技修真傳 - 科技修真傳。第78章：量子網關 - 科技修真傳 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFB... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第78章：量子網關 - 科技修真傳</title>
++    <title>第78章：量子網關 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+@@ -554,7 +554,7 @@
+     <!-- Main Content -->
+     <main class="main">
+         <header class="chapter-header">
+-            <h1>第78章：量子網關 - 科技修真傳</h1>
++            <h1>第78章：量子網關 </h1>
+             <p class="author">作者：大肥喵</p>
+         </header>
+         <div class="content">
+diff --git a/chapter-79.html b/chapter-79.html
+index cec4a2c1..51294c9b 100644
+--- a/chapter-79.html
++++ b/chapter-79.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第79章：系統升級 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第79章：系統升級 - 科技修真傳。第79章：系統升級 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第79章：系統升級 - 科技修真傳</title>
++    <title>第79章：系統升級 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-80.html b/chapter-80.html
+index d5bb8533..481ea16a 100644
+--- a/chapter-80.html
++++ b/chapter-80.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第80章：虛擬實境 - 科技修真傳 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第80章：虛擬實境 - 科技修真傳 - 科技修真傳。第80章：虛擬實境 - 科技修真傳 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFB... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第80章：虛擬實境 - 科技修真傳</title>
++    <title>第80章：虛擬實境 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+@@ -554,7 +554,7 @@
+     <!-- Main Content -->
+     <main class="main">
+         <header class="chapter-header">
+-            <h1>第80章：虛擬實境 - 科技修真傳</h1>
++            <h1>第80章：虛擬實境 </h1>
+             <p class="author">作者：大肥喵</p>
+         </header>
+         <div class="content">
+diff --git a/chapter-81.html b/chapter-81.html
+index 2f3ae4d8..812fa73b 100644
+--- a/chapter-81.html
++++ b/chapter-81.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第81章：量子經脈 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第81章：量子經脈 - 科技修真傳。第81章：量子經脈 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第81章：量子經脈 - 科技修真傳</title>
++    <title>第81章：量子經脈 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-82.html b/chapter-82.html
+index 830f5104..f8fb2336 100644
+--- a/chapter-82.html
++++ b/chapter-82.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第82章：神經連結 - 科技修真傳 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第82章：神經連結 - 科技修真傳 - 科技修真傳。第82章：神經連結 - 科技修真傳 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFB... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第82章：神經連結 - 科技修真傳</title>
++    <title>第82章：神經連結 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+@@ -554,7 +554,7 @@
+     <!-- Main Content -->
+     <main class="main">
+         <header class="chapter-header">
+-            <h1>第82章：神經連結 - 科技修真傳</h1>
++            <h1>第82章：神經連結 </h1>
+             <p class="author">作者：大肥喵</p>
+         </header>
+         <div class="content">
+diff --git a/chapter-83.html b/chapter-83.html
+index be7443eb..9adfd8f3 100644
+--- a/chapter-83.html
++++ b/chapter-83.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第83章：數據築基 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第83章：數據築基 - 科技修真傳。第83章：數據築基 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第83章：數據築基 - 科技修真傳</title>
++    <title>第83章：數據築基 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-84.html b/chapter-84.html
+index 44f83706..007fbc6b 100644
+--- a/chapter-84.html
++++ b/chapter-84.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第84章：虛擬現實 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第84章：虛擬現實 - 科技修真傳。第84章：虛擬現實 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第84章：虛擬現實 - 科技修真傳</title>
++    <title>第84章：虛擬現實 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-85.html b/chapter-85.html
+index e6845228..39aa1379 100644
+--- a/chapter-85.html
++++ b/chapter-85.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第85章：系統升級 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第85章：系統升級 - 科技修真傳。第85章：系統升級 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第85章：系統升級 - 科技修真傳</title>
++    <title>第85章：系統升級 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-86.html b/chapter-86.html
+index ef95a3fb..476eb956 100644
+--- a/chapter-86.html
++++ b/chapter-86.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第86章：數字元神 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第86章：數字元神 - 科技修真傳。第86章：數字元神 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第86章：數字元神 - 科技修真傳</title>
++    <title>第86章：數字元神 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-87.html b/chapter-87.html
+index e8f9106e..0a80e04f 100644
+--- a/chapter-87.html
++++ b/chapter-87.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第87章：納米修真 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第87章：納米修真 - 科技修真傳。第87章：納米修真 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第87章：納米修真 - 科技修真傳</title>
++    <title>第87章：納米修真 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-88.html b/chapter-88.html
+index 73841742..e1168b0b 100644
+--- a/chapter-88.html
++++ b/chapter-88.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第88章：機械元神 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第88章：機械元神 - 科技修真傳。第88章：機械元神 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第88章：機械元神 - 科技修真傳</title>
++    <title>第88章：機械元神 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-89.html b/chapter-89.html
+index da8b0ace..6d41fdb4 100644
+--- a/chapter-89.html
++++ b/chapter-89.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第89章：生物芯片 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第89章：生物芯片 - 科技修真傳。第89章：生物芯片 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第89章：生物芯片 - 科技修真傳</title>
++    <title>第89章：生物芯片 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-90.html b/chapter-90.html
+index 4326c4ef..bfbdf28a 100644
+--- a/chapter-90.html
++++ b/chapter-90.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第90章：科技奇點 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第90章：科技奇點 - 科技修真傳。第90章：科技奇點 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第90章：科技奇點 - 科技修真傳</title>
++    <title>第90章：科技奇點 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-91.html b/chapter-91.html
+index f82d2e7a..414638cd 100644
+--- a/chapter-91.html
++++ b/chapter-91.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第91章：靈網入侵 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第91章：靈網入侵 - 科技修真傳。第91章：靈網入侵 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第91章：靈網入侵 - 科技修真傳</title>
++    <title>第91章：靈網入侵 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-92.html b/chapter-92.html
+index f7f4cddc..ad759824 100644
+--- a/chapter-92.html
++++ b/chapter-92.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第92章：量子網絡 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第92章：量子網絡 - 科技修真傳。第92章：量子網絡 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第92章：量子網絡 - 科技修真傳</title>
++    <title>第92章：量子網絡 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-93.html b/chapter-93.html
+index d75b0e53..1d87ee30 100644
+--- a/chapter-93.html
++++ b/chapter-93.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第93章：意識上傳 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第93章：意識上傳 - 科技修真傳。第93章：意識上傳 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第93章：意識上傳 - 科技修真傳</title>
++    <title>第93章：意識上傳 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-94.html b/chapter-94.html
+index 2f30bf89..9ff131c9 100644
+--- a/chapter-94.html
++++ b/chapter-94.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第94章：時光回溯 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第94章：時光回溯 - 科技修真傳。第94章：時光回溯 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第94章：時光回溯 - 科技修真傳</title>
++    <title>第94章：時光回溯 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-95.html b/chapter-95.html
+index 0764db64..c7fa9ad8 100644
+--- a/chapter-95.html
++++ b/chapter-95.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第95章：虛擬人格 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第95章：虛擬人格 - 科技修真傳。第95章：虛擬人格 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第95章：虛擬人格 - 科技修真傳</title>
++    <title>第95章：虛擬人格 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-96.html b/chapter-96.html
+index 760cf0f2..0678c2d3 100644
+--- a/chapter-96.html
++++ b/chapter-96.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第96章：平行宇宙 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第96章：平行宇宙 - 科技修真傳。第96章：平行宇宙 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第96章：平行宇宙 - 科技修真傳</title>
++    <title>第96章：平行宇宙 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-97.html b/chapter-97.html
+index 3810e069..cabc4223 100644
+--- a/chapter-97.html
++++ b/chapter-97.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第97章：AI覺醒 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第97章：AI覺醒 - 科技修真傳。第97章：AI覺醒 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第97章：AI覺醒 - 科技修真傳</title>
++    <title>第97章：AI覺醒 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-98.html b/chapter-98.html
+index edb2fc73..71b7a6d0 100644
+--- a/chapter-98.html
++++ b/chapter-98.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第98章：心靈傳感 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第98章：心靈傳感 - 科技修真傳。第98章：心靈傳感 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第98章：心靈傳感 - 科技修真傳</title>
++    <title>第98章：心靈傳感 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapter-99.html b/chapter-99.html
+index 26ed3afb..90bd57bd 100644
+--- a/chapter-99.html
++++ b/chapter-99.html
+@@ -13,7 +13,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="《科技修真傳》第99章：平行自我 - 科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+     <meta name="description" content="《科技修真傳》第99章：平行自我 - 科技修真傳。第99章：平行自我 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"] { --bg: #FAFBFC; --te... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+-    <title>第99章：平行自我 - 科技修真傳</title>
++    <title>第99章：平行自我 </title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+diff --git a/chapters.html b/chapters.html
+index e29e0053..f38e56c4 100644
+--- a/chapters.html
++++ b/chapters.html
+@@ -2,11 +2,11 @@
+ <html lang="zh-Hant">
+ <head>
+     <!-- Favicon -->
+-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+-    <link rel="manifest" href="assets/site.webmanifest">
++    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
++    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
++    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
++    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
++    <link rel="manifest" href="/assets/site.webmanifest">
+     <meta name="theme-color" content="#1e293b">
+ 
+     <meta charset="UTF-8">
+@@ -18,6 +18,8 @@
+     <meta property="og:type" content="website">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>章節目錄 - 科技修真傳</title>
++    <link rel="canonical" href="/chapters.html">
++    <meta name="robots" content="index, follow, max-image-preview:large">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+@@ -1637,9 +1639,8 @@
+             if (!navigator.onLine) {
+                 document.documentElement.classList.add('offline');
+             }
+-        }
+-        
+-        // 添加到主屏幕提示（僅在移動端顯示）
++            
++            // 添加到主屏幕提示（僅在移動端顯示）
+         let deferredPrompt;
+         window.addEventListener('beforeinstallprompt', function(e) {
+             // 防止Chrome 67及更早版本自動顯示提示
+diff --git a/dashboard.html b/dashboard.html
+index ed54db60..45d4576e 100644
+--- a/dashboard.html
++++ b/dashboard.html
+@@ -1,18 +1,20 @@
+ <!DOCTYPE html>
+-<html lang="zh-TW">
++<html lang="zh-Hant">
+ <head>
+     <!-- Favicon -->
+-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+-    <link rel="manifest" href="assets/site.webmanifest">
++    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
++    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
++    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
++    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
++    <link rel="manifest" href="/assets/site.webmanifest">
+     <meta name="theme-color" content="#1e293b">
+ 
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="香港實時資訊儀表板 - 天氣、交通、新聞一站式查看。香港生活必備工具。">
+     <title>香港城市儀表板 | 科技修真傳</title>
++    <link rel="canonical" href="/dashboard.html">
++    <meta name="robots" content="index, follow, max-image-preview:large">
+     <!-- Open Graph 標籤 -->
+     <meta property="og:type" content="website">
+     <meta property="og:site_name" content="科技修真傳">
+diff --git a/finance.html b/finance.html
+index e9494272..12384273 100644
+--- a/finance.html
++++ b/finance.html
+@@ -2,11 +2,11 @@
+ <html lang="zh-Hant">
+ <head>
+     <!-- Favicon -->
+-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+-    <link rel="manifest" href="assets/site.webmanifest">
++    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
++    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
++    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
++    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
++    <link rel="manifest" href="/assets/site.webmanifest">
+     <meta name="theme-color" content="#1e293b">
+ 
+     <meta charset="UTF-8">
+@@ -18,6 +18,8 @@
+     <meta property="og:type" content="website">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>財經資訊 - 加密貨幣與美股</title>
++    <link rel="canonical" href="/finance.html">
++    <meta name="robots" content="index, follow, max-image-preview:large">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+diff --git a/home.html b/home.html
+index af292f62..1595240c 100644
+--- a/home.html
++++ b/home.html
+@@ -2,11 +2,11 @@
+ <html lang="zh-Hant">
+ <head>
+     <!-- Favicon -->
+-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+-    <link rel="manifest" href="assets/site.webmanifest">
++    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
++    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
++    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
++    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
++    <link rel="manifest" href="/assets/site.webmanifest">
+     <meta name="theme-color" content="#1e293b">
+ 
+     <meta charset="UTF-8">
+@@ -28,6 +28,8 @@
+     <meta name="twitter:image" content="https://kofhk.com/assets/book-cover.png">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>科技修真傳 - 首頁</title>
++    <link rel="canonical" href="/home.html">
++    <meta name="robots" content="index, follow, max-image-preview:large">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+diff --git a/news.html b/news.html
+index 17564c0f..1b6a106b 100644
+--- a/news.html
++++ b/news.html
+@@ -2,17 +2,19 @@
+ <html lang="zh-Hant">
+ <head>
+     <!-- Favicon -->
+-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+-    <link rel="manifest" href="assets/site.webmanifest">
++    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
++    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
++    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
++    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
++    <link rel="manifest" href="/assets/site.webmanifest">
+     <meta name="theme-color" content="#1e293b">
+ 
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="AI新聞資訊 - 最新人工智能、機器學習、科技發展動態。每日更新，掌握AI前沿技術。">
+     <title>AI 新聞 - 科技修真傳</title>
++    <link rel="canonical" href="/news.html">
++    <meta name="robots" content="index, follow, max-image-preview:large">
+     <!-- Open Graph 標籤 -->
+     <meta property="og:type" content="website">
+     <meta property="og:site_name" content="科技修真傳">
+diff --git a/sw.js b/sw.js
+new file mode 100644
+index 00000000..4fc50671
+--- /dev/null
++++ b/sw.js
+@@ -0,0 +1,40 @@
++const CACHE_NAME = 'kofhk-v2';
++const ASSETS_TO_CACHE = [
++    '/',
++    '/home.html',
++    '/chapters.html',
++    '/news.html',
++    '/finance.html',
++    '/dashboard.html',
++    '/author.html',
++    '/av-novels.html',
++    '/assets/site.webmanifest',
++];
++
++self.addEventListener('install', (event) => {
++    event.waitUntil(
++        caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
++    );
++});
++
++self.addEventListener('activate', (event) => {
++    event.waitUntil(
++        caches.keys().then((keys) => Promise.all(
++            keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
++        ))
++    );
++});
++
++self.addEventListener('fetch', (event) => {
++    event.respondWith(
++        caches.match(event.request).then((cached) => {
++            return cached || fetch(event.request).then((response) => {
++                if (response.status === 200) {
++                    const clone = response.clone();
++                    caches.open(CACHE_NAME).then((c) => c.put(event.request, clone));
++                }
++                return response;
++            });
++        })
++    );
++});

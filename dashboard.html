@@ -586,12 +586,12 @@
             <div class="card">
                 <div class="card-title">
                     <span class="icon">🚇</span>
-                    港鐵列車到站
-                    <span class="badge">實時數據</span>
-                    <span class="refresh-btn" onclick="MTRData.update()" title="刷新數據">⟳</span>
+                    港鐵全線路實時狀態
+                    <span class="badge">10條線路</span>
+                    <span class="refresh-btn" onclick="updateAllLines()" title="刷新數據">⟳</span>
                 </div>
-                <div class="transport-list" id="mtrData">
-                    <div class="loading">載入港鐵實時數據...</div>
+                <div class="mtr-container" id="mtrData">
+                    <div class="loading">載入港鐵全線路數據...</div>
                 </div>
             </div>
             <div class="card">
@@ -1052,8 +1052,19 @@
             }
         });
     </script>
-    <!-- 港鐵實時數據腳本 -->
-    <script src="scripts/add_mtr_realtime.js"></script>
+    <!-- 港鐵全線路實時數據腳本 -->
+    <script src="scripts/mtr_all_lines_final.js"></script>
+    
+    <script>
+        // 頁面加載完成後初始化港鐵數據
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                if (typeof updateAllLines === 'function') {
+                    updateAllLines();
+                }
+            }, 1000);
+        });
+    </script>
     
     <script>
         // 添加刷新按鈕樣式

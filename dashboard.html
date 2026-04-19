@@ -1160,8 +1160,28 @@
         async function loadHospitals() {
             try {
                 const datasetId = 'fhb_rcd_1636947932221_94410';
-                const r = await fetch(`https://portal.csdi.gov.hk/server/services/common/${datasetId}/MapServer/WFSServer?service=wfs&version=2.0.0&request=GetFeature&typename=geotagging&outputFormat=geojson`);
-                const data = await r.json();
+                let data;
+                let response;
+                
+                // Try direct fetch first, then CORS proxy as fallback
+                try {
+                    response = await fetch(`https://portal.csdi.gov.hk/server/services/common/${datasetId}/MapServer/WFSServer?service=wfs&version=2.0.0&request=GetFeature&typename=geotagging&outputFormat=geojson`);
+                    if (response.ok) {
+                        data = await response.json();
+                    } else {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                } catch (e) {
+                    // Fallback to CORS proxy
+                    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://portal.csdi.gov.hk/server/services/common/${datasetId}/MapServer/WFSServer?service=wfs&version=2.0.0&request=GetFeature&typename=geotagging&outputFormat=geojson`)}`;
+                    response = await fetch(proxyUrl);
+                    if (response.ok) {
+                        const text = await response.text();
+                        data = JSON.parse(text);
+                    } else {
+                        throw new Error(`CORS proxy failed: ${response.status}`);
+                    }
+                }
                 
                 let html = '';
                 for (const f of data.features.slice(0, 18)) {

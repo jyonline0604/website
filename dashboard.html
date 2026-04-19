@@ -962,7 +962,7 @@
         <!-- Footer -->
         <footer>
             <p>數據來源：<a href="https://data.gov.hk" rel="noopener noreferrer">DATA.GOV.HK</a> 香港政府開放數據平台</p>
-            <p>© 2026 科技修真傳 | 作者：大肥喵</p>
+            <p>© 2026 科技修真傳 | 作者：大肥喵 | 城市儀表板</p>
         </footer>
     </main>
 
@@ -1043,7 +1043,6 @@
                         throw new Error(`HTTP ${response.status}`);
                     }
                 } catch (corsError) {
-                    console.warn('Direct LRT fetch failed, trying CORS proxy...');
                     const proxies = [
                         `https://api.allorigins.win/raw?url=${encodeURIComponent(directUrl)}`,
                         `https://corsproxy.io/?${encodeURIComponent(directUrl)}`
@@ -1086,7 +1085,6 @@
                 if (!html) html = '<div class="loading">⚠️ 輕鐵數據暫時無法載入</div>';
                 document.getElementById('lrtData').innerHTML = html;
             } catch (e) {
-                console.warn('LRT API error:', e.message);
                 document.getElementById('lrtData').innerHTML = '<div class="loading">⚠️ 輕鐵數據暫時無法載入</div>';
             }
         }

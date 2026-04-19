@@ -1168,16 +1168,19 @@
                     response = await fetch(`https://portal.csdi.gov.hk/server/services/common/${datasetId}/MapServer/WFSServer?service=wfs&version=2.0.0&request=GetFeature&typename=geotagging&outputFormat=geojson`);
                     if (response.ok) {
                         data = await response.json();
+                        console.log('[Hospitals] Direct fetch succeeded');
                     } else {
                         throw new Error(`HTTP ${response.status}`);
                     }
                 } catch (e) {
                     // Fallback to CORS proxy
+                    console.warn('[Hospitals] Direct fetch failed, trying CORS proxy:', e.message);
                     const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://portal.csdi.gov.hk/server/services/common/${datasetId}/MapServer/WFSServer?service=wfs&version=2.0.0&request=GetFeature&typename=geotagging&outputFormat=geojson`)}`;
                     response = await fetch(proxyUrl);
                     if (response.ok) {
                         const text = await response.text();
                         data = JSON.parse(text);
+                        console.log('[Hospitals] CORS proxy succeeded, features:', data.features?.length || 0);
                     } else {
                         throw new Error(`CORS proxy failed: ${response.status}`);
                     }

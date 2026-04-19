@@ -587,39 +587,11 @@
                 <div class="card-title">
                     <span class="icon">🚇</span>
                     港鐵列車到站
-                    <span class="badge">示例數據</span>
+                    <span class="badge">實時數據</span>
+                    <span class="refresh-btn" onclick="MTRData.update()" title="刷新數據">⟳</span>
                 </div>
                 <div class="transport-list" id="mtrData">
-                    <div class="transport-item">
-                        <span class="line-icon" style="background-color: #E2231A;">荃</span>
-                        <span class="station">尖沙咀</span>
-                        <span class="time">1分鐘</span>
-                        <span class="destination">→ 荃灣</span>
-                    </div>
-                    <div class="transport-item">
-                        <span class="line-icon" style="background-color: #0098D8;">港</span>
-                        <span class="station">中環</span>
-                        <span class="time">2分鐘</span>
-                        <span class="destination">→ 柴灣</span>
-                    </div>
-                    <div class="transport-item">
-                        <span class="line-icon" style="background-color: #1FB25A;">觀</span>
-                        <span class="station">九龍塘</span>
-                        <span class="time">3分鐘</span>
-                        <span class="destination">→ 調景嶺</span>
-                    </div>
-                    <div class="transport-item">
-                        <span class="line-icon" style="background-color: #F9A01B;">東</span>
-                        <span class="station">上水</span>
-                        <span class="time">1分鐘</span>
-                        <span class="destination">→ 羅湖</span>
-                    </div>
-                    <div class="transport-item">
-                        <span class="line-icon" style="background-color: #803090;">屯</span>
-                        <span class="station">屯門</span>
-                        <span class="time">4分鐘</span>
-                        <span class="destination">→ 烏溪沙</span>
-                    </div>
+                    <div class="loading">載入港鐵實時數據...</div>
                 </div>
             </div>
             <div class="card">
@@ -1080,5 +1052,29 @@
             }
         });
     </script>
+    <!-- 港鐵實時數據腳本 -->
+    <script src="scripts/add_mtr_realtime.js"></script>
+    
+    <script>
+        // 添加刷新按鈕樣式
+        const style = document.createElement('style');
+        style.textContent = `
+            .refresh-btn {
+                display: inline-block;
+                margin-left: 10px;
+                cursor: pointer;
+                color: #007bff;
+                font-weight: bold;
+                font-size: 1.2rem;
+                transition: transform 0.3s;
+            }
+            .refresh-btn:hover {
+                transform: rotate(180deg);
+                color: #0056b3;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    
     </body>
 </html>

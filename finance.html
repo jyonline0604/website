@@ -1443,6 +1443,7 @@
         .install-pwa-btn:active {
             transform: translateY(0);
         }</style>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://datagovhk.blob.core.windows.net https://data.weather.gov.hk https://resource.data.one.gov.hk https://itv.kofhk.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
 </head>
 <body>
     <!-- 導航列 -->
@@ -1453,7 +1454,7 @@
             <a href="chapters.html">章節</a>
             <a href="news.html">AI 新聞</a>
             <a href="finance.html" class="active">財經</a>
-            <a href="https://itv.kofhk.com/" target="_blank">ITV</a>
+            <a href="https://itv.kofhk.com/" rel="noopener noreferrer">ITV</a>
             <a href="dashboard.html">城市儀表板</a>
             <a href="author.html">作者</a>
         </nav>
@@ -1973,7 +1974,6 @@
             if (!navigator.onLine) {
                 document.documentElement.classList.add('offline');
             }
-        }
         
         // 添加到主屏幕提示（僅在移動端顯示）
         let deferredPrompt;

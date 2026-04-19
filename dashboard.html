@@ -794,6 +794,7 @@
                 padding: 15px;
             }
         }</style>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://datagovhk.blob.core.windows.net https://data.weather.gov.hk https://resource.data.one.gov.hk https://itv.kofhk.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
 </head>
 <body>
     <header>
@@ -804,7 +805,7 @@
                 <a href="chapters.html">章節</a>
                 <a href="news.html">AI 新聞</a>
                 <a href="finance.html">財經</a>
-                <a href="https://itv.kofhk.com/" target="_blank">ITV</a>
+                <a href="https://itv.kofhk.com/" rel="noopener noreferrer">ITV</a>
                 <a href="dashboard.html" class="active">城市儀表板</a>
                 <a href="author.html">作者</a>
             </nav>
@@ -936,7 +937,7 @@
 
         <!-- Footer -->
         <footer>
-            <p>數據來源：<a href="https://data.gov.hk" target="_blank">DATA.GOV.HK</a> 香港政府開放數據平台</p>
+            <p>數據來源：<a href="https://data.gov.hk" rel="noopener noreferrer">DATA.GOV.HK</a> 香港政府開放數據平台</p>
             <p>© 2026 科技修真傳 | 作者：大肥喵</p>
         </footer>
     </main>

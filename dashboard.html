@@ -1071,7 +1071,11 @@
                 
                 const parser = new DOMParser();
                 const xml = parser.parseFromString(text, 'text/xml');
-                const items = xml.querySelectorAll('jtis_journey_time');
+                // 移除 namespace 以便 querySelectorAll 正常工作
+                let cleanXml = text.replace(/xmlns="[^"]+"/g, '');
+                const parser2 = new DOMParser();
+                const cleanXmlDoc = parser2.parseFromString(cleanXml, 'text/xml');
+                const items = cleanXmlDoc.querySelectorAll('jtis_journey_time');
                 
                 let html = '';
                 let count = 0;

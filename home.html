@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!-- 
+  PERFORMANCE HINT: This HTML can be minified for production.
+  Estimated savings: ~30% file size reduction.
+  Use tools like html-minifier-terser or gulp-htmlmin.
+-->
 <html lang="zh-Hant">
 <head>
     <!-- Favicon -->
@@ -30,8 +35,8 @@
     <title>科技修真傳 - 首頁</title>
     <link rel="canonical" href="/home.html">
     <meta name="robots" content="index, follow, max-image-preview:large">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    
     
     <style>
         :root {
@@ -525,9 +530,10 @@
     </script>
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://datagovhk.blob.core.windows.net https://data.weather.gov.hk https://resource.data.one.gov.hk https://itv.kofhk.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
     <!-- Preload critical resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" as="style">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"></noscript>
+    
+    
+    <noscript></noscript>
+<link rel="stylesheet" href="/assets/fonts/master.css">
 </head>
 <body>
     <!-- 導航列 -->
@@ -719,7 +725,6 @@
                             
                             newWorker.addEventListener('statechange', function() {
                                 if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                    console.log('新Service Worker已安裝，需要刷新頁面');
                                     // 這裡可以顯示更新提示
                                 }
                             });
@@ -732,12 +737,10 @@
             
             // 離線狀態檢測
             window.addEventListener('online', function() {
-                console.log('網絡已恢復');
                 document.documentElement.classList.remove('offline');
             });
             
             window.addEventListener('offline', function() {
-                console.log('網絡已斷開');
                 document.documentElement.classList.add('offline');
             });
             
@@ -765,15 +768,14 @@
                     // 等待用戶選擇
                     deferredPrompt.userChoice.then(function(choiceResult) {
                         if (choiceResult.outcome === 'accepted') {
-                            console.log('用戶接受安裝');
-                        } else {
-                            console.log('用戶拒絕安裝');
-                        }
+                            } else {
+                            }
                         deferredPrompt = null;
                     });
                 });
             }
         });
     </script>
-    </body>
+    <script src="/assets/main.js" defer></script>
+</body>
 </html>

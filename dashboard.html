@@ -1032,6 +1032,84 @@
         }
 
 
+        // ========== 輕鐵 (LRT) ==========
+        async function loadLRT() {
+            try {
+                const r = await fetch('https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule?station_id=1');
+                const data = await r.json();
+                
+                let html = '';
+                if (data.platform_list) {
+                    let count = 0;
+                    for (const p of data.platform_list) {
+                        for (const route of (p.route_list || [])) {
+                            if (route.dest_ch && route.time_ch && count < 6) {
+                                html += `
+                                    <div class="transport-item">
+                                        <span class="transport-name">輕鐵 ${route.route_no}</span>
+                                        <span class="transport-time">→ ${route.dest_ch} ${route.time_ch}</span>
+                                    </div>
+                                `;
+                                count++;
+                            }
+                        }
+                    }
+                }
+                if (!html) html = '<div class="loading">⚠️ 輕鐵數據暫時無法載入</div>';
+                document.getElementById('lrtData').innerHTML = html;
+            } catch (e) {
+                console.warn('LRT API error:', e.message);
+                document.getElementById('lrtData').innerHTML = '<div class="loading">⚠️ 輕鐵數據暫時無法載入</div>';
+            }
+        }
+
+        // ========== 行車時間 (Journey Time) ==========
+        async function loadJourney() {
+            try {
+                const r = await fetch('https://resource.data.one.gov.hk/td/jss/Journeytimev2.xml');
+                const text = await r.text();
+                
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, 'text/xml');
+                const items = xml.querySelectorAll('jtis_journey_time');
+                
+                let html = '';
+                let count = 0;
+                for (const item of items) {
+                    const loc = item.querySelector('LOCATION_ID').textContent;
+                    const dest = item.querySelector('DESTINATION_ID').textContent;
+                    const time = item.querySelector('JOURNEY_DATA').textContent;
+                    const color = item.querySelector('COLOUR_ID').textContent;
+                    
+                    const locName = locNames[loc] || loc + '→';
+                    const destName = destMap[dest] || dest;
+                    
+                    const colorCls = color === '1' ? 'journey-green' : color === '2' ? 'journey-yellow' : color === '3' ? 'journey-red' : 'journey-purple';
+                    
+                    html += `
+                        <div class="journey-item">
+                            <div class="journey-route">
+                                <div class="journey-from">${locName} ${destName}</div>
+                            </div>
+                            <div class="journey-time">
+                                <span class="journey-mins ${colorCls}">${time}</span>
+                                <span class="journey-unit">分鐘</span>
+                            </div>
+                        </div>
+                    `;
+                    count++;
+                    if (count >= 25) break;
+                }
+                if (!html) html = '<div class="loading">無數據</div>';
+                document.getElementById('journeyData').innerHTML = html;
+            } catch (e) {
+                document.getElementById('journeyData').innerHTML = '<div class="loading">無法載入</div>';
+            }
+        }
+
+        // ========== 初始化調用 ==========
+        loadLRT();
+        loadJourney();
         setInterval(loadLRT, 60000);
         setInterval(loadJourney, 120000);
     </script>

@@ -1,0 +1,92 @@
+/* 背景圖樣式 - 科技修真傳 */
+
+/* 全站背景圖選項 */
+body.with-background {
+    background: var(--bg-primary) url('backgrounds/website-abstract-bg.png') center/cover no-repeat fixed;
+    position: relative;
+}
+
+body.with-background::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 10, 15, 0.85);
+    z-index: -1;
+}
+
+/* Hero區域背景 */
+.hero-with-background {
+    background: linear-gradient(rgba(10, 10, 15, 0.9), rgba(10, 10, 15, 0.7)), 
+                url('backgrounds/novel-theme-background.png') center/cover no-repeat;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 頁頭橫幅背景 */
+.header-banner {
+    background: linear-gradient(rgba(10, 10, 15, 0.8), rgba(10, 10, 15, 0.6)), 
+                url('backgrounds/website-header-banner.png') center/cover no-repeat;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* 卡片背景 */
+.card-with-bg {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 背景切換按鈕 */
+.background-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.background-toggle:hover {
+    background: #4f46e5;
+    transform: translateY(-2px);
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .header-banner {
+        height: 200px;
+        margin-bottom: 20px;
+    }
+    
+    body.with-background {
+        background-attachment: scroll;
+    }
+}
+
+/* 打印時隱藏背景 */
+@media print {
+    body.with-background,
+    .hero-with-background,
+    .header-banner {
+        background: white !important;
+    }
+}

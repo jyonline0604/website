@@ -36,6 +36,9 @@
     <link rel="canonical" href="/home.html">
     <meta name="robots" content="index, follow, max-image-preview:large">
     
+    <!-- 背景圖樣式 -->
+    <link rel="stylesheet" href="assets/background-styles.css">
+    
     
     
     <style>
@@ -157,7 +160,8 @@
             min-height: 100vh;
             padding: 80px 32px 60px;
             text-align: center;
-            background: url("assets/book-cover.png") center center / cover no-repeat;
+            background: linear-gradient(rgba(10, 10, 15, 0.85), rgba(10, 10, 15, 0.7)), 
+                        url("assets/backgrounds/novel-theme-background.png") center center / cover no-repeat;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -773,6 +777,33 @@
                         deferredPrompt = null;
                     });
                 });
+            }
+        });
+        
+        // 背景圖切換功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.createElement('button');
+            toggleBtn.className = 'background-toggle';
+            toggleBtn.innerHTML = '🌌 切換背景';
+            
+            toggleBtn.addEventListener('click', function() {
+                document.body.classList.toggle('with-background');
+                
+                if (document.body.classList.contains('with-background')) {
+                    toggleBtn.innerHTML = '🌌 關閉背景';
+                    localStorage.setItem('novelBackground', 'enabled');
+                } else {
+                    toggleBtn.innerHTML = '🌌 開啟背景';
+                    localStorage.setItem('novelBackground', 'disabled');
+                }
+            });
+            
+            document.body.appendChild(toggleBtn);
+            
+            // 檢查用戶偏好
+            if (localStorage.getItem('novelBackground') === 'enabled') {
+                document.body.classList.add('with-background');
+                toggleBtn.innerHTML = '🌌 關閉背景';
             }
         });
     </script>

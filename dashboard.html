@@ -1031,59 +1031,6 @@
             }
         }
 
-        // ========== MTR Line Status ==========
-        const mtrLineColors = {
-            '觀塘線': '#F68220',
-            '荃灣線': '#B12D33',
-            '港島線': '#005B9E',
-            '將軍澳線': '#A85DC6',
-            '東涌線': '#7C8C97',
-            '迪士尼線': '#F44EAE',
-            '東鐵線': '#AA367D',
-            '屯馬線': '#B20A2B',
-            '南港島線': '#5DBCD2',
-            '機場快綫': '#005B9E'
-        };
-
-        async function loadMTRStatus() {
-            try {
-                const r = await fetch('https://api.mtr.com.hk/V2/service/line/');
-                if (!r.ok) throw new Error('Network response was not ok');
-                const data = await r.json();
-                
-                let html = '<div class="mtr-lines-grid">';
-                
-                // MTR has 10 lines: Kwun Tong, Tsuen Wan, Island, Tseung Kwan O, Tung Chung, Disneyland Resort, East Rail, Tuen Ma, South Island Line, Airport Express
-                const lineNames = ['觀塘線', '荃灣線', '港島線', '將軍澳線', '東涌線', '迪士尼線', '東鐵線', '屯馬線', '南港島線', '機場快綫'];
-                
-                for (const name of lineNames) {
-                    const lineData = data.lines?.find(l => l.name === name || l.name.includes(name)) || {};
-                    const status = lineData.status || '未知';
-                    const color = mtrLineColors[name] || '#666';
-                    
-                    let statusColor = '#4CAF50'; // Green for normal
-                    if (status.includes('暫停') || status.includes('延誤')) statusColor = '#F44336'; // Red
-                    else if (status.includes('緩慢')) statusColor = '#FF9800'; // Orange
-                    
-                    html += `
-                        <div class="mtr-line-card" style="border-left: 4px solid ${color};">
-                            <span class="line-name">${name}</span>
-                            <span class="line-status" style="color: ${statusColor};">${status}</span>
-                        </div>
-                    `;
-                }
-                
-                html += '</div>';
-                document.getElementById('mtrData').innerHTML = html;
-            } catch (e) {
-                console.warn('MTR API error:', e.message);
-                document.getElementById('mtrData').innerHTML = '<div class="loading">⚠️ 港鐵數據暫時無法載入</div>';
-            }
-        }
-
-        // Load MTR status on page load and refresh every 2 minutes
-        loadMTRStatus();
-        setInterval(loadMTRStatus, 30000);
 
         setInterval(loadLRT, 60000);
         setInterval(loadJourney, 120000);

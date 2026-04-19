@@ -33,9 +33,34 @@ let mtrAutoRefreshInterval = null;
  */
 async function fetchMTRData(line, station) {
     try {
-        const url = `https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${line}&sta=${station}`;
-        const response = await fetch(url);
-        return response.ok ? await response.json() : null;
+        const directUrl = `https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${line}&sta=${station}`;
+        
+        // Try direct fetch first (some browsers/APIs allow CORS)
+        let response;
+        try {
+            response = await fetch(directUrl);
+            if (response.ok) return await response.json();
+        } catch (corsError) {
+            console.warn('Direct fetch failed, trying CORS proxy...');
+        }
+        
+        // Fallback to CORS proxies
+        const proxies = [
+            `https://api.allorigins.win/raw?url=${encodeURIComponent(directUrl)}`,
+            `https://corsproxy.io/?${encodeURIComponent(directUrl)}`
+        ];
+        
+        for (const proxyUrl of proxies) {
+            try {
+                response = await fetch(proxyUrl);
+                if (response.ok) return await response.json();
+            } catch (e) {
+                continue;
+            }
+        }
+        
+        console.error('All fetch attempts failed');
+        return null;
     } catch (error) {
         console.error(`獲取 ${line}-${station} 數據失敗:`, error);
         return null;

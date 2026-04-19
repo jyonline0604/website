@@ -1,14 +1,14 @@
 // AQHI 數據 - 由 cron 每小時更新
 const AQHI_DATA = {
-  "timestamp": "2026-04-19T17:30:00",
+  "timestamp": "2026-04-19T18:30:00",
   "data": [
     {
       "type": "general",
-      "aqhi_min": 6,
-      "aqhi_max": 8,
+      "aqhi_min": 5,
+      "aqhi_max": 7,
       "health_risk_min": "Moderate",
-      "health_risk_max": "Very High",
-      "publish_date": "2026-04-19T17:30:00"
+      "health_risk_max": "High",
+      "publish_date": "2026-04-19T18:30:00"
     },
     {
       "type": "roadside",
@@ -16,7 +16,7 @@ const AQHI_DATA = {
       "aqhi_max": 6,
       "health_risk_min": "Moderate",
       "health_risk_max": "Moderate",
-      "publish_date": "2026-04-19T17:30:00"
+      "publish_date": "2026-04-19T18:30:00"
     }
   ]
 };

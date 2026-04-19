@@ -160,8 +160,7 @@
             min-height: 100vh;
             padding: 80px 32px 60px;
             text-align: center;
-            background: linear-gradient(rgba(10, 10, 15, 0.6), rgba(10, 10, 15, 0.4)), 
-                        url("assets/backgrounds/user-provided-bg.jpg") center center / cover no-repeat;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             position: relative;
             display: flex;
             flex-direction: column;
@@ -715,7 +714,7 @@
     
     <!-- PWA Service Worker 註冊 -->
     <script>
-        // 註冊Service Worker
+        // 註冊 Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
                 navigator.serviceWorker.register('/assets/service-worker.js')
@@ -757,7 +756,7 @@
         // 添加到主屏幕提示（僅在移動端顯示）
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', function(e) {
-            // 防止Chrome 67及更早版本自動顯示提示
+            // 防止 Chrome 67 及更早版本自動顯示提示
             e.preventDefault();
             deferredPrompt = e;
             
@@ -777,33 +776,6 @@
                         deferredPrompt = null;
                     });
                 });
-            }
-        });
-        
-        // 背景圖切換功能
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggleBtn = document.createElement('button');
-            toggleBtn.className = 'background-toggle';
-            toggleBtn.innerHTML = '🌌 切換背景';
-            
-            toggleBtn.addEventListener('click', function() {
-                document.body.classList.toggle('with-background');
-                
-                if (document.body.classList.contains('with-background')) {
-                    toggleBtn.innerHTML = '🌌 關閉背景';
-                    localStorage.setItem('novelBackground', 'enabled');
-                } else {
-                    toggleBtn.innerHTML = '🌌 開啟背景';
-                    localStorage.setItem('novelBackground', 'disabled');
-                }
-            });
-            
-            document.body.appendChild(toggleBtn);
-            
-            // 檢查用戶偏好
-            if (localStorage.getItem('novelBackground') === 'enabled') {
-                document.body.classList.add('with-background');
-                toggleBtn.innerHTML = '🌌 關閉背景';
             }
         });
     </script>

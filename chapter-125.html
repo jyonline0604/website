@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    <meta name="theme-color" content="#1e293b">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="《科技修真傳》第1章：科技修真傳。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+    <meta name="description" content="《科技修真傳》第0章：第0章。第125章：科技突破 - 科技修真傳 :root { --bg: #FAFBFC; --text: #1F2937; --accent: #6366F1; --border: #E5E7EB; --panel-bg: #FFFFFF; --font-size: 18px; --line-height: 1.8; } [data-theme="light"]... 免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+    <title>第125章：科技突破 - 科技修真傳</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+
+        [data-theme="pink"] {
+            --bg: #FCE4EC;
+            --text: #880E4F;
+            --border: #F48FB1;
+            --panel-bg: #FCE4EC;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .header a:hover {
+            background: var(--border);
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .header-right {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .icon-btn:hover {
+            background: var(--border);
+            border-color: var(--accent);
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 160px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .chapter-header h1 {
+        }
+
+        .chapter-header .author {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 8px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .bottom-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .bottom-nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Settings Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .settings-modal {
+            width: 100%;
+            max-width: 500px;
+            max-height: 85vh;
+            background: var(--panel-bg);
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .settings-modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .close-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--border);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(85vh - 140px);
+        }
+
+        .setting-section {
+            margin-bottom: 24px;
+        }
+
+        .setting-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .theme-btn {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-btn.active {
+            border-color: var(--accent);
+        }
+
+        .theme-btn.active::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .theme-btn.light { background: #FAFBFC; }
+        .theme-btn.sepia { background: #F4ECD8; }
+        .theme-btn.sky { background: #E8F4FC; }
+        .theme-btn.green { background: #E8F5E9; }
+        .theme-btn.pink { background: #FCE4EC; }
+        .theme-btn.dark { background: #2D3748; }
+        .theme-btn.navy { background: #1A202C; }
+
+        .font-size-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .font-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .font-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .font-slider {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--border);
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .font-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+        }
+
+        .font-preview {
+            text-align: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: var(--font-size);
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            margin: 0 16px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .modal-footer button {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-default {
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .btn-default:hover {
+            background: var(--border);
+        }
+
+        .btn-primary {
+            border: none;
+            background: #10B981;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 160px;
+            }
+
+            .chapter-header h1 {
+        }
+
+        .chapter-header .author {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 8px;
+                font-size: 1.4rem;
+            }
+
+            .theme-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "第125章：科技突破 - 科技修真傳",
+      "author": {
+        "@type": "Person",
+        "name": "大肥喵"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "科技修真傳"
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="chapters.html">← 章節</a>
+        <span class="chapter-title">第125章</span>
+        <div class="header-right">
+            <button class="icon-btn" onclick="openSettings()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <header class="chapter-header">
+            <h1>第125章：科技突破</h1>
+            <p class="author">作者：大肥喵</p>
+        </header>
+        <div class="content">
+<p># 第125章：科技突破</p>
+<p>實驗室內，藍白色的全息投影在空氣中緩緩旋轉，數以萬計的數據流如瀑布般傾瀉而下。林塵站在中央控制台前，雙眼緊盯著靈芯系統投射出的複雜結構圖。</p>
+<p>“第七十三次模擬測試開始。”他的聲音平靜，卻帶著難以掩飾的緊張。</p>
+<p>靈芯系統冰冷的機械音響起：“量子靈氣轉化模型載入中...載入完成。開始模擬靈氣粒子與量子場的耦合效應。”</p>
+<p>全息投影中，代表靈氣的淡金色光點與代表量子場的藍色網格開始交織。這是林塵過去三個月來的心血——試圖用科技手段解析修真最核心的奧秘：靈氣的本質。</p>
+<p>“耦合率達到百分之三十七...百分之四十二...百分之五十一...”</p>
+<p>林塵屏住呼吸。之前的七十二次實驗，耦合率從未突破百分之五十的門檻。修真界普遍認為，靈氣是天地間最玄妙的能量，無法用純粹的科學理論完全解釋。但林塵不信這個邪。</p>
+<p>“百分之六十三...百分之七十...耦合率穩定在百分之七十八！”</p>
+<p>實驗室內響起輕微的嗡鳴聲。全息投影中，金藍兩色能量完美融合，形成一種從未見過的銀白色光流。靈芯系統的數據面板瘋狂刷新，數百個參數同時達到理論峰值。</p>
+<p>“成功了。”林塵喃喃自語，手指在控制台上輕點，“記錄所有數據。啟動實體化測試。”</p>
+<p>實驗室另一側，一台銀白色的裝置緩緩升起。這是林塵設計的“靈氣量子轉化器”，外表看起來像是某種高科技醫療設備，內部卻刻滿了修真符文與量子電路交織的複合陣法。</p>
+<p>裝置中央的透明艙體內，一縷精純的天地靈氣被注入。幾乎同時，量子場發生器啟動，微觀層面的震盪開始影響靈氣粒子的結構。</p>
+<p>“監測到靈氣粒子重組。”靈芯系統匯報，“能量純度提升百分之三百，轉化效率達到理論值的百分之九十二。”</p>
+<p>林塵眼中閃過一絲光芒。這不僅僅是理論突破——這意味著他找到了用科技手段“提純”靈氣的方法。在修真界，靈氣純度直接決定修煉速度與突破瓶頸的成功率。傳統方法需要數十年甚至上百年的苦修，或是依賴天材地寶，而現在...</p>
+<p>“如果這個技術可以普及...”林塵的思緒飛速運轉。</p>
+<p>就在這時，靈芯系統突然發出警報：“檢測到異常能量波動。量子場出現不穩定震盪。”</p>
+<p>全息投影中，銀白色光流開始劇烈顫動，顏色逐漸轉為危險的深紅色。轉化器外殼發出不堪重負的嗡鳴，刻在上面的符文一個接一個地黯淡下去。</p>
+<p>“關閉量子場！切斷靈氣供應！”林塵迅速下達指令。</p>
+<p>但已經晚了。</p>
+<p>轉化器內部傳來玻璃碎裂般的脆響，緊接著是能量失控的尖嘯。一道赤紅色的能量衝擊波從裝置中心爆發，瞬間擊穿了實驗室的六層能量護盾。</p>
+<p>“啟動緊急防護！”林塵大喝。</p>
+<p>靈芯系統反應極快，一層淡金色的光罩將林塵包裹。衝擊波撞在光罩上，激起劇烈的漣漪。實驗室內的其他設備就沒這麼幸運了——三台分析儀器當場報廢，牆壁上留下焦黑的痕跡。</p>
+<p>當能量風暴平息，實驗室已是一片狼藉。轉化器冒著黑煙，中央艙體完全碎裂，裡面的靈氣早已消散殆盡。</p>
+<p>林塵走到殘骸前，眉頭緊鎖。靈芯系統正在分析事故原因：“量子場與靈氣粒子的耦合在第七分鐘出現相位偏移。推測原因：靈氣中存在未知變量，無法用現有量子理論完全描述。”</p>
+<p>“未知變量...”林塵重複著這個詞，突然想起修真古籍中的一段記載，“天地靈氣，非死物也，內蘊先天之機，變化無窮。”</p>
+<p>難道靈氣本身具有某種“活性”？某種無法用現有科學模型描述的屬性？</p>
+<p>“重新整理數據。”林塵命令道，“重點分析耦合崩潰前0.3秒的能量讀數。”</p>
+<p>全息投影再次亮起，這次顯示的是微觀層面的能量圖譜。在耦合崩潰的瞬間，靈氣粒子的行為出現了奇異的“自主選擇”——它們主動偏離了量子場的最優路徑，就像有意識一樣。</p>
+<p>“這不可能。”林塵低聲說，“除非...”</p>
+<p>一個大膽的猜想在他腦中成形。如果靈氣不僅僅是一種能量，而是一種具有某種原始“信息結構”的載體呢？如果修真者吸收靈氣的過程，本質上是與這種信息結構建立連接？</p>
+<p>“靈芯，調出所有關於‘靈氣活性’的古籍記載，與量子信息理論進行交叉比對。”</p>
+<p>“正在處理...比對完成。發現十七處理論契合點，其中最顯著的是《玄機錄》第三卷所述：‘靈氣通靈，應心而動’，與量子糾纏中的‘觀察者效應’具有結構相似性。”</p>
+<p>林塵感到一陣興奮。他可能觸及了修真與科技最根本的交匯點——信息。</p>
+<p>接下來的七十二小時，林塵幾乎沒有離開實驗室。他重新設計了轉化器的核心結構，加入了基於量子糾纏原理的“信息調諧模塊”。這個模塊不會強行改變靈氣的量子狀態，而是嘗試與靈氣內在的信息結構“共振”。</p>
+<p>“第八十七次測試準備。”林塵的聲音有些沙啞，但眼神明亮。</p>
+<p>新的轉化器啟動了。這一次，沒有劇烈的能量波動，只有一種溫和的嗡鳴聲。全息投影中，靈氣粒子與量子場的耦合如舞蹈般優雅，銀白色的光流穩定而純淨。</p>
+<p>“耦合率百分之九十五...能量純度提升百分之五百...轉化效率百分之九十九點七。”靈芯系統的匯報一個比一個驚人，“檢測到靈氣信息結構完整保留，並與量子場形成穩定共振。”</p>
+<p>林塵長長吐出一口氣。他成功了——不僅實現了靈氣的科技化提純，更重要的是，他證明了修真與科技可以在最基礎的理論層面融合。</p>
+<p>就在這時，實驗室的自動通訊系統響起警報：“檢測到未授權接入嘗試。來源：未知。安全等級：極高。”</p>
+<p>林塵眼神一凜。幾乎同時，靈芯系統彈出新的警告：“外部靈氣監測網絡發現異常。三股強大的靈氣波動正在快速接近，預計到達時間：七分鐘。”</p>
+<p>“實力評估？”林塵問。</p>
+<p>“根據靈氣強度分析，至少是金丹後期，其中一股可能達到元嬰初期。”</p>
+<p>元嬰期修士。在當今修真界，這已經是頂尖戰力。他們為什麼會找到這裡？難道是剛才的實驗波動引起了注意？</p>
+<p>林塵迅速關閉所有實驗設備，啟動實驗室的自毀偽裝程序。牆壁開始變形，設備沉入地下，轉眼間，高科技實驗室就變成了一個普通的倉庫。</p>
+<p>但他知道，這只能拖延時間。如果真是元嬰期修士，任何偽裝都難以完全瞞過他們的靈識掃描。</p>
+<p>靈芯系統投射出實驗室周圍的三維地圖，三個紅點正在快速逼近。林塵的大腦飛速運轉，計算著所有可能的應對方案。</p>
+<p>就在第一個紅點進入實驗室五百米範圍時，林塵做出決定。</p>
+<p>“啟動‘鏡像協議’。”他說，“把他們引到三號廢棄工廠。同時，準備傳送陣——我們需要轉移所有核心數據和設備。”</p>
+<p>“鏡像協議啟動。傳送陣充能需要三分鐘。”</p>
+<p>“足夠了。”林塵看向全息投影中越來越近的紅點，眼中閃過一絲冷光，“就讓我們看看，科技與修真的結合，究竟能達到什麼程度。”</p>
+<p>他從控制台下取出一個銀白色的金屬箱，打開後，裡面是一套流線型的戰甲，表面刻滿了修真符文與量子電路的複合紋路。這是他的最新作品——“靈量子戰甲”原型機。</p>
+<p>戰甲自動分解，包裹住林塵的身體。當面甲合攏時，他的視野中出現了全新的數據界面，靈氣流動、能量分佈、敵方實力評估...一切信息盡在掌握。</p>
+<p>實驗室外，夜空被三道流光劃破。修真者，來了。</p>
+<p>而林塵知道，今晚將不僅是一場戰鬥，更是他科技修真之路的真正試煉。</p>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="chapter-124.html">← 上一章</a>
+        <div class="nav-center">
+            <button class="nav-btn" onclick="prevChapter()">◀</button>
+            <span id="progress">0%</span>
+            <button class="nav-btn" onclick="nextChapter()">▶</button>
+        </div>
+        <a href="chapter-126.html">下一章 →</a>
+    </nav>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="settings-modal">
+            <div class="modal-header">
+                <h3>設置</h3>
+                <button class="close-btn" onclick="closeSettings()">×</button>
+            </div>
+            <div class="modal-body">
+                <!-- Theme -->
+                <div class="setting-section">
+                    <div class="setting-label">主題模式</div>
+                    <div class="theme-grid">
+                        <button class="theme-btn light" data-theme="light" onclick="setTheme('light')"></button>
+                        <button class="theme-btn sepia" data-theme="sepia" onclick="setTheme('sepia')"></button>
+                        <button class="theme-btn sky" data-theme="sky" onclick="setTheme('sky')"></button>
+                        <button class="theme-btn green" data-theme="green" onclick="setTheme('green')"></button>
+                        <button class="theme-btn pink" data-theme="pink" onclick="setTheme('pink')"></button>
+                        <button class="theme-btn dark" data-theme="dark" onclick="setTheme('dark')"></button>
+                        <button class="theme-btn navy" data-theme="navy" onclick="setTheme('navy')"></button>
+                    </div>
+                </div>
+
+                <!-- Font Size -->
+                <div class="setting-section">
+                    <div class="setting-label">字體大小</div>
+                    <div class="font-size-control">
+                        <button class="font-btn" onclick="adjustFontSize(-2)">A-</button>
+                        <input type="range" class="font-slider" id="fontSlider" min="14" max="28" value="18" oninput="setFontSize(this.value)">
+                        <button class="font-btn" onclick="adjustFontSize(2)">A+</button>
+                    </div>
+                    <div class="font-preview" id="fontPreview">科技修真傳 - 示範文字</div>
+                </div>
+
+                <!-- Reading Progress -->
+                <div class="setting-section">
+                    <div class="setting-label">閱讀進度</div>
+                    <div class="progress-info">
+                        <span>已讀</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                        </div>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+
+                <!-- Chapter Navigation -->
+                <div class="setting-section">
+                    <div class="setting-label">章節導航</div>
+                    <div style="display: flex; gap: 12px;">
+                        <button class="nav-btn" style="flex:1" onclick="prevChapter(); closeSettings();">◀ 上一章</button>
+                        <button class="nav-btn" style="flex:1" onclick="nextChapter(); closeSettings();">下一章 ▶</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-default" onclick="resetSettings()">恢復默認</button>
+                <button class="btn-primary" onclick="closeSettings()">確定</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Settings
+        const DEFAULT_SETTINGS = {
+            theme: 'light',
+            fontSize: 18
+        };
+
+        let settings = { ...DEFAULT_SETTINGS };
+
+        // Load settings from localStorage
+        function loadSettings() {
+            const saved = localStorage.getItem('reading-settings');
+            if (saved) {
+                settings = JSON.parse(saved);
+            }
+            applySettings();
+        }
+
+        function saveSettings() {
+            localStorage.setItem('reading-settings', JSON.stringify(settings));
+        }
+
+        function applySettings() {
+            document.body.setAttribute('data-theme', settings.theme);
+            document.documentElement.style.setProperty('--font-size', settings.fontSize + 'px');
+            
+            // Update theme buttons
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === settings.theme);
+            });
+            
+            // Update font slider
+            document.getElementById('fontSlider').value = settings.fontSize;
+            document.getElementById('fontPreview').style.fontSize = settings.fontSize + 'px';
+        }
+
+        function setTheme(theme) {
+            settings.theme = theme;
+            saveSettings();
+            applySettings();
+        }
+
+        function setFontSize(size) {
+            settings.fontSize = parseInt(size);
+            saveSettings();
+            applySettings();
+        }
+
+        function adjustFontSize(delta) {
+            const newSize = Math.min(28, Math.max(14, settings.fontSize + delta));
+            setFontSize(newSize);
+        }
+
+        function resetSettings() {
+            settings = { ...DEFAULT_SETTINGS };
+            saveSettings();
+            applySettings();
+        }
+
+        // Modal
+        function openSettings() {
+            document.getElementById('settingsModal').classList.add('active');
+            updateProgress();
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsModal').classList.remove('active');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('settingsModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSettings();
+            }
+        });
+
+        // Chapter Navigation
+        function prevChapter() {
+            window.location.href = 'chapter-124.html';
+        }
+
+        function nextChapter() {
+            window.location.href = 'chapter-126.html';
+        }
+
+        // Reading Progress
+        function updateProgress() {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollTop = window.scrollY;
+            const progress = scrollHeight > 0 ? Math.round((scrollTop / scrollHeight) * 100) : 0;
+            
+            document.getElementById('progress').textContent = progress + '%';
+            document.getElementById('progressPercent').textContent = progress + '%';
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        window.addEventListener('scroll', updateProgress);
+
+        // Initialize
+        loadSettings();
+        updateProgress();
+    </script>
+</body>
+</html>

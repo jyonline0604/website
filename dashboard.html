@@ -1107,9 +1107,47 @@
             }
         }
 
+
+
+        // ========== 醫院急症室等候時間 ==========
+        async function loadHospitals() {
+            try {
+                const datasetId = 'fhb_rcd_1636947932221_94410';
+                const r = await fetch(`https://portal.csdi.gov.hk/server/services/common/${datasetId}/MapServer/WFSServer?service=wfs&version=2.0.0&request=GetFeature&typename=geotagging&outputFormat=geojson`);
+                const data = await r.json();
+                
+                let html = '';
+                for (const f of data.features.slice(0, 18)) {
+                    const p = f.properties;
+                    const name = p.hospName_TC || p.hospName_EN || '';
+                    const link = p.JSON_TC || '#';
+                    
+                    if (name) {
+                        html += `
+                            <div class="hospital-item">
+                                <span class="hospital-name">${name}</span>
+                                <a href="${link}" target="_blank" class="hospital-link">急症室等候 →</a>
+                            </div>
+                        `;
+                    }
+                }
+                if (!html) html = '<div class="loading">無數據</div>';
+                document.getElementById('hospitalData').innerHTML = html;
+            } catch (e) {
+                document.getElementById('hospitalData').innerHTML = '<div class="loading">無法載入</div>';
+            }
+        }
+
         // ========== 初始化調用 ==========
+        loadAQHI();
+        loadForecast();
         loadLRT();
         loadJourney();
+        loadHospitals();
+
+        // 每分鐘刷新
+        setInterval(loadAQHI, 300000);
+        setInterval(loadForecast, 3600000);
         setInterval(loadLRT, 60000);
         setInterval(loadJourney, 120000);
     </script>

@@ -1032,19 +1032,36 @@
         }
 
         // ========== MTR ==========
+        // API 支援路線：TKL(將軍澳線), ISL(港島線), TWL(荃灣線)
         const mtrLines = [
+            // 將軍澳線 (3 stations)
             { name: '將軍澳線', line: 'TKL', sta: 'TKO', staName: '將軍澳' },
+            { name: '將軍澳線', line: 'TKL', sta: 'POA', staName: '寶琳' },
+            { name: '將軍澳線', line: 'TKL', sta: 'TIK', staName: '調景嶺' },
+            
+            // 港島線 (5 stations)
             { name: '港島線', line: 'ISL', sta: 'CEN', staName: '中環' },
+            { name: '港島線', line: 'ISL', sta: 'NOP', staName: '北角' },
+            { name: '港島線', line: 'ISL', sta: 'ADM', staName: '金鐘' },
+            { name: '港島線', line: 'ISL', sta: 'CHW', staName: '柴灣' },
+            { name: '港島線', line: 'ISL', sta: 'CAB', staName: '銅鑼灣' },
+            
+            // 荃灣線 (2 stations)
             { name: '荃灣線', line: 'TWL', sta: 'TST', staName: '尖沙咀' },
-            { name: '東鐵線', line: 'EAL', sta: 'KOW', staName: '九龍塘' },
+            { name: '荃灣線', line: 'TWL', sta: 'TSW', staName: '荃灣' },
         ];
         
         const destNames = {
-            'POA': '寶琳', 'LHP': '康城', 'TIK': '調景嶺', 'NOP': '北角',
-            'TST': '尖沙咀', 'CEN': '中環', 'ADM': '金鐘', 'CAB': '銅鑼灣',
-            'CHW': '柴灣', 'KOT': '觀塘', 'HRT': '紅磡', 'KOW': '九龍塘',
-            'TSW': '荃灣', 'YAT': '油塘', 'LMC': '落馬洲', 'LOW': '羅湖',
-            'FAN': '火炭', 'SHT': '沙田', 'TWO': '上水'
+            // 將軍澳線目的地
+            'POA': '寶琳', 'LHP': '康城', 'TIK': '調景嶺',
+            // 港島線目的地
+            'NOP': '北角', 'CEN': '中環', 'ADM': '金鐘', 'CAB': '銅鑼灣',
+            'CHW': '柴灣', 'HRT': '紅磡',
+            // 荃灣線目的地
+            'TST': '尖沙咀', 'TSW': '荃灣', 'YAT': '油塘',
+            // 其他可能目的地
+            'KOT': '觀塘', 'KOW': '九龍塘', 'LMC': '落馬洲',
+            'LOW': '羅湖', 'FAN': '火炭', 'SHT': '沙田', 'TWO': '上水'
         };
 
         async function loadMTR() {

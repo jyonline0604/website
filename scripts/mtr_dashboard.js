@@ -113,7 +113,7 @@ async function updateAllLines() {
             
             html += `
                 <div class="mtr-line-card" style="border-color: ${line.color};" 
-                     onclick="showMTRStationDetail('${line.code}', '${line.stations[0]}')">
+                     onclick="handleLineClick('${line.code}', '${line.stations[0]}', ${hasData})">
                     <div class="line-header">
                         <span class="line-color" style="background-color: ${line.color};"></span>
                         <span class="line-name">${line.name}</span>
@@ -213,7 +213,7 @@ async function showMTRStationDetail(lineCode, stationCode) {
     try {
         const data = await fetchMTRData(lineCode, stationCode);
         
-        if (data?.status === 1) {
+        if (data && data.status === 1 && data.data) {
             const key = `${lineCode}-${stationCode}`;
             const stationData = data.data[key];
             const stationName = STATION_NAMES_DASHBOARD[stationCode] || stationCode;
@@ -390,6 +390,39 @@ function initMTRDashboard() {
     });
 }
 
+// 處理線路點擊
+function handleLineClick(lineCode, stationCode, hasData) {
+    if (hasData) {
+        showMTRStationDetail(lineCode, stationCode);
+    } else {
+        // 如果沒有數據，顯示錯誤提示
+        const container = document.getElementById('mtrData');
+        if (container) {
+            const line = MTR_LINES_DASHBOARD.find(l => l.code === lineCode);
+            if (line) {
+                container.innerHTML = `
+                    <div class="station-detail-view">
+                        <div class="detail-header" style="border-color: ${line.color};">
+                            <button class="back-btn" onclick="goBackToAllLines()">← 返回所有線路</button>
+                            <span class="detail-title" style="color: ${line.color};">${line.name} - ${STATION_NAMES_DASHBOARD[stationCode] || stationCode}站</span>
+                        </div>
+                        <div class="error" style="text-align: center; padding: 40px; color: #ff6b6b;">
+                            暫無實時列車數據
+                            <br>
+                            <small style="color: #a0aec0;">可能原因：非服務時間、網絡問題或API暫時不可用</small>
+                            <br>
+                            <button onclick="goBackToAllLines()" style="margin-top: 15px; padding: 8px 16px; background: rgba(0,212,255,0.2); color: #00d4ff; border: none; border-radius: 6px; cursor: pointer;">
+                                返回所有線路
+                            </button>
+                        </div>
+                    </div>
+                `;
+                stopMTRAutoRefresh();
+            }
+        }
+    }
+}
+
 // 返回所有線路視圖
 function goBackToAllLines() {
     updateAllLines();
@@ -402,6 +435,7 @@ window.showMTRStationDetail = showMTRStationDetail;
 window.startMTRAutoRefresh = startMTRAutoRefresh;
 window.stopMTRAutoRefresh = stopMTRAutoRefresh;
 window.goBackToAllLines = goBackToAllLines;
+window.handleLineClick = handleLineClick;
 
 // 自動初始化
 initMTRDashboard();

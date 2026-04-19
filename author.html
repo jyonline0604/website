@@ -388,6 +388,7 @@
             <a href="chapters.html">章節</a>
             <a href="news.html">AI 新聞</a>
             <a href="finance.html">財經</a>
+            <a href="https://itv.kofhk.com/" target="_blank">ITV</a>
             <a href="dashboard.html">城市儀表板</a>
             <a href="author.html" style="background: rgba(99,102,241,0.1); color: #6366f1;">作者</a>
         </nav>
@@ -494,29 +495,6 @@
     <!-- PWA Service Worker 註冊 -->
     <script>
         // 註冊Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/assets/service-worker.js')
-                    .then(function(registration) {
-                        console.log('Service Worker 註冊成功:', registration.scope);
-                        
-                        // 檢查更新
-                        registration.addEventListener('updatefound', function() {
-                            const newWorker = registration.installing;
-                            console.log('Service Worker 更新發現:', newWorker.state);
-                            
-                            newWorker.addEventListener('statechange', function() {
-                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                    console.log('新Service Worker已安裝，需要刷新頁面');
-                                    // 這裡可以顯示更新提示
-                                }
-                            });
-                        });
-                    })
-                    .catch(function(error) {
-                        console.log('Service Worker 註冊失敗:', error);
-                    });
-            });
             
             // 離線狀態檢測
             window.addEventListener('online', function() {

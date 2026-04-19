@@ -541,7 +541,8 @@
     <header class="header">
         <a href="chapters.html">← 章節</a>
         <span class="chapter-title">第123章</span>
-        <div class="header-right">
+        <a href="av-novels.html" style="display:inline-flex;align-items:center;padding:8px 12px;background:rgba(102,126,234,0.8);color:white;border-radius:8px;text-decoration:none;font-size:0.85rem;margin-right:8px;">🎬 有聲畫</a>
+<div class="header-right">
             <button class="icon-btn" onclick="openSettings()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="3"></circle>
@@ -620,7 +621,7 @@
             <span id="progress">0%</span>
             <button class="nav-btn" onclick="nextChapter()">▶</button>
         </div>
-        <a href="chapter-124.html">下一章 →</a>
+        <span style="display:inline-block; padding:10px 20px; background:#f3f4f6; color:#6b7280; border-radius:8px; font-weight:500;">最新章節 ✓</span>
     </nav>
 
     <!-- Settings Modal -->
@@ -673,7 +674,7 @@
                     <div class="setting-label">章節導航</div>
                     <div style="display: flex; gap: 12px;">
                         <button class="nav-btn" style="flex:1" onclick="prevChapter(); closeSettings();">◀ 上一章</button>
-                        <button class="nav-btn" style="flex:1" onclick="nextChapter(); closeSettings();">下一章 ▶</button>
+                        <button class="nav-btn" style="flex:1" onclick="nextChapter(); closeSettings();" disabled>最新章節 ✓</button>
                     </div>
                 </div>
             </div>
@@ -766,8 +767,9 @@
         }
 
         function nextChapter() {
-            window.location.href = 'chapter-124.html';
-        }
+    alert("這是目前的最新章節！新章節將在每日更新中發布。");
+    // window.location.href = "chapter-124.html";
+}
 
         // Reading Progress
         function updateProgress() {

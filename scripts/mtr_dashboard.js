@@ -167,8 +167,10 @@ async function updateAllLines() {
         
         container.innerHTML = html;
         
-        // 啟動自動刷新
-        startMTRAutoRefresh();
+        // 只有在顯示主視圖時才啟動自動刷新
+        if (!container.querySelector('.station-detail-view')) {
+            startMTRAutoRefresh();
+        }
         
     } catch (error) {
         console.error('更新港鐵數據失敗:', error);
@@ -193,10 +195,13 @@ async function showMTRStationDetail(lineCode, stationCode) {
     
     if (!container || !line) return;
     
+    // 停止自動刷新，避免打斷用戶查看詳情
+    stopMTRAutoRefresh();
+    
     container.innerHTML = `
         <div class="station-detail-view">
             <div class="detail-header" style="border-color: ${line.color};">
-                <button class="back-btn" onclick="updateAllLines()">← 返回所有線路</button>
+                <button class="back-btn" onclick="goBackToAllLines()">← 返回所有線路</button>
                 <span class="detail-title" style="color: ${line.color};">${line.name} - ${STATION_NAMES_DASHBOARD[stationCode] || stationCode}站</span>
             </div>
             <div class="loading">
@@ -216,7 +221,7 @@ async function showMTRStationDetail(lineCode, stationCode) {
             let html = `
                 <div class="station-detail-view">
                     <div class="detail-header" style="border-color: ${line.color};">
-                        <button class="back-btn" onclick="updateAllLines()">← 返回所有線路</button>
+                        <button class="back-btn" onclick="goBackToAllLines()">← 返回所有線路</button>
                         <span class="detail-title" style="color: ${line.color};">${line.name} - ${stationName}站</span>
                     </div>
             `;
@@ -309,7 +314,7 @@ async function showMTRStationDetail(lineCode, stationCode) {
             container.innerHTML = `
                 <div class="station-detail-view">
                     <div class="detail-header" style="border-color: ${line.color};">
-                        <button class="back-btn" onclick="updateAllLines()">← 返回所有線路</button>
+                        <button class="back-btn" onclick="goBackToAllLines()">← 返回所有線路</button>
                         <span class="detail-title" style="color: ${line.color};">${line.name} - ${STATION_NAMES_DASHBOARD[stationCode] || stationCode}站</span>
                     </div>
                     <div class="error" style="text-align: center; padding: 40px; color: #ff6b6b;">
@@ -327,7 +332,7 @@ async function showMTRStationDetail(lineCode, stationCode) {
         container.innerHTML = `
             <div class="station-detail-view">
                 <div class="detail-header" style="border-color: ${line.color};">
-                    <button class="back-btn" onclick="updateAllLines()">← 返回所有線路</button>
+                    <button class="back-btn" onclick="goBackToAllLines()">← 返回所有線路</button>
                     <span class="detail-title" style="color: ${line.color};">${line.name} - ${STATION_NAMES_DASHBOARD[stationCode] || stationCode}站</span>
                 </div>
                 <div class="error" style="text-align: center; padding: 40px; color: #ff6b6b;">
@@ -385,11 +390,18 @@ function initMTRDashboard() {
     });
 }
 
+// 返回所有線路視圖
+function goBackToAllLines() {
+    updateAllLines();
+    startMTRAutoRefresh();
+}
+
 // 導出函數供全局使用
 window.updateAllLines = updateAllLines;
 window.showMTRStationDetail = showMTRStationDetail;
 window.startMTRAutoRefresh = startMTRAutoRefresh;
 window.stopMTRAutoRefresh = stopMTRAutoRefresh;
+window.goBackToAllLines = goBackToAllLines;
 
 // 自動初始化
 initMTRDashboard();

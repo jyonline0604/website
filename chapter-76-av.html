@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第76章：修真科技 - 有聲畫版</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --text: #e8eaf0;
+            --accent: #4fc3f7;
+            --accent2: #7c4dff;
+            --card-bg: #111827;
+            --border: #1f2937;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4) saturate(1.2);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 40%, var(--bg) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.7;
+            margin-bottom: 24px;
+        }
+
+        /* Audio Button */
+        .audio-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--accent2), var(--accent));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.05rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+        }
+
+        .audio-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(124, 77, 255, 0.5);
+        }
+
+        .audio-btn.playing {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(79, 195, 247, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(79, 195, 247, 0.8); }
+        }
+
+        /* Nav */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: rgba(10, 14, 26, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover { background: var(--border); }
+
+        .nav-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        /* Scenes */
+        .scenes {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .scene {
+            margin-bottom: 100px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .scene.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scene-img-wrap {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .scene-img-wrap img {
+            width: 100%;
+            display: block;
+        }
+
+        .scene-num {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: linear-gradient(135deg, var(--accent2), var(--accent));
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .scene h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .scene p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text);
+            opacity: 0.85;
+            text-align: justify;
+        }
+
+        /* Audio section */
+        .audio-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .audio-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        /* Bottom nav */
+        .bottom-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--border);
+        }
+
+        .bottom-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+
+        .bottom-nav a:hover {
+            background: var(--border);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="av-novels.html">← 目錄</a>
+        <span class="nav-title">第76章</span>
+        <a href="chapter-75-av.html">上一章</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <img src="assets/chapter-76-scene1.jpg" alt="開場">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>第76章：修真科技</h1>
+            <p class="subtitle">林塵融合修真與科技，創造出「靈算核心」</p>
+            <button class="audio-btn" id="audioBtn" onclick="toggleAudio()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                播放廣東話配音
+            </button>
+        </div>
+    </section>
+
+    <!-- Audio -->
+    <div class="scenes">
+        <div class="audio-section">
+            <h3>🎧 粵語有聲朗讀</h3>
+            <button class="audio-btn" id="audioBtn2" onclick="toggleAudio()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                播放 / 暫停
+            </button>
+        </div>
+    </div>
+
+    <!-- Scenes -->
+    <div class="scenes">
+        <!-- Scene 1 -->
+        <div class="scene" data-scene="1">
+            <div class="scene-img-wrap">
+                <img src="assets/chapter-76-scene1.jpg" alt="場景1">
+                <div class="scene-num">1</div>
+            </div>
+            <h2>三件神秘之物</h2>
+            <p>林塵站在「天機閣」最深處的實驗室裡，面前懸浮著三件物品：一枚古樸的玉簡、一塊閃爍著數據流的晶片，以及一團正在自我重構的量子靈能體。融合進度已達87%，修真法則與科技邏輯的衝突點達到臨界值。</p>
+        </div>
+
+        <!-- Scene 2 -->
+        <div class="scene" data-scene="2">
+            <div class="scene-img-wrap">
+                <img src="assets/chapter-76-scene2.jpg" alt="場景2">
+                <div class="scene-num">2</div>
+            </div>
+            <h2>修真與科技的碰撞</h2>
+            <p>林塵的雙手在虛擬操控面板上飛舞，左手指尖流淌出淡金色的靈力絲線，右手則操控著全息編程界面。玉簡化作金色流體，晶片分解為藍色光點，靈源晶核發出柔和的白光。三者碰撞的瞬間，沒有爆炸，而是產生了一種奇特的「寂靜融合」。</p>
+        </div>
+
+        <!-- Scene 3 -->
+        <div class="scene" data-scene="3">
+            <div class="scene-img-wrap">
+                <img src="assets/chapter-76-scene3.jpg" alt="場景3">
+                <div class="scene-num">3</div>
+            </div>
+            <h2>靈算核心誕生</h2>
+            <p>一個全新的物體緩緩成型——多面體水晶，內部有金色符文流轉，表面浮現藍色電路紋路。它散發出的能量波動既不是純粹的靈力，也不是單純的電磁能，而是一種兼具兩者特性的混合場。林塵將其命名為「靈算核心」——修真與科技的第一次真正融合。</p>
+        </div>
+
+        <!-- Scene 4 -->
+        <div class="scene" data-scene="4">
+            <div class="scene-img-wrap">
+                <img src="assets/chapter-76-scene4.jpg" alt="場景4">
+                <div class="scene-num">4</div>
+            </div>
+            <h2>來自深空觀測站的緊急報告</h2>
+            <p>實驗室的門突然被敲響——聯盟高層全體到齊，他們收到了來自「深空觀測站」的異常報告。更重要的是，「天機閣」的創始人蘇星河前輩剛剛甦醒，他要見林塵。關於上古修真聯合會的真相，或許即將揭曉。</p>
+        </div>
+
+        <!-- Scene 5 -->
+        <div class="scene" data-scene="5">
+            <div class="scene-img-wrap">
+                <img src="assets/chapter-76-scene5.jpg" alt="場景5">
+                <div class="scene-num">5</div>
+            </div>
+            <h2>上古修真聯合會的徽章</h2>
+            <p>在門縫完全合攏前，實驗室中殘留的能量餘暉繪製出一個複雜的標誌：一個圓環包裹著太極圖與齒輪的結合體。這是靈芯系統數據庫中標記為「最高機密」的圖騰——上古修真聯合會的徽章。修真與科技的融合，似乎早在一個古老組織的規劃之中。</p>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <a href="chapter-75-av.html">← 第75章</a>
+        <a href="av-novels.html">目錄</a>
+        <a href="chapter-77.html">第77章 →</a>
+    </div>
+
+    <audio id="audio" preload="auto">
+        <source src="assets/chapter76_audio.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const audio = document.getElementById('audio');
+        const audioBtn = document.getElementById('audioBtn');
+        const audioBtn2 = document.getElementById('audioBtn2');
+        let isPlaying = false;
+
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                audioBtn.classList.remove('playing');
+                audioBtn2.classList.remove('playing');
+                audioBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> 播放廣東話配音';
+            } else {
+                audio.play();
+                audioBtn.classList.add('playing');
+                audioBtn2.classList.add('playing');
+                audioBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> 暫停';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            audioBtn.classList.remove('playing');
+            audioBtn2.classList.remove('playing');
+            audioBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> 播放廣東話配音';
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.scene').forEach(scene => observer.observe(scene));
+    </script>
+</body>
+</html>

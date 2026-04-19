@@ -2,7 +2,7 @@
 
 /* 全站背景圖選項 */
 body.with-background {
-    background: var(--bg-primary) url('backgrounds/website-abstract-bg.png') center/cover no-repeat fixed;
+    background: var(--bg-primary) url('backgrounds/user-provided-bg.jpg') center/cover no-repeat fixed;
     position: relative;
 }
 
@@ -13,7 +13,7 @@ body.with-background::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(10, 10, 15, 0.85);
+    background: rgba(10, 10, 15, 0.4); /* 減少透明度，讓背景更明亮 */
     z-index: -1;
 }
 
@@ -63,6 +63,19 @@ body.with-background::before {
     align-items: center;
     gap: 8px;
     box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* 增強文字可讀性 */
+body.with-background .hero-content * {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+}
+
+body.with-background .card,
+body.with-background .feature-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .background-toggle:hover {

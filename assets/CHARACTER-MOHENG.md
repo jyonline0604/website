@@ -63,3 +63,6 @@ cultivation aesthetic, detailed, cinematic lighting
 - 生成時保持角色外貌一致性
 - 機械義眼的紅光效果可以通過燈光強調
 - 暗紅色靈芯應在胸口位置，明顯可見
+## 參考圖
+
+- `moheng-portrait.png` - 墨衡官方肖像（新生成）

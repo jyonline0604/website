@@ -77,3 +77,6 @@ between them, wisdom passing to next generation, emotional, dramatic lighting
 - 光學目鏡是他的標誌性特徵
 - 半透明的 hologram 效果適合強調他的AI本質
 - 背景可以使用星空和數據流增加科技感
+## 參考圖
+
+- `yunxiaozi-portrait.png` - 雲霄子官方肖像（新生成）

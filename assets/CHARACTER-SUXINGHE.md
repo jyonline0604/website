@@ -76,3 +76,6 @@ dramatic, emotional, cinematic composition
 - 星辰和宇宙元素是他的標誌
 - 太極與齒輪的結合暗示修真與科技的融合
 - 建議使用金色和藍色的光效對比
+## 參考圖
+
+- `suxinghe-portrait.png` - 蘇星河官方肖像（新生成）

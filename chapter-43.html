@@ -556,13 +556,15 @@
     </script>
 </head>
 <body>
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-navigation" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-1;">跳到主要內容</a>
     <!-- Header -->
-    <header class="header">
+    <header role="banner" class="header">
         <a href="chapters.html">← 章節</a>
         <span class="chapter-title">第43章</span>
         <a href="av-novels.html" style="display:inline-flex;align-items:center;padding:8px 12px;background:rgba(102,126,234,0.8);color:white;border-radius:8px;text-decoration:none;font-size:0.85rem;margin-right:8px;">🎬 有聲畫</a>
             <div class="header-right">
-            <button class="icon-btn">
+            <button aria-label="" class="icon-btn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="3"></circle>
                     <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
@@ -572,8 +574,8 @@
     </header>
 
     <!-- Main Content -->
-    <main class="main">
-        <header class="chapter-header">
+    <main id="main-content" class="main">
+        <header role="banner" class="chapter-header">
             <h1>第43章：時空主宰</h1>
             <p class="author">作者：大肥喵</p>
         </header>
@@ -635,9 +637,9 @@
     <nav class="bottom-nav">
         <a href="chapter-42.html">← 上一章</a>
         <div class="nav-center">
-            <button class="nav-btn">◀</button>
+            <button aria-label="◀" class="nav-btn">◀</button>
             <span id="progress">0%</span>
-            <button class="nav-btn">▶</button>
+            <button aria-label="▶" class="nav-btn">▶</button>
         </div>
         <a href="chapter-44.html">下一章 →</a></nav>
     <div style="text-align:center; margin-bottom: 120px;">
@@ -650,20 +652,20 @@
         <div class="settings-modal">
             <div class="modal-header">
                 <h3>設置</h3>
-                <button class="close-btn">×</button>
+                <button aria-label="×" class="close-btn">×</button>
             </div>
             <div class="modal-body">
                 <!-- Theme -->
                 <div class="setting-section">
                     <div class="setting-label">主題模式</div>
                     <div class="theme-grid">
-                        <button class="theme-btn light" data-theme="light"></button>
-                        <button class="theme-btn sepia" data-theme="sepia"></button>
-                        <button class="theme-btn sky" data-theme="sky"></button>
-                        <button class="theme-btn green" data-theme="green"></button>
-                        <button class="theme-btn pink" data-theme="pink"></button>
-                        <button class="theme-btn dark" data-theme="dark"></button>
-                        <button class="theme-btn navy" data-theme="navy"></button>
+                        <button aria-label="" class="theme-btn light" data-theme="light"></button>
+                        <button aria-label="" class="theme-btn sepia" data-theme="sepia"></button>
+                        <button aria-label="" class="theme-btn sky" data-theme="sky"></button>
+                        <button aria-label="" class="theme-btn green" data-theme="green"></button>
+                        <button aria-label="" class="theme-btn pink" data-theme="pink"></button>
+                        <button aria-label="" class="theme-btn dark" data-theme="dark"></button>
+                        <button aria-label="" class="theme-btn navy" data-theme="navy"></button>
                     </div>
                 </div>
 
@@ -671,9 +673,9 @@
                 <div class="setting-section">
                     <div class="setting-label">字體大小</div>
                     <div class="font-size-control">
-                        <button class="font-btn">A-</button>
+                        <button aria-label="A-" class="font-btn">A-</button>
                         <input type="range" class="font-slider" id="fontSlider" aria-label="fontSlider 輸入框" min="14" max="28" value="18">
-                        <button class="font-btn">A+</button>
+                        <button aria-label="A+" class="font-btn">A+</button>
                     </div>
                     <div class="font-preview" id="fontPreview">科技修真傳 - 示範文字</div>
                 </div>
@@ -694,14 +696,14 @@
                 <div class="setting-section">
                     <div class="setting-label">章節導航</div>
                     <div style="display: flex; gap: 12px;">
-                        <button class="nav-btn" style="flex:1">◀ 上一章</button>
-                        <button class="nav-btn" style="flex:1">下一章 ▶</button>
+                        <button aria-label="◀ 上一章" class="nav-btn" style="flex:1">◀ 上一章</button>
+                        <button aria-label="下一章 ▶" class="nav-btn" style="flex:1">下一章 ▶</button>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn-default">恢復默認</button>
-                <button class="btn-primary">確定</button>
+                <button aria-label="恢復默認" class="btn-default">恢復默認</button>
+                <button aria-label="確定" class="btn-primary">確定</button>
             </div>
         </div>
     </div>

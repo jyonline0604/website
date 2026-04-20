@@ -1480,8 +1480,10 @@
 <link rel="stylesheet" href="/assets/fonts/master.css">
 </head>
 <body>
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-navigation" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-1;">跳到主要內容</a>
     <!-- 導航列 -->
-    <header class="header">
+    <header role="banner" class="header">
         <a href="home.html" class="logo">科技修真傳</a>
         <nav class="nav">
             <a href="home.html">首頁</a>
@@ -1506,13 +1508,13 @@
     </section>
 
     <!-- 主要內容 -->
-    <main class="container">
+    <main id="main-content" class="container">
                 <!-- 市場概況 -->
         <section class="market-overview" id="market-overview">
             <div class="section-header">
                 <h2>📈 全球市場實時概況</h2>
                 <div class="section-controls">
-                    <button id="refresh-data" class="btn-refresh">🔄 刷新數據</button>
+                    <button aria-label="🔄 刷新數據" id="refresh-data" class="btn-refresh">🔄 刷新數據</button>
                     <span class="last-update">最後更新: <span id="last-update-time">載入中...</span></span>
                 </div>
             </div>
@@ -1794,7 +1796,7 @@
                         <input type="number" id="years" aria-label="投資年限 (年)" value="10" min="1" max="50" step="1" placeholder="例如: 10">
                     </div>
                     
-                    <button type="submit" class="btn-calculate">
+                    <button aria-label="🧮 立即計算" type="submit" class="btn-calculate">
                         <span class="btn-icon">🧮</span> 立即計算
                     </button>
                 </form>
@@ -1889,7 +1891,7 @@
                         </select>
                     </div>
                     
-                    <button type="submit" class="btn-calculate">
+                    <button aria-label="🔍 開始評估" type="submit" class="btn-calculate">
                         <span class="btn-icon">🔍</span> 開始評估
                     </button>
                 </form>

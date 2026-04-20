@@ -192,7 +192,9 @@
 <link rel="stylesheet" href="/assets/fonts/master.css">
 </head>
 <body>
-    <nav class="nav">
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-navigation" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-1;">跳到主要內容</a>
+    <nav aria-label="主要導航" class="nav">
         <a href="home.html">首頁</a>
         <a href="chapters.html">章節</a>
         <a href="av-novels.html" class="active">🎬 有聲畫</a>
@@ -202,11 +204,11 @@
         <a href="dashboard.html">城市儀表板</a>
         <a href="author.html">作者</a>
     </nav>
-    <header class="header">
+    <header role="banner" class="header">
         <h1>🎬 有聲畫小説</h1>
         <p>《科技修真傳》有聲畫版本 - 圖文並茂 + 完整朗讀</p>
     </header>
-    <div class="container">
+    <div class="container" id="main-content">
         <div class="stats">
             <div class="stat-box">
                 <div class="stat-number" id="totalChapters">76</div>

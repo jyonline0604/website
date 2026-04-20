@@ -1,9 +1,14 @@
-// 科技修真傳 - Service Worker
-// 版本: 1.0.0
-// 日期: 2026-04-18
+// 科技修真傳 - Optimized Service Worker
+// 版本: 2.0.0 (with smart caching)
+// 日期: 2026-04-20
 
-const CACHE_NAME = 'tech-cultivation-v1';
-const urlsToCache = [
+const CACHE_NAME = 'tech-cultivation-v2-' + Date.now();
+const STATIC_CACHE = 'static-assets-v1';
+const DYNAMIC_CACHE = 'dynamic-data-v1';
+const IMAGE_CACHE = 'images-v1';
+
+// 靜態資源（長期緩存）
+const staticUrls = [
   '/',
   '/index.html',
   '/home.html',
@@ -21,182 +26,169 @@ const urlsToCache = [
   '/assets/apple-touch-icon.png',
   '/assets/book-cover.png',
   '/assets/site.webmanifest',
+  '/assets/main.js',
+  '/assets/chapters-data.json',
   
-  // 字體（可選）
+  // 字體
   'https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap'
 ];
 
-// 安裝Service Worker
+// 安裝 - 預載靜態資源
 self.addEventListener('install', event => {
-  // 只在需要時才記錄
   if (typeof console !== 'undefined') {
-    console.log('[Service Worker] 安裝中...');
+    console.log('[Service Worker] 安裝中，版本:', CACHE_NAME);
   }
   
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(urlsToCache);
-      })
-      .then(() => {
-        return self.skipWaiting();
-      })
-      .catch(error => {
-        if (typeof console !== 'undefined') {
-          console.error('[Service Worker] 安裝失敗:', error);
-        }
-      })
+    caches.open(STATIC_CACHE)
+      .then(cache => cache.addAll(staticUrls))
+      .then(() => self.skipWaiting())
+      .catch(err => console.error('Install failed:', err))
   );
 });
 
-// 激活Service Worker
+// 激活 - 清理舊緩存
 self.addEventListener('activate', event => {
-  // 清理舊緩存
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
-            if (typeof console !== 'undefined') {
-              console.log('[Service Worker] 刪除舊緩存:', cacheName);
-            }
-            return caches.delete(cacheName);
+        cacheNames.map(name => {
+          // 刪除舊版本緩存（保留最近 3 個版本）
+          if (name.startsWith('tech-cultivation-') && name !== CACHE_NAME) {
+            return caches.delete(name);
           }
         })
       );
-    })
-    .then(() => {
-      return self.clients.claim();
-    })
+    }).then(() => self.clients.claim())
   );
 });
 
-// 攔截網絡請求
+// 智能攔截策略
 self.addEventListener('fetch', event => {
-  // 跳過非GET請求
-  if (event.request.method !== 'GET') return;
+  const { request } = event;
+  const url = new URL(request.url);
   
-  // 跳過瀏覽器擴展請求
-  if (event.request.url.startsWith('chrome-extension://')) return;
+  // 跳過非 GET 請求
+  if (request.method !== 'GET') return;
   
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // 如果有緩存，返回緩存
-        if (response) {
-          return response;
-        }
-        
-        // 否則從網絡獲取
-        return fetch(event.request)
-          .then(networkResponse => {
-            // 檢查是否有效響應
-            if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-              return networkResponse;
-            }
-            
-            // 緩存新資源
-            const responseToCache = networkResponse.clone();
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(event.request, responseToCache);
-              });
-            
-            return networkResponse;
-          })
-          .catch(error => {
-            // 對於HTML頁面，返回離線頁面
-            if (event.request.headers.get('accept').includes('text/html')) {
-              return caches.match('/offline.html')
-                .then(offlineResponse => offlineResponse || caches.match('/home.html'));
-            }
-            
-            // 對於其他資源，返回緩存的替代資源
-            if (event.request.destination === 'image') {
-              return caches.match('/assets/book-cover.png');
-            }
-            
-            // 返回錯誤響應
-            return new Response('網絡連接失敗，請檢查網絡連接後重試。', {
-              status: 408,
-              headers: { 'Content-Type': 'text/plain; charset=utf-8' }
-            });
-          });
-      })
-  );
-});
-
-// 後台同步（如果瀏覽器支持）
-self.addEventListener('sync', event => {
-  if (event.tag === 'sync-news') {
-    console.log('[Service Worker] 後台同步: 新聞更新');
-    event.waitUntil(syncNews());
+  // 跳過瀏覽器擴展
+  if (url.protocol === 'chrome-extension:') return;
+  
+  // 策略 1: API/動態數據 - Network First
+  if (url.pathname.includes('/api/') || url.searchParams.has('callback')) {
+    event.respondWith(networkFirst(request, DYNAMIC_CACHE));
+    return;
   }
-});
-
-// 推送通知（如果瀏覽器支持）
-self.addEventListener('push', event => {
-  console.log('[Service Worker] 收到推送通知');
   
-  const options = {
-    body: event.data ? event.data.text() : '《科技修真傳》有新章節更新！',
-    icon: '/assets/favicon-192x192.png',
-    badge: '/assets/favicon-72x72.png',
-    vibrate: [200, 100, 200],
-    data: {
-      dateOfArrival: Date.now(),
-      primaryKey: 1
-    },
-    actions: [
-      {
-        action: 'explore',
-        title: '閱讀新章節',
-        icon: '/assets/favicon-32x32.png'
-      },
-      {
-        action: 'close',
-        title: '關閉',
-        icon: '/assets/favicon-32x32.png'
-      }
-    ]
-  };
-  
-  event.waitUntil(
-    self.registration.showNotification('科技修真傳', options)
-  );
-});
-
-// 通知點擊處理
-self.addEventListener('notificationclick', event => {
-  console.log('[Service Worker] 通知被點擊');
-  
-  event.notification.close();
-  
-  if (event.action === 'explore') {
-    // 打開網站
-    event.waitUntil(
-      clients.openWindow('https://kofhk.com')
-    );
-  } else {
-    // 默認打開首頁
-    event.waitUntil(
-      clients.openWindow('/')
-    );
+  // 策略 2: 圖片 - Stale While Revalidate
+  if (url.pathname.match(/\.(jpg|jpeg|png|gif|webp|avif)$/)) {
+    event.respondWith(staleWhileRevalidate(request, IMAGE_CACHE));
+    return;
   }
+  
+  // 策略 3: HTML/主要頁面 - Cache First with Network Fallback
+  if (request.headers.get('accept') && request.headers.get('accept').includes('text/html')) {
+    event.respondWith(cacheFirst(request, STATIC_CACHE));
+    return;
+  }
+  
+  // 策略 4: 其他靜態資源 - Cache First
+  event.respondWith(cacheFirst(request, STATIC_CACHE));
 });
 
-// 輔助函數
-function syncNews() {
-  // 這裡可以實現後台數據同步
-  return fetch('/api/news/latest')
-    .then(response => response.json())
-    .then(data => {
-      console.log('[Service Worker] 新聞同步完成:', data);
-      return data;
-    })
-    .catch(error => {
-      console.error('[Service Worker] 新聞同步失敗:', error);
-    });
+// Cache First 策略（適合靜態資源）
+async function cacheFirst(request, cacheName) {
+  const cached = await caches.match(request);
+  if (cached) {
+    return cached;
+  }
+  
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      const cache = await caches.open(cacheName);
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch (error) {
+    console.error('Cache first failed:', request.url);
+    return new Response('Offline', { status: 503 });
+  }
 }
 
-console.log('[Service Worker] 加載完成');
+// Network First 策略（適合 API/動態數據）
+async function networkFirst(request, cacheName) {
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      const cache = await caches.open(cacheName);
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch (error) {
+    // 網絡失敗時返回緩存
+    const cached = await caches.match(request);
+    if (cached) {
+      return cached;
+    }
+    console.error('Network first failed:', request.url);
+    return new Response('Offline', { status: 503 });
+  }
+}
+
+// Stale While Revalidate（適合圖片）
+async function staleWhileRevalidate(request, cacheName) {
+  const cached = await caches.match(request);
+  
+  // 立即返回緩存（如果有）
+  if (cached) {
+    // 在後台更新緩存
+    fetch(request).then(response => {
+      if (response.ok) {
+        caches.open(cacheName).then(cache => cache.put(request, response));
+      }
+    }).catch(() => {});
+    
+    return cached;
+  }
+  
+  // 沒有緩存時從網絡獲取
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      const cache = await caches.open(cacheName);
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch (error) {
+    console.error('Stale while revalidate failed:', request.url);
+    return new Response('Offline', { status: 503 });
+  }
+}
+
+// 後台同步（可选，用于离线操作）
+self.addEventListener('sync', event => {
+  if (event.tag === 'background-sync') {
+    event.waitUntil(backgroundSync());
+  }
+});
+
+async function backgroundSync() {
+  // 處理離線隊列中的請求
+  console.log('[Service Worker] 後台同步');
+}
+
+// 推送通知（可选）
+self.addEventListener('push', event => {
+  const data = event.data ? event.data.json() : {};
+  const title = data.title || '科技修真傳更新';
+  const options = {
+    body: data.body || '有新的章節更新了！',
+    icon: '/assets/favicon-96x96.png',
+    badge: '/assets/favicon-32x32.png'
+  };
+  
+  event.waitUntil(self.registration.showNotification(title, options));
+});
+
+console.log('[Service Worker] 已激活，版本:', CACHE_NAME);

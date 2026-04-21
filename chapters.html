@@ -1542,7 +1542,8 @@
         function updateChapterCount() {
             const chapterItems = document.querySelectorAll('.chapter-item');
             if (document.getElementById('totalChapters')) {
-        document.getElementById('totalChapters').textContent = `共 ${chapterItems.length} 章`;
+                document.getElementById('totalChapters').textContent = `共 ${chapterItems.length} 章`;
+            }
         }
         
         // 章節排序功能
@@ -1555,8 +1556,19 @@
                 btn.classList.remove('active');
             });
             
-            // 設置當前按鈕為active
-            event.target.classList.add('active');
+            // 設置當前按鈕為active - 使用 event 參數
+            // 注意：event 是全局變量，在 onclick 處理程序中可用
+            if (event && event.target) {
+                event.target.classList.add('active');
+            } else {
+                // 備用方案：找到對應的按鈕
+                const buttons = document.querySelectorAll('.sort-btn');
+                buttons.forEach(btn => {
+                    if (btn.textContent === (order === 'desc' ? '最新到最舊' : '最舊到最新')) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
             
             // 排序
             items.sort((a, b) => {
@@ -1741,7 +1753,7 @@
         (function() {
             'use strict';
             
-            const CHAPTERS_DATA_URL = '/assets/chapters-data.json';
+            const CHAPTERS_DATA_URL = 'assets/chapters-data.json';
             let allChapters = [];
             let currentSort = 'desc';
             
@@ -1758,7 +1770,8 @@
                 } catch (error) {
 //                     console.error('Error loading chapters:', error);
                     if (document.getElementById('totalChapters')) {
-        document.getElementById('totalChapters').textContent = '載入失敗';
+                        document.getElementById('totalChapters').textContent = '載入失敗';
+                    }
                 }
             }
             

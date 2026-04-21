@@ -11,9 +11,11 @@
 
 import sys
 import os
+import re
 import subprocess
 import requests
 import json
+from pathlib import Path
 
 # 設定
 WORKSPACE = "/home/openclaw/.openclaw/workspace"
@@ -189,10 +191,85 @@ def main():
     except Exception as e:
         print(f"   按鈕添加異常: {e}")
     
+    # 4. 自動排序 av-novels.html 章節順序
+    print("\n4. 自動排序 av-novels.html 章節...")
+    sort_av_novels_chapters(NOVEL_DIR)
+
     print(f"\n=== 第 {chapter_num} 章有聲畫生成完成 ===")
     print(f"\n請繼續生成符合劇情的場景圖片：")
     print(f"查看章節: cat {os.path.join(NOVEL_DIR, f'chapter-{chapter_num}.html')} | head -c 2000")
     print(f"然後生成3張符合該章節實際劇情的圖片")
+
+
+def sort_av_novels_chapters(workspace):
+    """自動排序 av-novels.html 的章節順序（最新章節放最前面）"""
+    av_path = Path(workspace) / "av-novels.html"
+    
+    if not av_path.exists():
+        print(f"   ⚠️ 找不到 {av_path}，跳過排序")
+        return
+    
+    content = av_path.read_text(encoding='utf-8')
+    
+    # 找到 chapter-grid
+    grid_start = content.find('<div class="chapter-grid" id="chapterGrid">')
+    if grid_start == -1:
+        print("   ⚠️ 找不到 chapter-grid，跳過排序")
+        return
+    
+    # 找到最後一個章節內容區塊的位置
+    content_positions = list(re.finditer(r'<div class="chapter-card-content">', content))
+    if not content_positions:
+        print("   ⚠️ 找不到任何章節內容區塊，跳過排序")
+        return
+    
+    last_content_pos = content_positions[-1].start()
+    
+    # 找到 grid 的結束位置
+    grid_end_match = re.search(r'</div>\s*</div>', content[last_content_pos:])
+    if not grid_end_match:
+        print("   ⚠️ 找不到 grid 結束標籤，跳過排序")
+        return
+    
+    grid_end = last_content_pos + grid_end_match.end()
+    
+    # 提取所有章節卡片
+    cards = re.findall(r'<div class="chapter-card">.*?</div>\s*</div>\s*</div>', content[grid_start:grid_end], re.DOTALL)
+    
+    if not cards:
+        print("   ⚠️ 找不到任何章節卡片，跳過排序")
+        return
+    
+    # 提取章節號的函數
+    def get_chapter_num(card):
+        match = re.search(r'chapter-(\d+)-av\.html', card)
+        if match:
+            return int(match.group(1))
+        title_match = re.search(r'第 (\d+) 章', card)
+        return int(title_match.group(1)) if title_match else 0
+    
+    # 按章節號降序排序（最新放最前）
+    sorted_cards = sorted(cards, key=get_chapter_num, reverse=True)
+    
+    # 驗證排序是否正確
+    nums = [get_chapter_num(c) for c in sorted_cards]
+    is_sorted = all(nums[i] >= nums[i+1] for i in range(len(nums)-1))
+    
+    if is_sorted:
+        print(f"   ✅ 章節順序已正確 ({len(sorted_cards)} 章)")
+        return
+    
+    # 重建 grid 內容
+    new_grid_content = '<div class="chapter-grid" id="chapterGrid">\n' + '\n'.join(sorted_cards) + '\n</div>'
+    
+    # 替換原內容
+    new_content = content[:grid_start] + new_grid_content + content[grid_end:]
+    
+    # 寫回文件
+    av_path.write_text(new_content, encoding='utf-8')
+    
+    print(f"   ✅ 已重新排序 ({len(sorted_cards)} 章): {nums[0]} → {nums[-1]}")
+
 
 if __name__ == "__main__":
     main()

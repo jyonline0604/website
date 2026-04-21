@@ -228,17 +228,18 @@
         }
 
         /* Settings Modal */
+                /* Settings Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
             display: none;
-            align-items: center;
             justify-content: center;
-            z-index: 200;
+            align-items: flex-end;
+            z-index: 1000;
         }
 
         .modal-overlay.active {
@@ -246,56 +247,100 @@
         }
 
         .settings-modal {
+            width: 100%;
+            max-width: 500px;
+            max-height: 85vh;
             background: var(--panel-bg);
-            border-radius: 16px;
-            padding: 24px;
-            max-width: 400px;
-            width: 90%;
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .settings-modal {
+            transform: translateY(0);
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
         }
 
         .modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
             color: var(--text);
         }
 
         .close-btn {
             width: 32px;
             height: 32px;
+            border-radius: 50%;
             border: none;
-            background: transparent;
+            background: var(--border);
             color: var(--text);
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(85vh - 140px);
         }
 
         .setting-section {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .setting-label {
-            color: var(--text);
-            margin-bottom: 10px;
             font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .theme-grid {
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 8px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
         }
 
         .theme-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
+            aspect-ratio: 1;
+            border-radius: 12px;
             border: 2px solid var(--border);
             cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-btn.active {
+            border-color: var(--accent);
+        }
+
+        .theme-btn.active::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
         .theme-btn.light { background: #FAFBFC; }
@@ -303,7 +348,7 @@
         .theme-btn.sky { background: #E8F4FC; }
         .theme-btn.green { background: #E8F5E9; }
         .theme-btn.pink { background: #FCE4EC; }
-        .theme-btn.dark { background: #1A1F26; }
+        .theme-btn.dark { background: #2D3748; }
         .theme-btn.navy { background: #1A202C; }
 
         .font-size-control {
@@ -313,29 +358,58 @@
         }
 
         .font-btn {
-            padding: 8px 16px;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
             border: 1px solid var(--border);
             background: var(--bg);
             color: var(--text);
-            border-radius: 8px;
             cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .font-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
         }
 
         .font-slider {
             flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--border);
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .font-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
         }
 
         .font-preview {
-            margin-top: 10px;
-            color: var(--text);
             text-align: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: var(--font-size);
         }
 
         .progress-info {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 12px;
-            color: var(--text);
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
         }
 
         .progress-bar {
@@ -343,14 +417,55 @@
             height: 8px;
             background: var(--border);
             border-radius: 4px;
+            margin: 0 16px;
+            overflow: hidden;
         }
 
         .progress-fill {
             height: 100%;
             background: var(--accent);
             border-radius: 4px;
+            transition: width 0.3s;
         }
-    </style>
+
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .modal-footer button {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-default {
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .btn-default:hover {
+            background: var(--border);
+        }
+
+        .btn-primary {
+            border: none;
+            background: #10B981;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+        }
+
+        </style>
 </head>
 <body>
     <!-- Skip Navigation Link -->

@@ -1677,7 +1677,7 @@
                     // 移除 HTML 標籤
                     const cleanSummary = (item.summary || '').replace(/<[^>]*>/g, '').substring(0, 150);
                     html += `
-                        <a href="#" target="_blank" class="news-card">
+                        <a href="${item.link}" target="_blank" class="news-card">
                             <div class="news-card-image">${icon}</div>
                             <div class="news-card-body">
                                 <h3 class="news-card-title">${item.title}</h3>
@@ -1760,7 +1760,44 @@
     // SECURITY NOTE: Consider replacing innerHTML assignments with textContent
 // or DOM manipulation methods to prevent XSS vulnerabilities.
 // Example: element.textContent = value instead of element.innerHTML = value
-</script>
+</script>        // 載入財經新聞
+        async function loadFinanceNews() {
+            try {
+                const response = await fetch('finance-news.json');
+                const data = await response.json();
+                const news = data.news || [];
+                
+                const grid = document.getElementById('finance-news-grid');
+                if (news.length === 0) {
+                    grid.innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:40px;">暫無新聞</p>';
+                    return;
+                }
+                
+                let html = '';
+                news.slice(0, 30).forEach(item => {
+                    const date = item.timestamp ? new Date(item.timestamp).toLocaleDateString('zh-HK') : '';
+                    const icon = item.category === 'crypto' ? '₿' : (item.category === 'stocks' ? '📈' : '📰');
+                    const cleanSummary = (item.summary || '').replace(/<[^>]*>/g, '').substring(0, 150);
+                    html += `
+                        <a href="${item.link}" target="_blank" class="news-card">
+                            <div class="news-card-image">${icon}</div>
+                            <div class="news-card-body">
+                                <h3 class="news-card-title">${item.title}</h3>
+                                <p class="news-card-desc">${cleanSummary || '點擊閱讀全文...'}</p>
+                                <div class="news-card-meta">
+                                    <div class="news-card-source">${item.source}</div>
+                                    <div class="news-card-date">${date}</div>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                });
+                grid.innerHTML = html;
+            } catch (e) {
+                console.error(e);
+                document.getElementById('finance-news-grid').innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:40px;">無法載入新聞</p>';
+            }
+        }
     
     <!-- 投資工具部分 -->
     <section class="investment-tools">
@@ -1999,6 +2036,57 @@
             }
         });
     </script>
+        // 圖片懶加載實現
+        document.addEventListener('DOMContentLoaded', function() {
+            // 使用IntersectionObserver API
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
+            });
+            
+            // 觀察所有懶加載圖片
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+            
+            // 如果瀏覽器不支持IntersectionObserver，使用備用方案
+            if (!('IntersectionObserver' in window)) {
+                const lazyImages = document.querySelectorAll('img[data-src]');
+                let lazyImageObserver;
+                
+                // 簡單的滾動檢測
+                function lazyLoad() {
+                    lazyImages.forEach(img => {
+                        if (img.getBoundingClientRect().top <= window.innerHeight + 100) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                    });
+                    
+                    // 如果所有圖片都加載了，移除事件監聽
+                    if (document.querySelectorAll('img[data-src]').length === 0) {
+                        window.removeEventListener('scroll', lazyLoad);
+                        window.removeEventListener('resize', lazyLoad);
+                    }
+                }
+                
+                window.addEventListener('scroll', lazyLoad);
+                window.addEventListener('resize', lazyLoad);
+                lazyLoad(); // 初始加載
+            }
+        });
+    
     
     <!-- PWA Service Worker 註冊 -->
     <script>
@@ -2044,6 +2132,48 @@
             }
         });
     </script>
+        // 註冊Service Worker
+            
+            // 離線狀態檢測
+            window.addEventListener('online', function() {
+                document.documentElement.classList.remove('offline');
+            });
+            
+            window.addEventListener('offline', function() {
+                document.documentElement.classList.add('offline');
+            });
+            
+            // 初始檢查
+            if (!navigator.onLine) {
+                document.documentElement.classList.add('offline');
+            }
+        
+        // 添加到主屏幕提示（僅在移動端顯示）
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', function(e) {
+            // 防止Chrome 67及更早版本自動顯示提示
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // 顯示添加到主屏幕按鈕
+            const installBtn = document.getElementById('install-pwa-btn');
+            if (installBtn) {
+                installBtn.style.display = 'block';
+                installBtn.addEventListener('click', function() {
+                    // 顯示安裝提示
+                    deferredPrompt.prompt();
+                    
+                    // 等待用戶選擇
+                    deferredPrompt.userChoice.then(function(choiceResult) {
+                        if (choiceResult.outcome === 'accepted') {
+                            } else {
+                            }
+                        deferredPrompt = null;
+                    });
+                });
+            }
+        });
+    
     <script src="assets/main.js" defer></script>
 </body>
 </html>

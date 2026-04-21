@@ -7,11 +7,11 @@
 <html lang="zh-Hant">
 <head>
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-    <link rel="manifest" href="/assets/site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
     <meta name="theme-color" content="#1e293b">
 
     <meta charset="UTF-8">
@@ -30,7 +30,7 @@
     <meta name="twitter:image" content="https://kofhk.com/assets/book-cover.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>章節目錄 - 科技修真傳</title>
-    <link rel="canonical" href="/chapters.html">
+    <link rel="canonical" href="chapters.html">
     <meta name="robots" content="index, follow, max-image-preview:large">
     
     
@@ -535,8 +535,9 @@
     
     
     <noscript></noscript>
-<link rel="stylesheet" href="/assets/fonts/master.css">
-</head>
+<link rel="stylesheet" href="assets/fonts/master.css">
+
+    <meta property="og:url" content="https://kofhk.com/chapters.html"></head>
 <body>
     <!-- Skip Navigation Link -->
     <a href="#main-content" class="skip-navigation" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-1;">跳到主要內容</a>
@@ -1540,7 +1541,8 @@
         // 更新章節總數
         function updateChapterCount() {
             const chapterItems = document.querySelectorAll('.chapter-item');
-            document.getElementById('totalChapters').textContent = `共 ${chapterItems.length} 章`;
+            if (document.getElementById('totalChapters')) {
+        document.getElementById('totalChapters').textContent = `共 ${chapterItems.length} 章`;
         }
         
         // 章節排序功能
@@ -1733,7 +1735,7 @@
             }
         });
     </script>
-    <script src="/assets/main.js" defer></script>
+    <script src="assets/main.js" defer></script>
 
     <script>
         (function() {
@@ -1754,8 +1756,9 @@
                     renderChapterList(allChapters, currentSort);
                     updateTotalCount(allChapters.length);
                 } catch (error) {
-                    console.error('Error loading chapters:', error);
-                    document.getElementById('totalChapters').textContent = '載入失敗';
+//                     console.error('Error loading chapters:', error);
+                    if (document.getElementById('totalChapters')) {
+        document.getElementById('totalChapters').textContent = '載入失敗';
                 }
             }
             
@@ -1776,7 +1779,7 @@
                     const title = chapter.title.replace(/^第\d+章\s*/, '');
                     const numDisplay = `第${chapterNum}章`;
                     
-                    html += `<a href="${chapter.url}" class="chapter-item" aria-label="閱讀${chapter.title}">
+                    html += `<a href="#" class="chapter-item" aria-label="閱讀${chapter.title}">
                         <div class="chapter-info">
                             <div class="chapter-num">${numDisplay}</div>
                             <div class="chapter-name">${title}</div>

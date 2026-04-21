@@ -580,8 +580,9 @@
 
                 if (data.lastUpdate) {
                     if (document.getElementById('last-update')) {
-        document.getElementById('last-update').textContent =
-                        `最後更新: ${new Date(data.lastUpdate).toLocaleString('zh-TW')}`;
+                        document.getElementById('last-update').textContent =
+                            `最後更新: ${new Date(data.lastUpdate).toLocaleString('zh-TW')}`;
+                    }
                 }
             } catch (error) {
 //                 console.error('載入失敗:', error);

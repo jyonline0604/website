@@ -76,7 +76,7 @@
         .stat-box { background: rgba(255,255,255,0.05); padding: 20px 30px; border-radius: 16px; text-align: center; min-width: 150px; }
         .stat-number { font-size: 2.5rem; font-weight: bold; background: linear-gradient(90deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .stat-label { font-size: 0.85rem; opacity: 0.7; margin-top: 5px; }
-        .chapter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+        .chapter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
         .chapter-card { background: rgba(255,255,255,0.05); border-radius: 20px; overflow: hidden; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
         .chapter-card:hover { transform: translateY(-5px); border-color: #667eea; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
         .chapter-card-image { height: 180px; overflow: hidden; position: relative; }
@@ -101,7 +101,7 @@
         .nav a { color: rgba(255,255,255,0.7); text-decoration: none; padding: 8px 16px; border-radius: 8px; font-size: 0.95rem; transition: all 0.2s; }
         .nav a:hover { background: rgba(255,255,255,0.1); color: #fff; }
         .nav a.active { background: rgba(102,126,234,0.3); color: #667eea; }
-        @media (max-width: 768px) { .chapter-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); } .stats { gap: 15px; } .stat-box { min-width: 120px; padding: 15px 20px; } .nav { flex-wrap: wrap; gap: 8px; } .nav a { padding: 6px 12px; font-size: 0.85rem; } }
+        @media (max-width: 768px) { .chapter-grid { grid-template-columns: 1fr; } .stats { gap: 15px; } .stat-box { min-width: 120px; padding: 15px 20px; } .nav { flex-wrap: wrap; gap: 8px; } .nav a { padding: 6px 12px; font-size: 0.85rem; } }
     
         /* 離線狀態樣式 */
         .offline .network-status {

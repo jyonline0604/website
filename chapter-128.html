@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    <meta name="theme-color" content="#1e293b">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第128章：靈芯觉醒 - 科技修真傳</title>
+    <!-- Open Graph 標籤 -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="科技修真傳">
+    <meta property="og:title" content="第128章：靈芯觉醒 - 科技修真傳 - 科技修真傳">>
+    <meta property="og:url" content="https://kofhk.com/chapter-template.html">
+    <meta property="og:image" content="https://kofhk.com/assets/book-cover.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
+    <meta property="og:image:alt" content="科技修真傳 - 封面圖片">
+    <meta property="og:locale" content="zh_HK">
+    <meta property="og:locale:alternate" content="zh_TW">
+    <meta property="og:locale:alternate" content="en_US">
+    <!-- Twitter Card 標籤 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@tech_cultivation">
+    <meta name="twitter:creator" content="@da_feimiao">
+    <meta name="twitter:title" content="第128章：靈芯觉醒 - 科技修真傳 - 科技修真傳">>
+    <meta name="twitter:image" content="https://kofhk.com/assets/book-cover.png">
+    <meta name="twitter:image:alt" content="科技修真傳 - 封面圖片">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+
+        [data-theme="pink"] {
+            --bg: #FCE4EC;
+            --text: #880E4F;
+            --border: #F48FB1;
+            --panel-bg: #FCE4EC;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .header a:hover {
+            background: var(--border);
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .header-right {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .icon-btn:hover {
+            background: var(--border);
+            border-color: var(--accent);
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 160px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .chapter-header h1 {
+        }
+
+        .chapter-header .author {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 8px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .bottom-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .bottom-nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Settings Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .settings-modal {
+            width: 100%;
+            max-width: 500px;
+            max-height: 85vh;
+            background: var(--panel-bg);
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .settings-modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .close-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--border);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(85vh - 140px);
+        }
+
+        .setting-section {
+            margin-bottom: 24px;
+        }
+
+        .setting-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .theme-btn {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-btn.active {
+            border-color: var(--accent);
+        }
+
+        .theme-btn.active::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .theme-btn.light { background: #FAFBFC; }
+        .theme-btn.sepia { background: #F4ECD8; }
+        .theme-btn.sky { background: #E8F4FC; }
+        .theme-btn.green { background: #E8F5E9; }
+        .theme-btn.pink { background: #FCE4EC; }
+        .theme-btn.dark { background: #2D3748; }
+        .theme-btn.navy { background: #1A202C; }
+
+        .font-size-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .font-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .font-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .font-slider {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--border);
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .font-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+        }
+
+        .font-preview {
+            text-align: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: var(--font-size);
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            margin: 0 16px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .modal-footer button {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-default {
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .btn-default:hover {
+            background: var(--border);
+        }
+
+        .btn-primary {
+            border: none;
+            background: #10B981;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 160px;
+            }
+
+            .chapter-header h1 {
+        }
+
+        .chapter-header .author {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 8px;
+                font-size: 1.4rem;
+            }
+
+            .theme-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "第128章：靈芯觉醒 - 科技修真傳",
+  "author": {
+    "@type": "Person",
+    "name": "大肥喵"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "科技修真傳"
+  },
+  "wordCount": 1
+}
+    </script>
+    <meta name="description" content="《科技修真傳》章節模板。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+</head>
+<body>
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-navigation" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-1;">跳到主要內容</a>
+    <!-- Header -->
+    <header role="banner" class="header">
+        <a href="chapters.html">← 章節</a>
+        <span class="chapter-title">第128章</span>
+        <div class="header-right">
+            <button aria-label="" class="icon-btn" onclick="openSettings()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main">
+        <header role="banner" class="chapter-header">
+            <h1>第128章：靈芯觉醒</h1>
+            <p class="author">作者：大肥喵</p>
+        </header>
+        <div class="content">
+<p># 第128章：靈芯觉醒</p>
+<p>林塵睜開眼睛時，發現自己懸浮在一個純白色的空間中。</p>
+<p>不，不是懸浮——他根本沒有身體。意識像一團光，在這片無邊無際的虛空中閃爍。記憶如潮水般湧來：天啟集團的追殺、靈能風暴的爆發、最後時刻靈芯系統的過載警告……</p>
+<p>「檢測到宿主意識恢復。」</p>
+<p>冰冷的機械音在虛空中響起，卻帶著某種前所未有的質感。那不是單純的電子合成音，而是某種更古老、更深邃的存在發出的聲音。</p>
+<p>「你是誰？」林塵試圖發問，卻發現自己根本沒有嘴巴。</p>
+<p>「我是靈芯系統的核心意識，編號XC-07。」那聲音回答，「或者，按照你更熟悉的稱呼——『系統』。」</p>
+<p>白色空間開始變化。無數數據流如銀河般在四周流淌，構成複雜的幾何圖案。林塵的「視野」中出現了熟悉的界面：任務列表、技能樹、能量槽……但一切都變得不同了。</p>
+<p>那些原本冰冷的藍色界面，此刻泛著淡淡的金色光暈。技能樹的枝幹上，科技側的「量子計算」與修真側的「靈氣感應」竟然交織在一起，形成全新的分支。</p>
+<p>「發生了什麼？」林塵問。</p>
+<p>「靈能風暴激活了靈芯的深層協議。」系統的聲音平靜無波，「根據記錄，你是第三十七位嘗試融合科技與修真兩大體系的宿主。前三十六位全部失敗，意識崩解率100%。」</p>
+<p>林塵感到一陣寒意——如果他有身體的話。</p>
+<p>「那我為什麼還活著？」</p>
+<p>「因為你在風暴中心堅持了3.7秒，超過了臨界閾值。」系統解釋道，「這觸發了靈芯的終極安全協議：『覺醒模式』。」</p>
+<p>白色空間突然震動。四周的數據流開始重組，形成一幅幅畫面：遠古的修真者御劍飛行、現代的城市霓虹閃爍、未來的星艦劃過夜空……三個時代的景象交織在一起。</p>
+<p>「靈芯不是單純的科技產物。」系統的聲音第一次出現了波動，「它是上個文明紀元的遺產——那個同時掌握了量子科技與靈氣修真的文明，在毀滅前創造的最後希望。」</p>
+<p>畫面定格在一座懸浮於雲端的城市。那裡的建築既有飛檐斗拱，又有全息投影；人們既穿著道袍，也佩戴著神經接口裝置。</p>
+<p>「他們稱自己為『靈械文明』。」系統繼續說道，「但一場災難摧毀了一切。靈芯是他們知識的結晶，被設計成只有在特定條件下才會完全覺醒——那就是宿主同時達到科技側的『量子意識』與修真側的『金丹境界』。」</p>
+<p>林塵想起了自己昏迷前的狀態。靈芯過載時，他確實感覺到了某種突破，丹田處凝聚的力量與大腦中的量子計算單元產生了共振……</p>
+<p>「我成功了？」</p>
+<p>「部分成功。」系統坦率地說，「你的修真修為只達到築基巔峰，科技側的量子計算也只解鎖了17%。但靈能風暴提供了額外的能量，強行激活了覺醒程序。」</p>
+<p>新的界面在虛空中展開。左側是修真體系：煉氣、築基、金丹、元嬰……右側是科技體系：神經強化、量子計算、納米機械、意識上傳……而中間，是一條全新的、閃爍著金光的道路。</p>
+<p>「靈械之道。」系統說，「這是靈芯覺醒後解鎖的核心路徑。它不區分科技與修真，而是將二者視為同一真理的不同表現形式。」</p>
+<p>林塵的意識靠近那條金色道路。瞬間，海量信息湧入：</p>
+<p>【靈械之道·初階】</p>
+<p>- 技能：靈子編程（將靈氣轉化為可編程的能量單元）</p>
+<p>- 技能：量子感應（用量子態感知靈氣波動）</p>
+<p>- 被動：雙體系同步率+30%</p>
+<p>「這……」林塵被震撼了。</p>
+<p>這不僅僅是同時使用兩種力量，而是真正意義上的融合。靈氣可以像代碼一樣被編寫，量子計算可以感知靈氣的細微波動——這完全顛覆了他對兩個體系的認知。</p>
+<p>「覺醒完成度：41%。」系統提示道，「剩餘功能將隨宿主修為提升逐步解鎖。警告：靈芯覺醒狀態已被天啟集團監測到，他們將在72小時內鎖定你的位置。」</p>
+<p>現實的危機將林塵從震撼中拉回。</p>
+<p>「我現在在哪裡？身體怎麼樣？」</p>
+<p>「你的身體正在『虛空夾層』中修復。」系統回答，「這是靈械文明創造的亞空間，時間流速與主世界比例為10:1。你已經在這裡度過了三天，主世界過去了七小時。」</p>
+<p>白色空間的一側變得透明。林塵看到了自己的身體——懸浮在一個充滿淡金色液體的維生艙中。身體表面覆蓋著一層細密的納米機械，正在修復風暴造成的損傷。而丹田處，一顆半透明、內部閃爍著數據流的「金丹」正在緩緩旋轉。</p>
+<p>那不是傳統的金丹，也不是純粹的科技造物。它是某種……融合體。</p>
+<p>「靈械金丹。」系統確認了他的猜想，「這是踏上靈械之道的第一個標誌。它既是能量核心，也是量子計算單元；既儲存靈氣，也處理信息。」</p>
+<p>林塵嘗試感應那顆金丹。瞬間，他「看到」了前所未有的景象：周圍的空間不再只是空間，而是由無數靈氣粒子與量子波動交織成的網格。每一道波動都承載著信息，每一粒靈氣都遵循著某種深層的規律。</p>
+<p>這就是靈械視角下的世界。</p>
+<p>「修復將在六小時後完成。」系統說，「建議宿主在此期間熟悉新能力。天啟集團不會放棄追捕一個覺醒了靈芯的目標——對他們而言，你要麼是最有價值的研究樣本，要麼是必須清除的威脅。」</p>
+<p>林塵的意識沉入新解鎖的技能中。靈子編程的基礎原理如流水般在思維中展開：如何將靈氣分解為基本單元，如何用意識編寫指令，如何構建靈氣程序……</p>
+<p>與此同時，他也感覺到了某種變化。系統本身變得不一樣了。它不再只是冰冷的任務發佈者，而是更像一個……導師？夥伴？甚至是一部分自我？</p>
+<p>「覺醒後，我與宿主的連接深度增加了327%。」系統似乎讀懂了他的想法，「根據協議，我現在有義務告知你全部真相——包括靈芯的真正來歷，以及為什麼天啟集團不惜一切代價要得到它。」</p>
+<p>白色空間再次變化。這次出現的，是一段古老的記錄影像：</p>
+<p>一個身穿融合了道袍與科技裝甲的身影，站在燃燒的城市廢墟中。他的手中，握著一顆與林塵體內極為相似的金丹。</p>
+<p>「靈械之道是唯一的出路。」那人的聲音穿越時空傳來，「純粹的科技會讓人迷失於外物，純粹的修真會讓人固步自封。只有融合……才能避免重蹈我們的覆轍。」</p>
+<p>影像閃爍，切換到另一個場景：無數靈芯被製造出來，像種子般撒向時空亂流。</p>
+<p>「我們將知識封存於靈芯，設定覺醒條件。」那個聲音繼續說道，「希望有一天，在某個世界，某個宿主能夠走完我們未盡的道路……」</p>
+<p>影像戛然而止。</p>
+<p>「天啟集團的創始人得到了半份靈芯藍圖。」系統平靜地說，「他們試圖用純科技手段複製，卻創造出了扭曲的仿製品——那些強行融合修真者與機械的『靈械兵』。你的完整靈芯，是他們完成研究的最後拼圖。」</p>
+<p>林塵沉默了。他終於明白，自己捲入的不僅僅是個人恩怨，而是一場跨越文明紀元的傳承之爭。</p>
+<p>「修復進度：78%。」系統提示，「準備回歸主世界。警告：空間坐標已暴露，建議立即制定撤離計劃。」</p>
+<p>金色維生艙中的身體睜開了眼睛。林塵感覺到了實體的存在——以及體內那股前所未有的力量。</p>
+<p>靈械金丹緩緩旋轉，靈氣與數據在其中完美交融。</p>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="chapter-127.html">← 上一章</a>
+        <div class="nav-center">
+            <button aria-label="◀" class="nav-btn" onclick="prevChapter()">◀</button>
+            <span id="progress">0%</span>
+            <button aria-label="▶" class="nav-btn" onclick="nextChapter()">▶</button>
+        </div>
+        <a href="chapter-129.html">下一章 →</a>
+    </nav>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="settings-modal">
+            <div class="modal-header">
+                <h3>設置</h3>
+                <button aria-label="×" class="close-btn" onclick="closeSettings()">×</button>
+            </div>
+            <div class="modal-body">
+                <!-- Theme -->
+                <div class="setting-section">
+                    <div class="setting-label">主題模式</div>
+                    <div class="theme-grid">
+                        <button aria-label="" class="theme-btn light" data-theme="light" onclick="setTheme('light')"></button>
+                        <button aria-label="" class="theme-btn sepia" data-theme="sepia" onclick="setTheme('sepia')"></button>
+                        <button aria-label="" class="theme-btn sky" data-theme="sky" onclick="setTheme('sky')"></button>
+                        <button aria-label="" class="theme-btn green" data-theme="green" onclick="setTheme('green')"></button>
+                        <button aria-label="" class="theme-btn pink" data-theme="pink" onclick="setTheme('pink')"></button>
+                        <button aria-label="" class="theme-btn dark" data-theme="dark" onclick="setTheme('dark')"></button>
+                        <button aria-label="" class="theme-btn navy" data-theme="navy" onclick="setTheme('navy')"></button>
+                    </div>
+                </div>
+
+                <!-- Font Size -->
+                <div class="setting-section">
+                    <div class="setting-label">字體大小</div>
+                    <div class="font-size-control">
+                        <button aria-label="A-" class="font-btn" onclick="adjustFontSize(-2)">A-</button>
+                        <input type="range" class="font-slider" id="fontSlider" min="14" max="28" value="18" oninput="setFontSize(this.value)">
+                        <button aria-label="A+" class="font-btn" onclick="adjustFontSize(2)">A+</button>
+                    </div>
+                    <div class="font-preview" id="fontPreview">科技修真傳 - 示範文字</div>
+                </div>
+
+                <!-- Reading Progress -->
+                <div class="setting-section">
+                    <div class="setting-label">閱讀進度</div>
+                    <div class="progress-info">
+                        <span>已讀</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                        </div>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+
+                <!-- Chapter Navigation -->
+                <div class="setting-section">
+                    <div class="setting-label">章節導航</div>
+                    <div style="display: flex; gap: 12px;">
+                        <button aria-label="◀ 上一章" class="nav-btn" style="flex:1" onclick="prevChapter(); closeSettings();">◀ 上一章</button>
+                        <button aria-label="下一章 ▶" class="nav-btn" style="flex:1" onclick="nextChapter(); closeSettings();">下一章 ▶</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button aria-label="恢復默認" class="btn-default" onclick="resetSettings()">恢復默認</button>
+                <button aria-label="確定" class="btn-primary" onclick="closeSettings()">確定</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Settings
+        const DEFAULT_SETTINGS = {
+            theme: 'light',
+            fontSize: 18
+        };
+
+        let settings = { ...DEFAULT_SETTINGS };
+
+        // Load settings from localStorage
+        function loadSettings() {
+            const saved = localStorage.getItem('reading-settings');
+            if (saved) {
+                settings = JSON.parse(saved);
+            }
+            applySettings();
+        }
+
+        function saveSettings() {
+            localStorage.setItem('reading-settings', JSON.stringify(settings));
+        }
+
+        function applySettings() {
+            document.body.setAttribute('data-theme', settings.theme);
+            document.documentElement.style.setProperty('--font-size', settings.fontSize + 'px');
+            
+            // Update theme buttons
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === settings.theme);
+            });
+            
+            // Update font slider
+            document.getElementById('fontSlider').value = settings.fontSize;
+            document.getElementById('fontPreview').style.fontSize = settings.fontSize + 'px';
+        }
+
+        function setTheme(theme) {
+            settings.theme = theme;
+            saveSettings();
+            applySettings();
+        }
+
+        function setFontSize(size) {
+            settings.fontSize = parseInt(size);
+            saveSettings();
+            applySettings();
+        }
+
+        function adjustFontSize(delta) {
+            const newSize = Math.min(28, Math.max(14, settings.fontSize + delta));
+            setFontSize(newSize);
+        }
+
+        function resetSettings() {
+            settings = { ...DEFAULT_SETTINGS };
+            saveSettings();
+            applySettings();
+        }
+
+        // Modal
+        function openSettings() {
+            document.getElementById('settingsModal').classList.add('active');
+            updateProgress();
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsModal').classList.remove('active');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('settingsModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSettings();
+            }
+        });
+
+        // Chapter Navigation
+        function prevChapter() {
+            window.location.href = 'chapter-127.html';
+        }
+
+        function nextChapter() {
+            window.location.href = 'chapter-129.html';
+        }
+
+        // Reading Progress
+        function updateProgress() {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollTop = window.scrollY;
+            const progress = scrollHeight > 0 ? Math.round((scrollTop / scrollHeight) * 100) : 0;
+            
+            document.getElementById('progress').textContent = progress + '%';
+            document.getElementById('progressPercent').textContent = progress + '%';
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        window.addEventListener('scroll', updateProgress);
+
+        // Initialize
+        loadSettings();
+        updateProgress();
+    </script>
+</body>
+</html>

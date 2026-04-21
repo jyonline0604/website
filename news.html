@@ -7,16 +7,16 @@
 <html lang="zh-Hant">
 <head>
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-    <link rel="manifest" href="/assets/site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
     <meta name="theme-color" content="#1e293b">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI新聞資訊 - 最新人工智能、機器學習、科技發展動態。每日更新，掌握AI前沿技術。">
+    <meta name="description" content="科技修真傳 - 當科技與修仙相遇，會擦出怎樣的火花？林塵在末法時代覺醒靈芯，開啟修真之路，融合科幻與修真元素的長篇小說。">
     <title>AI 新聞 - 科技修真傳</title>
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -42,13 +42,13 @@
       }
     }
     </script>
-    <link rel="canonical" href="/news.html">
+    <link rel="canonical" href="news.html">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <!-- Open Graph 標籤 -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="科技修真傳">
     <meta property="og:title" content="AI新聞資訊 - 科技修真傳">
-    <meta property="og:description" content="AI新聞資訊 - 最新人工智能、機器學習、科技發展動態。每日更新，掌握AI前沿技術。">
+    <meta property="og:description" content="科技修真傳 - 當科技與修仙相遇，會擦出怎樣的火花？林塵在末法時代覺醒靈芯，開啟修真之路，融合科幻與修真元素的長篇小說。">
     <meta property="og:url" content="https://kofhk.com/news.html">
     <meta property="og:image" content="https://kofhk.com/assets/book-cover.png">
     <meta property="og:image:width" content="1280">
@@ -62,7 +62,7 @@
     <meta name="twitter:site" content="@tech_cultivation">
     <meta name="twitter:creator" content="@da_feimiao">
     <meta name="twitter:title" content="AI新聞資訊 - 科技修真傳">
-    <meta name="twitter:description" content="AI新聞資訊 - 最新人工智能、機器學習、科技發展動態。每日更新，掌握AI前沿技術。">
+    <meta name="twitter:description" content="科技修真傳 - 當科技與修仙相遇，會擦出怎樣的火花？林塵在末法時代覺醒靈芯，開啟修真之路，融合科幻與修真元素的長篇小說。">
     <meta name="twitter:image" content="https://kofhk.com/assets/book-cover.png">
     <meta name="twitter:image:alt" content="科技修真傳 - 封面圖片">
     
@@ -421,7 +421,7 @@
     
     
     <noscript></noscript>
-<link rel="stylesheet" href="/assets/fonts/master.css">
+<link rel="stylesheet" href="assets/fonts/master.css">
 </head>
 <body>
     <!-- Skip Navigation Link -->
@@ -510,17 +510,19 @@
 
         function createNewsCard(item, isFeatured = false) {
             const categoryName = CATEGORY_NAMES[item.category] || '其他';
-            const icon = CATEGORY_ICONS[item.category] || '📰';
+            const icon = item.icon || CATEGORY_ICONS[item.category] || '📰';
+            const link = item.link || '#';
+            const description = item.description || '點擊閱讀全文...';
 
             return `
-                <a href="${item.link}" target="_blank" class="news-card ${isFeatured ? 'featured' : ''}" data-category="${item.category}">
+                <a href="${link}" target="_blank" rel="noopener noreferrer" class="news-card ${isFeatured ? 'featured' : ''}" data-category="${item.category}">
                     <div class="news-card-image">
                         <span class="news-card-category">${icon} ${categoryName}</span>
                         <span style="font-size: ${isFeatured ? '4rem' : '2.5rem'}">${icon}</span>
                     </div>
                     <div class="news-card-body">
                         <h3 class="news-card-title">${item.title}</h3>
-                        <p class="news-card-desc">${item.description || '點擊閱讀全文...'}</p>
+                        <p class="news-card-desc">${description}</p>
                         <div class="news-card-meta">
                             <span class="news-card-date">${item.pubDate ? timeAgo(item.pubDate) : '最近更新'}</span>
                         </div>
@@ -579,11 +581,13 @@
                 document.getElementById('newsGrid').style.display = 'grid';
 
                 if (data.lastUpdate) {
-                    document.getElementById('last-update').textContent =
-                        `最後更新: ${new Date(data.lastUpdate).toLocaleString('zh-TW')}`;
+                    if (document.getElementById('last-update')) {
+                        document.getElementById('last-update').textContent =
+                            `最後更新: ${new Date(data.lastUpdate).toLocaleString('zh-TW')}`;
+                    }
                 }
             } catch (error) {
-                console.error('載入失敗:', error);
+//                 console.error('載入失敗:', error);
                 document.getElementById('loading').innerHTML =
                     '<p style="color:#ef4444">新聞載入失敗，請稍後重試</p>';
             }
@@ -693,6 +697,6 @@
             }
         });
     </script>
-    <script src="/assets/main.js" defer></script>
+    <script src="assets/main.js" defer></script>
 </body>
 </html>

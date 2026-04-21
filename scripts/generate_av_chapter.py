@@ -3,6 +3,10 @@
 有聲畫小説章節生成器
 用法: python3 generate_av_chapter.py <章節號>
 例如: python3 generate_av_chapter.py 14
+
+生成完成後會自動：
+1. 為文字版章節添加有聲畫按鈕
+2. 更新av-novels.html目錄
 """
 
 import sys
@@ -16,6 +20,7 @@ WORKSPACE = "/home/openclaw/.openclaw/workspace"
 NOVEL_DIR = WORKSPACE
 ASSETS_DIR = os.path.join(NOVEL_DIR, "assets")
 TTS_SCRIPT = os.path.join(WORKSPACE, "scripts", "tts_minimax.py")
+AV_BUTTON_SCRIPT = os.path.join(WORKSPACE, "scripts", "add_av_buttons_to_text.py")
 
 def get_api_key():
     auth_file = os.path.expanduser("~/.openclaw/agents/main/agent/auth-profiles.json")
@@ -167,7 +172,25 @@ def main():
     
     print(f"\n=== 第 {chapter_num} 章素材已準備 ===")
     print(f"音頻: {audio_file}")
-    print(f"\n請先查看章節內容，再生成符合劇情的場景圖片：")
+    
+    # 3. 自動為文字版添加有聲畫按鈕
+    print("\n3. 為文字版添加有聲畫按鈕...")
+    try:
+        result = subprocess.run(
+            ['python3', AV_BUTTON_SCRIPT, str(chapter_num)],
+            capture_output=True,
+            text=True,
+            timeout=30
+        )
+        if result.returncode == 0:
+            print(f"   按鈕添加成功")
+        else:
+            print(f"   按鈕添加跳過: {result.stdout.strip()}")
+    except Exception as e:
+        print(f"   按鈕添加異常: {e}")
+    
+    print(f"\n=== 第 {chapter_num} 章有聲畫生成完成 ===")
+    print(f"\n請繼續生成符合劇情的場景圖片：")
     print(f"查看章節: cat {os.path.join(NOVEL_DIR, f'chapter-{chapter_num}.html')} | head -c 2000")
     print(f"然後生成3張符合該章節實際劇情的圖片")
 

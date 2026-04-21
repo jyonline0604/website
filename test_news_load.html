@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>測試新聞加載</title>
+</head>
+<body>
+    <h1>測試新聞加載</h1>
+    
+    <div id="loading">加載中...</div>
+    <div id="newsGrid" style="display:none;">新聞將顯示在這裡</div>
+    <div id="last-update"></div>
+    
+    <script>
+        async function loadNews() {
+            try {
+                console.log('開始加載新聞...');
+                const response = await fetch('news-data.json');
+                console.log('響應狀態:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP錯誤: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('數據加載成功:', data);
+                console.log('新聞數量:', data.news ? data.news.length : 0);
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('newsGrid').style.display = 'block';
+                document.getElementById('newsGrid').innerHTML = 
+                    `<p>加載成功！共有 ${data.news.length} 條新聞。</p>`;
+                
+                if (data.lastUpdate) {
+                    document.getElementById('last-update').textContent =
+                        `最後更新: ${new Date(data.lastUpdate).toLocaleString('zh-TW')}`;
+                }
+                
+            } catch (error) {
+                console.error('載入失敗:', error);
+                document.getElementById('loading').innerHTML =
+                    `<p style="color:red">新聞載入失敗: ${error.message}</p>`;
+            }
+        }
+        
+        loadNews();
+    </script>
+</body>
+</html>

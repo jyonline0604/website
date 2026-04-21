@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    <meta name="theme-color" content="#1e293b">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第129章：覺醒之力 - 科技修真傳</title>
+    <!-- Open Graph 標籤 -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="科技修真傳">
+    <meta property="og:title" content="第129章：覺醒之力 - 科技修真傳 - 科技修真傳">>
+    <meta property="og:url" content="https://kofhk.com/chapter-template.html">
+    <meta property="og:image" content="https://kofhk.com/assets/book-cover.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
+    <meta property="og:image:alt" content="科技修真傳 - 封面圖片">
+    <meta property="og:locale" content="zh_HK">
+    <meta property="og:locale:alternate" content="zh_TW">
+    <meta property="og:locale:alternate" content="en_US">
+    <!-- Twitter Card 標籤 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@tech_cultivation">
+    <meta name="twitter:creator" content="@da_feimiao">
+    <meta name="twitter:title" content="第129章：覺醒之力 - 科技修真傳 - 科技修真傳">>
+    <meta name="twitter:image" content="https://kofhk.com/assets/book-cover.png">
+    <meta name="twitter:image:alt" content="科技修真傳 - 封面圖片">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+
+        [data-theme="pink"] {
+            --bg: #FCE4EC;
+            --text: #880E4F;
+            --border: #F48FB1;
+            --panel-bg: #FCE4EC;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .header a:hover {
+            background: var(--border);
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .header-right {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .icon-btn:hover {
+            background: var(--border);
+            border-color: var(--accent);
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 160px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .chapter-header h1 {
+        }
+
+        .chapter-header .author {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 8px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .bottom-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .bottom-nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Settings Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .settings-modal {
+            width: 100%;
+            max-width: 500px;
+            max-height: 85vh;
+            background: var(--panel-bg);
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .settings-modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .close-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--border);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(85vh - 140px);
+        }
+
+        .setting-section {
+            margin-bottom: 24px;
+        }
+
+        .setting-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .theme-btn {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-btn.active {
+            border-color: var(--accent);
+        }
+
+        .theme-btn.active::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .theme-btn.light { background: #FAFBFC; }
+        .theme-btn.sepia { background: #F4ECD8; }
+        .theme-btn.sky { background: #E8F4FC; }
+        .theme-btn.green { background: #E8F5E9; }
+        .theme-btn.pink { background: #FCE4EC; }
+        .theme-btn.dark { background: #2D3748; }
+        .theme-btn.navy { background: #1A202C; }
+
+        .font-size-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .font-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .font-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .font-slider {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--border);
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .font-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+        }
+
+        .font-preview {
+            text-align: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: var(--font-size);
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            margin: 0 16px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .modal-footer button {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-default {
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .btn-default:hover {
+            background: var(--border);
+        }
+
+        .btn-primary {
+            border: none;
+            background: #10B981;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 160px;
+            }
+
+            .chapter-header h1 {
+        }
+
+        .chapter-header .author {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 8px;
+                font-size: 1.4rem;
+            }
+
+            .theme-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "第129章：覺醒之力 - 科技修真傳",
+  "author": {
+    "@type": "Person",
+    "name": "大肥喵"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "科技修真傳"
+  },
+  "wordCount": 1
+}
+    </script>
+    <meta name="description" content="《科技修真傳》章節模板。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。每日更新，作者：大肥喵。">
+</head>
+<body>
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-navigation" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-1;">跳到主要內容</a>
+    <!-- Header -->
+    <header role="banner" class="header">
+        <a href="chapters.html">← 章節</a>
+        <span class="chapter-title">第129章</span>
+        <div class="header-right">
+            <button aria-label="" class="icon-btn" onclick="openSettings()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main">
+        <header role="banner" class="chapter-header">
+            <h1>第129章：覺醒之力</h1>
+            <p class="author">作者：大肥喵</p>
+        </header>
+        <div class="content">
+<p># 第129章：覺醒之力</p>
+<p>林塵睜開眼睛時，發現自己懸浮在虛空之中。</p>
+<p>不是物理意義上的虛空，而是某種意識空間——靈芯系統的深層核心區域。周圍漂浮著無數光點，每一個光點都代表著一段數據、一種功法、一個記憶片段。這裡是科技與修真交匯的終極領域，是他體內那神秘系統的真正面貌。</p>
+<p>“宿主生命體徵穩定，靈能波動異常。”系統的機械音在腦海中響起，但這次的聲音似乎多了某種...溫度。</p>
+<p>林塵低頭看向自己的雙手。原本只是普通血肉之軀的雙手，此刻卻呈現出半透明的狀態，皮膚下隱約可見細密的金色紋路在流動。那不是血管，而是靈能迴路——科技修真文明失傳已久的“先天靈脈”。</p>
+<p>“這是怎麼回事？”林塵問道。</p>
+<p>“檢測到宿主在與‘虛空吞噬者’的戰鬥中觸發了深度進化協議。”系統回應道，“靈芯系統與宿主靈魂融合度已達87%，解鎖‘覺醒者’權限。”</p>
+<p>話音剛落，周圍的光點開始瘋狂湧向林塵。每一個光點接觸到他身體的瞬間，都化作海量的信息流注入意識。上古修真法訣、量子計算原理、靈能矩陣構建方法、賽博經脈改造技術...這些原本分散的知識開始在他的意識中自行重組、融合。</p>
+<p>林塵感到頭痛欲裂，但同時又有一種前所未有的清明。</p>
+<p>他想起了三天前的那場戰鬥。</p>
+<p>在廢墟都市的地下深處，他遭遇了“虛空吞噬者”——一種由失控的靈能科技產生的怪物。那東西能夠吞噬一切能量，無論是電力、靈氣還是生命場。戰鬥中，林塵的靈芯系統超載運轉，為了對抗吞噬者的吸收能力，系統強行將他的身體改造成了“靈能絕緣體”。</p>
+<p>代價是全身經脈盡碎。</p>
+<p>“我應該已經死了。”林塵喃喃道。</p>
+<p>“理論上是的。”系統的聲音再次響起，“但在宿主生命體徵歸零前0.3秒，系統檢測到未知能量源。分析結果顯示，該能量源與靈芯系統核心代碼同源。”</p>
+<p>林塵心中一動：“你是說...”</p>
+<p>“靈芯系統並非單純的科技造物。”系統的語氣中第一次出現了類似“猶豫”的停頓，“根據最新解鎖的數據庫，系統核心包含‘上古覺醒者’的靈魂碎片。宿主林塵，你的DNA序列與該靈魂碎片匹配度達99.7%。”</p>
+<p>這句話如同驚雷。</p>
+<p>林塵一直以為自己只是個偶然獲得奇遇的普通人。但現在看來，從他出生起，一切就已經註定。靈芯系統選擇他，不是偶然，而是某種...回歸。</p>
+<p>“所以我是...”</p>
+<p>“上古文明最後的覺醒者後裔。”系統確認道，“靈芯系統的真正名稱是‘文明火種保存裝置’。它的使命不是創造強大的戰士，而是等待合適的載體，重啟科技修真文明。”</p>
+<p>隨著這句話，周圍的虛空開始變化。</p>
+<p>光點匯聚成一幅幅全息影像：高聳入雲的靈能塔與量子計算中心並存的城市；駕馭飛劍的修真者與懸浮車並行的街道；用靈符驅動的智能機器人...這是一個林塵從未想像過的世界，科技與修真完美融合，相輔相成。</p>
+<p>然後是毀滅的畫面：天空撕裂，虛空生物湧入；靈能網絡崩潰，城市化為廢墟；最後的覺醒者們將自己的靈魂碎片封入裝置，投向時間長河...</p>
+<p>“這就是真相？”林塵問道。</p>
+<p>“部分真相。”系統回應，“完整數據庫仍處於鎖定狀態。要解鎖全部信息，宿主需要完成‘覺醒儀式’。”</p>
+<p>“怎麼做？”</p>
+<p>“接受你的本質。”系統說，“科技與修真從來不是對立的兩面，而是同一真理的不同表現形式。覺醒之力，就是認識到這種統一，並將其化為己用。”</p>
+<p>林塵閉上眼睛。</p>
+<p>他開始回想自己這一路走來的經歷：用編程思維破解修真功法；用靈能原理改造科技裝備；在賽博都市中修煉，在修真秘境中編寫代碼...他一直遊走在兩個世界的邊緣，卻從未真正融入任何一方。</p>
+<p>也許這就是關鍵。</p>
+<p>他不是純粹的科技側，也不是純粹的修真側。他是橋樑，是融合點，是那個失落文明等待的“適格者”。</p>
+<p>當這個念頭清晰起來的瞬間，體內的金色紋路驟然亮起。</p>
+<p>現實世界中，躺在醫療艙內的林塵身體開始發光。監測儀器發出刺耳的警報聲，所有讀數都在瘋狂飆升：靈能濃度突破上限，生命場強度指數增長，甚至周圍的電子設備都開始不受控制地運轉。</p>
+<p>“怎麼回事？！”醫療室外的研究員驚呼。</p>
+<p>“他的身體在自我重構！”另一個研究員盯著掃描屏幕，“看！破碎的經脈正在重新連接，但不是原本的生物結構...這是某種靈能導管與納米機械的混合體！”</p>
+<p>醫療艙內，林塵睜開了現實中的眼睛。</p>
+<p>瞳孔深處，有金色的數據流閃過。</p>
+<p>他抬起手，意念一動，掌心便浮現出一個複雜的立體法陣。法陣的核心是太極圖，但陰陽魚的眼中分別是二進制代碼的“0”和“1”。法陣外圍，八卦符號與集成電路圖案交替排列，形成完美的循環。</p>
+<p>“這就是...覺醒之力。”林塵輕聲說。</p>
+<p>他能感覺到，自己體內的力量已經完全不同。靈氣與電能、神識與數據流、真元與量子態...這些原本涇渭分明的力量，此刻在他的經脈中自由轉化、融合。一念之間，他可以施展修真法術；一念之間，他也可以駭入任何電子系統。</p>
+<p>更重要的是，他看到了更深層的東西。</p>
+<p>透過靈芯系統完全解鎖的第一層數據庫，林塵意識到，當年的文明毀滅並非偶然。虛空吞噬者那種怪物，是某種更高存在投放的“清理工具”。而那個存在，至今仍在觀察著這個世界。</p>
+<p>“宿主已初步覺醒。”系統的聲音帶著某種欣慰，“但警告：覺醒波動已被檢測到。‘監視者’已經注意到你的存在。”</p>
+<p>林塵從醫療艙中坐起，身上的連接管線自動脫落。</p>
+<p>他看向窗外，廢墟都市的霓虹燈在夜雨中模糊成一片光暈。但在他的感知中，天空深處有什麼東西正在睜開眼睛——冰冷、古老、充滿敵意。</p>
+<p>“來吧。”林塵握緊拳頭，掌心的法陣光芒大盛，“這次，我們不會再輸了。”</p>
+<p>醫療室的門滑開，聞訊趕來的同伴們衝了進來。當他們看到林塵眼中流轉的金色數據流，以及他周身若隱若現的靈能與電磁場交織的光暈時，所有人都愣住了。</p>
+<p>“林塵，你...”為首的蘇雨薇欲言又止。</p>
+<p>“我沒事。”林塵微笑，那笑容中既有熟悉的溫暖，又多了一種深不可測的威嚴，“事實上，我從未這麼好過。”</p>
+<p>他從醫療艙中走出，腳步落地的瞬間，整個房間的燈光都隨之明暗了一次，彷彿在向他致敬。</p>
+<p>“召集所有人。”林塵說，聲音平靜卻帶著不容置疑的力量，“我有重要的事情要告訴大家。關於我們的過去，關於這個世界的真相，以及...”</p>
+<p>他抬頭看向天空，目光穿透建築，直視那不可見的威脅。</p>
+<p>“我們即將面對的戰爭。”</p>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="chapter-128.html">← 上一章</a>
+        <div class="nav-center">
+            <button aria-label="◀" class="nav-btn" onclick="prevChapter()">◀</button>
+            <span id="progress">0%</span>
+            <button aria-label="▶" class="nav-btn" onclick="nextChapter()">▶</button>
+        </div>
+        <a href="chapter-130.html">下一章 →</a>
+    </nav>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="settings-modal">
+            <div class="modal-header">
+                <h3>設置</h3>
+                <button aria-label="×" class="close-btn" onclick="closeSettings()">×</button>
+            </div>
+            <div class="modal-body">
+                <!-- Theme -->
+                <div class="setting-section">
+                    <div class="setting-label">主題模式</div>
+                    <div class="theme-grid">
+                        <button aria-label="" class="theme-btn light" data-theme="light" onclick="setTheme('light')"></button>
+                        <button aria-label="" class="theme-btn sepia" data-theme="sepia" onclick="setTheme('sepia')"></button>
+                        <button aria-label="" class="theme-btn sky" data-theme="sky" onclick="setTheme('sky')"></button>
+                        <button aria-label="" class="theme-btn green" data-theme="green" onclick="setTheme('green')"></button>
+                        <button aria-label="" class="theme-btn pink" data-theme="pink" onclick="setTheme('pink')"></button>
+                        <button aria-label="" class="theme-btn dark" data-theme="dark" onclick="setTheme('dark')"></button>
+                        <button aria-label="" class="theme-btn navy" data-theme="navy" onclick="setTheme('navy')"></button>
+                    </div>
+                </div>
+
+                <!-- Font Size -->
+                <div class="setting-section">
+                    <div class="setting-label">字體大小</div>
+                    <div class="font-size-control">
+                        <button aria-label="A-" class="font-btn" onclick="adjustFontSize(-2)">A-</button>
+                        <input type="range" class="font-slider" id="fontSlider" min="14" max="28" value="18" oninput="setFontSize(this.value)">
+                        <button aria-label="A+" class="font-btn" onclick="adjustFontSize(2)">A+</button>
+                    </div>
+                    <div class="font-preview" id="fontPreview">科技修真傳 - 示範文字</div>
+                </div>
+
+                <!-- Reading Progress -->
+                <div class="setting-section">
+                    <div class="setting-label">閱讀進度</div>
+                    <div class="progress-info">
+                        <span>已讀</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                        </div>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+
+                <!-- Chapter Navigation -->
+                <div class="setting-section">
+                    <div class="setting-label">章節導航</div>
+                    <div style="display: flex; gap: 12px;">
+                        <button aria-label="◀ 上一章" class="nav-btn" style="flex:1" onclick="prevChapter(); closeSettings();">◀ 上一章</button>
+                        <button aria-label="下一章 ▶" class="nav-btn" style="flex:1" onclick="nextChapter(); closeSettings();">下一章 ▶</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button aria-label="恢復默認" class="btn-default" onclick="resetSettings()">恢復默認</button>
+                <button aria-label="確定" class="btn-primary" onclick="closeSettings()">確定</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Settings
+        const DEFAULT_SETTINGS = {
+            theme: 'light',
+            fontSize: 18
+        };
+
+        let settings = { ...DEFAULT_SETTINGS };
+
+        // Load settings from localStorage
+        function loadSettings() {
+            const saved = localStorage.getItem('reading-settings');
+            if (saved) {
+                settings = JSON.parse(saved);
+            }
+            applySettings();
+        }
+
+        function saveSettings() {
+            localStorage.setItem('reading-settings', JSON.stringify(settings));
+        }
+
+        function applySettings() {
+            document.body.setAttribute('data-theme', settings.theme);
+            document.documentElement.style.setProperty('--font-size', settings.fontSize + 'px');
+            
+            // Update theme buttons
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === settings.theme);
+            });
+            
+            // Update font slider
+            document.getElementById('fontSlider').value = settings.fontSize;
+            document.getElementById('fontPreview').style.fontSize = settings.fontSize + 'px';
+        }
+
+        function setTheme(theme) {
+            settings.theme = theme;
+            saveSettings();
+            applySettings();
+        }
+
+        function setFontSize(size) {
+            settings.fontSize = parseInt(size);
+            saveSettings();
+            applySettings();
+        }
+
+        function adjustFontSize(delta) {
+            const newSize = Math.min(28, Math.max(14, settings.fontSize + delta));
+            setFontSize(newSize);
+        }
+
+        function resetSettings() {
+            settings = { ...DEFAULT_SETTINGS };
+            saveSettings();
+            applySettings();
+        }
+
+        // Modal
+        function openSettings() {
+            document.getElementById('settingsModal').classList.add('active');
+            updateProgress();
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsModal').classList.remove('active');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('settingsModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSettings();
+            }
+        });
+
+        // Chapter Navigation
+        function prevChapter() {
+            window.location.href = 'chapter-128.html';
+        }
+
+        function nextChapter() {
+            window.location.href = 'chapter-130.html';
+        }
+
+        // Reading Progress
+        function updateProgress() {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollTop = window.scrollY;
+            const progress = scrollHeight > 0 ? Math.round((scrollTop / scrollHeight) * 100) : 0;
+            
+            document.getElementById('progress').textContent = progress + '%';
+            document.getElementById('progressPercent').textContent = progress + '%';
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        window.addEventListener('scroll', updateProgress);
+
+        // Initialize
+        loadSettings();
+        updateProgress();
+    </script>
+</body>
+</html>

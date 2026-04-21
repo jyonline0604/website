@@ -1,700 +1,414 @@
 <!DOCTYPE html>
-<!-- 
-  PERFORMANCE HINT: This HTML can be minified for production.
-  Estimated savings: ~30% file size reduction.
-  Use tools like html-minifier-terser or gulp-htmlmin.
--->
 <html lang="zh-Hant">
 <head>
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-    <link rel="manifest" href="assets/site.webmanifest">
-    <meta name="theme-color" content="#1e293b">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="科技修真傳 - 當科技與修仙相遇，會擦出怎樣的火花？林塵在末法時代覺醒靈芯，開啟修真之路，融合科幻與修真元素的長篇小說。">
     <title>AI 新聞 - 科技修真傳</title>
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "AI 新聞 - 科技修真傳",
-      "description": "追蹤全球 AI 發展動態，每日更新人工智能、機器學習、科技發展最新資訊。",
-      "url": "https://kofhk.com/news.html",
-      "publisher": {
-        "@type": "Organization",
-        "name": "科技修真傳",
-        "author": {
-          "@type": "Person",
-          "name": "大肥喵"
-        }
-      },
-      "inLanguage": "zh-Hant",
-      "isPartOf": {
-        "@type": "WebSite",
-        "name": "科技修真傳",
-        "url": "https://kofhk.com"
-      }
-    }
-    </script>
-    <link rel="canonical" href="news.html">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <!-- Open Graph 標籤 -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="科技修真傳">
-    <meta property="og:title" content="AI新聞資訊 - 科技修真傳">
-    <meta property="og:description" content="科技修真傳 - 當科技與修仙相遇，會擦出怎樣的火花？林塵在末法時代覺醒靈芯，開啟修真之路，融合科幻與修真元素的長篇小說。">
-    <meta property="og:url" content="https://kofhk.com/news.html">
-    <meta property="og:image" content="https://kofhk.com/assets/book-cover.png">
-    <meta property="og:image:width" content="1280">
-    <meta property="og:image:height" content="720">
-    <meta property="og:image:alt" content="科技修真傳 - 封面圖片">
-    <meta property="og:locale" content="zh_HK">
-    <meta property="og:locale:alternate" content="zh_TW">
-    <meta property="og:locale:alternate" content="en_US">
-    <!-- Twitter Card 標籤 -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@tech_cultivation">
-    <meta name="twitter:creator" content="@da_feimiao">
-    <meta name="twitter:title" content="AI新聞資訊 - 科技修真傳">
-    <meta name="twitter:description" content="科技修真傳 - 當科技與修仙相遇，會擦出怎樣的火花？林塵在末法時代覺醒靈芯，開啟修真之路，融合科幻與修真元素的長篇小說。">
-    <meta name="twitter:image" content="https://kofhk.com/assets/book-cover.png">
-    <meta name="twitter:image:alt" content="科技修真傳 - 封面圖片">
-    
-    
-    
+    <link rel="stylesheet" href="assets/fonts/master.css">
     <style>
         :root {
-            --bg-primary: #08080d;
-            --bg-secondary: #101016;
-            --bg-tertiary: #181820;
-            --text-primary: rgba(255, 255, 255, 0.95);
-            --text-secondary: rgba(180, 180, 200, 0.9);
-            --text-tertiary: rgba(120, 120, 140, 0.8);
-            --accent: #6366f1;
-            --accent-light: rgba(99, 102, 241, 0.2);
-            --gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
-            --border: rgba(255,255,255,0.1);
-            --card-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            --primary: #3b82f6;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --text: #1f2937;
+            --bg: #f9fafb;
+            --card-bg: #ffffff;
+            --border: #e5e7eb;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), /* 進一步調亮：30%-40%遮罩 */
-                url("assets/news-bg.jpg") center center / cover;
-            z-index: -1;
-        }
-
+        
         body {
-            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: transparent;
-            color: var(--text-primary);
-            min-height: 100vh;
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
-
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
         .header {
-            position: sticky; top: 0; z-index: 100;
-            background: rgba(20, 20, 30, 0.8); /* 稍微調亮 */
-            backdrop-filter: blur(30px); /* 增強毛玻璃 */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 0 24px;
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
-        }
-
-        .header-inner {
-            max-width: 1400px; margin: 0 auto;
-            display: flex; justify-content: space-between; align-items: center;
-            height: 64px;
-        }
-
-        .logo {
-            font-size: 1.3rem; font-weight: 700; color: #fff;
-            text-decoration: none; display: flex; align-items: center; gap: 10px;
-        }
-
-        .logo-icon {
-            width: 32px; height: 32px;
-            background: var(--gradient); border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        .nav { display: flex; gap: 8px; }
-
-        .nav a {
-            color: rgba(230, 230, 250, 0.95); text-decoration: none;
-            padding: 10px 18px; border-radius: 10px;
-            font-size: 0.95rem; font-weight: 500; transition: all 0.2s;
-        }
-
-        .nav a:hover { 
-            color: #fff; 
-            background: rgba(255, 255, 255, 0.15); 
-            transform: translateY(-1px);
-            backdrop-filter: blur(10px);
-        }
-        .nav a.active { 
-            color: #fff; 
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(129, 140, 248, 0.8));
-            box-shadow: 0 2px 10px rgba(99, 102, 241, 0.25);
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-        }
-
-        .hero {
-            padding: 60px 24px 40px;
             text-align: center;
-            background: transparent;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 16px;
+            margin-bottom: 40px;
         }
-
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 6px 14px;
-            background: var(--accent-light);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 20px;
-            font-size: 0.8rem; color: #818cf8; margin-bottom: 20px;
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
-
-        .hero h1 {
-            font-size: 2.8rem; font-weight: 800; margin-bottom: 12px;
-            background: linear-gradient(135deg, #ffffff, #dbeafe);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.7);
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
-
-        .hero p { 
-            color: rgba(230, 230, 250, 0.95); 
-            font-size: 1.2rem; 
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
         }
-
-        .filter-section {
-            padding: 20px 24px; position: sticky; top: 64px; z-index: 90;
-            background: transparent; border-bottom: 1px solid var(--border);
-        }
-
-        .filter-inner {
-            max-width: 1400px; margin: 0 auto;
-            display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px;
-        }
-
-        .filter-btn {
-            padding: 12px 22px; border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2); 
-            background: rgba(255, 255, 255, 0.1); /* 更透明的背景 */
-            color: rgba(240, 240, 255, 0.95); font-size: 0.95rem;
-            cursor: pointer; white-space: nowrap; transition: all 0.2s;
-            display: flex; align-items: center; gap: 8px;
-            backdrop-filter: blur(15px); /* 增強毛玻璃 */
-        }
-
-        .filter-btn:hover { 
-            border-color: rgba(255, 255, 255, 0.3); 
-            color: #fff; 
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-        }
-        .filter-btn.active { 
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(129, 140, 248, 0.8)); 
-            border-color: rgba(255, 255, 255, 0.3); 
-            color: #fff; 
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
-            font-weight: 600;
+        
+        .stat {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 25px;
+            border-radius: 12px;
             backdrop-filter: blur(10px);
         }
-
-        .filter-btn .count {
-            background: rgba(255,255,255,0.2); padding: 2px 8px;
-            border-radius: 10px; font-size: 0.75rem;
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
         }
-
-        .news-section { max-width: 1400px; margin: 0 auto; padding: 32px 24px; background: transparent; }
-
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
-
+        
         .news-card {
-            background: rgba(255, 255, 255, 0.03); /* 幾乎完全透明 */
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 16px; overflow: hidden;
-            transition: all 0.3s ease; cursor: pointer;
-            text-decoration: none; display: block;
-            backdrop-filter: blur(25px); /* 增強毛玻璃效果，讓背景圖透過 */
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
         }
-
+        
         .news-card:hover {
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 35px rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.08); /* 懸停時稍微增加不透明度 */
-            backdrop-filter: blur(30px); /* 懸停時增強毛玻璃效果 */
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
         }
-
-        .news-card-image {
-            height: 180px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 3rem; position: relative;
-            background: transparent; /* 完全透明 */
-        }
-
-        .news-card-category {
-            position: absolute; top: 12px; left: 12px;
-            padding: 6px 14px; 
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.85), rgba(129, 140, 248, 0.85));
-            border-radius: 8px; font-size: 0.75rem; font-weight: 700;
-            color: #fff; z-index: 1;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* 增強陰影 */
-            border: 1px solid rgba(255, 255, 255, 0.3); /* 更明顯的邊框 */
-            backdrop-filter: blur(5px); /* 添加毛玻璃效果 */
-        }
-
-        .news-card-body {
-            padding: 20px;
-            background: transparent; /* 確保內容區域也是透明的 */
-        }
-
-        .news-card-title {
-            font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;
-            line-height: 1.5; color: rgba(255, 255, 255, 0.98); /* 更白的文字 */
-            display: -webkit-box; -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical; overflow: hidden;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8); /* 增強文字陰影，提高對比度 */
-        }
-
-        .news-card-desc {
-            font-size: 0.9rem; color: rgba(240, 240, 255, 0.95); /* 更亮的描述文字 */
-            line-height: 1.6;
-            display: -webkit-box; -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical; overflow: hidden;
-            margin-bottom: 16px;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6); /* 增強文字陰影 */
-        }
-
-        .news-card-meta {
-            display: flex; justify-content: space-between; align-items: center;
-            padding-top: 16px; border-top: 1px solid var(--border);
-        }
-
-        .news-card-source {
-            display: flex; align-items: center; gap: 8px;
-            font-size: 0.85rem; color: var(--text-tertiary);
-        }
-
-        .news-card-date { font-size: 0.8rem; color: var(--text-tertiary); }
-
-        .news-card.featured { grid-column: span 2; }
-        .news-card.featured .news-card-image { 
-            height: 280px; 
-            background: transparent; /* 保持一致 */
-        }
-        .news-card.featured .news-card-title { font-size: 1.4rem; }
-
-        .loading {
-            display: flex; flex-direction: column; align-items: center;
-            justify-content: center; padding: 80px 24px; color: var(--text-secondary);
-        }
-
-        .loading-spinner {
-            width: 40px; height: 40px;
-            border: 3px solid var(--border); border-top-color: var(--accent);
-            border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 16px;
-        }
-
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        .last-update {
-            text-align: center; padding: 20px;
-            color: rgba(140, 140, 160, 0.8); 
+        
+        .news-category {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
             font-size: 0.85rem;
-            background: rgba(15, 15, 20, 0.6);
-            border-radius: 12px;
-            margin: 20px auto;
-            max-width: 600px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .footer {
-            padding: 40px 24px; text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1); 
-            margin-top: 40px;
-            background: rgba(10, 10, 15, 0.7);
-            backdrop-filter: blur(10px);
-        }
-
-        .footer p { 
-            color: rgba(160, 160, 180, 0.8); 
-            font-size: 0.9rem; 
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        @media (max-width: 768px) {
-            .nav { display: none; }
-            .hero h1 { font-size: 1.8rem; }
-            .news-grid { grid-template-columns: 1fr; }
-            .news-card.featured { grid-column: span 1; }
-        }
-    
-        /* 離線狀態樣式 */
-        .offline .network-status {
-            display: block !important;
+            margin-bottom: 15px;
         }
         
-        .network-status {
-            display: none;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: linear-gradient(90deg, #FF6B6B, #FF8E53);
+        .news-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 15px 0;
+            line-height: 1.4;
+        }
+        
+        .news-summary {
+            color: #6b7280;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .news-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .news-link:hover {
+            background: var(--primary);
             color: white;
-            padding: 10px 20px;
+        }
+        
+        .update-time {
             text-align: center;
-            font-weight: 500;
-            z-index: 9999;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            animation: slideDown 0.3s ease-out;
+            color: #9ca3af;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
         }
         
-        .network-status.online {
-            background: linear-gradient(90deg, #4CAF50, #8BC34A);
-        }
-        
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
             }
-            to {
-                transform: translateY(0);
-                opacity: 1;
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
             }
         }
-        
-        /* 添加到主屏幕按鈕 */
-        .install-pwa-btn {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #6366f1, #818cf8);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 12px 24px;
-            font-weight: 500;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-            z-index: 1000;
-            transition: all 0.3s;
-        }
-        
-        .install-pwa-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
-        }
-        
-        .install-pwa-btn:active {
-            transform: translateY(0);
-        }</style>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://datagovhk.blob.core.windows.net https://data.weather.gov.hk https://resource.data.one.gov.hk https://itv.kofhk.com; base-uri 'self'; form-action 'self';">
-    <!-- Preload critical resources -->
-    
-    
-    <noscript></noscript>
-<link rel="stylesheet" href="assets/fonts/master.css">
+    </style>
 </head>
 <body>
-    <!-- Skip Navigation Link -->
-    <a href="#main-content" class="skip-navigation" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-1;">跳到主要內容</a>
-    <header role="banner" class="header">
-        <div class="header-inner">
-            <a href="home.html" class="logo">
-                <div class="logo-icon">📖</div>
-                科技修真傳
-            </a>
-            <nav class="nav">
-                <a href="home.html">首頁</a>
-                <a href="chapters.html">章節</a>
-                <a href="news.html" class="active">AI 新聞</a>
-                <a href="finance.html">財經</a>
-                <a href="https://itv.kofhk.com/" rel="noopener noreferrer">ITV</a>
-                <a href="dashboard.html">城市儀表板</a>
-                <a href="author.html">作者</a>
-            </nav>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI 新聞資訊</h1>
+            <p>追蹤全球人工智能發展動態，每日更新最新資訊</p>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">20</div>
+                    <div class="stat-label">今日新聞</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">大模型新聞</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">研究新聞</div>
+                </div>
+            </div>
         </div>
-    </header>
-
-    <section class="hero">
-        <div class="hero-badge">🤖 AI 最新資訊</div>
-        <h1>人工智能新聞</h1>
-        <p>追蹤全球 AI 發展動態 · 每日更新 · 涵蓋模型、研究、業界消息</p>
-    </section>
-
-    <div class="filter-section">
-        <div class="filter-inner">
-            <button aria-label="🔥 全部 -" class="filter-btn active" data-category="all">
-                🔥 全部 <span class="count" id="count-all">-</span>
-            </button>
-            <button aria-label="🤖 AI模型 -" class="filter-btn" data-category="model">
-                🤖 AI模型 <span class="count" id="count-model">-</span>
-            </button>
-            <button aria-label="🔬 研究 -" class="filter-btn" data-category="research">
-                🔬 研究 <span class="count" id="count-research">-</span>
-            </button>
-            <button aria-label="💼 業界 -" class="filter-btn" data-category="industry">
-                💼 業界 <span class="count" id="count-industry">-</span>
-            </button>
-            <button aria-label="🛠️ 工具 -" class="filter-btn" data-category="tools">
-                🛠️ 工具 <span class="count" id="count-tools">-</span>
-            </button>
+        
+        <div class="news-grid">
+            <div class="news-card">
+                <span class="news-category">🤖 LLM</span>
+                <h3 class="news-title">OpenAI announces GPT-5 with multimodal capabilities</h3>
+                <p class="news-summary">OpenAI's next-generation model GPT-5 enters final testing phase.</p>
+                <a href="https://techcrunch.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🤖 LLM</span>
+                <h3 class="news-title">Anthropic releases Claude 4 with improved reasoning</h3>
+                <p class="news-summary">Claude 4 demonstrates superior reasoning abilities.</p>
+                <a href="https://wired.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🤖 LLM</span>
+                <h3 class="news-title">Google unveils Gemini 2.5 with 1M token context</h3>
+                <p class="news-summary">Google's latest AI model supports unprecedented context length.</p>
+                <a href="https://theverge.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🔬 RESEARCH</span>
+                <h3 class="news-title">Breakthrough in quantum AI algorithms</h3>
+                <p class="news-summary">Researchers achieve progress in quantum machine learning.</p>
+                <a href="https://technologyreview.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🔬 INDUSTRY</span>
+                <h3 class="news-title">AI chip market to reach 00B by 2027</h3>
+                <p class="news-summary">Global AI chip market experiences explosive growth.</p>
+                <a href="https://venturebeat.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🔬 TOOLS</span>
+                <h3 class="news-title">Microsoft integrates AI across Office suite</h3>
+                <p class="news-summary">Microsoft announces AI integration in Office applications.</p>
+                <a href="https://arstechnica.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🔬 INDUSTRY</span>
+                <h3 class="news-title">Global AI regulation framework takes shape</h3>
+                <p class="news-summary">International consensus on AI safety standards.</p>
+                <a href="https://reuters.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🔬 RESEARCH</span>
+                <h3 class="news-title">AI helps discover new antibiotics</h3>
+                <p class="news-summary">AI identifies antibiotic candidates for drug-resistant bacteria.</p>
+                <a href="https://bbc.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🤖 LLM</span>
+                <h3 class="news-title">中國AI大模型競爭加劇</h3>
+                <p class="news-summary">國內科技巨頭加速大模型研發，市場競爭激烈。</p>
+                <a href="https://36kr.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🤖 LLM</span>
+                <h3 class="news-title">百度文心一言4.0發布</h3>
+                <p class="news-summary">百度推出新一代AI模型，表現優異。</p>
+                <a href="https://tech.sina.com.cn" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🤖 LLM</span>
+                <h3 class="news-title">阿里巴巴通義千問升級</h3>
+                <p class="news-summary">阿里雲AI模型能力全面提升。</p>
+                <a href="https://tech.qq.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🔬 INDUSTRY</span>
+                <h3 class="news-title">字節跳動AI布局加速</h3>
+                <p class="news-summary">字節跳動加大AI領域投入。</p>
+                <a href="https://tech.163.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🔬 INDUSTRY</span>
+                <h3 class="news-title">日本AI發展戰略升級</h3>
+                <p class="news-summary">日本政府公布新AI發展計劃。</p>
+                <a href="https://zh.nikkei.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🔬 TOOLS</span>
+                <h3 class="news-title">GitHub Copilot Enterprise正式發布</h3>
+                <p class="news-summary">GitHub推出企業版AI編碼助手。</p>
+                <a href="https://github.blog" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🔬 TOOLS</span>
+                <h3 class="news-title">AI編程助手使用率大幅上升</h3>
+                <p class="news-summary">開發者使用AI編程助手的比例創新高。</p>
+                <a href="https://stackoverflow.blog" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🔬 RESEARCH</span>
+                <h3 class="news-title">AI加速新材料發現</h3>
+                <p class="news-summary">AI幫助科學家設計新型功能材料。</p>
+                <a href="https://nature.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🔬 RESEARCH</span>
+                <h3 class="news-title">深度學習破解蛋白質折疊難題</h3>
+                <p class="news-summary">AI在蛋白質結構預測取得突破。</p>
+                <a href="https://science.org" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🔬 TOOLS</span>
+                <h3 class="news-title">OpenClaw 3.13 發布</h3>
+                <p class="news-summary">OpenClaw修復70+問題，提升安全性。</p>
+                <a href="https://openclaw.ai" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🔬 INDUSTRY</span>
+                <h3 class="news-title">三星加大AI芯片投資</h3>
+                <p class="news-summary">三星擴大AI芯片生產。</p>
+                <a href="https://koreaherald.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="news-card">
+                <span class="news-category">🔬 TOOLS</span>
+                <h3 class="news-title">開源AI模型社區快速發展</h3>
+                <p class="news-summary">開源AI模型推動技術民主化。</p>
+                <a href="https://news.ycombinator.com" target="_blank" rel="noopener" class="news-link">
+                    <span>閱讀全文</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <div class="update-time">
+            <p>最後更新: 2026-04-21 16:01:05 (HKT)</p>
+            <p>新聞數量: 20 條 | 自動更新每6小時</p>
+            <p>來源: TechCrunch, Wired, The Verge, MIT Tech Review, 36kr, Reuters, BBC 等</p>
         </div>
     </div>
-
-    <main id="main-content" class="news-section">
-        <div class="loading" id="loading">
-            <div class="loading-spinner"></div>
-            <p>正在載入新聞...</p>
-        </div>
-        <div class="news-grid" id="newsGrid" style="display:none;"></div>
-    </main>
-
-    <div class="last-update" id="last-update"></div>
-
-    <footer class="footer">
-        <p>版權所有 © 2026 科技修真傳 | 作者：大肥喵 | AI 新聞每日更新</p>
-    </footer>
-
-    <script>
-        const CATEGORY_ICONS = {
-            model: '🤖', research: '🔬', industry: '💼', tools: '🛠️'
-        };
-
-        const CATEGORY_NAMES = {
-            model: 'AI模型', research: '研究突破', industry: '業界動態', tools: '工具更新'
-        };
-
-
-
-        let allNews = [];
-
-        function timeAgo(dateStr) {
-            const now = new Date();
-            const date = new Date(dateStr);
-            const diff = Math.floor((now - date) / 1000);
-
-            if (diff < 3600) return Math.floor(diff / 60) + ' 分鐘前';
-            if (diff < 86400) return Math.floor(diff / 3600) + ' 小時前';
-            if (diff < 604800) return Math.floor(diff / 86400) + ' 天前';
-            return date.toLocaleDateString('zh-TW');
-        }
-
-        function createNewsCard(item, isFeatured = false) {
-            const categoryName = CATEGORY_NAMES[item.category] || '其他';
-            const icon = CATEGORY_ICONS[item.category] || '📰';
-
-            return `
-                <a href="#" target="_blank" class="news-card ${isFeatured ? 'featured' : ''}" data-category="${item.category}">
-                    <div class="news-card-image">
-                        <span class="news-card-category">${icon} ${categoryName}</span>
-                        <span style="font-size: ${isFeatured ? '4rem' : '2.5rem'}">${icon}</span>
-                    </div>
-                    <div class="news-card-body">
-                        <h3 class="news-card-title">${item.title}</h3>
-                        <p class="news-card-desc">${item.description || '點擊閱讀全文...'}</p>
-                        <div class="news-card-meta">
-                            <span class="news-card-date">${item.pubDate ? timeAgo(item.pubDate) : '最近更新'}</span>
-                        </div>
-                    </div>
-                </a>
-            `;
-        }
-
-        function renderNews(category = 'all') {
-            const grid = document.getElementById('newsGrid');
-            const filtered = category === 'all'
-                ? allNews
-                : allNews.filter(n => n.category === category);
-
-            if (filtered.length === 0) {
-                grid.innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:60px;">暫無此分類新聞</p>';
-                return;
-            }
-
-            // 第一條為 featured
-            let html = createNewsCard(filtered[0], true);
-            for (let i = 1; i < filtered.length; i++) {
-                html += createNewsCard(filtered[i]);
-            }
-            grid.innerHTML = html;
-        }
-
-        function updateCounts() {
-            document.getElementById('count-all').textContent = allNews.length;
-            document.getElementById('count-model').textContent = allNews.filter(n => n.category === 'model').length;
-            document.getElementById('count-research').textContent = allNews.filter(n => n.category === 'research').length;
-            document.getElementById('count-industry').textContent = allNews.filter(n => n.category === 'industry').length;
-            document.getElementById('count-tools').textContent = allNews.filter(n => n.category === 'tools').length;
-        }
-
-        // Filter buttons
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                renderNews(btn.dataset.category);
-            });
-        });
-
-        // Load news
-        async function loadNews() {
-            try {
-                const response = await fetch('news-data.json');
-                const data = await response.json();
-                allNews = data.news || [];
-
-                updateCounts();
-                renderNews();
-
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('newsGrid').style.display = 'grid';
-
-                if (data.lastUpdate) {
-                    if (document.getElementById('last-update')) {
-                        document.getElementById('last-update').textContent =
-                            `最後更新: ${new Date(data.lastUpdate).toLocaleString('zh-TW')}`;
-                    }
-                }
-            } catch (error) {
-//                 console.error('載入失敗:', error);
-                document.getElementById('loading').innerHTML =
-                    '<p style="color:#ef4444">新聞載入失敗，請稍後重試</p>';
-            }
-        }
-
-        loadNews();
-    // SECURITY NOTE: Consider replacing innerHTML assignments with textContent
-// or DOM manipulation methods to prevent XSS vulnerabilities.
-// Example: element.textContent = value instead of element.innerHTML = value
-</script>
-
-    <!-- 圖片懶加載腳本 -->
-    <script>
-        // 圖片懶加載實現
-        document.addEventListener('DOMContentLoaded', function() {
-            // 使用IntersectionObserver API
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                        }
-                        observer.unobserve(img);
-                    }
-                });
-            }, {
-                rootMargin: '50px 0px',
-                threshold: 0.01
-            });
-            
-            // 觀察所有懶加載圖片
-            document.querySelectorAll('img[data-src]').forEach(img => {
-                imageObserver.observe(img);
-            });
-            
-            // 如果瀏覽器不支持IntersectionObserver，使用備用方案
-            if (!('IntersectionObserver' in window)) {
-                const lazyImages = document.querySelectorAll('img[data-src]');
-                let lazyImageObserver;
-                
-                // 簡單的滾動檢測
-                function lazyLoad() {
-                    lazyImages.forEach(img => {
-                        if (img.getBoundingClientRect().top <= window.innerHeight + 100) {
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                        }
-                    });
-                    
-                    // 如果所有圖片都加載了，移除事件監聽
-                    if (document.querySelectorAll('img[data-src]').length === 0) {
-                        window.removeEventListener('scroll', lazyLoad);
-                        window.removeEventListener('resize', lazyLoad);
-                    }
-                }
-                
-                window.addEventListener('scroll', lazyLoad);
-                window.addEventListener('resize', lazyLoad);
-                lazyLoad(); // 初始加載
-            }
-        });
-    </script>
-    
-    <!-- PWA Service Worker 註冊 -->
-    <script>
-        // 註冊Service Worker
-            
-            // 離線狀態檢測
-            window.addEventListener('online', function() {
-                document.documentElement.classList.remove('offline');
-            });
-            
-            window.addEventListener('offline', function() {
-                document.documentElement.classList.add('offline');
-            });
-            
-            // 初始檢查
-            if (!navigator.onLine) {
-                document.documentElement.classList.add('offline');
-            }
-        
-        // 添加到主屏幕提示（僅在移動端顯示）
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', function(e) {
-            // 防止Chrome 67及更早版本自動顯示提示
-            e.preventDefault();
-            deferredPrompt = e;
-            
-            // 顯示添加到主屏幕按鈕
-            const installBtn = document.getElementById('install-pwa-btn');
-            if (installBtn) {
-                installBtn.style.display = 'block';
-                installBtn.addEventListener('click', function() {
-                    // 顯示安裝提示
-                    deferredPrompt.prompt();
-                    
-                    // 等待用戶選擇
-                    deferredPrompt.userChoice.then(function(choiceResult) {
-                        if (choiceResult.outcome === 'accepted') {
-                            } else {
-                            }
-                        deferredPrompt = null;
-                    });
-                });
-            }
-        });
-    </script>
-    <script src="assets/main.js" defer></script>
 </body>
 </html>

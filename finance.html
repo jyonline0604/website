@@ -1736,27 +1736,7 @@
         // 每30秒更新一次市場數據
         setInterval(updateMarketData, 30000);
         
-        // 頁面加載時初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            updateMarketData();
-            loadFinanceNews();
-            
-            // 更新最後更新時間
-            const now = new Date();
-            const options = { 
-                year: 'numeric', 
-                month: '2-digit', 
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit',
-                timeZone: 'Asia/Hong_Kong'
-            };
-            const timeString = now.toLocaleString('zh-HK', options);
-            const timeElement = document.querySelector('.footer p:last-child');
-            if (timeElement) {
-                timeElement.textContent = `最後更新: ${timeString} HKT`;
-            }
-        });
+        // 頁面加載時初始化 - 由 assets/finance.js 處理
     // SECURITY NOTE: Consider replacing innerHTML assignments with textContent
 // or DOM manipulation methods to prevent XSS vulnerabilities.
 // Example: element.textContent = value instead of element.innerHTML = value

@@ -248,16 +248,17 @@ def sort_av_novels_chapters(workspace):
         title_match = re.search(r'第 (\d+) 章', card)
         return int(title_match.group(1)) if title_match else 0
     
+    # 檢查當前是否已排序
+    original_nums = [get_chapter_num(c) for c in cards]
+    is_already_sorted = all(original_nums[i] >= original_nums[i+1] for i in range(len(original_nums)-1))
+    
+    if is_already_sorted:
+        print(f"   ✅ 章節順序已正確 ({len(cards)} 章)")
+        return
+    
     # 按章節號降序排序（最新放最前）
     sorted_cards = sorted(cards, key=get_chapter_num, reverse=True)
-    
-    # 驗證排序是否正確
-    nums = [get_chapter_num(c) for c in sorted_cards]
-    is_sorted = all(nums[i] >= nums[i+1] for i in range(len(nums)-1))
-    
-    if is_sorted:
-        print(f"   ✅ 章節順序已正確 ({len(sorted_cards)} 章)")
-        return
+    sorted_nums = [get_chapter_num(c) for c in sorted_cards]
     
     # 重建 grid 內容
     new_grid_content = '<div class="chapter-grid" id="chapterGrid">\n' + '\n'.join(sorted_cards) + '\n</div>'
@@ -268,7 +269,7 @@ def sort_av_novels_chapters(workspace):
     # 寫回文件
     av_path.write_text(new_content, encoding='utf-8')
     
-    print(f"   ✅ 已重新排序 ({len(sorted_cards)} 章): {nums[0]} → {nums[-1]}")
+    print(f"   ✅ 已重新排序 ({len(sorted_cards)} 章): {sorted_nums[0]} → {sorted_nums[-1]}")
 
 
 if __name__ == "__main__":

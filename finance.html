@@ -1740,44 +1740,7 @@
     // SECURITY NOTE: Consider replacing innerHTML assignments with textContent
 // or DOM manipulation methods to prevent XSS vulnerabilities.
 // Example: element.textContent = value instead of element.innerHTML = value
-</script>        // 載入財經新聞
-        async function loadFinanceNews() {
-            try {
-                const response = await fetch('finance-news.json');
-                const data = await response.json();
-                const news = data.news || [];
-                
-                const grid = document.getElementById('finance-news-grid');
-                if (news.length === 0) {
-                    grid.innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:40px;">暫無新聞</p>';
-                    return;
-                }
-                
-                let html = '';
-                news.slice(0, 30).forEach(item => {
-                    const date = item.timestamp ? new Date(item.timestamp).toLocaleDateString('zh-HK') : '';
-                    const icon = item.category === 'crypto' ? '₿' : (item.category === 'stocks' ? '📈' : '📰');
-                    const cleanSummary = (item.summary || '').replace(/<[^>]*>/g, '').substring(0, 150);
-                    html += `
-                        <a href="${item.link}" target="_blank" class="news-card">
-                            <div class="news-card-image">${icon}</div>
-                            <div class="news-card-body">
-                                <h3 class="news-card-title">${item.title}</h3>
-                                <p class="news-card-desc">${cleanSummary || '點擊閱讀全文...'}</p>
-                                <div class="news-card-meta">
-                                    <div class="news-card-source">${item.source}</div>
-                                    <div class="news-card-date">${date}</div>
-                                </div>
-                            </div>
-                        </a>
-                    `;
-                });
-                grid.innerHTML = html;
-            } catch (e) {
-                console.error(e);
-                document.getElementById('finance-news-grid').innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:40px;">無法載入新聞</p>';
-            }
-        }
+</script>
     
     <!-- 投資工具部分 -->
     <section class="investment-tools">
@@ -2153,6 +2116,7 @@
                 });
             }
         });
+    </script>
     
     <script src="assets/main.js" defer></script>
 </body>

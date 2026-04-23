@@ -1736,7 +1736,8 @@
         // 每30秒更新一次市場數據
         setInterval(updateMarketData, 30000);
         
-        // 頁面加載時初始化 - 由 assets/finance.js 處理
+        // 頁面加載時初始化新聞
+        loadFinanceNews();
     // SECURITY NOTE: Consider replacing innerHTML assignments with textContent
 // or DOM manipulation methods to prevent XSS vulnerabilities.
 // Example: element.textContent = value instead of element.innerHTML = value

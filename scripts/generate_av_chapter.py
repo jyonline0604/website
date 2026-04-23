@@ -233,8 +233,10 @@ def sort_av_novels_chapters(workspace):
     
     grid_end = last_content_pos + grid_end_match.end()
     
-    # 提取所有章節卡片
-    cards = re.findall(r'<div class="chapter-card">.*?</div>\s*</div>\s*</div>', content[grid_start:grid_end], re.DOTALL)
+    # 提取所有章節卡片 - 使用 split 代替正則表達式，避免多行匹配問題
+    grid_section = content[grid_start:grid_end]
+    parts = grid_section.split('<div class="chapter-card">')
+    cards = ['<div class="chapter-card">' + part for part in parts[1:]]  # Skip first part (before first card)
     
     if not cards:
         print("   ⚠️ 找不到任何章節卡片，跳過排序")

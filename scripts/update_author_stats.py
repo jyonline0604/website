@@ -127,12 +127,12 @@ def update_author_html(text_chapters):
             content = f.read()
         
         # 查找並替換章節數量
-        # 模式：目前已有 [數字] 章
-        pattern = r'目前已有\s*(\d+)\s*章'
+        # 模式：目前已有 [數字] 章（可能包含 span 標籤）
+        pattern = r'目前已有\s*<[^>]*>\s*(\d+)\s*</[^>]+>\s*章'
         
         if re.search(pattern, content):
             # 替換為新的章節數量
-            new_content = re.sub(pattern, f'目前已有 {text_chapters} 章', content)
+            new_content = re.sub(pattern, f'目前已有 <span id="chapterCount">{text_chapters}</span> 章', content)
             
             # 檢查是否有變化
             if new_content != content:

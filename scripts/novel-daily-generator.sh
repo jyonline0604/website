@@ -53,6 +53,10 @@ if [ $EXIT_CODE -eq 0 ]; then
         else
             echo "[$(date '+%Y-%m-%d %H:%M:%S')] ℹ️ 統計數字已是最新" >> "$LOG_FILE"
         fi
+        
+        # 排序章節順序（確保正確）
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] 排序章節順序..." >> "$LOG_FILE"
+        python3 "$WORKSPACE/scripts/update_author_stats.py" >> "$LOG_FILE" 2>&1
     else
         echo "[$(date '+%Y-%m-%d %H:%M:%S')] ⚠️ GitHub 推送失敗" >> "$LOG_FILE"
     fi

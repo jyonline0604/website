@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    <meta name="theme-color" content="#1e293b">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第一百五十六章 歸墟真相 - 萬古塵埃</title>
+    <title>第156章：仇敵相見 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-156.html">
     <link rel="prev" href="https://kofhk.com/chapter-155.html">
-    <link rel="next" href="https://kofhk.com/chapter-157.html">
+    <link rel="next" href="https://kofhk.com/chapter-135.html">
+    <!-- Open Graph 標籤 -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="萬古塵埃">
+    <meta property="og:title" content="第156章：仇敵相見 - 萬古塵埃">>
+    <meta property="og:url" content="https://kofhk.com/chapter-template.html">
+    <meta property="og:image" content="https://kofhk.com/assets/book-cover.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
+    <meta property="og:image:alt" content="萬古塵埃 - 封面圖片">
+    <meta property="og:locale" content="zh_HK">
+    <meta property="og:locale:alternate" content="zh_TW">
+    <meta property="og:locale:alternate" content="en_US">
+    <!-- Twitter Card 標籤 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@tech_cultivation">
+    <meta name="twitter:creator" content="@da_feimiao">
+    <meta name="twitter:title" content="第156章：仇敵相見 - 萬古塵埃">>
+    <meta name="twitter:image" content="https://kofhk.com/assets/book-cover.png">
+    <meta name="twitter:image:alt" content="萬古塵埃 - 封面圖片">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,401 +48,734 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Serif TC', serif; background: var(--bg); color: var(--text); line-height: var(--line-height); }
-        .main { max-width: 720px; margin: 0 auto; padding: 80px 24px 160px; }
-        .chapter-header { text-align: center; margin-bottom: 40px; }
-        .chapter-header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 12px; }
-        .content { text-align: justify; font-size: var(--font-size); line-height: var(--line-height); }
-        .content p { margin-bottom: 1.2em; text-indent: 2em; }
-        .content h2 { font-size: 1.3rem; font-weight: 600; margin: 1.5em 0 0.8em; color: var(--accent); }
+
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+
+        [data-theme="pink"] {
+            --bg: #FCE4EC;
+            --text: #880E4F;
+            --border: #F48FB1;
+            --panel-bg: #FCE4EC;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .header a:hover {
+            background: var(--border);
+        }
+
+        .chapter-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .header-right {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .icon-btn:hover {
+            background: var(--border);
+            border-color: var(--accent);
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 160px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .chapter-header h1 {
+        }
+
+        .chapter-header .author {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 8px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .content {
+            text-align: justify;
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+        }
+
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 2em;
+        }
+
+        .content p:first-of-type::first-letter {
+            font-size: 1.3em;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 2px;
+            color: var(--accent);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            z-index: 100;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .bottom-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .bottom-nav a:hover {
+            background: var(--border);
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Settings Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .settings-modal {
+            width: 100%;
+            max-width: 500px;
+            max-height: 85vh;
+            background: var(--panel-bg);
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .settings-modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .close-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--border);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(85vh - 140px);
+        }
+
+        .setting-section {
+            margin-bottom: 24px;
+        }
+
+        .setting-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .theme-btn {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-btn.active {
+            border-color: var(--accent);
+        }
+
+        .theme-btn.active::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .theme-btn.light { background: #FAFBFC; }
+        .theme-btn.sepia { background: #F4ECD8; }
+        .theme-btn.sky { background: #E8F4FC; }
+        .theme-btn.green { background: #E8F5E9; }
+        .theme-btn.pink { background: #FCE4EC; }
+        .theme-btn.dark { background: #2D3748; }
+        .theme-btn.navy { background: #1A202C; }
+
+        .font-size-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .font-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .font-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .font-slider {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--border);
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .font-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+        }
+
+        .font-preview {
+            text-align: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: var(--font-size);
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            margin: 0 16px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .modal-footer button {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-default {
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .btn-default:hover {
+            background: var(--border);
+        }
+
+        .btn-primary {
+            border: none;
+            background: #10B981;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .main {
+                padding: 72px 16px 160px;
+            }
+
+            .chapter-header h1 {
+        }
+
+        .chapter-header .author {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 8px;
+                font-size: 1.4rem;
+            }
+
+            .theme-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
     </style>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "第156章：仇敵相見 - 萬古塵埃",
+  "author": {
+    "@type": "Person",
+    "name": "大肥喵"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "萬古塵埃"
+  },
+  "wordCount": 1
+}
+    </script>
+    <meta name="description" content="第156章：仇敵相見 - 《萬古塵埃》葉塵九世輪迴修仙故事，精彩章節免費閱讀。">
 </head>
 <body>
-    <main class="main">
-        <div class="chapter-header">
-            <h1>第一百五十六章 歸墟真相</h1>
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-navigation" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-1;">跳到主要內容</a>
+    <!-- Header -->
+    <header role="banner" class="header">
+        <a href="chapters.html">← 章節</a>
+        <span class="chapter-title">第156章</span>
+        <div class="header-right">
+            <button aria-label="" class="icon-btn" onclick="openSettings()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </button>
         </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main">
+        <header role="banner" class="chapter-header">
+            <h1>仇敵相見</h1>
+            <p class="author">作者：大肥喵</p>
+        </header>
         <div class="content">
-            ## 一、天宮深處的對峙
-
-葉塵與林若溪並肩而立，面對那隻懸浮於穹頂裂縫中的巨大眼眸。
-
-那隻眼眸緩緩轉動，瞳孔深處彷彿藏著無盡的深淵，注視著這世間的一切。浩瀚的威壓如同實質，從裂縫中傾瀉而下，壓得連空氣都在哀鳴。葉塵感覺自己彷彿置身於萬丈深海，四面八方都是無形的水壓，要將他碾碎。
-
-但他沒有退。
-
-「葉塵，你知道你面對的是什麼嗎？」李長歌站在那隻眼眸之下，黑色的龍袍在氣流中獵獵飛舞。他的面容平靜，但眼底深處卻有一絲難以察覺的悲涼，「歸墟大帝，萬年前人間守護者，以一己之力抵禦天外邪魔，卻最終隕落於天道的反噬。他將最後一縷神念封存於此，等待後世子孫前來唤醒。」
-
-「唤醒？」葉塵冷笑一聲，「用無數女子的靈魂喚醒，這就是你所謂的唤醒？」
-
-「她們不是普通的女子。」李長歌搖頭，「她們是歸墟大帝血脈的傳承者，體內蘊含著大帝的本源之力。只有吸收她們的靈魂，大帝才能修復創傷，重新歸來。」
-
-「荒謬！」葉塵怒喝道，「你為了一己之私，竟然犧牲這麼多無辜的生命！」
-
-「一己之私？」李長歌突然笑了，笑聲中充滿了苦澀，「你以為我想這樣嗎？你以為我看著她們一個又一個香消玉殞，心裡會好受嗎？」
-
-他猛地拉開衣襟，露出胸膛。葉塵瞳孔猛然收縮——只見李長歌的胸口處，有一道觸目驚心的裂痕，裂痕中不斷有黑色的霧氣滲出，散發著令人作嘔的腐臭。
-
-「這是天道詛咒。」李長歌聲音沙啞，「萬年前，大帝與天外邪魔大戰，雖然擊敗了敵人，但也受到了天道的反噬。這道詛咒會不斷侵蝕他的身體，讓他每一世都在痛苦中死去。除非……」
-
-「除非什麼？」葉塵皺眉。
-
-「除非找到九位擁有大帝血脈的女子，用她們的靈魂中蘊含的本源之力，中和詛咒。」李長歌說道，「這些女子，都是我精心挑選的。她們在犧牲之前，都會被賦予最好的一切——財富、地位、爱情。她們的一生雖然短暫，卻比大多數人活了一百年都要精彩。」
-
-「強詞奪理！」葉塵怒道，「你沒有權利決定別人的生死！」
-
-「那你有嗎？」李長歌反問，「你經歷了九世輪迴，每一次都在追求力量，追求長生。你有沒有想過，在你追求的道路上，有多少人成為了犧牲品？」
-
-葉塵的身體猛然一僵。
-
-他想起了第一世的懵懂少年，被師兄背叛，隕落於荒野。他想起了第二世的修羅戰神，殺伐果斷，卻最終被圍攻隕落。他想起了第五世的劍帝，孤傲絕世，被摯愛背叛……
-
-九世輪迴，他何嘗不是踩著累累白骨走到今天？
-
-「我……」葉塵欲言又止。
-
-「你和她們沒有什麼不同。」李長歌說道，「在這個世界上，弱者就是用來被犧牲的。不同的是，我們這些所謂的強者，還能選擇犧牲誰。而她們，只能等待被犧牲。」
-
-「所以你就心安理得了？」葉塵冷冷地問道。
-
-「我不知道。」李長歌搖頭，「我只知道，如果我不這麼做，我就會死。而且，不只是我，歸墟大帝的整個血脈都會被詛咒吞噬，斷子絕孫。」
-
-他轉過身，面對那隻巨大的眼眸：「所以，我選擇了犧牲她們，保全我的血脈。這是我作為歸墟大帝後人的責任。」
-
-「那我問你。」葉塵突然開口，聲音冰冷，「林若溪呢？她也是你的血脈，你為什麼還要犧牲她？」
-
-李長歌沉默了。
-
-良久，他才緩緩開口：「因為她是九位祭品中，最特殊的一個。她的血脈最為純淨，體內蘊含的本源之力也最為強大。如果用她的靈魂來結束這一切，大帝就能彻底康復，詛咒也會永遠消失。」
-
-「所以你就要犧牲她？」葉塵怒吼，「你還是不是人！」
-
-「我是歸墟大帝的後人。」李長歌平靜地說道，「血脈的責任，重於一切。」
-
-## 二、禁忌之術
-
-葉塵握緊雙拳，體內的靈力如同怒濤般洶湧。他的眼中殺意凜然，周身的氣勢在不斷攀升。
-
-「既然你執迷不悟，那就別怪我不客氣了！」
-
-話音未落，葉塵的身形已經消失在原地。下一刻，他出現在李長歌面前，一拳轟向他的面門。
-
-「轟——」
-
-沉悶的爆炸聲響起，李長歌的身體被一拳擊飛，撞穿了數道宮牆，消失在迷宮般的通道深處。
-
-「若溪，我們走！」葉塵拉住林若溪的手，轉身就要離開。
-
-但就在這時，那隻懸浮於穹頂的眼眸突然爆發出一道刺目的光芒，光芒化作一道屏障，將整座天宮的出口封鎖。
-
-「想走？」一個威嚴的聲音從那隻眼眸中傳出，「你當本座的天宮是什麼地方，想來就來，想走就走？」
-
-葉塵面色一變，抬頭望向那隻眼眸。
-
-「歸墟大帝？」
-
-「不是。」那隻眼眸中傳出一聲冷哼，「這只是本座的一縷神念。本體還在沉睡，但對付你這等嘍囉，已經足夠了。」
-
-話音落下，那隻眼眸中突然射出一道黑色的光線，直奔葉塵而去。
-
-「小心！」林若溪驚呼。
-
-葉塵將她推到一旁，體內的靈力瞬間爆發，化作一道金色的護盾。
-
-「嘭——」
-
-黑色光線撞在護盾上，爆發出震耳欲聾的巨響。護盾劇烈顫抖，裂紋如同蛛網般蔓延開來。
-
-「好強的力量……」葉塵心中一沉。
-
-他雖然已經踏入神境，但在歸墟大帝的神念面前，竟然如此不堪一擊。
-
-「區區神境，也敢在本座面前囂張？」那隻眼眸中傳來一聲不屑的冷笑，「讓你見識一下，什麼才是真正的力量！」
-
-話音未落，又是一道黑色光線射來，這一道比之前那道更加粗大，更加恐怖。
-
-葉塵咬緊牙關，將全身的靈力都灌注到護盾之中。金色的光芒大盛，護盾上的裂紋開始修復。
-
-「撐住……」葉塵低喝。
-
-他不能退，因為他身後站著林若溪。他不能輸，因為輸了就是死。
-
-「轟——」
-
-又是一聲巨響，黑色光線終於消散。但葉塵的臉色已經變得煞白，體內的靈力消耗了七七八八。
-
-「不錯，能接下本座兩道神念攻擊。」那隻眼眸中傳來一絲意外，「看來你這九世輪迴，也不是白活的。」
-
-「但也就到此為止了。」
-
-那隻眼眸突然爆發出耀眼的光芒，緊接著，一道巨大的身影從眼眸中緩緩走出。那身影身高百丈，通體漆黑，面容與李長歌有七分相似，但氣勢卻是李長歌的萬倍。
-
-「這是……」葉塵瞳孔收縮。
-
-「這是本座的法相。」那道巨大的身影開口，聲音如同雷霆滾滾，「本座沉寂萬年，今日，就用你的血肉來祭旗！」
-
-說著，那道巨大的身影抬起巨掌，向著葉塵拍下。
-
-巨掌未至，恐怖的威壓已經如同實質般壓下。葉塵感覺自己彷彿被一座大山壓住，連呼吸都變得極為困難。
-
-「葉塵！」林若溪驚呼。
-
-「我來幫你！」她說著，體內突然爆發出一道白色的光芒，光芒中蘊含著一股極為純淨的力量。
-
-那股力量與葉塵的靈力交融在一起，形成了一道更加強大的屏障。
-
-「這是……」葉塵吃驚地看著林若溪。
-
-「這是我們林家的血脈之力。」林若溪蒼白的臉上露出一絲微笑，「我的先祖，也是歸墟大帝的後人。」
-
-「若溪，你……」
-
-「不要管我。」林若溪說道，「我的力量堅持不了多久，你快想办法！」
-
-葉塵咬緊牙關，腦海中飛速運轉。
-
-歸墟大帝的實力太強大了，強大到根本不是他能夠抗衡的。就算他施展所有九世輪迴積累的底牌，在這道法相面前，也不過是滄海一粟。
-
-「怎麼辦？怎麼辦？」
-
-就在這時，他的脑海中突然闪过一个念头。
-
-「對了！輪迴碎片！」
-
-葉塵猛地想起了懷中的那兩塊輪迴碎片。碎片中蘊含著上一任主人的記憶，那是一位觸碰了輪迴禁忌的大能。如果能夠引動碎片中的力量，或許能夠與歸墟大帝抗衡！
-
-想到這裡，葉塵不再猶豫。他將兩塊輪迴碎片取出，體內的靈力瘋狂湧入其中。
-
-「嗡——」
-
-兩塊碎片頓時爆發出耀眼的光芒，散發出一股極為古老的气息。那股气息與歸墟大帝的氣息截然不同，更加深邃，更加神秘。
-
-「這是……輪迴法則的气息？」那道巨大的身影微微一怔，「你從哪裡得來的輪迴碎片？」
-
-「關你什麼事！」葉塵怒吼，將全部的靈力都灌注到碎片之中。
-
-兩塊碎片的光芒越來越亮，最終合二為一，化作一道巨大的光柱，向著那道巨大的身影射去。
-
-「區區兩塊碎片，也敢在本座面前班門弄斧？」那道巨大的身影不屑地說道，巨掌再次拍下。
-
-但就在巨掌即將拍中光柱的瞬間，光柱突然爆發出一股極為恐怖的力量，那股力量直接撕裂了巨掌，向著那道巨大的身影籠罩而去。
-
-「什麼！」那道巨大的身影第一次露出吃驚的神色。
-
-「不可能！這股力量……這是輪迴至尊的力量！你怎麼可能會有輪迴至尊的碎片！」
-
-## 三、輪迴顯威
-
-葉塵沒有理會歸墟大帝法相的吃驚，他將全部心神都放在了兩塊碎片之上。
-
-他感觉到了，那兩塊碎片中蘊含的力量正在覺醒。那是一股極為恐怖的力量，超越了世間一切，凌駕於天道之上。
-
-「原來如此……」葉塵喃喃自語。
-
-他終於明白了輪迴碎片的真正用途。它們不僅僅是開啟某個遗迹的鑰匙，更是蘊含著一位輪迴至尊的畢生所學。
-
-那位至尊，在遠古時期曾經達到了輪迴的巔峰，觸碰到了命運的本源。他的力量雖然已經消散，但殘留在碎片中的意志，卻依然強大無比。
-
-「我雖然不是你，但既然借用了你的力量，就讓我替你完成你未竟的事業吧！」葉塵低喝。
-
-他雙手結印，體內的靈力與輪迴碎片的力量交融在一起，形成了一道極為特殊的光芒。那道光芒既不是金色，也不是白色，而是一種難以言喻的顏色，像是世間所有色彩的集合，又像是所有色彩的虛無。
-
-「輪迴·逆轉！」
-
-葉塵低喝一聲，那道光芒猛然擴大，向著四面八方席捲而去。
-
-「這是……」林若溪吃驚地看著周圍的變化。
-
-她發現，周圍的一切都在改變。那些懸挂著畫像的通道，正在緩緩消失。巍峨的宮殿，正在一磚一瓦地崩解。就連那隻懸浮於穹頂的眼眸，以及那道巨大的法相，都在逐漸透明。
-
-「不可能！」那道巨大的身影發出不可置信的怒吼，「你怎麼可能會使用輪迴逆轉！這是輪迴至尊的本命神通，只有達到了那一境界的存在才能施展！」
-
-「你錯了。」葉塵的聲音平靜，「我不是輪迴至尊，但我借用了他的力量。這股力量雖然只是碎片中殘留的一縷意志，但用來對付你這一縷神唽的的法相，已經足夠了。」
-
-那道光芒越來越亮，最終，整座天宮都被淹沒。
-
-「啊啊啊——」
-
-歸墟大帝的法相發出憤怒的咆哮，但在那道光芒的衝擊下，他的身影越來越淡，最終徹底消散。
-
-與此同時，那隻懸浮於穹頂的眼眸也緩緩閉上，消失在了裂縫之中。
-
-「成了……」葉塵長出一口氣，身體搖搖欲墜。
-
-剛才那一招，幾乎耗盡了他所有的力量，包括兩塊輪迴碎片中的能量。
-
-「葉塵！」林若溪趕緊上前扶住他。
-
-「我沒事……」葉塵勉強擠出一絲微笑，「只是有點累。」
-
-他抬頭望向四周，發現周圍的景象已經完全改變。原本巍峨的宮殿已經消失，取而代之的是一片荒蕪的平地。地面到處都是殘垣斷壁，散發著遠古的氣息。
-
-「這是……」
-
-「這是歸墟遗迹。」李長歌的聲音從遠處傳來。
-
-葉塵猛然轉頭，只見李長歌正站在不远处。他的脸上帶著一絲疲憊，但眼中的神色卻極為複雜。
-
-「你没事？」葉塵皺眉。
-
-「你那招雖然厲害，但還不足以殺我。」李長歌說道，「我只是歸墟大帝的後人，不是他本人。我的實力雖然強大，但還沒有達到能夠與那道法相比擬的地步。」
-
-「那剛才……」
-
-「剛才那道法相，是大帝本體的一縷神念。」李長歌說道，「你用輪迴至尊的力量，將那縷神念驅散了。但這只是暫時的，用不了多久，他就會重新凝聚。」
-
-「而且……」李長歌的目光落在葉塵的懷中，「你用掉了兩塊輪迴碎片的能量。接下來，你很難再與他抗衡了。」
-
-葉塵這才想起，他懷中的兩塊輪迴碎片已經變得暗淡無光，其中的能量已經消耗殆盡。
-
-「那怎麼辦？」林若溪問道。
-
-「只有一個辦法。」李長歌說道，「找到其餘的輪迴碎片，集合九塊碎片的力量，才能彻底擊敗歸墟大帝。」
-
-「或者……」他的目光落在林若溪身上，眼中閃過一絲不忍，「用我的血脈之力，封印大帝本體。」
-
-「你的血脈之力？」葉塵皺眉。
-
-「我是歸墟大帝最純粹的後人。」李長歌說道，「我的血脈中，流淌著大帝的鮮血。如果我願意，我可以將我的血脈之力全部燃燒，形成一道封印，將大帝本體永遠封印。」
-
-「但代價呢？」葉塵問道。
-
-「代價就是……我的生命。」李長歌平靜地說道。
-
-林若溪的身體猛然一僵：「長歌，你……」
-
-「我早就知道會有這一天。」李長歌轉過身，背對著兩人，「從我繼承歸墟大帝傳承的那一刻起，我就知道，我的命運早已經被注定。」
-
-「但我不後悔。」他的聲音中充滿了一絲解脫，「這一天，我已經等了很久了。」
-
-「葉塵，照顾好若溪。」李長歌說完，身形一動，向著遠方飛去。
-
-「等等！」葉塵叫住他，「你還沒告訴我，你的決定是什麼！」
-
-李長歌停下腳步，但沒有轉身：「我已經決定了。但不是現在。」
-
-「大戰將至，我需要時間準備。三日之後，你我再見。」
-
-「到那時，我們再了結這段因果。」
-
-他的身影消失在虛空之中，只留下葉塵和林若溪站在荒蕪的平地上，面面相覤。
-
-## 四、深情與承諾
-
-夜幕降臨，繁星點點。
-
-葉塵和林若溪離開了歸墟遗迹，在附近的一座山洞中休息。林若溪因為消耗過大，已經沉沉睡去。葉塵坐在她身旁，看著她靜謐的容顏，心中思緒萬千。
-
-「若溪……」他輕聲呢喃，伸手輕撫她的髮絲。
-
-他想起了他們第一次相遇的情景。那是在青雲宗的選拔大典上，她穿著一身素衣，站在人群之中，如同鶴立雞群。她的容顏清麗脫俗，氣質出塵，一雙明亮的眼眸中彷彿藏著星河。
-
-那一刻，葉塵就知道，她就是他生命中最重要的那個人。
-
-後來，他們一起經歷了無數的風風雨雨。她陪伴他走過了九世輪迴中最艱難的一段歲月，在他最絕望的時候給了他希望。在他心中，她不僅僅是愛人，更是他的精神支柱。
-
-「我發過誓，這一世，我再也不會讓任何人傷害你。」葉塵輕聲說道，「就算與整個天道為敵，我也會保護你。」
-
-林若溪在睡夢中似乎感應到了什麼，嘴角露出一絲淺淺的微笑。
-
-葉塵看著她的笑容，心中湧起一股暖流。他輕輕俯下身，在她額頭上留下一個輕吻。
-
-「好好休息吧，若溪。」他說道，「無論發生什麼，我都會陪在你身邊。」
-
-他站起身，走到山洞洞口，望向遠方的夜空。
-
-夜空深邃，繁星璀璨。一輪明月高懸在天際，散發著清冷的銀輝。
-
-「三日之後……」葉塵喃喃自語，「李長歌到底會做出什麼選擇？」
-
-他不知道。但他知道，無論李長歌做出什麼選擇，他都會盡一切努力，保護林若溪。
-
-「歸墟大帝又如何？天道詛咒又如何？」葉塵眼中閃爍著堅定的光芒，「這一世，我不會再讓任何人犧牲！」
-
-他的身影在月光下拉得很長，如同一位孤獨的戰士，守護著他心中最重要的人。
-
-這一刻，他彷彿又回到了第一世。那時候的他，還是一個懵懂少年，不知道什麼是輪迴，不知道什麼是命運。他只知道，他要用自己的雙手，守護他想要守護的人。
-
-轉眼間，萬年已逝。
-
-但有些東西，從未改變。
-
-## 五、暗流湧動
-
-三日之後，葉塵和林若溪來到了李長歌指定的地點。
-
-那是一座巨大的山峰，山峰之巔，一座古老的祭壇巍然矗立。祭壇上刻滿了密密麻麻的符文，散發著淡淡的熒光。
-
-李長歌已經在祭壇上等待。
-
-他換了一身衣服，不再是之前的黑色龍袍，而是一身素白的長衫。他的面容平靜，帶著一絲解脫的笑意。
-
-「你來了。」李長歌說道。
-
-「你決定了？」葉塵問道。
-
-「決定了。」李長歌點頭，「三日之前，我已經想清楚了。」
-
-他轉過身，看向林若溪：「若溪，對不起。這些年，讓你受苦了。」
-
-林若溪搖頭：「長歌，我不怪你。你也有你的無奈。」
-
-「謝謝。」李長歌露出一絲苦笑，「但有些事情，必須要有人去做。」
-
-他走到葉塵面前，從懷中取出一塊令牌。那塊令牌通體漆黑，上書一個「歸」字，與葉塵之前在死寂森林中得到的那塊一模一樣。
-
-「這是歸墟令牌的另一半。」李長歌說道，「有了它，你就能開啟歸墟遗迹最深處的大門。」
-
-「在那扇門後，有歸墟大帝的傳承，也有他最大的秘密。」
-
-「什麼秘密？」葉塵問道。
-
-「等你去了就知道了。」李長歌說道，「但我要提醒你，到了那裡，你會看到一些讓你很難接受的事情。」
-
-「在那種事情面前，你需要做出選擇。」
-
-「這個選擇，可能會改變整個天下的格局。」
-
-葉塵皺眉：「你到底想說什麼？」
-
-李長歌沒有回答，而是轉過身，向著祭壇中央走去。
-
-「時候到了。」他輕聲說道。
-
-他站在祭壇中央，雙手結印，體內的血液開始沸騰。一股股龐大的力量從他體內湧出，注入到腳下的祭壇之中。
-
-祭壇上的符文開始亮起，散發出耀眼的光芒。那些光芒交織在一起，形成了一道巨大的結界，將整座山峰籠罩其中。
-
-「葉塵，若溪。」李長歌的聲音在光芒中響起，「我能做的，只有這些了。」
-
-「接下來的路，就要靠你們自己了。」
-
-「記住，無論發生什麼，都不要放棄希望。」
-
-「因為只要活著，就有奇蹟。」
-
-話音落下，他的身體開始化作點點光芒，消散在空氣之中。
-
-「長歌！」林若溪驚呼。
-
-但為時已晚，李長歌的身體已經徹底消散，只剩下那塊歸墟令牌，以及他留在地上的衣物。
-
-祭壇上的光芒越來越亮，最終化作一道光柱，直冲雲霄。
-
-光柱之中，隱約可見一道身影。那身影極為龐大，如同頂天立地的巨人，俯瞰著世間的一切。
-
-「歸墟……歸墟……」那道身影發出低沉的聲音，「本座，終於要歸來了……」
-
-葉塵和林若溪對視一眼，都從對方眼中看到了震驚。
-
-李長歌的犧牲，雖然封印了大帝的本體，但也喚醒了他！
-
-一場更大的危機，正在降臨！
-
-（本章完）
-
+<p></p><p>天宮之外，那隻巨大的眼睛緩緩閉合，歸墟大帝的甦醒被暫時壓制。林若溪的身影卻在葉塵身旁逐漸淡去，彷彿被某種無形之力拉扯，消散於虛空之中。葉塵猛然回頭，卻發現自己已身處天宮大殿之內，而眼前之人，正是李長歌。</p><p>天宮大殿，白玉為階，星辰為頂。</p><p>葉塵立於殿中，周身血氣翻湧，煉魂期巔峰的修為毫無保留地釋放而出。他的目光穿過層層空間，落在高坐於九重雲臺之上的那道身影上。</p><p>李長歌。</p><p>曾經的摯友，如今的仇敵。</p><p>「你終於來了。」李長歌的聲音平靜得可怕，彷彿早已預料到這一天的到來。</p><p>他身著白衣，面容依舊年輕，但一雙眸子裡卻蘊含著滄桑與深邃。在他的身後，九幅巨大的畫卷懸浮於虛空之中，每一幅畫上都畫著一位女子，或清冷、或嫵媚、或溫婉、或颯爽。</p><p>九世輪迴，九位摯愛。</p><p>每一幅畫像都栩栩如生，彷彿隨時會從畫中走出。但葉塵知道，她們永遠不可能再回來了。</p><p>「為什麼？」葉塵的聲音嘶啞，如同刀鋒刮過岩石，「為什麼要這麼做？」</p><p>李長歌緩緩起身，一步步走下雲臺。他的腳步很輕，但每一步落下，整座天宮都會隨之顫動。</p><p>「你覺得我是為了什麼？」李長歌停在葉塵面前，距離不過三丈，「為了力量？為了永生？還是為了所謂的大道？」</p><p>「不管為了什麼，你都不該犧牲她們！」葉塵怒吼，體內的靈力瘋狂湧動，化作萬千劍氣，朝李長歌轟然斬去。</p><p>李長歌沒有躲，甚至沒有抬手抵擋。</p><p>那些足以斬碎星辰的劍氣，在距離他身前一寸的位置，便無聲無息地消散了，彷彿從未存在過。</p><p>「煉魂期巔峰，確實不錯。」李長歌淡淡評價，「但你知道嗎？在你第一世的時候，我就已經是問道境了。」</p><p>葉塵瞳孔驟縮。</p><p>問道境！</p><p>那是超越煉魂、超越歸墟、超越一切已知境界的傳說之境。整個修真界數萬年來，從未聽說有人能踏入那個領域。</p><p>「不可能！」葉塵咬牙，「你若真是問道境，為何還要佈下如此陰謀？」</p><p>李長歌沒有直接回答，而是轉身望向那九幅畫卷。</p><p>「你知道這九天情劫大陣，真正的作用是什麼嗎？」他問。</p><p>葉塵沉默。</p><p>「它不是為了讓我突破，也不是為了讓你輪迴。」李長歌的聲音變得悠遠，「它是為了——喚醒一個人。」</p><p>「喚醒誰？」</p><p>「你的第一世。」李長歌轉頭，目光直視葉塵，「準確地說，是第一世的你。」</p><p>葉塵心神劇震。</p><p>「我見過太多天才，葉塵。」李長歌緩緩說道，「他們或驚才絕豔，或天賦異稟，或機緣逆天。但你，是唯一一個讓我感到恐懼的人。」</p><p>「你的第一世，名為『塵』。那是天地初開時誕生的第一批生靈之一，與大道同源，與時空並存。你的天賦，你的悟性，你的意志，都遠遠超越了我所見過的任何存在。」</p><p>「你知道嗎？當初我只是你身邊一個微不足道的追隨者，看著你一步步走上巔峰，成為萬界共尊的存在。」</p><p>「可是後來呢？」葉塵冷笑，「你背叛了他？」</p><p>「不是我背叛了他，是他背叛了整個世界！」李長歌的語氣突然變得激動，「他為了追求更高的境界，不惜引爆萬界生機，要將整個宇宙煉化為他的道果！」</p><p>「我阻止不了他，因為他太強了。所以我只能想辦法讓他自我輪迴，將他的記憶和力量封印在九世輪迴之中。」</p><p>「而九天情劫大陣，就是為了在九世輪迴之後，重新喚醒他的記憶和力量。只不過，喚醒的方式需要犧牲一些東西。」</p><p>「一些東西？」葉塵的拳頭握得咯咯作響，「你說的是人命！是九個無辜女子的命！」</p><p>「她們的犧牲是值得的。」李長歌的語氣恢復了平靜，「一旦你的第一世歸來，他就能帶領這個世界走向更高的層次。屆時，整個宇宙都會記住她們的名字。」</p><p>「荒謬！」葉塵怒吼，「你憑什麼決定她們的生死？憑什麼決定我的命運？」</p><p>「就因為我是唯一知道真相的人。」李長歌的目光變得深邃，「葉塵，你以為你現在所經歷的一切都是巧合嗎？你以為你的每一世輪迴都是自然發生的嗎？」</p><p>「不，都是我安排的。」</p><p>「從你第一世自我輪迴開始，我就一直在暗中觀察你，引導你，讓你在每一世都能遇到那個註定要為你犧牲的女子。」</p><p>「你以為你和她們的相遇是緣分？那是命運！是我為你編織的命運！」</p><p>葉塵的身體在顫抖。</p><p>他想起了第一世的蘇若雪，第二世的林婉兒，第三世的蕭若曦...</p><p>那些曾經讓他心動、讓他痛苦、讓他難以忘懷的女子，原來都只是別人安排好的棋子。</p><p>「為什麼要選中我？」葉塵的聲音低沉得可怕，「為什麼不能讓我就這麼輪迴下去？為什麼非要喚醒那個該死的『塵』？」</p><p>「因為時間不夠了。」李長歌的語氣變得凝重，「你以為我為什麼要這麼急著喚醒你？因為這個世界，快要撐不住了。」</p><p>「萬界深淵即將降臨，屆時整個宇宙都會被吞噬。只有『塵』，才有能力對抗深淵的侵襲。」</p><p>「我不是在為自己，而是在為整個世界。」</p><p>葉塵沉默了。</p><p>他的內心在劇烈掙扎。一方面，他恨李長歌的算計和殘忍；另一方面，他又不得不承認，如果李長歌所說的是真的，那麼他的所作所為或許真的有其必要性。</p><p>但這不代表他能接受。</p><p>「我不會讓你喚醒他的。」葉塵抬起頭，眼中閃爍著堅定的光芒，「我不會讓若雪她們白白死去。我會用自己的方式，守護這個世界。」</p><p>李長歌嘆了口氣。</p><p>「我就知道會這樣。」他抬手，虛空之中出現了一把長劍，「既然你執迷不悟，那就只能讓我親自出手了。」</p><p>「不過你放心，我不會殺你。我只會將你鎮壓，然後強行喚醒你的第一世。」</p><p>話音落下，李長歌的身影消失了。</p><p>下一刻，他出現在葉塵面前，長劍橫掃，帶著毀天滅地的威勢。</p><p>葉塵來不及多想，本能地運轉體內靈力，施展出最強的防禦招式。</p><p>「轟！」</p><p>兩股力量碰撞，整座天宮都在顫抖。</p><p>葉塵倒飛出去，口中鮮血狂噴。僅僅一招，他就已經受了重傷。</p><p>「煉魂期和問道境之間的差距，不是你用意志就能彌補的。」李長歌的聲音從虛空中傳來，「放棄吧，葉塵。」</p><p>葉塵掙扎著站起來，擦去嘴角的血跡。</p><p>「我不會放棄的。」他咬牙，「就算死，我也不會讓你得逞。」</p><p>「那就別怪我不念舊情了。」李長歌的語氣冷了下來。</p><p>他再次舉劍，劍身上浮現出九道光芒，每一道光芒都對應著一幅畫卷。</p><p>「九天情劫，輪迴之劍！」</p><p>轟！</p><p>九道光芒匯聚在一起，化作一道貫穿天地的劍光，朝葉塵斬落。</p><p>葉塵感受到了死亡的威脅。他知道，這一劍，他擋不住。</p><p>但他還是選擇了迎上去。</p><p>因為他的身後，是那些為他而死的女子。他不能退，也不能逃。</p><p>「若雪，婉兒，若曦...」葉塵心中默唸著她們的名字，「對不起，我還是沒能保護好你們。」</p><p>就在劍光即將將他淹沒的瞬間，一道奇異的光芒突然從葉塵體內爆發。</p><p>那是一道七彩的光芒，璀璨奪目，彷彿蘊含著世間一切的美好。</p><p>光芒之中，九道虛影浮現。</p><p>正是那九位女子。</p><p>她們手牽著手，圍成一個圈，將葉塵護在中間。</p><p>「這是...」李長歌臉色大變，「不可能！她們的元神明明已經被煉化了，怎麼可能還存在？」</p><p>九道虛影沒有回答他。</p><p>她們只是靜靜地看著葉塵，眼中充滿了溫柔和不捨。</p><p>然後，她們化作九道流光，融入葉塵體內。</p><p>轟！</p><p>葉塵的氣息瞬間暴漲，體內的靈力開始瘋狂運轉，衝擊著煉魂期的壁壘。</p><p>「她要突破了！」李長歌驚呼，「該死，在這個時候！」</p><p>他想要阻止，但已經來不及了。</p><p>葉塵體內的靈力如汪洋大海般翻湧，沖刷著他體內的每一寸經脈、每一個穴竅。</p><p>煉魂期之上，是歸墟境。</p><p>歸墟者，萬物歸於虛無，又從虛無中重生。</p><p>這是一個極其危險的境界，一旦失敗，就會徹底消散於天地之間。</p><p>但葉塵沒有退路。</p><p>他必須突破，只有突破了，才有資格與李長歌一戰。</p><p>「啊啊啊！」</p><p>葉塵仰天長嘯，體內的靈力達到了一個臨界點。</p><p>就在這時，他體內的九道光芒同時亮起，化作九個光點，匯聚於他的丹田之中。</p><p>轟隆！</p><p>天宮上空，雷雲匯聚。</p><p>歸墟天劫，降臨了。</p><p>李長歌臉色難看至極。他知道，一旦葉塵成功造界，局勢就會發生逆轉。</p><p>但他現在什麼都做不了，因為天劫是天地規則的體現，就算是問道境強者，也不敢輕易幹預。</p><p>「該死！」李長歌咬牙，「葉塵，你以為這樣就能翻盤嗎？就算你成功突破歸墟境，也不可能是我的對手！」</p><p>「因為我手裡，還有一張你絕對想不到的底牌。」</p><p>他的目光，落向了那九幅畫卷。</p><p>準確地說，是落在了其中一幅畫捲上。</p><p>那幅畫捲上畫著的女子，與其他八位不同。</p><p>她的容貌，竟然與葉塵一模一樣。</p><p>「等你造界成功，我就告訴你這個秘密。」李長歌嘴角勾起一抹詭異的笑容，「相信到那時，你的表情一定會很精彩。」</p><p>天宮之上，雷劫滾滾。</p><p>葉塵盤膝而坐，周身環繞著九道光芒，正在全力衝擊歸墟境。</p><p>而在天宮深處，那道與葉塵容貌相同的畫像，正散發著詭異的光芒。</p><p>彷彿，隨時都會睜開眼睛。</p>
         </div>
     </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="chapter-155.html">← 上一章</a>
+        <div class="nav-center">
+            <button aria-label="◀" class="nav-btn" onclick="prevChapter()">◀</button>
+            <span id="progress">0%</span>
+            <button aria-label="▶" class="nav-btn" onclick="nextChapter()">▶</button>
+        </div>
+        <a href="chapter-135.html">下一章 →</a>
+    </nav>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="settings-modal">
+            <div class="modal-header">
+                <h3>設置</h3>
+                <button aria-label="×" class="close-btn" onclick="closeSettings()">×</button>
+            </div>
+            <div class="modal-body">
+                <!-- Theme -->
+                <div class="setting-section">
+                    <div class="setting-label">主題模式</div>
+                    <div class="theme-grid">
+                        <button aria-label="" class="theme-btn light" data-theme="light" onclick="setTheme('light')"></button>
+                        <button aria-label="" class="theme-btn sepia" data-theme="sepia" onclick="setTheme('sepia')"></button>
+                        <button aria-label="" class="theme-btn sky" data-theme="sky" onclick="setTheme('sky')"></button>
+                        <button aria-label="" class="theme-btn green" data-theme="green" onclick="setTheme('green')"></button>
+                        <button aria-label="" class="theme-btn pink" data-theme="pink" onclick="setTheme('pink')"></button>
+                        <button aria-label="" class="theme-btn dark" data-theme="dark" onclick="setTheme('dark')"></button>
+                        <button aria-label="" class="theme-btn navy" data-theme="navy" onclick="setTheme('navy')"></button>
+                    </div>
+                </div>
+
+                <!-- Font Size -->
+                <div class="setting-section">
+                    <div class="setting-label">字體大小</div>
+                    <div class="font-size-control">
+                        <button aria-label="A-" class="font-btn" onclick="adjustFontSize(-2)">A-</button>
+                        <input type="range" class="font-slider" id="fontSlider" min="14" max="28" value="18" oninput="setFontSize(this.value)">
+                        <button aria-label="A+" class="font-btn" onclick="adjustFontSize(2)">A+</button>
+                    </div>
+                    <div class="font-preview" id="fontPreview">萬古塵埃 - 示範文字</div>
+                </div>
+
+                <!-- Reading Progress -->
+                <div class="setting-section">
+                    <div class="setting-label">閱讀進度</div>
+                    <div class="progress-info">
+                        <span>已讀</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                        </div>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+
+                <!-- Chapter Navigation -->
+                <div class="setting-section">
+                    <div class="setting-label">章節導航</div>
+                    <div style="display: flex; gap: 12px;">
+                        <button aria-label="◀ 上一章" class="nav-btn" style="flex:1" onclick="prevChapter(); closeSettings();">◀ 上一章</button>
+                        <button aria-label="下一章 ▶" class="nav-btn" style="flex:1" onclick="nextChapter(); closeSettings();">下一章 ▶</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button aria-label="恢復默認" class="btn-default" onclick="resetSettings()">恢復默認</button>
+                <button aria-label="確定" class="btn-primary" onclick="closeSettings()">確定</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Settings
+        const DEFAULT_SETTINGS = {
+            theme: 'light',
+            fontSize: 18
+        };
+
+        let settings = { ...DEFAULT_SETTINGS };
+
+        // Load settings from localStorage
+        function loadSettings() {
+            const saved = localStorage.getItem('reading-settings');
+            if (saved) {
+                settings = JSON.parse(saved);
+            }
+            applySettings();
+        }
+
+        function saveSettings() {
+            localStorage.setItem('reading-settings', JSON.stringify(settings));
+        }
+
+        function applySettings() {
+            document.body.setAttribute('data-theme', settings.theme);
+            document.documentElement.style.setProperty('--font-size', settings.fontSize + 'px');
+            
+            // Update theme buttons
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === settings.theme);
+            });
+            
+            // Update font slider
+            document.getElementById('fontSlider').value = settings.fontSize;
+            document.getElementById('fontPreview').style.fontSize = settings.fontSize + 'px';
+        }
+
+        function setTheme(theme) {
+            settings.theme = theme;
+            saveSettings();
+            applySettings();
+        }
+
+        function setFontSize(size) {
+            settings.fontSize = parseInt(size);
+            saveSettings();
+            applySettings();
+        }
+
+        function adjustFontSize(delta) {
+            const newSize = Math.min(28, Math.max(14, settings.fontSize + delta));
+            setFontSize(newSize);
+        }
+
+        function resetSettings() {
+            settings = { ...DEFAULT_SETTINGS };
+            saveSettings();
+            applySettings();
+        }
+
+        // Modal
+        function openSettings() {
+            document.getElementById('settingsModal').classList.add('active');
+            updateProgress();
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsModal').classList.remove('active');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('settingsModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSettings();
+            }
+        });
+
+        // Chapter Navigation
+        function prevChapter() {
+            window.location.href = 'chapter-155.html';
+        }
+
+        function nextChapter() {
+            window.location.href = 'chapter-135.html';
+        }
+
+        // Reading Progress
+        function updateProgress() {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollTop = window.scrollY;
+            const progress = scrollHeight > 0 ? Math.round((scrollTop / scrollHeight) * 100) : 0;
+            
+            document.getElementById('progress').textContent = progress + '%';
+            document.getElementById('progressPercent').textContent = progress + '%';
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        window.addEventListener('scroll', updateProgress);
+
+        // Initialize
+        loadSettings();
+        updateProgress();
+    </script>
 </body>
 </html>

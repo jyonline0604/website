@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    <meta name="theme-color" content="#1e293b">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="《科技修真傳》第54章：有聲畫小説 - 科技修真傳 - 有聲畫版本。圖文並茂+完整朗讀，沉浸式體驗科技修真世界。免費在線閱讀。">
+    <title>第54章：有聲畫小説 - 科技修真傳</title>
+    <!-- Open Graph 標籤 -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="科技修真傳">
+    <meta property="og:title" content="第54章：有聲畫小説 - 科技修真傳 - 科技修真傳">
+    <meta property="og:description" content="《科技修真傳》第54章：有聲畫小説 - 科技修真傳 - 有聲畫版本。圖文並茂+完整朗讀，沉浸式體驗科技修真世界。免費在線閱讀。。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">>
+    <meta property="og:url" content="https://kofhk.com/chapter-54-av.html">
+    <meta property="og:image" content="https://kofhk.com/assets/book-cover.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
+    <meta property="og:image:alt" content="科技修真傳 - 封面圖片">
+    <meta property="og:locale" content="zh_HK">
+    <meta property="og:locale:alternate" content="zh_TW">
+    <meta property="og:locale:alternate" content="en_US">
+    <!-- Twitter Card 標籤 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@tech_cultivation">
+    <meta name="twitter:creator" content="@da_feimiao">
+    <meta name="twitter:title" content="第54章：有聲畫小説 - 科技修真傳 - 科技修真傳">
+    <meta name="twitter:description" content="《科技修真傳》第54章：有聲畫小説 - 科技修真傳 - 有聲畫版本。圖文並茂+完整朗讀，沉浸式體驗科技修真世界。免費在線閱讀。。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">>
+    <meta name="twitter:image" content="https://kofhk.com/assets/book-cover.png">
+    <meta name="twitter:image:alt" content="科技修真傳 - 封面圖片">
+
+    <link rel="canonical" href="/chapter-54.html">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif TC', serif; background: #0a0a0f; color: #e5e5e5; line-height: 1.8; }
+        .hero { position: relative; height: 100vh; overflow: hidden; }
+        .hero img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
+        .hero-content { position: absolute; bottom: 120px; left: 0; right: 0; text-align: center; padding: 20px; }
+        .hero h1 { font-size: 2.5rem; text-shadow: 0 2px 20px rgba(0,0,0,0.8); margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+        .audio-control { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(99, 102, 241, 0.9); padding: 15px 30px; border-radius: 50px; cursor: pointer; z-index: 100; display: flex; align-items: center; gap: 10px; transition: all 0.3s; }
+        .audio-control:hover { background: rgba(99, 102, 241, 1); transform: translateX(-50%) scale(1.05); }
+        .audio-control.playing { background: #10b981; }
+        .scenes { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .scene { margin-bottom: 100px; opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .scene.visible { opacity: 1; transform: translateY(0); }
+        .scene-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .scene:nth-child(even) .scene-grid { direction: rtl; }
+        .scene:nth-child(even) .scene-grid > * { direction: ltr; }
+        .scene-image { border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .scene-image img { width: 100%; display: block; }
+        .scene-text { padding: 20px; }
+        .scene-number { color: #6366f1; font-size: 0.9rem; margin-bottom: 10px; }
+        .scene-title { font-size: 1.8rem; margin-bottom: 20px; }
+        .scene-desc { color: #9ca3af; font-size: 1rem; }
+        .nav { position: fixed; top: 20px; right: 20px; z-index: 100; display: flex; gap: 10px; }
+        .nav a { color: white; text-decoration: none; padding: 10px 20px; background: rgba(0,0,0,0.5); border-radius: 20px; font-size: 0.9rem; }
+        .nav a:hover { background: rgba(99, 102, 241, 0.8); }
+        @media (max-width: 768px) { .scene-grid { grid-template-columns: 1fr; } }
+    </style>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "第54章：有聲畫小説 - 科技修真傳",
+      "author": {
+        "@type": "Person",
+        "name": "大肥喵"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "科技修真傳"
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-navigation" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-1;">跳到主要內容</a>
+            <nav aria-label="主要導航" class="nav">
+        <a href="chapter-54.html">← 文字版</a>
+        <a href="chapter-53-av.html">第53章</a>
+        <a href="chapter-55-av.html">第55章</a>
+        <a href="av-novels.html">📚 目錄</a>
+    </nav>
+    <section class="hero">
+        <img loading="lazy" src="assets/chapter-54-scene1.webp" alt="第54章">
+        <div class="hero-content">
+            <h1>第54章：時空裂縫</h1>
+            <p>🎧 點擊播放有聲朗讀</p>
+        </div>
+    </section>
+    <div class="audio-control" id="audioBtn" onclick="toggleAudio()">
+        <span id="playIcon">▶</span>
+        <span id="audioText">播放朗讀</span>
+    </div>
+    <audio id="audio" src="assets/chapter54_audio.mp3"></audio>
+
+    <div class="scenes">
+        <div class="scene" data-audio="0">
+            <div class="scene-grid">
+                <div class="scene-image"><img loading="lazy" src="assets/chapter-54-scene1.webp" alt="場景1"></div>
+                <div class="scene-text">
+                    <div class="scene-number">場景一</div>
+                    <h2 class="scene-title">城牆觀星</h2>
+                    <p class="scene-desc">林塵站在城牆之上，望向遠方的星空。自從發現量子幽靈的存在後，他已經連續三晚無法安眠。三天前，他在修煉時突然感受到一股強大的時空波動——那不是普通的靈力震動，而是一種更高維度的空間撕裂。林塵喃喃自語：「這些裂縫……究竟是什麼？」</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="scene" data-audio="1">
+            <div class="scene-grid">
+                <div class="scene-image"><img loading="lazy" src="assets/chapter-54-scene2.webp" alt="場景2"></div>
+                <div class="scene-text">
+                    <div class="scene-number">場景二</div>
+                    <h2 class="scene-title">天庭使者</h2>
+                    <p class="scene-desc">就在此時，天空突然裂開了一道金色的光芒。那道光芒越來越大，最終形成了一個巨大的人影——一位身穿金色戰甲的強者，周身環繞著七彩靈力。「本座乃天庭使者，奉命下界，尋找有緣之人。」那強者的聲音如雷鳴般響起。天庭——這個只在遠古傳說中出現過的勢力，竟然真的存在？</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="scene" data-audio="2">
+            <div class="scene-grid">
+                <div class="scene-image"><img loading="lazy" src="assets/chapter-54-scene3.webp" alt="場景3"></div>
+                <div class="scene-text">
+                    <div class="scene-number">場景三</div>
+                    <h2 class="scene-title">時空傳送</h2>
+                    <p class="scene-desc">「林塵，你與本座有緣，隨我去吧。」還沒等林塵反應，一股巨大的吸力就將他卷入了一道光門之中。當他再次睜開眼睛時，已經身處一個完全陌生的世界。這裡靈氣充裕到幾乎化為實質，天空中漂浮著無數島嶼，島嶼上建滿了宮殿樓閣。「這裡……就是天庭？」林塵震驚地問道。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="scene" data-audio="3">
+            <div class="scene-grid">
+                <div class="scene-image"><img loading="lazy" src="assets/chapter-54-scene4.webp" alt="場景4"></div>
+                <div class="scene-text">
+                    <div class="scene-number">場景四</div>
+                    <h2 class="scene-title">三十三重天外天</h2>
+                    <p class="scene-desc">「不，這裡是三十三重天外天，是比天庭更高維度的存在。」一個溫柔的聲音從他身後響起。林塵轉身，只見一位白衣女子飄然而立。她的容顏絕美，氣質空靈，彷彿不食人間煙火。「我是這裡的守護者，妳可以叫我瑤池仙子。」女子微微一笑，「你被時空裂縫選中，來到了這個維度的邊緣地帶。」</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="scene" data-audio="4">
+            <div class="scene-grid">
+                <div class="scene-image"><img loading="lazy" src="assets/chapter-54-scene5.webp" alt="場景5"></div>
+                <div class="scene-text">
+                    <div class="scene-number">場景五</div>
+                    <h2 class="scene-title">維度之選</h2>
+                    <p class="scene-desc">「因為你體內的靈根與這個維度有共鳴。」仙子說，「簡單來說……你是這個時代最有可能突破維度限制的人。」林塵深吸一口氣。他原本以為自己已經足夠強大，沒想到在真正的強者眼中，他還有更大的潛力可挖。仙子玉手一揮，前方浮現出無數金色文字：「天階修煉法、丹藥煉製術、陣法佈置精髓……只要你願意學，這些都可以傳授於你。」</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align:center; padding: 60px 20px;">
+        <a href="chapter-54.html" style="display:inline-block; padding:14px 28px; background:#6366f1; color:white; text-decoration:none; border-radius:12px; font-size:1rem; margin:5px;">📖 閱讀文字版</a>
+        <a href="chapter-55.html" style="display:inline-block; padding:14px 28px; background:#10b981; color:white; text-decoration:none; border-radius:12px; font-size:1rem; margin:5px;">下一章 →</a>
+        <a href="av-novels.html" style="display:inline-block; padding:14px 28px; background:#374151; color:white; text-decoration:none; border-radius:12px; font-size:1rem; margin:5px;">📚 有聲畫目錄</a>
+    </div>
+
+    <script>
+        const audio = document.getElementById('audio');
+        const audioBtn = document.getElementById('audioBtn');
+        const playIcon = document.getElementById('playIcon');
+        const audioText = document.getElementById('audioText');
+        let isPlaying = false;
+
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                audioBtn.classList.remove('playing');
+                playIcon.textContent = '▶';
+                audioText.textContent = '播放朗讀';
+                isPlaying = false;
+            } else {
+                audio.play();
+                audioBtn.classList.add('playing');
+                playIcon.textContent = '⏸';
+                audioText.textContent = '暫停';
+                isPlaying = true;
+            }
+        }
+
+        audio.addEventListener('ended', () => {
+            audioBtn.classList.remove('playing');
+            playIcon.textContent = '▶';
+            audioText.textContent = '播放朗讀';
+            isPlaying = false;
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.scene').forEach(scene => observer.observe(scene));
+    </script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第78章：量子網關 - 有聲畫版</title>
+    <!-- Open Graph 標籤 -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="科技修真傳">
+    <meta property="og:title" content="第78章：量子網關 - 有聲畫版 - 科技修真傳">
+    <meta property="og:description" content="第78章：量子網關 - 有聲畫版。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+    <meta property="og:url" content="https://kofhk.com/chapter-77-av.html">
+    <meta property="og:image" content="https://kofhk.com/assets/book-cover.png">
+    <meta property="og:locale" content="zh_HK">
+    <meta property="og:locale:alternate" content="zh_TW">
+    <meta property="og:locale:alternate" content="en_US">
+    <!-- Twitter Card 標籤 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="第78章：量子網關 - 有聲畫版 - 科技修真傳">
+    <meta name="twitter:description" content="第78章：量子網關 - 有聲畫版。免費閱讀完整章節，體驗融合科技與修真的奇幻小說。作者：大肥喵。">
+    <meta name="twitter:image" content="https://kofhk.com/assets/book-cover.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --text: #e8eaf0;
+            --accent: #4fc3f7;
+            --accent2: #7c4dff;
+            --card-bg: #111827;
+            --border: #1f2937;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4) saturate(1.2);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 40%, var(--bg) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.7;
+            margin-bottom: 24px;
+        }
+
+        .audio-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--accent2), var(--accent));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.05rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+        }
+
+        .audio-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(124, 77, 255, 0.5);
+        }
+
+        .audio-btn.playing {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(79, 195, 247, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(79, 195, 247, 0.8); }
+        }
+
+        /* Nav */
+        .nav { position: fixed; top: 20px; right: 20px; z-index: 100; display: flex; gap: 10px; }
+        .nav a { color: white; text-decoration: none; padding: 10px 20px; background: rgba(0,0,0,0.5); border-radius: 20px; font-size: 0.9rem; }
+        .nav a:hover { background: rgba(99, 102, 241, 0.8); }
+        .scenes {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .scene {
+            margin-bottom: 100px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .scene.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scene-img-wrap {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .scene-img-wrap img {
+            width: 100%;
+            display: block;
+        }
+
+        .scene-num {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: linear-gradient(135deg, var(--accent2), var(--accent));
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .scene h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .scene p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text);
+            opacity: 0.85;
+            text-align: justify;
+        }
+
+        .audio-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .audio-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        /* Bottom nav */
+        .bottom-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--border);
+        }
+
+        .bottom-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+
+        .bottom-nav a:hover {
+            background: var(--border);
+        }
+
+        @media (max-width: 600px) {
+            .bottom-nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .bottom-nav a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+            <nav aria-label="主要導航" class="nav">
+        <a href="chapter-77-av.html">← 第77章</a>
+        <a href="chapter-77-av.html">第77章</a>
+        <a href="chapter-79-av.html">第79章</a>
+        <a href="av-novels.html">📚 目錄</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <img loading="lazy" src="assets/chapter-78-scene1.jpg" alt="開場">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>第78章：量子網關</h1>
+            <p class="subtitle">量子加密坐標現世，深淵守望者突然到訪</p>
+            <button aria-label="播放廣東話配音" class="audio-btn" id="audioBtn" onclick="toggleAudio()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                播放廣東話配音
+            </button>
+        </div>
+    </section>
+
+    <!-- Audio section -->
+    <div class="scenes">
+        <div class="audio-section">
+            <h3>🎧 粵語有聲朗讀</h3>
+            <button aria-label="播放 / 暫停" class="audio-btn" id="audioBtn2" onclick="toggleAudio()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                播放 / 暫停
+            </button>
+        </div>
+    </div>
+
+    <!-- Scenes -->
+    <div class="scenes">
+        <!-- Scene 1 -->
+        <div class="scene" data-scene="1">
+            <div class="scene-img-wrap">
+                <img loading="lazy" src="assets/chapter-78-scene1.jpg" alt="場景1">
+                <div class="scene-num">1</div>
+            </div>
+            <h2>實驗室中的抉擇</h2>
+            <p>林塵在實驗室中分析來自天機閣的神秘坐標，量子意識同步儀安靜地佇立在角落。三年前的發現如今成為他最大的希望，也是最大的風險——87%的意識崩潰機率讓這幾乎是一場自殺式的實驗。</p>
+        </div>
+
+        <!-- Scene 2 -->
+        <div class="scene" data-scene="2">
+            <div class="scene-img-wrap">
+                <img loading="lazy" src="assets/chapter-78-scene2.jpg" alt="場景2">
+                <div class="scene-num">2</div>
+            </div>
+            <h2>深淵守望者的壓迫</h2>
+            <p>三名身穿銀灰色制服的深淵守望者走入實驗室，神識抑制面具和斷緣劍在燈光下閃爍著冷光。他們根據《跨維度研究管制條例》第37條要求接管數據和設備。林塵悄悄執行緊急協議，數據正在通過量子加密通道上傳至他的生物存儲單元。</p>
+        </div>
+
+        <!-- Scene 3 -->
+        <div class="scene" data-scene="3">
+            <div class="scene-img-wrap">
+                <img loading="lazy" src="assets/chapter-78-scene3.jpg" alt="場景3">
+                <div class="scene-num">3</div>
+            </div>
+            <h2>緊急協議的執行</h2>
+            <p>林塵的手指在操作台下悄悄移動，靈芯系統接收到他的神經信號後開始執行緊急協議。實驗室主計算機屏幕上滾動著偽造的實驗日誌，真正的坐標數據和量子網關模型已經安全上傳。他的胸口藍色量子晶片脈動加速，數據傳輸即將完成。</p>
+        </div>
+
+        <!-- Scene 4 -->
+        <div class="scene" data-scene="4">
+            <div class="scene-img-wrap">
+                <img loading="lazy" src="assets/chapter-78-scene4.jpg" alt="場景4">
+                <div class="scene-num">4</div>
+            </div>
+            <h2>量子網關的開啟</h2>
+            <p>林塵一指點出正中核心，巨獸崩解成數十隻火焰飛禽四面圍攻。就在即將被擊中之際，靈芯系統臨時解鎖「量子網關的開啟」——可進行0.5秒的未來模擬。林塵看到七種應對方案的結果，最終以陀螺旋轉擾亂飛禽飛行軌跡，從包圍圈中完美突圍。</p>
+        </div>
+
+        <!-- Scene 5 -->
+        <div class="scene" data-scene="5">
+            <div class="scene-img-wrap">
+                <img loading="lazy" src="assets/chapter-78-scene5.jpg" alt="場景5">
+                <div class="scene-num">5</div>
+            </div>
+            <h2>虛擬道場的價值</h2>
+            <p>回到出租屋，林塵看向電子鐘——現實中只過了不到二十分鐘，但在虛擬道場裡經歷了兩個小時的高強度戰鬥。量子網關的開啟才是靈芯系統真正的價值所在。窗外天樞城的霓虹依舊閃爍，但在這座賽博朋克都市的陰影中，一個融合了科技與修真的傳奇正在悄然成長。</p>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <a href="chapter-77-av.html">← 第77章</a>
+        <a href="av-novels.html">目錄</a>
+        <a href="chapter-79-av.html">第79章 →</a>
+        
+    </div>
+
+    <audio id="audio" preload="auto">
+        <source src="assets/chapter78_audio.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const audio = document.getElementById('audio');
+        const audioBtn = document.getElementById('audioBtn');
+        const audioBtn2 = document.getElementById('audioBtn2');
+        let isPlaying = false;
+
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                audioBtn.classList.remove('playing');
+                audioBtn2.classList.remove('playing');
+                audioBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> 播放廣東話配音';
+            } else {
+                audio.play();
+                audioBtn.classList.add('playing');
+                audioBtn2.classList.add('playing');
+                audioBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> 暫停';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            audioBtn.classList.remove('playing');
+            audioBtn2.classList.remove('playing');
+            audioBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> 播放廣東話配音';
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.scene').forEach(scene => observer.observe(scene));
+    </script>
+</body>
+</html>

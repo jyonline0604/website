@@ -55,7 +55,8 @@ for src_path in chapters:
         html = html.replace("{CHAPTER_TITLE}", chapter_title)
         html = html.replace("科技修真傳", "萬古塵埃")
         html = html.replace("{CONTENT}", text)
-        html = html.replace("{PREV_NUM}", str(num - 1) if num > 1 else "0")
+        html = html.replace("{PREV_NUM}", str(num - 1) if num > 1 else "1")
+        html = html.replace("{NEXT_NUM}", str(num + 1) if num < 135 else "135")
         
         out_path = f"{OUT_DIR}/chapter-{num}.html"
         with open(out_path, "w") as f:

@@ -57,6 +57,8 @@ for src_path in chapters:
         html = html.replace("{CONTENT}", text)
         html = html.replace("{PREV_NUM}", str(num - 1) if num > 1 else "1")
         html = html.replace("{NEXT_NUM}", str(num + 1) if num < 135 else "135")
+        html = html.replace("{CANONICAL_URL}", f"https://kofhk.com/chapter-{num}.html")
+        html = html.replace("{OG_DESC}", f"第{num}章：{chapter_title} - 《萬古塵埃》葉塵九世輪迴修仙故事，精彩章節免費閱讀。")
         
         out_path = f"{OUT_DIR}/chapter-{num}.html"
         with open(out_path, "w") as f:

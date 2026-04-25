@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<!-- 
+  PERFORMANCE HINT: This HTML can be minified for production.
+  Estimated savings: ~30% file size reduction.
+  Use tools like html-minifier-terser or gulp-htmlmin.
+-->
+<html lang="zh-Hant">
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    <meta name="theme-color" content="#1e293b">
+
+    <meta charset="UTF-8">
+    <meta name="description" content="《萬古塵埃》官方網站 - 每日更新的AI生成小說，融合科技與修真的奇幻世界。免費閱讀135+章節，體驗獨特的修仙之旅。作者：大肥喵。">
+    <meta name="keywords" content="萬古塵埃, AI小說, 修真小說, 科技小說, 每日更新, 大肥喵">
+    <meta name="author" content="大肥喵">
+    <meta property="og:title" content="萬古塵埃 - 首頁">
+    <meta property="og:description" content="《萬古塵埃》官方網站 - 每日更新的AI生成小說，融合科技與修真的奇幻世界。作者：大肥喵。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kofhk.com/">
+    <meta property="og:image" content="https://kofhk.com/assets/book-cover.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="萬古塵埃 - 首頁">
+    <meta name="twitter:description" content="《萬古塵埃》官方網站 - 每日更新的AI生成小說，融合科技與修真的奇幻世界。作者：大肥喵。">
+    <meta name="twitter:image" content="https://kofhk.com/assets/book-cover.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>萬古塵埃 - 首頁</title>
+    <link rel="canonical" href="home.html">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    
+    
+    
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: rgba(255, 255, 255, 0.95);
+            --text-primary: #1F2937;
+            --text-secondary: #4B5563;
+            --accent: #6366F1;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* 導航列樣式 */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(10, 10, 15, 0.95);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+        }
+
+        .logo {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: transparent;
+            position: relative;
+        }
+
+        .nav a:hover {
+            background: rgba(99, 102, 241, 0.3);
+        }
+
+        .nav a.active {
+            background: rgba(99, 102, 241, 0.5);
+            color: #ffffff;
+        }
+
+        .nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #818cf8);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        /* 英雄區域（背景圖） */
+        .hero {
+            min-height: 100vh;
+            padding: 80px 32px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10, 10, 15, 0.4) 0%,
+                rgba(10, 10, 15, 0.6) 50%,
+                rgba(10, 10, 15, 0.8) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            width: 100%;
+            margin-top: 64px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 封面標題覆蓋層 */
+        .cover-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .cover-title-main {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #FFD700;
+            text-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.5),
+                0 4px 8px rgba(0, 0, 0, 0.8),
+                0 8px 16px rgba(0, 0, 0, 0.6);
+            margin-bottom: 16px;
+            letter-spacing: 0.1em;
+        }
+
+        .cover-title-en {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            letter-spacing: 0.2em;
+            margin-bottom: 24px;
+        }
+
+        .cover-title-divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            margin: 0 auto 24px;
+        }
+
+        .cover-title-author {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 主要內容區域 */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #FF4444; /* 紅色邊框 */
+            margin-top: -100px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .view-all {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .view-all:hover {
+            color: #4F46E5;
+            text-decoration: underline;
+        }
+
+        /* 章節卡片 */
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .chapter-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent);
+        }
+
+        .chapter-number {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .chapter-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .chapter-excerpt {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .chapter-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .chapter-read {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* 頁腳 */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .header {
+                padding: 0 16px;
+            }
+            
+            .nav {
+                gap: 16px;
+            }
+            
+            .nav a {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+            
+            .hero {
+                padding: 60px 20px 40px;
+            }
+            
+            /* 響應式封面標題 */
+            .cover-title-main {
+                font-size: 2.8rem !important;
+                letter-spacing: 0.05em;
+            }
+            
+            .cover-title-en {
+                font-size: 1.1rem !important;
+                letter-spacing: 0.1em;
+            }
+            
+            .cover-title-author {
+                font-size: 1rem !important;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 24px;
+                margin-top: -80px;
+            }
+            
+            .chapter-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    
+        /* 離線狀態樣式 */
+        .offline .network-status {
+            display: block !important;
+        }
+        
+        .network-status {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            font-weight: 500;
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        .network-status.online {
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* 添加到主屏幕按鈕 */
+        .install-pwa-btn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #6366f1, #818cf8);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .install-pwa-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+        
+        .install-pwa-btn:active {
+            transform: translateY(0);
+        }</style>
+
+    <!-- Schema.org Book 結構化數據 -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "萬古塵埃",
+  "alternateName": "Technology Cultivation Chronicles",
+  "author": {
+    "@type": "Person",
+    "name": "大肥喵",
+    "description": "AI小說作者，專注於萬古輪迴的修仙傳奇"
+  },
+  "description": "純粹修仙的AI生成小說，講述主角葉塵在末法時代覺醒靈芯，開啟修仙之路的故事。",
+  "genre": [
+    "科幻小說",
+    "修真小說",
+    "奇幻小說",
+    "AI生成小說"
+  ],
+  "inLanguage": "zh-Hant",
+  "datePublished": "2026-01-01",
+  "publisher": {
+    "@type": "Organization",
+    "name": "萬古塵埃",
+    "url": "https://kofhk.com"
+  },
+  "url": "https://kofhk.com",
+  "sameAs": [
+    "https://github.com/jyonline0604/website"
+  ],
+  "numberOfPages": 135,
+  "bookEdition": "第一版",
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+}
+    </script>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://datagovhk.blob.core.windows.net https://data.weather.gov.hk https://resource.data.one.gov.hk https://itv.kofhk.com; base-uri 'self'; form-action 'self';">
+    <!-- Preload critical resources -->
+    
+    
+    <noscript></noscript>
+<link rel="stylesheet" href="assets/fonts/master.css">
+</head>
+<body>
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-navigation" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-1;">跳到主要內容</a>
+    <!-- 導航列 -->
+    <header role="banner" class="header">
+        <a href="home.html" class="logo">📖 萬古塵埃</a>
+        <nav aria-label="主要導航" class="nav">
+            <a href="home.html" class="active">首頁</a>
+            <a href="chapters.html">章節</a>
+            <a href="news.html">AI 新聞</a>
+            <a href="finance.html">財經</a>
+            <a href="https://itv.kofhk.com/" rel="noopener noreferrer">ITV</a>
+            <a href="dashboard.html">城市儀表板</a>
+            <a href="author.html">作者</a>
+        </nav>
+        <div class="header-actions">
+            <a href="chapter-1.html" class="btn btn-primary">開始閱讀</a>
+        </div>
+    </header>
+
+    <!-- 英雄區域（背景圖） -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- 封面標題覆蓋層 -->
+            <div class="cover-title">
+                <h1 class="cover-title-main">萬古塵埃</h1>
+                <p class="cover-title-en">TECHNOLOGY CULTIVATION CHRONICLES</p>
+                <div class="cover-title-divider"></div>
+                <p class="cover-title-author">作者：大肥喵</p>
+            </div>
+            <p class="hero-subtitle">輪迴重生修仙世界</p>
+        </div>
+    </section>
+
+    <!-- 主要內容 -->
+    <div class="container">
+        <main id="main-content">
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">最新章節</h2>
+                    <a href="chapters.html" class="view-all">
+                        查看全部章節 →
+                    </a>
+                </div>
+                <div class="chapter-grid">
+
+            <a href="chapter-135.html" class="chapter-card">
+                <div class="chapter-number">第135章</div>
+                <h3 class="chapter-title">反能量 - 萬古塵埃</h3>
+                <p class="chapter-excerpt">葉塵的修真科技之旅繼續展開...</p>
+                <div class="chapter-meta">
+                    <span class="chapter-date">2026年4月25日</span>
+                    <span class="chapter-read">閱讀全文 →</span>
+                </div>
+            </a>
+            <a href="chapter-134.html" class="chapter-card">
+                <div class="chapter-number">第134章</div>
+                <h3 class="chapter-title">數字靈魂 - 萬古塵埃</h3>
+                <p class="chapter-excerpt">葉塵的修真科技之旅繼續展開...</p>
+                <div class="chapter-meta">
+                    <span class="chapter-date">2026年4月24日</span>
+                    <span class="chapter-read">閱讀全文 →</span>
+                </div>
+            </a>
+            <a href="chapter-133.html" class="chapter-card">
+                <div class="chapter-number">第133章</div>
+                <h3 class="chapter-title">逆轉勝 - 萬古塵埃</h3>
+                <p class="chapter-excerpt">葉塵的修真科技之旅繼續展開...</p>
+                <div class="chapter-meta">
+                    <span class="chapter-date">2026年4月23日</span>
+                    <span class="chapter-read">閱讀全文 →</span>
+                </div>
+            </a>
+            <a href="chapter-132.html" class="chapter-card">
+                <div class="chapter-number">第132章</div>
+                <h3 class="chapter-title">觀察者低語 - 萬古塵埃</h3>
+                <p class="chapter-excerpt">葉塵的修真科技之旅繼續展開...</p>
+                <div class="chapter-meta">
+                    <span class="chapter-date">2026年4月22日</span>
+                    <span class="chapter-read">閱讀全文 →</span>
+                </div>
+            </a>
+            <a href="chapter-131.html" class="chapter-card">
+                <div class="chapter-number">第131章</div>
+                <h3 class="chapter-title">元宇宙 - 萬古塵埃</h3>
+                <p class="chapter-excerpt">葉塵的修真科技之旅繼續展開...</p>
+                <div class="chapter-meta">
+                    <span class="chapter-date">2026年4月21日</span>
+                    <span class="chapter-read">閱讀全文 →</span>
+                </div>
+            </a>
+            <a href="chapter-130.html" class="chapter-card">
+                <div class="chapter-number">第130章</div>
+                <h3 class="chapter-title">第一任務 - 萬古塵埃</h3>
+                <p class="chapter-excerpt">葉塵的修真科技之旅繼續展開...</p>
+                <div class="chapter-meta">
+                    <span class="chapter-date">2026年4月20日</span>
+                    <span class="chapter-read">閱讀全文 →</span>
+                </div>
+            </a>
+        </div>
+
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 萬古塵埃 | 作者：大肥喵 | 每日自動更新</p>
+            <p>最後更新時間：<span id="last-update">2026-04-24</span></p>
+        </footer>
+    </div>
+
+    <script>
+        // 更新最後更新時間
+        var lastUpdateElement = document.getElementById('last-update');
+        if (lastUpdateElement) {
+            lastUpdateElement.textContent = new Date().toLocaleDateString('zh-TW', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+        }
+    </script>
+
+    <!-- 圖片懶加載腳本 -->
+    <script>
+        // 圖片懶加載實現
+        document.addEventListener('DOMContentLoaded', function() {
+            // 使用IntersectionObserver API
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
+            });
+            
+            // 觀察所有懶加載圖片
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+            
+            // 如果瀏覽器不支持IntersectionObserver，使用備用方案
+            if (!('IntersectionObserver' in window)) {
+                const lazyImages = document.querySelectorAll('img[data-src]');
+                let lazyImageObserver;
+                
+                // 簡單的滾動檢測
+                function lazyLoad() {
+                    lazyImages.forEach(img => {
+                        if (img.getBoundingClientRect().top <= window.innerHeight + 100) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                    });
+                    
+                    // 如果所有圖片都加載了，移除事件監聽
+                    if (document.querySelectorAll('img[data-src]').length === 0) {
+                        window.removeEventListener('scroll', lazyLoad);
+                        window.removeEventListener('resize', lazyLoad);
+                    }
+                }
+                
+                window.addEventListener('scroll', lazyLoad);
+                window.addEventListener('resize', lazyLoad);
+                lazyLoad(); // 初始加載
+            }
+        });
+    </script>
+    
+    <!-- PWA Service Worker 註冊 -->
+    <script>
+        // 註冊 Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/assets/service-worker.js')
+                    .then(function(registration) {
+                        console.log('Service Worker 註冊成功:', registration.scope);
+                        
+                        // 檢查更新
+                        registration.addEventListener('updatefound', function() {
+                            const newWorker = registration.installing;
+                            console.log('Service Worker 更新發現:', newWorker.state);
+                            
+                            newWorker.addEventListener('statechange', function() {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // 這裡可以顯示更新提示
+                                }
+                            });
+                        });
+                    })
+                    .catch(function(error) {
+                        console.log('Service Worker 註冊失敗:', error);
+                    });
+            });
+            
+            // 離線狀態檢測
+            window.addEventListener('online', function() {
+                document.documentElement.classList.remove('offline');
+            });
+            
+            window.addEventListener('offline', function() {
+                document.documentElement.classList.add('offline');
+            });
+            
+            // 初始檢查
+            if (!navigator.onLine) {
+                document.documentElement.classList.add('offline');
+            }
+        }
+        
+        // 添加到主屏幕提示（僅在移動端顯示）
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', function(e) {
+            // 防止 Chrome 67 及更早版本自動顯示提示
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // 顯示添加到主屏幕按鈕
+            const installBtn = document.getElementById('install-pwa-btn');
+            if (installBtn) {
+                installBtn.style.display = 'block';
+                installBtn.addEventListener('click', function() {
+                    // 顯示安裝提示
+                    deferredPrompt.prompt();
+                    
+                    // 等待用戶選擇
+                    deferredPrompt.userChoice.then(function(choiceResult) {
+                        if (choiceResult.outcome === 'accepted') {
+                            } else {
+                            }
+                        deferredPrompt = null;
+                    });
+                });
+            }
+        });
+    </script>
+    <script src="assets/main.js" defer></script>
+</section></body>
+</html>

@@ -29,10 +29,10 @@ for src_path in chapters:
             content = f.read()
         
         # 提取標題
-        title_match = re.search(r'^#\s+(第.+)$', content, re.MULTILINE)
+        title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
         raw_title = title_match.group(1).strip() if title_match else f"第{num}章"
-        # 如果標題以「第N章」開頭（後跟空格或：），去掉前綴避免重複
-        chapter_title = re.sub(r'^第.+?章[：:\s]+', '', raw_title)
+        # 去掉所有「第X章」前綴（阿拉伯數字或中文數字）
+        chapter_title = re.sub(r'^第[一二三四五六七八九十百零0-9]+章[：:\s]+', '', raw_title)
         if chapter_title == raw_title:  # 前綴不匹配，保持原樣
             chapter_title = raw_title
         chapter_num = str(num)

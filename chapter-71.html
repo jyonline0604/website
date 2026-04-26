@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第71章：宗主的密令 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-71.html">
+    <link rel="prev" href="chapter-70.html">
+    <link rel="next" href="chapter-72.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第71章 · 宗主的密令</h1>
+    <main>
+        <p>靈藥園的清晨總是格外寧靜。</p>
+        <p>葉塵在破曉時分便已經起身，盤膝坐在靈藥園中央的青色石碑旁。他的雙眼微閉，呼吸悠長而平穩——體內那股灰白色的混合力場正在緩緩運轉，將天地間的塵埃一點一滴地吸入丹田之中。</p>
+        <p>經過一夜的修復，靈藥園中的封印已經完全恢復了平靜。那些曾經枯萎的靈藥重新煥發出了生機，翠綠的葉片在晨風中輕輕搖曳，散發出一種清新而溫暖的氣息。空氣中也瀰漫著一股淡淡的靈氣波動——那是被封印的能量重新回到平衡狀態後所產生的餘韻。</p>
+        <p>但是，葉塵的心卻無法像這片靈藥園一樣平靜。</p>
+        <p>昨天夜裡的那群黑衣人雖然被他與蘇清雪合力擊敗，但為首的那個黑衣人在臨死前說過的話依然在他腦海中迴盪——「封印雖然暫時修復了，但那股力量終究會再次釋放出來——到時候，整個雲霄宗都會為它的傲慢付出代價。」</p>
+        <p>這句話像是一根刺一樣扎在他的心裡。那股被封印的力量到底是什麼？黑衣人為什麼要破壞它？而他們背後的主使者又是誰？</p>
+        <p>「你在想什麼？」一個清脆的聲音打斷了葉塵的思緒。</p>
+        <p>葉塵睜開眼睛——蘇清雪正站在他的面前，手中端著一杯熱茶。她的長髮在晨風中輕輕飄動，那雙清澈的眼眸中帶著一絲擔憂和關切。</p>
+        <p>「我在想昨天那些黑衣人。」葉塵接過茶杯，輕聲說道。「他們背後一定有一個更大的陰謀——而且他們似乎知道關於靈藥園封印的很多事情。」</p>
+        <p>蘇清雪在他身邊坐下——她的目光掃過那片恢復生機的靈藥園，然後緩緩開口：「宗主昨天已經知道了這件事。他讓我來找你——說是有重要的事情要交代。」</p>
+        <p>葉塵微微一怔——「宗主？」</p>
+        <p>「是的。」蘇清雪點點頭。「他說你現在是內門弟子了，而且你的表現也引起了他的注意。特別是你在靈藥園中展現出的那種……特殊的修煉方式，讓他感到很好奇。」</p>
+        <p>葉塵沉默了片刻——然後他站起身來：「走吧，我們去見宗主。」</p>
+        <p>兩人穿過靈藥園的樹林，向著雲霄宗的主峰走去。沿途的弟子們看到他們的時候，目光中都帶著一絲敬畏和好奇——畢竟在昨天，葉塵與蘇清雪合力擊敗黑衣人的事情已經在內門中傳開了。</p>
+        <p>「雙星並耀」——這是那些弟子們給他們的稱呼。因為葉塵的灰白色力量和蘇清雪的純白靈氣在空中交匯的那一刻，形成了一種前所未有的銀灰色光芒，照亮了整個森林。</p>
+        <p>當他們來到宗主殿的時候，趙明軒已經在門口等候了。看到葉塵和蘇清雪，他微微一笑：「宗主正在裡面等你們——請進。」</p>
+        <p>宗主殿內，一位身穿青色長袍的中年男子正坐在主位上。他的面容沉穩而肅穆，雙眼中閃爍著一種深邃的光芒——那是經歷過無數風雨之後所留下的沉澱。他就是雲霄宗的宗主，葉蒼海。</p>
+        <p>「葉塵。」宗主看到葉塵的那一刻，目光中閃過了一絲複雜的神色。「你來了。」</p>
+        <p>葉塵微微躬身：「弟子葉塵，拜見宗主。」</p>
+        <p>宗主擺了擺手——然後他緩緩開口：「不用多禮。我找你来，是因為有一件重要的事情要交代給你。」</p>
+        <p>他的目光變得嚴肅起來：「昨天那些黑衣人，他們不是普通的敵人。他們來自一個叫做『暗淵閣』的組織——這個組織在修仙界中已經存在了數百年之久，專門從事各種陰謀和破壞活動。」</p>
+        <p>葉塵的心中微微一驚——「暗淵閣？」</p>
+        <p>「是的。」宗主點點頭。「根據我們調查的結果，暗淵閣的目標不僅僅是靈藥園中的封印——他們還試圖尋找一件叫做『萬古塵源』的神秘遺跡。而根據我們的線索，萬古塵源的位置就在雲霄宗的範圍之內。」</p>
+        <p>葉塵的瞳孔微微收縮——萬古塵源！這正是他之前進入過的地方！在那裡，他看到了第一世和第二世的記憶碎片，還吸收了《塵埃訣》典籍中的知識。</p>
+        <p>「宗主……」葉塵緩緩開口。「我曾經進入過萬古塵源——在一個月前的時候。」</p>
+        <p>宗主的目光瞬間變得銳利起來：「你進去過？那你一定知道一些我們不知道的事情吧？」</p>
+        <p>葉塵沉默了片刻——然後他決定將自己在萬古塵源中的經歷告訴宗主。他講述了自己如何發現那棵枯樹、如何吸收《塵埃訣》典籍、如何觸發第一世和第二世的記憶碎片，以及如何通過守護者的測試。</p>
+        <p>當他講完的時候，宗主已經陷入了深深的沉思之中。</p>
+        <p>「原來如此……」宗主緩緩開口。「萬古塵源中藏著的秘密，比我想象的還要深遠。而你——葉塵，你似乎與這個地方有著某種特殊的緣分。」</p>
+        <p>他的目光變得嚴肅起來：「我現在要交代給你的任務是——繼續探索萬古塵源，找出暗淵閣的陰謀，並保護靈藥園中的封印不被破壞。這是一個危險的任務，但我相信你有能力完成它。」</p>
+        <p>葉塵微微一怔——然後他堅定地點點頭：「弟子遵命。」</p>
+        <p>宗主從懷中取出一枚玉簡——那枚玉簡的表面刻滿了細密的符文，散發著一種古老而沉靜的能量波動。</p>
+        <p>「這是萬古塵源的入口地圖。」宗主將玉簡遞給葉塵。「上面標記了幾個重要的位置——包括你之前進入過的那棵枯樹、守護者的石室，以及一個我還沒有探索過的區域。那個區域被稱為『第四殿』——據說那裡藏著關於九世輪迴的更多秘密。」</p>
+        <p>葉塵接過玉簡——當他接過那枚玉簡仔細端詳時，一股溫暖的力量從玉簡中傳入體內，與他體內的灰白色混合力場產生了共鳴。</p>
+        <p>「謝謝宗主。」葉塵輕聲說道。「弟子一定會完成這個任務。」</p>
+        <p>宗主微微點頭——然後他的目光變得柔和起來：「另外……關於你的父親……」</p>
+        <p>葉塵的心猛地一跳——「我父親？」</p>
+        <p>「你父親十年前進入萬古塵源之後就失蹤了。」宗主的聲音中帶著一絲嘆息。「根據我們的調查，他可能是為了尋找九世輪迴的秘密而深入到了萬古塵源的深處。但是，當他發現了一些不該發現的事情之後，就被暗淵閣的人追殺——最終被困在了那裡。」</p>
+        <p>葉塵的雙拳緊緊握起——那股壓抑了十年的憤怒和不甘再次湧上了心頭。</p>
+        <p>「我會找到他的。」葉塵的聲音中帶著一種前所未有的堅定。「無論付出什麼代價，我都會找到他。」</p>
+        <p>宗主看著他——在那雙年輕的眼眸中，他看到了一種熟悉的堅毅。那種堅毅就像是一團永不熄滅的火焰，燃燒著希望與決心。</p>
+        <p>「我相信你。」宗主輕聲說道。「但是記住——萬古塵源是一個危險的地方。你需要做好充分的準備才能進入。而且……」他的目光變得嚴肅起來。「暗淵閣的人也在尋找萬古塵源的入口——他們不會讓你輕易得逞的。」</p>
+        <p>葉塵點點頭——他知道，這只是一場更大戰爭的開始。而那些黑衣人、暗淵閣、以及被困在萬古塵源中的父親，所有的一切都在指向一個更加深遠的秘密——九世輪迴的真正意義。</p>
+        <p>「弟子告退。」葉塵微微躬身，然後轉身離開了宗主殿。</p>
+        <p>當他走出大殿的那一刻，陽光正從雲層中灑落下來，照亮了他的前路。他知道，這條路充滿了危險和挑戰——但他已經做好了準備。</p>
+        <p>他知道，這條路充滿了危險和挑戰——但他已經做好了準備。</p>
+        <p>風從山巒間吹過，帶來了一陣清新的氣息。葉塵深吸了一口氣，然後邁開步伐向著前方走去。等待他的將是一場更加艱難的考驗——而他不會退縮。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-70.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-72.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

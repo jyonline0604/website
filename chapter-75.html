@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第75章：內門大比預備 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-75.html">
+    <link rel="prev" href="chapter-74.html">
+    <link rel="next" href="chapter-76.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第75章 · 內門大比預備</h1>
+    <main>
+        <p>雲霄宗的內門大比即將在三天後舉行——這個消息像一陣風一樣吹遍了整個內門弟子區，激起了無數弟子的熱情和期待。</p>
+        <p>對於大多數內門弟子來說，內門大比不僅是一個展示實力的機會，更是一個獲得宗门資源傾斜的重要途徑。冠軍將獲得凝元靈泉的修煉資格、破境丹一枚，以及進入雲霄宗禁地「天機閣」三天的特權——這些獎勵對任何一個年輕弟子來說都充滿了巨大的吸引力。</p>
+        <p>葉塵站在練武場上，看著周圍那些摩拳擦掌的內門弟子們，心中湧起了一股複雜的情緒。他知道，這場比賽不僅僅是一場普通的較量——它將是他進入雲霄宗以來面臨的第一次真正的挑戰。</p>
+        <p>「葉塵！」一個清脆的聲音打斷了他的思緒。</p>
+        <p>葉塵轉過身來——蘇清雪正站在他的面前，手中拿著一本厚厚的書籍。她的長髮在晨風中輕輕飄動，那雙清澈的眼眸中帶著一絲關切和鼓勵。</p>
+        <p>「你在這裡做什麼？」蘇清雪微微一笑。「我找了你半天。」</p>
+        <p>「我在準備比賽。」葉塵輕聲說道。「你呢？你也要參加嗎？」</p>
+        <p>蘇清雪點點頭：「我是宗主親傳弟子——按照規定，我必須參加內門大比。而且……」她的目光變得堅定起來。「我也想看看你在比賽中的表現。」</p>
+        <p>葉塵微微一怔——然後他微微一笑：「謝謝你的支持。」</p>
+        <p>兩人開始在練武場上進行訓練——蘇清雪傳授了他一些關於戰鬥的技巧和策略，而葉塵則向她展示了自己在靈藥園中修煉的成果。當兩人的力量在空中交匯的那一刻，那股銀灰色的光芒再次閃現出來，照亮了整個練武場。</p>
+        <p>「你的力量又精純了不少。」蘇清雪輕聲說道。「看來你在靈藥園中的修煉沒有白費。」</p>
+        <p>葉塵點點頭：「多虧了你的指導——還有宗主的幫助。」</p>
+        <p>但是，就在他們準備繼續訓練的時候，一個陰冷的聲音從練武場的入口處傳來：「看來你們兩個的感情真的很好啊——連訓練都要在一起。」</p>
+        <p>葉塵轉過身來——王虎正站在入口處，身邊跟著四名弟子。他的面容猙獰而扭曲，雙眼中閃爍著一種兇狠的光芒。與之前相比，他的氣息變得更加陰冷和邪惡——那正是黑煞功深入體內的跡象。</p>
+        <p>「王虎。」葉塵的聲音中帶著一絲寒意。「你也在這裡做什麼？」</p>
+        <p>王虎微微一笑——那種笑容中帶著一絲嘲諷和輕蔑：「我當然是來準備比賽的——畢竟，我可不想在第一天就被淘汰出局。而且……」他的目光變得陰冷起來。「我也想知道，你這個靠運氣爬上內門的人到底有什麼本事。」</p>
+        <p>葉塵沒有回答——他將掌心朝向天空，讓空氣中的塵埃開始緩緩旋轉。但是這次，他的動作比之前更加謹慎和精準——他知道王虎已經不再是那個可以輕易欺負的外門弟子了。</p>
+        <p>「別緊張。」王虎的嘴角勾起了一絲冷笑。「在比賽中我會堂堂正正地擊敗你——不會使用任何卑鄙的手段。畢竟……」他的目光變得陰冷起來。「我還有更重要的事情要做——沒有時間在你身上浪費太多。」</p>
+        <p>說完這句話，王虎轉身離開了練武場——他的背影在陽光下拉得極長，散發出一種令人不安的氣息。</p>
+        <p>「他越來越危險了。」蘇清雪輕聲說道。「你需要更加小心。」</p>
+        <p>葉塵點點頭：「我知道。但是……」他的目光變得堅定起來。「我已經受夠了他的欺壓——在比賽中，我會讓他知道什麼叫做真正的力量。」</p>
+        <p>接下來的兩天裡，葉塵和蘇清雪一直在練武場上進行著緊張的訓練。葉塵嘗試著將塵埃之印的力量與《塵埃訣》融合在一起——每一次融合都需要極大的耐心和毅力，因為那股力量既古老又強大，稍有不慎就會導致能量反噬。</p>
+        <p>經過兩天的努力，他終於成功地将一部分塵埃之印的力量融入了自己的修煉體系中——當一切恢復平靜的時候，他能感覺到體內的灰白色混合力場變得更加精純和強大。他的攻擊力提升了至少三倍，而且防禦能力也得到了顯著增強。</p>
+        <p>「差不多了。」葉塵在心中默默念道。「我已經做好了準備。」</p>
+        <p>第三天清晨，內門大比的比賽場地——雲霄宗的演武廣場上已經擠滿了人。無數弟子們圍坐在廣場四周，目光中帶著期待和興奮。廣場中央是一座巨大的擂台，周圍刻滿了防禦符文，可以承受住最高築基境強者的攻擊。</p>
+        <p>宗主站在擂台的上方，手中拿著一份名單——他的目光掃過台下那些年輕的臉龐，然後緩緩開口：「內門大比，現在開始！」</p>
+        <p>葉塵站在台下的隊伍中，深吸了一口氣——他知道，這場比賽將是他進入雲霄宗以來面臨的第一次真正的挑戰。而他已經做好了準備。</p>
+        <p>第三天清晨，內門大比的比賽場地——雲霄宗的演武廣場上已經擠滿了人。無數弟子們圍坐在廣場四周，目光中帶著期待和興奮。</p>
+        <p>宗主站在擂台的上方，手中拿著一份名單——他的目光掃過台下那些年輕的臉龐，然後緩緩開口：「內門大比，現在開始！」</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-74.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-76.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

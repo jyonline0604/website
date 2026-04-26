@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第65章：晨練風雲 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-65.html">
+    <link rel="prev" href="chapter-64.html">
+    <link rel="next" href="chapter-66.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第65章 · 晨練風雲</h1>
+    <main>
+        <p>清晨的內門廣場上，已經聚集了數十名弟子。</p>
+        <p>葉塵穿著一襲白色的長袍，站在人群的最前方——他的目光掃過周圍的弟子們，能感覺到那股濃烈的競爭氣息。這些人都是各大家族的天才子弟，他們的眼神中既有傲氣，也有對新來者的警惕和敵意。</p>
+        <p>「這就是內門的晨練。」一個聲音從身後傳來。</p>
+        <p>葉塵轉過身來，看見張三正站在他的身邊。老者今日穿著一襲灰色的長袍，鬢角斑白，但雙眼中卻閃爍著銳利的光芒。「每天清晨，所有內門弟子都需要在這裡集合——進行靈氣操控測試和實戰演練。」</p>
+        <p>葉塵點點頭：「我明白了。」</p>
+        <p>張三走到廣場的中央，抬起手將靈氣注入掌心——空氣中的靈氣開始以他為中心緩緩旋轉，形成了一個小小的漩渦。那個漩渦轉動的速度越來越快，最終凝聚成一道白色的光柱，直衝天際。</p>
+        <p>「測試開始！」張三大聲說道，「每個人依次上前，展示你們的靈氣操控能力——我會根據表現給出評分。」</p>
+        <p>第一個上前的是一個身穿藍色長袍的青年——他的面容英俊而傲嬌，目光中帶著一絲不屑。「我是內門弟子李天風，築基初期。」他走到廣場中央，雙手張開——空氣中的靈氣開始以他為中心旋轉，形成了一個巨大的漩渦。那個漩渦轉動的速度越來越快，最終凝聚成一道藍色的光柱，直衝天際。</p>
+        <p>張三點點頭：「靈氣操控穩定，評分八十五分。」</p>
+        <p>第二個上前的是一個身穿紅色長袍的少女——她的面容嬌美而冷豔，目光中帶著一絲傲氣。「我是內門弟子林雪晴，築基初期。」她走到廣場中央，雙手張開——空氣中的靈氣開始以她為中心旋轉，形成了一個紅色的光柱。那個光柱的顏色鮮豔奪目，散發出一種灼熱的能量波動。</p>
+        <p>張三點點頭：「靈氣操控靈活，評分八十八分。」</p>
+        <p>一個接一個，弟子們依次上前展示——每個人的表現都不錯，但葉塵能感覺到他們的實力都還處於築基初期的層次，與他現在的聚元巔峰相比還有不小的差距。</p>
+        <p>終於輪到葉塵了。</p>
+        <p>他走到廣場中央，深吸一口氣——然後他閉上眼睛，將意識沉入丹田之中。那裡，灰白色混合力場正在緩慢流動，就像是一條細小的河流一樣，流向四肢百骸。他緩緩抬起雙手，將掌心朝向天空——空氣中的塵土開始以他為中心緩緩旋轉，形成了一個微小的漩渦。</p>
+        <p>那個漩渦轉動的速度越來越快，最終凝聚成一道灰白色的光柱，直衝天際。光柱的高度遠超之前任何一個弟子——它穿過了廣場上空，一直延伸到雲層之中，散發出一種沉靜而古老的力量感。</p>
+        <p>周圍的弟子們都驚呆了——他們從來沒有見過這種力量的表現形式。那種力量既不像普通的靈氣那樣清澈透明，也不像任何已知的功法那樣具有鮮明的特徵——它更像是一種更加原始、更加純粹的存在。</p>
+        <p>張三的眼中閃過一絲驚訝：「這是……塵埃之力？」</p>
+        <p>葉塵收回雙手，灰白色的光柱瞬間消散在空氣中。他睜開眼睛，看著周圍的弟子們——那些目光中既有敬畏，也有嫉妒，還有一絲難以言喻的期待。</p>
+        <p>張三沉默了片刻——然後他緩緩開口：「評分九十五分。」</p>
+        <p>這句話讓周圍的弟子們更加驚訝了——九十五分在內門晨練中是前所未有的高分。李天風的臉色瞬間變得鐵青，林雪晴的眼中也閃過一絲難以察覺的複雜情感。</p>
+        <p>葉塵沒有在意那些目光——他只是轉身走向人群的外圍，心中默默念著：「這還只是開始。」</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-64.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-66.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第64章：藏經閣的秘密 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-64.html">
+    <link rel="prev" href="chapter-63.html">
+    <link rel="next" href="chapter-65.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第64章 · 藏經閣的秘密</h1>
+    <main>
+        <p>葉塵坐在書桌前，手中捧著那本《塵埃訣》。</p>
+        <p>典籍的封面由泛黃的羊皮紙製成，表面佈滿了細小的裂紋——那些裂紋像是時間留下的痕跡，記錄著這本書經歷過的無數個世紀。葉塵輕輕翻開第一頁，上面的文字已經有些模糊不清了，但他仍然能夠辨識出其中的內容：「塵埃之道，不在於力，而在於悟。萬物皆塵，塵埃歸源。」</p>
+        <p>他開始仔細閱讀——當他的目光掃過每一頁的時候，那些文字都會自動融入他的意識之中，成為他的一部分。他能感覺到體內的那種灰白色混合力場正在發生變化——它變得更加精細、更加穩定、也更加強大。</p>
+        <p>就在這個時候，書房的門突然被推開了——蘇清雪走了進來。她今日穿著一襲淡藍色的長裙，腰間繫著一條銀色絲帶，將她纖細的身姿勾勒得格外優美。她的面容依舊清冷如霜，但看向葉塵的眼神中卻多了一絲難以察覺的柔和。</p>
+        <p>「你選擇了《塵埃訣》？」蘇清雪走到書桌前，俯下身來看著那本典籍。「宗主告訴我你的選擇時，我有些驚訝——因為那是一本極為特殊的功法，修煉難度遠超普通功法。」</p>
+        <p>葉塵點點頭：「我在萬古塵源中已經接觸過它的基礎內容。我覺得……它適合我。」</p>
+        <p>蘇清雪靜靜地看著他——她的眼中閃爍著一絲讚賞。「你的直覺一直很準確。不過——」她頓了頓，「《塵埃訣》的修煉需要極高的悟性和耐心。如果你不能正確理解其中的奧義，很容易陷入走火入魔的狀態。」</p>
+        <p>葉塵抬起頭來看著她的眼睛：「我有信心。」</p>
+        <p>蘇清雪微微一笑——然後她緩緩開口：「那我幫你吧。我雖然沒有修煉過《塵埃訣》，但我對靈氣操控的理解可以為你提供一些參考。」</p>
+        <p>就在這個時候，一個身穿黑色執事服的身影從書房的窗外走了進來——那是趙明軒。他的臉上帶著一絲嚴肅的表情：「葉塵，宗主讓你明天早上去凌霄殿——他說有重要的事情要告訴你。」</p>
+        <p>葉塵的心中掀起了一陣驚濤駭浪：「什麼事情？」</p>
+        <p>趙明軒沒有回答——他只是轉身離開了，留下葉塵和蘇清雪在書房中。</p>
+        <p>蘇清雪看著他的表情：「你好像很緊張？」</p>
+        <p>葉塵沉默了片刻——然後他緩緩開口：「宗主告訴我關於我父親的秘密之後，我就一直在想——他接下來會告訴我什麼？是關於如何找到父親的方法，還是關於《塵埃訣》的更深奧的內容？」</p>
+        <p>蘇清雪輕輕拍了拍他的肩膀：「別想太多了。明天去了凌霄殿，你自然會知道答案。」</p>
+        <p>葉塵點點頭——然後他繼續閱讀那本《塵埃訣》。當他的目光掃過第三頁的時候，他突然發現了一行之前沒有注意到的文字：「當九世輪迴的記憶全部覺醒之時，塵埃之道將達到巔峰——屆時，你可以打開萬古塵源最深處的門戶，找到你失去的一切。」</p>
+        <p>葉塵的心猛地一跳。這句話意味著什麼？九世輪迴的記憶全部覺醒？那需要多少時間？而他現在只覺醒了第一世和第二世的記憶碎片——第三世的記憶還只是模糊的影子。</p>
+        <p>他合上典籍，深吸了一口氣——然後他站起身來，走到窗前。窗外的夜空清澈而明亮，滿天繁星在夜空中閃爍著微弱的光芒。他能感覺到體內的那種灰白色混合力場正在緩慢流動，就像是一條細小的河流一樣，流向四肢百骸。</p>
+        <p>「九世輪迴……」葉塵在心中喃喃自語。「我還有七世的記憶等待著我去覺醒——那是一條漫長而艱難的道路。」</p>
+        <p>蘇清雪走到他的身邊，輕輕握住他的手：「無論前方有多少艱險，我們都會走下去。」</p>
+        <p>葉塵看著她的眼睛——在那雙清澈的眼眸中，他看到了一種前所未有的信任和堅定。那種信任讓他感到溫暖，也讓他更加堅定了自己的決心。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-63.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-65.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第68章：塵埃的奧義 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-68.html">
+    <link rel="prev" href="chapter-67.html">
+    <link rel="next" href="chapter-69.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第68章 · 塵埃的奧義</h1>
+    <main>
+        <p>葉塵在靈藥園中央盤膝坐下，雙手放在膝蓋上，閉上了眼睛。</p>
+        <p>蘇清雪站在他身後三步遠的位置，靜靜地守護著——她的目光注視著四周的森林，隨時準備應對可能出現的任何危險。空氣中瀰漫著一種沉靜而緊張的氣息，彷彿整個世界都在等待著某個重要的時刻到來。</p>
+        <p>葉塵將意識沉入丹田之中——那裡，灰白色的混合力場正在緩緩運轉。自從在萬古塵源中覺醒了第一世的記憶之後，他對這股力量的掌控變得越來越精細。他能感覺到每一粒塵埃在空氣中的流動，能聽到它們訴說著不同的故事，能感受到它們承載的無數個世紀的重量。</p>
+        <p>他開始按照石碑上記載的方法——將塵埃之力注入靈藥園中央的那座陣法之中。</p>
+        <p>起初，一切都進行得很順利。葉塵能夠感覺到自己的塵埃之力像一條細小的河流一樣，緩緩流入陣法的每一個符文之中。那些已經熄滅的符文開始重新發光，雖然亮度還很微弱，但至少表明封印正在逐漸恢復。</p>
+        <p>但是，隨著時間的推移，葉塵發現了一個問題——他的塵埃之力雖然能夠修復符文的表面，卻無法觸及封印的核心。那股被封印的能量就像是一頭沉睡的野獸，在深處不斷地掙扎和反抗，試圖打破束縛它的牢籠。</p>
+        <p>「這樣不行……」葉塵在心中默默念道。「我需要更深入的理解——不僅僅是修復符文，而是要真正理解那股能量的本質。」</p>
+        <p>就在這個時候，他的腦海中突然閃過一幅畫面——那是一個模糊的影子，一個身穿戰甲的將軍，正站在一片廣闊的戰場上。將軍的身後是無數倒下的士兵和燃燒的營帳，但他的目光卻堅定而冷靜——彷彿整個世界都在他的掌控之中。</p>
+        <p>「這是……第二世的記憶。」葉塵的心中掀起了一陣驚濤駭浪。</p>
+        <p>他沒有抗拒那股湧入腦海的記憶洪流——而是任由它將自己帶入那片古老的戰場。當他的意識與那幅畫面完全同步時，他發現自己已經站在了那片廣闊的戰場上。</p>
+        <p>空氣中瀰漫著濃重的血腥味和硝煙味——那是戰爭留下的痕跡，帶著一種難以言喻的悲壯感。灰暗的天空中飄灑著細小的塵土，每一粒塵土都承載著無數戰士最後的呼喚。</p>
+        <p>將軍站在葉塵的面前——他那雙堅定的目光注視著葉塵：「你來了。」</p>
+        <p>「我來了。」葉塵堅定地說道。「我是你的後世——葉塵。」</p>
+        <p>將軍微微點頭，然後緩緩開口：「我知道你會來。九世輪迴的記憶正在逐漸喚醒，每一世的經歷都在為你鋪設一條通往巔峰的道路。現在，讓我告訴你關於塵埃之道的真正奧秘。」</p>
+        <p>將軍抬起手，指向天空中飄灑的塵土——那些灰暗的粒子在陽光下閃爍著微弱的光芒：「你看這些塵土——它們看起來微不足道，甚至被人們厭惡和忽視。但是，每一粒塵土都承載著一個故事、一段記憶、一份情感。」</p>
+        <p>將軍的聲音變得更加深沉：「塵埃之道，不在於力，而在於悟。當你能夠用塵土形成屏障保護他人時，你才真正理解了它的本質。當你能夠用塵土滋養大地、孕育生命時，你才真正掌握了它的力量。」</p>
+        <p>葉塵睜開眼睛——他發現自己仍然站在靈藥園中央，但腦海中的畫面卻變得更加清晰了。他終於明白了——封印之所以衰弱，不是因為他的力量不夠強大，而是因為他還沒有真正理解塵埃之道的本質。</p>
+        <p>「我明白了……」葉塵輕聲說道。「塵土不是用來對抗的——它是用來包容和滋養的。」</p>
+        <p>他想起了父親失蹤前曾經對他說過的一句話：「塵埃之道，不在於力，而在於悟。」當時他還不明白這句話的意思，但現在他終於理解了——真正的力量不是來自於強硬的壓制，而是來自於對萬物本質的理解和包容。</p>
+        <p>將軍的身影在記憶中逐漸消散——但他的話語卻深深地刻在了葉塵的心中。他能感覺到體內的那股灰白色力量正在發生變化——它變得更加溫和、更加包容，就像是一杯被陽光溫暖的泉水，安靜而堅定地流淌著。</p>
+        <p>他重新將雙手放在地面上，但這次他改變了方法——不再試圖用強硬的力量去壓制那股被封印的能量，而是像將軍說的那樣，用一種更加溫和、更加包容的方式去引導它。</p>
+        <p>空氣中的塵土開始以他為中心緩緩旋轉——但不是形成一個緊密的漩渦，而是像一片輕柔的霧氣一樣，輕輕地包裹住整個靈藥園。那種感覺就像是一雙溫柔的手，輕輕撫摸著每一寸土地，每一個符文，每一株枯萎的靈藥。</p>
+        <p>蘇清雪驚訝地看著眼前的景象——她從來沒有見過這種力量的表現形式。那種力量既不像普通的靈氣那樣具有攻擊性，也不像任何已知的功法那樣具有鮮明的特徵——它更像是一種更加原始、更加純粹的存在，一種能夠包容萬物的力量。她能感覺到那股灰白色的霧氣輕輕拂過她的臉龐，帶來了一種難以言喻的溫暖和安詳感。</p>
+        <p>隨著葉塵的引導，靈藥園中的變化開始顯現——那些枯萎的靈藥逐漸恢復了生機，原本混亂的能量波動變得穩定而有序。空氣中也瀰漫著一股清新的氣息，那種感覺就像是一場大雨過後的新鮮泥土味道。</p>
+        <p>但是，就在封印修復到一半的時候，葉塵突然感覺到了一股異樣的能量波動——那股力量從森林深處傳來，帶著一種陰冷而邪惡的氣息。他的眉頭微微皺起——他知道，麻煩來了。</p>
+        <p>他站起身來，將萬古塵劍握在手中——當他的雙手握住劍柄的瞬間，一股溫暖的力量從劍身傳入體內，與他體內的灰白色混合力場產生了共鳴。他能感覺到那股力量既古老又沉靜，就像是一位沉睡了無數世紀的長者正在緩緩睜開眼睛。</p>
+        <p>「蘇清雪。」葉塵轉過身來看著她，聲音低沉而堅定。「有人來了——而且不止一個。你準備好防禦了嗎？」</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-67.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-69.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

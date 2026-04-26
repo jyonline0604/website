@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第62章：內門之爭 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-62.html">
+    <link rel="prev" href="chapter-61.html">
+    <link rel="next" href="chapter-63.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第62章 · 內門之爭</h1>
+    <main>
+        <p>葉塵從凌霄殿出來的時候，天色已經暗了下來。</p>
+        <p>他站在殿前的廣場上，仰望著滿天繁星——那些星星在夜空中閃爍著微弱的光芒，彷彿是無數個遙遠的世界在向他訴說著什麼。他的腦海中不斷迴盪著宗主剛才說的話：「你的父親被困在了萬古塵源的深處。」</p>
+        <p>這句話像是一塊巨石投入了他心中的湖面——激起了一陣又一陣的漣漪。他一直以為父親只是失蹤了，但現在他才知道——父親被困在了萬古塵源的深處，一個連守護者也無法進入的地方。</p>
+        <p>「葉塵？」一個熟悉的聲音從身後傳來。</p>
+        <p>葉塵轉過身來，看見蘇清雪正站在大殿的側門旁。她今日穿著一襲淡藍色的長裙，腰間繫著一條銀色絲帶，將她纖細的身姿勾勒得格外優美。她的面容依舊清冷如霜，但看向葉塵的眼神中卻多了一絲難以察覺的擔憂。</p>
+        <p>「你怎麼來了？」葉塵問道。</p>
+        <p>蘇清雪走上前來，目光掃過葉塵的臉龐——她能感覺到他的情緒發生了巨大的變化。「我剛才在殿內聽到宗主召見了你——然後我就出來看看。」她頓了頓，「你沒事吧？」</p>
+        <p>葉塵沉默了片刻——然後他緩緩開口：「宗主告訴我了一個秘密——關於我父親的秘密。」</p>
+        <p>蘇清雪的眼中閃過一絲驚訝：「什麼秘密？」</p>
+        <p>「他說……我的父親沒有死。他只是被困在了萬古塵源的深處。」葉塵的聲音有些顫抖，「一個連守護者也無法進入的地方。」</p>
+        <p>蘇清雪靜靜地聆聽著——她的眼中閃爍著一絲複雜的情感。她知道這句話對葉塵意味著什麼——那不僅僅是一個關於親情的秘密，更是一個需要他用整個修仙生涯去解開的謎題。</p>
+        <p>「你會找到他的。」蘇清雪堅定地說道。「無論前方有多少艱險，你都會找到他的。」</p>
+        <p>葉塵看著她的眼睛——在那雙清澈的眼眸中，他看到了一種前所未有的信任和堅定。那種信任讓他感到溫暖，也讓他更加堅定了自己的決心。</p>
+        <p>就在這個時候，一個身穿黑色執事服的身影從大殿中走了出來——那是趙明軒。他的臉上帶著一絲嚴肅的表情：「葉塵，宗主讓我帶你去內門的住所。從今天開始，你不再是外門弟子了——你已經被破格錄取為內門弟子。」</p>
+        <p>葉塵的心中掀起了一陣驚濤駭浪。他被破格錄取為內門弟子？這意味著什麼？</p>
+        <p>趙明軒似乎看出了他的疑惑：「宗主說，你的天賦和潛力都遠超常人——你不應該被限制在外門的框架中。從今天開始，你將接受更系統的訓練，接觸更深奧的功法。」</p>
+        <p>蘇清雪微微一笑：「恭喜你，葉塵。這是你應得的。」</p>
+        <p>葉塵點點頭——然後他跟著趙明軒向內門的方向走去。在穿過外門廣場的那一刻，周圍的弟子們都用驚異的目光注視著他——那些目光中既有敬畏，也有嫉妒，還有一絲難以言喻的期待。</p>
+        <p>「葉塵？」一個熟悉的聲音從人群後方傳來。</p>
+        <p>葉塵轉過身來，看見王虎正站在廣場的邊緣。他的臉上帶著一絲陰冷的笑容，目光緊緊盯著葉塵：「聽說你被破格錄取為內門弟子了？真是令人驚訝——一個外門的廢柴，竟然能走到這一步。」</p>
+        <p>葉塵看著他——那種眼神中沒有一絲恐懼或憤怒，只有一種深沉的平靜。「王虎，從今天開始，我們不再是同一個層次的人了。你應該感到慶幸——因為我不會再讓你欺負了。」</p>
+        <p>王虎的臉色瞬間變得鐵青：「你說什麼？」</p>
+        <p>葉塵沒有回答——他只是轉身繼續前行，留下王虎站在原地，雙手緊握成拳頭，眼中閃爍著憤怒和不甘的光芒。</p>
+        <p>蘇清雪走到葉塵的身邊：「別理他——那種人只會嫉妒比你強的人。」</p>
+        <p>葉塵點點頭——但他知道，王虎的報復只是時間問題。從今天開始，他需要在內門中生存下去，同時尋找關於父親的下落。那是一條充滿未知和挑戰的道路，但同時也是一條通往真相的道路。</p>
+        <p>「無論前方有多少艱險，我都會走下去。」葉塵在心中默默念著這句話。「因為我知道，自己要走的路——那是一條守護的道路，一條理解塵埃本質的道路。」</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-61.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-63.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

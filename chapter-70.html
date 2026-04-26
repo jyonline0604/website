@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第70章：雙星並耀 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-70.html">
+    <link rel="prev" href="chapter-69.html">
+    <link rel="next" href="#">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第70章 · 雙星並耀</h1>
+    <main>
+        <p>葉塵在靈藥園中央睜開了眼睛。</p>
+        <p>就在剛才，他終於完成了封印的修復——那股被封印的能量已經重新回到了平靜的狀態，不再掙扎和反抗。空氣中的能量波動變得穩定而有序，枯萎的靈藥也恢復了生機，整個靈藥園彷彿從沉睡中甦醒過來一般，散發出一種清新而溫暖的氣息。</p>
+        <p>但是，就在他準備站起身來的時候，一股異樣的感覺湧上了他的心頭——那種感覺就像是一根細小的針刺入了他的皮膚，雖然不痛，卻讓他感到一種前所未有的警覺。</p>
+        <p>「不對……」葉塵在心中默默念道。「外面有危險。」</p>
+        <p>他連忙站起身來，將萬古塵劍從地上取下來——當他的雙手握住劍柄的瞬間，一股溫暖的力量從劍身傳入體內，與他體內的灰白色混合力場產生了共鳴。他能感覺到那股力量既古老又沉靜，就像是一位沉睡了無數世紀的長者正在緩緩睜開眼睛。</p>
+        <p>葉塵向靈藥園外跑去——當他穿過最後一片樹林的時候，他看到了令他震驚的一幕。</p>
+        <p>蘇清雪正站在一片空地上，周圍被一群黑衣人包圍著。那些黑衣人的臉上戴著面具，手中握著各種法器，散發出一股陰冷而邪惡的能量波動。為首的那個黑衣人正在不斷地攻擊蘇清雪的屏障——那道透明的光罩在黑色能量的衝擊下已經出現了細小的裂紋，隨時都可能破裂。</p>
+        <p>「葉塵！」蘇清雪看到葉塵的那一刻，雙眼中閃過了一陣驚喜的光芒。「你來了。」</p>
+        <p>葉塵微微點頭——然後他緩緩開口：「我來晚了——讓你受驚了。」</p>
+        <p>他抬起手，將掌心朝向天空——空氣中的塵土開始以他為中心緩緩旋轉。但這次，他沒有像往常那樣形成一個緊密的漩渦或光柱——而是讓那些塵土像一片輕柔的霧氣一樣，向四周輻射出去，覆蓋住了整個戰場。</p>
+        <p>那些黑衣人感覺到了一股異樣的能量波動——那種力量既不像普通的靈氣那樣具有攻擊性，也不像任何已知的功法那樣具有鮮明的特徵。他們的目光中閃過了一絲恐懼和不安，但為首的那個黑衣人依然堅定地說道：「來了一個送死的——一起上！」</p>
+        <p>七八個黑衣人同時發動了攻擊——黑色的能量光柱從四面八方湧向葉塵和蘇清雪。葉塵沒有退縮——他將萬古塵劍橫在身前，劍身上的灰白色光芒瞬間爆發出來，形成了一道堅固的防禦壁壘。那些黑色光柱在接觸到防禦壁壘的瞬间被彈開，發出了一陣陣刺耳的爆炸聲。</p>
+        <p>「清雪！」葉塵轉過身來看著蘇清雪。「我們一起——用我們的力量的結合來擊敗他們。」</p>
+        <p>蘇清雪點點頭——她抬起手，將掌心朝向天空。空氣中的靈氣開始以她為中心緩緩旋轉，形成了一道白色的光柱。那道光柱向葉塵的方向延伸過去，與他的灰白色力量在空中交匯。</p>
+        <p>兩股力量在空中融合的那一刻，發生了一種令人驚嘆的變化——白色的靈氣和灰色的塵埃相互纏繞、相互滲透，最終形成了一種全新的能量形態。那種能量既不像純白的靈氣那樣清澈透明，也不像純粹的塵埃那樣灰暗沉靜——它是一種銀灰色與白色交織的光芒，散發出一種既古老又新生的力量感。</p>
+        <p>「這就是……」葉塵看著那團融合的能量，心中湧起了一股難以言喻的感動。「我們的力量的結合。」</p>
+        <p>他將萬古塵劍指向那些黑衣人——銀灰色的光芒從劍尖噴薄而出，化作一道巨大的能量洪流，直奔那些黑衣人而去。蘇清雪也同時發動了攻擊——白色的光柱與葉塵的能量洪流在空中交匯，形成了一道璀璨的光芒，照亮了整個森林。</p>
+        <p>那些黑衣人在這股強大的力量面前毫無招架之力——他們的黑色屏障在瞬間被擊碎，身體被強大的能量衝擊波掀飛出去，重重地摔在了樹幹上。為首的那個黑衣人試圖逃跑——但葉塵的塵埃之力已經將他包圍在一片灰白色的霧氣之中，讓他無法動彈。</p>
+        <p>「你們是誰派來的？」葉塵走到那個黑衣人面前，目光冷冷地注視著他。「為什麼要攻擊靈藥園？」</p>
+        <p>黑衣人的面具在能量衝擊中碎裂了——露出一張猙獰而扭曲的臉龐。他的嘴角勾起了一絲冷笑：「你以為這樣就能讓我開口嗎？告訴你——你們已經太遲了。封印雖然暫時修復了，但那股力量終究會再次釋放出來——到時候，整個雲霄宗都會為它的傲慢付出代價。」</p>
+        <p>說完這句話，那個黑衣人突然咬破了自己的舌尖——一股黑色的血液從他的口中湧出，瞬間將他的身體吞噬。當一切恢復平靜的時候，他的身體已經消失得無影無蹤——只留下一灘黑色的血跡，證明他曾經存在過。</p>
+        <p>葉塵皺起眉頭——他知道，這只是開始。那些黑衣人背後一定有一個更大的陰謀，而他們的目标不僅僅是靈藥園中的封印。</p>
+        <p>「葉塵。」蘇清雪走到他的身邊，輕輕握住他的手。「你沒事吧？」</p>
+        <p>葉塵看著她的眼睛——在那雙清澈的眼眸中，他看到了一種前所未有的信任和堅定。那種信任讓他感到溫暖，也讓他更加堅定了自己的決心。</p>
+        <p>「我沒事。」葉塵微微一笑——那種笑容中帶著一絲溫暖和柔和。「但是……事情還沒有結束。那些人背後一定有一個更大的陰謀——我們需要盡快將這個情況報告給宗主。」</p>
+        <p>蘇清雪點點頭：「我同意。而且——」她的目光掃過那片恢復生機的靈藥園，「封印已經修復了大半，但還需要更多的時間來完全加固。你一個人可能不夠——我需要幫你。」</p>
+        <p>葉塵看著她——在那雙清澈的眼眸中，他看到了一種前所未有的信任和堅定。那種信任讓他感到溫暖，也讓他更加堅定了自己的決心。</p>
+        <p>「好。」葉塵輕聲說道。「我們一起完成它。」</p>
+        <p>夜幕降臨的時候，靈藥園中的封印已經完全修復。那股被封印的能量重新回到了平靜的狀態，不再掙扎和反抗。空氣中也瀰漫著一股清新而溫暖的氣息——那種感覺就像是一場大雨過後的新鮮泥土味道，帶著一種難以言喻的希望感。</p>
+        <p>葉塵和蘇清雪坐在靈藥園中央的青色石碑旁，仰望著滿天繁星。那些星星在夜空中閃爍著微弱的光芒，彷彿是無數個遙遠的世界在向他们訴說著什麼。</p>
+        <p>「你說……」蘇清雪輕聲問道，「你父親如果還在世的話，他會怎麼看待現在的一切？」</p>
+        <p>葉塵沉默了片刻——然後他緩緩開口：「我相信他會為我感到驕傲。因為我知道，自己正在走的路——那是一條守護的道路，一條理解塵埃本質的道路。」</p>
+        <p>蘇清雪輕輕握住他的手——在那個瞬間，兩顆年輕的心在星空下緊緊相連。他們不知道等待自己的會是什麼——是更深的秘密，還是更大的危險。但他們知道，無論前方有多少艱險，他們都會一起走下去。</p>
+        <p>因為他們已經明白了一個道理——塵埃之道，不在於力，而在於悟。而真正的力量，來自於那些願意守護他人的人心中最深沉的情感。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-69.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="#" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

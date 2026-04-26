@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第63章：內門弟子 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-63.html">
+    <link rel="prev" href="chapter-62.html">
+    <link rel="next" href="chapter-64.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第63章 · 內門弟子</h1>
+    <main>
+        <p>內門的區域位於雲霄宗的主峰之上——這裡的地勢比外門更加陡峭，空氣中的靈氣也更加濃郁。葉塵跟著趙明軒穿過一條蜿蜒的石階小路，兩旁的松樹高聳入雲，樹幹上纏繞著淡紫色的藤蔓。</p>
+        <p>「這就是內門的區域。」趙明軒在一座小型院落前停下腳步。「你的住所在這裏——雖然比不上執事們的居所，但對於一個新晉的內門弟子來說已經足夠了。」</p>
+        <p>葉塵看著眼前的院落——那是一座由青石砌成的小院，院門上掛著一塊木牌，上面寫著「葉塵」兩個字。院內的佈局簡單而整潔：一間臥室、一間書房、一個小型的修煉室，以及一個小小的庭院。庭院中種植著幾株靈草，那些靈草在微風中輕輕搖曳，散發出一種若有若無的清香。</p>
+        <p>「從今天開始，你每天需要參加內門的晨練和功法課程。」趙明軒繼續說道，「另外，宗主還特別吩咐我告訴你——你可以在藏經閣中選擇一本適合你的功法進行修煉。」</p>
+        <p>葉塵點點頭：「謝謝執事長。」</p>
+        <p>趙明軒看了他一眼：「別客氣了。不過你要小心——內門不比外門，這裡的競爭更加激烈。很多弟子都是各大家族的天才，他們不會因為你是宗主破格錄取的弟子就對你手下留情。」</p>
+        <p>說完這句話，趙明軒轉身離開了。葉塵站在院門口，深吸了一口氣——然後他推開院門，走了進去。</p>
+        <p>院內的空氣中瀰漫著一股淡淡的靈草香氣——那種香氣既清新又沉靜，讓人感到一種難以言喻的安詳感。葉塵走進臥室，將萬古塵劍放在床頭——當他的雙手握住劍柄的瞬間，一股溫暖的力量從劍身傳入體內，與他體內的灰白色混合力場產生了完美的共鳴。</p>
+        <p>他走到書房前，推開門走了進去。書房的佈局簡單而整潔——一張書桌、一把椅子、一個書架，以及一面牆壁上掛滿了的符文石碑。葉塵走上前去，仔細觀察著那些石碑——每一塊石碑上都刻滿了古老的文字和圖案，那些文字的筆畫粗獷而有力，每一劃都像是用巨劍刻下的一般。</p>
+        <p>「這些是內門的基礎功法。」一個聲音從身後傳來。</p>
+        <p>葉塵轉過身來，看見一個身穿灰色長袍的中年男子正站在門口。他的面容平凡而樸實，鬢角有些斑白，但雙眼中卻閃爍著溫和的光芒。</p>
+        <p>「你是？」葉塵問道。</p>
+        <p>「我是藏經閣的管理者——張三。」中年男子微微一笑，「宗主讓我來指導你選擇適合你的功法。」</p>
+        <p>葉塵點點頭：「請多多指教。」</p>
+        <p>張三走進書房，來到書架前——他伸手從書架上取下一本泛黃的典籍，遞給葉塵：「這本《流雲訣》是內門的基礎功法之一。它的主要特點是修煉速度快、穩定性高，適合築基之前的修士使用。」</p>
+        <p>葉塵接過典籍，仔細閱讀起來——當他的目光掃過每一頁的時候，那些文字都會自動融入他的意識之中，成為他的一部分。他能感覺到體內的那種灰白色混合力場正在微微顫動，彷彿在回應著那本典籍的呼喚。</p>
+        <p>「還有一本。」張三從書架上取下另一本典籍，「這本《塵埃訣》——它不是內門的標準功法，而是一本極為特殊的功法。據說它的創始人是一位能夠操控塵土的散修修士，修煉到極致之後甚至可以改變物質的本質。」</p>
+        <p>葉塵的心猛地一跳：「《塵埃訣》？我在萬古塵源中見過這本典籍——」</p>
+        <p>張三點點頭：「我知道。宗主也告訴了我你在萬古塵源中的經歷。他說你已經接觸過《塵埃訣》的基礎內容，所以這本書應該適合你。」</p>
+        <p>葉塵接過那本泛黃的典籍——當他的指尖觸碰到封面的瞬間，一股溫暖的力量從典籍中傳入體內，與他體內的灰白色混合力場產生了完美的共鳴。他能感覺到那股力量既古老又沉靜，就像是一位沉睡了無數世紀的長者正在緩緩睜開眼睛。</p>
+        <p>「我選擇這本。」葉塵堅定地說道。</p>
+        <p>張三微微一笑：「很好——我相信你會做出正確的選擇。」</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-62.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-64.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

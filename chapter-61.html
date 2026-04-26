@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第61章：宗主之召 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-61.html">
+    <link rel="prev" href="chapter-60.html">
+    <link rel="next" href="chapter-62.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第61章 · 宗主之召</h1>
+    <main>
+        <p>雲霄宗主峰，凌霄殿。</p>
+        <p>葉塵跟著趙明軒穿過一條蜿蜒的石階小路。兩旁的松樹高聳入雲，樹幹上纏繞著淡紫色的藤蔓——那些藤蔓在微風中輕輕搖曳，散發出一種若有若無的清香。空氣中的靈氣比外門濃郁了數倍之多，每一次呼吸都能感覺到能量滲入經脈，滋養著身體的每一寸肌膚。</p>
+        <p>「葉塵。」趙明軒突然停下腳步，轉過身來看著他。「你最好做好心理準備——宗主不是那種會輕易原諒別人的人。你在萬古塵源中消失了二十天，按照宗門規定，這已經屬於嚴重違紀的行為。」</p>
+        <p>葉塵微微點頭：「我明白。」</p>
+        <p>趙明軒看了他一眼——那眼神中既有警告，也有一絲難以察覺的讚賞。「你這小子……在萬古塵源中的表現，我已經聽說了。外門的那些弟子都在傳說，說你在秘境中不僅活下來了，還突破了境界。不過——」他的語氣突然變得嚴肅起來，「宗主看重的是規矩，不是天賦。希望你能用你的誠意打動他。」</p>
+        <p>兩人繼續前行。大約走了半個時辰之後，石階的盡頭出現了一座巨大的殿宇——那就是凌霄殿。殿宇由整塊整塊的白色玉石砌成，屋頂覆蓋著金色的琉璃瓦，在陽光的照射下閃爍著耀眼的光芒。殿前豎立著兩尊巨大的青銅獅子，獅子的眼睛中嵌著兩枚紅色的寶石，彷彿隨時都會活過來一般。</p>
+        <p>趙明軒在殿門外停下腳步：「你在這裡等我——宗主正在接待其他客人。」</p>
+        <p>葉塵站在殿前的廣場上，環顧四周。廣場的地面由整塊整塊的青色石板鋪成，石板之間的縫隙中生長著細小的灰色苔蘚。遠處可以看到雲霄宗的其他建築——一座座殿宇錯落有致地分佈在山巒之間，每一座都散發著不同的能量波動。</p>
+        <p>就在這個時候，一個身穿紫色長袍的中年男子從側門走了出來。他的面容英俊而嚴肅，鬢角已經有些斑白，但雙眼中卻閃爍著銳利的光芒。葉塵能感覺到那股強大的氣息——那是築基高層的修士才能擁有的力量。</p>
+        <p>「你是葉塵？」中年男子打量著他，語氣中帶著一絲探究。「我是內門執事長孫無極。宗主剛才提到過你——說是一個從外門突然冒出來的天才。」</p>
+        <p>葉塵微微躬身：「見過孫執事長。」</p>
+        <p>孫無極冷哼一聲：「別客氣了。進去吧——宗主正在等你。」</p>
+        <p>他轉身走進殿宇，為葉塵打開了大門。葉塵深吸一口氣，邁步走了進去。</p>
+        <p>凌霄殿的內部比外面看起來更加寬闊——大殿的穹頂高達數丈，四周的牆壁上掛滿了古老的畫卷和符文石碑。大殿的正中央擺放著一張巨大的玉石王座，王座上坐著一個身穿白色長袍的老者。老者的面容蒼老而慈祥，鬢角斑白，但雙眼中卻閃爍著如同星辰般的光芒。</p>
+        <p>「你就是葉塵？」老者的聲音溫和而深沉，彷彿從遙遠的時空深處傳來。「坐下吧——我們有話要說。」</p>
+        <p>葉塵依言在王座前方的石凳上坐下。他能感覺到老者的目光正在仔細打量著他——那種目光既像是在評估一件珍貴的寶物，又像是在尋找某種隱藏的秘密。</p>
+        <p>「我聽說你在萬古塵源中待了二十天。」老者緩緩開口，「按照宗門規定，秘境探索最多只能持續七天。超過這個時間，就意味著可能發生了什麼意外。你是怎麼活下來的？」</p>
+        <p>葉塵沉默了片刻——然後他緩緩開口：「我在萬古塵源中找到了一條通往深處的路徑。那裡有古老的陣法和守護者，但我成功通過了他們的考驗。」</p>
+        <p>老者的眼中閃過一絲驚訝：「守護者？你見過荒原的守護者？」</p>
+        <p>「是的。」葉塵堅定地說道。「他告訴我，我是被選中的人——能夠理解塵埃之道的人。」</p>
+        <p>大殿中陷入了短暫的沉默。孫無極站在旁邊，臉上帶著難以察覺的複雜表情——既有驚訝，也有一絲擔憂。</p>
+        <p>老者緩緩站起身來，走下王座，來到葉塵的面前。他的目光緊緊盯著葉塵的眼睛：「你知道你剛才說了什麼嗎？荒原的守護者已經無數個世紀沒有選中過任何人了——你是第一個。」</p>
+        <p>葉塵迎著老者的目光：「我知道這意味著什麼。但我不知道的是……這是否是一個祝福，還是一個詛咒。」</p>
+        <p>老者微微一笑——然後他緩緩開口：「葉塵，我告訴你一個秘密——關於你父親的秘密。」</p>
+        <p>葉塵的心猛地一跳：「我的父親？」</p>
+        <p>「你的父親葉蒼海——曾經是雲霄宗內門的精英弟子，築基初期的修士。十年前，他在一次探索萬古塵源的任務中失蹤了。」老者的聲音變得低沉而深沉，「我當時也在那支隊伍中——我是倖存者之一。」</p>
+        <p>葉塵的雙手不由自主地握緊了拳頭：「他……怎麼了？」</p>
+        <p>老者沉默了片刻——然後他緩緩說道：「他沒有死。他只是被困在了萬古塵源的深處——一個連守護者也無法進入的地方。而你……你的玉佩，就是你的父親留下的線索。它不僅僅是一把鑰匙——它也是一個定位器。」</p>
+        <p>葉塵的腦海中閃過無數的念頭。他一直以為父親只是失蹤了，但現在他才知道——父親被困在了萬古塵源的深處，一個連守護者也無法進入的地方。</p>
+        <p>「我該怎麼辦？」葉塵的聲音有些顫抖。</p>
+        <p>老者看著他的眼睛：「等你達到更高的境界，等你真正理解塵埃之道的奧秘之後——你會找到他的。」</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-60.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-62.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

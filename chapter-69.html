@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第69章：清雪入林 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-69.html">
+    <link rel="prev" href="chapter-68.html">
+    <link rel="next" href="chapter-70.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第69章 · 清雪入林</h1>
+    <main>
+        <p>靈藥園外的森林中，蘇清雪獨自一人走在林間小路上。</p>
+        <p>她已經在葉塵身邊守護了整整兩個時辰——這兩個小時裡，她一直靜靜地站在靈藥園的邊緣，目光注視著四周的森林，隨時準備應對可能出現的任何危險。空氣中的靈氣逐漸變得混亂而不穩定——那種感覺就像是一杯被攪亂的水，失去了原有的清澈和秩序。</p>
+        <p>「葉塵應該快完成了吧……」蘇清雪在心中默默念道。「但是為什麼空氣中的能量波動越來越強烈了？」</p>
+        <p>她抬起手，將掌心朝向天空——空氣中的靈氣開始以她為中心緩緩旋轉，最終凝聚成一道白色的光柱。那道光柱向四周輻射出去，像是一張無形的網，覆蓋住了整個森林的區域。透過這張靈氣之網，她能感覺到葉塵正在靈藥園中央進行某種修煉——那股灰白色的力量穩定而溫和，就像是一盞在黑夜中燃燒的燈籠，安靜地散發著溫暖的光芒。</p>
+        <p>但是，就在她準備收回靈氣的時候，她的耳邊突然傳來了一陣微弱的聲音——那種聲音既輕微又隱蔽，就像是一隻小動物在輕輕地走動。蘇清雪連忙睜開眼睛，將雙手平放在身前——空氣中的靈氣開始以她為中心緩緩旋轉，形成了一道透明的屏障。</p>
+        <p>「有人來了……」蘇清雪在心中說道。「而且不止一個。」</p>
+        <p>她的直覺告訴她，來者不善——那股能量波動帶著一種陰冷而邪惡的氣息，與葉塵那種溫和包容的力量截然不同。她能感覺到自己的心跳在加速，但她的表情卻依然冷靜如霜。作為雲霄宗宗主親傳弟子，她接受過嚴格的戰鬥訓練，面對危險時的冷靜是她最基本的素養。</p>
+        <p>大約十幾分鐘之後，森林的四周突然傳來了一陣劇烈的撞擊聲——那個聲音既沉重又猛烈，彷彿是某種強大的力量正在試圖打破什麼東西。蘇清雪連忙將雙手平放在身前——空氣中的靈氣開始以她為中心緩緩旋轉，形成了一道巨大的屏障。那道屏障在四周形成了一個透明的光罩，將整個區域籠罩在其中。</p>
+        <p>「誰在外面？」蘇清雪的聲音清脆而堅定。「出來！」</p>
+        <p>沉默了片刻之後，一個低沉的聲音從森林深處傳來：「雲霄宗的小丫頭——你以為憑藉你那點微薄的力量就能擋住我們嗎？」</p>
+        <p>蘇清雪的眉頭微微皺起——那個聲音她聽過。在雲霄宗的外門考核中，王虎曾經用同樣的語氣威脅過葉塵。但是，這個聲音比王虎更加陰冷、更加邪惡——它不像是屬於活人的聲音，更像是一頭從地獄深處爬出來的野獸。</p>
+        <p>「你們是誰？」蘇清雪冷冷地问道。「為什麼出現在這裡？」</p>
+        <p>另一個聲音從旁邊傳來——那個聲音更加尖銳而猙獰：「我們是誰並不重要——重要的是，你擋住了我們的去路。」</p>
+        <p>就在這個時候，森林的四周突然出現了七八個身穿黑色長袍的身影。他們的臉上戴著面具，遮住了整個面容，只露出一雙雙充滿殺意的眼睛。他們手中握著各種法器，散發出一股陰冷而邪惡的能量波動。</p>
+        <p>蘇清雪的心猛地一跳——她從來沒有見過這種類型的人。他們不像雲霄宗的弟子那樣正統，也不像散修那樣自由隨性——他們的氣息中帶著一種令人不安的黑暗力量，彷彿是從萬古塵源深處爬出來的怪物。更令她擔憂的是，為首的那個黑衣人散發出的能量波動已經接近築基初期的層次——以她目前聚元巔峰的实力，面對這樣的對手並沒有太大的把握。</p>
+        <p>「你們想要做什麼？」蘇清雪的聲音依然堅定，但她能感覺到自己的雙手正在微微顫抖。</p>
+        <p>為首的那個黑衣人緩緩抬起手，指向靈藥園的方向：「那座陣法——我們需要它裡面封印的力量。讓開，否則別怪我们不客氣。」</p>
+        <p>蘇清雪的雙眼中閃過一絲憤怒：「休想——我會用我的生命守護這裡。」</p>
+        <p>黑衣人的嘴角勾起了一絲猙獰的笑容：「很好——那就讓我們看看，你的生命能為你撐多久。」</p>
+        <p>他抬起手，將掌心朝向天空——空氣中的黑暗能量開始以他為中心緩緩旋轉，形成了一個黑色的漩渦。那個漩渦轉動的速度越來越快，最終凝聚成一道黑色的光柱，直奔蘇清雪的屏障而去。</p>
+        <p>「小心！」蘇清雪連忙將雙手平放在身前——空氣中的靈氣開始以她為中心緩緩旋轉，形成了一道更加堅固的屏障。那道屏障在黑色光柱的衝擊下微微顫動，發出了一陣刺耳的碎裂聲。</p>
+        <p>其他黑衣人見狀也同時發動了攻擊——黑色的能量光柱從四面八方湧向蘇清雪的屏障。那道透明的光罩在多重衝擊之下開始出現細小的裂紋，就像是一面即將破碎的玻璃鏡一樣，隨時都可能徹底崩潰。</p>
+        <p>蘇清雪咬緊牙關——她不斷地將靈氣注入屏障之中，試圖維持它的完整。但是，對方的攻擊越來越猛烈，她的體力也在迅速消耗。她能感覺到自己的經脈在微微顫抖，丹田中的靈氣正在以驚人的速度減少。</p>
+        <p>「這樣下去不行……」蘇清雪在心中默默念道。「我需要撐住——葉塵還在裡面修復封印，我不能讓他分心。」</p>
+        <p>她想起了師父曾經對她說過的一句話：「真正的強大不是來自於力量的大小，而是來自於意志的堅定。」這句話一直深深地刻在她的的心中，成為她在面對困難時最堅強的後盾。</p>
+        <p>她深吸了一口氣，然後將雙手合十——空氣中的靈氣開始以她為中心瘋狂旋轉，最終凝聚成一道巨大的白色光柱。那道光柱向四周輻射出去，形成了一道強大的衝擊波，將靠近她的幾個黑衣人全部擊退。</p>
+        <p>但是，這種全力攻擊也讓她付出了沉重的代價——她的嘴角滲出了一絲鮮血，身體微微顫抖著。她知道，自己已經沒有多少時間了——如果葉塵不能在短時間內趕來，她很可能會敗在這些黑衣人的手中。</p>
+        <p>就在她準備發動最後一次全力防禦的時候，一道熟悉的灰白色光芒從森林深處閃現出來——那是葉塵的力量。</p>
+        <p>「葉塵！」蘇清雪的雙眼中閃過了一陣驚喜的光芒。「你來了。」</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-68.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-70.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

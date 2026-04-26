@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第35章：福伯的教導 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-35.html">
+    <link rel="prev" href="chapter-34.html">
+    <link rel="next" href="chapter-36.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第35章 · 福伯的教導</h1>
+    <main>
+        <p>晨光尚未完全穿透雲霧，葉塵已盤膝坐於後山崖畔。昨夜夢境中那灰袍老者的身影仍在腦海中浮現——漫天飛舞的塵埃如銀河般環繞著那人，每一粒微塵都彷彿蘊含著無盡的力量。他睜開雙眼，指尖輕輕觸碰頸間的玉佩，溫潤的觸感傳來一絲若有若無的脈動。</p>
+        <p>「小塵子，又在發呆？」</p>
+        <p>低沉的聲音從身後傳來。葉塵回頭，見福伯拄著拐杖緩步走來，鬢角斑白卻目光炯炯。老人身上那件洗得發白的青衫隨風微擺，腳步輕盈得不像六十有餘之人。</p>
+        <p>「福伯。」葉塵起身讓位，「您怎麼來了？」</p>
+        <p>福伯在他身旁坐下，拐杖輕輕敲擊地面：「我聞到你身上的氣息變了。聚元初層的修為倒是穩固，不過……」老人頓了頓，目光落在葉塵的指尖上，「你的塵埃之力還太散亂。」</p>
+        <p>葉塵一怔。他確實能感覺到體內那股灰色力量，但每次運轉時都如流沙般難以掌控，稍有不慎便會消散於無形。</p>
+        <p>福伯伸出枯瘦的手指，在空中輕輕劃過一道弧線。奇蹟發生了——周圍的空氣中竟有細微的塵埃被吸引而來，在老人指尖凝聚成一團灰蒙蒙的光球。那光球旋轉著，表面浮現出複雜的紋路，彷彿某種古老的陣法。</p>
+        <p>「看好了。」福伯的聲音低沉而有力，「塵埃之道，不在於吸納多少，而在於壓縮與凝練。天地間無處不有塵埃，但能將它們化為利刃者，萬中無一。」</p>
+        <p>光球在福伯的操控下迅速收縮，原本龐大的體積縮小至拳頭大小，卻散發出一股令人心悸的壓迫感。葉塵屏住呼吸，他能感覺到那股力量中蘊含的恐怖威能——僅僅是一團壓縮過的塵埃，竟比聚元中期修士全力出擊還要強橫。</p>
+        <p>「這便是『塵封』之法。」福伯將光球輕輕拋向空中，光球瞬間炸裂成無數細小的灰芒，每一粒都帶著鋒銳的氣息，在空氣中劃出一道道灰色的軌跡，「塵埃本無形，卻可化為萬形。你要學會的不是吸收，而是掌控——掌控它們的密度、速度、方向。」</p>
+        <p>葉塵深吸一口氣，閉上雙眼。他嘗試將注意力集中在周圍的空氣上，感受那些肉眼不可見的微粒在呼吸間進出他的毛孔。起初，一切如往常般混亂，灰色力量在經脈中亂竄，但他記起了福伯的話——不在於吸納多少，而在於壓縮與凝練。</p>
+        <p>他開始收斂心神，不再貪多求快，而是將注意力集中在丹田處那團灰色的能量上。慢慢地，他感覺到那些原本散亂的能量開始向中心匯聚，如同百川歸海。當它們凝聚到一定程度時，葉塵睜開眼睛，右手食指與中指之間竟浮現出一粒米粒大小的灰芒。</p>
+        <p>那粒灰芒極其微小，卻在陽光下折射出令人眩目的光芒。福伯眼中閃過一絲讚許：「不錯，第一次就能壓縮到這種程度，你的悟性比我預期的要好。」</p>
+        <p>葉塵興奮之餘不敢大意，小心翼翼地維持著那粒灰芒的穩定。然而就在這時，一陣急促的腳步聲從山道上傳來。</p>
+        <p>「小塵子！你果然在這裡！」</p>
+        <p>王虎帶著三名外門弟子出現在崖邊，臉上滿是猙獰之色。他顯然已經打聽到了葉塵突破的消息，眼中閃爍著貪婪的光芒：「聽說你最近得了不少好東西，識相的就把資源交出來，否則……」</p>
+        <p>福伯緩緩站起身，拐杖重重頓地：「王虎，雲霄宗的法規你當然是知道的。在後山私鬥，按律當罰。」</p>
+        <p>王虎看到福伯，臉色微變，但很快又恢復了囂張：「福伯，我們之間的事不用您操心。小塵子，給你最後一次機會——」</p>
+        <p>話音未落，葉塵已經站起身來。他看著王虎，眼神中沒有了從前的畏懼，取而代之的是一種沉靜的堅定。他抬起右手，那粒灰芒在指尖微微顫動。</p>
+        <p>「我說過了。」葉塵的聲音不高，卻清晰有力，「我的東西，不會給任何人。」</p>
+        <p>王虎大怒，揮拳便朝葉塵撲來。聚元初層的氣息爆發而出，拳風呼嘯。然而就在他的拳頭即將觸及葉塵的瞬間，那粒灰芒突然炸開——不是爆炸，而是化作一道灰色的弧線，精準地擊中了王虎的手腕。</p>
+        <p>王虎慘叫一聲，整條手臂瞬間麻木，拳勢偏離了軌道。其餘三人見狀大驚，同時出手攻向葉塵。葉塵不退反進，雙手連揮，每一道灰芒都如靈蛇般穿梭在空氣中，擊打在每個人的關節要害上。不過數息之間，四人已全部倒地呻吟。</p>
+        <p>福伯在一旁看得直點頭：「壓縮攻擊的雛形已經有了，但還不夠精細。下次練習時，試著將塵埃分為三層——外層防禦、中層纏繞、內層穿透。」</p>
+        <p>葉塵扶起福伯，向王虎等人投去最後一瞥：「今日不與你們計較，但若再找麻煩，休怪我不客氣。」</p>
+        <p>轉身離去之際，他回頭看了一眼崖邊。晨霧正在散去，陽光穿透雲層灑在蒼翠的山巒上。葉塵握緊雙拳，心中默念著福伯的教導——不在於吸納多少，而在於壓縮與凝練。</p>
+        <p>回到居所後，他在房中佈下簡單的隔音陣法，開始反覆練習塵埃的壓縮技巧。每一次失敗都伴隨著經脈的刺痛，但他沒有停下。他知道，只有足夠強大，才能保護自己在這個弱肉強食的世界裡生存下去。</p>
+        <p>當夕陽西下時，葉塵終於成功將一團塵埃壓縮成拳頭大小的灰球——雖然只維持了不到三息便消散了，但這已經是他邁出的第一步。</p>
+        <p>夜深人靜，他取出父親留下的黑色令牌。令牌表面的古老符文在月光下微微發光，彷彿在呼喚著什麼。葉塵想起福伯之前說過的話：「這枚令牌不簡單，它和你頸間的玉佩一樣，都與你父親的失蹤有關。」</p>
+        <p>他將令牌握在手心，閉上雙眼。黑暗中，一個念頭悄然浮現——或許答案就在某個被遺忘的地方，而黑令牌就是通往真相的鑰匙。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-34.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-36.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第40章：暗中的窺視 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-40.html">
+    <link rel="prev" href="chapter-39.html">
+    <link rel="next" href="#">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第40章 · 暗中的窺視</h1>
+    <main>
+        <p>報名大比後的第三天，葉塵像往常一樣來到了後山竹林進行晨練。清晨的空氣中瀰漫著淡淡的霧氣，翠竹在微風中輕輕搖曳，發出沙沙的響聲。他盤膝坐在空地中央，雙手結印，開始了每日的修煉。</p>
+        <p>銀灰色的混合力場在他周身緩緩旋轉，灰色能量與白色靈氣在經脈中形成穩定的循環。經過半個月的密集訓練，他的流雲訣已經達到了相當純熟的境界，兩種力量的融合也更加自然流暢。聚元中期的修為穩固後，他開始嘗試更高階的技巧——將混合力場分為多個獨立的部分，分別執行不同的任務。</p>
+        <p>就在他沉浸於修煉之中時，一陣異樣的感覺突然襲來。</p>
+        <p>葉塵的動作瞬間停頓。他的神經繃緊到了極限——有人在看他。那種被窺視的感覺非常微弱，幾乎與周圍的自然氣息融為一體，但對於一個修煉過塵埃之力的修士來說，任何細微的異常都無法逃脫他的感知。</p>
+        <p>他沒有立刻睜開眼睛，而是繼續保持閉目的狀態，將感知力向四周擴散。空氣中的每一粒塵埃都在他的意識中變得清晰可辨——左側三丈處有一隻松鼠在樹枝間跳躍，右側五丈處的溪流正在潺潺流動，上方竹林深處……</p>
+        <p>那裡有什麼東西。</p>
+        <p>葉塵的感知鎖定在了竹林深處的一個位置。那裡有一股極其隱蔽的氣息，被某種法術巧妙地掩蓋著，如果不是他剛剛覺醒了更敏銳的感知能力，絕對不會察覺到。那股氣息非常微弱，卻帶著一種熟悉的韻律——與他頸間玉佩散發出的脈動有著微妙的共鳴。</p>
+        <p>葉塵緩緩睜開眼睛，站起身來。他沒有立刻朝那個方向走去，而是先調整了一下呼吸，將混合力場擴展到全身覆蓋的範圍。然後他才邁開腳步，朝著竹林深處緩步前行。</p>
+        <p>越往深處走，周圍的環境變得越发幽靜。翠竹越來越密集，陽光被完全遮擋，地面上鋪滿了厚厚的落葉。葉塵的每一步都輕盈而謹慎，混合力場在腳下形成一層薄薄的緩衝墊，讓他的腳步聲幾乎完全消失。</p>
+        <p>走了約莫一刻鐘的時間，他來到了竹林最深處的一片空地。這裡比之前的練功場地更加偏僻，四周被高大的竹牆環繞，中間只有一塊不大的平地。空地中央立著一塊巨大的岩石，岩石表面佈滿了青苔和藤蔓。</p>
+        <p>葉塵的感知鎖定在了岩石後方——那股隱蔽的氣息就藏在那裡。他深吸一口氣，右手悄悄凝聚出一團混合力場，隨時準備應對突發情況。然後他繞到岩石的另一側，看到了那個讓他驚訝的身影。</p>
+        <p>那是一個身穿黑色斗篷的人，全身被寬大的兜帽遮擋，看不清面容。此人盤膝坐在岩石旁的草地上，雙手放在膝蓋上，似乎已經在這裡坐了很久。他的面前放著一個小小的木盒，盒蓋打開，裡面散發出一股淡淡的靈氣波動。</p>
+        <p>葉塵的出現顯然沒有嚇到對方——那人甚至沒有抬頭，只是輕輕嘆了一口氣：「你比我預期的要敏銳得多。我以為我的隱匿法術能再瞞你半個時辰。」</p>
+        <p>聲音低沉而沙啞，聽不出年齡和性別。葉塵握緊雙拳，混合力場在指尖微微顫動：「你是誰？為什麼在這裡？」</p>
+        <p>那人終於抬起頭來。兜帽下是一張蒼老的臉龐——皺紋縱橫交錯，鬍鬚斑白，但雙眼卻明亮如星，散發著一種令人不安的洞察力。他的目光落在葉塵頸間的玉佩上，停留了許久。</p>
+        <p>「我是誰並不重要。」老人緩緩說道，「重要的是你知道這枚玉佩的來歷嗎？」</p>
+        <p>葉塵心中一驚：「你怎麼知道——」</p>
+        <p>「我當然知道。」老人打斷了他，聲音中帶著一種複雜的情感，「因為這枚玉佩的主人，曾經是我的徒弟。」</p>
+        <p>這句話如同一道驚雷在葉塵腦海中炸響。他下意識地捂住了頸間的玉佩：「你說什麼？」</p>
+        <p>老人沒有直接回答，而是從懷中取出一塊黑色的令牌——與葉塵父親留下的那枚一模一樣。兩枚令牌表面的古老符文在晨光中微微發光，彷彿在呼喚著彼此。</p>
+        <p>「這枚令牌和你父親留下的一樣。」老人將黑色令牌放在面前的木盒旁，「它們都是『塵埃之印』的碎片。當兩塊碎片合在一起時，就能開啟通往『萬古塵源』的通道——那是你第一世修煉的地方，也是塵埃之道真正的起源。」</p>
+        <p>葉塵的思緒飛速運轉。他想起福伯曾經說過的話：「這枚令牌不簡單，它和你頸間的玉佩一樣，都與你父親的失蹤有關。」當時他只當是老人為了安慰他而說的話，但現在看來，事情遠比他想象的更加複雜。</p>
+        <p>「我父親……」葉塵的聲音有些顫抖，「他还活著嗎？」</p>
+        <p>老人沉默了片刻：「這個問題的答案，只有你自己去尋找才能知道。但我可以告訴你一件事——你父親並沒有失蹤，他是為了保護這枚玉佩的秘密而主動消失的。」</p>
+        <p>他站起身來，拍了拍身上的灰塵：「我名叫莫問天，曾經是雲霄宗的一位隱世長老。三十年前，我和你父親一起行走於萬古戰場之間，學習塵埃之道的奧義。後來……發生了很多事情，我們分道揚鑣。你父親選擇了隱藏身份、保護玉佩的秘密，而我則繼續尋找通往萬古塵源的線索。」</p>
+        <p>莫問天的目光變得深邃：「現在，時機已經成熟了。你的塵埃之力正在覺醒，玉佩中的記憶也在逐漸解封。當兩者完全融合的那一刻，你就能開啟通往萬古塵源的通道——那裡有你父親留下的答案，也有你第一世未能完成的使命。」</p>
+        <p>葉塵握緊雙拳，心中湧起一股複雜的情緒。他一直以為自己的灰色力量是某種神秘的遺傳，但現在看來，這背後隱藏著一個更加龐大的秘密——關乎他的父親、他的第一世、以及塵埃之道的真正起源。</p>
+        <p>「你為什麼告訴我這些？」他問道。</p>
+        <p>莫問天從懷中取出一張摺疊的紙條，放在木盒旁邊：「因為時間不多了。有人也在尋找這枚玉佩的秘密，而且他們的手段比我更加激進。如果你不想讓你的父親再次陷入危險，就必須盡快掌握塵埃之力的全部奧義。」</p>
+        <p>說完這句話，莫問天轉身向竹林深處走去。他的腳步輕盈而迅速，彷彿對這裡的地形瞭如指掌。葉塵想要追上去問個清楚，但老人的身影已經消失在竹牆之間，再也找不到蹤跡。</p>
+        <p>空地上只剩下那張紙條和兩枚黑色的令牌。葉塵走上前來，拿起紙條展開——上面用古老的符文寫著一段話：</p>
+        <p>「當雙印合璧之日，便是萬古塵源重現之時。葉家之子，勿忘初心。」</p>
+        <p>他將紙條仔細折好，收入懷中。然後他低頭看著兩枚令牌，感覺到它們之間正在產生一種微妙的共鳴——灰色能量從玉佩中滲出，黑色符文的表面浮現出淡淡的銀色光芒。</p>
+        <p>葉塵握緊雙拳，心中做出了決定——他必須盡快掌握塵埃之力的全部奧義，不僅為了保護自己，也為了找到父親的下落，揭開那個隱藏了多年的秘密。</p>
+        <p>竹林深處，一陣微風吹過，竹葉沙沙作響。莫問天的身影已經消失無蹤，但他留下的線索卻為葉塵指明了一條全新的道路——一條通往萬古塵源、通往真相的道路。</p>
+        <p>他轉身離開空地，腳步堅定而有力。三個月後的外門大比將是他證明實力的舞台，但在那之後，還有更加重要的使命在等待著他。</p>
+        <p>塵埃之道，才剛剛開始。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-39.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="#" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

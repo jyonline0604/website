@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第32章：福伯的秘密 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-32.html">
+    <link rel="prev" href="chapter-31.html">
+    <link rel="next" href="chapter-33.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第32章 · 福伯的秘密</h1>
+    <main>
+        <p>清晨的雲霄宗外門還籠罩在一層薄霧之中，葉塵已經來到了後山的一片竹林裡。自從從秘境返回以來，他每天都在這裡修煉《塵埃訣》——蘇清雪教他的技巧正在逐漸生效，他能感覺到空氣中的灰塵越來越聽話，就像是一群被馴服的野馬一樣，按照他的意願流動、聚集、消散。</p>
+        <p>「塵埃訣·第一層：聚塵。」葉塵在心中默念著這句話，感受著空氣中每一粒灰塵的流動。它們像是一群被驚擾的小鳥一樣，在周圍飛舞、旋轉、聚集。但這次不同——之前他只能模糊地感覺到它們的存在，而現在，他能清晰地感知到每一粒灰塵的頻率、方向、甚至溫度。</p>
+        <p>就在葉塵調息的過程中，一陣輕微的腳步聲從竹林深處傳來——那聲音非常微弱，幾乎被晨風的聲音所掩蓋。但葉塵的感知卻異常敏銳——他能感覺到那股腳步聲中帶著一種特殊的靈氣波動，那種波動讓他感到既熟悉又不安。</p>
+        <p>「誰？」葉塵緩緩睜開眼睛，目光警惕地盯著竹林深處。</p>
+        <p>一個身穿灰色布衣的老者從竹林中走了出來——他的面容蒼老而慈祥，鬢角已經斑白，但雙眼中卻閃爍著如同星辰般的光芒。那是福伯——葉塵母親的貼身僕人，也是他離開葉家前最後見到的人。</p>
+        <p>「福伯……」葉塵的聲音中帶著一絲驚訝和激動——他從來沒有想過會在這裡見到福伯。「你怎麼會在這裡？」</p>
+        <p>福伯走上前來，目光平靜地盯著葉塵：「我一直在等你。」他的聲音蒼老而深沉，彷彿從遙遠的時空深處傳來，「我等了十年——等待你長大成人的那一天。」</p>
+        <p>葉塵的心猛地一跳——他從來沒有想過福伯會說這樣的話。「等……等我？」</p>
+        <p>福伯點了點頭——他的目光中帶著一絲複雜的情感：既有欣慰，也有憂慮。「十年前，你的父親採藥失蹤之前，曾經來找過我。他告訴我一個秘密——關於你那塊玉佩、關於九世輪迴的真正意義。」</p>
+        <p>葉塵的呼吸變得急促起來——他緊緊握住胸前的玉佩，感受著那股熟悉的溫熱感。「他說了什麼？」</p>
+        <p>福伯沉默了片刻——他的目光變得深邃而遙遠，彷彿在回憶著某個久遠的往事。「你的父親告訴我，你那塊玉佩不是普通的飾品——它是一種古老的載體，承載著你第一世的記憶和力量。當你在十六歲的時候，玉佩會自動解鎖那些記憶，讓你重新獲得塵埃散修的力量。」</p>
+        <p>葉塵的心中掀起了一陣驚濤駭浪——他從來沒有想過自己的身世竟然如此複雜、如此深遠。「那……我的父親呢？他到底去了哪裡？」</p>
+        <p>福伯的臉上浮現出一絲悲痛的神色：「你的父親為了保護你，選擇了離開。他知道那些想要玉佩的人不會放過你——所以他帶著你母親留下的另一件東西，前往了一個危險的地方。」</p>
+        <p>葉塵緊咬牙關——他感覺到自己的內心深處有一種前所未有的疼痛在翻湧。「什麼地方？」</p>
+        <p>福伯沒有回答——他只是從懷中取出一枚黑色的令牌遞給葉塵：「這是你的父親留給我的。他說，當你找到這枚令牌的時候，你就會知道該去哪裡找他。」</p>
+        <p>葉塵接過令牌——那枚令牌表面刻滿了古老的符文，那些符文閃爍不定，彷彿隨時都會消散。他能感覺到那股令牌中蘊含著一種強大的力量感——那種力量感讓他感到既震撼又不安。</p>
+        <p>「福伯……」葉塵的聲音中帶著一絲難以置信的語調，「你為什麼現在才告訴我這些？」</p>
+        <p>福伯看著他，目光中帶著一絲嚴肅：「因為我知道你需要時間來成長。如果你太早知道這些事情，那些想要玉佩的人就會找到你——到時候你就沒有機會揭開自己的秘密了。」</p>
+        <p>葉塵沉默了——他知道福伯說的是對的。在修仙界中，擁有特殊能力的人往往會成為眾矢之的——那些嫉妒你的人、想要利用你的人、甚至想要消滅你的人……他們都會將你視為目標。</p>
+        <p>「我會保護好這枚令牌。」葉塵緩緩開口，聲音中帶著一種前所未有的堅定，「我也會找到我的父親——關於九世輪迴的秘密、關於那第十世的真正意義……我必須找到答案。」</p>
+        <p>福伯點了點頭——他的目光中帶著一絲欣慰和讚賞：「很好。但你要記住——這條道路上的危險遠比你想像中的更加深遠。如果你需要幫助的話……隨時可以來找我。」</p>
+        <p>葉塵看著福伯的眼睛——他能感覺到他的目光中帶著一種真誠和善意。那種真誠讓他放下了心中的戒備——他點點頭，然後緩緩開口：「謝謝你，福伯。」</p>
+        <p>福伯點點頭——然後轉身離開了竹林。晨霧在風中消散，最終消失在遠處的小路上。葉塵站在原地，看著福伯離去的背影——他的心中充滿了感激和敬意。他知道從今天開始，自己已經不再是一個人了——在這條充滿未知和挑戰的道路上，他有了第一個真正的盟友。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-31.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-33.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第36章：王虎的報復 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-36.html">
+    <link rel="prev" href="chapter-35.html">
+    <link rel="next" href="chapter-37.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第36章 · 王虎的報復</h1>
+    <main>
+        <p>夜幕低垂，月華如霜。葉塵獨自一人來到了後山深處的一片空地——這裡是雲霄宗弟子夜間修行的常見地點，四周古樹參天，月光透過枝葉灑下斑駁的光影。他盤膝而坐，雙手結印，開始了每日的塵埃修煉。</p>
+        <p>壓縮技巧在過去幾天裡有了顯著進步。如今他能將塵埃維持灰球形態長達十息之久，雖然距離福伯所說的三層結構還差得遠，但每一次練習都讓他對力量的掌控更加精熟。灰色能量在他體內流轉的速度明顯加快，聚元初層的修為也在穩步提升。</p>
+        <p>就在他沉浸於修煉之中時，一陣微不可察的腳步聲打破了寂靜。葉塵雙眼未睜，但神經已經繃緊——有人來了，而且不止一個。</p>
+        <p>「小塵子，還練呢？」王虎的聲音從左側傳來，帶著毫不掩飾的嘲諷。</p>
+        <p>葉塵緩緩睜開眼睛，站起身來。月光下，王虎帶著六名弟子呈半圓形包圍了他。這些人他大多認識，都是外門中與王虎交好的打手，其中兩人的修為已經接近聚元中期。</p>
+        <p>「王虎。」葉塵的聲音平靜如水，「我已經說過很多次了，不要來煩我。」</p>
+        <p>王虎冷笑一聲：「你還真把自己當回事了？以為在福伯面前露了一手就了不起？」他向前邁了一步，周身氣息爆發，「今晚我不跟你廢話。把你從塵埃之淵帶出來的所有資源交出來，再跪下磕三個頭叫我大哥，我或許能饒你一命。」</p>
+        <p>葉塵沒有回答，只是默默調整著呼吸節奏。他的目光掃過包圍圈上的每一個人——王虎居中，左側三人手持法器，右側兩人握拳蓄力，最後方一人似乎在觀望形勢。這是一個精心佈置的陣型，目的很明確：不給他逃跑的機會。</p>
+        <p>「看來你是不見棺材不掉淚。」王虎臉色一沉，右手一揮，「上！留他一條命就行，我要的是東西！」</p>
+        <p>左側三人同時出手。最前方那人祭出一柄長劍，劍身泛起藍色光芒——這是雲霄宗制式的聚元劍，雖然品階不高，但在聚元初層修士手中已算利器。另外兩人則分別使出了拳法和腿法，從不同角度包夾而來。</p>
+        <p>葉塵沒有退後。他雙手快速結印，丹田中的灰色能量瞬間湧向四肢。空氣中無數細微的塵埃被吸引而來，在他身前凝聚成一面薄如蟬翼的灰膜。</p>
+        <p>長劍刺來，擊在灰膜上發出一聲悶響。令人驚訝的是，那面看似脆弱的灰膜竟將劍勢完全擋下，藍色光芒在接觸點迅速黯淡。另外兩人的拳腳也同樣被灰膜化解，只留下幾道淡淡的灰色痕跡。</p>
+        <p>「什麼鬼東西？」王虎臉色微變。他沒想到葉塵的防禦能力會這麼強。</p>
+        <p>但六對一的局面沒有因為一次攻擊受挫而改變。右側兩人再次撲上，這次他們學乖了，不再正面硬碰，而是從側面發動快速連擊。拳風如暴雨般傾瀉而下，每一拳都帶著聚元初期的靈力波動。</p>
+        <p>葉塵深吸一口氣，將灰膜向全身覆蓋。密集的拳腳落在灰色薄膜上，發出陣陣悶響。他的身體在重擊下微微後仰，但雙腳如同生根一般穩穩站在原地。灰膜表面浮現出細密的裂紋，卻始終沒有破裂。</p>
+        <p>「撐不住了吧？」王虎眼中閃過一絲得意，他準備親自出手給葉塵致命一击。</p>
+        <p>就在這時，一道清冷的聲音從樹梢上傳來：「住手。」</p>
+        <p>所有人同時抬頭。月光下，一個白衣身影輕盈地落在最高的枝幹上。蘇清雪一身素白長裙，在夜色中宛如仙子臨凡。她手中握著一柄銀色短劍，目光冷冷地掃過眾人。</p>
+        <p>王虎看到蘇清雪的瞬間，臉色大變：「蘇、蘇師姐……」</p>
+        <p>蘇清雪的目光落在葉塵身上，微微一怔。她剛才只是偶然路過，卻看到了令人驚訝的一幕——一個聚元初層的弟子，竟憑藉某種奇特的防禦手段抵擋住了六名同門的圍攻。那灰色的薄膜雖然看起來脆弱，但散發出的氣息卻遠超普通護體靈力的範疇。</p>
+        <p>「王虎。」蘇清雪的語氣冰冷如霜，「雲霄宗的法規你當真不放在眼裡？聚元初層對聚元初期，六打一，這就是你們外門的風氣？」</p>
+        <p>王虎額頭冒汗：「蘇師姐，這……這是我們之間的私人恩怨，您何必——」</p>
+        <p>「私人恩怨？」蘇清雪打斷了他，聲音提高了一度，「在雲霄宗地盤上私鬥，就是私人的事？你以為自己是大爺嗎？」</p>
+        <p>她從樹梢上一躍而下，白衣飄飄落在葉塵身旁。這個動作讓所有人都倒吸一口涼氣——蘇清雪可是外門公認的天才，十七歲便已達到聚元中期巔峰，距離築基期僅一步之遙。這樣的人物親自出面，王虎等人哪裡還有膽量繼續糾纏？</p>
+        <p>「滾。」蘇清雪只說了一個字。</p>
+        <p>王虎咬了咬牙，狠狠瞪了葉塵一眼：「你給我等著！」帶著手下狼狽逃離。</p>
+        <p>空地上只剩下葉塵和蘇清雪兩人。夜風吹過，樹葉沙沙作響。</p>
+        <p>蘇清雪轉過身來，上下打量著葉塵：「剛才那招防禦術法……不是雲霄宗的功法吧？」她的目光中帶著探究，但沒有敵意。</p>
+        <p>葉塵沉默了片刻，最終選擇了部分坦白：「是我自己摸索出來的一種方法。」</p>
+        <p>蘇清雪微微點頭，似乎接受了這個解釋。她從懷中取出一個小玉瓶遞給葉塵：「這是凝元丹，對聚元期的修為提升有幫助。你剛才的防禦雖然有效，但消耗極大，若不補充靈力，恐怕會陷入虛弱狀態。」</p>
+        <p>葉塵接過玉瓶，心中湧起一股暖流：「多謝蘇師姐。」</p>
+        <p>「不必客氣。」蘇清雪的語氣柔和了一些，「我觀察了你一段時間。你的天賦很特別，那種灰色的力量……雖然我不清楚來源，但絕對不是尋常的護體靈力。如果你願意，我可以教你一些雲霄宗的高階功法，或許能與你的能力形成互補。」</p>
+        <p>葉塵心中一動。他確實感覺到自身的攻擊手段過於單一，如果能有其他功法的輔助，實力會大幅提升。但他也清楚，接受蘇清雪的指導意味著要暴露更多自己的秘密。</p>
+        <p>「我……需要考慮一下。」他最終這樣回答。</p>
+        <p>蘇清雪似乎並不意外：「不急，你可以慢慢想。不過我要提醒你一句——」她頓了頓，目光變得嚴肅起來，「外門大比即將開始，到時候競爭會更加激烈。王虎這種人不會善罷甘休，你必須做好準備。」</p>
+        <p>說完這句話，蘇清雪轉身離去。白衣在月光下漸行漸遠，最終消失在夜色之中。</p>
+        <p>葉塵站在原地，握緊手中的玉瓶。他抬頭望向星空，心中做出了決定——他需要更強大的力量，而蘇清雪的指導或許正是他所需要的。</p>
+        <p>但在那之前，他必須先完成今晚的修煉。王虎的報復只是開始，他知道未來還有更多的挑戰在等待著他。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-35.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-37.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

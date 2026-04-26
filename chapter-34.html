@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第34章：暗流湧動 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-34.html">
+    <link rel="prev" href="chapter-33.html">
+    <link rel="next" href="chapter-35.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第34章 · 暗流湧動</h1>
+    <main>
+        <p>考核結束後的第三天，葉塵正在宿舍裡調息修煉，突然聽到一陣敲門聲。他睜開眼睛，體內那股灰色的力量緩緩平息下來——剛剛進入聚元境的他還在適應這種全新的力量體系。</p>
+        <p>「誰？」葉塵站起身來，走到門口問道。</p>
+        <p>門外傳來一個低沉的聲音：「葉塵兄，我是王虎。」</p>
+        <p>葉塵的心猛地一跳——王虎是外門弟子中出了名的惡霸，之前在考核中表現出聚元初層的實力，但葉塵能感覺到他的靈氣波動並不純粹，像是靠某種外力強行突破的。</p>
+        <p>「有什麼事嗎？」葉塵沒有開門，只是隔著門問道。</p>
+        <p>王虎的聲音變得更加低沉：「我想和你談談——關於你在考核中的表現。」</p>
+        <p>葉塵沉默了片刻——他知道王虎不會無緣無故找上門來。在修仙界中，實力就是話語權，而他剛剛突破到聚元境的消息很可能已經傳開了。</p>
+        <p>「好，我出來。」葉塵打開了房門。</p>
+        <p>王虎站在走廊上，身邊還跟著兩個身材魁梧的弟子——他們都是王虎的手下，在外門中頗有勢力。王虎的目光冷冷地盯著葉塵：「你最近很出風頭啊，葉塵。一個剛入門的外門弟子，居然在考核中表現得比我們這些老弟子還要好。」</p>
+        <p>葉塵平靜地看著他：「我只是盡力修煉而已。」</p>
+        <p>「盡力修煉？」王虎冷笑了一聲：「你知道嗎？外門的資源是有限的——每個月只有有限的靈藥和修煉材料可以發放。如果你一直這麼出風頭，會影響到其他弟子的利益。」</p>
+        <p>葉塵的心裡一沉——他明白了王虎的真正意圖。這傢伙不是在跟他談話，而是在威脅他。</p>
+        <p>「你想怎麼樣？」葉塵的聲音依然平靜。</p>
+        <p>王虎走近了一步，壓低聲音說道：「很簡單——從下個月開始，把你那份修煉材料分給我一半。作為交換，我不會再找你麻煩。」</p>
+        <p>葉塵看著王虎的眼睛——他能感覺到那股目光中帶著一種威脅和霸道。在修仙界中，這種強取豪奪的事情屢見不鮮——實力強大的人往往會欺壓弱者，而弱者只能忍氣吞聲。</p>
+        <p>「我拒絕。」葉塵緩緩開口，聲音中帶著一種前所未有的堅定。</p>
+        <p>王虎的臉色瞬間變得陰沉：「你……你知道你在說什麼嗎？」</p>
+        <p>「我知道。」葉塵的目光毫不退讓：「我的東西不會給別人——無論你是誰。」</p>
+        <p>王虎緊咬牙關——他的眼中閃爍著一絲殺意，但最終還是壓制住了那種衝動。他知道現在不是動手的好時機——葉塵剛剛在考核中表現出色，如果他在外門弟子面前對葉塵動手，可能會引起其他人的不滿。</p>
+        <p>「好。」王虎緩緩開口，聲音冰冷：「我們走後門。希望你以後不要後悔今天的決定。」</p>
+        <p>說完這句話，王虎帶著兩個手下轉身離開了走廊。葉塵站在門口，看著他們的背影消失在遠處——他的心中沒有恐懼，只有一種前所未有的決心。</p>
+        <p>他知道從今天開始，自己已經正式成為了外門眾矢之的——那些嫉妒他的人、想要利用他的人、甚至想要消滅他的人……他們都會將他視為目標。但葉塵並不害怕——因為他知道自己的底牌：那股灰色的力量、那塊神秘的玉佩、以及福伯告訴他的關於九世輪迴的秘密。</p>
+        <p>「王虎……」葉塵在心中默默念著這個名字，「你以為靠威脅就能讓我屈服嗎？你錯了。」</p>
+        <p>他關上房門，重新坐回到床邊——體內的那股灰色力量再次開始流動，像是一條細小的河流一樣，流向四肢百骸。他知道從今天開始，自己必須更加努力地修煉——因為在這條充滿未知和挑戰的道路上，只有足夠強大才能保護自己和那些他在乎的人。</p>
+        <p>就在葉塵調息的過程中，他的腦海中突然閃過一幅畫面——那是一個模糊的影子，一個身穿灰色長袍的老者，正站在一片灰蒙蒙的天空下，雙手張開，彷彿在操控著整個世界的灰塵。</p>
+        <p>「這是……」葉塵的心中掀起了一陣驚濤駭浪——他從來沒有做過這樣的夢境，但那種感覺卻如此真實、如此清晰。他知道這一定是第一世記憶的碎片——那股灰色的力量正在逐漸喚醒他沉睡已久的記憶。</p>
+        <p>風吹過窗戶——空氣中的灰塵在月光中飛舞、旋轉、聚集。葉塵閉上眼睛，感受著那種熟悉的流動感——他知道從今天開始，自己已經真正踏上了塵埃散修的道路。而那種灰色的力量，將成為他在修仙界生存下去的唯一依仗。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-33.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-35.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

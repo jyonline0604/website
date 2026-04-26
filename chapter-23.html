@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第23章：第一世殘影 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-23.html">
+    <link rel="prev" href="chapter-22.html">
+    <link rel="next" href="chapter-24.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第23章 · 第一世殘影</h1>
+    <main>
+        <p>洞穴中的灰塵在葉塵的感知中變得格外清晰。每一粒灰塵都像是一扇微小的窗戶，透過它們，他能看到無數破碎的画面在眼前閃過。那些画面如同走馬燈一般快速輪轉，卻又在他試圖抓住某一個時突然消散。有時他看到一座巍峨的山峰被灰塵吞噬，有時他看到一片浩瀚的海洋蒸發成霧氣，有時他看到一張熟悉而又陌生的臉龐在風中逐漸模糊。</p>
+        <p>葉塵盤膝坐下，閉上雙眼，嘗試將意識沉入體內那股新獲得的能量之中。隨著呼吸的節奏，他的身體逐漸放鬆下來，而周圍的灰塵則開始以他為中心緩緩旋轉。那些灰塵粒子像是被某種無形的力量牽引著，在他身邊形成了一個微小的漩渦。漩渦轉動的速度越來越快，葉塵感覺自己的意識也在隨之加速流動。</p>
+        <p>就在漩渦轉到某個特定的角度時，葉塵的意識突然被一股強大的力量拉入了深淵。那種感覺就像是被一隻無形的大手從現實中強行拽走，他的思維在瞬間被撕裂成無數碎片，然後又被重新組合在一起。</p>
+        <p>當他的意識再次凝聚成形時，他發現自己站在一片廣袤無垠的荒原之上。天空是灰暗的，大地是枯黃的，四周沒有任何生靈的痕迹，只有漫天的風沙在呼嘯。空氣中瀰漫著濃厚的塵埃，每一口呼吸都能感覺到那些細小的粒子在喉嚨中摩擦。這種感覺既陌生又熟悉——彷彿他的身體曾經在這裡生活過無數個歲月。</p>
+        <p>「這是……哪裡？」葉塵在心中驚疑不定。他低頭看向自己的身體——這不是一具十六歲少年的身體，而是一個身披破舊戰甲的中年男子。那男子的面容堅毅如鐵，雙眼中燃燒著不屈的火焰。他的鬢角已經斑白，額頭上佈滿了歲月留下的皺紋，但那些痕跡非但不顯得蒼老，反而增添了一種令人敬畏的威嚴感。</p>
+        <p>葉塵——不，是這具身體的主人——緩緩舉起手中的斷劍。劍身上佈滿了斑駁的血跡和鏽蝕痕跡，劍刃上有一道深深的裂口，顯然是在某次激烈的戰鬥中留下的。他握著斷劍的手穩如磐石，彷彿這把劍已經與他的血肉融為一體。</p>
+        <p>荒原的遠處突然響起了震耳欲聾的喊殺聲。那聲音如同滾滾雷鳴，從天際傳來，又在地面迴盪。葉塵轉過身去，看到了一支龐大的軍隊正在與另一支軍隊展開殊死搏鬥。刀光劍影交織成一片死亡的網，鮮血染紅了每一寸土地。那些士兵們的眼神中沒有恐懼，只有決絕——他們知道，這場戰鬥將是他們的最後一場戰鬥。</p>
+        <p>葉塵的身體不自覺地朝著戰場走去。他的腳步沉重而堅定，每一步都在灰塵中留下深深的印記。隨著他越來越靠近戰場中心，周圍的空氣變得越來越灼熱。那些飛舞的灰塵粒子在他的身邊形成了一道道灰色的光暈，彷彿在為他開路。</p>
+        <p>當他走到兩軍交戰的中心時，一個身穿黑色鎧甲的將軍迎面而來。那將軍的身形魁梧如山，手中的長槍每一次揮舞都能帶起一片血雨。他的目光如鷹隼般銳利，死死地盯住了葉塵。</p>
+        <p>「散修葉塵！你為何獨自闖入戰場？」將軍怒吼道，聲音中帶著一絲憤怒和不解。「這裡是兩軍交戰的禁區，任何踏入此地的人都將被視為敵方！」</p>
+        <p>葉塵——這具中年戰甲的身影——緩緩舉起了手中的斷劍。他的聲音沙啞而低沉，卻帶著一種不容置疑的力量：「我乃塵埃散修，以天地為爐，以萬物為炭。今日，我要在這荒原之上，證道成仙。」</p>
+        <p>將軍愣了一下，隨即哈哈大笑起來：「證道成仙？就憑你一個感氣境的散修？」</p>
+        <p>葉塵沒有回答。他將斷劍插入地面，雙掌猛然按在灰塵之中。瞬間，漫天的風沙停止了呼嘯，所有的塵埃粒子都凝固在了空中。整個戰場陷入了死一般的寂靜——連戰鬥的雙方都停下了手中的動作，目瞪口呆地看著眼前這不可思議的一幕。</p>
+        <p>葉塵閉上眼睛，開始誦念一段古老的咒文。那段咒文的每一個字都像是一顆種子，落入他體內的那股能量之中，生根發芽，最終開花結果：</p>
+        <p>「天地為爐兮造化為工，陰陽為炭兮萬物為銅。塵埃無形兮聚散無常，萬物歸一兮道法自然。」</p>
+        <p>隨著咒文的誦念，葉塵的身體開始發出淡淡的灰色光芒。那些光芒逐漸凝聚成一道巨大的漩渦，將周圍所有的灰塵粒子都吸入其中。漩渦越轉越快，最終形成了一個直徑超過百丈的灰塵風暴。在風暴的中心，一本古老的典籍緩緩浮現——那是一本由純粹的灰塵構成的書卷，書頁上沒有任何文字，只有無數細小的紋路在不斷變化。</p>
+        <p>《塵埃訣》。</p>
+        <p>葉塵的意識在這一刻猛然清醒。他終於明白，這本典籍就是第一世作為塵埃散修的自己畢生所悟的道。它不是用筆寫成的，而是用生命、用戰鬥、用對塵埃之道的執著所凝聚而成的精華。每一頁書卷都記錄著一次感悟，每一次頓悟，每一次在生死邊緣的掙扎與突破。</p>
+        <p>在殘影中，葉塵看到自己——那具中年戰甲的身影——雙手捧起《塵埃訣》，將其按入自己的胸口。瞬間，典籍化作無數光點融入他的經脈之中。他感覺到自己的身體發生了翻天覆地的變化：原本脆弱的肉身變得堅韌如鐵，原本渾濁的靈氣變得純粹如金，而最令他震撼的是，他能夠感知到空氣中每一粒灰塵的存在，並能隨心所欲地操控它們。</p>
+        <p>殘影開始消散，葉塵感到自己的意識正在被拉回現實。但在最後一刻，他聽到了一個聲音——那是第一世的自己對他說的話：</p>
+        <p>「塵埃無形，卻能穿石。萬物有形，終歸塵埃。記住，真正的力量不在於強大，而在於適應。當你能夠融入萬物時，你便無所不能。」</p>
+        <p>葉塵猛然睜開眼睛。他發現自己仍然盤膝坐在洞穴之中，但周圍的灰塵已經停止了旋轉。他的身體中湧動著一股全新的力量——那是《塵埃訣》的力量，是來自第一世的傳承。他能感覺到經脈中的每一條通道都被那股灰色的能量填滿，那種充盈感讓他幾乎要流下眼淚。</p>
+        <p>他抬起手，輕輕一握。空氣中的灰塵瞬間凝聚成一道細小的灰色光柱，在指尖上方盤旋飛舞。葉塵微微一笑，他知道，從今以後，他的修行之路將與眾不同。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-22.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-24.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -32,7 +32,6 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 50px;
         }
         p {
             text-indent: 2em;
@@ -53,41 +52,6 @@
             border: 1px solid var(--accent);
             border-radius: 5px;
         }
-
-        .top-bar {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-        }
-        .top-bar a { color: var(--accent); text-decoration: none; font-size: 14px; }
-        .top-bar a:hover { text-decoration: underline; }
-        .controls { display: flex; gap: 10px; align-items: center; }
-        .controls select {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px; right: 20px;
-            width: 40px; height: 40px;
-            background: var(--accent); color: white;
-            border: none; border-radius: 50%;
-            cursor: pointer; font-size: 18px;
-            display: none; align-items: center; justify-content: center;
-        }
-        .back-to-top.visible { display: flex; }
-
         .nav a:hover {
             background: var(--accent);
             color: white;
@@ -95,24 +59,6 @@
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
     <h1>第1章 · 塵埃落定</h1>
     <main>
         <p>青雲城，葉家。</p>
@@ -151,41 +97,8 @@
         <p>那是葉塵的第一世記憶，正在甦醒。</p>
     </main>
     <nav class="nav">
-        <a href="#" style="opacity:0.5;pointer-events:none;">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-2.html">下一章 →</a>
+        <a href="#">← 上一章</a>
+        <a href="https://kofhk.com/chapter-2.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-
-    <script>
-        var themeSel = document.getElementById('themeSelect');
-        if (themeSel) {
-            themeSel.addEventListener('change', function() {
-                document.body.dataset.theme = this.value;
-                localStorage.setItem('novelTheme', this.value);
-            });
-            var savedTheme = localStorage.getItem('novelTheme');
-            if (savedTheme) {
-                document.body.dataset.theme = savedTheme;
-                themeSel.value = savedTheme;
-            }
-        }
-        var fontSel = document.getElementById('fontSize');
-        if (fontSel) {
-            fontSel.addEventListener('change', function() {
-                document.body.style.setProperty('--font-size', this.value);
-                localStorage.setItem('novelFont', this.value);
-            });
-            var savedFont = localStorage.getItem('novelFont');
-            if (savedFont) {
-                document.body.style.setProperty('--font-size', savedFont);
-                fontSel.value = savedFont;
-            }
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            if (btn) btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-    </script>
 </body>
 </html>

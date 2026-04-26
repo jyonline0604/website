@@ -13,13 +13,12 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
     <link rel="manifest" href="assets/site.webmanifest">
     <meta name="theme-color" content="#1e293b">
-
     <meta charset="UTF-8">
-    <meta name="description" content="《萬古塵埃》章節列表 - 完整收錄135章免費閱讀，修仙愛好者首選平台，葉塵九世輪迴修仙之旅。">
+    <meta name="description" content="《萬古塵埃》章節列表 - 完整收錄10章免費閱讀，修仙愛好者首選平台，葉塵九世輪迴修仙之旅。">
     <meta name="keywords" content="萬古塵埃, 章節目錄, 小說章節, 修真小說, 科技小說, 在線閱讀">
     <meta name="author" content="大肥喵">
     <meta property="og:title" content="章節目錄 - 萬古塵埃">
-    <meta property="og:description" content="《萬古塵埃》章節目錄 - 完整收錄135章，從第1章到最新章節，支持分組瀏覽和排序功能。">
+    <meta property="og:description" content="《萬古塵埃》章節目錄 - 完整收錄10章，從第1章到最新章節，支持分組瀏覽和排序功能。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://kofhk.com/assets/book-cover.png">
     <meta property="og:image:width" content="1200">
@@ -32,9 +31,6 @@
     <title>章節目錄 - 萬古塵埃</title>
     <link rel="canonical" href="chapters.html">
     <meta name="robots" content="index, follow, max-image-preview:large">
-    
-    
-    
     <style>
         :root {
             --bg-primary: #0a0a0f;
@@ -44,13 +40,11 @@
             --accent: #6366F1;
             --border: rgba(255, 255, 255, 0.1);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg-primary);
@@ -58,7 +52,6 @@
             line-height: 1.6;
             min-height: 100vh;
         }
-
         /* 導航列樣式 */
         .header {
             position: fixed;
@@ -75,7 +68,6 @@
             z-index: 1000;
             backdrop-filter: blur(20px);
         }
-
         .logo {
             font-family: 'Noto Serif TC', serif;
             font-size: 1.5rem;
@@ -85,12 +77,10 @@
             -webkit-text-fill-color: transparent;
             text-decoration: none;
         }
-
         .nav {
             display: flex;
             gap: 32px;
         }
-
         .nav a {
             color: #ffffff;
             text-decoration: none;
@@ -102,16 +92,13 @@
             background: transparent;
             position: relative;
         }
-
         .nav a:hover {
             background: rgba(99, 102, 241, 0.3);
         }
-
         .nav a.active {
             background: rgba(99, 102, 241, 0.5);
             color: #ffffff;
         }
-
         .nav a.active::after {
             content: '';
             position: absolute;
@@ -122,12 +109,10 @@
             background: var(--accent);
             border-radius: 1px;
         }
-
         .header-actions {
             display: flex;
             gap: 12px;
         }
-
         .btn {
             padding: 10px 20px;
             border-radius: 8px;
@@ -138,17 +123,14 @@
             cursor: pointer;
             font-size: 0.95rem;
         }
-
         .btn-primary {
             background: linear-gradient(135deg, #6366f1, #818cf8);
             color: white;
         }
-
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
         }
-
         /* 英雄區域（新背景圖） */
         .hero {
             min-height: 80vh; /* 增加高度 */
@@ -163,10 +145,8 @@
             align-items: center;
             justify-content: center;
         }
-
         /* 移除舊的::after遮罩，因為現在使用linear-gradient */
         /* .hero::after 已刪除 */
-
         .hero-content {
             position: relative;
             z-index: 2;
@@ -174,7 +154,6 @@
             width: 100%;
             margin-top: 64px; /* 為導航列留出空間 */
         }
-
         .hero-title {
             font-size: 3.5rem;
             font-weight: 700;
@@ -182,14 +161,12 @@
             margin-bottom: 20px;
             text-shadow: 0 3px 12px rgba(0, 0, 0, 0.7); /* 增強陰影 */
         }
-
         .hero-subtitle {
             color: rgba(255, 255, 255, 0.95);
             font-size: 1.3rem;
             margin-bottom: 40px;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* 增強陰影 */
         }
-
         /* 主要內容 */
         .container {
             max-width: 1200px;
@@ -204,7 +181,6 @@
             box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); /* 添加陰影效果 */
             padding-top: 40px; /* 增加頂部內邊距 */
         }
-
         /* 章節分組按鈕 */
         .chapter-groups {
             display: flex;
@@ -218,7 +194,6 @@
             backdrop-filter: blur(5px); /* 減少模糊效果 */
             border: 1px solid rgba(0, 0, 0, 0.1); /* 深色邊框在白色背景下 */
         }
-
                 .group-btn {
             padding: 10px 20px;
             background: rgba(99, 102, 241, 0.1); /* 紫色透明背景 */
@@ -231,20 +206,17 @@
             transition: all 0.2s;
             backdrop-filter: blur(5px);
         }
-
         .group-btn:hover {
             background: rgba(99, 102, 241, 0.2);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
         }
-
         .group-btn.active {
             background: linear-gradient(135deg, #6366f1, #818cf8);
             color: white;
             border-color: #6366f1;
             box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
         }
-
         /* 章節列表 */
         .chapter-list {
             background: rgba(255, 255, 255, 0.98); /* 更白的背景 */
@@ -254,7 +226,6 @@
             margin-bottom: 40px;
             border: 1px solid rgba(0, 0, 0, 0.08); /* 深色邊框在白色背景下 */
         }
-
         .chapter-list-header {
             display: flex;
             justify-content: space-between;
@@ -263,25 +234,21 @@
             padding-bottom: 16px;
             border-bottom: 1px solid #e5e7eb;
         }
-
         .chapter-list-title {
             font-size: 1.8rem;
             font-weight: 700;
             color: #1F2937; /* 改為深灰色/黑色 */
         }
-
         .total-chapters {
             color: var(--accent);
             font-weight: 600;
             font-size: 1.1rem;
         }
-
         .sort-controls {
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
         }
-
         .sort-btn {
             padding: 8px 16px;
             background: rgba(99, 102, 241, 0.1); /* 紫色透明背景 */
@@ -292,17 +259,14 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-
         .sort-btn:hover {
             background: rgba(99, 102, 241, 0.2);
         }
-
         .sort-btn.active {
             background: #6366f1;
             color: white;
             border-color: #6366f1;
         }
-
         .chapter-list-grid {
             display: flex;
             flex-direction: column;
@@ -310,7 +274,6 @@
             width: 100%;
             box-sizing: border-box;
         }
-
         .chapter-item {
             display: flex;
             justify-content: space-between;
@@ -325,33 +288,28 @@
             box-sizing: border-box;
             width: 100%;
         }
-
         .chapter-item:hover {
             transform: translateX(4px);
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.15);
             border-color: var(--accent);
             background: rgba(99, 102, 241, 0.03); /* 添加紫色透明懸停背景 */
         }
-
         .chapter-info {
             display: flex;
             align-items: center;
             gap: 20px;
         }
-
         .chapter-num {
             font-size: 1rem;
             color: var(--accent);
             font-weight: 600;
             min-width: 80px;
         }
-
         .chapter-name {
             font-size: 1.1rem;
             font-weight: 500;
             color: #1F2937; /* 改為深灰色/黑色 */
         }
-
         .chapter-arrow {
             color: var(--accent);
             font-size: 1.2rem;
@@ -359,12 +317,10 @@
             opacity: 0.7;
             transition: opacity 0.2s;
         }
-
         .chapter-item:hover .chapter-arrow {
             opacity: 1;
             transform: translateX(4px);
         }
-
         /* 頁腳 */
         .footer {
             text-align: center;
@@ -376,75 +332,60 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.95); /* 白色背景 */
         }
-
         /* 響應式設計 */
         @media (max-width: 768px) {
             .header {
                 padding: 0 16px;
             }
-            
             .nav {
                 gap: 16px;
             }
-            
             .nav a {
                 padding: 6px 12px;
                 font-size: 0.85rem;
             }
-            
             .hero {
                 min-height: 50vh;
                 padding: 60px 20px 40px;
             }
-            
             .hero-title {
                 font-size: 2.5rem;
             }
-            
             .hero-subtitle {
                 font-size: 1.1rem;
             }
-            
             .container {
                 padding: 0 16px;
                 margin-top: -60px;
             }
-            
             .chapter-groups {
                 gap: 8px;
                 padding: 12px 16px;
                 margin-bottom: 12px;
             }
-            
                     .group-btn {
                 padding: 8px 12px;
                 font-size: 0.85rem;
             }
-            
             .chapter-list {
                 padding: 16px;
             }
-            
             .chapter-info {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 8px;
             }
-            
             .chapter-num {
                 min-width: auto;
             }
-            
             .sort-controls {
                 flex-direction: column;
             }
         }
-    
         /* 離線狀態樣式 */
         .offline .network-status {
             display: block !important;
         }
-        
         .network-status {
             display: none;
             position: fixed;
@@ -460,11 +401,9 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             animation: slideDown 0.3s ease-out;
         }
-        
         .network-status.online {
             background: linear-gradient(90deg, #4CAF50, #8BC34A);
         }
-        
         @keyframes slideDown {
             from {
                 transform: translateY(-100%);
@@ -475,7 +414,6 @@
                 opacity: 1;
             }
         }
-        
         /* 添加到主屏幕按鈕 */
         .install-pwa-btn {
             display: none;
@@ -493,16 +431,13 @@
             z-index: 1000;
             transition: all 0.3s;
         }
-        
         .install-pwa-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
         }
-        
         .install-pwa-btn:active {
             transform: translateY(0);
         }</style>
-
     <!-- Schema.org WebPage 結構化數據 -->
     <script type="application/ld+json">
 {
@@ -532,11 +467,8 @@
 </script>
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://datagovhk.blob.core.windows.net https://data.weather.gov.hk https://resource.data.one.gov.hk https://itv.kofhk.com; base-uri 'self'; form-action 'self';">
     <!-- Preload critical resources -->
-    
-    
     <noscript></noscript>
 <link rel="stylesheet" href="assets/fonts/master.css">
-
     <meta property="og:url" content="https://wangu-chennais.html"></head>
 <body>
     <!-- Skip Navigation Link -->
@@ -557,7 +489,6 @@
             <a href="chapter-1.html" class="btn btn-primary" aria-label="開始閱讀第1章">開始閱讀</a>
         </div>
     </header>
-
     <!-- 英雄區域（背景圖） -->
     <section class="hero">
         <div class="hero-content">
@@ -565,7 +496,6 @@
             <p class="hero-subtitle">探索輪迴重生修仙世界</p>
         </div>
     </section>
-
     <!-- 主要內容 -->
     <div class="container" id="main-content">
                 <div id="group-81-90" style="position:absolute; opacity:0; pointer-events:none; height:1px; overflow:hidden;"></div>
@@ -577,7 +507,6 @@
         <div id="group-21-30" style="position:absolute; opacity:0; pointer-events:none; height:1px; overflow:hidden;"></div>
         <div id="group-11-20" style="position:absolute; opacity:0; pointer-events:none; height:1px; overflow:hidden;"></div>
         <div id="group-1-10" style="position:absolute; opacity:0; pointer-events:none; height:1px; overflow:hidden;"></div>
-
         <!-- 章節分組按鈕 -->
         <div class="chapter-groups" id="chapterGroups">
             <a href="#" class="group-btn active" >全部</a>
@@ -596,16 +525,6 @@
             <a href="#group-11-20" class="group-btn" aria-label="跳轉到第11-20章">11-20</a>
             <a href="#group-1-10" class="group-btn" aria-label="跳轉到第1-10章">1-10</a>
         </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
         <!-- 章節列表容器 -->
         <div class="chapter-list">
             <div class="chapter-list-header">
@@ -616,963 +535,84 @@
                 <button class="sort-btn active" aria-label="按降序排列章節" onclick="sortChapters('desc')">最新到最舊</button>
                 <button class="sort-btn" aria-label="按升序排列章節" onclick="sortChapters('asc')">最舊到最新</button>
             </div>
-
             <div class="chapter-list-grid" id="chapterGrid">
-
             <a href="chapter-1.html" class="chapter-item">
                 <div class="chapter-info">
                     <div class="chapter-num">第1章</div>
-                    <div class="chapter-name">塵埃 - 萬古塵埃</div>
+                    <div class="chapter-name">塵埃落定</div>
                 </div>
                 <div class="chapter-arrow">→</div>
             </a>
             <a href="chapter-2.html" class="chapter-item">
                 <div class="chapter-info">
                     <div class="chapter-num">第2章</div>
-                    <div class="chapter-name">荒野 - 萬古塵埃</div>
+                    <div class="chapter-name">灰塵之息</div>
                 </div>
                 <div class="chapter-arrow">→</div>
             </a>
             <a href="chapter-3.html" class="chapter-item">
                 <div class="chapter-info">
                     <div class="chapter-num">第3章</div>
-                    <div class="chapter-name">聚元 - 萬古塵埃</div>
+                    <div class="chapter-name">暗流湧動</div>
                 </div>
                 <div class="chapter-arrow">→</div>
             </a>
             <a href="chapter-4.html" class="chapter-item">
                 <div class="chapter-info">
                     <div class="chapter-num">第4章</div>
-                    <div class="chapter-name">熔爐 - 萬古塵埃</div>
+                    <div class="chapter-name">塵埃抉</div>
                 </div>
                 <div class="chapter-arrow">→</div>
             </a>
             <a href="chapter-5.html" class="chapter-item">
                 <div class="chapter-info">
                     <div class="chapter-num">第5章</div>
-                    <div class="chapter-name">妖獸山谷 - 萬古塵埃</div>
+                    <div class="chapter-name">天降貴人</div>
                 </div>
                 <div class="chapter-arrow">→</div>
             </a>
             <a href="chapter-6.html" class="chapter-item">
                 <div class="chapter-info">
                     <div class="chapter-num">第6章</div>
-                    <div class="chapter-name">妖獸山谷 - 萬古塵埃</div>
+                    <div class="chapter-name">塵埃之語</div>
                 </div>
                 <div class="chapter-arrow">→</div>
             </a>
             <a href="chapter-7.html" class="chapter-item">
                 <div class="chapter-info">
                     <div class="chapter-num">第7章</div>
-                    <div class="chapter-name">骨文遺跡 - 萬古塵埃</div>
+                    <div class="chapter-name">暗湧</div>
                 </div>
                 <div class="chapter-arrow">→</div>
             </a>
             <a href="chapter-8.html" class="chapter-item">
                 <div class="chapter-info">
                     <div class="chapter-num">第8章</div>
-                    <div class="chapter-name">獵殺 - 萬古塵埃</div>
+                    <div class="chapter-name">塵埃之謎</div>
                 </div>
                 <div class="chapter-arrow">→</div>
             </a>
             <a href="chapter-9.html" class="chapter-item">
                 <div class="chapter-info">
                     <div class="chapter-num">第9章</div>
-                    <div class="chapter-name">煉體 - 萬古塵埃</div>
+                    <div class="chapter-name">雲霄之選</div>
                 </div>
                 <div class="chapter-arrow">→</div>
             </a>
             <a href="chapter-10.html" class="chapter-item">
                 <div class="chapter-info">
                     <div class="chapter-num">第10章</div>
-                    <div class="chapter-name">蹤跡 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-11.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第11章</div>
-                    <div class="chapter-name">易容 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-12.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第12章</div>
-                    <div class="chapter-name">消息 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-13.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第13章</div>
-                    <div class="chapter-name">黑市 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-14.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第14章</div>
-                    <div class="chapter-name">衝突 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-15.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第15章</div>
-                    <div class="chapter-name">殘卷 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-16.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第16章</div>
-                    <div class="chapter-name">解讀 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-17.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第17章</div>
-                    <div class="chapter-name">追兵 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-18.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第18章</div>
-                    <div class="chapter-name">追殺 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-19.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第19章</div>
-                    <div class="chapter-name">重傷 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-20.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第20章</div>
-                    <div class="chapter-name">奇遇 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-21.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第21章</div>
-                    <div class="chapter-name">療傷 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-22.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第22章</div>
-                    <div class="chapter-name">突破 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-23.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第23章</div>
-                    <div class="chapter-name">煉器 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-24.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第24章</div>
-                    <div class="chapter-name">試刀 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-25.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第25章</div>
-                    <div class="chapter-name">地圖 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-26.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第26章</div>
-                    <div class="chapter-name">選擇 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-27.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第27章</div>
-                    <div class="chapter-name">路途 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-28.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第28章</div>
-                    <div class="chapter-name">風雨 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-29.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第29章</div>
-                    <div class="chapter-name">救人 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-30.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第30章</div>
-                    <div class="chapter-name">結伴 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-31.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第31章</div>
-                    <div class="chapter-name">天機洞 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-32.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第32章</div>
-                    <div class="chapter-name">禁制 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-33.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第33章</div>
-                    <div class="chapter-name">迷宮 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-34.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第34章</div>
-                    <div class="chapter-name">破解 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-35.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第35章</div>
-                    <div class="chapter-name">輪迴玉珮 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-36.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第36章</div>
-                    <div class="chapter-name">玉珮 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-37.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第37章</div>
-                    <div class="chapter-name">歸墟再現 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-38.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第38章</div>
-                    <div class="chapter-name">逃出生天 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-39.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第39章</div>
-                    <div class="chapter-name">目的地 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-40.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第40章</div>
-                    <div class="chapter-name">化名 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-41.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第41章</div>
-                    <div class="chapter-name">天劍城 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-42.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第42章</div>
-                    <div class="chapter-name">報名 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-43.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第43章</div>
-                    <div class="chapter-name">第一關 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-44.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第44章</div>
-                    <div class="chapter-name">第二關 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-45.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第45章</div>
-                    <div class="chapter-name">第三關 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-46.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第46章</div>
-                    <div class="chapter-name">石碑 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-47.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第47章</div>
-                    <div class="chapter-name">入門 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-48.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第48章</div>
-                    <div class="chapter-name">新生活 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-49.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第49章</div>
-                    <div class="chapter-name">藏經閣 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-50.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第50章</div>
-                    <div class="chapter-name">古籍 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-51.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第51章</div>
-                    <div class="chapter-name">線索 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-52.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第52章</div>
-                    <div class="chapter-name">試煉 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-53.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第53章</div>
-                    <div class="chapter-name">關注 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-54.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第54章</div>
-                    <div class="chapter-name">邀請 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-55.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第55章</div>
-                    <div class="chapter-name">精英戰 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-56.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第56章</div>
-                    <div class="chapter-name">揚名 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-57.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第57章</div>
-                    <div class="chapter-name">暗訪 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-58.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第58章</div>
-                    <div class="chapter-name">故人消息 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-59.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第59章</div>
-                    <div class="chapter-name">青雲舊事 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-60.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第60章</div>
-                    <div class="chapter-name">突破 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-61.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第61章</div>
-                    <div class="chapter-name">疑問 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-62.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第62章</div>
-                    <div class="chapter-name">目標 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-63.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第63章</div>
-                    <div class="chapter-name">王嘯 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-64.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第64章</div>
-                    <div class="chapter-name">計劃 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-65.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第65章</div>
-                    <div class="chapter-name">機會 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-66.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第66章</div>
-                    <div class="chapter-name">布陣 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-67.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第67章</div>
-                    <div class="chapter-name">會面 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-68.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第68章</div>
-                    <div class="chapter-name">試探 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-69.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第69章</div>
-                    <div class="chapter-name">逼問 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-70.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第70章</div>
-                    <div class="chapter-name">真相 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-71.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第71章</div>
-                    <div class="chapter-name">主謀 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-72.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第72章</div>
-                    <div class="chapter-name">大事 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-73.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第73章</div>
-                    <div class="chapter-name">塵埃之秘 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-74.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第74章</div>
-                    <div class="chapter-name">危機 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-75.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第75章</div>
-                    <div class="chapter-name">應對 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-76.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第76章</div>
-                    <div class="chapter-name">煉丹 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-77.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第77章</div>
-                    <div class="chapter-name">突破 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-78.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第78章</div>
-                    <div class="chapter-name">準備 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-79.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第79章</div>
-                    <div class="chapter-name">風聲 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-80.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第80章</div>
-                    <div class="chapter-name">交鋒 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-81.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第81章</div>
-                    <div class="chapter-name">脫身 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-82.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第82章</div>
-                    <div class="chapter-name">逃亡 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-83.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第83章</div>
-                    <div class="chapter-name">險境 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-84.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第84章</div>
-                    <div class="chapter-name">絕境 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-85.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第85章</div>
-                    <div class="chapter-name">轉機 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-86.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第86章</div>
-                    <div class="chapter-name">老者 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-87.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第87章</div>
-                    <div class="chapter-name">指點 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-88.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第88章</div>
-                    <div class="chapter-name">萬古戰場 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-89.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第89章</div>
-                    <div class="chapter-name">決定 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-90.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第90章</div>
-                    <div class="chapter-name">啟程 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-91.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第91章</div>
-                    <div class="chapter-name">群英匯聚 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-92.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第92章</div>
-                    <div class="chapter-name">資格戰 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-93.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第93章</div>
-                    <div class="chapter-name">入場 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-94.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第94章</div>
-                    <div class="chapter-name">血色沙漠 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-95.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第95章</div>
-                    <div class="chapter-name">沙獸 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-96.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第96章</div>
-                    <div class="chapter-name">古碑 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-97.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第97章</div>
-                    <div class="chapter-name">石碑之秘 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-98.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第98章</div>
-                    <div class="chapter-name">機緣爭奪 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-99.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第99章</div>
-                    <div class="chapter-name">奪藥 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-100.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第100章</div>
-                    <div class="chapter-name">突破 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-101.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第101章</div>
-                    <div class="chapter-name">秘境 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-102.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第102章</div>
-                    <div class="chapter-name">傳承 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-103.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第103章</div>
-                    <div class="chapter-name">共鳴 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-104.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第104章</div>
-                    <div class="chapter-name">歸墟殿現 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-105.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第105章</div>
-                    <div class="chapter-name">交鋒 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-106.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第106章</div>
-                    <div class="chapter-name">底牌 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-107.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第107章</div>
-                    <div class="chapter-name">擊退 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-108.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第108章</div>
-                    <div class="chapter-name">療養 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-109.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第109章</div>
-                    <div class="chapter-name">戰場之秘 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-110.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第110章</div>
-                    <div class="chapter-name">核心 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-111.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第111章</div>
-                    <div class="chapter-name">禁制 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-112.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第112章</div>
-                    <div class="chapter-name">破解 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-113.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第113章</div>
-                    <div class="chapter-name">輪迴碎片 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-114.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第114章</div>
-                    <div class="chapter-name">融合 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-115.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第115章</div>
-                    <div class="chapter-name">異變 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-116.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第116章</div>
-                    <div class="chapter-name">圍攻 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-117.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第117章</div>
-                    <div class="chapter-name">老者再現 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-118.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第118章</div>
-                    <div class="chapter-name">真相初現 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-119.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第119章</div>
-                    <div class="chapter-name">最終試煉 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-120.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第120章</div>
-                    <div class="chapter-name">對抗心魔 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-121.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第121章</div>
-                    <div class="chapter-name">對抗幻境 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-122.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第122章</div>
-                    <div class="chapter-name">直面本心 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-123.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第123章</div>
-                    <div class="chapter-name">戰場風雲 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-124.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第124章</div>
-                    <div class="chapter-name">離開 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-125.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第125章</div>
-                    <div class="chapter-name">歸墟追殺 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-126.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第126章</div>
-                    <div class="chapter-name">戰場風雲 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-127.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第127章</div>
-                    <div class="chapter-name">逃脫 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-128.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第128章</div>
-                    <div class="chapter-name">戰場風雲 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-129.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第129章</div>
-                    <div class="chapter-name">戰場風雲 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-130.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第130章</div>
-                    <div class="chapter-name">傳送 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-131.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第131章</div>
-                    <div class="chapter-name">初臨 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-132.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第132章</div>
-                    <div class="chapter-name">靈天界 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-133.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第133章</div>
-                    <div class="chapter-name">新身份 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-134.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第134章</div>
-                    <div class="chapter-name">線索 - 萬古塵埃</div>
-                </div>
-                <div class="chapter-arrow">→</div>
-            </a>
-            <a href="chapter-135.html" class="chapter-item">
-                <div class="chapter-info">
-                    <div class="chapter-num">第135章</div>
-                    <div class="chapter-name">目標 - 萬古塵埃</div>
+                    <div class="chapter-name">塵埃初現</div>
                 </div>
                 <div class="chapter-arrow">→</div>
             </a>
         </div>
     </div>
-
         <footer class="footer">
             <p>© 2026 萬古塵埃 | 作者：大肥喵 | 每日自動更新</p>
             <p>最後更新時間：<span id="last-update">2026-03-27</span></p>
         </footer>
     </div>
-
     <script>
         // 更新最後更新時間
         var lastUpdateElement = document.getElementById('last-update');
@@ -1583,7 +623,6 @@
                 day: '2-digit'
             });
         }
-        
         // 更新章節總數
         function updateChapterCount() {
             const chapterItems = document.querySelectorAll('.chapter-item');
@@ -1591,17 +630,14 @@
                 document.getElementById('totalChapters').textContent = `共 ${chapterItems.length} 章`;
             }
         }
-        
         // 章節排序功能
         function sortChapters(order) {
             const grid = document.getElementById('chapterGrid');
             const items = Array.from(grid.querySelectorAll('.chapter-item'));
-            
             // 移除所有按鈕的active類
             document.querySelectorAll('.sort-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            
             // 設置當前按鈕為active - 使用 event 參數
             // 注意：event 是全局變量，在 onclick 處理程序中可用
             if (event && event.target) {
@@ -1615,47 +651,36 @@
                     }
                 });
             }
-            
             // 排序
             items.sort((a, b) => {
                 const aNum = parseInt(a.querySelector('.chapter-num').textContent.match(/\d+/)[0]);
                 const bNum = parseInt(b.querySelector('.chapter-num').textContent.match(/\d+/)[0]);
-                
                 return order === 'desc' ? bNum - aNum : aNum - bNum;
             });
-            
             // 重新插入
             items.forEach(item => grid.appendChild(item));
         }
-        
-        
-        
         // 章節分組過濾功能
         function showAllChapters() {
             const grid = document.getElementById('chapterGrid');
             const items = Array.from(grid.querySelectorAll('.chapter-item'));
-            
             items.forEach(item => {
                 item.style.display = 'flex';
             });
-            
             document.querySelectorAll('.group-btn').forEach(b => {
                 b.classList.remove('active');
             });
             document.querySelector('.group-btn').classList.add('active');
         }
-        
         function filterChapters(range) {
             const grid = document.getElementById('chapterGrid');
             const items = Array.from(grid.querySelectorAll('.chapter-item'));
-            
             let min, max;
             if (range.includes('-')) {
                 [min, max] = range.split('-').map(Number);
             } else {
                 min = max = parseInt(range);
             }
-            
             items.forEach(item => {
                 const chapterNum = parseInt(item.querySelector('.chapter-num').textContent.match(/\d+/)[0]);
                 if (chapterNum >= min && chapterNum <= max) {
@@ -1664,17 +689,13 @@
                     item.style.display = 'none';
                 }
             });
-            
             // 滾動到頂部
             grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-        
         document.querySelectorAll('.group-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const range = this.textContent;
-                
                 if (range === '全部') {
                     showAllChapters();
                 } else {
@@ -1682,19 +703,15 @@
                     document.querySelectorAll('.group-btn').forEach(b => {
                         b.classList.remove('active');
                     });
-                    
                     // 設置當前按鈕為active
                     this.classList.add('active');
-                    
                     filterChapters(range);
                 }
             });
         });
-
         // 初始更新計數
         updateChapterCount();
     </script>
-
     <!-- 圖片懶加載腳本 -->
     <script>
         // 圖片懶加載實現
@@ -1715,17 +732,14 @@
                 rootMargin: '50px 0px',
                 threshold: 0.01
             });
-            
             // 觀察所有懶加載圖片
             document.querySelectorAll('img[data-src]').forEach(img => {
                 imageObserver.observe(img);
             });
-            
             // 如果瀏覽器不支持IntersectionObserver，使用備用方案
             if (!('IntersectionObserver' in window)) {
                 const lazyImages = document.querySelectorAll('img[data-src]');
                 let lazyImageObserver;
-                
                 // 簡單的滾動檢測
                 function lazyLoad() {
                     lazyImages.forEach(img => {
@@ -1734,46 +748,38 @@
                             img.removeAttribute('data-src');
                         }
                     });
-                    
                     // 如果所有圖片都加載了，移除事件監聽
                     if (document.querySelectorAll('img[data-src]').length === 0) {
                         window.removeEventListener('scroll', lazyLoad);
                         window.removeEventListener('resize', lazyLoad);
                     }
                 }
-                
                 window.addEventListener('scroll', lazyLoad);
                 window.addEventListener('resize', lazyLoad);
                 lazyLoad(); // 初始加載
             }
         });
     </script>
-    
     <!-- PWA Service Worker 註冊 -->
     <script>
         // 註冊Service Worker
-            
             // 離線狀態檢測
             window.addEventListener('online', function() {
                 document.documentElement.classList.remove('offline');
             });
-            
             window.addEventListener('offline', function() {
                 document.documentElement.classList.add('offline');
             });
-            
             // 初始檢查
             if (!navigator.onLine) {
                 document.documentElement.classList.add('offline');
             }
-            
             // 添加到主屏幕提示（僅在移動端顯示）
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', function(e) {
             // 防止Chrome 67及更早版本自動顯示提示
             e.preventDefault();
             deferredPrompt = e;
-            
             // 顯示添加到主屏幕按鈕
             const installBtn = document.getElementById('install-pwa-btn');
             if (installBtn) {
@@ -1781,7 +787,6 @@
                 installBtn.addEventListener('click', function() {
                     // 顯示安裝提示
                     deferredPrompt.prompt();
-                    
                     // 等待用戶選擇
                     deferredPrompt.userChoice.then(function(choiceResult) {
                         if (choiceResult.outcome === 'accepted') {
@@ -1794,23 +799,18 @@
         });
     </script>
     <script src="assets/main.js" defer></script>
-
     <script>
         (function() {
             'use strict';
-            
             const CHAPTERS_DATA_URL = 'assets/chapters-data.json';
             let allChapters = [];
             let currentSort = 'desc';
-            
             async function loadChaptersData() {
                 try {
                     const response = await fetch(CHAPTERS_DATA_URL);
                     if (!response.ok) throw new Error('Failed to load chapters data');
-                    
                     allChapters = await response.json();
                     console.log(`Loaded ${allChapters.length} chapters`);
-                    
                     renderChapterList(allChapters, currentSort);
                     updateTotalCount(allChapters.length);
                 } catch (error) {
@@ -1820,24 +820,20 @@
                     }
                 }
             }
-            
             function renderChapterList(chapters, sort) {
                 const gridContent = document.getElementById('chapterGridContent');
                 if (!gridContent) return;
-                
                 let sorted = [...chapters];
                 if (sort === 'desc') {
                     sorted.sort((a, b) => b.number - a.number);
                 } else {
                     sorted.sort((a, b) => a.number - b.number);
                 }
-                
                 let html = '';
                 sorted.forEach(chapter => {
                     const chapterNum = chapter.number;
                     const title = chapter.title.replace(/^第\d+章\s*/, '');
                     const numDisplay = `第${chapterNum}章`;
-                    
                     html += `<a href="#" class="chapter-item" aria-label="閱讀${chapter.title}">
                         <div class="chapter-info">
                             <div class="chapter-num">${numDisplay}</div>
@@ -1846,29 +842,23 @@
                         <div class="chapter-arrow">→</div>
                     </a>`;
                 });
-                
                 gridContent.innerHTML = html;
             }
-            
             function updateTotalCount(count) {
                 const totalEl = document.getElementById('totalChapters');
                 if (totalEl) {
                     totalEl.textContent = `共 ${count} 章`;
                 }
             }
-            
             document.addEventListener('DOMContentLoaded', function() {
                 loadChaptersData();
-                
                 const sortBtns = document.querySelectorAll('.sort-btn');
                 sortBtns.forEach(btn => {
                     btn.addEventListener('click', function() {
                         sortBtns.forEach(b => b.classList.remove('active'));
                         this.classList.add('active');
-                        
                         const isDesc = this.textContent.includes('最新');
                         currentSort = isDesc ? 'desc' : 'asc';
-                        
                         if (allChapters.length > 0) {
                             renderChapterList(allChapters, currentSort);
                         }

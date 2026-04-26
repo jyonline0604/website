@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第51章：荒原初探 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-51.html">
+    <link rel="prev" href="chapter-50.html">
+    <link rel="next" href="chapter-52.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第51章 · 荒原初探</h1>
+    <main>
+        <p>灰白色的天空低垂著，像是一塊巨大的帷幕將整片荒原籠罩其中。葉塵邁出光之門的瞬間，腳下傳來的不是堅實的土地，而是一種鬆軟、細膩的觸感——那是無數細小的灰色塵土堆積而成的地面，每一粒都散發著微弱的光芒，彷彿是沉睡了無數個世紀的星辰碎片。</p>
+        <p>他抬起雙臂，感受著四周的能量流動。與外界截然不同，這裡的每一寸空氣中都瀰漫著濃縮到極致的能量粒子。那些粒子不是普通的靈氣，而是更加古老、更加深沉的存在——它們承載著記憶的重量，每一粒都記錄著某一段被遺忘的歷史。</p>
+        <p>葉塵蹲下身來，抓起一把灰色的塵土放在掌心。當他的手指微微收攏時，掌心的塵土開始旋轉，形成了一個微小的漩渦。漩渦的中心浮現出一幅模糊的影像——那是一個身穿戰甲的身影站在山巔之上，背後是漫天的烽火和呼號聲。影像只持續了一息的時間便消散了，但葉塵的心神卻受到了巨大的震動。</p>
+        <p>「這些塵土……承載著記憶。」他喃喃自語。「每一粒都記錄著某一段過去——九世輪迴中的每一個片段都在這裡留下了痕跡。」</p>
+        <p>他站起身來，環顧四周。荒原的地勢起伏不定，遠處可以看到一道道裂谷橫亘在地平線上，裂谷深不見底，從底部湧出灰白色的霧氣。近處的地面上佈滿了龜裂的紋路，每一道裂縫中都滲透著細小的灰色塵土，那些塵土在微風的吹拂下緩緩上升，最終融入灰白色的天空之中。</p>
+        <p>葉塵開始向荒原深處走去。每走一步，腳下的塵土都會發出輕微的碎裂聲——那不是普通的泥土被踩踏的聲音，而是一種更加深沉、更加古老的共鳴。彷彿整座荒原都在隨著他的步伐而呼吸，每一粒塵土都在向他訴說著久遠的故事。</p>
+        <p>走了約莫半個時辰之後，葉塵發現了一件奇怪的事情——他體內的灰色力量正在以一種前所未有的速度吸收著周圍的能量粒子。在外界，他需要經過長時間的調息才能將靈氣轉化為自身的力量；但在此刻，那些漂浮在空氣中的塵土彷彿主動向他湧來，穿過他的皮膚，滲入他的經脈，最終沉澱在他的丹田之中。</p>
+        <p>葉塵停下腳步，閉上眼睛感受體內的变化。那股灰色力量正在以驚人的速度增長——不是那種粗暴的、強行灌輸式的增長，而是一種更加溫和、更加自然的融合過程。每一次呼吸，都有更多的能量粒子進入他的身體；每一次心跳，都將這些粒子轉化為更加精純的力量。</p>
+        <p>「這就是萬古塵源的特殊之處。」葉塵在心中默念。「這裡的塵土不僅僅是能量的載體——它們本身就是一種修煉資源，一種比任何靈泉、丹藥都要珍貴的存在。」</p>
+        <p>他繼續前行。隨著距離荒原入口越來越遠，周圍的景象也發生了變化。原本平坦的地面開始出現起伏，一些古老的建築物殘骸從塵土中露出頭角——斷裂的石柱、傾斜的牆壁、碎裂的石碑，這些建築物的風格與葉塵所知的任何時代都不相同，它們散發著一種更加原始、更加純粹的力量感。</p>
+        <p>在一處倒塌的石殿前，葉塵發現了一塊半埋在塵土中的石碑。石碑的表面佈滿了古老的文字，那些文字的筆畫粗獷而有力，每一劃都像是用巨劍刻下的一般。葉塵伸手拂去石碑表面的灰塵，當他的指尖觸碰到那些文字的瞬間，一股龐大的信息流湧入他的腦海——</p>
+        <p>他看到了這個荒原的過去：在無數個世紀之前，這裡曾經是一座繁華的城市，城中居住著一群以塵土為修煉根基的修士。他們能夠操控塵土的形態和性質，將灰塵轉化為武器、護盾甚至是空間本身。但在一場未知的災難中，整座城市瞬間崩塌，所有的居民都化作了荒原上的塵土——他們的軀體消散了，但他們的記憶卻被封印在了每一粒塵埃之中。</p>
+        <p>石碑上的信息到此為止。葉塵收回手，深吸了一口氣——剛才那段信息流幾乎將他的意識淹沒。他低頭看著自己的雙手，能夠感覺到體內那股灰色力量正在劇烈跳動——彷彿在回應那塊石碑的呼喚。</p>
+        <p>「原來如此……」葉塵的聲音有些顫抖。「我的父母不僅是強大的修士——他們更是萬古塵源的守護者。而我一直戴著的那枚玉佩……它就是打開這扇門的關鍵。」</p>
+        <p>他轉過身來，看向荒原深處的另一條通道——那條通道被一層薄薄的灰色霧氣籠罩著，霧氣中隱約可以看到無數細小的光點在流動。那就是通往萬古塵源的道路。</p>
+        <p>葉塵深吸一口氣，將萬古塵劍從石台上取下來——當他的雙手握住劍柄的瞬間，一股溫暖的力量從劍身傳入體內，與他體內的灰色力量產生了完美的共鳴。那把劍的重量很輕——彷彿它本身就是一種能量形態，而不是一件實體武器。</p>
+        <p>「我準備好了。」葉塵輕聲說道。</p>
+        <p>他邁步走向那條被灰色霧氣籠罩的通道——每一步都踏在堅實的青石板上，但腳下卻有一種微妙的震動感，彷彿整座洞府都在隨著他的步伐而呼吸。當他走到通道的盡頭時，一扇由純粹的光線構成的門出現在眼前——那扇門沒有實體，只有一層薄薄的能量薄膜，透過它可以看到外面一片廣闊而陌生的空間。</p>
+        <p>葉塵抬起手，將萬古塵劍輕輕放在門前的地面上。然後他深吸一口氣，邁步穿過了那扇光之門。</p>
+        <p>門後的空間比他想像中的更加廣闊——那是一片無邊无际的荒原，天空是灰白色的，像是一幅褪色的油畫；大地乾裂龜裂，每一道裂縫中都滲透著細小的灰色塵土。風從遠處吹來，帶著一股陳舊而沉靜的味道——那是時間積累下來的氣息。</p>
+        <p>在荒原的中央，有一棵巨大的枯樹——樹幹上佈滿了裂縫和傷痕，但每一道裂縫中都有灰色的塵土在緩慢流動、不斷滋養著樹幹。枯樹的周圍散落著無數古老的典籍和寶物——那些都是九世輪迴中留下的遺產，等待著被重新發現和使用。</p>
+        <p>葉塵站在荒原的入口處，望著眼前的景象——他知道，從今天開始，他的人生將進入一個全新的階段。萬古塵源不僅僅是一個修煉之地——它是九世輪迴的起點和終點，是他所有謎題的答案所在。</p>
+        <p>「塵埃雖微，聚之成山。」葉塵輕聲說道。「無論前方有多少艱險，我都會走下去。」</p>
+        <p>他邁步走向荒原的深處——灰色的塵土在他的腳下旋轉、飛舞，彷彿在為他的到來而歡呼。風從遠處吹來，帶著無數個世紀的秘密和等待被揭開的真相。</p>
+        <p>葉塵閉上眼睛，讓那股沉靜的氣息滲入肌膚——他知道，真正的旅程才剛剛開始。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-50.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-52.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

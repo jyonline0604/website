@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第60章：重返雲霄宗 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-60.html">
+    <link rel="prev" href="chapter-59.html">
+    <link rel="next" href="#">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第60章 · 重返雲霄宗</h1>
+    <main>
+        <p>葉塵站在雲霄宗外門的廣場上，周圍的弟子們用驚異的目光注視著他。</p>
+        <p>這座廣場位於外門大殿的正前方——地面由整塊整塊的青色石板鋪成，石板之間的縫隙中生長著細小的灰色苔蘚。廣場的四周豎立著數十根石柱，每根石柱上都刻滿了古老的符文和圖案，那些符文在陽光下微微發光，彷彿是某種陣法的核心。</p>
+        <p>葉塵深吸一口氣，將萬古塵劍從地上取下來——當他的雙手握住劍柄的瞬間，一股溫暖的力量從劍身傳入體內，與他體內的灰白色混合力場產生了完美的共鳴。那把劍的重量很輕——彷彿它本身就是一種能量形態，而不是一件實體武器。</p>
+        <p>「葉塵？」一個熟悉的聲音從人群後方傳來。</p>
+        <p>葉塵轉過身來，看見蘇清雪正站在廣場的邊緣。她今日穿著一襲淡藍色的長裙，腰間繫著一條銀色絲帶，將她纖細的身姿勾勒得格外優美。她的面容依舊清冷如霜，但看向葉塵的眼神中卻多了一絲難以察覺的柔和。</p>
+        <p>「師姐。」葉塵微微躬身，「你怎麼來了？」</p>
+        <p>蘇清雪走進廣場，目光掃過葉塵周身散發出的微弱灰色光芒——她的眼中閃過一絲驚訝。「我剛才在殿內聽到外面有異動，就出來看看……沒想到是你。」</p>
+        <p>她走上前來，仔細觀察著葉塵的模樣——他能感覺到他的氣息發生了巨大的變化。之前的葉塵雖然已經展現出了不俗的天賦，但那種力量還顯得有些稚嫩和不穩定；而現在的他，卻散發出一種深沉而穩定的能量波動——就像是一片廣闊的海洋，表面平靜無波，深處卻蘊含著驚人的力量。</p>
+        <p>「你去了哪裡？」蘇清雪的語氣中帶著一絲難以察覺的擔憂。「這二十天裡，你完全消失了——我們找不到你的任何蹤跡。」</p>
+        <p>葉塵沉默了片刻——然後他緩緩開口：「我去了一個地方……一個只有我能去的地方。」</p>
+        <p>蘇清雪看著他的眼睛——她能感覺到他的目光中帶著一種前所未有的堅定和自信。那種堅定讓她相信，葉塵已經不再是那個可以被忽視的外門弟子了——他已經成為了一個真正的修士，一個能夠在修仙界中生存下去的強者。</p>
+        <p>「我明白了。」蘇清雪緩緩開口，聲音低沉而深沉。「你經歷了很多——我能感覺到你的力量發生了翻天覆地的變化。」</p>
+        <p>就在這個時候，一個身穿黑色執事服的身影從大殿中走了出來——那是趙明軒。他的臉上帶著一絲嚴肅的表情，目光緊緊盯著葉塵：「葉塵，宗主請你去一趟主峰——關於你這二十天的行蹤，需要你做個說明。」</p>
+        <p>葉塵點點頭——他知道從今天開始，自己已經正式成為了雲霄宗關注的焦點。那些嫉妒他的人、想要利用他的人、甚至想要消滅他的人……他們都會將他視為目標。但葉塵並不害怕——因為他知道自己的底牌：那股灰色的力量、那塊神秘的玉佩、以及萬古塵源中獲得的一切知識和力量。</p>
+        <p>「我跟你去。」葉塵緩緩開口，聲音中帶著一種前所未有的堅定。</p>
+        <p>趙明軒轉身帶路——葉塵跟在後面，邁步走向大殿。當他穿過廣場的那一刻，周圍的弟子們自動讓開了一條道路——他們的目光中既有敬畏，也有好奇，還有一絲難以言喻的期待。</p>
+        <p>蘇清雪站在原地，看著葉塵的背影——她的眼中閃爍著一絲欣慰和讚賞。她知道從今天開始，葉塵已經真正踏上了屬於自己的道路——那是一條充滿未知和挑戰的道路，但同時也是一條通往真相的道路。</p>
+        <p>「無論前方有多少艱險，我都會走下去。」葉塵在心中默默念著這句話。「因為我知道，自己要走的路——那是一條守護的道路，一條理解塵埃本質的道路。」</p>
+        <p>他邁步走進大殿——前方的道路上還有更多的挑戰等待著他去面對。而那種灰色的力量，將成為他在修仙界生存下去的唯一依仗。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-59.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="#" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

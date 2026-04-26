@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第54章：將軍的戰場 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-54.html">
+    <link rel="prev" href="chapter-53.html">
+    <link rel="next" href="chapter-55.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第54章 · 將軍的戰場</h1>
+    <main>
+        <p>葉塵在枯樹下已經修煉了整整五天。</p>
+        <p>這五天來，他不斷地閱讀那本《塵埃訣》——每一頁都蘊含著龐大的知識和力量，讓他感到前所未有的充實。他能感覺到體內的那種灰白色混合力場正在發生變化——它變得更加精細、更加穩定、也更加強大。就像是一杯渾濁的水經過無數次的過濾和沉澱，最終變成了清澈見底的泉水。</p>
+        <p>就在這個時候，他的腦海中突然閃過一幅畫面——那是一個模糊的影子，一個身穿戰甲的將軍，正站在一片廣闊的戰場上，雙手張開，操控著漫天塵土形成一道巨大的屏障。將軍的身後是無數倒下的士兵和燃燒的營帳，但他的目光卻堅定而冷靜——彷彿整個世界都在他的掌控之中。</p>
+        <p>「這是……」葉塵的心中掀起了一陣驚濤駭浪。「第二世的記憶——那位將軍的戰場。」</p>
+        <p>他閉上眼睛，將意識沉入那片記憶之中——當他的意識與那幅畫面完全同步時，他發現自己已經站在了那片廣闊的戰場上。空氣中瀰漫著濃重的血腥味和硝煙味——那是戰爭留下的痕跡，帶著一種難以言喻的悲壯感。</p>
+        <p>將軍站在葉塵的面前——他那雙堅定的目光注視著葉塵：「你來了。」</p>
+        <p>「我來了。」葉塵堅定地說道。「我是你的後世——葉塵。」</p>
+        <p>將軍微微點頭，然後說道：「我知道你會來。九世輪迴的記憶正在逐漸喚醒，每一世的經歷都在為你鋪設一條通往巔峰的道路。現在，讓我告訴你關於塵埃之道的真正奧秘。」</p>
+        <p>將軍抬起手，將掌心朝向天空——空氣中的塵土開始以他為中心緩緩旋轉，形成了一個巨大的漩渦。那個漩渦轉動的速度越來越快，最終凝聚成一道灰白色的光柱，直衝天際。</p>
+        <p>「塵埃之道，不在於力，而在於悟。」將軍說道。「當你能夠用塵土形成屏障保護他人時，你才真正理解了它的本質。當你能夠用塵土滋養大地、孕育生命時，你才真正掌握了它的力量。」</p>
+        <p>葉塵睜開眼睛，看著周圍飛舞的塵土——它們不再只是普通的灰塵，而是承載著記憶和力量的載體。他抬起手，將掌心朝向天空——空氣中的塵土開始以他為中心緩緩旋轉，形成了一個巨大的漩渦。那個漩渦轉動的速度越來越快，最終凝聚成一道灰白色的光柱，直衝天際。</p>
+        <p>「我明白了。」葉塵輕聲說道。「塵埃不是用來破壞的——它是用來守護的。就像這片荒原一樣，雖然看起來荒涼而蕭瑟，但每一粒塵土都在默默滋養著大地，等待著春天的到來。」</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-53.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-55.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第59章：準備回歸 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-59.html">
+    <link rel="prev" href="chapter-58.html">
+    <link rel="next" href="chapter-60.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第59章 · 準備回歸</h1>
+    <main>
+        <p>葉塵在荒原上已經行走了二十天。</p>
+        <p>這片灰色大地彷彿沒有盡頭——天空是灰白色的，像是一幅褪色的油畫；地面乾裂龜裂，每一道裂縫中都滲透著細小的灰色塵土。風從遠處吹來，帶著一股陳舊而沉靜的味道——那是時間積累下來的氣息。</p>
+        <p>他手中的萬古塵劍微微顫動——彷彿在指引著某個方向。葉塵順著劍身的震動前行，腳步逐漸加快。他能感覺到前方有一股強大的能量正在呼喚他——那種呼喚既溫暖又陌生，就像是一個久別重逢的親人在輕輕地叫他回家。</p>
+        <p>走了大約一個時辰後，前方的地平線上出現了一座巨大的石門——那是一座由整塊青色岩石鑿成的拱門，表面刻滿了古老的符文和圖案。石門的兩側各豎立著一根石柱，石柱上分別嵌著一枚散發著微弱光芒的石珠——那些石珠在月光下微微發光，彷彿是某種陣法的核心。</p>
+        <p>葉塵走上前去，將萬古塵劍貼在石門上。就在接觸的瞬間，一股溫暖的力量從劍身傳入體內，與那兩枚石珠產生了共鳴——石門上的古老符文開始閃爍，最終形成了一個巨大的傳送陣法圖案。</p>
+        <p>「這就是離開萬古塵源的道路……」葉塵在心中喃喃自語。「我必須回去了——蘇清雪在等我，宗門需要我。」</p>
+        <p>他轉身看向身後那片廣闊的荒原——灰色的天空、乾裂的大地、無數細小的塵土粒子在空中飛舞。這片荒原不僅僅是一個修煉之地——它是九世輪迴的起點和終點，是他所有謎題的答案所在。</p>
+        <p>「我會回來的。」葉塵輕聲說道。「當我真正理解了塵埃之道的那一刻，我會再次回到這裡，揭開更多的秘密。」</p>
+        <p>他抬起手，將掌心朝向天空——空氣中的塵土開始以他為中心緩緩旋轉，形成了一個巨大的漩渦。那個漩渦轉動的速度越來越快，最終凝聚成一道灰白色的光柱，直衝天際。</p>
+        <p>「我明白了。」葉塵輕聲說道。「塵埃不是用來破壞的——它是用來守護的。就像這片荒原一樣，雖然看起來荒涼而蕭瑟，但每一粒塵土都在默默滋養著大地，等待著春天的到來。」</p>
+        <p>他深吸一口氣，將萬古塵劍從石門上取下來——當他的雙手握住劍柄的瞬間，一股溫暖的力量從劍身傳入體內，與他體內的灰白色混合力場產生了完美的共鳴。那把劍的重量很輕——彷彿它本身就是一種能量形態，而不是一件實體武器。</p>
+        <p>葉塵閉上眼睛，感受著那股沉靜的氣息滲入肌膚——他知道，真正的旅程才剛剛開始。而那種灰色的力量，將成為他在修仙界生存下去的唯一依仗。</p>
+        <p>他邁步走向石門——當他的身影穿過那層能量薄膜的瞬間，一道耀眼的光芒從石門中爆發出來，將整個荒原照得如同白晝一般。然後光芒逐漸消散，石門恢復了平靜——彷彿從來沒有什麼事情發生過一樣。</p>
+        <p>葉塵站在雲霄宗外門的入口處，大口喘著氣——剛才的那個傳送過程幾乎耗盡了他所有的靈力。但他並沒有感到疲憊——相反，他感覺到體內的那種灰白色混合力場變得更加精純、更加穩定。</p>
+        <p>「我回來了。」葉塵輕聲說道。「萬古塵源……我回來了。」</p>
+        <p>他抬起頭，看向遠處那座熟悉的建築——雲霄宗的外門大殿。那裡有他在乎的人、有等待他去面對的挑戰、有屬於他的命運。</p>
+        <p>葉塵深吸一口氣，邁步走向大殿——每一步都踏在堅實的青石板上，但腳下卻有一種微妙的震動感，彷彿整座宗門都在隨著他的步伐而呼吸。當他走到殿前時，一扇由純粹的光線構成的門出現在眼前——那扇門沒有實體，只有一層薄薄的能量薄膜，透過它可以看到裡面無數弟子忙碌的身影。</p>
+        <p>葉塵抬起手，將萬古塵劍輕輕放在門前的地面上。然後他深吸一口氣，邁步穿過了那扇光之門。</p>
+        <p>門後的空間比他想像中的更加廣闊——那是雲霄宗外門的廣場，無數弟子正在這裡修煉、交流、戰鬥。當葉塵出現的瞬間，整個廣場安靜了下來——所有目光都集中在他的身上。</p>
+        <p>「他是誰？」</p>
+        <p>「看起來好陌生……」</p>
+        <p>「難道是新的弟子？」</p>
+        <p>葉塵沒有回答——他只是靜靜地望著遠方，目光中帶著一種超越生死的平靜。然後他抬起手，將靈氣注入腳下的土地之中——大地開始震動，無數塵土從裂縫中湧出，形成了一道巨大的灰色屏障。那道屏障像是一堵無形的牆壁一樣，擋住了所有人的視線。</p>
+        <p>「塵埃之道，不在於殺戮，而在於守護。」葉塵的聲音在廣場上迴盪。「今天，我用這道屏障保護我的同門——他們是我用生命守護的人。」</p>
+        <p>他轉身繼續前行——前方的道路上還有更多的挑戰等待著他去面對。而那種灰色的力量，將成為他在修仙界生存下去的唯一依仗。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-58.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-60.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

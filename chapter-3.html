@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第3章：暗流湧動 - 萬古塵埃</title>
+    <title>第3章：第3章 · 暗流湧動 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-3.html">
     <link rel="prev" href="https://kofhk.com/chapter-2.html">
     <link rel="next" href="https://kofhk.com/chapter-4.html">
     <style>
-        :root {
+        :root {{
             --bg: #FAFBFC;
             --text: #1F2937;
             --accent: #6366F1;
@@ -16,8 +16,57 @@
             --panel-bg: #FFFFFF;
             --font-size: 18px;
             --line-height: 1.8;
-        }
-        body {
+        }}
+
+        [data-theme="light"] {{
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }}
+
+        [data-theme="sepia"] {{
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }}
+
+        [data-theme="sky"] {{
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }}
+
+        [data-theme="green"] {{
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }}
+
+        [data-theme="dark"] {{
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }}
+
+        [data-theme="navy"] {{
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }}
+
+        * {{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }}
+
+        body {{
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
             color: var(--text);
@@ -25,43 +74,285 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-        }
-        h1 {
+            transition: background 0.3s, color 0.3s;
+        }}
+
+        /* 頂部導航欄 */
+        .top-nav {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }}
+
+        .top-nav a {{
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }}
+
+        .top-nav a:hover {{
+            text-decoration: underline;
+        }}
+
+        /* 設置面板 */
+        .settings-panel {{
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }}
+
+        .settings-btn {{
+            background: none;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 5px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }}
+
+        .settings-btn:hover {{
+            background: var(--accent);
+            color: white;
+        }}
+
+        /* 主題選擇 */
+        .theme-select {{
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }}
+
+        /* 字體大小 */
+        .font-size-controls {{
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }}
+
+        .font-btn {{
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 28px;
+            height: 28px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }}
+
+        .font-btn:hover {{
+            background: var(--accent);
+            color: white;
+        }}
+
+        /* 閱讀進度 */
+        .progress-bar {{
+            position: fixed;
+            top: 50px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--border);
+            z-index: 99;
+        }}
+
+        .progress-fill {{
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.1s;
+        }}
+
+        /* 標題 */
+        h1 {{
             font-size: 1.8em;
             text-align: center;
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-        }
-        p {
+            margin-top: 60px;
+        }}
+
+        /* 內容 */
+        main {{
+            min-height: 50vh;
+        }}
+
+        p {{
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .nav {
+        }}
+
+        /* 底部導航 */
+        .nav {{
             display: flex;
             justify-content: space-between;
             padding: 20px 0;
             border-top: 1px solid var(--border);
             margin-top: 40px;
-        }
-        .nav a {
+        }}
+
+        .nav a {{
             color: var(--accent);
             text-decoration: none;
             padding: 10px 20px;
             border: 1px solid var(--accent);
             border-radius: 5px;
-        }
-        .nav a:hover {
+        }}
+
+        .nav a:hover {{
             background: var(--accent);
             color: white;
-        }
+        }}
+
+        /* 返回頂部按鈕 */
+        .back-to-top {{
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+        }}
+
+        .back-to-top.visible {{
+            display: flex;
+        }}
+
+        .back-to-top:hover {{
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }}
+
+        /* 彈出設置面板 */
+        .settings-dropdown {{
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 15px;
+            display: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 200;
+        }}
+
+        .settings-dropdown.active {{
+            display: block;
+        }}
+
+        .settings-row {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }}
+
+        .settings-row:last-child {{
+            margin-bottom: 0;
+        }}
+
+        .settings-label {{
+            font-size: 14px;
+            color: var(--text);
+            margin-right: 10px;
+        }}
+
+        /* 手機版調整 */
+        @media (max-width: 600px) {{
+            body {{
+                padding: 15px;
+            }}
+            
+            .top-nav {{
+                padding: 8px 15px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }}
+            
+            .settings-panel {{
+                flex-wrap: wrap;
+                gap: 8px;
+            }}
+            
+            h1 {{
+                font-size: 1.5em;
+                padding: 20px 0;
+                margin-top: 80px;
+            }}
+            
+            .nav {{
+                flex-direction: column;
+                gap: 10px;
+            }}
+            
+            .nav a {{
+                text-align: center;
+            }}
+        }}
     </style>
 </head>
 <body>
-    <h1>第3章 · 暗流湧動</h1>
-    <main>
-        <p>第二天清晨，葉家演武場。</p>
+    <!-- 頂部導航 -->
+    <nav class="top-nav">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="settings-panel">
+            <select class="theme-select" id="themeSelect">
+                <option value="light">☀️ 明亮</option>
+                <option value="sepia">📜 護眼</option>
+                <option value="sky">🌤️ 天空</option>
+                <option value="green">🌿 護森</option>
+                <option value="dark">🌙 暗黑</option>
+                <option value="navy">🌌 深藍</option>
+            </select>
+            <div class="font-size-controls">
+                <span style="font-size:12px;">A</span>
+                <button class="font-btn" id="fontSmall">A</button>
+                <button class="font-btn" id="fontNormal">A</button>
+                <button class="font-btn" id="fontLarge">A</button>
+                <span style="font-size:16px;">A</span>
+            </div>
+            <button class="settings-btn" id="settingsBtn">⚙️ 設置</button>
+        </div>
+    </nav>
+
+    <!-- 閱讀進度條 -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- 標題 -->
+    <h1>第3章 · 第3章 · 暗流湧動</h1>
+
+    <!-- 內容 -->
+    <main id="mainContent">
+<p>第二天清晨，葉家演武場。</p>
         <p>天剛蒙蒙亮，演武場上已經站滿了人。旁系子弟排成三列，每列二十餘人，整齊地站在青石鋪就的廣場上。主脈子弟則站在高臺之上，居高臨下地俯瞰著下方的人。</p>
         <p>葉塵站在旁系隊伍的最後一排，低頭看著自己的腳尖。他昨晚幾乎沒有睡——斷崖上的記憶碎片像潮水一樣在他腦海中翻湧，每一次閉眼都能看到那個灰袍老者的身影。更讓他驚訝的是，經過一夜的修煉，丹田裡的那個灰色漩渦已經比昨天大了整整一倍。</p>
         <p>「葉塵，你怎麼來了？」</p>
@@ -115,9 +406,73 @@
         <p>葉塵不知道的是，在他出拳的那一刻，丹田裡的那個灰色漩渦轉動的速度加快了整整一倍。而在那漩渦的深處，一粒微小的塵埃緩緩睜開了眼睛。</p>
         <p>那是他第一世的記憶碎片——塵埃散修的戰鬥本能，正在甦醒。</p>
     </main>
+
+    <!-- 底部導航 -->
     <nav class="nav">
-        <a href="https://kofhk.com/chapter-2.html">← 上一章</a>
-        <a href="https://kofhk.com/chapter-4.html">下一章 →</a>
+        <a href="https://kofhk.com/chapter-2.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-4.html" id="nextLink">下一章 →</a>
     </nav>
+
+    <!-- 返回頂部按鈕 -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({{top: 0, behavior: 'smooth'}})">↑</button>
+
+    <script>
+        // 主題切換
+        const themeSelect = document.getElementById('themeSelect');
+        themeSelect.addEventListener('change', (e) => {{
+            document.body.dataset.theme = e.target.value;
+            localStorage.setItem('novel-theme', e.target.value);
+        }});
+
+        // 恢復保存的主題
+        const savedTheme = localStorage.getItem('novel-theme');
+        if (savedTheme) {{
+            document.body.dataset.theme = savedTheme;
+            themeSelect.value = savedTheme;
+        }}
+
+        // 字體大小
+        const fonts = {{ small: '14px', normal: '18px', large: '22px' }};
+        let currentFont = localStorage.getItem('novel-font') || 'normal';
+
+        function setFont(size) {{
+            document.body.style.setProperty('--font-size', fonts[size]);
+            localStorage.setItem('novel-font', size);
+            currentFont = size;
+        }}
+
+        document.getElementById('fontSmall').addEventListener('click', () => setFont('small'));
+        document.getElementById('fontNormal').addEventListener('click', () => setFont('normal'));
+        document.getElementById('fontLarge').addEventListener('click', () => setFont('large'));
+
+        // 恢復保存的字體大小
+        setFont(currentFont);
+
+        // 閱讀進度
+        window.addEventListener('scroll', () => {{
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+
+            // 返回頂部按鈕顯示/隱藏
+            const backToTop = document.getElementById('backToTop');
+            if (scrollTop > 300) {{
+                backToTop.classList.add('visible');
+            }} else {{
+                backToTop.classList.remove('visible');
+            }}
+        }});
+
+        // 上一章/下一章連結處理
+        const prevLink = document.getElementById('prevLink');
+        const nextLink = document.getElementById('nextLink');
+        
+        if (!prevLink.href || prevLink.href.includes('#')) {{
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }}
+    </script>
 </body>
 </html>

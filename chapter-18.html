@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第18章：靈氣突破 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-18.html">
+    <link rel="prev" href="chapter-17.html">
+    <link rel="next" href="chapter-19.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第18章 · 靈氣突破</h1>
+    <main>
+        <p>王虎被擊敗的消息像一陣風一樣吹遍了整個外門弟子院。</p>
+        <p>第二天清晨，葉塵剛走出小院就發現周圍的弟子們看他的眼神完全不一樣了——不再是之前的輕蔑和漠視，而是一種混合著敬畏、好奇和恐懼的複雜情緒。有些人低頭避開他的目光，有些人則偷偷注視著他，彷彿在試圖看穿他身上到底有什麼秘密。</p>
+        <p>「他就是那個擊敗王虎的人？」</p>
+        <p>「聽說他只是推了一下……王虎就飛出去了。」</p>
+        <p>「那種力量根本不是靈氣——我完全感覺不到任何波動。」</p>
+        <p>「一個測靈石無反應的廢柴怎麼可能做到這種事？」</p>
+        <p>葉塵低頭快步穿過廣場，試圖忽略那些議論聲。他知道從今天開始，自己在外門中的日子不會好過了——王虎雖然被擊敗了，但他的父親是趙家的旁系子弟，這種背景的人最不能得罪。如果趙家出面施壓，宗主可能會被迫做出對他不利的決定。</p>
+        <p>他回到自己的小院後關上門盤膝坐下，開始按照《塵埃訣》的方法進行修煉。閉眼，靜心。空氣中的灰塵開始變得清晰起來——不再是肉眼可見的微粒，而是一種直覺般的感知。他能感覺到每一粒灰塵的位置、大小、運動方向。它們像無數微小的舞者，在房間裡隨風飄動，偶爾碰撞、分離、再碰撞。</p>
+        <p>葉塵保持身體的「開放」狀態，讓灰塵自然地進入體內。灰色漩渦在丹田中穩定地旋轉著，吞噬著那些細微的粒子。每一次吞噬，他都感覺到紋路向全身延伸了一絲——現在它們已經覆蓋了他的整個上半身和雙臂，像是一件灰色的盔甲包裹著他的軀幹和手臂。</p>
+        <p>修煉進行到中午的時候，異變突生。</p>
+        <p>丹田裡的灰色漩渦突然加速旋轉，速度之快讓葉塵感覺自己的身體都在跟著顫動。緊接著，一股灼熱感從丹田擴散到全身——不是疼痛，而是一种溫暖的熨帖，彷彿久凍的土地終於迎來了春天的陽光。</p>
+        <p>葉塵睜開眼睛，低頭看向自己的胸口——玉墜表面的裂縫又擴大了一些，現在已經能清楚地看到裂縫內部透出的微弱金光。他抬起手放在面前仔細觀察——手指上的灰色紋路正在緩慢地向他的肩膀和脖子蔓延，像是一條灰色的河流從手臂流向軀幹。</p>
+        <p>更讓他驚訝的是，他能感覺到體內出現了一絲微弱的靈氣波動——不是《引氣訣》所描述的靈氣流動方式，而是一種更加原始、更加基礎的能量形態。那種能量跟灰塵完全融合在一起，形成了一種全新的修煉體系。</p>
+        <p>「這就是……感氣初層？」葉塵自言自語道。</p>
+        <p>他從來沒有想過自己會突破到感氣境——因為測靈石測試的是傳統靈氣的強弱，而他體內的那種灰色漩渦根本就不是靈氣。但現在他能清楚地感覺到，那種灰色力量正在逐漸轉化為一種可以被測靈石檢測到的能量形態。</p>
+        <p>修煉進行到傍晚的時候，葉塵感覺到了丹田裡的變化——那個灰色漩渦已經變得更加穩定和強大，它的旋轉速度雖然減慢了，但每一次旋轉都帶著更強大的吸力。空氣中的灰塵像被磁鐵吸引一樣向他靠近，源源不斷地進入體內。</p>
+        <p>葉塵站起身，走到屋子的角落——那裡放著一塊用來練功的木樁，是外門弟子院中唯一的一件公用設施。他抬起手輕輕按在木樁表面，然後做了一個簡單的動作：推。</p>
+        <p>沒有蓄力，沒有喝聲，只是簡單地向前推了一下。但木樁卻猛地一震——從內部震動起來，表面出現了一道更深的裂紋。葉塵能感覺到那股力量比昨天更加強大、更加穩定——因為他的身體已經適應了那種灰色能量的流動方式。</p>
+        <p>「感氣初層……」葉塵低聲說道，嘴角浮現出一絲微笑。</p>
+        <p>他知道這只是開始——感氣境分為初、中、高、巔峰四層，而他現在才剛剛突破到第一層。要達到聚元境（這是第1卷的終點境界），他還需要吸收足夠多的灰塵記憶，解鎖更多的力量。</p>
+        <p>當天晚上，葉塵做了一個大膽的決定：他要主動去「閱讀」更多灰塵中的記憶——因為他知道只有理解了足夠多的故事之後，他的力量才能達到一個前所未有的高度。</p>
+        <p>他將意識聚焦在一粒從空氣中飄落的灰塵上，然後讓自己的感知滲入其中——</p>
+        <p>瞬間，一幅畫面浮現在他的腦海中：一片廣袤無垠的荒原上，無數的生命在奔跑、戰鬥、死亡。他們的身上有各種各樣的武器和盔甲——有的手持長劍，有的手握法杖，還有的赤裸著上身只穿著簡單的布條。但那片荒原的天空是灰蒙蒙的，大地是乾裂的，空氣中瀰漫著一股濃重的血腥味。</p>
+        <p>葉塵猛地收回意識，大口喘氣。剛才那一瞬間的感受太強烈了——他不僅看到了那片荒原上的戰鬥場景，還感受到了每一個生命的喜悅、憤怒和絕望。那種情緒像潮水一樣淹沒了他，讓他幾乎無法呼吸。</p>
+        <p>「這就是……第一世的記憶？」葉塵自言自語道，聲音中帶著一絲顫抖。</p>
+        <p>他知道從今天開始，他將踏上另一條道路——一條充滿未知和挑戰的道路。但同時他也知道，這條道路的終點有一個他在尋找的答案：關於父親失蹤的真相，關於九世輪迴的秘密，關於那第十世的真正意義。</p>
+        <p>葉塵重新盤膝坐下，繼續修煉。灰色漩渦在丹田中穩定地旋轉著，吞噬著空氣中的每一粒灰塵。而在遠處的雲霄宗宗主大殿中，蘇清雪正站在窗前眺望著外門弟子院的方向——她感覺到了一股熟悉的波動，那種波動跟她昨天在葉塵身上感受到的完全一致，但這次更加強烈了。</p>
+        <p>「他已經突破了。」蘇清雪的嘴角浮現出一絲難以察覺的微笑。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-17.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-19.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

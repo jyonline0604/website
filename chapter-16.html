@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第16章：外門小比 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-16.html">
+    <link rel="prev" href="chapter-15.html">
+    <link rel="next" href="chapter-17.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第16章 · 外門小比</h1>
+    <main>
+        <p>第四天清晨，雲霄宗外門弟子院的廣場上人聲鼎沸。</p>
+        <p>今天是外門弟子的月度考核日——所有外門弟子必須參加拳腳對決和靈氣測試，最終排名將決定本月修煉資源的分配比例。表現優秀者可以獲得額外的下品靈石和聚氣丹，而排名墊底的人則會被扣減配給甚至面臨逐出宗門的風險。</p>
+        <p>葉塵站在隊伍的中間位置，低頭看著自己的腳尖。經過幾天的秘密修煉，他已經能清晰地感知到空氣中每一粒灰塵的流動——它們像無數微小的絲線，將整個世界連接在一起。這種感覺讓他既興奮又不安：他知道自己的修煉方式與眾不同，但也擔心有一天會被別人發現。</p>
+        <p>「都安靜！」</p>
+        <p>一聲暴喝從高臺上傳來。外門執事趙明軒走了出來，臉上帶著嚴肅的表情：「今天的考核分為兩個項目——拳腳對決和靈氣測試。拳腳對決採用淘汰制，贏的人進入下一輪，輸的直接淘汰。最終排名將決定本月修煉資源的分配比例。」</p>
+        <p>他頓了頓，目光掃過所有弟子：「現在，請所有人到擂台前進行登記。」</p>
+        <p>葉塵跟著隊伍來到擂台前——那是一個由青石鋪就的圓形平台，直徑約莫十丈，周圍圍滿了觀眾。主臺上坐著三名評審執事，他們負責記錄每個弟子的表現和排名。</p>
+        <p>「王虎！」一名執事弟子喊道。</p>
+        <p>一個身材魁梧的少年走上前來——正是昨天在資源分配處挑釁葉塵的王虎。他的測靈石結果是感氣二層，在外門弟子中屬於中等水平。</p>
+        <p>「下一個，葉塵。」</p>
+        <p>葉塵深吸一口氣，走上前去。他將手放在測靈石上——石碑依然死寂無聲，連一絲微弱的光芒都沒有。周圍響起了一片低低的嘆息和嘲笑声：</p>
+        <p>「果然還是廢物。」</p>
+        <p>「浪費時間。」</p>
+        <p>「這種人怎麼可能通過選徒？」</p>
+        <p>葉塵收回手，臉上一片平靜。他已經聽惯了這些話，早就習以為常了。但這次不一樣——因為他知道，測靈石測試的是「靈氣」的強弱，而他體內的那種灰色漩渦根本就不是靈氣。如果測靈石能檢測出那種力量，那它就不會叫測靈石了。</p>
+        <p>登記完畢後，拳腳對決正式開始。葉塵被分到了第一組的第三場——他的對手是外門弟子李強，一個感氣一層的少年，身材瘦小但動作敏捷。</p>
+        <p>「葉塵，你認輸吧。」李強活動著手腕，語氣中帶著一絲憐憫，「我不想傷了你。」</p>
+        <p>葉塵沒有說話，只是靜靜地站在擂台上，雙手自然下垂。他的目光落在李強的胸口——那裡隨著呼吸微微起伏。在葉塵現在的感知中，他能清晰地看到空氣中飄浮的每一粒灰塵，它們像微小的光點一樣在陽光下閃爍。</p>
+        <p>「開始！」裁判一聲令下。</p>
+        <p>李強率先出手，一記直拳直奔葉塵的面門而來。這一拳速度不慢，力量也足夠——如果換成以前的葉塵，絕對躲不過。但現在不同了。</p>
+        <p>在李強出拳的瞬間，葉塵感覺到空氣中那些灰塵的流動發生了變化。它們像被某種無形的力量牽引著，向李強的方向聚集。而葉塵自己的身體，則自然地順應了這種流動——他的身體微微側移半步，恰好避開了李強的拳鋒。</p>
+        <p>李強一愣。他剛才明明已經打中了目標的位置，但葉塵卻像一片落葉一樣輕巧地閃了開來。</p>
+        <p>「你……」</p>
+        <p>還沒等他反應過來，葉塵已經出手了。他的動作很慢——不是那種慢吞吞的遲緩，而是一種彷彿在空氣中游泳般的緩慢。但他的拳頭穿過灰塵流動的方向，精準地擊中了李強的腹部。</p>
+        <p>沒有巨大的聲響，也沒有飛退的距離。但李強的脸色瞬間變了——他感覺到自己的體內有一股奇怪的力量在翻湧，像是一粒粒細小的沙子在血管中流動，讓他的身體產生了短暫的僵硬。</p>
+        <p>「我……我的身體……」李強踉蹌後退，最終跌坐在擂台下。</p>
+        <p>裁判愣了好一會兒才反应过来：「李強無法繼續比賽……葉塵勝！」</p>
+        <p>整個廣場安靜了一瞬，然後爆發出一陣嘩然。</p>
+        <p>「剛才那是什麼招式？怎麼看起來那麼奇怪？」</p>
+        <p>「葉塵什麼時候變得這麼強了？」</p>
+        <p>「不對，他的靈氣波動明明還是零啊！」</p>
+        <p>高臺上的評審執事們交換了一個眼神——他們都注意到了同樣的事情：葉塵的攻擊方式完全不符合任何已知的武學流派。那種力量不是來自於靈氣的爆發，而是來自於某種更基礎、更原始的東西。</p>
+        <p>「下一場！」趙明軒強壓下心中的疑惑，繼續主持比賽。</p>
+        <p>葉塵走下擂台，感覺到手掌微微顫抖——剛才那一拳雖然擊中了對手，但他能感覺到體內的那種灰色力量在反噬。就像是一把雙刃劍，使用得越多，對身體的負擔就越重。</p>
+        <p>「你剛才用的不是雲霄宗的任何已知功法。」一個聲音從旁邊傳來。</p>
+        <p>葉塵側頭一看——是王虎。他站在擂台邊緣，雙手抱胸，目光中帶著一絲警惕和好奇：「你的攻擊方式很奇怪——不像靈氣爆發，也不像武學技巧。你是從哪裡學來的？」</p>
+        <p>葉塵沒有回答。他知道不能透露《塵埃訣》的事情——如果被人知道他在修煉不屬於雲霄宗的功法，後果不堪設想。</p>
+        <p>「你不說也沒關係。」王虎嗤笑一聲，「反正月度考核還有好幾輪。我倒要看看你能撐到什麼時候。」</p>
+        <p>葉塵看著他，臉上沒有任何表情——不是因為他不生氣，而是因為他知道跟這種人爭辯沒有意義。</p>
+        <p>拳腳對決持續了整整一天。葉塵一路過關斬將，最終在外門弟子中排名第五——這個成績讓所有人都大吃一驚，包括他自己。但更讓他擔心的是評審執事們的目光——他們一直在注視著他，彷彿在試圖看穿他身上的某種秘密。</p>
+        <p>考核結束後，趙明軒走到葉塵面前：「葉塵，你跟我來一趟。」</p>
+        <p>葉塵的心猛地一跳。他知道，自己的秘密可能快要藏不住了。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-15.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-17.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

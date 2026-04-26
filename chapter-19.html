@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第19章：蘇清雪來訪 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-19.html">
+    <link rel="prev" href="chapter-18.html">
+    <link rel="next" href="chapter-20.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第19章 · 蘇清雪來訪</h1>
+    <main>
+        <p>第五天清晨，雲霄宗外門弟子院的廣場上響起了一陣騷動。</p>
+        <p>一群身穿淡藍色長裙的少女走了進來——她們是蘇清雪的隨從弟子，負責協助宗主處理日常事務。在隊伍的最前方，蘇清雪緩步走來，氣質冷豔如霜，目光掃過所有外門弟子的時候帶著一種不容置疑的威嚴。</p>
+        <p>「都安靜！」趙明軒走上前來，恭敬地行了一禮，「蘇姑娘大駕光臨，有失遠迎。」</p>
+        <p>蘇清雪點了點頭，然後目光掃過廣場上的弟子們：「我這次來是為了檢查外門弟子的修煉進度。宗主說這批新入宗的弟子中有一些特殊的天賦者，我需要親自確認一下他們的狀況。」</p>
+        <p>她的目光在人群中搜尋著——最終停在了葉塵的身上。</p>
+        <p>葉塵站在隊伍的中間位置，低頭看著自己的腳尖。他能感覺到蘇清雪的目光像兩把鋒利的劍，試圖看穿他身上的某種秘密。但他沒有慌張——因為他知道自己的修煉方式已經被趙明軒和張三叔察覺到了，再多一個人發現也不算什麼。</p>
+        <p>「葉塵。」蘇清雪的聲音在廣場上迴盪，帶著一種不容置疑的力量。</p>
+        <p>葉塵深吸一口氣，走上前去：「蘇姑娘。」</p>
+        <p>蘇清雪走到他面前，仔細打量了他一番——她的目光從葉塵的頭頂掃到腳底，最後停留在他的右手——那隻昨天在廢棄練功場擊敗王虎的手。</p>
+        <p>「你突破了感氣初層。」蘇清雪的語氣平淡，卻帶著一種不容置疑的確定性。</p>
+        <p>葉塵的心猛地一跳：「您怎麼知道？」</p>
+        <p>「因為我感覺到了一股熟悉的波動。」蘇清雪說，「那種波動跟我昨天在葉家感受到的完全一致——不是靈氣，但也不是普通人能做到的程度。」</p>
+        <p>她頓了頓，然後提高聲音：「你能讓我觀察一下你的修煉過程嗎？我想看看你是如何做到這種事情的。」</p>
+        <p>廣場上的其他弟子開始竊竊私語——他們從來沒有見過蘇清雪用這種語氣跟一個外門弟子說話。更讓他們驚訝的是，葉塵居然毫不猶豫地點了點頭：「可以。」</p>
+        <p>兩人來到後山的一片空地。葉塵盤膝坐下，開始按照《塵埃訣》的方法進行修煉。他閉上眼睛，讓意識沉入丹田，感受灰色漩渦的旋轉和灰塵的吸收。</p>
+        <p>蘇清雪站在他面前，雙手結印——這是雲霄宗的觀測法門，能夠感知周圍的能量流動。她的眉頭逐漸皺起：「奇怪……我完全感覺不到你的能量波動。不是沒有，而是……我的感知法門無法捕捉到那種頻率。」</p>
+        <p>葉塵睜開眼睛：「因為那不是靈氣。」</p>
+        <p>蘇清雪收回法門，蹲下身來與他平視：「你剛才在吸收灰塵的時候，有沒有感覺到什麼特別的東西？」</p>
+        <p>葉塵想了想：「有。我能聽到它們的聲音——每一粒灰塵都像是一個故事，承載著某個生命或事件的記憶。」</p>
+        <p>蘇清雪的瞳孔微微收縮。她修煉了十幾年，見過各種各樣的異象和天賦，但從來沒有聽過有人能「聽到」灰塵的聲音。這聽起來像是瘋子的胡言亂語——但她知道葉塵不是那種人。</p>
+        <p>「你能讓我試試嗎？」蘇清雪突然說道。</p>
+        <p>「試什麼？」</p>
+        <p>「讓我也感受一下那些灰塵。」她伸出手，掌心向上，「雲霄宗有一種特殊的感知法門，或許能捕捉到你說的那種頻率。」</p>
+        <p>葉塵猶豫了一下，然後將手放在她的掌心上。他緩緩引導丹田裡的灰色漩渦旋轉起來，讓一些被吸收的灰塵從指尖滲出——那些微小的粒子像金色的螢火蟲一樣在兩人之間飄浮。</p>
+        <p>蘇清雪閉上眼睛，啟動了她的感知法門。</p>
+        <p>起初什麼都沒有發生。但當她將意識完全放鬆、不再刻意去捕捉的時候，她感覺到了一絲微弱的震動——就像心跳一樣，從葉塵的指尖傳導到她的掌心，然後沿著手臂蔓延到全身。</p>
+        <p>蘇清雪猛地睜開眼睛：「我感覺到了……一種頻率。不是靈氣，不是真元，而是一種更基礎、更原始的東西。」她看著葉塵，眼中閃爍著興奮的光芒，「這就是你說的『塵埃之力』嗎？」</p>
+        <p>葉塵點了點頭：「它叫《塵埃訣》。是我第一世的記憶。」</p>
+        <p>蘇清雪沉默了一會兒，然後緩緩站起身：「我需要將這個情況上報給宗主。如果雲霄宗真的存在過『塵埃散修』這一脈——哪怕只是傳說——那你也許是這千年來第一個重新踏上這條路的人。」</p>
+        <p>她走了兩步，又停下來回頭看他：「葉塵，不管結果如何，你都不必擔心入宗的問題。我會盡力爭取——因為你的天賦太特殊了，特殊到不值得被埋沒。」</p>
+        <p>葉塵看著她的背影消失在樹林中，心裡湧起一股複雜的情緒。他從來沒有想過自己會被一個來自頂級宗門的天才少女如此對待——不是憐憫，不是好奇，而是真正的尊重和重視。</p>
+        <p>當天晚上，葉塵回到自己的小院後盤膝坐下，開始繼續修煉。灰色漩渦在丹田中穩定地旋轉著，吞噬著空氣中的每一粒灰塵。他能感覺到體內的那種力量正在緩慢積累——就像一張拉滿的弓，隨時準備射出箭矢。</p>
+        <p>但在他閉眼的瞬間，頸間的玉墜突然發燙——比以往任何一次都要強烈。葉塵睜開眼睛，看到玉墜表面的裂縫中透出了一道刺目的金光，瞬間淹沒了整個房間。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-18.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-20.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第13章：外門新丁 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-13.html">
+    <link rel="prev" href="chapter-12.html">
+    <link rel="next" href="chapter-14.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第13章 · 外門新丁</h1>
+    <main>
+        <p>第二天清晨，葉塵被一陣喧囂聲吵醒。</p>
+        <p>他推開門走出小院，看到外門弟子院的廣場上已經站滿了人——大約有上百名身穿白色長袍的年輕子弟，他們排成數列，表情各異：有的興奮、有的緊張、有的不屑。葉塵站在隊伍的中間位置，低頭看著自己的腳尖，試圖讓自己看起來更加不起眼一些。</p>
+        <p>「都安靜！」</p>
+        <p>一聲暴喝從高臺上傳來。一個身穿藍色長袍的中年男子走了出來——他是外門執事趙明軒，負責管理所有外門弟子的日常事務和修煉資源分配。他的臉上佈滿了皺紋，眼神銳利得像兩把鋒利的劍。</p>
+        <p>「你們都是這一批通過選徒的外門弟子。」趙明軒的聲音在廣場上迴盪，「從今天開始，你們就是雲霄宗的正式弟子了。但記住——外門弟子的地位並不高，你們需要通過每月的考核來證明自己的價值。如果連續三次考核不合格，就會被逐出宗門。」</p>
+        <p>他頓了頓，目光掃過所有弟子：「現在，請所有人到資源分配處領取你們的第一個月修煉物資。外門弟子的標準配給是：每月下品靈石五塊、聚氣丹兩顆、基礎修煉法門一本。表現優秀者可以額外獲得獎勵。」</p>
+        <p>葉塵跟著隊伍來到資源分配處——一張長桌後面坐著兩名執事弟子，他們手裡拿著名冊和物資清單，一個個地叫名字發放。</p>
+        <p>「張大牛！」</p>
+        <p>「到！」</p>
+        <p>「下品靈石五塊、聚氣丹兩顆、《引氣訣》基礎版一本。下一個。」</p>
+        <p>「李小花！」</p>
+        <p>「到！」</p>
+        <p>「下品靈石五塊、聚氣丹兩顆、《引氣訣》基礎版一本。下一個。」</p>
+        <p>一個個名字被叫過，隊伍逐漸縮短。葉塵站在後面看著前面的人一個個領到物資——他們的表情有的喜悅、有的平淡，但沒有一個人像他這樣一無所有。</p>
+        <p>終於輪到葉塵了。</p>
+        <p>「葉塵！」負責發放的執事弟子抬頭看了他一眼，然後在名冊上翻找了一下，「哦，你就是那個測靈石無反應的旁系子弟。」</p>
+        <p>他的語氣中帶著明顯的不屑——那種不屑不是憤怒或輕蔑，而是一種更令人難受的東西：漠視。彷彿葉塵根本不值得被认真对待。</p>
+        <p>「是的。」葉塵低聲回答。</p>
+        <p>執事弟子從桌上拿起一套標準配給——五塊下品靈石、兩顆聚氣丹、一本《引氣訣》基礎版——然後隨意地扔到了葉塵面前：「拿去。下一個。」</p>
+        <p>葉塵彎腰撿起地上的物資，感覺到手掌上傳來的冰冷觸感——那些下品靈石的溫度比他的體溫低了很多，散發著微弱的靈氣波動。他將它們收入懷中，然後轉身離開了資源分配處。</p>
+        <p>「喂，廢柴。」</p>
+        <p>一個輕蔑的聲音從身後傳來。葉塵不用回頭也知道是誰——在他走出資源分配處的瞬間，他就感覺到了一股熟悉的靈氣波動。那種波動比普通人強得多，但又不像內門弟子那樣渾厚——應該是外門中比較優秀的弟子。</p>
+        <p>他轉過身，看到一個身材魁梧的少年正站在不遠處，雙手抱胸，嘴角掛著一抹嘲諷的笑容。少年的臉上帶著一種與生俱來的傲慢，眼神中充滿了對弱者的不屑。</p>
+        <p>「你就是那個測靈石無反應的葉塵？」少年走上前來，居高臨下地看著他，「我聽說了你的事——一個連靈氣都沒有的人，居然也能通過選徒？蘇清雪姑娘是不是瞎了眼？」</p>
+        <p>葉塵沒有回答。他知道這種人——在修仙界中，天賦和實力決定了一切。而一個測靈石無反應的廢柴，在他們眼中根本不值得被尊重。</p>
+        <p>「你不說話？」少年嗤笑一聲，「也是，你大概從來沒有跟真正的天才說過話吧？我告訴你，我叫王虎，外門弟子月度考核排名第七——感氣二層。在這個外門裡，除了那幾個天賦異稟的家伙之外，我就是最強的。」</p>
+        <p>他頓了頓，然後提高聲音：「而你——連靈氣都沒有。你拿什麼跟我比？」</p>
+        <p>廣場上的其他弟子開始圍觀過來，有人低頭偷笑，有人冷漠旁觀。葉塵看著王虎，臉上沒有任何表情——不是因為他不生氣，而是因為他知道跟這種人爭辯沒有意義。</p>
+        <p>「我告訴你。」王虎繼續說道，語氣中帶著威脅的意味，「在外門裡，實力就是一切。如果你不想被欺負，就學會低頭做人。否則……」他頓了頓，嘴角掛著一抹冷笑，「我不介意幫你『認識』一下什麼是真正的修仙界。」</p>
+        <p>葉塵抬起頭，第一次正面看著王虎的眼睛：「我會用實力說話。」</p>
+        <p>這句話的語氣很輕，但其中的堅定讓王虎愣了一下。他從來沒有聽過一個廢柴用這種語氣說話——不是憤怒，不是辯解，而是一種平靜到極點的自信。</p>
+        <p>「好。」王虎轉身離開，腳步聲在廣場上迴盪，「我們月度考核見。」</p>
+        <p>葉塵看著他的背影，心裡湧起一股不安。他知道王虎不會就此罷休——這個人的傲慢和輕視已經到了病態的程度，為了維護自己的地位，什麼事情都做得出來。</p>
+        <p>他回到自己的小院，關上門盤膝坐下，開始按照《塵埃訣》的方法進行修煉。閉眼，靜心。空氣中的灰塵開始變得清晰起來——不再是肉眼可見的微粒，而是一種直覺般的感知。他能感覺到每一粒灰塵的位置、大小、運動方向。它們像無數微小的舞者，在房間裡隨風飄動，偶爾碰撞、分離、再碰撞。</p>
+        <p>葉塵保持身體的「開放」狀態，讓灰塵自然地進入體內。灰色漩渦在丹田中穩定地旋轉著，吞噬著那些細微的粒子。每一次吞噬，他都感覺到紋路向全身延伸了一絲——現在它們已經覆蓋了他的整個上半身和雙臂，像是一件灰色的盔甲包裹著他的軀幹和手臂。</p>
+        <p>修煉進行到傍晚的時候，葉塵睜開眼睛，低頭看向自己的手——手指上的灰色紋路已經延伸到了肩膀的位置，而在他的小臂上，那些紋路開始形成了一些奇怪的圖案——像是一幅微型的地圖，記錄著每一粒被他吸收的灰塵的路徑。</p>
+        <p>他站起身，走到屋子的角落——那裡放著一塊用來練功的木樁，是外門弟子院中唯一的一件公用設施。葉塵抬起手，輕輕按在木樁表面。</p>
+        <p>然後，他做了一個簡單的動作：推。</p>
+        <p>沒有蓄力，沒有喝聲，只是簡單地向前推了一下。但木樁卻猛地一震——從內部震動起來，表面出現了一道裂紋。</p>
+        <p>葉塵收回手，看著那道裂紋，心裡湧起一股難以言喻的激動。這不是靈氣修煉能做到的——靈氣的攻擊需要積累、需要爆發，而剛才那種力量是瞬間產生的，就像灰塵本身擁有的某種隱含能量被觸發了一樣。</p>
+        <p>他知道從今天開始，他將在外門中秘密修煉《塵埃訣》——不被任何人發現，不被任何人理解。但這正是他想要的：一條屬於自己的路。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-12.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-14.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

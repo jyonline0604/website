@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第15章：藏經閣密 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-15.html">
+    <link rel="prev" href="chapter-14.html">
+    <link rel="next" href="chapter-16.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第15章 · 藏經閣密</h1>
+    <main>
+        <p>第三天清晨，葉塵被一陣鐘聲喚醒。</p>
+        <p>那是雲霄宗的晨鐘——每天清晨五點響起，提醒所有弟子開始一天的修煉和任務。葉塵盤膝坐在木板床上，緩緩睜開眼睛，低頭看著自己的手——手指上的灰色紋路在晨光中顯得更加清晰了，像是一幅微型的地圖記錄著每一粒被他吸收的灰塵的路徑。</p>
+        <p>經過幾天的秘密修煉，他已經能清晰地感知到空氣中每一粒灰塵的流動——它們像無數微小的絲線，將整個世界連接在一起。這種感覺讓他既興奮又不安：他知道自己的修煉方式與眾不同，但也擔心有一天會被別人發現。</p>
+        <p>「今天該去領取本月的第一份修煉任務了。」葉塵自言自語道。</p>
+        <p>外門弟子院的規定是：每個弟子每月必須完成至少一份修煉任務——通常是採集靈藥、清理獸患、或者守護某個陣法節點。如果連續一個月沒有完成任務，就會被扣減當月的修煉資源配給。</p>
+        <p>葉塵穿過外門弟子院的小徑，來到了藏經閣——那是雲霄宗存放所有典籍和功法的地方，也是他打算今天去領取任務的所在之處。</p>
+        <p>藏經閣是一座三層高的木質建築，坐落在外門弟子院的中央廣場上。閣樓的外牆爬滿了藤蔓植物，屋頂的青瓦已經有些斑駁，但整體結構依然堅固。門口站著兩名執事弟子，他們負責登記借閱典籍的弟子名單。</p>
+        <p>葉塵走到門口，其中一名執事弟子抬頭看了他一眼：「來幹嘛的？」</p>
+        <p>「領取本月修煉任務。」葉塵回答。</p>
+        <p>執事弟子指了指閣樓內部：「進去找張三叔，報上你的名字。」</p>
+        <p>葉塵走進藏經閣——裡面佈局簡單，一排排木製書架整齊地排列著，上面放滿了各種典籍和功法冊子。空氣中瀰漫著淡淡的墨香和陳舊紙張的氣息，那種味道讓葉塵想起福伯以前教他讀書時的場景。</p>
+        <p>「誰啊？」一個蒼老的聲音從閣樓深處傳來。</p>
+        <p>葉塵循聲走去，看到一個鬚髮斑白的老人正坐在書桌後面翻閱一本厚厚的冊子。老人的臉上佈滿了皺紋，但眼神依然銳利——那是常年閱讀典籍所培養出的洞察力。</p>
+        <p>「我是新來的弟子葉塵。」葉塵低聲說道，「來領取本月修煉任務。」</p>
+        <p>老人抬頭看了他一眼：「葉塵……哦，就是那個測靈石無反應的旁系子弟吧？」</p>
+        <p>他的語氣中帶著一絲好奇——不是輕蔑，而是一種真正的疑惑。彷彿在問：一個連靈氣都沒有的人，怎麼可能通過選徒？</p>
+        <p>「是的。」葉塵誠實地回答。</p>
+        <p>老人沉默了一會兒，然後從書桌後面拿出一張紙條：「你的任務是去後山採集十株『青靈草』。那種草生長在霧氣較濃的山谷中，需要小心謹慎——因為那裡經常有低階靈獸出沒。」</p>
+        <p>葉塵接過紙條，看了一眼上面的內容——任務地點、所需數量、完成期限，一切都很標準。但他注意到老人在看他的時候眼神中多了一絲異樣——那種異樣不是輕蔑或好奇，而是一種……審視。彷彿老人在試圖看穿他身上的某種秘密。</p>
+        <p>「張三叔。」葉塵猶豫了一下，然後問道，「您在這座閣樓裡工作了多少年了？」</p>
+        <p>老人愣了一下：「怎麼突然問這個？」</p>
+        <p>「沒什麼。」葉塵搖搖頭，「只是覺得您對我的態度跟其他人不太一樣。」</p>
+        <p>老人沉默了一會兒，然後嘆了一口氣：「小葉啊，我在这座藏經閣工作了四十年了。四十年來，我見過無數弟子進出這裡——有的天賦異稟，有的平庸無奇。但像你這樣測靈石無反應卻能入宗的……」他頓了頓，目光變得深邃，「我還是第一次見。」</p>
+        <p>葉塵的心跳加速了。他知道老人可能察覺到了什麼——但他不知道老人具體察覺到了什麼。</p>
+        <p>「張三叔，您覺得……一個沒有靈氣的人，真的能在修仙界生存嗎？」葉塵低聲問道。</p>
+        <p>老人看著他，然後緩緩開口：「小葉，我告訴你一件事。」老人的聲音壓得很低，彷彿怕被別人聽到，「四十年前，我也曾經是一個測靈石無反應的廢柴。我的靈根被認為是『死靈根』——一種完全無法吸收靈氣的異常狀態。」</p>
+        <p>葉塵的瞳孔猛地收縮：「那您……」</p>
+        <p>「我後來找到了一種特殊的修煉方法。」老人繼續說道，語氣中帶著一絲感慨，「那種方法不依賴靈氣，而是依靠另一種力量。但那種力量的代價很大——它會改變你的身體，讓你變得跟普通人不一樣。」</p>
+        <p>葉塵感覺渾身一震。他下意識地摸了摸頸間的玉墜——它此刻安靜地掛在胸前，表面的裂紋像一張蜘蛛網一樣覆蓋著灰色的表面。</p>
+        <p>「張三叔……」葉塵的聲音有些顫抖，「那種特殊的修煉方法……是什麼？」</p>
+        <p>老人看著他，然後緩緩搖搖頭：「我不能告訴你。因為那種方法已經失傳了——四十年來，我再也沒有找到第二個人能夠使用它。」</p>
+        <p>他說完這句話之後，就轉身繼續翻閱手中的冊子——那是一種明顯的驅逐信號，表示對話到此為止。</p>
+        <p>葉塵離開了藏經閣，心裡卻翻湧著無數個問題。老人說的話暗示了一件事：四十年前曾經也有人跟他一樣——測靈石無反應，但通過某種特殊方法修煉成功。那種方法不依賴靈氣，而是依靠另一種力量。</p>
+        <p>難道……那種方法跟《塵埃訣》有關？</p>
+        <p>葉塵回到自己的小院後，開始在房間裡踱步思考。他需要找到答案——而藏經閣可能是唯一的線索。</p>
+        <p>當天晚上，葉塵做了一個大膽的決定：他要偷偷進入藏經閣的禁書區，尋找關於那種特殊修煉方法的記載。</p>
+        <p>雲霄宗的藏經閣分為三個區域：外門典籍區（所有弟子可自由借閱）、內門典籍區（僅限內門弟子和執事進入）、以及禁書區（只有宗主和執事長老才能進入）。但葉塵知道，在禁書區和外門典籍區之間有一條廢棄的通道——那是藏經閣建造時留下的後門，因為年久失修已經很少有人知道了。</p>
+        <p>他等到夜深人靜的時候，悄悄來到了藏經閣的後面。月光灑在閣樓的青瓦上，散發出一層淡淡的銀色光輝。葉塵找到了一塊鬆動的牆磚——那是福伯以前告訴他的位置，說這裡有一條通往廢棄密室的通道。</p>
+        <p>他輕輕推開牆磚，露出一個僅容一人通過的狹窄洞口。葉塵鑽了進去，在黑暗中摸索前行。通道很長，兩側的牆壁上佈滿了青苔和裂縫，空氣中瀰漫著一股陳舊的霉味。</p>
+        <p>走了大約十步之後，通道突然開闊起來——葉塵來到了一個小型密室中。密室的中央放著一張破舊的石桌，桌上堆滿了泛黃的冊子和殘破的竹簡。最引人注目的是石桌後面的一塊石碑——上面刻著幾行字：</p>
+        <p>「塵埃歸源處，萬法始於微。九世輪迴後，真相自顯現。」</p>
+        <p>葉塵讀完這十六個字，感覺胸口一陣劇烈跳動。頸間的玉墜突然發燙——不是普通的發熱，而是一種灼燒般的疼痛，彷彿有什麼東西要從裡面衝出來。</p>
+        <p>他下意識地伸手去摸玉墜，指尖剛觸碰到裂縫的位置，一道刺目的金光從裂縫中迸射而出，瞬間淹沒了他的視線。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-14.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-16.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第111章 · 天機閣的歸來 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-110.html">
+    <link rel="prev" href="chapter-110.html">
+    <link rel="next" href="chapter-112.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第111章 · 天機閣的歸來</h1>
+    <main>
+        <p>黎明時分，三人終於來到了天機閣的山門前。</p>
+        <p>晨霧尚未完全散去，青石鋪就的山道蜿蜒而上，兩旁的古松在微風中輕輕搖曳。葉塵回頭望向遠方那片被黑暗籠罩的山脈——暗淵閣總部的方向，心中湧起一股複雜的情緒。他們成功拿到了第三把鑰匙，但這場戰鬥的代價也不小。蘇清雪的靈力幾乎耗盡，左臂上還留著一道暗淵之力造成的傷痕；趙明遠的右肩也被黑色鎖鏈劃破，鮮血已經凝固在衣襟上。</p>
+        <p>「我們成功了。」蘇清雪靠在門柱上，輕輕喘著氣，嘴角卻掛著一絲微笑。「終於集齊了三把鑰匙——父親不會失望的。」</p>
+        <p>葉塵點頭同意，灰色眼眸中閃爍著複雜的光芒：「但這只是開始。萬古塵源的第九層中，隱藏著混沌之種的封印記錄——還有父親的下落。」他握緊手中的第三把鑰匙，黑色的光芒在掌心微微顫動，彷彿在回應另外兩把鑰匙的存在。</p>
+        <p>趙明遠皺眉道：「你父親……你真的認為他還在 somewhere？」他的聲音中帶著一絲懷疑，但更多的是擔憂。「暗淵閣的勢力如此龐大，幽影尊者又一直在追殺我們——你確定萬古塵源第九層真的安全嗎？」</p>
+        <p>葉塵沒有立即回答。他深吸一口氣，開始講述自己多年來尋找父親的經過。</p>
+        <p>「在我五歲那年，父親突然失蹤了。」他的聲音低沉而平靜，彷彿在說別人的故事。「母親告訴我，父親是去尋找一個重要的東西——萬古塵源中的秘密。從那以後，我就一直夢想著能夠找到他。」他頓了頓，繼續說道。「這些年來，我走過很多地方，見過很多人，但始終沒有放棄。現在我們已經集齊了三把鑰匙，只要打開萬古塵源的第九層，就能夠獲得所有線索。」</p>
+        <p>蘇清雪輕輕握住葉塵的手，掌心的溫度透過皮膚傳來：「我相信你一定會找到他的。不管第九層中有什麼危險，我們都會一起面對。」她的眼神堅定而溫柔，讓葉塵心中湧起一股暖流。</p>
+        <p>三人走進天機閣，迎接他們的是長老們驚訝的目光。山門內的廣場上聚集了十多位身穿青色道袍的修士，他們的氣息各不相同——從聚元初期到聚元高期都有，其中幾位甚至散發著築基境的威壓。</p>
+        <p>「葉塵！」一位白髮蒼蒼的老者走上前來，眼中閃過一絲驚喜。「你們真的做到了！快告訴我，萬古塵源的第九層現在可以打開了嗎？」</p>
+        <p>這位老者正是天機閣的大長老——玄清子。他年約六旬，鬍鬚花白，但眼神銳利如鷹。作為天機閣的掌門人，他的實力在整個凡塵界都屬於頂尖行列。</p>
+        <p>葉塵恭敬地行了一禮：「是的，大長老。我們已經集齊了三把鑰匙——但需要一個安靜的地方，讓我能仔細研究它們的共鳴方式。只有正確的使用方法，才能夠安全地打開第九層。」</p>
+        <p>玄清子點頭同意：「沒問題——我帶你們去天機閣最深處的密室。那裡有足夠的空間和防禦陣法，可以保護你們在開啟萬古塵源時不受干擾。」他轉身對身邊的弟子們吩咐道。「通知所有執事，今天開始加強天機閣的戒備——暗淵閣不會善罷甘休，我們必須做好準備。」</p>
+        <p>幾位弟子領命而去，迅速消失在各自的崗位上。葉塵注意到他們的動作熟練而有序——顯然天機閣已經做好了長期對抗暗淵閣的準備。</p>
+        <p>三人跟隨玄清子穿過天機閣的主殿，沿著一條隱藏的石階向下走去。石階兩旁的牆壁上刻滿了古老的符文，散發著淡淡的藍色光芒。這些符文不僅具有裝飾作用，更是一種強大的防禦陣法——能夠抵禦聚元境強者的攻擊。</p>
+        <p>「這就是通往最深處密室的通道。」玄清子說道。「九轉玄天陣的入口——只要啟動這個陣法，就算有築基巔峰以上的強者來襲，也無法突破這裡的防禦。」</p>
+        <p>葉塵點頭同意：「很好——這正是我們需要的。現在，讓我們開始研究三把鑰匙的使用方法吧。」</p>
+        <p>三人來到密室中央，這裡是一個圓形的石室，直徑約有十丈。地面刻滿了複雜的陣紋，中心位置有一個凸起的石台——那正是放置萬古塵源的地方。四周牆壁上嵌著十二顆靈晶，散發著柔和的光芒，將整個石室照得亮如白晝。</p>
+        <p>「這就是天機閣最強大的防禦陣法——九轉玄天陣。」玄清子站在石室外，透過門口的防護罩對他們說道。「我會在外面守護你們——如果有任何危險，我會立刻啟動緊急撤離方案。」</p>
+        <p>葉塵點頭：「謝謝大長老。我們需要大約一個時辰的時間來研究鑰匙的共鳴方式——請您在外面耐心等待。」</p>
+        <p>玄清子深深看了他一眼，然後轉身離開。厚重的石門緩緩關閉，將兩人與外界隔絕開來。</p>
+        <p>密室中只剩下他們三人。葉塵走到石台前，將三把鑰匙擺放在桌面上。第一把鑰匙散發著金色的光芒——那是從雲夢世家遺址獲得的；第二把鑰匙散發著藍色的光芒——來自禁地古老陣法的核心；第三把鑰匙散發著黑色的光芒——剛剛從暗淵閣總部奪取而來。</p>
+        <p>三種不同的能量波動在彼此靠近時產生了奇妙的共鳴。葉塵能夠感覺到它們彷彿在互相呼喚，渴望融合在一起。他閉上眼睛，讓塵埃感知全力運轉，探測著每一把鑰匙的能量流動軌跡。</p>
+        <p>「清雪，明遠。」葉塵睜開眼睛，灰色瞳孔中閃爍著堅定的光芒。「我需要你們的幫助——只有將我們的靈力注入這三把鑰匙中，才能夠激活它們的真正力量。你們準備好了嗎？」</p>
+        <p>蘇清雪和趙明遠點頭同意——他們都知道這個時候必須全力以赴。</p>
+        <p>「開始吧。」葉塵說道。</p>
+        <p>三人同時將手放在三把鑰匙上，藍色、金色和灰色的能量從他們體內湧出，匯聚成三道光柱，直撲鑰匙而去。瞬間，整個密室開始震動——牆壁上的符文逐一亮起，發出耀眼的光芒。</p>
+        <p>三把鑰匙在能量的激發下逐漸融合在一起，形成了一把全新的鑰匙——散發著三色光芒的萬古塵源之鑰。它的外形與之前的單色鑰匙完全不同——更加精緻、更加古老，表面刻滿了細密的符文，彷彿蘊含著整個世界的奧秘。</p>
+        <p>「成功了！」蘇清雪興奮地喊道。</p>
+        <p>葉塵卻沒有表現出太多喜悅。他的塵埃感知告訴他，這股能量波動比想像中更加強大——萬古塵源的第九層中一定隱藏著某種強大的存在。而且，他能感覺到另外一股氣息正在靠近——那是暗淵閣的追兵。</p>
+        <p>「我們現在就去打開萬古塵源。」葉塵站起身，手中握著那把三色光芒的鑰匙。「父親的下落、混沌之種的秘密——所有的一切都在第九層等待著我們去探索。」</p>
+        <p>玄清子的聲音從門外傳來：「等等——我有一個重要的消息要告訴你們。就在你們離開的這段時間，天機閣收到了一封來自靈天界的信件——信中說，暗淵閣已經開始行動了，他們正在尋找能夠解除混沌之種封印的人。」</p>
+        <p>葉塵的瞳孔驟然收縮——這是一個危險的信號。如果暗淵閣真的開始行動了，那麼他們必須盡快打開萬古塵源的第九層，獲得足夠的力量來對抗敵人。</p>
+        <p>「謝謝你的提醒。」葉塵說道。「我們現在就去萬古塵源所在地——不能再拖延了。」</p>
+        <p>三人告別玄清子，迅速離開密室，朝著天機閣最深處的萬古塵源所在地前進。他們的腳步堅定而有力——因為他們知道，真正的挑戰才剛剛開始。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-110.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-112.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第113章 · 封印的真相 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-110.html">
+    <link rel="prev" href="chapter-112.html">
+    <link rel="next" href="chapter-114.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第113章 · 封印的真相</h1>
+    <main>
+        <p>石室中的震動逐漸平息，黑色能量與三色光芒的碰撞也隨之停止。</p>
+        <p>葉塵喘著粗氣，額頭上滲出細密的汗珠。剛才的戰鬥消耗了他大量的靈力——塵埃之力雖然強大，但同時對抗幽影尊者的暗淵之力和混沌之種的爆發性能量，讓他幾乎到了極限。蘇清雪和趙明遠的情況也不容樂觀——兩人的臉色都顯得蒼白，靈力已經接近枯竭。</p>
+        <p>「我們暫時擊退了他。」葉塵低聲說道，灰色眼眸中閃爍著疲憊但堅定的光芒。「但幽影尊者不會善罷甘休——他一定會想辦法突破九轉玄天陣的防禦，然後再次發動攻擊。」</p>
+        <p>蘇清雪靠在牆壁上，輕輕喘著氣：「現在最重要的是——我們需要弄清楚第九層封印的真正內容。剛才水晶柱中傳來的聲音告訴我一些重要的線索——關於混沌之種的起源、關於九世輪迴的奧秘、還有……你父親的下落。」</p>
+        <p>趙明遠皺眉道：「你父親？你真的認為他還在 somewhere？」他的聲音中帶著一絲懷疑，但更多的是擔憂。「幽影尊者剛才說『我等你很久了』——這是否意味著他早就知道這裡的位置？甚至可能……他與你的父親有某種聯繫？」</p>
+        <p>葉塵的心猛地一沉。趙明遠的推測並非沒有道理——如果幽影尊者能夠突破天機閣的戒備，直接出現在第九層的石室中，那麼他一定有著特殊的途徑。而這個途徑很可能與他的父親有關。</p>
+        <p>「讓我來研究一下水晶柱中的封印記錄。」葉塵說道。「剛才的碰撞雖然暫時擊退了幽影尊者，但也可能破壞了部分封印——我們需要趁這個機會，盡快獲取第九層中的信息。」</p>
+        <p>他走到水晶柱前，伸出手輕輕觸碰那黑色的能量波動。瞬間，一股強大的信息流涌入他的腦海——無數的画面、聲音、情感如潮水般湧來，讓他幾乎無法承受。</p>
+        <p>「葉塵！」蘇清雪驚呼一聲，連忙上前扶住他。「你沒事吧？」</p>
+        <p>葉塵搖了搖頭，灰色眼眸中閃爍著複雜的光芒：「我没事——只是信息量太大了。我需要時間來消化這些內容。」他閉上眼睛，讓塵埃感知全力運轉，將涌入腦海的信息逐一梳理、分類、存儲。</p>
+        <p>片刻之後，葉塵睜開眼睛，眼中閃過一絲明悟：「我明白了——第九層的封印記錄中蘊含著關於混沌之種的完整歷史。根據記載，混沌之種並非天生就是危險的存在——它最初是上古時期一位偉大修士所創造的，目的是為了保護整個世界免受外來威脅。」</p>
+        <p>蘇清雪傾身向前：「那位偉大修士是誰？」</p>
+        <p>葉塵沒有立即回答。他深吸一口氣，繼續說道：「根據封印記錄，這位修士的名字叫做『塵淵子』——他是上古時期最強大的散修之一，擁有操控萬物本源之力的能力。他創造混沌之種的初衷是好的——希望能夠利用其中的力量來保護凡塵界免受外來入侵。」</p>
+        <p>趙明遠皺眉道：「但後來發生了什麼？為什麼混沌之種會變成現在這樣？」</p>
+        <p>葉塵的眼神變得凝重：「因為有人試圖濫用它的力量。塵淵子去世後，他的弟子們為了爭奪混沌之種的控制權而爆發了激烈的衝突。在戰鬥中，混沌之種的力量失控——引發了一場足以毀滅整個世界的災難。為了防止這種事情再次發生，塵淵子的最後一位弟子將混沌之種封印在萬古塵源的第九層中，同時創造了九世輪迴的機制——每一世都會有一位選中人覺醒前世記憶，獲得足夠的力量來保護混沌之種不被濫用。」</p>
+        <p>蘇清雪輕輕握住葉塵的手：「所以你就是那個選中人？你之所以能夠覺醒塵埃之力，是因為你是塵淵子的轉世？」</p>
+        <p>葉塵點頭同意：「是的。根據封印記錄，我的第一世記憶正是塵淵子本人——他是一位散修，擁有操控灰塵微粒的能力。這種能力後來發展成為塵埃之力，成為了我對抗暗淵之力的關鍵。」</p>
+        <p>趙明遠的臉色變得更加凝重：「那麼你父親呢？他在這個故事中扮演什麼角色？」</p>
+        <p>葉塵的眼神變得複雜：「封印記錄中提到了一個重要的人物——『守源者』。他是每一世選中人的助手和守護者，負責幫助選中人覺醒前世記憶、保護混沌之種不被濫用。根據記載，守源者的身份會在每一世發生變化——有時是師兄、有時是摯友、有時甚至是……父親。」</p>
+        <p>蘇清雪的瞳孔驟然收縮：「你的意思是——你父親就是上一世的守源者？」</p>
+        <p>葉塵點頭同意：「是的。根據封印記錄，上一世的選中人覺醒後，他的守源者——也就是我的父親——為了保護混沌之種不被暗淵閣奪取，選擇了自我犧牲。他將自己的靈魂封存進萬古塵源的第九層中，成為守護封印的一部分。」</p>
+        <p>趙明遠倒吸一口涼氣：「所以……你父親還在 somewhere？他的靈魂被封存在第九層中？」</p>
+        <p>葉塵沒有立即回答。他知道這個時候需要向兩人解釋清楚：「根據封印記錄，我父親的靈魂確實還存在於第九層中——但他已經失去了大部分記憶和意識，只留下了一絲微弱的光點。要喚醒他，我們需要找到一種方法來重新連接他的靈魂與混沌之種。」</p>
+        <p>蘇清雪輕輕握住葉塵的手：「那我們該怎麼辦？」</p>
+        <p>葉塵深吸一口氣：「我需要進一步研究封印記錄——看看是否有關於喚醒守源者靈魂的方法。同時，我們也需要做好應對幽影尊者再次攻擊的準備——他一定不會善罷甘休。」</p>
+        <p>就在三人討論的同時，石室外的九轉玄天陣突然開始劇烈震動。牆壁上的符文逐一亮起，發出耀眼的藍色光芒——這是防禦陣法受到攻擊的信號。</p>
+        <p>「他們來了。」葉塵站起身，灰色眼眸中閃爍著堅定的光芒。「幽影尊者的追兵已經突破了外圍的戒備——我們需要立刻做好戰鬥準備。」</p>
+        <p>蘇清雪和趙明遠也迅速站起，分別握緊手中的靈力和長劍。三人對視一眼，然後同時點頭——他們都知道這個時候必須全力以赴。</p>
+        <p>「讓我們結束這場戰鬥。」葉塵說道。「為了父親、為了混沌之種、為了整個凡塵界——我們絕不能讓幽影尊者得逞。」</p>
+        <p>三人邁步走向石室入口，準備迎接即將到來的挑戰。他們的腳步堅定而有力——因為他們知道，真正的決戰才剛剛開始。</p>
+        <p>石室的通道狹窄而陰暗，牆壁上刻滿了古老的符文。葉塵走在最前面，灰色眼眸中閃爍著冷靜的光芒。他的塵埃感知正在全力運轉，探測著前方的每一絲動靜。他能感覺到那些黑袍修士的氣息正在逐漸接近——他們的腳步聲在通道中迴盪，彷彿死亡的鐘聲。</p>
+        <p>「清雪，明遠。」葉塵低聲說道。「你們跟在我後面——不要離開我的視線範圍。」</p>
+        <p>蘇清雪和趙明遠點頭同意。他們分別站在葉塵的左右兩側，形成了一個三角形的戰鬥陣型。藍色、金色和灰色的能量在三人之間流動——它們相互呼應，形成了一道堅固的能量屏障。</p>
+        <p>通道盡頭是一扇巨大的石門——那是通往萬古塵源核心區域的最後一道防線。石門上刻滿了複雜的符文，散發著微弱的光芒。葉塵知道，只要能夠守住這道門，他們就有足夠的時間來研究封印記錄中的信息。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-112.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-114.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

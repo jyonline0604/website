@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第119章 · 封印轉移 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-110.html">
+    <link rel="prev" href="chapter-118.html">
+    <link rel="next" href="chapter-120.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第119章 · 封印轉移</h1>
+    <main>
+        <p>黑色石碑中的能量波動逐漸平息，葉塵緩緩收回按在碑面上的雙手。他能感覺到父親的靈魂碎片已經完全融入了自己的體內——那種融合雖然成功，但也帶來了一個全新的問題：萬古塵源的封印現在與他的靈魂產生了共鳴。</p>
+        <p>一種詭異的感覺從胸口蔓延開來——彷彿有一根無形的絲線將他的心跳與遠方某樣東西連結在一起。葉塵的灰色瞳孔微微收縮，他能夠感覺到那股共鳴中蘊含著一股強大的力量，但也伴隨著巨大的風險。</p>
+        <p>「葉塵……」蘇清雪輕聲喚道，眼中滿是擔憂。「你沒事吧？你的臉色好蒼白……」</p>
+        <p>葉塵搖了搖頭，深吸一口氣：「我没事——只是需要時間來適應這種全新的力量。」他閉上眼睛，讓塵埃感知全力運轉，將剛剛融合的守源者之力逐一梳理、分類、存儲。</p>
+        <p>片刻之後，葉塵睜開眼睛，眼中閃過一絲明悟：「我明白了——守源者之力的核心是『守護』，而塵埃之力的核心是『歸一』。這兩種力量雖然截然不同，但本質上都是對萬物本源的控制。當它們完美融合時，我能夠同時看穿事物的結構弱點和靈力流動軌跡。」</p>
+        <p>趙明遠皺眉道：「也就是說……你現在比剛才更強了？」</p>
+        <p>葉塵點頭同意：「可以這麼說。守源者之力讓我能夠直接干擾事物的靈力結構——剛才石碑中的能量波動之所以那麼快平息，是因為我同時使用了兩種力量來穩定它的頻率。」</p>
+        <p>蘇清雪輕輕握住他的手：「那我們該怎麼辦？暗淵閣的人一定會捲土重來——他們不會善罷甘休的。」</p>
+        <p>葉塵沒有立即回答。他的塵埃感知正在全力運轉，探測著祭壇深處的能量流動軌跡。他能感覺到萬古塵源的封印現在已經與自己的靈魂產生了共鳴——那種共鳴中蘊含著一股強大的力量，但也伴隨著巨大的風險。</p>
+        <p>「清雪、明遠，你們聽我說。」葉塵的聲音平靜而深沉。「我剛剛想到了一個辦法——我們不需要同時保護萬古塵源和對抗敵人。因為萬古塵源的封印現在已經轉移到我身上了。」</p>
+        <p>蘇清雪的瞳孔驟然收縮：「什麼？將封印轉移到你身上？這太危險了——如果封印失控，你可能會被混沌之種的力量吞噬！」</p>
+        <p>葉塵點頭同意：「是的，這確實很危險。但這是唯一的辦法——只有將封印轉移到我身上，我才能夠利用守源者之力來保護它。而且……根據父親靈魂碎片的記載，這種轉移方法在過去曾經成功過。」</p>
+        <p>趙明遠倒吸一口涼氣：「那我們該怎麼辦？」</p>
+        <p>葉塵深吸一口氣：「我需要進一步研究守源者之力的運轉軌跡——看看是否有關於控制封印的方法。同時，我們也需要做好應對暗淵閣後續攻擊的準備——幽影尊者一定不會善罷甘休。」</p>
+        <p>他轉身朝著祭壇深處走去，灰色瞳孔中閃爍著決絕的光芒。蘇清雪和趙明遠連忙跟上——他們知道這個時候不能拖葉塵的後腿。</p>
+        <p>祭壇深處的通道狹窄而昏暗，牆壁上刻滿了繁複的古篆文字。那些文字散發著微弱的光芒，彷彿在訴說著某種古老的秘密。葉塵的塵埃感知正在全力運轉，試圖解讀那些文字的含義。</p>
+        <p>「這些文字……」葉塵低聲說道。「根據第一世記憶的殘留片段，這是塵淵子大師當年留下的指引——告訴後人如何控制萬古塵源的封印。」</p>
+        <p>蘇清雪傾身向前：「那上面寫了什麼？」</p>
+        <p>葉塵沒有立即回答。他的指尖輕輕觸碰牆壁上的文字，瞬間，一股龐大的信息流如潮水般涌入他的腦海——無數的画面、聲音、情感如潮水般湧來，讓他幾乎無法承受。</p>
+        <p>當那股信息流逐漸平息時，葉塵睜開眼睛，灰色瞳孔中閃過一絲震撼：「根據指引的記載，控制萬古塵源封印的關鍵是『三樣東西』——凝元鎮塵印、時空凝膠和兩把鑰匙。」</p>
+        <p>趙明遠皺眉道：「那三樣東西在哪裡？」</p>
+        <p>葉塵的眼神變得凝重：「根據指引的記載，凝元鎮塵印藏在天機閣的禁地中——那裡有九轉玄天陣保護，需要蘇清雪的阵法破解能力才能進入。時空凝膠藏在雲塵谷的深處——那裡有強大的空間迷陣，需要趙明遠的靈劍之力來突破。而兩把鑰匙……一把在暗淵閣總部，另一把在我父親的遺物中。」</p>
+        <p>蘇清雪輕輕握住葉塵的手：「那我們該怎麼辦？」</p>
+        <p>葉塵深吸一口氣：「我需要先找到第一把鑰匙——它應該藏在我父親的遺物中。根據指引的記載，我父親在自我犧牲之前，將自己的隨身物品留在了天機閣的某個秘密地點。」</p>
+        <p>他繼續說道：「同時，我們也需要制定一個計劃來對抗暗淵閣的後續攻擊。幽影尊者一定不會善罷甘休——他會帶來更多的強敵。」</p>
+        <p>趙明遠臉色蒼白：「那我們該怎麼辦？以我們現在的實力，根本無法同時保護萬古塵源和對抗敵人。」</p>
+        <p>葉塵的眼神變得堅定：「因為我已經不需要同時保護萬古塵源和對抗敵人——封印轉移到我身上後，萬古塵源已經與我的靈魂綁定。即使暗淵閣的人來了，也無法奪取它。」</p>
+        <p>蘇清雪的瞳孔驟然收縮：「什麼？這太危險了——如果封印失控，你可能會被混沌之種的力量吞噬！」</p>
+        <p>葉塵點頭同意：「是的，這確實很危險。但這是唯一的辦法——只有將封印轉移到我身上，我才能夠利用守源者之力來對抗暗淵閣。」</p>
+        <p>他深吸一口氣，轉身朝著祭壇深處走去。灰色瞳孔中閃爍著決絕的光芒——他知道這是一次賭注極大的行動，但他沒有選擇。萬古塵源不能落入敵手，而他的父親……他的靈魂終於重新與他連接了。</p>
+        <p>通道盡頭出現了一扇古老的石門，門上刻著一枚熟悉的徽章——那是天機閣的標誌，但比他們平時見到的更加古老、更加莊嚴。葉塵的塵埃感知告訴他，這扇門後面藏著一個秘密房間——那裡應該有父親留下的遺物。</p>
+        <p>「就是這裡。」葉塵低聲說道。「根據指引的記載，我父親在自我犧牲之前，將自己的隨身物品留在了這個秘密房間中。」</p>
+        <p>蘇清雪和趙明遠對視一眼，同時點了點頭。他們知道這個時候不能猶豫——只有找到第一把鑰匙，才能夠制定下一步的計劃。</p>
+        <p>葉塵將雙手按在石門表面，灰色瞳孔中的光芒逐漸變亮。他能感覺到門後有一股微弱的光點——那就是父親遺物所在的位置。他緩緩將守源者之力注入石門中，試圖打開那道封印。</p>
+        <p>瞬間，石門上的徽章開始頻繁閃爍，最終化為一道金色的光芒，緩緩向兩側退去。葉塵深吸一口氣，推開石門走了進去。</p>
+        <p>房間不大，但佈局整齊——中央有一張木桌，桌上放著一本泛黃的日記和一枚黑色的戒指。牆壁上掛滿了各種法器，每一件都散發著微弱的光芒。葉塵的塵埃感知告訴他，這些法器都是父親當年使用過的隨身物品——每一件都蘊含著強大的力量。</p>
+        <p>「這就是父親的遺物……」蘇清雪輕聲說道，眼中閃過一絲淚光。「看起來好簡樸……」</p>
+        <p>葉塵沒有立即回答。他的目光落在了那本泛黃的日記上——他知道那是父親留下的最後線索。他緩緩走上前，將日記拿在手中，翻開了第一頁。</p>
+        <p>日記上的字跡有些模糊，但依然能夠辨認——那是父親當年寫下的記錄：「若你看到這本日記，說明我已經不在人世了。不要悲傷，因為我的犧牲是為了保護萬古塵源不被濫用。在第一把鑰匙藏在我留下的黑色戒指中——那枚戒指是天機閣的通行證，能夠幫你進入暗淵閣總部。但你要小心——暗淵閣的防禦陣法極為強大，你需要找到時空凝膠才能破解它。」</p>
+        <p>葉塵的瞳孔驟然收縮——這是一個重要的線索。他緩緩拿起那枚黑色戒指，將其戴在右手食指上。瞬間，一股微弱的光芒從戒指中湧出，與他的守源者之力產生了共鳴。</p>
+        <p>「戒指中有東西！」趙明遠驚呼一聲。「快看看裡面有什麼？」</p>
+        <p>葉塵閉上眼睛，讓塵埃感知探測戒指內部的能量流動軌跡。片刻之後，他睜開眼睛，灰色瞳孔中閃過一絲明悟：「戒指中藏著一幅地圖——那是暗淵閣總部的佈局圖。根據地圖的記載，第一把鑰匙藏在總部最深處的『暗淵之核』旁邊——那裡有幽影尊者親自看守。」</p>
+        <p>蘇清雪輕輕握住他的手：「那我們該怎麼辦？」</p>
+        <p>葉塵深吸一口氣：「我需要先回到天機閣——那裡有我需要的資源和人脈。同時，我們也需要聯絡雲塵谷的盟友——他們擁有時空凝膠的製作方法。只有集齊了所有準備，我們才能夠制定一個完整的計劃來奪取第一把鑰匙。」</p>
+        <p>他轉身朝著石門走去，灰色瞳孔中閃爍著決絕的光芒。蘇清雪和趙明遠連忙跟上——他們知道這只是一場更大戰爭的開始。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-118.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-120.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

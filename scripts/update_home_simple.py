@@ -51,13 +51,13 @@ def get_chapter_excerpt(filename):
     
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
-            content = f.read(3000)  # 讀前3000字節
+            content = f.read()  # 讀取完整文件
             
             # 找正文內容
-            content_start = content.find('<div class="chapter-content">')
+            content_start = content.find('<main>')
             if content_start != -1:
-                content_start += len('<div class="chapter-content">')
-                content_end = content.find('</div>', content_start)
+                content_start += len('<main>')
+                content_end = content.find('</main>', content_start)
                 if content_end != -1:
                     text = content[content_start:content_end]
                     # 清理HTML標籤
@@ -66,12 +66,12 @@ def get_chapter_excerpt(filename):
                     
                     if len(text) > 100:
                         return text[:100] + "..."
-                    return text if text else "林塵的修真科技之旅繼續展開..."
+                    return text if text else "葉塵的冒險之旅繼續展開..."
     
     except:
         pass
     
-    return "林塵的修真科技之旅繼續展開..."
+    return "葉塵的冒險之旅繼續展開..."
 
 def calculate_date(chapter_num, latest_num, today):
     """計算章節發布日期（根據與最新章節的天數差計算）"""

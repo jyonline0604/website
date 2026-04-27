@@ -3,172 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第一百一十章 · 逃離與新生 - 萬古塵埃</title>
-    <meta name="description" content="《萬古塵埃》第一百一十章 · 逃離與新生。免費閱讀完整章節，體驗輪迴重生修仙小說。">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <title>第110章 · 逃離與新生 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-110.html">
+    <link rel="prev" href="chapter-109.html">
+    <link rel="next" href="chapter-111.html">
     <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         body {
-            font-family: "Noto Serif TC", "Source Han Serif TC", "Source Han Serif HK", serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
-            color: #e0e0e0;
-            line-height: 1.8;
-        }
-        .container {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
         }
-        .chapter-header {
+        h1 {
+            font-size: 1.8em;
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
         }
-        .chapter-number {
-            font-size: 14px;
-            color: #888;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        .chapter-title {
-            font-size: 28px;
-            color: #fff;
-            font-weight: 400;
-            letter-spacing: 3px;
-        }
-        .chapter-content {
-            background: rgba(255,255,255,0.03);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-        .chapter-content p {
-            margin-bottom: 1.5em;
-            text-align: justify;
+        p {
             text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
             margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
         }
         .nav a {
-            color: #4a9eff;
+            color: var(--accent);
             text-decoration: none;
             padding: 10px 20px;
-            border-radius: 6px;
-            transition: all 0.3s;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
         }
         .nav a:hover {
-            background: rgba(74,158,255,0.1);
+            background: var(--accent);
+            color: white;
         }
-        .nav .home-link {
-            color: #888;
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .chapter-date {
-            font-size: 12px;
-            color: #666;
-            text-align: right;
-            margin-top: 20px;
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="chapter-header">
-            <div class="chapter-number">第 110 章</div>
-            <h1 class="chapter-title">逃離與新生</h1>
-        </div>
-        
-        <div class="chapter-content">
-            
-<p>黑色能量如洪水般湧來，將整個地下宮殿籠罩在黑暗之中。</p>
-
-<p>葉塵雙腳猛踏地面，灰色的塵埃之力從他體內爆發而出，形成一道圓形的防護罩，將蘇清雪和趙明遠護在其中。黑色能量撞擊在防護罩上，發出陣陣刺耳的摩擦聲。</p>
-
-<p class="dialogue">「這股力量……」葉塵咬緊牙關，額頭上滲出細密的汗珠。「比我想像中更加強大。」</p>
-
-幽影尊者站在不遠處，黑色的雙眸中閃爃著詭異的光芒：「你以為憑藉這些微弱的塵埃就能抵擋暗淵之力？真是天真。」</p>
-
-<p>他再次抬起手，這次黑色能量不再是單一的波動——而是化作了無數條黑色的鎖鏈，從四面八方同時襲來。每一條鎖鏈上都刻滿了詭異的符文，散發著令人作嘔的陰煞之氣。</p>
-
-<p>葉塵的塵埃感知瘋狂運轉——他能感覺到這些黑色鎖鏈中蘊含著強大的吞噬之力，只要被纏上，就會將一切能量和生命吸入其中。</p>
-
-<p class="dialogue">「清雪！明遠！」葉塵大喊一聲。「用你們的力量幫我——將所有靈力注入我的塵埃之中！」</p>
-
-<p>蘇清雪和趙明遠雖然不明白葉塵的意圖，但還是毫不猶豫地照做。他們將手中的靈力全部湧出，藍色和金色的光芒匯聚成兩道光柱，直撲葉塵而去。</p>
-
-<p>葉塵閉上眼睛，讓塵埃之力與這兩股能量產生共鳴。他能感覺到灰色的塵埃正在吸收藍色和金色的能量，逐漸變得更加明亮、更加強大。</p>
-
-<p class="dialogue">「這就是塵埃的奧義——包容萬物。」葉塵睜開眼睛，灰色瞳孔中閃爃著前所未有的光芒。「不是抵擋——而是融合！」</p>
-
-<p>他雙手向前揮出，灰色的塵埃之力不再是單一的防護罩——而是化作了無數細小的塵埃顆粒，如同風暴般向四面八方席捲而去。這些塵埃顆粒在接觸到黑色鎖鏈的瞬間，開始吸收其中的暗淵之力，將其轉化為自己的能量。</p>
-
-幽影尊者臉色大變：「這不可能——塵埃怎麼可能吞噬暗淵之力？」</p>
-
-<p>葉塵沒有回答。他繼續維持著塵埃奧義的運轉——灰色的光芒逐漸增強，將整個地下宮殿籠罩在一片灰白色的霧氣之中。</p>
-
-<p class="dialogue">「塵埃風暴！」葉塵低喝一聲，雙手合十，然後猛地分開。灰色的塵埃之力如同颶風般席捲整個地下宮殿，將所有黑色鎖鏈全部吞噬。</p>
-
-幽影尊者被塵埃風暴擊中，身體劇烈震動，黑色的血液從口中噴出。他勉強稳住身形，眼中閃過一絲驚恐：「你……你到底是誰？」</p>
-
-<p>葉塵沒有回答——他只是靜靜地看著對方，灰色眼眸中閃爍著堅定的光芒。他知道這場戰鬥還沒有結束——真正的挑戰才剛剛開始。</p>
-
-<p>但這個時候不是繼續戰鬥的時候——他們必須盡快拿到第三把鑰匙然後撤離。</p>
-
-<p>葉塵轉身走向石台，伸出手拿起第三把鑰匙。黑色的光芒在手中閃爍，散發著一股古老而危險的能量波動。他能感覺到那股力量中蘊含著關於萬古塵源第九層的線索——那是他尋找已久的答案。</p>
-
-<p class="dialogue">「我們快走！」葉塵大喊一聲。「幽影尊者不會善罷甘休——我們必須盡快離開這裡！」</p>
-
-<p>三人開始沿著來時的階梯向上奔跑。時間之力正在逐漸增強——空氣變得越來越濃稠，彷彿有一層無形的薄膜包裹著他們。但時空凝膠的保護膜發揮了作用——他們沒有受到時間之力的侵蝕。</p>
-
-<p>不知跑了多久，三人終於來到了地下宮殿的入口。石門已經打開——他們成功逃離了暗淵閣總部的深處。</p>
-
-<p>葉塵站在洞口，回頭望向那片黑暗。他能感覺到幽影尊者的怒火正在逐漸增強——但那股怒火無法阻止他前進的步伐。</p>
-
-<p class="dialogue">「我們成功了。」蘇清雪說道，眼中閃過一絲喜悅。「我們拿到了第三把鑰匙。」</p>
-
-趙明遠也點頭同意：「是的——但這場戰鬥還沒有結束。幽影尊者一定會在暗處等待著我們。」</p>
-
-<p>葉塵沒有回答——他只是靜靜地看著前方，灰色眼眸中閃爃著堅定的光芒。他知道真正的挑戰才剛剛開始——萬古塵源的第九層、混沌之種的封印記錄、還有父親的下落——所有的一切都在等待著他去探索。</p>
-
-<p class="dialogue">「走吧。」葉塵說道。「我們的天機閣見——那裡才是我們下一個戰場。」</p>
-
-<p>三人邁步走出洞口，迎向黎明時分的晨光。新的一天即將開始——而他們的冒險也才剛剛展開。</p>
-
-<p>陽光灑在他們的身上，帶來了一絲溫暖。葉塵深吸一口氣，感覺體內的第一世記憶正在逐漸穩定下來——那股力量雖然強大，但也需要時間來適應和掌控。</p>
-
-<p class="dialogue">「清雪。」葉塵突然說道。「你覺得我們接下來該怎麼辦？」</p>
-
-蘇清雪想了想：「我認為我們應該先回到天機閣——那裡有足夠的資源和知識來幫助你研究第三把鑰匙。同時，我們也需要聯絡其他盟友——暗淵閣不會善罷甘休，我們必須做好充分的準備。」</p>
-
-趙明遠點頭同意：「我贊同清雪的意見。而且……我也需要時間來消化剛才的戰鬥經驗。那種三人協同作戰的感覺雖然強大，但也消耗了我大量的體力。」</p>
-
-葉塵微微一笑：「好——那就這麼決定。我們先回天機閣，然後再制定下一步計劃。」</p>
-
-<p>他將第三把鑰匙收入懷中，與蘇清雪、趙明遠一起向著天機閣的方向走去。三人的身影在晨光中逐漸拉長——他們知道，前方的道路充滿了未知和挑戰，但只要三人同心，就沒有什麼能夠阻止他們前進的步伐。</p>
-
-<p>風輕輕吹過，帶來了一絲花香。葉塵閉上眼睛，讓塵埃感知感受這一刻的寧靜——他知道這種平靜不會持續太久，但他希望能在戰鬥的間隙中，記住這些美好的瞬間。</p>
-
-<p>因為在未來的某一天，當他面對更加強大的敵人、更加艱難的抉擇時，這些記憶將成為他繼續前進的力量源泉。</p>
-        </div>
-        
-        <div class="chapter-date">2026年4月27日</div>
-        
-        <div class="nav">
-            <a href="chapter-109.html" class="prev-chapter">← 上一章</a>
-            <a href="home.html" class="home-link">回首頁</a>
-            <a href="chapter-111.html" class="next-chapter">下一章 →</a>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
         </div>
     </div>
+    <h1>第110章 · 逃離與新生</h1>
+    <main>
+                <p>黑色能量如洪水般湧來，將整個地下宮殿籠罩在黑暗之中。</p>
+        <p>葉塵雙腳猛踏地面，灰色的塵埃之力從他體內爆發而出，形成一道圓形的防護罩，將蘇清雪和趙明遠護在其中。黑色能量撞擊在防護罩上，發出陣陣刺耳的摩擦聲。</p>
+        「這股力量……」葉塵咬緊牙關，額頭上滲出細密的汗珠。「比我想像中更加強大。」
+        <p>幽影尊者站在不遠處，黑色的雙眸中閃爍著詭異的光芒：「你以為憑藉這些微弱的塵埃就能抵擋暗淵之力？真是天真。」</p>
+        <p>他再次抬起手，這次黑色能量不再是單一的波動——而是化作了無數條黑色的鎖鏈，從四面八方同時襲來。每一條鎖鏈上都刻滿了詭異的符文，散發著令人作嘔的陰煞之氣。</p>
+        <p>葉塵的塵埃感知瘋狂運轉——他能感覺到這些黑色鎖鏈中蘊含著強大的吞噬之力，只要被纏上，就會將一切能量和生命吸入其中。</p>
+        「清雪！明遠！」葉塵大喊一聲。「用你們的力量幫我——將所有靈力注入我的塵埃之中！」
+        <p>蘇清雪和趙明遠雖然不明白葉塵的意圖，但還是毫不猶豫地照做。他們將手中的靈力全部湧出，藍色和金色的光芒匯聚成兩道光柱，直撲葉塵而去。</p>
+        <p>葉塵閉上眼睛，讓塵埃之力與這兩股能量產生共鳴。他能感覺到灰色的塵埃正在吸收藍色和金色的能量，逐漸變得更加明亮、更加強大。</p>
+        「這就是塵埃的奧義——包容萬物。」葉塵睜開眼睛，灰色瞳孔中閃爍著前所未有的光芒。「不是抵擋——而是融合！」
+        <p>他雙手向前揮出，灰色的塵埃之力不再是單一的防護罩——而是化作了無數細小的塵埃顆粒，如同風暴般向四面八方席捲而去。這些塵埃顆粒在接觸到黑色鎖鏈的瞬間，開始吸收其中的暗淵之力，將其轉化為自己的能量。</p>
+        <p>幽影尊者臉色大變：「這不可能——塵埃怎麼可能吞噬暗淵之力？」</p>
+        <p>葉塵沒有回答。他繼續維持著塵埃奧義的運轉——灰色的光芒逐漸增強，將整個地下宮殿籠罩在一片灰白色的霧氣之中。</p>
+        <p>「塵埃風暴！」葉塵低喝一聲，雙手合十，然後猛地分開。灰色的塵埃之力如同颶風般席捲整個地下宮殿，將所有黑色鎖鏈全部吞噬。</p>
+        <p>幽影尊者被塵埃風暴擊中，身體劇烈震動，黑色的血液從口中噴出。他勉強穩住身形，眼中閃過一絲驚恐：「你……你到底是誰？」</p>
+        <p>葉塵沒有回答——他只是靜靜地看著對方，灰色眼眸中閃爍著堅定的光芒。他知道這場戰鬥還沒有結束——真正的挑戰才剛剛開始。</p>
+        <p>但這個時候不是繼續戰鬥的時候——他們必須盡快拿到第三把鑰匙然後撤離。</p>
+        <p>葉塵轉身走向石台，伸出手拿起第三把鑰匙。黑色的光芒在手中閃爍，散發著一股古老而危險的能量波動。他能感覺到那股力量中蘊含著關於萬古塵源第九層的線索——那是他尋找已久的答案。</p>
+        「我們快走！」葉塵大喊一聲。「幽影尊者不會善罷甘休——我們必須盡快離開這裡！」
+        <p>三人開始沿著來時的階梯向上奔跑。時間之力正在逐漸增強——空氣變得越來越濃稠，彷彿有一層無形的薄膜包裹著他們。但時空凝膠的保護膜發揮了作用——他們沒有受到時間之力的侵蝕。</p>
+        <p>不知跑了多久，三人終於來到了地下宮殿的入口。石門已經打開——他們成功逃離了暗淵閣總部的深處。</p>
+        <p>葉塵站在洞口，回頭望向那片黑暗。他能感覺到幽影尊者的怒火正在逐漸增強——但那股怒火無法阻止他前進的步伐。</p>
+        「我們成功了。」蘇清雪說道，眼中閃過一絲喜悅。「我們拿到了第三把鑰匙。」
+        <p>趙明遠也點頭同意：「是的——但這場戰鬥還沒有結束。幽影尊者一定會在暗處等待著我們。」</p>
+        <p>葉塵沒有回答——他只是靜靜地看著前方，灰色眼眸中閃爍著堅定的光芒。他知道真正的挑戰才剛剛開始——萬古塵源的第九層、混沌之種的封印記錄、還有父親的下落——所有的一切都在等待著他去探索。</p>
+        「走吧。」葉塵說道。「我們的天機閣見——那裡才是我們下一個戰場。」
+        <p>三人邁步走出洞口，迎向黎明時分的晨光。新的一天即將開始——而他們的冒險也才剛剛展開。</p>
+        <p>陽光灑在他們的身上，帶來了一絲溫暖。葉塵深吸一口氣，感覺體內的第一世記憶正在逐漸穩定下來——那股力量雖然強大，但也需要時間來適應和掌控。</p>
+        「清雪。」葉塵突然說道。「你覺得我們接下來該怎麼辦？」
+        <p>蘇清雪想了想：「我認為我們應該先回到天機閣——那裡有足夠的資源和知識來幫助你研究第三把鑰匙。同時，我們也需要聯絡其他盟友——暗淵閣不會善罷甘休，我們必須做好充分的準備。」</p>
+        <p>趙明遠點頭同意：「我贊同清雪的意見。而且……我也需要時間來消化剛才的戰鬥經驗。那種三人協同作戰的感覺雖然強大，但也消耗了我大量的體力。」</p>
+        <p>葉塵微微一笑：「好——那就這麼決定。我們先回天機閣，然後再制定下一步計劃。」</p>
+        <p>他將第三把鑰匙收入懷中，與蘇清雪、趙明遠一起向著天機閣的方向走去。三人的身影在晨光中逐漸拉長——他們知道，前方的道路充滿了未知和挑戰，但只要三人同心，就沒有什麼能夠阻止他們前進的步伐。</p>
+        <p>風輕輕吹過，帶來了一絲花香。葉塵閉上眼睛，讓塵埃感知感受這一刻的寧靜——他知道這種平靜不會持續太久，但他希望能在戰鬥的間隙中，記住這些美好的瞬間。</p>
+        <p>因為在未來的某一天，當他面對更加強大的敵人、更加艱難的抉擇時，這些記憶將成為他繼續前進的力量源泉。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-109.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-111.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

@@ -3,182 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第一百零五章 · 暗淵閣的守衛 - 萬古塵埃</title>
-    <meta name="description" content="《萬古塵埃》第一百零五章 · 暗淵閣的守衛。免費閱讀完整章節，體驗輪迴重生修仙小說。">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <title>第105章 · 暗淵閣的守衛 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-105.html">
+    <link rel="prev" href="chapter-104.html">
+    <link rel="next" href="chapter-106.html">
     <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         body {
-            font-family: "Noto Serif TC", "Source Han Serif TC", "Source Han Serif HK", serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
-            color: #e0e0e0;
-            line-height: 1.8;
-        }
-        .container {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
         }
-        .chapter-header {
+        h1 {
+            font-size: 1.8em;
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
         }
-        .chapter-number {
-            font-size: 14px;
-            color: #888;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        .chapter-title {
-            font-size: 28px;
-            color: #fff;
-            font-weight: 400;
-            letter-spacing: 3px;
-        }
-        .chapter-content {
-            background: rgba(255,255,255,0.03);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-        .chapter-content p {
-            margin-bottom: 1.5em;
-            text-align: justify;
+        p {
             text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
             margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
         }
         .nav a {
-            color: #4a9eff;
+            color: var(--accent);
             text-decoration: none;
             padding: 10px 20px;
-            border-radius: 6px;
-            transition: all 0.3s;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
         }
         .nav a:hover {
-            background: rgba(74,158,255,0.1);
+            background: var(--accent);
+            color: white;
         }
-        .nav .home-link {
-            color: #888;
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .chapter-date {
-            font-size: 12px;
-            color: #666;
-            text-align: right;
-            margin-top: 20px;
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="chapter-header">
-            <div class="chapter-number">第 105 章</div>
-            <h1 class="chapter-title">暗淵閣的守衛</h1>
-        </div>
-        
-        <div class="chapter-content">
-            
-<p>地下宮殿中的空氣瞬間變得冰冷刺骨。葉塵站在石台前，雙手緊握成拳。他能感覺到體內的第一世記憶正在瘋狂運轉——灰色的塵埃之力從他全身毛孔中滲出，如同無數細小的觸角向四面八方延伸。</p>
-
-<p class="dialogue">「你終於來了。」幽影尊者的聲音在地下宮殿中迴盪，帶著一股令人窒息的威壓。「我等你很久了——葉塵。」</p>
-
-<p>葉塵沒有回答。他的塵埃感知正在全力運轉，探測著周圍的每一絲動靜。他能感覺到那三人的氣息全部都是聚元高期以上——而且其中一人散發著一股他從未感受過的能量波動。那股波動中蘊含著一種詭異的黑暗力量，彷彿能夠吞噬一切光明。</p>
-
-<p class="dialogue">「讓我來。」葉塵低聲說道。「你們在後面跟著我——不要離開我的視線範圍。」</p>
-
-<p>他深吸一口氣，將塵埃之力全部注入雙腳，然後邁步走向幽影尊者的分身。每一步都更加謹慎，每一絲塵埃感知都在全力運轉。他能感覺到空氣中的灰塵顆粒正在向他匯聚——這是第一世記憶中覺醒的能力，能夠操控周圍的一切灰塵微粒。</p>
-
-黑袍人看著葉塵的動作，眼中閃過一絲驚訝：「塵埃之力？沒想到你竟然還保留著這種古老的力量。」</p>
-
-<p>為首的黑袍人緩緩抬起手，一股黑色的能量波動從他掌心湧出——那股波動中蘊含著強大的暗淵之力，散發著令人窒息的威壓。葉塵的塵埃感知告訴他，這股能量中蘊含著強大的吞噬之力——只要被觸碰，就會將一切能量和生命吸入其中。</p>
-
-<p class="dialogue">「你們以為憑藉兩把鑰匙就能拿到第三把？」黑袍人微微一笑，笑容中帶著一絲輕蔑。「太天真了——那把鑰匙不是給你們的。」</p>
-
-蘇清雪擋在葉塵身前，手中靈力湧出，形成一道藍色的防護罩：「那就試試看——我們已經走到這裡了，絕不會空手而歸。」</p>
-
-<p>趙明遠也握緊手中的長劍，金色的靈力從體內湧出。他雖然緊張，但眼神中卻閃爍著堅定——他知道這次任務的重要性，也知道身後有葉塵和蘇清雪在支持他。</p>
-
-<p>葉塵站在兩人身後，灰色眼眸中閃爍著冷靜的光芒。他的塵埃感知正在全力運轉，探測著三人的能量流動軌跡。他能感覺到這三人的陣型非常嚴密——這是一個典型的三角防禦陣型，無論從哪個方向進攻都會同時受到三個方向的攻擊。</p>
-
-<p class="dialogue">「清雪，明遠。」葉塵低聲說道。「不要急於出手——讓我先試探一下他們的實力。」</p>
-
-<p>他邁步向前，灰色的塵埃之力從全身毛孔中滲出，形成一道圓形的防護罩。他能感覺到空氣中的塵埃顆粒正在向他匯聚——這是第一世記憶中覺醒的能力，能夠操控周圍的一切灰塵微粒。這些塵埃顆粒在葉塵的控制下逐漸凝聚成一股強大的力量，彷彿隨時都能爆發出來。</p>
-
-黑袍人看著葉塵的動作，眼中閃過一絲驚訝：「塵埃之力？沒想到你竟然還保留著這種古老的力量。」</p>
-
-<p>葉塵沒有回答——他知道這個時候任何言語都是多餘的。他的塵埃感知正在全力運轉，探測著三人的弱點和破綻。他相信只要找到機會，就一定能突破這三道防線。</p>
-
-<p class="dialogue">「既然你們這麼執迷不悟……」為首的黑袍人冷笑一聲。「那就別怪我不客氣了。」</p>
-
-<p>他抬起手，一股黑色的能量波動從他掌心湧出——那股波動中蘊含著強大的暗淵之力，散發著令人窒息的威壓。葉塵的塵埃感知告訴他，這股能量中蘊含著強大的吞噬之力——只要被觸碰，就會將一切能量和生命吸入其中。</p>
-
-<p class="dialogue">「小心！」葉塵大喊一聲。「這是暗淵之力的吞噬波動——不要讓它接觸到你們的身體！」</p>
-
-<p>蘇清雪和趙明遠立刻後退，藍色的靈力防護罩和金色的劍氣同時湧出，形成一道雙重防禦牆。黑色的能量撞擊在防禦牆上，發出陣陣刺耳的摩擦聲。</p>
-
-<p>葉塵趁機從側面發動攻擊——他雙手向前推出，灰色的塵埃之力化為一道圓形的能量波，直撲黑色鎖鏈而去。能量波與黑色鎖鏈碰撞的瞬間，發出陣陣刺耳的摩擦聲。灰色光芒逐漸吞噬了黑色能量，將所有鎖鏈全部擊碎。</p>
-
-幽影尊者的分身被能量波擊中，身體劇烈震動，黑色的血液從口中噴出。他勉強稳住身形，眼中閃過一絲驚恐：「你……你到底是誰？」</p>
-
-<p>葉塵沒有回答——他只是靜靜地看著對方，灰色眼眸中閃爍著堅定的光芒。他知道這場戰鬥還沒有結束——真正的挑戰才剛剛開始。</p>
-
-<p>地下宮殿中的空氣變得越來越凝重。幽影尊者的分身擦去嘴角的黑色血液，緩緩站直身體。他的雙眼中閃爍著詭異的光芒——那是一種混合了憤怒和讚賞的神情。</p>
-
-<p class="dialogue">「有意思。」他緩緩說道。「你確實比我想像中更加強大。但你也應該知道——暗淵之力並非如此輕易就能被擊敗的。」</p>
-
-<p>他抬起雙手，黑色的能量在他掌心匯聚成一個巨大的球體。那個球體不斷旋轉、膨脹，散發著令人窒息的黑暗氣息。葉塵的塵埃感知告訴他，這股力量比剛才更加強大——如果被他完全釋放出來，整個地下宮殿都可能被摧毀。</p>
-
-<p class="dialogue">「清雪！明遠！」葉塵大喊一聲。「準備好——他要發動全力攻擊了！」</p>
-
-<p>蘇清雪和趙明遠立刻點頭。他們分別將手放在地上，藍色和金色的靈力從體內湧出，匯聚成一道強大的能量場。這個能量場雖然不如幽影尊者的黑色球體龐大，但也足以支撐一陣時間。</p>
-
-<p>葉塵深吸一口氣，將塵埃之力全部注入雙掌。灰色的光芒從他指尖湧出，形成兩道巨大的能量柱——它們與蘇清雪的藍色靈力和趙明遠的金色劍氣產生了共鳴，三種力量融合在一起，形成了一道前所未有的強大屏障。</p>
-
-<p>黑色球體撞擊在屏障上，發出震耳欲聾的爆炸聲。整個地下宮殿劇烈震動，牆壁上的碎石不斷掉落。葉塵咬緊牙關，努力維持著屏障的穩定——他知道如果這道屏障被打破，他們所有人都將面臨致命的危險。</p>
-
-<p class="dialogue">「堅持住！」葉塵大喊一聲。「我們不能讓它突破！」</p>
-
-<p>蘇清雪和趙明遠也齊聲回應。三人的力量在葉塵的引導下逐漸增強，灰色的塵埃之力開始吞噬黑色的能量球體——就像潮水吞噬沙灘上的城堡一樣，黑色能量逐漸被灰色光芒所覆蓋。</p>
-
-幽影尊者的分身臉色大變：「這不可能——塵埃怎麼可能吞噬暗淵之力？」</p>
-
-<p>葉塵沒有回答。他閉上眼睛，讓塵埃感知全力運轉。他能感覺到混沌之種的力量正在與他的塵埃之力產生共鳴——那股力量強大而古老，彷彿能夠操控萬物的本源。</p>
-
-<p class="dialogue">「塵埃奧義·包容萬物。」葉塵低聲說道。灰色的光芒瞬間爆發，將整個地下宮殿籠罩在一片灰白色的霧氣之中。在那片霧氣中，黑色的能量逐漸消散——就像陽光下的霧氣一樣，無處遁形。</p>
-
-幽影尊者的分身發出陣陣痛苦的嘶吼。他的身體在灰色霧氣的侵蝕下逐漸崩解，黑色的血液從全身毛孔中湧出。他勉強稳住身形，眼中閃過一絲絕望：「你……你到底用了什麼力量？」</p>
-
-葉塵睜開眼睛，灰色瞳孔中閃爍著前所未有的光芒：「這是第一世記憶中的力量——塵埃之力。它不是單一的存在，而是萬物的基礎。只要能夠理解這一點，就能夠將任何力量融合在一起。」</p>
-
-幽影尊者的分身搖了搖頭：「你還不明白——暗淵之力並非如此輕易就能被擊敗的。真正的挑戰才剛剛開始……」</p>
-
-<p>他的身體完全消散在灰色霧氣中，只留下一陣詭異的回聲在地下宮殿中迴盪。葉塵站在原地，身體微微顫抖——剛才的戰鬥消耗了他大量的體力，但他能感覺到體內有一股新的力量正在湧動。</p>
-
-<p class="dialogue">「我們繼續前進。」葉塵說道。「第三把鑰匙還在前面等著我們。」</p>
-
-<p>蘇清雪和趙明遠點頭同意。三人互相扶持著，繼續向地下宮殿的深處走去。他們都知道——真正的挑戰才剛剛開始。</p>
-        </div>
-        
-        <div class="chapter-date">2026年4月22日</div>
-        
-        <div class="nav">
-            <a href="chapter-104.html" class="prev-chapter">← 上一章</a>
-            <a href="home.html" class="home-link">回首頁</a>
-            <a href="chapter-106.html" class="next-chapter">下一章 →</a>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
         </div>
     </div>
+    <h1>第105章 · 暗淵閣的守衛</h1>
+    <main>
+                <p>地下宮殿中的空氣瞬間變得冰冷刺骨。葉塵站在石台前，雙手緊握成拳。他能感覺到體內的第一世記憶正在瘋狂運轉——灰色的塵埃之力從他全身毛孔中滲出，如同無數細小的觸角向四面八方延伸。</p>
+        「你終於來了。」幽影尊者的聲音在地下宮殿中迴盪，帶著一股令人窒息的威壓。「我等你很久了——葉塵。」
+        <p>葉塵沒有回答。他的塵埃感知正在全力運轉，探測著周圍的每一絲動靜。他能感覺到那三人的氣息全部都是聚元高期以上——而且其中一人散發著一股他從未感受過的能量波動。那股波動中蘊含著一種詭異的黑暗力量，彷彿能夠吞噬一切光明。</p>
+        「讓我來。」葉塵低聲說道。「你們在後面跟著我——不要離開我的視線範圍。」
+        <p>他深吸一口氣，將塵埃之力全部注入雙腳，然後邁步走向幽影尊者的分身。每一步都更加謹慎，每一絲塵埃感知都在全力運轉。他能感覺到空氣中的灰塵顆粒正在向他匯聚——這是第一世記憶中覺醒的能力，能夠操控周圍的一切灰塵微粒。</p>
+        <p>黑袍人看著葉塵的動作，眼中閃過一絲驚訝：「塵埃之力？沒想到你竟然還保留著這種古老的力量。」</p>
+        <p>為首的黑袍人緩緩抬起手，一股黑色的能量波動從他掌心湧出——那股波動中蘊含著強大的暗淵之力，散發著令人窒息的威壓。葉塵的塵埃感知告訴他，這股能量中蘊含著強大的吞噬之力——只要被觸碰，就會將一切能量和生命吸入其中。</p>
+        「你們以為憑藉兩把鑰匙就能拿到第三把？」黑袍人微微一笑，笑容中帶著一絲輕蔑。「太天真了——那把鑰匙不是給你們的。」
+        <p>蘇清雪擋在葉塵身前，手中靈力湧出，形成一道藍色的防護罩：「那就試試看——我們已經走到這裡了，絕不會空手而歸。」</p>
+        <p>趙明遠也握緊手中的長劍，金色的靈力從體內湧出。他雖然緊張，但眼神中卻閃爍著堅定——他知道這次任務的重要性，也知道身後有葉塵和蘇清雪在支持他。</p>
+        <p>葉塵站在兩人身後，灰色眼眸中閃爍著冷靜的光芒。他的塵埃感知正在全力運轉，探測著三人的能量流動軌跡。他能感覺到這三人的陣型非常嚴密——這是一個典型的三角防禦陣型，無論從哪個方向進攻都會同時受到三個方向的攻擊。</p>
+        「清雪，明遠。」葉塵低聲說道。「不要急於出手——讓我先試探一下他們的實力。」
+        <p>他邁步向前，灰色的塵埃之力從全身毛孔中滲出，形成一道圓形的防護罩。他能感覺到空氣中的塵埃顆粒正在向他匯聚——這是第一世記憶中覺醒的能力，能夠操控周圍的一切灰塵微粒。這些塵埃顆粒在葉塵的控制下逐漸凝聚成一股強大的力量，彷彿隨時都能爆發出來。</p>
+        <p>黑袍人看著葉塵的動作，眼中閃過一絲驚訝：「塵埃之力？沒想到你竟然還保留著這種古老的力量。」</p>
+        <p>葉塵沒有回答——他知道這個時候任何言語都是多餘的。他的塵埃感知正在全力運轉，探測著三人的弱點和破綻。他相信只要找到機會，就一定能突破這三道防線。</p>
+        「既然你們這麼執迷不悟……」為首的黑袍人冷笑一聲。「那就別怪我不客氣了。」
+        <p>他抬起手，一股黑色的能量波動從他掌心湧出——那股波動中蘊含著強大的暗淵之力，散發著令人窒息的威壓。葉塵的塵埃感知告訴他，這股能量中蘊含著強大的吞噬之力——只要被觸碰，就會將一切能量和生命吸入其中。</p>
+        「小心！」葉塵大喊一聲。「這是暗淵之力的吞噬波動——不要讓它接觸到你們的身體！」
+        <p>蘇清雪和趙明遠立刻後退，藍色的靈力防護罩和金色的劍氣同時湧出，形成一道雙重防禦牆。黑色的能量撞擊在防禦牆上，發出陣陣刺耳的摩擦聲。</p>
+        <p>葉塵趁機從側面發動攻擊——他雙手向前推出，灰色的塵埃之力化為一道圓形的能量波，直撲黑色鎖鏈而去。能量波與黑色鎖鏈碰撞的瞬間，發出陣陣刺耳的摩擦聲。灰色光芒逐漸吞噬了黑色能量，將所有鎖鏈全部擊碎。</p>
+        <p>幽影尊者的分身被能量波擊中，身體劇烈震動，黑色的血液從口中噴出。他勉強穩住身形，眼中閃過一絲驚恐：「你……你到底是誰？」</p>
+        <p>葉塵沒有回答——他只是靜靜地看著對方，灰色眼眸中閃爍著堅定的光芒。他知道這場戰鬥還沒有結束——真正的挑戰才剛剛開始。</p>
+        <p>地下宮殿中的空氣變得越來越凝重。幽影尊者的分身擦去嘴角的黑色血液，緩緩站直身體。他的雙眼中閃爍著詭異的光芒——那是一種混合了憤怒和讚賞的神情。</p>
+        「有意思。」他緩緩說道。「你確實比我想像中更加強大。但你也應該知道——暗淵之力並非如此輕易就能被擊敗的。」
+        <p>他抬起雙手，黑色的能量在他掌心匯聚成一個巨大的球體。那個球體不斷旋轉、膨脹，散發著令人窒息的黑暗氣息。葉塵的塵埃感知告訴他，這股力量比剛才更加強大——如果被他完全釋放出來，整個地下宮殿都可能被摧毀。</p>
+        「清雪！明遠！」葉塵大喊一聲。「準備好——他要發動全力攻擊了！」
+        <p>蘇清雪和趙明遠立刻點頭。他們分別將手放在地上，藍色和金色的靈力從體內湧出，匯聚成一道強大的能量場。這個能量場雖然不如幽影尊者的黑色球體龐大，但也足以支撐一陣時間。</p>
+        <p>葉塵深吸一口氣，將塵埃之力全部注入雙掌。灰色的光芒從他指尖湧出，形成兩道巨大的能量柱——它們與蘇清雪的藍色靈力和趙明遠的金色劍氣產生了共鳴，三種力量融合在一起，形成了一道前所未有的強大屏障。</p>
+        <p>黑色球體撞擊在屏障上，發出震耳欲聾的爆炸聲。整個地下宮殿劇烈震動，牆壁上的碎石不斷掉落。葉塵咬緊牙關，努力維持著屏障的穩定——他知道如果這道屏障被打破，他們所有人都將面臨致命的危險。</p>
+        「堅持住！」葉塵大喊一聲。「我們不能讓它突破！」
+        <p>蘇清雪和趙明遠也齊聲回應。三人的力量在葉塵的引導下逐漸增強，灰色的塵埃之力開始吞噬黑色的能量球體——就像潮水吞噬沙灘上的城堡一樣，黑色能量逐漸被灰色光芒所覆蓋。</p>
+        <p>幽影尊者的分身臉色大變：「這不可能——塵埃怎麼可能吞噬暗淵之力？」</p>
+        <p>葉塵沒有回答。他閉上眼睛，讓塵埃感知全力運轉。他能感覺到混沌之種的力量正在與他的塵埃之力產生共鳴——那股力量強大而古老，彷彿能夠操控萬物的本源。</p>
+        <p>「塵埃奧義·包容萬物。」葉塵低聲說道。灰色的光芒瞬間爆發，將整個地下宮殿籠罩在一片灰白色的霧氣之中。在那片霧氣中，黑色的能量逐漸消散——就像陽光下的霧氣一樣，無處遁形。</p>
+        <p>幽影尊者的分身發出陣陣痛苦的嘶吼。他的身體在灰色霧氣的侵蝕下逐漸崩解，黑色的血液從全身毛孔中湧出。他勉強穩住身形，眼中閃過一絲絕望：「你……你到底用了什麼力量？」</p>
+        <p>葉塵睜開眼睛，灰色瞳孔中閃爍著前所未有的光芒：「這是第一世記憶中的力量——塵埃之力。它不是單一的存在，而是萬物的基礎。只要能夠理解這一點，就能夠將任何力量融合在一起。」</p>
+        <p>幽影尊者的分身搖了搖頭：「你還不明白——暗淵之力並非如此輕易就能被擊敗的。真正的挑戰才剛剛開始……」</p>
+        <p>他的身體完全消散在灰色霧氣中，只留下一陣詭異的回聲在地下宮殿中迴盪。葉塵站在原地，身體微微顫抖——剛才的戰鬥消耗了他大量的體力，但他能感覺到體內有一股新的力量正在湧動。</p>
+        「我們繼續前進。」葉塵說道。「第三把鑰匙還在前面等著我們。」
+        <p>蘇清雪和趙明遠點頭同意。三人互相扶持著，繼續向地下宮殿的深處走去。他們都知道——真正的挑戰才剛剛開始。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-104.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-106.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

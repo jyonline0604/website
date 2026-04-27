@@ -25,8 +25,8 @@ def get_chapter_info():
                 with open(filepath, 'r', encoding='utf-8') as f:
                     content = f.read(2000)  # 只讀前2000字節找標題
                     
-                    # 找標題
-                    title_match = re.search(r'<title>(第\d+章：.*?)</title>', content)
+                    # 找標題（匹配 · 或 ： 或 : 作為分隔符）
+                    title_match = re.search(r'<title>(第\d+章[：:·].*?) - ', content)
                     if title_match:
                         title = title_match.group(1)
                     else:
@@ -76,23 +76,24 @@ def get_chapter_excerpt(filename):
             content = f.read(5000)  # 讀前5000字節
             
             # 找正文開始
-            body_start = content.find('<div class="chapter-content">')
+            body_start = content.find('<main>')
             if body_start != -1:
-                # 找正文內容
-                body_text = content[body_start:body_start+2000]
-                # 移除HTML標籤
-                import re
-                clean_text = re.sub(r'<[^>]+>', ' ', body_text)
-                clean_text = re.sub(r'\s+', ' ', clean_text).strip()
-                
-                # 取前100字作為摘要
-                if len(clean_text) > 100:
-                    return clean_text[:100] + "..."
-                return clean_text
+                # 找正文內容（到 </main> 之前）
+                body_end = content.find('</main>', body_start)
+                if body_end != -1:
+                    body_text = content[body_start:body_end]
+                    # 移除HTML標籤
+                    clean_text = re.sub(r'<[^>]+>', ' ', body_text)
+                    clean_text = re.sub(r'\s+', ' ', clean_text).strip()
+                    
+                    # 取前100字作為摘要
+                    if len(clean_text) > 100:
+                        return clean_text[:100] + "..."
+                    return clean_text
     except:
         pass
     
-    return "林塵的修真科技之旅繼續展開..."
+    return "點擊閱讀完整章節..."
 
 def update_chapters_html(chapters):
     """更新章節目錄 - 使用簡化版更新"""

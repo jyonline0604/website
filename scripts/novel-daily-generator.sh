@@ -42,11 +42,15 @@ if [ $EXIT_CODE -eq 0 ]; then
         echo "[$(date '+%Y-%m-%d %H:%M:%S')] 更新作者頁面和統計數字..." >> "$LOG_FILE"
         python3 "$WORKSPACE/scripts/update_author_stats.py" >> "$LOG_FILE" 2>&1
         
+        # 更新章節數量統計（author.html, home.html, index.html）
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] 更新章節數量統計..." >> "$LOG_FILE"
+        python3 "$WORKSPACE/scripts/update_chapter_counts.py" >> "$LOG_FILE" 2>&1
+        
         # 如果有更新，再次提交
         cd "$NOVEL_DIR" || exit 1
-        if git status --porcelain | grep -q "author.html\|av-novels.html"; then
+        if git status --porcelain | grep -q "author.html\|av-novels.html\|home.html\|index.html"; then
             echo "[$(date '+%Y-%m-%d %H:%M:%S')] 提交更新的統計數字..." >> "$LOG_FILE"
-            git add author.html av-novels.html >> "$LOG_FILE" 2>&1
+            git add author.html av-novels.html home.html index.html >> "$LOG_FILE" 2>&1
             git commit -m "docs: update chapter statistics" >> "$LOG_FILE" 2>&1
             git push origin main >> "$LOG_FILE" 2>&1
             echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✅ 已更新統計數字" >> "$LOG_FILE"

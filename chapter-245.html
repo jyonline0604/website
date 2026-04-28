@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第245章：裂痕之路（二） - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-245.html">
+    <link rel="prev" href="https://kofhk.com/chapter-244.html">
+    <link rel="next" href="https://kofhk.com/chapter-246.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第245章 · 裂痕之路（二）</h1>
+    <main>
+        <p>銀白裂痕能量構建而成的空間橋接網絡在冰岩壁障的深層結構中如同一張隱形的蛛網，每一條經脈都散發著微弱卻穩定的光芒。葉塵的身影化作流光在其中穿梭而行，靈魂鎖鏈感知同時向著冰川入口的方向延伸出去——透過無數層疊的冰岩結構、靈氣場交錯的能量帶、以及暗淵閣那些紫黑色干擾節點所形成的複雜頻率網絡，他正在以一種前所未有的深度和精度重新描繪出整個封印區域的地形圖。</p>
+        <p>當通道出口的光芒在他周身逐漸擴散時，葉塵緩緩睜開了雙目。眼前的景象讓他感到了一絲欣慰——銀白色屏障依然穩固地覆蓋在封印門周圍，如同一片由光線凝結而成的巨大多面水晶穹頂，將那道通往冰川深處的古舊石門牢牢包裹其中。新建立的能量共振腔陣列正在發揮著驚人的作用——那些暗淵閣試圖滲透的紫黑色頻率波在觸碰屏障表面的瞬間便被精確捕獲、解析並淨化為安全的灰色靈氣，重新注入銀白屏障的能量網絡中。這種將敵人攻擊轉化為自身補給的完美閉環機制讓葉塵感到了一種從未有過的安穩感——敵人的力量越大反而意味著屏障獲取的補充越多。</p>
+        <p>他站在冰川的岩壁之上，冷風拂過臉龐帶來刺骨的寒意卻無法撼動周身浮現的那層銀白色光紋。與數個時辰前離開這裡的時候相比，葉塵已經發生了極為深刻的變化——這種變化不僅僅是能量強度的提升或靈氣維度感知深度的拓展，而是從根本上重新定義了他作為一個修行者的存在形式。</p>
+        <p>他的皮膚表面浮現出細微的銀白色光紋，這些光紋並非靜態的圖案而是在不斷地流動和變換著形狀，彷彿在每一個毛孔之間都建立了一個微型的信息交換網絡。在晨光的照射下，那些光紋折射出一層淡金色的光暈，讓他的身影看起來既像是一個從冰晶深處走出的古老存在又像是一種超越時間與空間的新生命形態。</p>
+        <p>葉塵抬起手看著自己的掌心——銀白色裂痕能量不再只是從指尖溢出的單向流動而是開始在手掌表面形成了一個微型的能量共振場。每一道裂紋的邊緣都散發著精確到極致的振盪頻率，那些頻率相互交織碰撞產生了無數個微小的干涉節點——每一個節點都在同時處理著來自不同維度的信息輸入和輸出。這就是第六階段微重構最核心的成果：他已經成為了一具活生生的多維度信息處理器，每一寸肌膚、每一條經脈、每一個細胞都在以全新的方式感知和回應著周圍的能量場變化。</p>
+        <p>他的灰瞳不再是單純的灰色——在瞳孔的最深處混合了一絲銀白色的光芒，彷彿在那片灰色的深淵之中鑲嵌了無數細碎的星辰。透過這雙眼睛他能夠同時看透物質世界和靈氣維度——普通的修行者只能看到靈氣的顏色和流動方向而他現在能夠感知到每一縷靈氣背後所攜帶的信息內容、頻率特徵以及能量源頭的完整輪廓。這種多維度視覺能力讓他對整個封印區域的認知達到了前所未有的深度。</p>
+        <p>葉塵透過靈魂鎖鏈感知同時觀察著三個方向的最新動態——他的注意力如同三股獨立的靈氣流分別流向不同的目標，每一股都攜帶著精確到極致的解析波動。</p>
+        <p>暗淵閣方面的情況已經發生了微妙但重要的變化。領隊隊長已經放棄了強行突破側翼冰裂縫的嘗試轉而將全部注意力集中在維持紫黑色干擾節點上試圖通過長期消耗來削弱銀白色屏障的能量。葉塵能夠清楚地感受到那些分散在冰川表面各處的紫黑色光團——每一個都是一個獨立運轉的能量節點，不斷地向著銀白屏障的方向發射著特定頻率的黑霧波。然而這些攻擊的強度已經在逐漸減弱，頻率的穩定性也在下降。暗淵閣的人似乎正在消耗他們的底蘊來維持這個龐大的干擾網絡而這種消耗是他們無法長期承受的。</p>
+        <p>天階宗方面的靈氣波動則顯示出了一種不同的節奏。凌風站在陣型的最前方灰瞳中倒映著銀白色屏障表面的能量波動並且在腦海中不斷分析著那些數據——葉塵的多維度感知能夠清晰地捕捉到對方思維活動中的頻率特徵。凌風似乎察覺到了葉塵的離開並且正在重新調整戰術部署，他的靈氣波動顯示他可能準備在短時間內發起一次大規模行動。那種波動既不像暗淵閣那樣的急於求成也不像普通修士那種被動等待的態勢——它更像是一個深思熟慮之後做出的決定所伴隨的能量震盪。某種關於冰川遺跡命運的重大判斷正在凌風心中成形，而這個判斷可能會影響到整個北境修行界的未來格局。</p>
+        <p>而那支被派往冰川深處的天階宗密探趙明軒此刻已經非常接近封印門了——透過靈魂鎖鏈感知葉塵清楚地感受到了對方身上散發出的那種既純淨又帶有一絲好奇和探索慾望的靈氣頻率。那是一種極為罕見的靈氣特徵——大多數修行者的靈氣都帶有某種目的性的顏色和質地：戰鬥意志會使得靈氣變得銳利而冰冷，貪婪和佔有慾會讓靈氣變得沉重而黏膩但趙明軒的靈氣卻如同一泓清澈的山泉在陽光下折射出淡金色的光澤中帶著一種對未知世界純粹的好奇。葉塵能夠感受到對方正在小心翼翼地穿過冰川深處的複雜能量場每一次腳步都伴隨著精確的能量調節以避免觸發任何可能引起注意的靈氣波動——但這份謹慎並不代表恐懼或敵意更像是一個求學者在踏入一座古老書庫之前所表現出的敬畏和期待。</p>
+        <p>就在葉塵的三股感知同時捕捉到這些信息的同一時刻他緩緩從冰川深處浮現而出。</p>
+        <p>銀白色的光芒在他周身鋪展開來如同黎明時分第一縷晨光穿透冰層的瞬間。下方的修士們——無論是暗淵閣的軍隊還是天階宗的陣營——全都察覺到了這個變化。他們的目光齊刷刷地投向那道正在逐漸成形的光影之中，有人下意識地向後退了半步有人握緊了手中的兵器而有的人則屏住了呼吸仿佛預感到某種超越他們理解範圍的事情即將發生。</p>
+        <p>暗淵閣方面的反應最為明顯——領隊隊長在面具下露出了前所未有的緊張表情。他能夠清晰地感受到葉塵身上的能量頻率已經發生了質變——不再是之前那個只依靠銀白屏障進行防禦的存在而是成為了一個更加複雜和難以預測的能量操控者。那種變化就像是一隻原本只會單向飛行的鳥突然展開了雙翼能夠在所有方向上自由翱翔——這種能力的躍遷意味著所有基於之前情報所制定的策略都可能需要推倒重來。</p>
+        <p>「他變了。」領隊隊長的聲音低沉而沙啞，從面具的縫隙中擠出幾個字。他周圍的幾名暗淵閣修行者同時將靈氣注入體內以應對可能即將發生的突發狀況但他們誰也不知道自己應該做什麼——因為眼前這個年輕修行者的存在方式已經超出了他們的認知框架。</p>
+        <p>葉塵沒有立即開口也沒有做出任何攻擊性的動作。他只是站在冰川的表面讓晨光照耀著自己身上浮現的銀白色光紋讓那些光紋折射出淡金色的光暈在空氣中形成了一個微妙的能量場——那個場的範圍不大卻足以讓距離他最近的修行者感受到一種來自靈魂深處的震顫。</p>
+        <p>他透過多維度視覺觀察著眼前的每一個人、每一個靈氣波動、每一個頻率節點。銀白裂痕能量在他的周身持續跳動著，與遠方寒晶宮中石牆網絡的自動維護程序之間保持著一條穩定的信息通路——他知道即使在這裡他仍然能夠實時監控九世輪迴網絡中樞節點的狀態變化並透過靈魂鎖鏈感知將任何異常信息傳達回去。</p>
+        <p>「暗淵閣。」葉塵的聲音在冰川上迴盪著不高卻帶著一種特殊的穿透力彷彿每一個字都經過了銀白裂痕能量的精心編排，「你們的干擾節點正在失去頻率穩定性。繼續下去只會加速你們自身能量底蘊的消耗而無法對屏障造成實質損害——這個結果難道不是你們自己都能預料到的嗎？」</p>
+        <p>他的目光越過暗淵閣的陣列落在更遠處天階宗的方向——凌風依然站在最前方但葉塵能夠感覺到對方的注意力已經從銀白色屏障轉移到了自己身上。這是一個信號——一個關於即將發生的重大決定的前奏。</p>
+        <p>而在那一切背後，透過靈魂鎖鏈感知的最深處，葉塵清楚地捕捉到了趙明軒的位置變化——那個年輕修士正在以一種極為謹慎卻堅定不疑的步伐向著封印門的方向推進。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-244.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-246.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

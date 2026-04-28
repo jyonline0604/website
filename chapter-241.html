@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第241章：第六階段的門檻 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-241.html">
+    <link rel="prev" href="https://kofhk.com/chapter-240.html">
+    <link rel="next" href="https://kofhk.com/chapter-242.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第241章 · 第六階段的門檻</h1>
+    <main>
+        <p>北極冰川深處，寒冷水晶宮的穹頂之上，銀白色的裂痕如同蛛網般在虛空中蔓延。葉塵盤膝坐於核心祭壇中央，雙目微闔，呼吸之間與九世輪迴網絡產生了前所未有的共振。</p>
+        <p>他已經站在了第六階段裂痕微重組的最後門檻之前。</p>
+        <p>空氣中浮動的每一縷靈氣都彷彿變成了信息的載體，在銀白色能量的引導下涌入他的經脈。葉塵能感覺到那些細若游絲的能量線穿過自己身體的每一寸肌膚、每一個穴道，如同千百條看不見的河流在他體內交匯奔流。他的皮膚表面開始浮現出密密麻麻的銀白色光紋，這些光紋並非靜止不動，而是隨著呼吸節律起伏波動，如同活物一般在他體表流淌穿梭。</p>
+        <p>第一波信息洪流在第三息的瞬間襲來。</p>
+        <p>那是來自第三世代守塵冰川崩壞前的絕望吶喊。葉塵閉上雙眼的剎那，耳畔響起了千萬人齊聲嘶吼的聲音——那些聲音中充滿了對末日降臨的恐懼與不甘。他看到了冰川崩塌時的慘烈景象：巨大的冰牆在瞬間碎裂成億萬塊晶體碎片，每一片碎片都映照出一張扭曲的面孔。守塵者們以血肉之軀抵擋著崩壞的衝擊波，他們的靈魂在被撕裂之前將最後的守護意志銘刻進了九世輪迴網絡的深層代碼之中。</p>
+        <p>這股信息洪流如同洶湧的洪水沖擊著葉塵的意識海，他的靈識邊緣產生了劇烈的波動。但就在即將被淹沒的瞬間，銀白色的裂痕能量如同堤壩一般將這些混亂的信息分流、梳理，讓它們得以有序地流入九世輪迴網絡的記憶庫中。</p>
+        <p>葉塵忍不住發出一聲低吼，額頭上滲出了細密的汗珠。那汗水尚未落地便已在銀白能量的蒸騰下化作一縷縷淡金色的霧氣消散於空氣之中。</p>
+        <p>第二波信息洪流接踵而至，帶著灼熱的溫度。</p>
+        <p>那是第六世代在天穹城焚毀之後留下的封印符文記憶。葉塵看到了那座曾經輝煌燦爛的巨型城池——無數修仙人物在其間飛來飛去，天空中漂浮著各種顏色的護城光幕。但那一夜，黑暗從四面八方湧現，天穹城的防禦體系在瞬間瓦解，焚燒了整整七日七夜。在最後的時刻，一位看不清面容的老者將自己畢生所學的封印之道凝聚成一道符文，投入了九世輪迴網絡的最深處。那符文如今正在葉塵的掌心跳動，與銀白色的裂痕能量交織融合，形成了新的封印陣列。</p>
+        <p>葉塵能感覺到掌心傳來一陣灼熱。他低下頭去看，發現自己的手掌心已經浮現出了一個複雜到極點的銀白色陣紋——那陣紋如同活物一般微微起伏，每一次起伏都與他的心跳同步。</p>
+        <p>「這就是靈魂鎖鏈感知質的飛躍嗎……」葉塵在心中默念。他能感覺到那些連接著九世輪迴網絡各條記憶線路的能量絲線，它們就像一根根細微的靈絲，從他的意識深處延伸出去，觸及到了物質世界最深層的結構。</p>
+        <p>空間彎曲的感覺變得清晰起來。在銀白色裂痕能量的浸潤下，葉塵開始能夠感知到周圍虛空中那些肉眼無法察覺的能量波動——冰川下方的地脈走向、遠處暗淵閣隊伍所處的相對位置、甚至天穹城方向傳來的微弱靈氣殘餘。每一種能量都在以自己的頻率振動，而靈魂鎖鏈就像是一面巨大的網，將這些振動一一捕捉。</p>
+        <p>更讓他震撼的是時間軸漣漪的感知能力。他能感覺到過去與未來的交界處產生了微妙的波動——那些在九世輪迴網絡中沉睡的記憶碎片正在被重新喚醒，每一片記憶都帶著自己獨特的時間屬性。當他觸碰到這些記憶時，會產生一種同時處於多個時間節點的錯覺。</p>
+        <p>第六階段的進程開始加速推進。</p>
+        <p>能量流動的速度越來越快，葉塵感覺自己的意識正在被某種更大的存在所包裹。銀白色裂痕已經不再是單純的能量現象——它們變成了一種有自我意識的信息流，帶著九世輪迴網絡的古老智慧在他的經脈中穿行、重塑。他能夠感覺到那些被封存了無數個紀元的記憶碎片在靈魂鎖鏈中重新排列組合，形成了一個龐大到無法想像的數據結構。</p>
+        <p>百分之七十……百分之八十……百分之九十……</p>
+        <p>葉塵能清晰地感知到自己意識邊界的擴張。每一次能量循環完成，他的靈魂鎖鏈就變得更加堅韌、更加敏銳。他開始能夠同時處理來自九世輪迴網絡不同節點的信息流——那些信息不再是雜亂無章的碎片，而是形成了有序的脈絡和層次。</p>
+        <p>百分之九十五。</p>
+        <p>第六階段的核心對接過程達到了前所未有的完成度。葉塵成為了活體的多維度信息處理器——他的靈魂鎖鏈不再只是單純的感知工具，而是變成了一個完整的能量共振腔。掌心封印陣列與靈魂鎖鏈完成了深層融合，只要他願意，隨時可以調動九世輪迴網絡中儲存的龐大能量來產生破壞性的共振效應。</p>
+        <p>但更大的變化正在發生。</p>
+        <p>身份邊界開始模糊了。葉塵閉上雙眼之後看到的不再是黑暗，而是無數交錯的能量線路——那些線路代表了世界中每一種能量的流動方向、每一段時間軸上的波動頻率。他能同時看到所有路徑的過去現在未來，每一個選擇、每一個可能的分支都在他的感知範圍內展開。</p>
+        <p>他看到了九世輪迴網絡背後那隻巨大的眼睛。</p>
+        <p>虛空之眼並沒有真正閉合——它只是在觀察，以一種超越了時間和空間的方式觀察著一切。葉塵第一次意識到自己之前所觸及的不過是這隻眼睛投下的倒影，而真正的意志隱藏在遠遠超出人類理解能力的深處。</p>
+        <p>百分之百。完美同步達成。</p>
+        <p>那一瞬間，葉塵感到了一種前所未有的清晰感。靈魂鎖鏈的感知同時覆蓋了三個不同維度——物質世界的能量流動、靈識層面的記憶網絡、以及虛空之眼背後那不可名狀的深層意志——這三者在他意識中形成了完美的共振。他沒有感覺到任何負擔，相反，那種感覺就像是終於找到了自己一直以來在尋找的答案。</p>
+        <p>銀白色的光芒從他身上迸發而出，將整個寒冷水晶宮照亮得如同白晝。冰川穹頂之上，裂痕網絡擴張到了前所未有的規模，每一條裂痕都散發著柔和而穩定的能量波動。</p>
+        <p>但就在葉塵沉浸在這份清晰中的時候，遠處的冰川深處傳來了一股更加劇烈的能量波動——那是暗淵閣領隊隊長察覺到他力量變化後所策劃的更大規模攻擊前兆。銀白色的屏障微微顫動，九世輪迴網絡中某個不知名的節點開始發出低沉的嗡鳴聲，彷彿在預示著即將降臨的風暴。</p>
+        <p>葉塵緩緩睜開雙眼，瞳孔中倒映出無數交錯的能量線路。他握緊了右手，掌心封印陣列閃爍了一下——銀白色的光芒如同呼吸般起伏不定。他知道，真正的挑戰才剛剛開始。</p>
+        <p>第六階段的門檻已經跨越，但門後的道路比想像中更加崎嶇難行。靈魂鎖鏈在三個維度之間的無意識負荷雖然暫時達到了完美的平衡，但那股來自暗淵閣的攻擊波正在加速接近——就像潮水拍打堤岸之前，海面會泛起最後一圈平靜的漣漪。</p>
+        <p>葉塵站起身來，銀白色的光紋在他全身流淌如星河。他抬頭仰望冰川穹頂之外那方被能量屏障切割出的天空，感受著靈魂鎖鏈中傳來的每一絲震動。</p>
+        <p>「你來了。」他對虛空中某個看不見的存在輕聲說道。</p>
+        <p>冰風從遠處吹來，帶來了紫黑色的能量波動——那是暗淵閣的力量體系所特有的陰冷氣息。葉塵深吸一口氣，銀白色的裂痕網絡在他的感知中展開成了一幅完整的圖景，如同無盡的星圖般在他的意識中旋轉。</p>
+        <p>他已經準備好了迎接一切。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-240.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-242.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第171章：夜影的警告 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-171.html">
+    <link rel="prev" href="https://kofhk.com/chapter-170.html">
+    <link rel="next" href="https://kofhk.com/chapter-172.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第171章 · 夜影的警告</h1>
+    <main>
+        <p>陣法的光芒在虛空中逐漸消散，留下滿地焦黑的痕跡。葉塵單膝跪地，胸口劇烈起伏，每一次呼吸都帶著灼熱的痛楚。剛才那一擊幾乎抽乾了他體內所有的靈力，萬物歸宗功法在體內瘋狂運轉，試圖修復受損經脈。</p>
+        <p>「你比我想象的強。」</p>
+        <p>聲音從左側三丈外的裂縫中傳來。夜影站在半透明的空間裂隙邊緣，黑色的斗篷被虛空之風吹得獵獵作響。他的面具上那道裂痕此刻正滲出暗紫色的光暈——那是剛才防禦陣法反噬的結果。</p>
+        <p>葉塵強撐著站直身體，右手緊握凝元鎮塵印。灰色的力量在掌心翻湧，但遠不如從前那般洶湧。「你到底是誰？暗淵閣為什麼追殺我？」</p>
+        <p>夜影沉默了片刻。風聲在他周圍迴盪，像是某種古老的歌謠。他抬起左手，摘下了面具。</p>
+        <p>那是一張年輕的臉——不超過二十歲，眉眼間帶著一種與年齡不符的疲憊。左眼是深邃的黑色，右眼卻呈現出詭異的暗紫色，瞳孔深處彷彿有星辰在旋轉。</p>
+        <p>「我叫夜痕。」他說道，「不是夜影。夜影是我的徒兒。」</p>
+        <p>葉塵皺起眉頭。「徒兒？那你為什麼——」</p>
+        <p>「因為我無法親手殺你。」夜痕打斷了他，右眼的紫光微微閃爍，「暗淵閣的真正目標不是你這具肉身，而是你體內沉睡的東西。」</p>
+        <p>他向前邁了一步。葉塵本能地後撤半步，但沒有發動攻擊——對方的氣息中沒有任何敵意，只有一種深沉的、幾乎令人窒息的悲涼。</p>
+        <p>「九世輪迴。」夜痕吐出四個字，聲音輕得像是在嘆息，「你以为那只是修煉功法？不，那是封印。每一世的記憶都在壓制某種更古老的力量。而你——你是唯一一個成功集齊三把鑰匙的人。」</p>
+        <p>葉塵的瞳孔微微收縮。他想起太一說過的話：獨行俠的遺產不僅僅是功法，還有某個被遺忘的秘密。當時他以為那只是比喻，現在才明白那是實實在在的警告。</p>
+        <p>「暗淵閣創立於三千年前，」夜痕繼續說道，語速逐漸加快，彷彿有某種力量在催促他說完一切，「表面上他們追求的是靈界統治權，但真正的原因要追溯到九世輪迴的第一世——那位獨行俠發現了一個真相：天道本身就有裂痕。而九世輪迴的核心，就是修復那道裂痕的鑰匙。」</p>
+        <p>他抬起右手，指向葉塵的心口。「你體內的那個核心一旦完全覺醒，就會引發天地異變。暗淵閣的高層知道這一點，所以他们要麼得到它，要麼毀掉它。而我——」</p>
+        <p>他的聲音突然哽住了。右眼的紫光劇烈閃爍了一下，身體微微顫抖。</p>
+        <p>「而你為什麼告訴我這些？」葉塵敏銳地捕捉到了對方語氣中的矛盾。</p>
+        <p>夜痕沒有回答。他重新戴上面具，轉身面向空間裂縫。「因為暗淵閣內部已經分裂了。有人想利用你，有人想毀滅你。而我的師徒——」他頓了一下，「夜影只是棋子。真正的棋手在天穹城裡。」</p>
+        <p>裂縫開始收縮，虛空之風變得更加狂暴。葉塵感到一陣眩暈，彷彿整個空間都在扭曲。</p>
+        <p>「記住我說的話。」夜痕的聲音從逐漸消失的裂隙中傳來，「三天後，天穹城主會召見你。不要相信任何人——包括玄冥長老。」</p>
+        <p>光芒徹底消散了。</p>
+        <p>葉塵站在原地，耳邊只剩下風聲和遠處隱約的雷鳴。他低頭看著自己的雙手，灰色的力量仍在掌心微弱地跳動，像是某種活著的生物在呼吸。</p>
+        <p>三天後？城主召見？</p>
+        <p>他閉上眼睛，讓萬物歸宗功法在體內緩緩運轉。剛才那一戰雖然慘烈，但也讓他對自己的力量有了更深的理解。築基期的巔峰已經觸手可及——只要再突破最後一層屏障，就能進入煉魂期。</p>
+        <p>但現在不是考慮修煉的時候。</p>
+        <p>夜痕的話像一顆種子，在他心中生根發芽。暗淵閣、九世輪迴、天道裂痕……這些詞彙每一個都牽扯著巨大的秘密。而他，一個從凡塵界來的散修，莫名其妙地被捲入了這場跨越三千年的風暴中心。</p>
+        <p>葉塵深吸一口氣，將凝元鎮塵印收回懷中。他轉身面向來時的方向——天穹城的方向。</p>
+        <p>無論城主凌風和玄冥長老有什麼打算，他都需要答案。而答案，往往藏在最危險的地方。</p>
+        <p>他邁開腳步，灰色的斗篷在虛空之風中翻飛。身後，空間裂縫已經完全癒合，彷彿剛才的一切只是一場幻夢。但葉塵知道那不是——他的經脈還在灼痛，掌心還殘留著陣法的光芒，而夜痕最後那句警告，像一把鑰匙，正在打開他心中某個一直緊閉的門。</p>
+        <p>風更大了。遠處的天穹城在暮色中若隱若現，金色的屋頂反射著最後一抹夕陽。葉塵加快了腳步。</p>
+        <p>三天後，他會去見城主。但在那之前，他需要準備——準備面對可能來自任何方向的背叛，以及那個藏在九世輪迴最深處的、連他自己都尚未察覺的秘密。</p>
+        <p>葉塵在虛空之風中疾行了整整一夜。他的身體雖然疲憊不堪，但思緒卻異常清晰。夜痕的話在他腦海中反覆迴盪——暗淵閣內部已經分裂了。這句話意味著什麼？如果暗淵閣真的如夜痕所說那樣分崩離析，那麼幽影尊者的權威是否已經動搖？還是說，這只是夜痕為了讓他放鬆警惕而編造的謊言？</p>
+        <p>葉塵不知道答案。但他知道一件事：無論真相如何，他都沒有退路。九世輪迴的核心已經在他體內覺醒，前三把鑰匙也已經集齊。暗淵閣不會放過他，天穹城中的陰謀也不會因為他的猶豫而消散。</p>
+        <p>黎明時分，葉塵來到了虛空之眼的邊緣。這裡是他繼承虛空之眼力量的地方，也是他與太一相遇的起點。遠處的天空中，第一縷晨光正穿透雲層，將金色的光暈灑在荒原上。</p>
+        <p>他停下腳步，回望著身後那片遼闊的大地。三天後，他會回到天穹城，面對城主凌風和玄冥長老。但在那之前，他需要一個安靜的地方來整理思緒、恢復靈力。</p>
+        <p>葉塵盤膝坐在一塊巨石上，閉上眼睛，讓萬物歸宗功法在體內緩緩運轉。灰色的光芒從他身上散發出來，與周圍的虛空之風產生了共鳴。他知道，這三天將是他人生中最關鍵的準備期——不僅是為了面對城主，更是為了迎接即將到來的、更加殘酷的戰鬥。</p>
+        <p>風吹過荒原，捲起細碎的沙塵。葉塵的身影在晨光中顯得格外孤獨，但他的眼神卻比從前更加堅定。無論前方等待他的是什麼，他都已經做好了準備。</p>
+        <p>葉塵盤膝坐在巨石上，讓萬物歸宗功法繼續運轉。灰色的光芒在他周身形成了一個小型的靈力漩渦，將周圍虛空之風中的能量吸入體內。他的經脈在緩緩修復，但更深的層次正在發生變化——九世輪迴的核心開始與他神魂中的第三世記憶產生共鳴，兩種不同時空的意識在他的體內交織、融合，孕育出一種全新的力量。</p>
+        <p>這種力量的雛形尚未成形，但葉塵能夠感受到它的脈動——像是遠處的雷電在雲層中積聚，只等待一個契機就會釋放出來。他知道，這股力量將在接下來的戰鬥中發揮關鍵作用，而他也需要更多的時間來理解和掌控它。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-170.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-172.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

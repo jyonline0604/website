@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第173章：靈魂之泉的考驗 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-173.html">
+    <link rel="prev" href="https://kofhk.com/chapter-172.html">
+    <link rel="next" href="https://kofhk.com/chapter-174.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第173章 · 靈魂之泉的考驗</h1>
+    <main>
+        <p>靈魂之泉位於天穹城西北方向三百里處的一片古老森林中。</p>
+        <p>葉塵花了兩天時間趕路。這兩天裡，他將趙明軒給出的影印令反覆研究了無數遍，試圖從那個眼睛火焰的符號中讀出更多資訊。但令牌本身沒有任何陣法保護，也沒有留下任何靈力痕跡——它就像一件普通的飾品，除了上面的符號外一無所有。</p>
+        <p>這反而讓葉塵更加警惕。如果幽影尊者真的在暗處佈局，為什麼會留下一個如此明顯的線索？除非……這是一個測試。或者，這是一個陷阱，而趙明軒本身就是誘餌的一部分。</p>
+        <p>森林中的空氣比天穹城中濕潤得多。高大的靈木遮天蔽日，樹幹上覆蓋著厚厚的青苔和發光的菌類。腳下的落葉層厚達半尺，踩上去發出細碎的沙沙聲。葉塵的腳步很輕——築基期的感知力讓他能夠察覺到周圍每一絲靈力的波動。</p>
+        <p>靈魂之泉的名氣在靈界並不大，但對於準備突破煉魂期的修士來說，這裡是必訪之地。傳說中，這座泉水是由一位上古大能留下的遺產，泉水中蘊含著純粹的靈魂之力，能夠幫助修士在突破時穩定神魂。</p>
+        <p>葉塵穿過最後一片樹林，眼前豁然開朗。</p>
+        <p>泉水位於一個天然形成的盆地中央，周圍環繞著七塊巨大的黑色岩石，每塊岩石上都刻滿了古老的符文。泉水本身不大，直徑約莫三丈，水色呈現出一種詭異的半透明藍色——像是將整片天空都裝進了水中。水面平靜無波，倒映著上方的樹冠和天空。</p>
+        <p>但葉塵敏銳地察覺到不對勁。</p>
+        <p>那股力量……他曾在虛空之眼的裂縫中感受過類似的氣息。黑暗、冰冷、帶著一種吞噬一切的慾望。它從泉水深處滲透出來，像是一根無形的觸手，輕輕撫摸著周圍的靈力場。</p>
+        <p>葉塵走到泉邊，蹲下身來。他將右手懸在水面上方一寸處，感受著那股力量的流動。藍色的泉水在他的靈力感知中呈現出一種扭曲的狀態——表面平靜如鏡，但深處卻有黑色的漩渦在緩緩旋轉。</p>
+        <p>「有人污染了這裡。」一個蒼老的聲音從身後傳來。</p>
+        <p>葉塵猛地轉身，右手已經握住了雲塵印。</p>
+        <p>一名身穿白色長袍的老者正站在十丈外的一棵靈樹下。他鬚髮皆白，面容慈祥，但雙眼中卻閃爍著銳利的光芒。最引人注目的是他的左手——那是一隻完全由靈力構成的半透明手掌，指尖不斷有細微的光點消散在空氣中。</p>
+        <p>「你是？」葉塵保持警惕。</p>
+        <p>老者微微一笑。「我是這裡的守護者，你可以叫我青木。」他邁步走向泉水，腳步輕盈得像是在飄浮，「靈魂之泉已經三百年沒有被污染過了。上一次發生這種事……還是幽影尊者親自出手的時候。」</p>
+        <p>葉塵的心沉了一下。「你知道幽影尊者？」</p>
+        <p>「整個靈界都知道他的名字。」青木在泉邊坐下，白色的長袍在草地上鋪開一片潔淨的色塊，「但他為什麼要污染靈魂之泉？這裡對暗淵閣沒有任何實際價值——除非……」</p>
+        <p>他轉頭看向葉塵，目光如炬。「除非他是為了你。靈魂之泉是突破煉魂期的最佳場所，而幽影尊者知道你在準備突破。他在用這種方式告訴你：如果你敢來這裡，就會死在這裡。」</p>
+        <p>葉塵沉默了片刻。他重新將手懸在水面上方，仔細感受那股黑暗力量的結構。與虛空之眼中的力量不同，這股污染更加精細、更加有條理——它不是粗暴的破壞，而是一種緩慢的侵蝕，像毒藥一樣滲透進泉水的每一寸靈力場中。</p>
+        <p>「我需要進入泉底。」葉塵突然說道。</p>
+        <p>青木皺起眉頭。「你瘋了？靈魂之泉的表面都已經被污染了，泉底的黑暗力量會瞬間撕裂你的神魂——」</p>
+        <p>「我有辦法。」葉塵打斷了他，目光堅定地盯著水面，「九世輪迴的核心對黑暗力量有天然的抗性。而且……我在虛空之眼裡學到了一些東西。」</p>
+        <p>他沒有解釋具體是什麼。有些秘密，連他自己都還沒有完全理解。</p>
+        <p>青木盯著他看了很久。最終，他嘆了口氣，從懷中取出一枚翠綠色的玉簡。「這是靈魂護盾的陣法圖紙。我把它傳授給你——只能維持一刻鐘。一刻鐘後，如果你沒有出來……」</p>
+        <p>「我會找到出來的。」葉塵接過玉簡，靈力注入後，圖紙上的符文浮現出來，逐一烙印在他的神魂之中。</p>
+        <p>他深吸一口氣，然後縱身躍入泉水中。</p>
+        <p>藍色的水在他周圍散開，冰冷刺骨。黑暗的力量立刻撲了上來，像無數隻無形的手試圖抓住他的四肢。葉塵咬緊牙關，讓九世輪迴的核心在體內運轉起來——灰色的光芒從他全身散發出來，與黑暗力量形成了一場无声的搏鬥。</p>
+        <p>他向下潛去。水面在他頭頂逐漸變遠，周圍的光線越來越暗。五丈、十丈、二十丈……泉水的深度超出了他的想象。</p>
+        <p>終於，他的腳觸到了泉底。</p>
+        <p>那裡有一塊黑色的石碑，半埋在淤泥之中。石碑表面刻滿了古老的文字，葉塵無法完全辨認，但他能感受到從石碑中散發出來的強大靈魂之力——那是被封存的記憶，屬於某個早已逝去的存在。</p>
+        <p>而那股污染泉水的黑暗力量，正試圖吞噬這座石碑。</p>
+        <p>葉塵伸出手，觸碰到了石碑的表面。</p>
+        <p>瞬間，大量的資訊涌入他的腦海。不是語言，不是圖像，而是一種純粹的情感——悲傷、憤怒、絕望，以及最後一絲不屈的希望。這些情感屬於第三世的自己。</p>
+        <p>記憶碎片開始覺醒。</p>
+        <p>泉水的底部並非完全黑暗。在葉塵觸碰石碑的那一刻，一股柔和的藍色光芒從石碑中散發出來，照亮了周圍的水域。葉塵感到自己的神魂正在被一種強大的力量包裹——那是第三世執事留下的靈魂之力，經過三百年的沉澱，已經變得更加精純和穩定。</p>
+        <p>他閉上眼睛，讓意識完全沉浸在這股力量之中。黑暗的力量試圖抵抗，但在九世輪迴核心的抗性面前，它們逐漸退縮、消散。葉塵感到自己的神魂正在擴張——一種前所未有的感知力從體內湧現出來，像是無數根無形的觸手伸向四面八方。</p>
+        <p>一刻鐘的時間即將過去。靈魂護盾的陣法效果開始減弱，葉塵感到一股劇烈的拉扯力從泉水上方傳來——青木正在將他拉出水面。但他沒有掙扎，而是讓那股力量帶著自己向上浮去。</p>
+        <p>當他的頭終於露出水面時，暴雨已經傾盆而下。雨水打在他的臉上、身上，帶來一陣陣刺骨的寒冷。但葉塵沒有在乎——他的神魂中充滿了第三世的記憶和靈魂鎖鏈的技巧，這些力量將成為他未來戰鬥中最強大的武器。</p>
+        <p>青木站在岸邊，白色的長袍被雨水打濕了一半。「你出來了。」他的表情中帶著難以置信的驚訝，「一刻鐘剛剛好。你的神魂居然沒有破裂……你是怎麼做到的？」</p>
+        <p>葉塵沒有回答。他爬上岸邊，跪在草地上，雙手顫抖著捧起一掬泉水。水從指縫間流走，但他能感受到體內發生的變化——第三世的記憶已經完全融入了他的意識中，靈魂鎖鏈的技巧像是一把新鑄造的武器，安靜地躺在他的神魂深處。</p>
+        <p>他抬起頭，看向遠方天穹城的方向。雨幕中，城市的輪廓若隱若現，金色的屋頂在雷電的映照下閃爍著冷冽的光芒。</p>
+        <p>幽影尊者……聯盟議會……那些藏在光明背後的黑暗，即將被他一一揭開。</p>
+        <p>葉塵站起身來，灰色的斗篷在風雨中獵獵作響。他的眼神比從前更加堅定——因為現在的他，不再只是獨行俠的繼承者，還是第三世執事遺志的延續者。</p>
+        <p>兩世的記憶在他體內交織，像是兩條河流匯入同一片海洋。而那片海洋深處，還有更多沉睡的力量等待覺醒。</p>
+        <p>雨越下越大，雷聲在遠處滾動。葉塵拉緊斗篷，邁開腳步向天穹城的方向走去。他知道，從今天起，他已經不再是那個需要依靠他人保護的散修——他是九世輪迴的核心持有者，是第三世執事遺志的繼承者，也是暗淵閣無法忽視的存在。</p>
+        <p>風雨中，他的身影逐漸消失在遠方，只留下靈魂之泉在暴雨中輕輕搖曳，藍色的水面倒映著天空中的雷電，像是某種古老的眼睛在緩緩睜開。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-172.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-174.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

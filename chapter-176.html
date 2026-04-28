@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第176章：追跡暗線 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-176.html">
+    <link rel="prev" href="https://kofhk.com/chapter-175.html">
+    <link rel="next" href="https://kofhk.com/chapter-177.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第176章 · 追跡暗線</h1>
+    <main>
+        <p>天穹城外的黑市坐落在一片被稱為「廢靈谷」的荒蕪地帶中。</p>
+        <p>葉塵花了整整一天時間追蹤趙明軒的蹤跡。從倉庫離開後，他沒有直接跟蹤對方——那樣太容易被察覺。相反，他在城主府周圍佈下了三層簡單的感知陣法，然後潛入趙明軒的住所，在他的衣櫃和書桌中留下了靈力追蹤符。這些符號本身沒有任何攻擊性，但一旦離開天穹城的範圍就會發出訊號。</p>
+        <p>訊號在傍晚時分出現了。</p>
+        <p>葉塵站在廢靈谷入口的一塊巨石上，俯瞰著眼前這片荒涼的景象。山谷兩側是高聳的灰色岩壁，岩壁上佈滿了古代採礦留下的坑洞和裂縫。谷底鋪滿了碎石和枯草，偶爾有幾株扭曲的靈木從石縫中探出頭來，枝幹上掛滿了各種破舊的旗幟和標記——那是黑市商販用來標識自己攤位的符號。</p>
+        <p>黑市的規模超出了葉塵的想象。數百個帳篷和簡陋的棚屋沿著谷底排列，形成了一條蜿蜒的街道。街道上人流如織——有身穿華服的富商、披戴斗篷的神秘人物、手持武器的雇佣兵，還有各種各樣的外族修士。空氣中瀰漫著香料、煙草和靈石粉末混合在一起的複雜氣味。</p>
+        <p>葉塵拉低斗篷的帽子，混入人群之中。他的目光在四周掃視——黑市是情報和走私者的聚集地，也是暗淵閣活動最頻繁的地區之一。趙明軒來這裡做什麼？交易？情報交換？還是……</p>
+        <p>「新來的？」</p>
+        <p>聲音從左側傳來。葉塵停下腳步，轉過身去。一名身穿紫色長袍的女子正站在一間帳篷前，雙手抱胸，目光上下打量著他。她看起來約莫二十出頭，容貌艷麗得近乎危險——黑色的長髮用一根銀色的髮簪束起，眼眸是罕见的深紫色，唇色鮮紅如血。最引人注目的是她的右手——那是一隻完全由靈力構成的半透明手套，指尖不斷有細微的紫色光點閃爍。</p>
+        <p>「我在找人。」葉塵平靜地回答，沒有被對方的外貌所迷惑。在黑市中，美貌往往是最危險的武器。</p>
+        <p>女子微微一笑。「找什麼人？黑市裡什麼都有——靈石、法器、情報、甚至人命。只要你付得起代價。」</p>
+        <p>她的聲音帶著一種特殊的韻律，像是某種古老的歌謠在迴盪。葉塵敏銳地察覺到，她說話時周圍的靈力場會出現微妙的波動——她在無意識地使用某種幻術來影響他人的情緒。</p>
+        <p>「一個男人，四十歲左右，青色長袍，左眉有一道疤痕。」葉塵描述道，同時暗中運轉萬物歸宗功法，抵禦對方可能施加的精神影響。</p>
+        <p>女子的表情微微變化。「趙執事？他半小時前提走了——帶著兩個手下，方向是谷底的深處。那裡是黑市的禁區，普通人不能進入。」</p>
+        <p>「為什麼？」葉塵追問。</p>
+        <p>女子沒有立即回答。她抬起右手，紫色的靈力手套在陽光下閃爍著詭異的光芒。「因為谷底深處住著一個人——一個知道太多秘密、所以必須活下來的人。」</p>
+        <p>她的目光變得深邃。「你叫什麼名字？」</p>
+        <p>「葉塵。」</p>
+        <p>聽到這個名字時，女子的瞳孔微微收縮了一瞬。然後她笑了——一種帶著複雜情緒的笑容，混合了驚訝、釋然和某種難以察覺的悲傷。</p>
+        <p>「原來是你。」她說，聲音輕得像是在嘆息，「我等你很久了。」</p>
+        <p>葉塵的警覺性瞬間提升到最高。「你認識我？」</p>
+        <p>女子沒有直接回答。她轉身走進帳篷，然後從裡面取出一枚玉簡，遞了過來。「這是趙明軒三天前在這裡購買的東西。他以為自己買的是情報，但實際上……」她頓了一下，「他買的是自己的死亡通知單。」</p>
+        <p>葉塵接過玉簡，靈力注入後，上面的文字浮現出來——那是一份暗淵閣的內部命令，署名是幽影尊者，內容是關於三天後城主宴會的行動計劃。與他在趙明軒倉庫中聽到的對話完全一致。</p>
+        <p>「你是誰？」葉塵再次問道，目光緊盯著對方。</p>
+        <p>女子深吸了一口氣，然後做了一個讓葉塵意想不到的動作——她摘下了那隻紫色的靈力手套。</p>
+        <p>手套脫落的瞬間，她的右手暴露了出來。那是一隻普通的、人類的手，但手掌上有一個鮮明的疤痕——形狀正是一只張開的眼睛，瞳孔深處有火焰在燃燒。</p>
+        <p>暗淵閣的影印令紋身。</p>
+        <p>「我叫月璃。」她說，聲音中帶著一種決絕的堅定，「曾經是暗淵閣的最高間諜之一。但三年前，我發現了一個真相——暗淵閣的真正目標不是靈界統治權，而是毀滅天道本身。從那以後，我就是叛徒了。」</p>
+        <p>她抬起眼睛，深紫色的眼眸直視著葉塵。「而現在，我需要你的幫助。」</p>
+        <p>月璃的帳篷內擺放著各種奇特的法器和小物件——有刻滿符文的銅鏡、裝滿發光粉末的玻璃瓶、以及一本封面已經破損的古籍。葉塵的目光在這些物品上掃過，同時腦海中飛速運轉——如果月璃真的是暗淵閣的前間諜，那麼她掌握的資訊將極其寶貴。</p>
+        <p>「你為什麼選擇幫我？」葉塵問道，目光緊盯著月璃的雙眼，試圖從中找到任何偽裝的痕迹。「暗淵閣的叛徒通常不會輕易相信外人。」</p>
+        <p>月璃微微一笑，笑容中帶著一種難以察覺的疲憊。「因為我曾經犯下了一個錯誤——一個導致無數無辜者死亡的錯誤。三年前，我奉命刺殺一位聯盟高層，但在最後一刻，我發現目標是一個完全不知情的人。他只是在調查暗淵閣的活動，卻被捲入了這場風暴。」</p>
+        <p>她的聲音開始顫抖。「我沒有下手。但我的同僚完成了任務——那位高層死在了回住所的路上。而那個人的死，直接導致了後續一系列的事件：靈魂之泉的污染、獨行俠遺產的流落、以及……」她頓了一下，「以及你體內九世輪迴核心的提前覺醒。」</p>
+        <p>葉塵感到一陣寒意。「你是說——我的命運從三年前就被人操控了？」</p>
+        <p>「不是操控，是推波助瀾。」月璃的聲音變得堅定，「暗淵閣一直在等待九世輪迴核心完全覺醒的時刻。他們需要四把鑰匙來打開封印，而你的存在本身就是計劃的一部分——一個他們沒有預料到的變數。」</p>
+        <p>她走向葉塵，在距離他一步遠的地方停下。「現在你有兩個選擇：相信我和合作，或者不相信我然後獨自面對暗淵閣。無論你選哪條路，我都不會阻止——但我會告訴你一件事。」</p>
+        <p>她的目光變得銳利如刀。「虛空之眼的裂縫正在擴大。如果不在七天內找到第四把鑰匙並重新封印裂縫，整個靈界都會被捲入虛空的吞噬中。到那時，不僅是暗淵閣的計劃會失敗——一切都會結束。」</p>
+        <p>帳篷外的風聲突然變大了。枯草在碎石間翻滾，遠處傳來隱約的雷鳴。葉塵抬頭看向天空——雲層正在快速聚集，形成了一個巨大的漩渦狀結構。</p>
+        <p>天氣在變化。不是自然的天氣變化，而是靈力場受到干擾的結果。虛空之眼的裂縫正在擴大，而這種擴散已經影響到了天穹城周圍的大氣環境。</p>
+        <p>「七天。」葉塵重複道，目光重新變得堅定，「我會找到第四把鑰匙，然後重新封印裂縫。但在那之前——」他看向月璃，「我需要你幫我進入聯盟議會的密室。第三世的記憶告訴我，那裡有一本記錄所有高層身份的冊子。如果我能拿到那本冊子，就能確認誰是暗淵閣的內應。」</p>
+        <p>月璃微微一笑。「我早就知道你會選這條路。」她從懷中取出一張摺疊的地圖，「這是聯盟議會密室的結構圖。三年前我曾經潛入過一次，但沒有找到正確的入口。現在……」她將地圖遞給葉塵，「我們一起找。」</p>
+        <p>葉塵接過地圖，展開看了一眼。上面的符文和陣法標記雖然古老，但第三世的記憶能夠幫助他解讀大部分內容。密室的入口隱藏在議會大廳的地板下方，需要三把鑰匙同時插入三個特定的位置才能開啟。</p>
+        <p>而他已經有了前三把。</p>
+        <p>「三天後的宴會之後。」葉塵說道，「幽影尊者會在宴會上發動攻擊。我會利用那個混亂時機潛入密室，拿到冊子。然後——」他收起地圖，目光投向遠方逐漸變暗的天空，「我們去找第四把鑰匙。」</p>
+        <p>月璃點點頭。「七天後，虛空之眼見。」</p>
+        <p>風更大了。帳篷在風中劇烈搖晃，碎石在地面上滾動。葉塵拉緊斗篷，準備離開。但在他轉身之前，月璃叫住了他。</p>
+        <p>「葉塵。」她的聲音在風中顯得有些模糊，「小心夜痕。他不是你的敵人——但他也不是完全的朋友。暗淵閣內部正在發生某種變化，而他的立場……還不清楚。」</p>
+        <p>葉塵停下腳步，沒有回頭。「謝謝提醒。」</p>
+        <p>他邁步走出帳篷，灰色的身影消失在廢靈谷的暮色中。月璃站在帳篷門口，看著他的背影逐漸消失，然後輕輕嘆了口氣。</p>
+        <p>深紫色的眼眸中閃爍著一絲複雜的光芒——那是希望與擔憂交織的情感。她知道接下來的七天將是決定整個靈界命運的關鍵時刻，而她，一個曾經的叛徒，現在成為了改變歷史的棋子之一。</p>
+        <p>風吹過廢靈谷，捲起漫天碎石。遠處的天空中，雲層漩渦正在緩慢旋轉，像是某種古老的眼睛在緩緩睜開。葉塵走在荒蕪的道路上，手中的地圖沉甸甸地压在掌心。他知道，從今天起，他已經不再是獨自一人——月璃的加入將為他的戰鬥增添一股重要的力量。</p>
+        <p>但信任是一個問題。月璃曾經是暗淵閣的最高間諜，她的背叛是否純粹出於良知？還是另有目的？葉塵不知道答案。但他知道一件事：無論月璃的動機如何，他們現在都站在同一條戰線上——對抗暗淵閣、修復天道裂痕、保護整個靈界。</p>
+        <p>夜幕降臨，廢靈谷陷入了黑暗。只有零星的靈石燈籠在風中搖曳，投下昏黃的光暈。葉塵的身影在夜色中逐漸遠去，像是某種古老預言中的主角，正邁向命運的終點——或者起點。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-175.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-177.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

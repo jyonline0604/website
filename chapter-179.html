@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第179章：影刃來襲 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-179.html">
+    <link rel="prev" href="https://kofhk.com/chapter-178.html">
+    <link rel="next" href="https://kofhk.com/chapter-180.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第179章 · 影刃來襲</h1>
+    <main>
+        <p>荒原的風突然停了。</p>
+        <p>不是逐漸減弱，而是瞬間消失——像是有人按下了暫停鍵，將整個世界的聲音和氣息都凍結在了同一個時刻。葉塵站在虛空之眼坑洞的边缘，懷中的金色碎片還在散發著溫暖的光芒，但他已經沒有時間慶祝了。</p>
+        <p>一股強大的靈力波動從正南方傳來，速度快得超出了他的感知範圍。葉塵的本能讓他立刻向側面閃避——但來不及了。一道紫色的能量束擦過他的右臂，在灰色的斗篷上留下一道深達寸許的傷口。血液滲了出來，但在接觸空氣的瞬间就被虛空之風蒸發成了紅色的霧氣。</p>
+        <p>「你跑得比我想象的快。」</p>
+        <p>聲音從上方傳來。葉塵抬頭看去，一名身穿黑色長袍的男子正懸浮在十丈高的空中，雙腳沒有受到任何支撐，卻穩穩地站在虛空之中。他的面具與夜痕的相似，但更加精緻——黑色的金屬表面刻滿了細密的符文，右眼的裂縫中滲出的紫光不再是暗紫色，而是呈現出一種詭異的深藍色，彷彿連光線都能吞噬。</p>
+        <p>「影刃。」男子說道，聲音低沉而平靜，帶著一種與年齡不符的威嚴，「我是他的師兄，你可以叫我『無面』。」</p>
+        <p>葉塵的瞳孔微微收縮。無面——他在第三世的記憶中見過這個名字。那是暗淵閣最頂尖的戰力之一，擁有築基期巔峰以上的實力，曾經單獨消滅過三名聯盟的高層執事。</p>
+        <p>「你為什麼追我？」葉塵問道，同時讓萬物歸宗功法在體內瘋狂運轉，試圖修復受損的經脈。</p>
+        <p>無面沒有立即回答。他緩緩降落，黑色的長袍在虛空之風中獵獵作響。「因為你拿走了不屬於你的東西。」他的目光落在葉塵懷中的金色碎片上，「第四把鑰匙是暗淵閣的財產——而你，一個從凡塵界來的散修，沒有資格擁有它。」</p>
+        <p>「資格？」葉塵冷笑了一聲，「誰給你們定義資格的權利？天道裂痕需要修復，而四把鑰匙是唯一的方法。如果暗淵閣的目的是毀滅而不是修復——」</p>
+        <p>「你以為你在代表正義？」無面打斷了他，聲音中帶著一種難以察覺的疲憊，「幽影尊者的計劃比你想象的更加複雜。他不是在毀滅天道——他是在重塑它。舊的天道已經腐朽了，充滿了不公和偏見。而新的天道……」他頓了一下，「會更加公平。」</p>
+        <p>葉塵感到一陣寒意。「你相信他的鬼話？」</p>
+        <p>「我相信力量。」無面抬起右手，深藍色的紫光在掌心凝聚成一把長劍的形狀，「而你，葉塵，你的存在本身就是對新天道的威脅。九世輪迴的核心一旦完全覺醒，就會引發天地異變——那不是你想要的結果。」</p>
+        <p>他舉起了長劍。「所以，今天你必須死在這裡。」</p>
+        <p>紫色的長劍向葉塵劈來。速度極快，力量極強，空氣在劍刃的劃過下發出刺耳的尖嘯聲。葉塵側身閃避，但長劍的餘波仍然擊中了他的左腿——劇烈的痛楚讓他幾乎跪倒在地。</p>
+        <p>他咬緊牙關，雙手結印。靈魂鎖鏈的技巧在神魂中運轉起來——灰色的意識化為實質化的能量束，向無面襲去。但這次，鎖鏈在距離對方三丈處就停止了——無面的防禦比影刃強了數倍，靈魂之力無法穿透他的保護罩。</p>
+        <p>「你的技巧不錯。」無面說道，聲音中帶著一種近乎欣賞的語氣，「但還不夠。九世輪迴的核心雖然強大，但你還沒有完全掌握它——」</p>
+        <p>他舉起第二把長劍。深藍色的紫光在雙手中交織，形成了一張巨大的能量網，向葉塵籠罩下來。「讓我來教你什麼是真正的力量。」</p>
+        <p>葉塵感到絕望正在蔓延。無面的實力遠超他的想象——築基期巔峰以上的靈力、精妙的戰鬥技巧、以及對黑暗力量的深刻理解。他知道自己不是對手，但逃跑也同樣困難：虛空之眼的空間亂流會吞噬任何逃離的人，而無面已經切斷了所有可能的退路。</p>
+        <p>就在能量網即將籠罩他的瞬間，葉塵想起了太一留下的防禦陣法。</p>
+        <p>他在繼承虛空之眼時，太一曾經將一道古老的防禦陣法烙印在他的神魂深處——那是一道以空間為基礎的傳送陣，能夠在危急時刻開啟通往任意位置的裂縫。但代價是巨大的：陣法的啟動會消耗大量的靈力，甚至可能危及生命。</p>
+        <p>現在沒有選擇了。</p>
+        <p>葉塵雙手結印，將所有的靈力注入防禦陣法的核心。灰色的光芒從他身上爆發出來，像是太陽在瞬間綻放。空間開始扭曲，虛空之風變得更加狂暴，而無面的攻擊被這股力量暫時阻擋住了。</p>
+        <p>「你想逃？」無面的聲音中第一次出現了一絲驚訝。</p>
+        <p>葉塵沒有回答。他將所有的意志集中在陣法的啟動上——裂縫正在形成，一道藍色的光門在他面前展開。但他知道這道門只能維持三息的時間，而三息之後，他必須做出選擇：進入裂縫逃脫，或者……</p>
+        <p>他縱身躍入光門之中。</p>
+        <p>身後傳來無面的怒吼和紫色長劍的破空聲，但葉塵已經聽不清了——空間傳送陣法啟動的瞬间，整個世界都在扭曲和旋轉。他感到自己的身體被撕裂成無數碎片，然後又重新組合——這是一個痛苦而詭異的過程，像是死亡與重生同時發生。</p>
+        <p>當一切結束時，葉塵躺在一片陌生的森林中，全身上下沒有一處不痛的地方。灰色的斗篷已經破爛不堪，左肩和右臂的傷口正在流血，靈力幾乎完全耗盡。</p>
+        <p>但他活下來了。</p>
+        <p>第四把鑰匙的碎片還在懷中散發著溫暖的光芒，提醒他這次任務的成功。但代價是巨大的——防禦陣法的消耗讓他的身體陷入了極度虛弱的狀態，連站起來都需要費很大的力氣。</p>
+        <p>葉塵閉上眼睛，讓萬物歸宗功法在體內緩緩運轉。灰色的光芒從他身上散發出來，微弱但堅定。他知道自己的身體已經接近極限，但只要還有一口氣在，他就不會倒下。三天後的宴會即將到來——那將是他與幽影尊者的正面對決，也是他證明自己價值的時刻。</p>
+        <p>風吹過森林，帶來一陣陣涼意。葉塵的傷口仍在作痛，但靈魂鎖鏈的力量在他體內緩緩流轉，為他的身體提供著微弱的修復。他能夠感受到九世輪迴核心在深處跳動——那是他的力量源泉，也是他與四世記憶之間的連結。只要這顆核心還在運轉，他就永遠有重新站起來的機會。</p>
+        <p>他知道，接下來的七天將是他人生中最艱難的挑戰。但無論代價如何，他都會完成使命——找到第四把鑰匙、重新封印虛空之眼、揭穿幽影尊者的陰謀。</p>
+        <p>黎明終將到來，而黑暗無法永遠籠罩大地。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-178.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-180.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

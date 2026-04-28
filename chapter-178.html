@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第178章：虛空之眼的秘密 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-178.html">
+    <link rel="prev" href="https://kofhk.com/chapter-177.html">
+    <link rel="next" href="https://kofhk.com/chapter-179.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第178章 · 虛空之眼的秘密</h1>
+    <main>
+        <p>虛空之眼位於天穹城正北方一千二百里處的一片無名荒原上。</p>
+        <p>葉塵和月璃花了兩天時間趕路。這兩天裡，他們幾乎沒有交談——月璃在整理關於暗淵閣內部結構的情報，而葉塵則在冥想中反覆溫習第三世的記憶和靈魂鎖鏈的技巧。九世輪迴的核心在體內緩緩運轉，灰色的力量像是一條河流，將兩世的記憶融合成一股更加強大的洪流。</p>
+        <p>荒原的景象比想象中更加荒涼。廣袤的灰色土地延伸到天際線，地面上佈滿了裂縫和坑洞——那是古代戰爭留下的痕跡。偶爾有幾株枯死的靈木從裂縫中探出頭來，枝幹扭曲得像是在痛苦中掙扎。天空是灰白色的，沒有太陽、沒有雲朵，只有一片均勻的、令人窒息的蒼白。</p>
+        <p>虛空之眼就位於荒原的中心——一個直徑約莫百丈的巨大坑洞。坑洞邊緣呈圓形，像是有人用一把無形的刀在大地上一刀切下。坑洞深不見底，從上方望去只能看到一片深邃的黑色，彷彿通往另一個世界。</p>
+        <p>但真正令人震撼的不是坑洞本身，而是懸浮在坑洞正上方的一隻眼睛。</p>
+        <p>那是一隻由純粹靈力構成的巨大眼球，直徑超過十丈，瞳孔呈現出詭異的暗紫色。眼球緩慢地旋轉著，每一次轉動都會在周圍的空間中激起細微的漣漪——像是水面的波紋，但影響的是空間本身而非液體。</p>
+        <p>「就是這裡。」月璃站在坑洞邊緣，聲音中帶著一種難以察覺的顫抖，「三千年前，第一世獨行俠在這裡與暗淵閣的創始者進行了最後一場戰鬥。他最終贏了，但代價是整個荒原被毀——以及他自己的消失。」</p>
+        <p>葉塵沒有說話。他的目光緊盯著那只巨大的眼球，感受著從深處傳來的強大靈力波動。第四把鑰匙就在裡面——他能感覺到那種熟悉的、與前三把鑰匙相同的頻率，但更加古老、更加深沉。</p>
+        <p>「我需要下去。」他說。</p>
+        <p>月璃轉頭看向他。「你確定？虛空之眼的內部空間極不穩定，任何進入的人都會面臨被空間撕裂的風險。我曾經嘗試過——」她抬起右手，露出手掌上一道細長的疤痕，「——結果被捲入了三天的空間亂流。如果不是及時逃出來，現在已經是一具屍體了。」</p>
+        <p>葉塵點點頭。「我有準備。」</p>
+        <p>他沒有解釋具體是什麼準備。有些秘密，連月璃都不需要知道——九世輪迴的核心對虛空力量有天然的抗性，這是他在繼承虛空之眼時就發現的事實。</p>
+        <p>葉塵走到坑洞邊緣，縱身躍入黑暗之中。</p>
+        <p>下墜的感覺比想象中更加詭異。他沒有感受到重力加速度的變化，而是感覺到周圍的空間在不斷扭曲——像是被一隻無形的手揉捏著橡皮泥。灰色的光芒從他身上散發出來，形成了一層保護罩，抵禦著空間亂流的侵蝕。</p>
+        <p>十丈、二十丈、五十丈……黑暗逐漸變淡，取而代之的是一種詭異的藍色光暈。葉塵看到了——坑洞的底部並非實心地面，而是一個巨大的球形空間，直徑約莫百丈。球體的內壁上佈滿了古老的符文和陣紋，每一道都在散發著微弱的藍光。</p>
+        <p>而在球體的正中央，懸浮著一枚金色的碎片。</p>
+        <p>那是一塊巴掌大小的菱形晶體，表面光滑如鏡，內部有金色的光芒在緩緩流動。當葉塵靠近時，他能感受到從晶體中散發出來的強大靈力——那是第四把鑰匙的核心部分，與前三把鑰匙的頻率完全一致，但更加純粹、更加完整。</p>
+        <p>他伸出手，觸碰到了晶體的表面。</p>
+        <p>瞬間，大量的資訊涌入他的腦海。不是記憶碎片，而是一段完整的圖譜——關於如何將四把鑰匙組合在一起、如何重新封印虛空之眼裂縫的完整方法。這段圖譜屬於第一世的獨行俠，是他留給後世繼承者的最後禮物。</p>
+        <p>但就在葉塵準備收回手的那一刻，他感覺到了一股熟悉的黑暗氣息——從球體的某個角落滲透出來，像是一隻無形的手試圖抓住他的手腕。</p>
+        <p>「你果然在這裡。」</p>
+        <p>聲音從身後傳來。葉塵猛地轉身，右手已經握住了雲塵印。</p>
+        <p>三名身穿黑色斗篷的男子正站在球體的另一側，手中的武器閃爍著詭異的紫光。他們的臉龐完全被面具遮蓋，但葉塵能感受到他們身上散發出的強大靈力——築基期巔峰，甚至更高。</p>
+        <p>「影刃。」月璃的聲音從上方傳來。她不知何時已經跟了下來，站在坑洞邊緣的裂縫處向下張望。「暗淵閣的精銳刺客。你剛才觸碰鑰匙的行為暴露了你的位置。」</p>
+        <p>三名影刃沒有說話。他們同時舉起武器，紫色的光芒在空氣中交織成一道巨大的能量束，向葉塵襲來。</p>
+        <p>葉塵側身閃避，但能量束的速度太快了——它擦過他的左肩，在灰色的斗篷上留下一道焦黑的痕跡。痛楚瞬間傳來，但他沒有時間處理傷口——三名影刃已經同時發動了攻擊，紫色的光芒從四面八方湧來，像是三條毒蛇在追擊獵物。</p>
+        <p>他將金色碎片塞進懷中，然後雙手結印。靈魂鎖鏈的技巧在神魂中運轉起來——灰色的意識化為實質化的能量束，向最近的影刃襲去。</p>
+        <p>鎖鏈與紫色的能量束在空中碰撞，爆發出一陣耀眼的火花。葉塵感到一陣劇烈的反震力從手臂傳來，但他的攻擊也成功了——那名影刃的身體微微一僵，動作出現了短暫的遲滯。</p>
+        <p>「退！」中間的影刃突然說道，聲音中帶著一種葉塵從未聽過的緊張感，「師兄來了。」</p>
+        <p>三人的攻擊瞬間停止，然後同時向後撤退——他們的腳下浮現出空間傳送陣法的光芒，身體在幾息內消失在了虛空中。</p>
+        <p>葉塵沒有追趕。他站在原地，大口喘著氣，左肩的傷口正在灼痛。懷中的金色碎片散發著溫暖的光芒，提醒他這次任務已經成功了一半。</p>
+        <p>但師兄？</p>
+        <p>這個詞在他的心中激起了一陣警覺。影刃是暗淵閣的精銳刺客，而他們口中的「師兄」——一定是比他們更加強大的存在。</p>
+        <p>葉塵抬頭看向坑洞邊緣，月璃的身影已經不見了。他深吸一口氣，然後縱身向上躍去——灰色的斗篷在虛空之風中展開，像是一隻黑色的鳥兒飛向光明。</p>
+        <p>但他不知道的是，在荒原的遠處，一名身穿黑色長袍的男子正站在高坡上，透過某種法器觀察著剛才的一切。他的面具上有一道與夜痕相似的裂痕，但右眼的紫光更加深邃、更加詭異。</p>
+        <p>影刃的師兄——暗淵閣的真正戰力之一，已經注意到了葉塵的存在。</p>
+        <p>而這場追殺，才剛剛開始。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-177.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-179.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

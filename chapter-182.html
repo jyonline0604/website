@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第182章：瞬影之試 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-182.html">
+    <link rel="prev" href="https://kofhk.com/chapter-181.html">
+    <link rel="next" href="https://kofhk.com/chapter-183.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第182章 · 瞬影之試</h1>
+    <main>
+        <p>第二天的太陽比昨天更加灼熱。</p>
+        <p>葉塵站在森林空地中央，雙腳分開與肩同寬，身體微微前傾。他的傷口已經愈合了大半——萬物歸宗功法和煉魂期的修復能力讓他的體力恢復到了七成左右。但今天的目標不是休息，而是測試那門新學到的速度技巧：瞬影步。</p>
+        <p>他回想起第四世記憶中那個畫面——瞬影在十二名築基期修士的追殺下穿梭於森林之間，每一次閃避都精準得像是預知了對方的動作。那不是依靠靈力的強度來達成的高速移動，而是對空間節奏的理解——感知空間中每一個微小的波動，然後在那些波動的間隙中穿過去。</p>
+        <p>葉塵深吸一口氣，閉上眼睛，讓神魂的感知完全展開。煉魂期的靈魂鎖鏈已經讓他能夠觸碰到更深的空間層次——他可以感覺到空氣中的靈力流動、樹葉摩擦產生的微震、甚至地面下昆蟲爬行造成的細微波動。這些信息匯聚在一起，形成了一幅立體的空間地圖。</p>
+        <p>「開始。」他對自己說。</p>
+        <p>第一個動作是極其簡單的：向左側跨出一步。但瞬影步的要訣不在於步伐本身，而在於那個瞬間的感知——他必須在邁步的前一息就預判出那條路徑上所有的空間波動，然後找到最平滑的通道。</p>
+        <p>他的左腳剛剛離地，身體就開始了移動。不像是奔跑時那種明顯的速度感，而更像是一種……錯位。就像畫面突然跳了一幀，前一刻他還在原地，下一刻已經出現在五丈外的位置。空氣中留下一道淡淡的灰色殘影，隨即消散。</p>
+        <p>葉塵站在一棵靈樹的幹上，低頭看著自己的雙手。成功了——但他沒有感到興奮，反而警惕起來。第四世的記憶曾警告過：過度使用瞬影步會消耗大量的空間感知力，導致空間錯覺。他必須找到一個平衡點，讓速度和穩定性共存。</p>
+        <p>第二次的測試更加謹慎。葉塵選擇了三丈的距離，用更低的靈力輸出進行短程瞬移。每一次移動後他都會停下來檢查自己的狀態——頭暈嗎？方向感是否正常？有沒有出現視覺幻覺？前三次都沒有問題，但第四次移動之後，他感到一陣輕微的眩暈——眼前的樹木似乎微微扭曲了一下，像是隔著水面看物體一樣。</p>
+        <p>他立刻停止了練習，靠在一棵樹上喘氣。空間感知力開始下降，這意味著如果繼續使用瞬影步，他可能會出現更嚴重的錯覺。</p>
+        <p>休息了半個時辰後，葉塵重新站起來。這次的目標不是距離，而是精度——他在前方十丈處放了一顆小石子，然後嘗試通過瞬影步在移動的同時準確地踢中它。第一次偏移了三尺，第二次偏移了一尺，第三次……灰色身影劃出一道短暫的軌跡，石子被踢飛了出去，在空中彈跳了兩次才落入泥土中。</p>
+        <p>終於命中了。</p>
+        <p>葉塵露出了今天的第一个笑容。精度的提升意味著瞬影步不僅可以用來逃跑或突襲，還可以在戰鬥中作為一種進攻手段——在敵人反應不及的時候出現在他們的背後，或者在關鍵時刻閃避攻擊的同時反擊。</p>
+        <p>第二次測試的時候，葉尘選擇了一棵靈樹作為標靶。他在樹幹上畫了一個小圓圈——那是他希望瞬影步落腳的精確位置。第一嘗試偏移了半尺，第二試偏移了一寸，第三試……灰色身影劃出一道短暫的軌跡，他的指尖精準地點在了圓圈的中央。</p>
+        <p>精度的提升意味著什麼？葉尘在原地站了很久思考這個問題。如果瞬影步可以在戰鬥中達到這樣的精度——那麼它就不只是逃跑或突襲的工具了。他可以在敵人揮劍的瞬间出現在他們的背後，或者在攻擊到達之前就閃避到安全的位置同時反擊。</p>
+        <p>但第四世的記憶曾警告過：過度使用瞬影步會消耗大量的空間感知力。葉尘決定用一個簡單的實驗來測試自己的極限——連續三次短程瞬移之後需要休息多長時間才能完全恢復。他選擇了三丈的距離進行反覆練習，每次都精確記錄消耗的靈力和恢復的時間。</p>
+        <p>結果比他預期的更樂觀：每次瞬移大約消耗煉魂期靈力的百分之五左右，而恢復到滿值需要約莫一刻鐘的冥想時間。這個數據對日後的戰鬥規劃非常重要——他知道在連續三到四次瞬移之後必須找一個安全的時機進行短休，否則空間感知力會急劇下降導致錯覺和方向感混亂。</p>
+        <p>午後陽光斜照進森林的空地裡，在他腳下投下了一片斑駁的光影。葉尘靠在樹幹上喘氣，汗水從額頭滑落——但這一次他感到的是滿足而非挫敗。今天的練習讓他對瞬影步的理解更深了一層：它不是單純的速度技巧，而是一種對空間節奏的深刻感悟。</p>
+        <p>午後，他開始嘗試連段瞬移。第一段的距離很短——兩丈左右，第二段延長到五丈，第三段則達到了八丈。每次移動之間的間隔只有半息不到的時間，需要極高的靈力控制力和精神集中度。前兩組連段都很順利，但在第三組的第三段時，空間感知力耗盡了——他的身體突然失去了方向感，像是從高處墜落了一樣摔在地面上。</p>
+        <p>痛楚從背部傳來，但他反而笑了出來。至少他知道自己的極限在哪裡了——連續三次瞬移之後就需要休息片刻來恢復感知力。這個發現對日後的戰鬥規劃至關重要。</p>
+        <p>黃昏時分，葉塵坐在森林邊緣的一块巨石上，看著遠方的天空逐漸被晚霞染成橙紅色。他整理了一下今天的練習心得：瞬影步的核心在於「節奏」——不是身體移動的節奏，而是空間波動的節奏。當你能夠感知到那個節奏並且在正確的時間點出現在正確的空間位置時，速度就變成了一門藝術而非單純的技巧。</p>
+        <p>他抬起右手，掌心再次浮現出那條細若游絲的灰色鎖鏈——靈魂鎖鏈和瞬影步，兩種完全不同但同樣強大的力量，正在他的身體裡慢慢融合。第三世的記憶教導他如何羈絆對手的靈魂，第四世則教會了他如何在空間中自由穿梭。當這兩種能力結合在一起的時候……</p>
+        <p>葉塵沒有想下去。因為那還需要更多的練習和實戰驗證——現在最重要的是保持清醒的頭腦和足夠的體力。明天的行程更加緊迫：他必須在天穹城外與月璃會合，然後制定進入城內的具體計劃。</p>
+        <p>夜風吹來，帶著遠處河流的水汽。葉塵閉上眼睛，讓靈魂鎖鏈的力量在體內緩緩流轉。灰色光芒在他的掌心微微閃爍，像是某種古老的樂器正在調音——等待著最終演奏的那一刻。</p>
+        <p>他知道，當那一天到來時，瞬影步和靈魂鎖鏈將不再是兩門獨立的技巧——它們會融合成一種全新的戰鬥方式。那種方式的名字還沒有出現，但它已經在葉塵的意識中隱約成形了。</p>
+        <p>就像黎明前的黑暗最深濃一樣，真正的力量往往在最艱難的打磨之後才顯露鋒芒。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-181.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-183.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

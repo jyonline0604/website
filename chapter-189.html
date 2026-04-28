@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第189章：鎖鏈之舞 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-189.html">
+    <link rel="prev" href="https://kofhk.com/chapter-188.html">
+    <link rel="next" href="https://kofhk.com/chapter-190.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第189章 · 鎖鏈之舞</h1>
+    <main>
+        <p>城主府後花園的夜空中佈滿了靈力爆炸產生的火花。</p>
+        <p>葉塵和月璃在樹木和石欄之間穿梭，身後緊跟著玄冥長老釋放的金色能量束——那些攻擊像失控的子彈一樣在樹幹上留下焦黑的痕跡，碎石和斷枝在空中飛舞。葉塵讓瞬影步的技巧運轉到極限，每一段移動都精確地避開了金色光束的射程範圍，灰色的身影在夜色中猶如一道鬼魅般飄忽不定。</p>
+        <p>「不能一直跑下去。」月璃的聲音從前方傳來。她已經率先到達了一座噴水池旁的石台上，深紫色的眼眸快速掃視著四周的環境。「玄冥的靈力輸出太快了——如果他追上來，我們兩個都擋不住他。」</p>
+        <p>葉塵落在她身邊的石柱上，靈魂鎖鏈的神魂感知像一張網鋪展出去。他感覺到玄冥的位置在他們正上方約三十丈處——天階宗長老正在空中盤旋巡視，金色的靈力光芒將整個後花園照得如同白晝一般明亮。他的氣息中帶著一種葉塵從未感受過的威壓感：築基期巔峰加上一種特殊的天地法則共鳴，讓他的力量遠超普通同境界修行者。</p>
+        <p>「我來擋住他。」葉塵說道，聲音平靜而堅定。「你去找凌風——確認他的立場之後立刻回到這裡匯合。」</p>
+        <p>月璃皺了皺眉：「你一個人怎麼可能擋得住玄冥？你的靈魂鎖鏈剛剛才——」</p>
+        <p>「所以才需要你分頭行動。」葉塵打斷了她，目光投向天空中那道金色的身影，「如果他專注於追殺我，你就有時間去城主府內部調查。而且……」他抬起右手，掌心浮現出那條細若游絲的灰色能量束，「我需要測試靈魂鎖鏈在實戰中的真正極限。」</p>
+        <p>月璃沉默了片刻。然後她點了點頭，深紫色的眼眸中閃過一絲決絕。「好。但你記住——如果情況不對，立刻用瞬影步逃離這裡。不要逞強。」</p>
+        <p>葉塵沒有回答。他縱身從石柱上躍下，灰色的身影在空中劃出一道短暫的弧線，然後稳稳地落在噴水池中央的石台上。玄冥的金色靈力光芒隨即鎖定在了他身上——那雙銳利的眼睛像是兩把利刃一樣直刺而來。</p>
+        <p>「你竟然敢一個人擋在我的面前。」玄冥的聲音從上方傳來，帶著一種居高臨下的輕蔑。「葉塵，你的勇氣值得讚賞，但你今天的結局已經註定了。」</p>
+        <p>他舉起手中的法器——一枚金色的圓盤，表面刻滿了繁複的符文和陣紋。當那枚圓盤在掌心旋轉起來的時候，空氣中開始瀰漫著一股令人窒息的壓迫感——那是天地法則被直接操控的感覺。葉塵感覺到周围的靈力流動變得更加遲緩、更加沉重，像是整片空間都在向他的身體施加壓力。</p>
+        <p>「萬物歸宗。」葉塵低聲說道。他閉上雙眼，讓灰色力量在經脈中運行到最平穩的狀態——然後張開雙臂，將所有能量釋放了出去。</p>
+        <p>灰色的光芒從他身上爆發出來，與玄冥的金色圓盤在空中碰撞在一起的那一刻爆發出強烈的能量衝擊波。噴水池中的水被震飛出去，形成了一片細小的水霧在空氣中蒸發。葉塵感到一股巨大的反震力從手臂傳來——但他沒有退後半步。</p>
+        <p>「你的萬物歸宗確實強大。」玄冥的聲音中第一次出現了一絲驚訝，但隨即變得更加冰冷。「但天地法則的力量不是你可以輕易掌控的——你只是借用了它的一小部分而已。」</p>
+        <p>金色圓盤在空中急速旋轉起來——然後釋放了出一道巨大的光束，像一把無形的利劍一樣直刺葉塵的方向。葉塵側身閃避，但光束的速度太快了——它在空中劃出一道完美的弧線，擦過他的左臂在灰色的長袍上留下一道焦黑的痕跡。</p>
+        <p>金色光束擦過他左肩的瞬间，葉塵感到一股灼燒般的痛楚從皮膚傳到了肌肉深處。灰色的斗篷被烧出一道焦黑的裂口，但他的注意力完全集中在玄冥右手腕上那個微小的靈力空檔上——那就是靈魂鎖鏈可以穿透的完美角度。</p>
+        <p>第三世的記憶在那一刻突然變得更加清晰了。他看到了第三世的前世站在一片廣闊的戰場上，面對著十幾名築基期高手的圍攻，用同樣的技巧在絕境中殺出了一條血路。那種在極限壓力下保持冷靜和精準的能力——正是靈魂鎖鏈真正需要的核心素質。</p>
+        <p>灰色能量束從他掌心延伸出去的瞬間，整個空間彷彿都靜止了一刻鐘。他能感覺到那條鎖鏈在空中劃過的每一寸軌跡、每一個空氣分子對它的微小阻力——這就是煉魂期神魂感知帶來的優勢：當你能夠看見靈力的流動時，你就已經預知了它的下一個動作。</p>
+        <p>鎖鏈纏住玄冥右腕的那一刻，葉塵感覺到自己體內有一股前所未有的力量正在湧動——不是靈魂鎖鏈本身的能量，而是來自九世輪迴核心深處的某種更古老、更深沉的東西。那股力量的頻率與天空中那道紫色裂縫完全一致，像是兩塊磁鐵在遙遠的距離中找到了彼此的軌跡。</p>
+        <p>但他沒有時間深入探究那種感覺了——因為玄冥的身體突然變得無比堅硬，灰色鎖鏈的力量無法撼動對方分毫，反而讓他的手臂感到一陣劇烈的反噬痛楚。這讓他意識到一個重要的事實：靈魂鎖鏈雖然能夠穿透物理防禦，但它對天地法則構成的防禦幾乎無能為力——除非他找到一種方法來將兩種力量融合在一起。</p>
+        <p>「不錯的技巧。」玄冥低頭看著纏在手腕上的灰色鎖鏈，聲音中帶著一絲複雜的表情——有讚賞、也有遺憾。「但你不該對一個精通天地法則的修行者使用靈魂攻擊——你的力量只會更加被削弱。」</p>
+        <p>他抬起左手，金色的靈力在掌心凝聚成一枚小型的光球——然後猛地朝葉塵的方向擊發過去。灰色鎖鏈瞬間鬆開了玄冥的手腕，葉塵的身體在空中失去了平衡，像一塊石頭一樣向後墜落下去。</p>
+        <p>但在墜落的過程中，他的意識深處突然響起了一個聲音——不是第三世或第四世的記憶碎片，而是更加古老、更加深沉的東西。那是九世輪迴核心的另一個層次，一個他從未觸碰過的領域：</p>
+        <p>「第五世的記憶……即將覺醒。」</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-188.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-190.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

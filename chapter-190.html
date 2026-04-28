@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第190章：虛空裂變 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-190.html">
+    <link rel="prev" href="https://kofhk.com/chapter-189.html">
+    <link rel="next" href="https://kofhk.com/chapter-191.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第190章 · 虛空裂變</h1>
+    <main>
+        <p>葉塵的身體在黑暗中下墜。</p>
+        <p>他沒有撞到地面——在即將摔到噴水池底部的那一刻，瞬影步的技巧自動啟動了最後一段閃避軌跡。灰色的光芒在空中劃出一道短暫的弧線，他的身體瞬間出現在十丈外的一棵靈樹上，腳下的樹枝發出了不堪重負的嘎吱聲。</p>
+        <p>但他沒有時間慶祝這次險中求生的閃避。因為天空正在發生某種詭異的變化——原本被金色靈力光芒照亮的大廳穹頂開始出現了一道細長的裂縫，像是有人用一把無形的刀在空間上劃開了一道口子。裂縫的邊緣散發出深紫色的光暈，與虛空之眼的顏色完全一致。</p>
+        <p>月璃的聲音從身後傳來：「葉塵……你看天空。」</p>
+        <p>他轉過頭去——那條裂縫正在以肉眼可見的速度擴大。不是幾寸、幾丈那麼微小的變化，而是一道直徑超過三丈的巨大裂隙在城主府的上空逐漸成形。</p>
+        <p>裂縫的邊緣散發出深紫色的光暈，那些光暈在空中緩慢旋轉著，像是一只只正在睜開的眼睛。每一次旋轉都會釋放出細小的空間碎片——那些碎片像是玻璃碎屑一樣在空中飛舞，每一片都散發著令人膽寒的黑暗能量。葉塵知道那就是虛空之眼的能量在向外擴散，如果不及時阻止它……</p>
+        <p>他的腦海中浮現出月璃之前說過的警告：「虛空之眼的裂縫正在擴大。如果不在七天內找到第四把鑰匙並重新封印裂縫，整個靈界都會被捲入虛空的吞噬中。」當時他以為自己還有七天的時間——但現在看來，幽影尊者的行動比他預期的更加迅速和猛烈。</p>
+        <p>四把鑰匙在他懷中產生了強烈的共鳴反應。金色碎片的光芒變得越來越明亮，與雲塵印、凝元鎮塵印和空間之鑰的頻率完全同步——它們像是一首古老樂曲的四個音符，在等待著最終的和諧和絃。</p>
+        <p>葉塵能感覺到那股力量正在他的經脈中奔湧流動，像是即將爆發的火山一樣無法抑制。九世輪迴的核心在心口處劇烈跳動，每一次搏動都會釋放出更多的灰色光芒——那些光芒與天空中紫色裂縫的能量產生了某種深層的共鳴，像是一根無形的線將兩者的力量聯繫在了一起。</p>
+        <p>他知道接下來要做的事情有多危險：他必須在靈力暴風中保持清醒的意識，同時用四把鑰匙的精確頻率去觸碰裂縫的核心位置——任何一個微小的失誤都會導致空間亂流的反噬，而他的身體會被撕裂成無數碎片。</p>
+        <p>從裂縫中滲透出來的力量讓他感到一陣熟悉的震顫：虛空之眼的能量波動。</p>
+        <p>「不對……」葉塵的聲音中帶著一絲不祥的預感。「這不是玄冥做的——這是幽影尊者的手筆。」</p>
+        <p>他的腦海中突然浮現出第四把鑰匙金色碎片那段關於封印方法的記憶圖譜。如果暗淵閣的目標不是毀滅而是重塑天道——那麼他們需要的不只是四把鑰匙，還需要在一個靈力場極度不穩定的地方進行某種儀式。而現在這個裂縫就是那個儀式的起點。</p>
+        <p>虛空之眼的裂縫正在通過城主府上空的天穹城向整個靈界擴散。如果不在短時間內阻止它……不僅宴會上的所有人會死——整個靈界的天地法則都會被撕裂。</p>
+        <p>「我需要去封印裂縫。」葉塵說道，聲音堅定而果斷。「用四把鑰匙重新封鎖那道口子——就現在。」</p>
+        <p>月璃的表情瞬間變得嚴肅：「你瘋了嗎？在那種靈力暴風中插入鑰匙，你的身體會被空間亂流撕碎的！」</p>
+        <p>「如果不做——」葉塵打斷了她，目光鎖定在天空中那道逐漸擴大的紫色裂縫上，「整個靈界都會被捲入虛空的吞噬中。暗淵閣的計劃不是重塑天道——他們只是想要一個全新的世界來掌控而已。」</p>
+        <p>他縱身從樹枝上一躍而下——灰色的身影在空中劃出一道短暫的軌跡。瞬影步的技巧在他體內瘋狂運轉，每一次移動都將靈魂鎖鏈的力量蓄積到更高的強度。他能感覺到九世輪迴核心在心口處劇烈跳動——它正在回應虛空裂縫的能量波動，像是一塊磁鐵被另一塊更強大的磁鐵吸引一樣。</p>
+        <p>但就在他的腳即將踩上大廳地面的一刻，一道深藍色的紫光從側面襲來——無面不知何時已經繞到了這裡。他手中的長劍閃爍著詭異的光芒，直劈葉塵的方向。「你以為你能封印裂縫？愚蠢。」</p>
+        <p>紫色長劍與灰色身影碰撞在一起的瞬間爆發出強烈的能量衝擊波——葉塵的身體被震飛了出去，重重地撞在大廳的牆壁上。痛楚從全身每一寸經脈傳來，但他沒有倒下——靈魂鎖鏈的力量在他體內緩緩流轉，為他的身體提供著微弱的支撐。</p>
+        <p>「你打不過我的。」無面的聲音中帶著一種近乎悲憫的语气，「舊的天道必須被毀滅——只有在新世界的基礎上，才能建立真正的公平。」</p>
+        <p>葉塵搖搖晃地站起身來，灰色的斗篷已經破爛不堪，身上的傷口在不斷流血。但他的目光比從前更加堅定：「你錯了。天道不需要被毀滅——它需要的是修復和平衡。而你，無面，你只是被幽影尊者利用的棋子之一。」</p>
+        <p>無面的身體微微一僵。面具下的深藍色紫光閃爍了一下——那是動搖的信號。葉塵知道這一瞬間的存在意味著什麼：這個人内心深处其實並不相信自己宣揚的那些話語。他只是在執行命令而已。</p>
+        <p>但這不應該是阻止葉塵的理由——因為裂縫正在擴大，而時間正在流逝。</p>
+        <p>他讓瞬影步的技巧運轉到最高強度——然後朝着天空中那條紫色裂縫的方向縱身躍去。灰色的光芒在空中劃出一道筆直的軌跡，像是流星一樣衝向那道逐漸擴大的虛空之眼裂隙。身後傳來無面的怒吼和月璃的喊叫聲——但他已經聽不清了。</p>
+        <p>在躍入裂縫的那一刻，九世輪迴的核心突然爆發出一陣前所未有的灰色光芒——那不是來自於煉魂期的力量，而是更加古老、更加深沉的東西。第五世的記憶碎片在心口處微微閃爍了一下，然後迅速消散了——它還沒有完全覺醒，但葉塵感覺到那股力量正在逐漸成形。</p>
+        <p>裂縫的深處散發著令人窒息的黑暗和強大的空間亂流——金色碎片在他懷中與前三把鑰匙產生了完美的共鳴。四把鑰匙的力量匯聚在一起，形成了一股前所未有的能量洪流。</p>
+        <p>而葉塵知道，從這一瞬間起，他不再只是九世輪迴的繼承者——他是這個世界最後的希望。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-189.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-191.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

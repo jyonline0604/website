@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第185章：夜探議會塔 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-185.html">
+    <link rel="prev" href="https://kofhk.com/chapter-184.html">
+    <link rel="next" href="https://kofhk.com/chapter-186.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第185章 · 夜探議會塔</h1>
+    <main>
+        <p>深夜的天穹城安靜得有些詭異。</p>
+        <p>葉塵在倉庫中閉目養神，靈魂鎖鏈的神魂感知像一張無形的網覆蓋了周圍百丈的範圍。月璃睡在他對面，呼吸平穩而均勻——她已經完全放鬆下來信任這個男人了。這是好現象，但也意味著如果發生突發情況，他必須獨自應對。</p>
+        <p>凌晨三點的時候，葉塵睜開了眼睛。他的靈力已經恢復到了八成左右，煉魂期的修復速度比他從前想像中更加驚人。今天晚上的目標非常明確：潛入聯盟議會塔樓的密室所在區域，收集更多關於宴會當天各方勢力的情報。</p>
+        <p>他輕輕推開倉庫的門，貓腰穿過主幹道，朝著城市中心的議會塔方向移動。瞬影步在夜間的使用更加隱蔽——灰色的殘影幾乎融入黑暗中，只留下極微弱的光暈在空氣中消散。葉塵控制了每次瞬移的距離在三丈以內，避免消耗过多的空間感知力。</p>
+        <p>議會塔的結構比他從前想像中更加複雜。塔身共有九層高，每一層的入口都有守衛巡邏——但月璃給過他的地圖顯示，真正危險的地方不在外部，而在內部第三層的一個轉角處。那裡有一個隱藏的機關，需要特定的靈力頻率才能打開。</p>
+        <p>葉塵繞到塔樓的後側，沿著牆壁找到了一條狹窄的登天階梯——那是古代建造時供維修人員使用的輔助通道，現在早已被遺忘在城市的規劃之外。他一步步向上攀爬，煉魂期的體力讓他輕易越過了常人難以企及的高度。</p>
+        <p>第七層的轉角處，葉塵停下了腳步。這裡有一扇看似普通的石門，表面光滑如鏡沒有任何把手或鑰匙孔。但他知道正確的開啟方式——第三世的記憶告訴他需要三把鑰匙的靈力頻率同時注入三個特定的位置。</p>
+        <p>他從懷中取出雲塵印、凝元鎮塵印和空間之鑰，將它們分別貼在石門上左、中、右三個位置的符文凹槽內。灰色光芒從三件法器中湧出，沿着預設的通道流轉——然後是沉默。</p>
+        <p>一秒鐘、兩秒鐘……葉塵開始懷疑月璃的地圖是否準確了。就在這時，石門的表面突然浮現出三道金色的光線，像蜘蛛網一樣交織成一個複雜的圖案。圖案的核心是一個圓形符文，中央有一個小小的凹陷——那是第四把鑰匙碎片的位置。</p>
+        <p>但葉塵沒有立即插入金色碎片。他猶豫了一秒——如果暗淵閣的人已經在這裡佈下了陷阱呢？他讓靈魂鎖鏈的神魂感知緩慢地滲透進石門的內部，探測任何異常的靈力波動或機關裝置。三息之後，他確認了密室內部的狀況：安全，沒有人埋伏。</p>
+        <p>金色碎片貼入凹陷處的瞬間，整扇石門發出了一聲沉悶的巨響——像是某個古老的機器被重新啟動了。石門向內滑開，露出一條向下延伸的石階通道，深處散發著微弱而溫暖的光芒。</p>
+        <p>葉塵深吸一口氣，邁步走了進去。</p>
+        <p>通道兩側的牆壁上刻滿了古老的文字和圖案——那些是他第三世時期的符文系統，記錄了九世輪迴核心從覺醒到成熟的全過程。雖然大部分內容他已經在之前的記憶融合中讀取過，但這裡有一些更加深入的細節：關於四把鑰匙如何協同工作、封印裂縫的具體步驟、以及在封印完成之後應該做什麼來維持天道的平衡。</p>
+        <p>通道盡頭是一間不大的密室——大約只有十丈見方，中央擺放著一張巨大的木桌，桌面上鋪滿了各種文件和地圖。牆邊的書架上整齊地排列著數十本冊子，每一本的封面上都刻有不同的名字和職位標記。</p>
+        <p>每一頁的名單上都記錄著宗門聯盟高層的詳細資料：姓名、實力等級、所屬派系、以及最重要的——暗淵閣的身份標記。葉尘翻到中間的一頁時停下了腳步，那裡列出了三名築基期執事的名字和資料，而每一個名字旁邊都用暗紅色的墨水劃著閉合眼睛的符號。</p>
+        <p>更讓他感到不安的是最後一頁——那是一份行動計劃的簡要說明，標註了宴會當天各個內應的具体任務分配：有人負責在大廳中製造混亂、有人守衛關鍵出口、還有人需要在幽影尊者發出信號的瞬間對特定目標發動突襲。</p>
+        <p>「原來如此。」葉尘在心中默念，將這份行動計劃牢記在心裡。「他們不只是要殺我——他們要的是全面接管宗門聯盟。」</p>
+        <p>他快速翻閱了幾頁之後將冊子收進懷中——但就在他的手指觸碰到封面的瞬間，通道入口處傳來了一聲極為輕微的腳步聲。</p>
+        <p>這就是月璃說的那本記錄所有高層身份的冊子所在之處。</p>
+        <p>葉塵走近木桌，拿起最上面的一本打開。裡面密密麻麻地列出了宗門聯盟每個執事和長老的名字、實力等級、所屬派系——以及一個讓他不寒而慄的標記：在每一個名字旁邊，都用暗紅色的墨水劃著一個小小的符號——一隻閉合的眼睛，眼瞼上有一道裂縫。</p>
+        <p>暗淵閣內應的名單。</p>
+        <p>他快速翻閱了幾頁，發現這個名單遠比想像中龐大——不僅包括外圍的低階執事，還涉及了三名築基期的高層、以及城主府的一名重要副官。更令人震驚的是，名單最底部有一行用特殊墨水寫成的小字：「幽影尊者親授·宴會日啟動。」</p>
+        <p>葉塵感到一陣寒意從脊樑升起。這次宴會不會只是一場針對他的清除行動——它是一場精心策劃的政變，目的是在最短的時間內接管整個宗門聯盟的所有權力核心。如果沒有他提前發現這份名單……</p>
+        <p>就在他準備將冊子收進懷中的時候，密室的入口突然傳來了一聲極其輕微的腳步聲——不是從通道方向來的，而是從天花板上方傳來的。有人在上面！</p>
+        <p>葉塵瞬間閃避到木桌下方，同時讓靈魂鎖鏈的力量在體內蓄積到臨界狀態。瞬影步的技巧也在神魂中運轉起來——隨時準備在最短的時間內打開空間裂縫逃離這裡。</p>
+        <p>天花板的木板發出了一聲清脆的碎裂聲——有人從上面跳了下來！一個身穿黑色斗篷的身影落在了密室的中央，手中的紫色匕首閃爍著寒光。他的面具遮住了大半張臉，但葉塵能感受到那個靈力波動——築基期巔峰，而且比無面更加深沉、更加危險。</p>
+        <p>「我知道你在這裡。」那人說道，聲音低沉而平靜，帶著一種葉塵從未聽過的熟悉感。「我等你很久了，葉塵。」</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-184.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-186.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

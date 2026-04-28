@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第188章：風暴來臨 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-188.html">
+    <link rel="prev" href="https://kofhk.com/chapter-187.html">
+    <link rel="next" href="https://kofhk.com/chapter-189.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第188章 · 風暴來臨</h1>
+    <main>
+        <p>大廳中央的紫色光芒像一朵巨大的蘑菇雲一樣升騰起來，將整個宴會現場照得如同地獄一般詭異。來賓們的尖叫声和器物破碎聲交織成一片混亂的噪音——有人試圖逃向出口，但那些門口不知道什麼時候已經被暗淵閣的眼線們佈下了防禦陣法。</p>
+        <p>葉塵在光芒爆發的瞬间做出了決定：他不跟凌風走，也不逃離大廳。相反，他讓瞬影步的技巧在體內啟動，灰色身影瞬間消失在了原地——然後出現在大廳正中央那團紫色光霧的前方五丈處。</p>
+        <p>紫色的能量束在大廳中橫衝直撞——桌椅被擊碎成無數碎片，靈石燈籠在爆炸中化作漫天光點，來賓們的尖叫声和器物破碎聲交織成一片混亂的噪音。葉尘讓瞬影步的技巧運轉到極限，灰色的身影在紫色光束之間穿梭閃避，每一次移動都精準地避開了能量束的主要威力範圍。</p>
+        <p>他注意到大廳中的許多來賓已經開始慌亂逃竄——但那些出口不知道什麼時候被暗淵閣的眼線們佈下了防禦陣法，紫色的光幕將每個門口完全封鎖住了。有些人試圖用靈力強行突破，但那些光幕比他們想像中更加堅固。</p>
+        <p>無面就站在光霧的中心。</p>
+        <p>黑色的長袍在靈力暴風中獵獵作響，面具上的符文裂縫中滲出的深藍色紫光不再是之前見到的那種暗色調——它變得更加明亮、更加深邃，彷彿連光線都被那雙眼睛完全吞噬了。他手中握著一把由純粹黑暗力量凝聚而成的長劍，劍尖指向上方的穹頂，像是在宣示某種不可違背的權威。</p>
+        <p>「我說了。」無面的聲音穿透了混亂的噪音，在大廳中迴盪，帶著一種令人不安的沉穩——「今天你必須死在這裡。」</p>
+        <p>葉塵沒有回應。他讓萬物歸宗功法在體內運轉到最高強度，灰色的光芒從他身上爆發出來，形成了一道環形的防禦屏障。無面的長劍已經朝他劈來——深藍色的紫光在空中劃出一道弧線，與灰色光幕碰撞在一起的那一刻爆發出強烈的能量衝擊波，將周圍的桌椅和來賓全部震飛了出去。</p>
+        <p>「你還是不懂。」無面緩緩降落在他面前十丈處的聲音中帶著一種近乎悲憫的语气，「九世輪迴的核心不是拯救這個世界的工具——它是毀滅的鑰匙。舊的天道已經腐朽了，而你的力量只會加速它的崩潰。」</p>
+        <p>葉塵感到一陣寒意從脊樑升起。無面的話和他之前在虛空之眼說的一模一樣——但那種語氣中透露出的疲憊和真誠讓葉塵無法簡單地將其歸類為敵人的謊言。這個人真的相信自己的信念嗎？還是他只是幽影尊者的棋子，連自己都在被操控？</p>
+        <p>「讓我來告訴你真相。」無面舉起長劍，深藍色的紫光在劍尖凝聚成一把巨大的能量光刃，「三千年前第一世獨行俠創造九世輪迴的時候，他並沒有修復天道——他只是在延緩崩潰。每一次輪迴的覺醒都會消耗天地法則本身的能量，而當九世全部覺醒的那一刻……」他的聲音變得低沉而絕望，「世界會徹底坍塌。」</p>
+        <p>葉塵沒有被這句話動搖。他知道幽影尊者和無面的論述中有一個致命的漏洞：他們將九世輪迴描述成一種消耗性的力量，但第三世的記憶清楚地告訴他——九世輪迴的核心不是消耗天地法則，而是與之產生共鳴。當所有前世的力量融合在一起的時候，它產生的不是毀滅，而是一種全新的平衡。</p>
+        <p>但他現在沒有時間去解釋這些——因為無面的攻擊已經到了。</p>
+        <p>深藍色的能量光刃劃過空氣的聲音像是在撕裂天空本身。葉塵側身閃避，但餘波仍然擊中了他的右肩——劇烈的痛楚讓他幾乎跪倒在地。他咬緊牙關，雙手結印，靈魂鎖鏈的技巧在神魂中瘋狂運轉起來——灰色的意識化為實質化的能量束，向無面襲去。</p>
+        <p>這次不一樣了。</p>
+        <p>煉魂期的力量讓靈魂鎖鏈不再只是模糊的能量束——它變成了一條真正的灰色鎖鏈，在空中劃出一道筆直的軌跡，精準地纏住了無面的手腕。紫色的長劍從對方手中脫落掉在地上，發出清脆的金屬聲。</p>
+        <p>無面愣了一下。然後他的眼中閃過一絲驚訝：「煉魂期……你突破了。」</p>
+        <p>葉塵沒有說話。他用力拉扯灰色鎖鏈——但接下來發生的事情出乎他的意料：無面的身體突然變得無比沉重，像是變成了一塊巨大的鐵砧。靈魂鎖鏈的力量無法撼動對方分毫——築基期巔峰以上的靈力讓他的神魂防禦遠超葉塵的想像。</p>
+        <p>「不錯的技巧。」無面收回了手腕，深藍色的紫光在掌心重新凝聚成一把新的長劍。「但還不夠。」</p>
+        <p>就在他準備發動下一次攻擊的時候，大廳的另一側突然爆發出一陣耀眼的金色光芒——月璃出手了。深紫色的幻術力量從她手中噴射而出，在大廳中形成了一片迷幻的光霧，將無面和葉塵之間的視線完全隔斷。</p>
+        <p>「走！」月璃的聲音在光霧中迴盪。「我撐不了太久的——玄冥長老已經發現我了。」</p>
+        <p>葉塵回頭看了一眼——大廳的穹頂上確實有一道金色的身影正在快速降落，天階宗的長老玄冥臉上掛著冰冷的殺意，手中的法器散發著令人膽寒的力量波動。他沒有時間猶豫了。</p>
+        <p>瞬影步在體內啟動——灰色身影瞬間消失在了原地。葉塵出現在月璃身邊，然後兩個人一起朝着大廳側面的出口方向閃避而去。身後傳來無面的怒吼和玄冥的金色能量束轟擊聲——但他們已經不在射程範圍之內了。</p>
+        <p>衝出大廳的那一刻，葉塵回頭看了一眼那團混亂的光影。他知道從這一瞬間起，他已經正式向暗淵閣宣戰了——而這場戰爭的結果將決定整個靈界的命運。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-187.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-189.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

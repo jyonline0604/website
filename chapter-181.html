@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第181章：灰光重燃 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-181.html">
+    <link rel="prev" href="https://kofhk.com/chapter-180.html">
+    <link rel="next" href="https://kofhk.com/chapter-182.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第181章 · 灰光重燃</h1>
+    <main>
+        <p>森林的清晨比夜晚更加寒冷。</p>
+        <p>葉塵躺在一棵老靈樹的根莖之間，灰色的斗篷已經被血水和露水浸透，黏在皮膚上像是一層沉重的盔甲。他的呼吸微弱而緩慢，每一次吸氣都帶著灼燒般的痛楚——無面的紫色長劍在他的右臂和左肩留下了深可見骨的傷口，即便萬物歸宗功法在體內不斷運轉，修復的速度仍然跟不上損耗的幅度。</p>
+        <p>但他沒有放棄。</p>
+        <p>九世輪迴的核心在心口處緩緩跳動，灰色的光芒比從前更加明亮、更加穩定。突破到煉魂期之後，核心不再只是被動的記憶載體——它開始主動汲取周圍環境中的靈力，將那些散亂的能量轉化為精純的灰色力量，源源不絕地輸送給經脈和細胞。這種轉變讓葉塵感到一種前所未有的安全感，彷彿整个世界都在默默支撐著他的身體。</p>
+        <p>葉塵閉上雙眼，讓意識沉入神魂深處。那裡有一把新鑄造的工具——靈魂鎖鏈。在突破之前，他只能模糊地感知到它的存在；但現在，煉魂期初期的靈力已經足夠讓他觸碰到那層灰色的屏障，並且小心翼翼地嘗試推開它。</p>
+        <p>鎖鏈的圖像在他的意識中浮現：不是真實存在的金屬鏈條，而是一種由神魂之力構成的能量束。它可以穿透物理防禦，直接羈絆對手的靈魂——但這需要極高的精確度。如果他不能準確鎖定目標的神魂核心，鎖鏈就會反噬，造成自身的靈魂損傷。</p>
+        <p>「第三世……」葉塵在心中默念，讓那段記憶流轉起來。第三世的他曾經與一名築基期高手搏鬥，當時他就用了類似的技巧——雖然不叫靈魂鎖鏈，但原理大同小異。他把兩世的經驗融合在一起，慢慢摸索出這條灰色能量束的最佳軌跡。</p>
+        <p>一個時辰過去。葉塵的眉頭微微皺起——他還沒有完全掌握鎖鏈的精確度，每一次嘗試都會在神魂中留下一絲細微的刺痛。但他沒有急躁，反而放慢了節奏，像是一個初學武藝的少年在反覆練習基礎動作。汗水從額頭滑落，滴在乾枯的泥土上，瞬間就被蒸發殆盡。</p>
+        <p>到了午時，陽光從樹冠間滲透下來，在他臉上的傷口處投下斑駁的光影。就在這時，某種變化發生了。灰色能量束再次成形——但這次，它不再搖晃、不再偏離。葉塵感覺到那股力量順暢地穿過了自己的意識屏障，像一條真正的水流一樣在神魂中流淌。他抬起手，掌心浮現出一條細若游絲的灰線，在空中輕輕擺動，最終消散在空氣之中——不成形的能量束在半空中劃出一道完美的弧線，彷彿連空間本身都在為它的軌跡讓路。</p>
+        <p>成了。</p>
+        <p>他長舒了一口氣，靠在樹幹上閉目養神。靈魂鎖鏈已經初步掌握，但真正運用它還需要更多實戰練習——現在最重要的是恢復體力，而不是冒然去挑戰更強的對手。葉塵從懷中摸出幾顆乾果，勉強咬了幾口，讓食物在胃裡提供基本的能量支撐。</p>
+        <p>傍晚時分，葉塵勉強站起身來。他的傷口仍然疼痛，但已經不再流血；萬物歸宗功法將剩餘的靈力集中在要害處，維持著基本的行動能力。他從懷中取出第四把鑰匙的金色碎片，仔細端詳那段關於封印方法的記憶圖譜。</p>
+        <p>圖譜顯示，四把鑰匙必須按照特定的順序插入虛空之眼的核心，才能重新封鎖那道裂痕。前三把鑰匙已經在他身上——雲塵印、凝元鎮塵印和空間之鑰——而第四把金色碎片剛剛入手。但他還需要找到一個合適的時機：不是現在，不是在虛空之眼那片不穩定的空間中，而是在一個靈力場更加平穩的地方。</p>
+        <p>三天後的城主宴會……</p>
+        <p>葉塵的目光變得堅定了。如果幽影尊者真的要在宴會上發動清洗行動，那麼那個時候就是最好的機會——混亂之中，任何人都沒有精力去阻止他做該做的事情。他可以一邊揭露陰謀、一邊尋找封印裂縫的時機。他甚至開始在腦海中構建多種逃生路線——從城主府正門、側窗、後巷到地下通道，每一條路徑都經過仔細計算。</p>
+        <p>夜幕降臨前，葉塵做了最後一件事：他在周圍佈下了三層感知陣法，每一層都覆蓋了不同的方向，確保任何靠近的敵人都不會被錯過。第一層由聚元期的靈力驅動，負責探測十丈範圍內的移動；第二層連結到他的神魂感知，能夠察覺五十丈外的靈魂波動；第三層則是最精妙的——它直接與九世輪迴核心產生共鳴，只要有人試圖用幻術或隱身技巧來躲避前兩層的偵查，第三層就會自動發出警報。</p>
+        <p>然後他盤腿坐下，讓萬物歸宗功法在體內運行到最平穩的狀態，進入了冥想。</p>
+        <p>灰色的光芒在他周身微微閃爍，像是遠方星辰的呼吸。他知道從明天起，每一步都是賭注——但他已經沒有退路了。暗淵閣不會給他喘息的時間，虛空之眼的裂縫也不會等他和諧準備好才擴大。他唯一能做的，就是在黑暗中繼續前行，直到黎明的光線穿透那層厚重的雲霧。</p>
+        <p>風吹過森林，帶來一陣涼意和遠處昆蟲的鳴叫。葉塵閉著眼睛，灰色的斗篷在夜風中輕輕擺動。靈魂鎖鏈的力量在他體內緩緩流轉，與九世輪迴核心同步跳動——兩股力量交織在一起，形成了一種詭異而和諧的節奏。</p>
+        <p>這是煉魂期的新節奏。它比築基期更加深沉、更加穩定，像是大地深處的脈搏，不會因為表面的風暴而停止跳動。葉塵感受著那種節奏，讓自己的呼吸與之同步，然後徹底放鬆下來。</p>
+        <p>睡夢中，他看到了第四世的記憶片段——瞬影站在一片廣闊的草原上，身後是一望無際的天空。那個人回過頭來，露出一個桀驁不馴的笑容：「速度不是逃跑的工具——它是自由的證明。當你理解這一點的時候，你就真正掌握了它。」</p>
+        <p>葉塵在夢中點了點頭。他開始明白，瞬影步的真正意義不在於跑得多快，而在於找到那些不被察覺的路徑、不被封鎖的空間——在那個瞬間裡，他就是無拘無束的。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-180.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-182.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

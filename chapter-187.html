@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第187章：宴會之夜 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-187.html">
+    <link rel="prev" href="https://kofhk.com/chapter-186.html">
+    <link rel="next" href="https://kofhk.com/chapter-188.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第187章 · 宴會之夜</h1>
+    <main>
+        <p>酉時整，天穹城城主府的大廳燈火通明。</p>
+        <p>數百盞靈石燈籠懸掛在穹頂上，將整座大廳映照得如同白晝一般明亮。長長的餐桌沿著兩側排列，每桌上都擺滿了珍貴的食材和靈酒——那些都是靈界各地進貢的稀有珍品，散發著誘人的香氣。來賓們身穿華服、佩戴法器，三三两两地聚在一起交談，聲音在大廳中迴盪成一片低沉的嗡嗡聲。</p>
+        <p>葉塵站在大廳入口處的陰影中，灰色的斗篷被他刻意換成了一件普通的深色長袍——但無論怎麼掩飾，他都能感覺到那些來賓的目光在無意間掃過他的身影時流露出的警惕和好奇。作為一個沒有名分的外來修士能夠收到城主府的直接邀請，本身就是一个足以引發議論的話題。</p>
+        <p>月璃站在他身後三丈的位置，身穿一襲優雅的紫色禮服，深紫色的眼眸在大廳中快速掃視——她在確認每一個暗淵閣眼線的位置。葉塵注意到她的左手不時在袖口內做出微小的動作：那是她在用一種特殊的信號系統向遠方的線人傳遞資訊。</p>
+        <p>「第一排左側是凌風城主和他身邊的副官。」月璃的聲音輕得像是在嘆息，「中排右側有三位築基期執事——都是暗淵閣的高層。大廳正中央那桌坐著的是天階宗的代表團……」她頓了一下，目光變得更加銳利，「無面和夜痕不在這裡。他們可能在其他地方準備發動突襲。」</p>
+        <p>葉塵點了點頭。他讓靈魂鎖鏈的神魂感知像一張細密的網鋪展出去——每一絲靈力波動、每一個人的氣息流動都被他的感知系統記錄下來。在大廳的東側角落，他感覺到了一股特別熟悉的黑暗能量：那是趙明軒的位置——那個曾經在外門刁難過他的執事，現在正坐在凌風身邊，臉上掛著假笑和來賓們握手寒暄。</p>
+        <p>大廳的正門突然被推開。一名身穿金色禮服的老者緩步走了進來——他是天階宗的長老玄冥，也是這次宴會中最有話語權的人物之一。他的到來立刻引來了周圍一陣低聲的恭維和交流，葉塵注意到凌風城主的表情在玄冥出現的那一刻微微僵硬了一瞬——那個細微的變化逃不過煉魂期神魂感知的察覺。</p>
+        <p>城主凌風站到了主位上，開始了宴會的致辭。「各位來賓，感謝你們蒞臨天穹城。今晚的宴會不僅是為了慶祝宗門聯盟成立三百週年——更是為了展現我們對未來和平的共同願景……」</p>
+        <p>葉塵沒有聽進去這些套話。他的目光始終鎖定在玄冥和凌風的表情上——這兩個人之間的互動透露出了一種微妙而詭異的默契，像是兩個久違的老朋友在刻意表演給別人看一樣。如果夜淵說的「老朋友」指的是其中任何一個……那麼今晚的局面將比想像中更加複雜。</p>
+        <p>宴會進行了約莫半個時辰。菜品一道接一道地送上來，酒過三巡之後來賓們的防備心理開始降低——許多人已經喝得微醺，談話的內容從正式的政務討論轉向了閒聊和笑談。這就是葉塵等待的時機。</p>
+        <p>他趁著所有人注意力分散的時候，悄悄向後退去，穿過大廳側面的回廊，朝著月璃說的地下通道入口移動。他的腳步輕盈而穩健——瞬影步的技巧在夜間的使用已經變得更加嫺熟，幾乎沒有任何聲音和光暈可以察覺。</p>
+        <p>凌風的致辭持續了約莫一刻鐘的時間。在這期間，葉塵一直在觀察來賓們的神情變化——有些人對這個外來的年輕修士充滿了好奇和好奇交織的目光；有些人則露出了毫不掩飾的厭惡和輕蔑表情。他注意到城主府的高層中有一大部分人對凌風的講話表現出了一種微妙而不自然的迎合態度——那些人的眼神在凌風說話的時候總是下意識地閃爍，像是在確認對方是否說了什麼不該說的話。</p>
+        <p>宴會開始後約莫半個時辰，一位身穿紅色禮服的中年女子走到了葉塵所在的陰影處。她的面容端莊而優雅，眼角有著幾絲細微的皺紋——那是歲月留下的痕跡，也是經歷過風雨的人特有的氣質。「年輕人。」她用一種只有兩個人能聽到的聲音說道，「你的斗篷顏色在這宴會中顯得格外扎眼。如果你不想引起太多注意，我建議你換一件衣服——我的僕人那裡有一套備用的黑色長袍，你可以去側廊的儲衣間拿一套。」</p>
+        <p>葉塵看著這位陌生女子的眼睛——那雙眼中沒有一絲陰謀或欺騙的味道，反而帶著一種真誠的關懷。他點頭道謝，然後趁著所有人注意力都在大廳中央的時候，快步走向她說的側廊方向。在經過一張長桌時，他感覺到一股熟悉的黑暗能量波動從桌子下面傳來——那裡藏著一枚小型的傳送陣法，而它的靈力頻率與暗淵閣的標誌完全一致。</p>
+        <p>葉塵沒有揭發它，而是將這個資訊記在了心裡——如果宴會當天需要快速逃離大廳，這枚隱藏在餐桌下的傳送陣法可能會成為他最可靠的逃生工具之一。</p>
+        <p>但就在他的手指觸碰到地下通道門扉上的符文瞬間，身後傳來了一個讓他在瞬間血液凝固的聲音：「葉塵小友，你好像走錯方向了。」</p>
+        <p>他猛地轉身——凌風城主正站在十丈外的回廊入口處，臉上掛著一種溫和而平靜的笑容，但他的雙手卻交叉在胸前，指尖閃爍著一絲詭異的紫色光芒。</p>
+        <p>「我邀請你來參加宴會——不是來偷看機密的。」凌風的聲音溫柔得像是長輩對晚輩的關切，但葉塵能感覺到那股靈力波動中隱藏著的殺意。「跟我來吧——我們還有更重要的事情要談。」</p>
+        <p>大廳裡的音樂聲和談話聲依然在繼續，沒有人注意到回廊入口處的這一幕。葉塵站在原地，大腦飛速運轉——凌風的背叛比他預期的更加徹底、更加坦率。他現在有兩個選擇：順從地跟凌風走，或者立刻使用瞬影步逃離這裡。</p>
+        <p>就在他猶豫的那一刻，大廳中央突然爆發出一陣強烈的紫色光芒——像是有人在裡面引爆了一枚靈石炸彈。尖叫声和器物破碎的聲音瞬間淹沒了整個宴會現場。</p>
+        <p>「幽影尊者出手了。」月璃的聲音從身後傳來。葉塵轉頭一看——她不知何時已經站到了他的身邊，紫色的眼眸中閃爍著決絕的光芒。「我早就知道這一刻會來臨——現在我們只有兩個選擇：一起面對，或者各自逃生。」</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-186.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-188.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

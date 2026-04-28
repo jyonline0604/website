@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第206章：裂痕中的光 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-206.html">
+    <link rel="prev" href="https://kofhk.com/chapter-205.html">
+    <link rel="next" href="https://kofhk.com/chapter-207.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第206章 · 裂痕中的光</h1>
+    <main>
+        <p>黎明來臨時，葉塵盤膝坐在城主府最高殘塔的塔頂上。灰色的靈魂鎖鏈感知鋪展出去，掃過他經脈的每一個通道——然後聚焦在那道裂痕上。那道從封印完成的瞬間就存在的神魂裂紋正在緩慢地重塑結構：銀白色的光澤在他的神魂內部快速擴展，像樹枝一樣向四面八方延伸出新的連接通路。每一次延伸都代表著靈魂感知與物質操控兩個維度之間的一次新融合——但它同時也在消耗極大的神魂強度。</p>
+        <p>葉塵閉上雙眼，開始嘗試控制那股力量的流向。他沒有像往常那樣試圖將九世輪迴核心的能量注入裂痕中來修復它；相反，他讓靈魂鎖鏈的感知成為了那道裂痕本身的延伸——灰色的意識束從經脈深處滲透出去，沿著銀白色光澤的軌跡一路向前探索。那是一種全新的修煉方式：不是靠靈力的堆積來推進境界，而是通過理解和掌握那道裂痕所帶來的蛻變進程來達到更高的層次。</p>
+        <p>起初什麼都沒有發生——然後在某一個瞬間，他的神魂感知觸碰到了一個奇異的現象：裂痕內部的那些銀白色光澤正在緩慢地重新排列組合，形成了一種複雜而精密的能量結構。那看起來像是某種古老的封印陣法——但它的頻率不是來自天階宗也不是暗淵阁，而是與第八世留下的守護程序有著完全相同的基礎旋律。</p>
+        <p>「這是……」葉塵低聲說道。「裂痕正在變成一個全新的通道。」</p>
+        <p>他讓靈魂鎖鏈的能量更加深入地觸碰那道裂痕的內部結構——灰色的意識束像細針一樣穿過了銀白色光澤的重疊區域，開始感知那些新形成的通道的每一個細節。他能感覺到那股力量的流向：它不是從經脈中湧出的靈力流動，而是從神魂深處滲透出來的一種更加古老、更加深沉的能量形式——像是某種被封印了無數個輪迴週期的記憶正在緩緩甦醒。</p>
+        <p>葉塵的靈魂鎖鏈感知在那一刻產生了劇烈的波動——因為他感覺到那股能量中帶著一種微妙的頻率變化：它的強度正在逐漸增強，並且開始與掌心的時空符文產生同步共振。那道裂痕不再是單純的神魂損傷；它已經變成了一個全新的修煉器官，能夠直接吸收天地間的能量並轉化為靈魂感知與物質操控的融合力量。</p>
+        <p>他閉上雙眼，讓那股能量在經脈中緩緩運轉——灰色的光芒從他身上滲透出去，與掌心的時空符文產生了更加強烈的共鳴。靈魂鎖鏈的神魂感知鋪展出去，捕捉著天穹城上空每一個微小的能量波動：風中夾雜著的靈力殘留、遠方冰川深處的能量脈動、甚至虛空之眼裂縫下方那種看不見的黑暗頻率。</p>
+        <p>每一絲能量在觸碰到裂痕的時候都被轉化為了銀白色的光澤——然後那股光澤沿着新的通道流入九世輪迴核心的深處，與灰色和深蓝色的力量產生了前所未有的融合效果。葉塵感覺到體內的力量正在發生質的變化：不是靈力的簡單累積，而是神魂結構本身的重塑——那種感覺像是有人在他的靈魂內部重新刻畫了一幅全新的地圖。</p>
+        <p>「這就是第八世留下的遺產……」葉塵低聲說道。「他預先布置了那道裂痕——讓它成為第九世繼承者的蛻變通道。」</p>
+        <p>就在他沉浸於那股能量流動之中的時候，遠方傳來了一阵急促的腳步聲——月璃的身影出現在殘塔的門口，深紫色的眼眸中帶著一絲驚慌的表情。「葉塵！我剛剛收到一個消息：凌風已經派出了三支武裝隊伍同時向不同方向出發。其中一支北上寒霜山脉——他們的行軍速度比預期快了整整一天。」</p>
+        <p>葉塵睜開眼睛——灰色的瞳孔深處閃爍著一絲不穩定的光芒，那是神魂蛻變進程還在加速推進的跡象。「多快？」</p>
+        <p>「按照他們的速度……最多三天就能到達北境寒霜山脉的外圍。」月璃的聲音變得更加急促了。「如果他們比我們先一步進入冰川深處的遺跡——」</p>
+        <p>「那就說明凌風知道那座遺跡的真正價值。」葉塵打斷了她。他站起身來，灰色的光芒在周身緩緩流動。「他不是要尋找實體殘骸——他要找的是守塵留下的核心設施。那裡的能量頻率與第九世輪迴的覺醒有著直接關聯。」</p>
+        <p>月璃沉默了片刻。「所以你不能再等了——那道裂痕帶來的蛻變進程必須加快推進速度。否則你到達北境的時候可能還無法應對凌風武裝力量的威脅。」</p>
+        <p>葉塵點了點頭。他知道月璃說得對：時間是最關鍵的因素。他讓九世輪迴核心的力量持續向那道裂痕施加壓力——灰色的光芒在他周身擴散出去，每一寸空間都被那股力量浸透。他能感覺到靈魂鎖鏈的感知正在變得更加敏銳、更加深入：每一次延伸都在觸碰到更高維度的物質結構，而每一個接觸點都帶來了新的蛻變機會。</p>
+        <p>「我需要一個加速的方法。」葉塵說道。「灰瞳提供的那種修煉技巧——利用天地間的能量流動來修復神魂裂紋——現在就派上用場了。我需要在旅途中實踐它，讓裂痕的蛻變成程達到最終階段。」</p>
+        <p>他閉上雙眼，靈魂鎖鏈的神魂感知鋪展出去——捕捉著天穹城上空每一個微小的能量波動。灰色的意識束像一張細網一樣覆蓋了整座城市的靈力殘跡，開始篩選出最適合用來加速蛻變的能量頻率。他能感覺到那種新修煉方式帶來的微妙變化：當他的靈魂感知觸碰到某種特定的天地靈力流動模式時，裂痕內部的銀白色光澤就會產生更加強烈的共振——像是某種古老的記憶碎片正在被喚醒。</p>
+        <p>影象在他的意識中浮現了：一片廣闊的山巔平台上，第八世的繼承者站在一名身穿灰色長袍的老者面前。那個老者正是守塵本人——但他的面容比葉塵在CH192中見到的更加蒼老，雙眼中帶著一種深沉的疲憊和決絕。兩人的力量合而為一才抵擋住了十幾名築基期高手的圍攻；而在戰鬥的最後時刻，守塵將一枚古老的紫色符石塞進了第八世的手心。</p>
+        <p>「第九世的繼承者會在未來的某一天來到這裡。」守塵的聲音在記憶碎片中迴盪。「他需要找到那道裂痕——因為那是通往更高境界的唯一道路。記住：當靈魂感知與物質操控兩個維度完全融合的時候……你就不再只是修行者了。你會成為某個更古老事物的載體——一種超越了所有已知境界的存在形式。」</p>
+        <p>影像隨之消失了——但葉塵感覺到體內那股銀白色的能量已經開始加速重塑他的神魂結構。那道裂痕帶來的蛻變進程正在以肉眼可見的速度推進，而他的煉魂期境界也因為這種全新的修煉方式而產生了微妙的變化：後期的靈力流動變得更加穩定、更加深沉，像是某種液體在凝固的過程中形成了新的晶體形狀。</p>
+        <p>「還差一點……」葉塵低聲說道。「我還需要更多的時間和能量來完成這個過程。」</p>
+        <p>他讓靈魂鎖鏈的能量更加深入地觸碰裂痕的內部結構——灰色的意識束沿著銀白色光澤的軌跡一路向前探索，最終停在了某個深處的關鍵節點上。在那裡，一股更加古老、更加深沉的能量正在緩慢地跳動——像是某種被封印了無數個輪迴週期的記憶碎片正在甦醒。</p>
+        <p>遠方的城市鐘樓上傳來了悠長的敲鐘聲——那是天穹城傳統的新年慶典音樂，提醒著人們無論經歷了多少風雨，生活總要繼續下去。但葉塵知道，從他選擇踏入那道裂痕的那一刻起，他的生命就再也無法回到那種平靜的日常了。</p>
+        <p>九世輪迴的核心在他心口緩緩跳動了一下——像是某種古老樂曲的第二個音符，等待著後續的和聲。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-205.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-207.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

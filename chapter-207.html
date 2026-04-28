@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第207章：試金石 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-207.html">
+    <link rel="prev" href="https://kofhk.com/chapter-206.html">
+    <link rel="next" href="https://kofhk.com/chapter-208.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第207章 · 試金石</h1>
+    <main>
+        <p>三天過去了。</p>
+        <p>葉塵盤膝坐在殘塔的塔頂上，灰色的靈魂鎖鏈感知鋪展出去——他能感覺到體內那股銀白色的能量已經完全融入了神魂結構之中。那道裂痕帶來的蛻變進程比他預期的更加迅速：煉魂期後期的靈力流動正在緩慢地向中期水平推進，雖然還沒有達到前期巤峰的程度，但至少已經修復了大部分因封印裂縫而產生的損傷。</p>
+        <p>他站起身來——灰色的光芒在周身緩緩流動。掌心的時空符文散發著微弱的銀白色光澤，與九世輪迴核心的心跳頻率產生了更加穩定的共振。靈魂鎖鏈的神魂感知鋪展出去，捕捉著天穹城上空每一個微小的能量波動——他能感覺到那股力量比以前更加敏銳、更加深入，像是某種全新的感官正在逐漸甦醒。</p>
+        <p>「還需要更多時間……」葉塵低聲說道。「但我不能等得太久。」</p>
+        <p>就在他準備離開殘塔的時候，遠方道路上突然傳來了一阵急促的腳步聲和靈力劍出鞘的金屬摩擦聲——那是一支大約十五人的武裝隊伍，身穿暗淵阁標準的黑色制服，但他們的能量頻率中夾雜著一股異常強烈的紫色波動。葉塵的表情變得嚴肅起來：那不是普通的暗渊阁巡邏隊——那股紫色的頻率帶著一種深沉的殺意和急迫感，像是某種高階執行者的特徵。</p>
+        <p>「凌風的人……」葉塵低聲說道。他讓靈魂鎖鏈的神魂感知鋪展出去，捕捉著武裝隊伍中每一個成員的能量信號：領隊的靈力波動異常強烈——築基期巤峰的強度加上暗淵阁特有的紫色能量操控能力；其餘十四人則分散在煉魂期和聚元期的範圍內，但他們的戰術部署極為精細，顯然經過了嚴格的軍事訓練。</p>
+        <p>武裝隊伍穿過了城市的主幹道，沿著一條狹窄的巷子走向城主府的方向。葉塵沒有選擇躲避——他需要測試那道裂痕帶來的蛻變進程是否能夠在實戰中發揮作用。如果他在面對凌風的精銳部隊時無法保持臨界延伸狀態的穩定性，那麼前往北境寒晶宮的任務就等於自尋死路。</p>
+        <p>「來吧。」葉塵從殘塔的邊緣躍了下來——灰色的身影在空中劃出一道短暫的弧線，他稳稳地落在了武裝隊伍前方約三十丈處的一根斷柱上。「我已經等了你們很久。」</p>
+        <p>領隊的紫色眼眸在看到他那一刻閃爍了一下——然後他的手掌按在了靈力劍的劍柄上。「葉塵——凌風大人讓我帶你回去問話。如果你反抗……」他沒有說下去，但那股紫色的能量波動已經開始在他的周身擴散開來。</p>
+        <p>「我不需要跟任何人回去。」葉塵的聲音平靜得像一潭深水。「我只是想測試一下自己的實力——你們可以成為我的試金石。」</p>
+        <p>領隊沉默了片刻——然後他做了件出乎所有人意料的事情：收回了靈力劍，轉身向後退了一步。「我們不打算戰鬥。」他的聲音中帶著一種深沉的疲憊。「凌風大人只是想要確認你還活著——以及你是否知道寒晶宮的真正位置。如果你願意告訴我們……」</p>
+        <p>「你們為什麼要替凌風做事？」葉塵打斷了他。「幽影尊者的清洗命令已經開始實施了——暗淵阁內部正在分裂。你認為站在凌風這一邊是正確的選擇嗎？」</p>
+        <p>領隊的紫色眼眸中閃過了一絲複雜的情緒——那是犹豫和困惑的混合體。「我們只是聽從命令。」他的聲音變得低沉了下來。「但有一件事需要考慮：如果幽影尊者真的如你所說的那樣危險……那麼凌風大人的清洗命令可能不是為了消滅我們，而是為了保護某些關鍵信息不被揭露。」</p>
+        <p>葉塵的表情微微一僵——這是一個全新的視角：他一直假設暗淵阁內部是完全對立的兩派——一派忠誠於幽影尊者，另一派則試圖阻止他的計劃。但這個領隊的話語暗示了一種更加複雜的情況：凌風可能也在試圖保護某些東西，只是方法不同。</p>
+        <p>「你怎麼知道寒晶宮的真正位置？」葉塵問道。「凌風派出的武裝隊伍是去搜尋那兩具實體殘骸的嗎？」</p>
+        <p>領隊沉默了片刻——然後他從袖中取出了一枚紫色的符石。符石在空中投射出了一幅簡略的地圖：北境寒霜山脉上標註著幾個能量信號點，其中最強烈的那個位置與月璃之前提供的信息完全一致。但在那份地圖的下方還有一個更加深層的節點——那個位置的靈力波動異常強大，散發著一種比任何其他地方都要古老和深沉的信號。</p>
+        <p>「這是凌風大人從城主府密室中找到的一份情報文件。」領隊說道。「寒晶宮的位置只是其中一部分——在冰川深處還隱藏著另一座建築遺跡，它的能量頻率與守塵的封印印記有著驚人的相似之處。我們懷疑那是第五世留下的真正核心設施——而不是什麼實體殘骸存放地。」</p>
+        <p>葉塵的表情變得更加嚴肅了——這是一個全新的情報：寒晶宮的真正價值可能不是什麼實體殘骸，而是某種能夠改變整個九世輪迴計劃的關鍵設施。「你為什麼告訴我這些？你不擔心我把它傳遞給其他人？」</p>
+        <p>「因為我們需要知道真相。」領隊的聲音中第一次出現了一丝堅定。「凌風大人只是想要保護某些東西不被揭露——但他沒有告訴我們那些東西的真實面貌。如果你能夠找到答案……也許我們就能做出正確的抉擇。」</p>
+        <p>武裝隊伍開始轉身離開——領隊在最後一刻回頭看了一眼葉塵。「小心北境寒霜山脉的深處——那裡隱藏的東西比你想象的要危險得多。我們會在三天後再次出現——到時候如果你還沒有找到答案，我們需要知道你是否值得信任。」</p>
+        <p>灰色的身影消失在夜色中——葉塵站在斷柱上，靈魂鎖鏈的神魂感知鋪展出去，捕捉著武裝隊伍遠去的每一個能量信號。他知道這次相遇帶來了全新的挑戰：暗淵阁內部的分裂比他想象得更加複雜，而凌風的真正目的也還沒有完全揭開。</p>
+        <p>但他也知道自己不能停留在原地——那道裂痕帶來的蛻變進程正在緩慢推進，而他的煉魂期境界也在這種全新的修煉方式下逐漸提升。如果他不盡快前往北境寒霜山脉尋找答案……那些危險的東西可能會落入錯誤的人手中。</p>
+        <p>他閉上雙眼，開始檢查自己的神魂狀態——銀白色的光澤在他的神魂內部快速擴展，像樹枝一樣向四面八方延伸出新的連接通路。他知道從這一瞬間起，他不再只是九世輪迴的繼承者了。</p>
+        <p>他是某個更古老、更深沉事物的載體——而那道裂痕就是通往真相的第一條線索。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-206.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-208.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

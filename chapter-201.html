@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第201章：歸途 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-201.html">
+    <link rel="prev" href="https://kofhk.com/chapter-200.html">
+    <link rel="next" href="https://kofhk.com/chapter-202.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第201章 · 歸途</h1>
+    <main>
+        <p>晨光穿透殘塔的裂縫，灑在葉塵的臉龐上。他睜開眼睛的時候，第一個感覺不是疲憊——而是那種長時間處於高度緊繃狀態後突然放鬆帶來的空虛感。</p>
+        <p>掌心的時空符文依然在散發著微弱的銀白色光芒，像是心跳一樣穩定而有節奏。他抬起手，仔細端詳那道符文的紋路：金色的螺旋線條與灰色的靈魂鎖鏈頻率已經完全融合在一起，每一條線路的交匯點上都浮現出細小的深蓝色光斑——那是無面融入後的痕跡。九世輪迴的核心在心口處緩緩跳動，灰、銀、藍三種顏色的心跳頻率正在逐漸同步。</p>
+        <p>他閉上雙眼，開始檢查自己的身體狀態。</p>
+        <p>靈魂鎖鏈的神魂感知像一張薄霧一樣鋪展開來，掃過經脈的每一寸通道。然後他感覺到了一道裂紋——不是經脈上的損傷，而是更深處的、刻在神魂本體上的裂痕。那道裂痕從封印完成的瞬間就存在了，從煉魂期的領域強行觸碰更高維度的物質層面所留下的代價。它不像經脈破裂那樣劇烈疼痛，而是一種持續的灼熱感，像是有一根細小的火焰針一直在輕微地刺激著神魂的邊緣。</p>
+        <p>「這就是臨界延伸的代價。」葉塵低聲說道。他讓靈魂鎖鏈的能量緩慢注入那道裂痕——灰色的力量像細流一樣滲入裂縫的內部，試圖修復那些因為強行跨越維度鴻溝而產生的微小損傷。</p>
+        <p>起初什麼都沒有發生。然後在某一個瞬間，他的神魂感知捕捉到了一個奇怪的現象：那道裂痕並不是單純的傷口——它的邊緣正在緩慢地重塑結構，像是某種液體在凝固的過程中形成了新的晶體形狀。裂紋內部浮現出了一絲微弱的銀白色光澤，與掌心的時空符文有著完全相同的頻率。</p>
+        <p>葉塵睜開眼睛，表情變得嚴肅起來。他伸手觸碰那道裂痕——指尖傳來的不是痛楚，而是一種奇異的溫熱感，像是觸碰到了某種活著的東西。那道裂紋正在改變他的神魂結構：它讓靈魂感知與物質操控兩個維度之間形成了一條全新的通路。這不是傳統意義上的修復——更像是一種蛻變。</p>
+        <p>「守塵說得對……」葉塵喃喃自語。「封印不是結束——它是某個更大計劃的起點。」</p>
+        <p>他站起身，灰色的身影在晨光中緩慢舒展。靈魂鎖鏈的感知重新鋪展出去，這次範圍比從前更加廣闊——那道裂痕帶來的蛻變讓他的神魂強度提升了至少一成，雖然還不足以讓他突破到半步巔峰，但至少已經修復了大部分損傷。</p>
+        <p>塔樓下方傳來了一陣腳步聲——月璃的身影出現在門口。她的深紫色眼眸中帶著一夜未眠的疲憊，但眼神依然銳利。「你醒了？」</p>
+        <p>「嗯。」葉塵轉身看向她。「你的暗淵閣線索有進展嗎？」</p>
+        <p>月璃點了點頭，從袖中取出一枚紫色的符石。符石在空中投射出了一幅簡略的地圖——一片廣闊的北方冰原上標註著幾個能量信號點，其中最強烈的那個信號來自一座隱藏在冰川深處的建築遺跡。</p>
+        <p>「這是我在城主府密室中找到的一份暗淵閣檔案。」月璃說道。「寒晶宮的位置就在那裡——北境寒霜山脉的最深處。但問題是，那裡的能量波動非常不穩定：冰川內部存在大量的空間亂流，任何修行者進入都會受到嚴重的神魂干擾。而且……」她頓了一下，表情變得更加凝重。</p>
+        <p>「而且什麼？」葉塵問。</p>
+        <p>月璃將符石收回掌心。「暗淵閣的記錄顯示，三天前有一支天階宗的武裝隊伍穿過了裂縫區域——他們的行軍方向就是北境寒霜山脉。我懷疑他們也收到了寒晶宮的信息，或者……」她沒有說下去，但葉塵明白她的意思：也許幽影尊者並不知道寒晶宮的真正價值，但他的某些手下已經猜到了。</p>
+        <p>葉塵沉默了片刻。「我需要時間修復神魂——至少兩天。這兩天裡你可以繼續調查暗淵阁內部嗎？我想確認趙明軒的立場是否真的如我們所想那樣不確定。」</p>
+        <p>月璃點了點頭。「我會去見幾個可以信任的人。但還有一件事需要你考慮：你現在的境界是煉魂期後期，距離半步巔峰還有四個小階段——前期巔峰、中期、中期巤峰、後期。按照正常修煉速度，每個階段需要四到六章的推進時間。」</p>
+        <p>「我不打算走常規路徑。」葉塵打斷了她。「我發現了一條新的道路：那道裂痕正在重塑我的神魂結構，當靈魂感知與物質操控兩個維度完全融合的時候……也許就不需要通過傳統的靈力累積來突破。」</p>
+        <p>月璃的表情變得更加嚴肅了。「你確定那是一條可行的路？如果失敗——」</p>
+        <p>「沒有如果。」葉塵打斷了她。他的灰色眼眸中閃過一絲堅定。「我已經觸碰過物質層面，我知道那種力量是什麼樣子。現在唯一要做的是學會如何穩定地維持它。而那道裂痕就是我最強大的老師。」</p>
+        <p>他轉身面向裂縫的方向——那片天空如今恢復了清澈的藍色，什麼都沒有留下。但葉塵知道，在那些看不見的深處，幽影尊者正在等待著下一次的輪迴。而他必須在那之前變得更強。</p>
+        <p>「兩天後。」葉塵說道。「我去北境寒霜山脉。到時候我們需要完整的計畫——不僅僅是找到殘骸，還要有應對天階宗和暗淵阁其他勢力的備援方案。」</p>
+        <p>月璃點了點頭。「我會在這段時間內建立一個可靠的同盟網絡。但你需要知道一件事：在這種事情上，信任是最危險的東西。一次錯誤的判斷就可能導致整個計劃崩潰。」</p>
+        <p>葉塵沒有回答——他只是閉上雙眼，靈魂鎖鏈的神魂感知再次鋪展出去。灰色的意識像一張細網一樣覆蓋了整座城市，捕捉著每一個能量信號和空間波動。他知道月璃說得對，但他也知道自己沒有足夠的時間去逐一驗證每個人的忠誠。</p>
+        <p>有些抉擇必須在有限情報下做出——而他已經做了太多次類似的選擇。</p>
+        <p>風從遠方吹來，帶著冬季即將結束的微弱暖意。葉塵感覺到體內那道裂痕正在緩慢地重塑他的神魂結構——每一絲銀白色的光澤都代表著靈魂與物質兩個維度之間的新連接。這條道路比任何已知的修煉方式都要艱難，但每一次延伸都在讓他更接近某種超越境界限制的力量。</p>
+        <p>他不知道那最終會帶他去向哪裡。</p>
+        <p>但他知道一件事：從今往後，他不再只是九世輪迴的繼承者。</p>
+        <p>他是某個更古老、更深沉事物的載體——而那道裂痕就是通往真相的第一條線索。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-200.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-202.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

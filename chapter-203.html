@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第203章：殘跡 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-203.html">
+    <link rel="prev" href="https://kofhk.com/chapter-202.html">
+    <link rel="next" href="https://kofhk.com/chapter-204.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第203章 · 殘跡</h1>
+    <main>
+        <p>天穹城的地下深處藏著一條古老的傳送陣法——月璃在城主府大廳東側角落發現的那個小型傳送陣，其頻率與暗淵閣的標誌完全一致。但葉塵在仔細檢查後意識到：那個陣法的能量回路比普通的暗淵阁設施更加複雜，它的設計目的不單純是為了交通運輸，更像是一個更大系統的一部分——一個連接城市地下各個關鍵節點的能量網路。</p>
+        <p>他站在傳送陣的中心位置，灰色的靈魂鎖鏈感知鋪展出去，觸碰著每一條刻在地板上的靈力回路的邊緣。那股能量的頻率與掌心的時空符文有著某種深層次的共振：不是完全相同，而是像是同一首樂曲的不同變奏——基礎旋律一致，但節奏和音符的排列方式有所不同。</p>
+        <p>「這不是普通的傳送陣……」葉塵喃喃自語。「它是一個能量分配系統的核心節點。」</p>
+        <p>他讓九世輪迴核心的力量緩緩注入其中——灰色的光芒從他身上滲透進地板上的靈力回路，開始激活那些沉睡了數十年的通道。起初什麼都沒有發生；然後在某一個瞬間，整個地下室的地面開始微微震顫，古老的石塊在地下深處的摩擦聲中發出低沉的共鳴。</p>
+        <p>傳送陣的中心位置浮現出了一道灰色的光柱——它向上延伸穿透了建築物的地基，向下方深入地底數十丈後突然改變方向，朝城市另一側的一個未知節點延伸而去。葉塵順著光柱的能量軌跡仔細觀察：那道光路連接著至少七個不同的地下位置，其中三個位置的能量波動特別強烈，像是儲存了大量靈力資源的倉庫，另外四個則散發出更加複雜、更加深沉的信號——那些可能是某種儀式場地或者是戰略要地。</p>
+        <p>他讓靈魂鎖鏈的神魂感知沿著光柱的軌跡逐一探查每一個節點的能量特徵。第一個節點散發著濃郁的紫色能量——那是暗淵阁標誌性的頻率；第二個節點的藍色波動則屬於天階宗特有的靈力系統；第三個節點……葉塵的表情在讀到那個信號時微微一僵：那是一股銀白色的光澤，與掌心的時空符文完全相同的頻率。</p>
+        <p>「這不可能——」葉塵低聲說道。他讓靈魂鎖鏈的能量更加深入地觸碰那道銀白色信號的源頭——然後他感覺到了一股古老的記憶碎片正在緩慢甦醒。</p>
+        <p>那是第八世的記憶。</p>
+        <p>影像在他的意識中浮現：一片廣闊的城市地下空間中，無數靈力回路像血管一樣鋪展在岩石壁面上；城市的建設者們——一群身穿灰色長袍的修行者——正在完成最後一道封印陣法的刻畫。他們不是天階宗的人，也不是暗淵阁的成員——他們的服裝上刻著一個葉塵從未見過的標誌：一枚環繞著裂縫的圓形符文，象徵著某種保護與監護的意圖。</p>
+        <p>「第九世繼承者將會在這座城市中覺醒。」一個蒼老的聲音在記憶碎片中迴盪。「當虛空之眼再次出現的時候——他需要能夠找到這裡。所有關鍵節點都已經預先布置好了，只等他來激活。」</p>
+        <p>影像隨之消失了——葉塵的靈魂鎖鏈感知依然沿著銀白色信號的軌跡延伸下去，最終停在了城市最深處的一個未知位置：那裡的地底結構異常複雜，靈力回路的密度比任何其他地方都要高出數倍，像是某種龐大的能量儲存裝置的核心。</p>
+        <p>他閉上雙眼，開始規劃下一步的行動——如果這個地下網路真的是第八世留下的遺產，那麼激活所有節點可能會為他提供足夠的能量來修復神魂裂紋、推進煉魂期的境界突破。但問題是：城市下方的天階宗武裝力量正在進行大規模搜索，任何深入地底的活動都可能暴露他的位置。</p>
+        <p>葉塵決定先探索最近的兩個節點——一個是暗淵阁的紫色能量倉庫，另一個是天階宗的藍色靈力儲存區。如果能夠從中獲取足夠的能量資源，他就不需要冒著被發現的風險去觸碰那些更加危險的核心區域。</p>
+        <p>他盤膝坐下，雙手按在傳送陣的中心位置上。灰色的靈魂鎖鏈能量沿著地板上的靈力回路向兩個方向同時延伸——一道光柱朝城市東側的暗淵阁倉庫節點射去，另一道則指向北部的天階宗儲存區。葉塵讓神魂感知分別觸碰這兩個節點的內部結構：紫色能量倉庫中封存著大量經過壓縮的暗渊阁靈力精華；藍色靈力儲存區則排列著數百枚裝滿天階宗特有能量的晶石陣列。</p>
+        <p>「兩種不同系統的能量……」葉塵低聲分析著。「如果能夠將它們混合在一起，也許能創造出一種新的頻率——既能避開天階宗的搜索信號，又能提供足夠的力量來修復神魂裂紋。」</p>
+        <p>他讓九世輪迴核心的力量開始重新編排這兩股能量的排列方式：灰色的光芒像織布機一樣穿梭在紫色和藍色的能量線條之間，將它們交錯融合成一種全新的灰色漩渦。這個過程非常消耗神魂強度——每一次能量的重組都需要極度的專注和精確的控制——但當第一絲完成融合的混合能量迴流進他的經脈時，葉塵感覺到那道裂痕的灼熱感減輕了一分。</p>
+        <p>「有效。」他低聲說道。「繼續。」</p>
+        <p>他讓靈魂鎖鏈的能量更加深入地觸碰兩個節點的內部結構——紫色能量倉庫的底層儲存著一組古老的暗淵阁高階法器，每一件都散發著強大的封印之力；而藍色靈力儲存區的深處則埋藏著數枚天階宗長老級別修士的遺物晶石，其中一枚晶石的頻率與守塵在第五世留下的封印印記有著驚人的相似之處。</p>
+        <p>葉塵小心翼翼地從紫色倉庫中提取了兩件法器——一枚小型的紫色封印印和一枚能夠隱藏靈力信號的迷幻符石；同時從藍色儲存區取走了那枚與守塵封印印記頻率一致的長老晶石。當這三樣物品全部融入他的九世輪迴核心時，他感覺到體內那道裂痕的重塑進程突然加速了——銀白色的光澤在他的神魂內部快速擴展，像樹枝一樣向四面八方延伸出新的連接通路。</p>
+        <p>「這就是第八世留下的遺產……」葉塵閉上雙眼，感受著那股古老力量在體內奔湧流動。「不只是能量和法器——更是某種更加深層的引導：他預先布置了這些節點，是為了讓我能夠在不暴露行踪的情況下獲取所需的資源。」</p>
+        <p>他站起身來。灰色的光芒在他周身緩緩流動——靈魂鎖鏈的神魂感知鋪展出去，捕捉著城市地下網路中每一個可觸碰的節點。他知道從這一瞬間起，他不再只是依靠自己的力量在探索前路了——第八世的那個守護者仍然在深處等著他，等待著第九世繼承者來完成他當年未能完成的使命。</p>
+        <p>而北境寒晶宮的任務——只是這場更宏大計劃的第一步。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-202.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-204.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

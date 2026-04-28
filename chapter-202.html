@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第202章：暗流 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-202.html">
+    <link rel="prev" href="https://kofhk.com/chapter-201.html">
+    <link rel="next" href="https://kofhk.com/chapter-203.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第202章 · 暗流</h1>
+    <main>
+        <p>城主府後花園的假山叢中藏著一條通往地下密室的狹窄通道——月璃在三天前的宴會期間就注意到了這個入口，但當時沒有時間調查。此刻她站在通道入口前，深紫色的眼眸掃視著四周的動靜：天階宗的武裝人員正在全城戒備搜索可疑人物，暗淵閣的眼線們也分布在每一個可能的路徑上——但只要她知道正確的進入方式，這些監視都形同虛設。</p>
+        <p>她抬起左手，掌心浮現出一枚紫色的能量符石。符石的頻率與通道深處的能量殘跡產生了微妙的共鳴——一道隱藏的石門在岩石的摩擦聲中緩緩滑開，露出了一條向下延伸的石階。月璃深吸一口氣，踏步走入黑暗之中。</p>
+        <p>密室的空氣中瀰漫著一股陳舊的靈力殘留味道——那是數十年來無數暗淵閣高層在這裡討論戰略、交換情報時積累下的能量痕跡。牆壁上鑲嵌著發光的紫色晶石，為通道提供了微弱但穩定的照明。月璃沿著石階向下走了約二十步後，前方出現了一扇巨大的木門——門上刻著暗淵閣的標誌：一隻展開雙翼的黑色眼睛，瞳孔中嵌著一枚銀色的符文碎片。</p>
+        <p>她將手掌貼在門上的標誌處——紫色的能量從掌心注入符文之中。片刻之後，木門內部傳來了一阵沉重的機關聲，然後緩緩向內打開。</p>
+        <p>密室內部的空間比月璃預期的更加寬廣：一張巨大的圓桌占据了房間的中心位置，桌面上刻著一圈複雜的靈力回路圖案；周圍環繞著十二把石椅，每一把椅子靠背上都刻著不同的符文——那是暗淵閣高層的個人標誌。長牆上掛滿了地圖和情報板，上面標註著靈界各個區域的能量信號、勢力分佈和戰略要點。</p>
+        <p>「你比我想像中來得更快。」一個低沉的聲音從圓桌的另一端傳來。</p>
+        <p>月璃轉過身——一個身穿黑色長袍的中年男子坐在石椅上，右手輕撫著桌面上的一枚紫色水晶球。他的面容被兜帽遮擋了一半，但露出的左眼是一雙異常銳利的灰色瞳孔：那是一個常年處於高壓狀態下的情報人員特有的眼神。</p>
+        <p>「你是誰？」月璃沒有放鬆警惕——她的靈魂鎖鏈感知已經鋪展開來，捕捉著對方身上的能量頻率。「這不是暗淵閣的高層會議場所。」</p>
+        <p>中年男子摘下兜帽，露出了一張佈滿細小疤痕的臉龐。他的額頭上刻著一道深深的紫色裂紋——那是暗淵閣核心成員的身份標記。「你可以叫我灰瞳。我在暗淵阁負責情報分析和戰略規劃已有十七年之久。」他頓了一下，目光變得更加嚴肅。「也是少數知道幽影尊者真正目的的人之一。」</p>
+        <p>月璃的瞳孔微微收縮——這是她從城主府密室的信件中推測出的線索：暗淵閣內部確實存在對幽影尊者的懷疑勢力。但親耳聽到一個核心成員承認這一點，仍然是個巨大的震撼。「你為什麼告訴我這些？你不擔心我把它傳遞給其他人？」</p>
+        <p>灰瞳沒有回答這個問題——他只是將手掌按在了圓桌上的紫色水晶球上。水晶球內部的能量開始旋轉、重組，最終投射出了一幅立體的靈界地圖：北境寒霜山脉、南海沉龍淵、天穹城以及連接這三個地點的能量走廊全部清晰可辨。</p>
+        <p>「因為時間不多了。」灰瞳的聲音中帶著一種深沉的疲憊。「幽影尊者已經在裂縫深處佈下了最終儀式——他的計劃不是在封印完成後停止，而是在封印完成的瞬間啟動一個更加強大的裂縫。上一次他只是試圖擴張；下一次他會直接撕裂空間結構，讓虛空之眼完全滲透進這個世界。」</p>
+        <p>月璃的臉色變得更加嚴肅了。「所以我們需要在那之前找到兩具實體殘骸——北境的寒晶宮和南海的沉龍淵。」</p>
+        <p>灰瞳點了點頭。「問題是：天階宗已經派出了三支武裝隊伍分別前往不同的方向。一支北上寒霜山脉，一支南下沉龍淵，第三支則留在天穹城內執行幽影尊者的清洗命令。我們沒有足夠的時間去追趕他們——除非……」他頓了一下，目光轉向月璃。「你那個朋友葉塵找到了另一條路。」</p>
+        <p>月璃沉默了片刻——她必須判斷這個灰瞳是否真的值得信任。守塵的記憶碎片告訴她：在虛空之眼的深處有一個守護程序，而幽影尊者曾經試圖將它重新編程成自己的武器。如果暗淵阁內部也存在類似的背叛和操控……</p>
+        <p>「你認識守塵嗎？」月璃最終問道。</p>
+        <p>灰瞳的表情微微一僵——那是她預期的反應。「五十年前，我見過他一面。」他的聲音變得低沉了下來。「當時我們還不是敵人——我和其他十七名暗淵閣高層一起見證了第五世繼承者的封印儀式。但幽影尊者在那次之後開始逐漸掌控組織的核心權力，將所有知情者逐步清除或邊緣化。」</p>
+        <p>他抬起手，掌心浮現出了一枚古老的紫色符石——那枚符石的形狀與葉塵掌心的時空符文有著驚人的相似之處。「這是第五世留下的信物。守塵在封印之前交給了我的前輩，囑咐我們在某種情況下重新喚醒它。我一直以為那個『某種情況』永遠不會到來——直到裂縫出現在天穹城上空的那一刻。」</p>
+        <p>月璃伸出手，接過了那枚符石——紫色的能量在她掌心輕輕跳動了一下，然後穩定下來。她能感覺到那股能量中帶著一種古老而深沉的頻率：與葉塵九世輪迴核心的心跳節奏完全一致。</p>
+        <p>「我需要驗證你的誠意。」月璃說道。「你能告訴我幽影尊者清洗命令的具體內容嗎？哪些暗淵閣成員被列入清除名單？」</p>
+        <p>灰瞳沉默了片刻——然後他將手掌再次按在了紫色水晶球上。水晶球內部的能量重新排列，投射出了一份清單：十五個名字、各自的職務以及標註著不同等級的危險代碼。月璃快速掃視了一遍——其中三個名字是暗淵閣的情報網絡負責人，另外五個是武裝力量的高層指揮官，剩下的七個人則分散在靈界各個區域執行秘密任務。</p>
+        <p>「這些人不是因為背叛而被列入名單——他們是因為知道了太多。」灰瞳的聲音中第一次出現了一丝怒意。「幽影尊者害怕的不是叛變，而是真相被揭露。每一個名字都代表著一個曾經見證過他真實面貌的人——而他現在正在系統性地清除所有可能的威脅。」</p>
+        <p>月璃將清單牢記在心——這些信息將是她建立同盟網絡的關鍵基礎。但她還需要更多：她需要知道哪些暗淵閣成員是可以說服站到葉塵這一邊的，以及天階宗武裝力量的具體部署位置。</p>
+        <p>「我需要去見幾個人。」月璃說道。「你能提供通路和時間嗎？」</p>
+        <p>灰瞳點了點頭。「你有一夜的時間——明天凌晨之前必須離開這座密室。天階宗的搜查範圍正在擴大，如果他們發現這裡的存在……」他沒有說下去，但月璃明白他的意思：那將不僅僅是她的問題。</p>
+        <p>她轉身走向密室的出口——在推開木門的那一刻，她回頭看了一眼灰瞳。「如果你願意幫助我……你也需要離開暗淵阁。幽影尊者的清洗不會只針對清單上的人。」</p>
+        <p>灰瞳沒有回答——他只是重新戴上了兜帽，目光回到了紫色水晶球投射出的靈界地圖上。但月璃注意到他的左手在微微顫動：那枚古老的紫色符石正被他緊緊握在掌心之中。</p>
+        <p>她踏出密室，沿著狹窄的石階向上走去。通道盡頭的月光灑在她身上——深紫色的眼眸中閃爍著一絲決斷。她知道這只是開始：要建立一個可靠的同盟網絡需要時間、耐心和極高的風險管理。但在這種事情上，最危險的不是失敗——而是永遠不開始。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-201.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-203.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

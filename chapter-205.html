@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第205章：背叛者名單 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-205.html">
+    <link rel="prev" href="https://kofhk.com/chapter-204.html">
+    <link rel="next" href="https://kofhk.com/chapter-206.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第205章 · 背叛者名單</h1>
+    <main>
+        <p>葉塵在城牆的殘垣上等了整整兩個時辰。</p>
+        <p>灰色的靈魂鎖鏈感知鋪展出去，捕捉著每一個靠近的能量信號——夜風中夾雜著城市深處傳來的人聲和腳步聲，但那些都不是他要找的人。他需要的是趙明軒：那個在暗淵阁中地位特殊、態度不確定、但在昨晚的裂縫封印事件中表現出某種微妙立場的執事。</p>
+        <p>直到第三個時辰開始的時候——遠方道路上出現了一個黑色的身影。趙明軒獨自一人穿過夜色，步伐快速而謹慎，掌心始終緊握著一枚暗淵阁的高層令牌。他沒有使用任何隱藏靈力的技巧，而是大搖大擺地沿著城市的主幹道行走——這是葉塵第一次看到他採取這種策略：故意暴露行踪來避開更深層的監視。</p>
+        <p>「你來了。」葉塵的聲音從城牆的暗影中傳來。「我等了兩個時辰。」</p>
+        <p>趙明軒停下腳步，抬頭看向那道灰色的身影。他的臉上掛著那種熟悉的假笑——溫和、禮貌，但每一句話背後都藏著刀刃。「你似乎對我的到來的時間有精確的預期？」</p>
+        <p>「你的行進速度和路線都顯示你在刻意避開暗淵阁的眼線。」葉塵從城牆上躍了下來，灰色的光芒在夜色中劃出一道短暫的弧線。他稳稳地站在了趙明軒面前五丈處。「所以我知道你選擇了這條路——不是因為它最短，而是因為它最安全。」</p>
+        <p>趙明軒的笑容微微僵硬了一瞬——然後恢復了原來的模樣。「葉塵，你的洞察力一如既往地令人不安。但我們沒有時間在這裡互相測試——我需要告訴你一件重要的事情，而這件事不適合在暗處低聲說。」他抬起手，掌心浮現出一枚紫色的能量刃——但那不是攻擊姿勢，而是為了遮擋可能的竊聽靈力信號。「你必須跟我來。」</p>
+        <p>兩人穿過城市的主幹道，沿著一條狹窄的巷子走向一座破敗的小屋。趙明軒在門口停住了腳步，將手掌貼在門框上的一枚紫色符石處——符文亮起後，門內傳出了一陣低沉的能量波動聲。那是一道簡單的隱藏靈力信號的屏障：任何修行者想要竊聽屋內的對話都需要付出相當大的代價。</p>
+        <p>「坐。」趙明軒指向房間中央的一張木桌，然後自己坐了下來。灰色的靈魂鎖鏈感知鋪展出去——葉塵捕捉到了這個房間中除了他們兩人之外還存在著第三個能量信號：在天花板上方約一丈處藏著一個人影，靈力波動極為微弱，像是某種高級的隱藏技巧。</p>
+        <p>「我不習慣在別人監視的情況下說話。」葉塵說道。「如果你信任我，就讓那个人出來。」</p>
+        <p>趙明軒沉默了片刻——然後他抬起手，掌心浮現出一枚暗淵阁的高層令牌。令牌在空中投射出了一道紫色的光幕，將整個房間包裹在迷幻的能量之中。天花板上方傳來了一阵輕微的腳步聲——一個身穿黑色短袍的年轻女子從屋頂上跳了下來，她的面容清秀，深紫色的眼眸中帶著一絲緊張和警惕。</p>
+        <p>「我是灰瞳的人。」年輕女子低聲說道。「負責監視你的行動並報告給暗淵阁的情報網絡。但現在我選擇站在你這一邊——前提是你能證明幽影尊者的清洗命令確實是真的。」</p>
+        <p>葉塵的表情沒有變化——他讓靈魂鎖鏈的神魂感知觸碰著那枚令牌投射出的紫色光幕，確認了灰瞳的標誌頻率。「你可以叫我葉塵。我不需要向任何人證明什麼——但我願意分享一些信息：幽影尊者正在準備一次更加強大的裂縫擴張。上一次他只是試圖暫時封印；下一次他會直接撕裂空間結構。」</p>
+        <p>年輕女子的臉色變得更加嚴肅了。「這不是我第一次聽到這種警告——但灰瞳提供的證據表明，這一次的情況完全不同。他在裂縫深處佈下了某種儀式陣法，能夠將九世輪迴的核心力量轉化為虛空能量。如果那個儀式成功啟動……」她沒有說下去，但葉塵明白她的意思：整個世界的空間結構都會受到不可逆的損傷。</p>
+        <p>「所以我需要找到另外兩具實體殘骸——北境的寒晶宮和南海的沉龍淵。」葉塵說道。「但我懷疑天階宗和其他勢力也在搜尋同樣的目標。你帶來的情報是關於這些人的部署嗎？」</p>
+        <p>趙明軒點了點頭，從袖中取出一枚紫色的符石——那枚符石在空中投射出了一幅靈界地圖：北境寒霜山脉、南海沉龍淵以及連接這兩個地點的能量走廊全部清晰可辨。地圖上標註著數個紅色的能量信號點——那是天階宗武裝力量的位置，另外還有幾個藍色的信號則是暗淵阁內部忠誠派的活動範圍。</p>
+        <p>「幽影尊者的清洗命令已經開始實施了。」趙明軒的聲音變得低沉了下來。「他在暗渊阁內部列出了一份『不穩定分子』的清單——那些被列入名單的人不是因為背叛而被清除，而是因為他們知道得太多。灰瞳也在其中。」</p>
+        <p>他頓了一下，目光轉向葉塵。「但還有一件事需要考慮：暗淵阁的高層中有一個叫做凌風的人——他是天穹城的實際控制者之一，也是幽影尊者最信任的親信。如果凌風收到了寒晶宮或沉龍淵的位置情報……」</p>
+        <p>「他就會派武裝隊伍抢先一步。」葉塵打斷了他。「這正是我們需要加快行動速度的原因。」</p>
+        <p>趙明軒沉默了片刻——然後他做了件出乎葉塵意料的事情：將掌心按在了紫色符石的下方，投射出了一份更加詳細的情報文件。那是一份暗淵阁內部高層的通訊記錄，其中包含了數條關於北境寒晶宮位置情報的交換信息——而發送者的身份標記指向了凌風本人。</p>
+        <p>「這份文件是在城主府密室的伺服器中找到的。」趙明軒說道。「我懷疑凌風已經知道了兩具實體殘骸的確切位置，並且正在組織一支武裝隊伍前往搜尋。如果我們不能在天階宗之前到達……」他沒有說下去。</p>
+        <p>葉塵仔細分析了那份通訊記錄中的每一個細節：發送時間、接收者的身份標記、以及附帶的能量頻率信號。他能感覺到那股靈力波動中帶著一種深沉的急迫感——凌風不是隨意派出的探險隊伍，而是一支經過精心編制、裝備齊全的精銳部隊。</p>
+        <p>「我需要在兩天內出發。」葉塵說道。「這兩天裡你可以繼續調查暗淵阁內部嗎？我想確認誰是可以信任的人，以及哪些勢力可能會在途中阻攔我們的路線。」</p>
+        <p>趙明軒點了點頭。「我會去見幾個可以信任的人。但你需要知道一件事：凌風在暗淵阁中的權力比你想象中大得多——他不僅掌控著天穹城的武裝力量，還與北境和南海地區的幾股地方勢力有著間接的聯繫。如果他想阻止你……」</p>
+        <p>「那我需要一個能夠對付他的備援方案。」葉塵打斷了他。「靈魂鎖鏈的神魂感知讓我能夠在臨界狀態下觸碰物質層面——但這種力量的維持時間有限。我需要一个能在戰鬥中提供持久支援的同盟網絡。」</p>
+        <p>趙明軒沉默了片刻——然後他從袖中取出了另一枚紫色的符石。「這是灰瞳交給我的信物之一。上面記錄了暗淵阁內部至少三名高層人員的通訊頻率和位置信息——他們都是幽影尊者清洗命令的目標，並且願意提供武裝支援來換取保護和庇護。」</p>
+        <p>葉塵接過了那枚符石——紫色的能量在他掌心輕輕跳動了一下，然後穩定下來。他能感覺到那股能量中帶著一種複雜的頻率：既有暗淵阁標誌性的紫色波動，也有某種更加古老、更加深沉的信號——像是第五世留下的守護程序在深處持續運轉著。</p>
+        <p>「我會在這兩天內修復神魂並準備出發。」葉塵說道。「到時候我們需要完整的計畫——不僅僅是找到殘骸，還要有應對凌風武裝力量的備援方案。」</p>
+        <p>趙明軒站起身來。「我會在這段時間內建立一個可靠的同盟網絡。但你需要知道一件事：在這種事情上，信任是最危險的東西。一次錯誤的判斷就可能導致整個計劃崩潰。」</p>
+        <p>他轉身走向房間的另一側——那裡藏著一道通往暗淵阁地下密室的秘密通道。葉塵讓他獨自一人離去，然後閉上雙眼開始檢查自己的神魂狀態。那道裂痕帶來的蛻變進程正在緩慢推進——銀白色的光澤在他的神魂內部快速擴展，像樹枝一樣向四面八方延伸出新的連接通路。</p>
+        <p>他知道趙明軒說得對——信任是最危險的東西。但他也知道自己沒有足夠的時間去逐一驗證每個人的忠誠。有些抉擇必須在有限情報下做出——而他已經做了太多次類似的選擇。</p>
+        <p>風從遠方吹來，帶著冬季即將結束的微弱暖意。葉塵感覺到體內那道裂痕正在緩慢地重塑他的神魂結構——每一次延伸都在讓他更接近某種超越境界限制的力量。</p>
+        <p>他不知道那最終會帶他去向哪裡。</p>
+        <p>但他知道一件事：從今往後，他不再只是九世輪迴的繼承者。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-204.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-206.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

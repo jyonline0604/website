@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第204章：夜襲 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-204.html">
+    <link rel="prev" href="https://kofhk.com/chapter-203.html">
+    <link rel="next" href="https://kofhk.com/chapter-205.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第204章 · 夜襲</h1>
+    <main>
+        <p>夜幕降臨時，天穹城的外圍已經被天階宗的武裝部隊完全封鎖。葉塵站在城主府最高殘塔的塔頂上，灰色的雙眼注視著遠方道路上緩緩移動的火把光暈——那是一支約有二十人的巡邏隊伍，身穿天階宗標準的黑色制服，每人身後都背負著一柄靈力劍和一枚用於聯絡指揮官的傳送符石。</p>
+        <p>他不需要看到他們的臉就能判斷出這支部隊的性質：領隊是一名築基期巔峰的強者，步伐沉穩而警覺；另外八人分成了兩組，分別負責左翼和右翼的警戒區域；其餘十一人則沿著道路中央呈縱列行進，保持著標準的戰術間距。這不是普通的巡邏——他們正在執行一項搜索任務，而且目標很可能就是葉塵本人。</p>
+        <p>「他們已經開始搜捕我了。」葉塵低聲說道。他知道月璃和灰瞳正在暗淵阁內部建立同盟網絡，而天階宗的這種大規模搜查意味著幽影尊者的清洗命令正在加速推進——他不想等葉塵修復好神魂後再動手，而是希望在對方最脆弱的時刻發動突襲。</p>
+        <p>葉塵沒有選擇躲避——他的靈魂鎖鏈感知鋪展出去，捕捉著巡邏隊伍中每一個成員的能量頻率。領隊的築基期巤峰靈力信號非常清晰：那是一股濃厚的灰色波動，帶著天階宗特有的剛猛氣息；而其餘八人的信號則分散在煉魂期和聚元期的範圍內——大部分處於中期水平，只有兩人達到了後期。</p>
+        <p>「二十人……」葉塵閉上雙眼分析著戰況。「如果正面交鋒，我的靈魂鎖鏈雖然能夠觸碰物質層面，但臨界狀態無法持久維持。硬拼的代價太高。」</p>
+        <p>他需要一個策略——不是逃避，而是利用天階宗武裝力量自身的部署弱點來創造有利條件。他的目光掃過城市外圍的地形：殘破的石柱、焦黑的樹木和被靈力爆炸撕碎的建築碎片散落各地，形成了一片複雜而危險的障礙區。那片區域在昨晚的戰鬥中被嚴重損毀，但對一個熟悉瞬影步技巧的人来说——那裡正好是最佳的伏擊地點。</p>
+        <p>葉塵讓九世輪迴核心的力量在經脈中緩緩運轉——灰色的光芒從他身上滲透出去，與掌心的時空符文產生了同步共振。他沒有使用臨界延伸狀態去觸碰物質層面——那樣做只會加速神魂的消耗；相反，他將靈魂鎖鏈的能量集中在了神魂感知的一個微小束上，像一根細針一樣精準地投射到了巡邏隊伍的前方區域。</p>
+        <p>灰色的意識束在距離天階宗武裝部隊約五十丈的位置觸碰到了地面的靈力殘跡——那是昨晚城主府戰鬥留下的能量痕跡，其中夾雜著大量未完全消散的紫色和藍色波動。葉塵讓神魂感知沿著那些殘跡尋找一個能夠引發連鎖反應的關鍵節點：如果他能精準地觸碰那片區域中的某種穩定結構……</p>
+        <p>然後他找到了——一塊被靈力爆炸擊中後沒有完全碎裂的大石塊，其內部的能量儲存層仍然保持著完整的封閉狀態。那塊石頭的體積約有一丈見方，內部壓縮了大量的天地靈力殘留——如果能夠讓那股能量釋放出來，它會形成一次小規模的能量爆發，足以打亂巡邏隊伍的戰術部署。</p>
+        <p>他讓靈魂鎖鏈的神魂感知像一根細針一樣刺入石頭內部的封閉結構——灰色的意識束穿過了岩石表層的裂縫，觸碰到了那層被封印了數百年的靈力儲存膜。葉塵小心翼翼地施加壓力：不能太猛——否則會引起大規模爆炸；也不能太輕——否則無法產生足夠的干擾效果。</p>
+        <p>在恰到好處的瞬間，他的神魂感知找到了那個微妙的平衡點——然後輕輕推了一把。</p>
+        <p>石塊內部的能量開始緩慢洩漏——首先是一絲灰色的光暈從岩石表面的裂縫中滲透出來；然後那股光暈逐漸擴大、增強，像一顆正在膨脹的能量氣泡一樣包裹住了整塊石頭。葉塵感覺到靈魂鎖鏈的感知在那一刻產生了劇烈的震顫——那是因為他正在控制的能量規模遠超過了他目前的神魂強度所能負荷的水平。</p>
+        <p>「停下來！」他的內心警報在急促地響起。「你已經接近臨界了——繼續下去會加速神魂裂紋的擴展。」</p>
+        <p>但他沒有鬆手——因為他知道巡邏隊伍即將進入最佳誘敵位置：那支天階宗武裝部隊距離石塊的位置只剩下不到三十丈，領隊已經抬起了手掌準備發出警戒信號。如果現在放開控制，整個計畫就前功盡棄了。</p>
+        <p>葉塵讓靈魂鎖鏈的能量更加深入地觸碰石頭內部的能量儲存層——然後在最後一個瞬間，他改變了策略：不再試圖完全釋放那股能量，而是將它引導向巡邏隊伍的側翼方向。灰色的意識束像一根導線一樣連接了石塊與天空之間的空間結構，讓洩漏出的能量在空中劃出了一條明亮的軌跡，直接擊中了巡邏隊右翼三名成員所在的位置。</p>
+        <p>轟——</p>
+        <p>一道耀眼的灰色光芒在夜空下爆發了出來——爆炸的衝擊波將那三名人類修行者掀飛出去十丈遠，碎石和塵土在空中飛舞形成了一片濃重的煙幕。巡邏隊伍的前方瞬間陷入了一片混亂：領隊的築基期靈力信號急促地擴散開來，發出了一道緊急集合的命令；其餘成員則迅速轉向爆炸方向展開防禦陣型。</p>
+        <p>但葉塵沒有留在原地——他在能量爆發的同一瞬間已經啟動了瞬影步的技巧，灰色的身影從塔頂消失，沿著城市外圍的建築殘墟快速移動。他利用靈魂鎖鏈的神魂感知來預判巡邏隊可能的包抄路徑，選擇了一條最難以被發現的迂迴路線穿過障礙區。</p>
+        <p>身後傳來了一阵急促的腳步聲和靈力劍出鞘的金屬摩擦聲——天階宗的武裝人員正在快速追趕過來。但葉塵知道那片殘墟地形的每一個拐角和每一處掩體：他的瞬影步技巧在複雜環境中的優勢遠大於對方在開闊地帶的標準戰術部署。</p>
+        <p>他在一處倒塌的石柱後面停下了腳步——灰色的靈魂鎖鏈感知鋪展出去，捕捉著追趕者的位置信息。四名人類修行者已經穿過了煙幕，正在向石柱的左右兩側同時搜索；領隊則停留在爆炸中心位置，似乎在分析那股能量的頻率特徵。</p>
+        <p>「不可能……」葉塵聽到那人的聲音中帶著一絲困惑。「這種靈力頻率——不是天階宗的，也不是暗淵阁的——那是什麼？」</p>
+        <p>葉塵沒有回答——他只是讓九世輪迴核心的力量在經脈中緩緩運轉，灰色的光芒在他的周身緩慢流動。他知道這次夜襲只是開始：天階宗已經意識到了他的存在，而幽影尊者的清洗命令正在加速推進。但他也知道一件事——那道裂痕帶來的蛻變讓他的神魂強度比從前更加穩固，臨界延伸狀態的維持時間也延長了一分。</p>
+        <p>下一次他們再來的時候，他會準備得更加充分。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-203.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-205.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第197章：舊識與新敵 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-197.html">
+    <link rel="prev" href="https://kofhk.com/chapter-196.html">
+    <link rel="next" href="https://kofhk.com/chapter-198.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第197章 · 舊識與新敵</h1>
+    <main>
+        <p>葉塵的身體穿過了灰色能量走廊的出口，重新回到了城主府上空的那片裂縫之中。</p>
+        <p>紫色的光暈比他離開之前更加明亮、更加狂暴——那道裂隙現在已經擴大到了十丈以上的寬度，像是一道通往深淵的巨口懸在天穹城的上方。城市中的建築物在空間亂流的影響下不斷產生震顫，碎石和塵土從殘墟中飛散出去，被紫色的光暈吞噬得乾乾淨淨。</p>
+        <p>但最讓他意外的不是裂縫的尺寸——而是站在裂縫邊緣的那個人影。</p>
+        <p>無面。</p>
+        <p>他還是穿著那襲黑色的長袍，面具上的符文裂縫中滲出的深藍色紫光比昨晚更加暗淡了一些——像是某種內在的力量正在發生變化。他沒有在攻擊，也沒有在防禦——只是靜靜地站在裂縫前方，面向那片紫色的光暈，像是在沉思。</p>
+        <p>葉塵讓瞬影步的技巧在體內緩緩運轉，灰色的身影出現在無面身後約二十丈處的一根斷柱上。「你也在試圖封印它？」</p>
+        <p>無面的身體微微一僵——然後他轉過身來。面具下的深藍色紫光在看見葉塵的那一刻閃爍了一下，帶著一種複雜的表情：不是敵意，也不是驚訝，而是一種更像是困惑的東西。</p>
+        <p>「我在等一個人。」他的聲音中沒有了昨晚那種令人不安的沉穩——取而代之的是一絲不確定。「一個能告訴我真相的人。」</p>
+        <p>葉塵從柱子上躍了下來——灰色的光芒在空中劃出一道短暫的弧線，他稳稳地站在了無面面前五丈處。「我就是那個要完成封印的人。如果你願意幫忙的話。」</p>
+        <p>沉默了片刻。風中夾雜著空間碎片碰撞的聲音，紫色的光暈在兩人之間緩慢旋轉。</p>
+        <p>「幽影尊者告訴我——」無面的聲音變得低沉了下來，「九世輪迴的每一次覺醒都在消耗天地法則的能量。當第九世完全觉醒的那一刻，這個世界會徹底坍塌。」他頓了一下，面具下的紫光閃爍得更加劇烈。「但我昨晚在宴會上聽你說了另一番話：『天道不需要被毀滅——它需要的是修復和平衡。』」</p>
+        <p>「那是真相。」葉塵說道。他的靈魂鎖鏈神感知鋪展出去，觸碰著無面身上的黑暗能量頻率——他感覺到那股能量中有一種微妙的變化：不再像昨晚那樣充滿了攻擊性和決絕的殺意，而是變得更加柔和、更加迷茫。「你開始懷疑你了相信的一切。這就是為什麼幽影尊者害怕你。」</p>
+        <p>「他怕的不是我的力量。」無面的聲音中第一次出現了一丝自嘲的笑聲——雖然聽起來更像是嘆息。「他怕的是我記起自己曾經是誰。」</p>
+        <p>葉塵的表情變得更加嚴肅了。「你在說什麼？」</p>
+        <p>無面抬起手，摘下了面具。</p>
+        <p>那張臉出現在葉塵面前時，讓他愣住了——那不是一張陌生的面孔。那是一個年輕的男子，面容清秀，雙眼中帶著一種與年齡不符的疲憊和憂傷。但他的眉骨、鼻梁和下顎線條……都和叶尘自己驚人地相似。</p>
+        <p>「我是第三世的兄弟。」無面的聲音中帶著一種深沉的痛苦。「不——更準確地說，我是第三世記憶的另一半。當守塵在第五世封印我的時候，他沒有消滅我——他只是將我的一部分人格和力量從主體中分離出來，讓它成為虛空之眼中的守護程序之一。」</p>
+        <p>葉塵的靈魂鎖鏈感知在那一刻產生了劇烈的波動——他的神魂深處有一個隱藏的角落開始甦醒。第三世的記憶碎片在他意識中浮現了那個画面：一個與他長得一模一樣的年輕人在廣闊的戰場上站在他身邊，兩人的力量合而為一才抵擋住了十幾名築基期高手的圍攻。</p>
+        <p>「你……就是我的另一部分。」葉塵低聲說道。「我一直都有你的存在——只是我不知道。」</p>
+        <p>無面點了點頭。「幽影尊者利用了這一點。他將我從守護程序中抽離出來，重新編程成他的武器——但他的程序有漏洞：無論怎麼改變我的記憶，我與九世輪迴核心的本質聯繫還在。每次與你對戰，那個聯繫都會變得更加清晰。」</p>
+        <p>裂縫的能量波動突然增強了——紫色的光暈在兩人的之間爆發出強烈的能量衝擊波，碎石和空間碎片在空中飛舞。時間不多了。</p>
+        <p>「如果你願意幫助我完成封印……」葉塵說道。「你就會重新成為九世輪迴的一部分。你的記憶會回來——但代價是你必須放棄現在的身份。」</p>
+        <p>無面沉默了片刻。然後他做了件出乎所有人意料的事情：他的身體開始崩解，黑色的長袍化作無數細小的黑暗粒子，面具上的符文裂紋一個接一個地熄滅了。最後，一切都化為了一團深藍色的能量球——它緩緩地飛向葉塵的方向，在他掌心上方停住了。</p>
+        <p>「我把這部分交給你。」無面的聲音從能量的深處傳來。「完成封印——然後告訴我這個世界到底值不值得被拯救。」</p>
+        <p>深藍色能量球融入了葉塵掌心的時空符文之中——那一刻，九世輪迴的核心在心口處產生了前所未有的強烈共鳴。灰色、紫色、深蓝色三種力量的頻率在同一個體內匯聚成了一股全新的能量洪流。</p>
+        <p>葉塵閉上雙眼，感受着那股力量在他經脈中奔湧流動。他知道從這一瞬間起，他不再只是九世輪迴的繼承者——</p>
+        <p>他是這個世界最後的希望。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-196.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-198.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

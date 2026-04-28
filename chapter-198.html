@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第198章：碎界之門 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-198.html">
+    <link rel="prev" href="https://kofhk.com/chapter-197.html">
+    <link rel="next" href="https://kofhk.com/chapter-199.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第198章 · 碎界之門</h1>
+    <main>
+        <p>裂縫的能量波動在短短幾個時辰內發生了質的變化。</p>
+        <p>紫色的光暈開始變得更加濃稠、更加穩定，像是在準備某種重大的儀式。天穹城上方的天空被完全染成了深紫色——連太陽的光線都被吞噬得乾乾淨淨，整個城市陷入了一片詭異的暮色之中。葉塵站在城主府最高的一座殘塔上，靈魂鎖鏈的神魂感知鋪展出去，捕捉著裂縫中每一個微小的能量變化。</p>
+        <p>他在等一個時機。</p>
+        <p>守塵的記憶碎片告訴他：虛空之眼裂縫的最終擴張會在第七天的子夜達到峰值——到時候裂縫會從目前的十丈寬度瞬間擴大到百米以上，然後徹底撕裂整個城市上空的空间結構。而在那之前，有一個約莫三個時辰的窗口期是封印的最佳時機：裂縫已經充分擴張，但還沒有完全穩定，這時候插入鑰匙的力量能夠達到最大的穿透效果。如果太早——裂縫的能量還不夠集中；如果太晚——空間結構會崩潰到無法修復的程度。</p>
+        <p>窗外傳來了一陣腳步聲——月璃的身影出現在塔樓門口，深紫色的眼眸中帶著一絲緊張。「葉塵……你準備好了嗎？」</p>
+        <p>他轉過身來。灰色的光芒在他身上緩緩流動，掌心的時空符文散發著銀白色的微光。他的聲音平靜而堅定：「還差最後一步。」</p>
+        <p>「什麼最後一步？」月璃問道。</p>
+        <p>葉塵閉上雙眼——他要做的第一件事，是嘗試突破煉魂期到化物期的壁壘。這不是衝動之舉——守塵的記憶碎片中明確指出過，化物期的核心能力能夠讓封印裂縫的成功率提高數倍。但從煉魂到化物之間隔著整整三個大境界的差距：凝元、築基、聚元……每一個都是難以跨越的天塹。更何況在裂縫擴張的關鍵時刻進行突破，本身就等於把生命賭在一場未知上。</p>
+        <p>「我試著把靈魂鎖鏈的力量推向極限。」葉塵說道。「如果能夠讓神魂感知直接觸碰物質層面——就算不能真正突破化物期，也能達到一種臨近的狀態。封印裂縫需要的是穿透力，不是境界本身。」</p>
+        <p>月璃皺了皺眉：「你知道煉魂到物化的差距有多大嗎？那是三個大境界的壁壘，越往後的突破越困難——你現在在裂縫的能量場中嘗試，就算成功了也可能被能量反噬……」</p>
+        <p>「我沒有選擇。」葉塵打斷了她。「時間不等人。如果我不做任何準備就去封印裂縫——成功率可能不到三成。但如果我能讓靈魂鎖鏈達到臨近化物期的穿透力……」</p>
+        <p>他盤膝坐下，雙手按在掌心的時空符文上。灰色的九世輪迴核心之光與銀白色的時空符文在他體內產生了前所未有的共振頻率。葉塵讓那股頻率向經脈深處擴展——不是在尋找突破的突破口，而是在測試靈魂鎖鏈的神魂感知能觸碰到多深的物質層次。</p>
+        <p>起初什麼都沒有發生。然後在某一個瞬間，他的灰色意識突然觸碰到了某種邊界——那不是境界壁壘的那種堅硬阻擋，而是一種類似液體的阻力：他能感覺到前方有更多的空間可以拓展，但每一次延伸都會遭遇強大的反作用力。那是煉魂期神魂感知與化物期物質操控之間的鴻溝——跨越它需要的不僅僅是靈力的累積，還需要對靈魂和物質兩個維度的完全融合理解。</p>
+        <p>葉塵沒有停下來。他讓九世輪迴核心的力量持續向那道邊界施加壓力——灰色的光芒在周身擴散出去，每一寸空間都被那股力量浸透。他能感覺到經脈中的靈力流動變得更加遲緩、更加沉重，就像是一條大河正在沖刷一道巨大的岩石壁壘：每一次衝擊都會留下痕跡，但距離完全衝破還差很遠。</p>
+        <p>「停下來！」月璃的聲音突然變得很急促。「你身上的靈魂鎖鏈頻率在失控——如果繼續這樣下去……」</p>
+        <p>葉塵沒有停下。他已經感覺到那道邊界上出現了微小的裂縫——雖然不足以讓他突破到化物期，但那是一個足夠讓靈魂鎖鏈穿透普通物質防禦的開口。他抓住了那個瞬間，將所有的意志力集中在神魂感知的一束能量上——灰色的意識束像一根細針一樣穿過了邊界的微小裂隙，觸碰到了物質層面。</p>
+        <p>痛楚從全身每一寸經脈傳來——那是超越境界限制的代價。他的靈魂在強制接觸更高維度的物質結構時產生了劇烈的撕裂感，像是有人用一把無形的刀在他的神魂上劃開了一道傷口。但他沒有退後——因為他看見了那道裂隙之後的風景：當他的意識真正觸碰物質層面的那一刻，整個世界的能量流動都在他眼中變得清晰可辨。每一個原子的震動、每一條經脈中的靈力軌跡、甚至空間中微弱的能量漣漪——所有這些信息在同一刻湧入了他的感知系統。</p>
+        <p>「我做到了……某種程度的突破。」葉塵睜開眼睛，灰色的瞳孔深處閃爍著一絲不穩定的光芒。「但這不是化物期——只是煉魂期的極限延伸。我的靈魂鎖鏈能夠觸碰物質層面了，但還無法像真正的化物期修行者那樣穩定地操控結構。」</p>
+        <p>他抬起右手——掌心中浮現出了一團灰色的能量球，那團能量的形狀在他意志的控制下緩慢變化著：從球形變為立方體，再變化為複雜的幾何圖案。但他的手指在微微顫抖——那種力量並不能持久維持，每一次改變形狀都在消耗大量的靈力和神魂強度。</p>
+        <p>「這就是我的臨界狀態。」葉塵低聲說道。「我能短暫地觸碰和影響物質結構——但必須速戰速決。如果在封印裂縫的過程中無法保持這種狀態……」他頓了一下。「我就會跌回普通的煉魂期，並且承受巨大的反噬代價。」</p>
+        <p>月璃看著他那雙不穩定的灰色眼眸，沉默了許久。「這很危險——但如果這是你能在三天內達到的最高水平……那我們只能依靠它了。」</p>
+        <p>葉塵點了點頭。他知道這種狀態的脆弱性：靈魂觸碰物質層面的能力需要持續的神魂強度來維持，而他在封印裂縫的過程中必須同時對抗幽影尊者的力量、空間亂流的侵蝕、以及虛空之眼本身的能量反擊——任何一項消耗都可能導致他無法保持那種臨界狀態。</p>
+        <p>「所以我需要在最短的時間內完成最完整的準備。」葉塵說道。「三天。七十二個小時。我要在這段時間內熟悉這種力量的極限，找到最適合封印裂縫的力量頻率組合，然後在第七天子夜的時候全力以赴。」</p>
+        <p>他轉身面向裂縫的方向——掌心的時空符文依然在散發著微弱的銀白色光芒，提醒著他剛剛觸碰過的那道邊界。他知道從這一瞬間起，他已經不再只是依靠煉魂期的神魂感知來戰鬥了——他的力量已經觸碰到了更高維度的物質層面，雖然不穩定，但足以成為封印裂縫的關鍵鑰匙之一。</p>
+        <p>而他知道另一件事：這次嘗試雖然沒有真正突破化物期，卻為未來的突破指明了一條道路。當他學會如何穩定地融合靈魂感知與物質操控的時候——真正突破的那一刻才會到來。到時候，他將不再只是九世輪迴的繼承者。</p>
+        <p>他將會成為某種更古老事物的載體。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-197.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-199.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

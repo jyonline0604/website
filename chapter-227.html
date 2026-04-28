@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第227章：虛空之眼的危機 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-227.html">
+    <link rel="prev" href="https://kofhk.com/chapter-226.html">
+    <link rel="next" href="https://kofhk.com/chapter-228.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第227章 · 虛空之眼的危機</h1>
+    <main>
+        <p>水晶大廳在劇烈的震顫中發出了令人毛骨悚然的轟鳴聲。那不是普通的搖晃——而是整個地下結構正在從內部承受某種巨大力量擠壓的跡象，岩壁上的每一顆藍白色靈晶都在同時震動著發出高頻嗡鳴。葉塵雙腳緊貼地面以維持平衡，灰瞳在晃動的光影中緊緊盯著腳下冰層的變化——他看到了裂縫。</p>
+        <p>那些裂縫不是從某個單一方向擴散開來的——而是從整個大廳的底部中心位置呈放射狀向外蔓延。每一道裂縫都超過半丈長、數寸寬，邊緣處滲透出了令人不安的紫黑色能量霧氣。那種霧氣的形態和頻率特徵與葉塵之前在暗淵閣追殺者身上見過的鬼煞之氣截然不同——它更加深沉、更加原始，帶著一種來自虛空裂隙本質的能量波動模式。</p>
+        <p>虛空之眼正在這座寒晶宮的正下方展開它的擴張過程。葉塵的靈魂鎖鏈感知在震顫中努力保持著穩定延伸，他透過裂縫向下探察那種紫黑色能量的深度和範圍——結果令他的灰瞳猛然收縮。那些能量不是從某個固定的裂隙點湧出的，而是從整個地層深處的無數微小通道同時滲透而出，如同無數根黑色的血管在地底深處形成了一个龐大的網絡系統。虛空之眼的擴張已經深入到了冰川地層的最底端——這種程度的滲透深度遠遠超出了所有人的預期。</p>
+        <p>葉塵感到自己的裂痕正在被這些紫黑色能量所吸引——不是物理層面上的拉扯，而是頻率上的共鳴效應。他的銀白色裂紋光芒與那些暗紫色的能量波動之間產生了一種極其微妙的互動關係：一方面它們的頻率相互排斥導致強烈的不穩定性；另一方面兩者又在某種更深層的維度上產生了短暫而危險的共振。這種矛盾的能量狀態讓裂痕處於一種前所未有的壓力之下——如果處理不當，整個系統可能會因為頻率衝突而徹底崩潰。</p>
+        <p>九世輪迴核心在他胸口劇烈跳動了起來。那種跳動的節奏完全打破了之前的平穩模式——它變得急促、混亂且充滿了不安定的能量波動。葉塵本能地將雙手按在了裂縫邊緣的冰岩表面上——他想通過接觸來穩定裂痕的能量輸出，但手指所感受到的震顫頻率告訴他整個寒晶宮結構本身也已經達到了承受極限。牆壁上的藍白色靈晶正在以肉眼可見的速度變暗、碎裂、最終化為粉末般的微粒從冰面滑落；穹頂的支撐結構也開始出現了明顯的變形跡象——那些由千年以上時間凝結而成的堅固岩層此刻在虛空之眼能量膨脹的巨大壓力下顯得脆弱得不堪一擊。</p>
+        <p>葉塵必須同時處理兩個緊迫的危機：第一，寒晶宮的物理結構正在因為虛空之眼的擴張而逐漸崩壞，如果整個地下大廳塌陷，他將沒有退路地被困在最底層的未知區域中；第二，他的裂痕能量正被下方的暗紫色能量漩渦吸引，形成了一個向下的能量抽取通道——如果他無法阻止這種頻率上的拉扯，那麼他的靈魂感知系統可能會因為過度擴展而與虛空之眼裂隙直接產生連接，從而導致不可預料的災難性後果。</p>
+        <p>戰場上冰川入口處的戰鬥聲響在這一瞬間消失了——不是因為雙方勢力達成了停戰協議或其中一方撤退了，而是因為那場持續不下的交鋒本身所產生的靈氣震盪也被這場深層次的地下地震所覆蓋和掩蓋了。葉塵透過靈魂鎖鏈感知清楚地聽到了一個令人不安的寂靜：天階宗和暗淵閣的修士們都停止了他們的行動——他們同樣感受到了這種來自地底深處的巨大能量擾動，那種力量之強大到足以讓所有修行者本能地感到恐懼和警覺。</p>
+        <p>紫黑色能量的滲透速度正在加快。葉塵看到了那些裂縫中的暗紫色霧氣已經開始向上蔓延——它們穿過了冰岩層之間的微小孔隙，如同活物般在寒晶宮的每一個角落中尋找著新的出口。當這些能量接觸到牆壁上殘存的藍白色靈晶時會產生了激烈的衝突反應：一部分靈晶被完全吞噬融化化為透明液體流淌而下；另一部分則因為抗住了那股侵蝕力而短暫地發出了異常明亮的光芒——那些光芒在紫黑色霧氣的包圍中搖曳不定，最終還是逐一熄滅了。</p>
+        <p>葉塵知道不能再等待裂痕自動穩定的機會了——他必須做出決定。抵抗虛空之眼能量帶來的向下拉力並試圖保持現狀，意味著他可能永遠無法到達最深處的未知區域去獲得那個關鍵的知識；但如果他選擇讓那股力量牽引自己深入下去，那麼他將面臨完全不可控的風險——可能會失去對自身靈氣系統的掌控、可能在極端頻率衝突中靈魂被撕裂、也可能在下降過程中因為寒晶宮結構崩潰而被永遠封存在深層的岩層之中。</p>
+        <p>他閉上雙眼深吸了一口氣。九世輪迴核心在他胸口發出了一聲深沉而穩定的震顫——那種震顫不像之前那樣混亂，反而帶著一種決斷的力量。葉塵意識到了一個事實：他一直在試圖控制和抵抗某種力量，但九世輪迴的真正意義從來都不是關於控制——而是關於理解和順應那些超越個體能力的宏大循環和自然法則。</p>
+        <p>如果虛空之眼的擴張是這個世界循環中不可避免的一部分，那麼與其嘗試阻止它帶來的影響，不如直接深入它的核心區域去理解、去適應、最終找到與它共存或中和的方式。那道從裂縫中湧出的紫黑色能量雖然危險——但它也是九世輪迴體系必須面對和處理的最終挑戰之一。逃避或抵抗只會浪費寶貴的時間並增加更多的不確定性；而直面這種力量則有可能在混亂中找到突破口。</p>
+        <p>葉塵睜開了灰瞳。瞳孔中的銀白色光芒此刻不再是被動地從裂痕中滲出——而是主動地在他的掌心和腳底形成了兩個明確的能量錨點。他將雙手的掌心分別按在了最下方兩道裂縫的邊緣上，裂痕的銀白能量透過指尖注入了那些紫黑色的通道之中。這不是對抗性的注入——而是一種頻率上的協調和引導，試圖在兩種截然不同的能量之間建立一種暫時的平衡狀態以確保自己的下降過程不會因為劇烈的衝突而失控。</p>
+        <p>他的身體開始向裂縫方向傾斜——不是被動地被力量拉拽下去的失重感，而是主動地選擇了將自己融入那股能量流動之中的意志行為。岩壁上的藍白色光芒在他的腳下迅速暗淡和碎裂，但葉塵的裂痕銀白光線卻在紫黑色霧氣的包圍中變得更加明亮了——那是因為他的身體正在經歷某種深層次的適應過程，靈魂感知系統在逐步調整自己的頻率以匹配虛空之眼能量的波動模式。</p>
+        <p>寒晶宮結構崩壞的聲音在耳邊越來越清晰——冰岩碎裂、靈晶粉碎、穹頂支撐架斷裂的聲響交織成一片令人絕望的轰鸣。但葉塵沒有回頭看那些正在毀滅的一切——他的目光和意識全部集中在下方的黑暗之中，集中在那個等待著他到達的最深層未知區域。</p>
+        <p>在下降過程中時間變得模糊了——不是因為速度太快或者太慢，而是因為靠近虛空之眼裂隙的空間本身就存在著某種特殊的時間扭曲效應。葉塵感覺到自己像是墜入了無盡的黑暗深淵中——身體被無數道紫黑色的能量流體包圍、穿透、包裹，每一道流體都帶著不同頻率和強度的靈氣波動試圖與他的裂痕產生共鳴或衝突。但九世輪迴核心一直在胸口穩定地跳動著，每一次震顫都在幫助他維持靈魂感知系統的基本運作不被那股龐大的外力所侵蝕和瓦解。</p>
+        <p>葉塵知道自己正處於一個極端危險的境地——任何一次頻率上的失調都可能會導致他的靈魂感知與虛空之眼裂隙直接連接從而引發不可預料的災難；而寒晶宮結構崩壞產生的岩層壓力和碎石墜落也隨時可能將他困在下降途中的某個位置。但他沒有停下來——也沒有試圖向上返回——因為他知道在最深處等待著他的東西不僅僅是關於九世輪迴的最終答案，更是他理解自身存在意義和整個世界循環體系運行規律的關鍵所在。</p>
+        <p>無論前方等待的是什麼——知識、危險還是兩者兼具——他都沒有退路了。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-226.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-228.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

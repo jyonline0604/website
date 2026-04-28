@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第221章：走出遺跡·上 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-221.html">
+    <link rel="prev" href="https://kofhk.com/chapter-220.html">
+    <link rel="next" href="https://kofhk.com/chapter-222.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第221章 · 走出遺跡·上</h1>
+    <main>
+        <p>決定既下，便不再猶豫。葉塵轉身面向通往入口的隧道，裂痕在體表凝成薄膜般的保護層，將周身籠罩在一層若有若無的微光之中。九世輪迴核心在胸口緩緩跳動，那節奏沉緩而悠遠，彷彿一記等待續接的古音，低沉得如同大地深處的脈搏。每一步踏出，腳下的冰面都會泛起銀白色的細微漣漪，像是他的足跡本身就成了某種古老的符文印記。</p>
+        <p>隧道比葉塵預想的要長得多，蜿蜒曲折地深入冰川之下。通道兩側的冰壁上鑲嵌著淡藍色的礦脈晶石，發出的光暈不足以照亮整條走廊，但足以讓他的灰瞳辨認出路徑的走向。這些晶石的排列方式並非天然形成——每一道紋理、每一個折射角度都經過精心計算，其目的顯然是為了引導某種能量流動的方向。葉塵伸手觸碰其中一塊晶石，指尖傳來微弱卻清晰的震顫頻率，那頻率與他掌心時空符文的銀白光芒產生了短暫共鳴。</p>
+        <p>他的靈魂鎖鏈感知在隧道中緩慢延伸，像細微的灰色絲線探入黑暗深處。這些鎖鏈平時只能感應到周身百丈範圍內的靈氣波動，但此刻因為裂痕的存在，它們的觸角無聲無息地越過了常規的限制，向更遠的地方伸展而去。就在通道中段出現分岔口時，葉塵停下了腳步——前方三條隧道各自通向不同的方向，而靈魂鎖鏈傳回的資訊顯示，其中兩條已經空無一物，唯有最後一條深不見底的黑暗之中隱約傳來陣陣靈氣撞擊的聲響。</p>
+        <p>那聲音太熟悉了。</p>
+        <p>金黃色與紫黑色的能量在冰川之上激烈交鋒，每一次碰撞都會掀起肉眼可見的震盪波紋。葉塵閉上雙眼，將靈魂鎖鏈感知全力延伸至通道盡頭的那條隧道上方。透過冰層的阻礙，他看到了戰場的全貌——天階宗修士們以金色陣型展開攻勢，十餘名築基後期修為的高手呈戰術隊形向前推進，三名凝神初期指揮官分別鎮守左右兩翼與空中制高點。他們面對的不只是暗淵閣的追殺者，更有暗淵閣特有的紫黑色鬼煞之氣從四面八方湧來，雙方在冰川入口處形成了膠著對峙的局面。</p>
+        <p>葉塵靜靜地觀察著這場戰役。他的靈魂鎖鏈感知如同無數根無形的手指，一寸一寸地探索著戰場上的每一個細節——天階宗陣型中某位劍修左側護盾的靈氣波動出現了微小裂縫；暗淵閣一方的紫黑色鬼煞之氣在某個節點上頻率和頻率之間的銜接存在缺陷，足以被高階攻擊擊穿；而那扇隱藏在冰壁之下的封印門——正是他剛剛離開的核心設施入口——正承受著來自雙方的靈能轟炸。天階宗的金色能量與暗淵閣的紫黑色鬼煞之氣交錯衝擊，頻率相互抵消又相互增強，使得整個冰川表面產生了一種極為不穩定的震盪狀態。</p>
+        <p>他的裂痕開始隨著這種震盪發生共鳴。不是那種令人痛苦的不適感，而是一種更加微妙的、仿佛某種古老樂器正在被看不見的手指撥動的感覺。銀白色的光芒從裂隙邊緣滲出，在冰壁上投射出細碎的光斑，那些光斑的排列方式恰好與他掌心時空符文的紋路一致。葉塵意識到，那道裂痕不僅僅是他靈魂感知與物質操控維度之間的橋樑——它正在與這座冰川遺跡產生更深層次的共振。</p>
+        <p>分岔口處的火光忽明忽暗地閃爍著，將他的灰瞳映成兩種截然不同的色調。葉塵站在原地思考了片刻。無論選擇哪一條路徑走出遺跡，都意味著他會同時出現在天階宗與暗淵閣的視野範圍內。這兩股勢力此刻正打得難分難解，誰也沒有多餘的注意力關注地下遺跡中的狀況。但一旦他現身，戰場上的所有目光都會轉向同一個方向——而他自己，對雙方而言都是未知數。</p>
+        <p>九世輪迴核心在胸口微微發熱。那種溫度並不熾烈，反而帶著一種沉靜的安撫力量，讓他在面對這個選擇時不至於慌亂。但他清楚，猶豫的時間已經不多了。冰壁下方的封印門正在承受越來越大的壓力——剛才他透過靈魂鎖鏈感知清楚地看到，一道天階宗的金光劍氣擦著封印門邊緣掠過，其餘波將門外冰層震落了一大片碎屑。如果再讓兩方勢力繼續交戰下去，不單單是冰川入口會遭到破壞，連帶他所在的整座遺跡設施都可能有坍塌的危險。</p>
+        <p>葉塵深吸一口氣，灰瞳中的銀白光芒逐漸凝聚成一個清晰的決定。他不打算從正門離開——那太顯眼了。但他也不打算從偏道悄悄溜走——那樣只會讓雙方的交火更加肆意妄為而不受任何制約。他需要一個折中的方案：在雙方都能看到他的位置現身，但同時也要保持足夠的距離來評估形勢、觀察戰場走向，並且預留退路以應對突發狀況。</p>
+        <p>通道盡頭傳來一聲巨大的爆炸聲，冰川表面震動得整條隧道都在微微搖晃。葉塵抬起手，掌心時空符文的銀白光芒突然亮起一瞬，隨即又恢復了平時的暗淡。他知道，這道裂痕帶來的共鳴正在逐漸增強——某種力量在催促他做出行動，而這個時機已經成熟了。</p>
+        <p>他邁步向前，腳步聲在狹窄的隧道中迴盪出回音。每一步都更加堅定，裂痕保護層的光芒也隨之明亮了一分。通道盡頭的光線越來越強，那光線不是陽光——而是來自於冰川表面兩方勢力交鋒時爆發出的靈能輝煌。葉塵伸出手，指尖觸碰到了隧道出口的冰壁邊緣，灰瞳中映照出那道被雙方面軍激烈碰撞所產生的、頻繁閃爍的銀白符文光芒。</p>
+        <p>就在他準備推開冰壁的那一刻，一道微弱的能量波動從隧道上方傳來——那是封印門本身發出的警告訊號。葉塵讓靈魂鎖鏈感知快速掃描了整座冰川遺跡的外部結構，發現封印屏障已經出現了多處裂痕，其中最嚴重的一條位於門戶左側第三道環形符文的節點位置。如果那道符文在短時間內無法得到修護，整個封印系統可能會因為能量回流而自毀，到時不僅核心設施中的凝元鎮塵印副本會隨之崩潰，守尘留下的所有修行記錄也會化為灰燼。</p>
+        <p>「必須盡快行動了……」葉塵低聲說道。他讓九世輪迴核心的力量持續向那道裂痕施加壓力銀白色的光芒在他周身擴散出去每一寸空間都被那股力量浸透。他知道從這一瞬間起他不再是那個只會用瞬影步逃跑的年輕修士了——他是某個更古老、更深沉事物的載體而那道裂痕就是通往真相的第一條線索。</p>
+        <p>無論他此刻從何處走出遺跡，這場戰役的天平都將因為他的出現而發生改變——而他知道，改變之後的一切，才是真正考驗的開始。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-220.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-222.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

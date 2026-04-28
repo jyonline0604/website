@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第225章：寒晶宮的秘密 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-225.html">
+    <link rel="prev" href="https://kofhk.com/chapter-224.html">
+    <link rel="next" href="https://kofhk.com/chapter-226.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第225章 · 寒晶宮的秘密</h1>
+    <main>
+        <p>螺旋冰道在他腳下緩緩旋轉，每一級階梯的邊緣都刻滿了一層一層的古老符文。那些符文的排列方式與葉塵在冰川核心設施中見過的所有圖案都不相同——更加複雜、更加精密，每一個筆劃之間都存在著微妙的能量交互關係。它們不是靜態的雕刻，而是活的網絡：當他的裂痕銀白光芒透過冰壁滲入通道內部時，每一道符文都短暫地閃爍了一下，彷彿是在向某種遠古的信號發出回應。</p>
+        <p>葉塵將靈魂鎖鏈感知鋪展到螺旋通道的每一個角落去探察其結構特徵。他很快就發現這些符文的頻率模式並非隨意排列——它們是一種特殊的調諧網絡，專門用來引導特定頻率的靈氣能量流過整條通道。而他掌心裂痕的銀白色光芒恰好匹配了這種調諧頻率，這也就是說那些符文是在等待著他的到來。</p>
+        <p>當螺旋通道的最底端出現在一團柔和的光暈之中時，葉塵停下了腳步。眼前的景象讓他的灰瞳微微收縮——那不是一個簡單的洞穴或房間，而是一座規模龐大的地下水晶大廳。整個空間的直徑至少超過百丈，穹頂高度接近三十丈，每一面牆壁上都鑲嵌著數以千計的天然藍色白色靈晶體。這些晶石並非簡單地嵌入岩壁中——它們本身就是結構的一部分，將整個大廳支撐成了一個完整的能量容器。</p>
+        <p>藍白色的光芒從每一顆水晶中散發出來，相互交織匯聚後填滿了整座空間的每一個角落。這種光源不是靠外部能量維持的——葉塵很快意識到這些晶石自身就具備發光的特性，它們通過吸收地層深處的靈氣脈動來產生持續而不熄滅的光線。整個大廳因此處於一種永恆的微光狀態之中——沒有刺眼的明亮，也沒有令人不安的黑暗，只有一種沉靜而安寧的光暈籠罩在每一個角落。</p>
+        <p>葉塵緩步走入了水晶大廳。他的腳步聲在光滑的冰晶地面上產生了清脆的回音，每一聲都在穹頂與四壁之間反覆折射之後才逐漸消散於無形。他抬起手，指尖觸碰了最近的一面牆壁——冰晶的表面溫潤而平滑，不像普通岩石那樣粗糙冰冷。就在他的手指接觸到牆面的剎那，整面牆壁突然亮起了數百道銀白色的光線——那些光線從冰晶內部湧出，以精確的幾何模式沿著牆面流動，最終在某个特定位置匯聚成了一幅巨大的立體圖像。</p>
+        <p>那是比葉塵之前在任何地方見過的符文都要複雜無數倍的圖案網絡。每一條線條都承載著不同的能量信息，每一個交匯點都代表著某種特定的靈氣交互方式。他認出了其中的一些基本元素——那些是他曾在核心設施中見過的老式封印陣列的雛形版本——但這些圖案的組合方式和連接邏輯已經遠遠超越了基礎封印技術的範疇。它們描述的是一種更加高級、更加精密的能量調控系統，能夠同時管理多種靈氣頻率的輸入和輸出以維持某種穩定狀態。</p>
+        <p>葉塵伸出靈魂鎖鏈感知去探察那些符文的深層含義。灰色的意識絲線如同最細微的觸鬚般沿着符文網絡的表面延伸，每一次接觸都會帶來大量碎片化的信息流——不是完整的文字或圖像，而是直接投射到他意識中的概念和感受。他看到了一個又一個時代的更迭、一代又一代傳承者的選擇與犧牲、以及某種跨越了無數世代的宏大計劃。</p>
+        <p>九世輪迴的真正目的在他眼前逐漸展開——那不是一個關於個人修為提升的秘密機制，而是一張覆蓋了整個世界範圍的能量調控網絡。每一世的傳承者都被賦予了不同的工具和知識體系，這些工具雖然看起來互不相干、各自獨立，但它們的最終目標都是相同的：在虛空之眼裂隙即將達到某個臨界值的關鍵時刻，將所有分散的符文網絡和能量節點連接在一起，形成一個完整的封印機制來阻止世界線的崩潰。</p>
+        <p>葉塵在水晶大廳中緩步前行，每一面牆壁都在他的接觸下緩緩亮起不同的圖像和信息流。他看到了第一世傳承者——一位來自遠古時期的修行者，在虛空之眼剛剛出現的年代裡用自己的生命能量築起了最初的封印屏障。第二世、第三世……每一代的傳承者在面對不同類型的虛空之眼危機時都做出了各自的選擇：有人選擇了封印裂隙本身，有人選擇了與裂隙中的力量達成某種暫時的共存協議，還有人在無法阻止崩潰的情況下犧牲了自己的靈魂來延緩世界線的收縮速度。</p>
+        <p>每一個選擇都影響著後續世代的走向——沒有哪一個決定是絕對正確的，也沒有哪一個決定是徹底錯誤的。九世輪迴的精妙之處就在於它允許每一代傳承者根據當時的具體情況做出最適合的判斷，而這些判斷最終都會匯聚到最後一世的繼承者手中成為完整的知識體系和力量基礎。</p>
+        <p>葉塵走到水晶大廳中央的位置停下了腳步。那裡矗立著一件他之前在牆壁上沒有注意到的物件——一個直徑約莫兩尺的藍色水晶柱體，表面光滑如鏡，內部則流動著細微的光線網絡。它看起來像是某種存儲裝置或信息容器，而葉塵本能地感到這個東西裡面一定藏著比牆壁符文更加關鍵的信息。</p>
+        <p>他伸出手掌輕輕觸碰了水晶柱的表面。指尖與冰晶接觸的瞬間——整個大廳突然安靜了下來。所有牆面上的符文光線同時熄滅了片刻，然後又以一種全新的模式重新亮起。藍白色的光芒從水晶柱內部湧出，在空中匯聚成了一個巨大的立體投影影像。</p>
+        <p>那是一系列連續的畫面——如同某種古老的記錄儀器所拍攝下來的場景被重新播放出來。葉塵看到了九世輪迴中每一代傳承者的面容和身影：有人在雪山深處閉關修煉以積累力量，有人在荒野廢墟中尋找失落的符文碎片，有人與虛空之眼裂隙中的未知存在進行了無聲的對話，還有的人在封印完成的瞬間用自己的身體作為最後一道屏障來抵擋能量反噬。</p>
+        <p>而最令葉塵震撼的是——他在這些畫面中看到了一個熟悉的身影。守尘。</p>
+        <p>不只是一次——而是在幾乎每一世輪迴中都有他的身影出現。有時候他是那位傳承者的導師和引導者，在關鍵時刻提供必要的建議和支持；有時候他又是那個站在對立面的人——當某一代的傳承者做出了與他預期的不同選擇時，他會以一種近乎冷酷的態度來迫使對方重新審視自己的立場。守尘在不同世代的輪迴中扮演著不同的角色，有時是盟友，有時是對手，但無論在哪種身份下，他的存在始終都是九世輪迴體系中不可或缺的一部分。</p>
+        <p>葉塵透過這些投影畫面看到了守尘最真實的一面——那不是某個超然世外、全知全能的古老存在，而是一個同樣面臨選擇和困難的修行者。守尘在每一世中都必須做出艱難的決定：是堅持原有的計劃並承受可能的失敗風險，還是根據新的情況調整策略以尋求更好的結果。他的每一次選擇都在影響著後續世代的走向，而他自己的命運也與九世輪迴的整體進程緊密相連。</p>
+        <p>投影影像在繼續播放的過程中逐漸變得更加具體和詳細。葉塵看到了每一代傳承者所使用的工具和法器——雲塵印、凝元鎮塵印、空間之鑰、金色碎片以及最終融合而成的螺旋符文鑰匙。這些看似獨立存在的物品實際上都是同一個封印網絡中的不同組件，每一件都在特定的世代中被設計出來以應對當時面臨的具體危機。</p>
+        <p>但隨著投影的繼續深入，葉塵注意到了一個令人不安的趨勢：在最後幾世的記錄中，虛空之眼的擴張速度明顯加快了——裂隙出現的頻率更高、規模更大、對世界線穩定性的影響也更加深遠。每一代的傳承者都在面對比以往更加嚴峻的挑戰，而他們能夠動用的資源和時間卻在逐漸減少。</p>
+        <p>投影影像的最後一個畫面定格在了某個時刻——那是虛空之眼擴張速率達到一個極值點的瞬間，而此刻的時間標記與葉塵所在的當世完全吻合。水晶柱的表面開始泛起一層細微的裂紋——不是物理層面上的損壞，而是因為它所儲存的能量正在以某種不可逆的方式被釋放出來。</p>
+        <p>最後一段信息直接投射到了他的意識中：下一次世界線崩潰即將到來。距離這個事件發生的時間窗口已經縮小到了一個極限值——而在此之前，所有九個金色碎片必須被重新定位並按照特定的順序和位置重新排列。目前為止，其中八個碎片的位置都已被確定並處於可被調用的狀態之中——但最後一個金色碎片的位置仍然未知。</p>
+        <p>這是唯一的變數。也是整個封印網絡中最關鍵、最薄弱的一环。</p>
+        <p>葉塵站在藍白色的水晶大廳中央，灰瞳中映照著逐漸暗淡下去的投影影像。他的裂痕正在以比以往更強的頻率震顫著——那是因為他剛才接收到的信息量遠遠超過了他之前在任何地方所獲得的任何一個片段。九世輪迴的真正目的已經在他面前完全展開：它不是一條通往個人強大境界的道路，而是一座跨越了無數世代、由九位不同傳承者共同築成的封印橋樑。每一位傳承者的選擇、每一次工具的創造和遺留、每一場與虛空之眼裂隙的對抗，最終都匯聚到了他此刻的存在之中。</p>
+        <p>但最後一個金色碎片的位置仍然是一個巨大的未知數——而這個未知數的直接影響不僅關係到他個人的命運，更關係到整片大陸的世界線穩定性。如果最後一個金色碎片無法在預定的時間窗口內被找到並定位，那麼無論之前八世傳承者付出了多少努力和犧牲都將化為泡影，整個封印網絡都會因為缺少關鍵的一環而全面崩潰。</p>
+        <p>葉塵深吸了一口氣，灰瞳中的光芒逐漸凝聚成了一個清晰的判斷。他不能繼續沉浸在寒晶宮的信息中——因為冰川入口處的天階宗與暗淵閣戰役仍在持續進行，而那場戰鬥本身就可能成為導致世界線提前收縮的催化劑之一。如果雙方的交火造成了足夠大的靈氣擾動，那麼虛空之眼的擴張可能會進一步加速，從而壓縮他尋找最後一個金色碎片位置的時間窗口。</p>
+        <p>水晶大廳中的藍白色光芒逐漸恢復到了穩定的狀態——牆壁上的符文網絡重新開始緩慢流動，每一道光線都像是在訴說著一段被遺忘的歷史。葉塵轉身面向螺旋通道的方向，裂痕在體表重新凝聚成了一層淡銀色的保護薄膜。他必須做出下一個決定：是繼續留在寒晶宮中尋找更多關於最後一個金色碎片的线索——還是先返回冰川表面去處理戰場上的緊急局勢以防止虛空之眼裂隙進一步擴大。</p>
+        <p>無論他選擇哪一條路徑，都意味著他需要承擔更多的責任和風險。寒晶宮中的資訊雖然寶貴，但它提供的只是方向性的指導——真正找到最後一個金色碎片位置的過程仍然充滿了不確定性。而冰川入口處的戰役如果得不到及時的處理，可能會導致更加嚴重的後果。</p>
+        <p>葉塵的腳步在螺旋通道的入口處停頓了片刻。他的灰瞳回望了一眼身後的水晶大廳——那片藍白色的光芒正安靜地流淌著，如同某種永恆的守護者在等待著歸來的人。他知道這次離開並不意味著他會永遠放棄寒晶宮中的秘密——相反，這些信息將成為他未來行動的核心指南和力量基礎。</p>
+        <p>但現在，時間不允許他繼續停留了。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-224.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-226.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第175章：聯盟的裂痕 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-175.html">
+    <link rel="prev" href="https://kofhk.com/chapter-174.html">
+    <link rel="next" href="https://kofhk.com/chapter-176.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第175章 · 聯盟的裂痕</h1>
+    <main>
+        <p>天穹城的夜晚比白天更加危險。</p>
+        <p>葉塵坐在城主府後巷的一間茶樓二樓，透過窗戶的縫隙觀察著下方的街道。月光被雲層遮蔽，只有幾盞靈石燈籠在街道上投下昏黃的光暈。空氣中瀰漫著淡淡的茶香和一種難以察覺的壓抑感——像是整座城池都在屏住呼吸等待某個時刻的到來。</p>
+        <p>三天後的城主宴會即將舉行。趙明軒給出的影印令像一塊燒紅的鐵，沉甸甸地压在葉塵的懷中。他知道這不僅僅是一個威脅——幽影尊者要他在宴會上「消失」，而趙明軒選擇向他坦白，說明對方已經站在了抉擇的十字路口。</p>
+        <p>但葉塵不相信趙明軒的動機純粹。背叛者通常都有雙重面孔，而趙明軒展現出的慌亂和坦誠之間存在著一種微妙的平衡——太完美了，完美得像是一場精心排練的戲碼。</p>
+        <p>他需要更多證據。</p>
+        <p>茶樓的門被推開了。一名身穿黑色短打的年輕夥計端著一壺新茶走上二樓，腳步輕盈得像是在跳躍。葉塵的目光跟隨著對方的身影——夥計在靠窗的位置放下茶具後轉身離開，但在關門的那一刻，他的左手無意識地摸了摸腰間。</p>
+        <p>那裡有一把刀。</p>
+        <p>葉塵的眉頭微微皺起。茶樓夥計摸腰間的動作太自然了，自然得不像是偽裝，但那種觸摸的方式——拇指壓在刀柄護手上、食指輕扣刀刃——是刺客特有的習慣動作。他在確認武器的位置。</p>
+        <p>他站起身來，從窗戶翻了出去。灰色的斗篷在夜風中展開，像是一隻黑色的鳥兒掠向街道。夥計已經走下樓梯，正準備離開茶樓。葉塵跟了上去，保持著十丈的距離——足夠近以確保對方不會發現，又足夠遠以避免被察覺到追蹤的痕跡。</p>
+        <p>夥計穿過了三條小巷，然後拐進了一間位於城郊的倉庫區。這裡的天穹城最偏僻的區域，建築大多已經廢棄，只有零星的靈石燈籠在風中搖曳。倉庫的大門緊閉，但夥計走到側面的一扇小窗前時停下了腳步。</p>
+        <p>他從懷中取出一枚黑色的令牌——與趙明軒給葉塵的那枚一模一樣，眼睛火焰的符號在月光下閃爍著詭異的光芒。</p>
+        <p>「影印令。」葉塵在心中默念。</p>
+        <p>夥計將令牌貼在窗戶上。靈力注入後，窗戶表面的防禦陣法被暫時解除，他推開窗戶鑽了進去。葉塵等了三息的時間，然後輕聲落在窗台上，透過玻璃向內望去。</p>
+        <p>倉庫內部比想象中更加寬敞。中央擺放著一張巨大的木桌，桌面上鋪滿了各種地圖和文件。牆壁上掛滿了武器——刀、劍、長矛、暗器，每一件都散發著濃厚的殺意。房間的角落裡站著三個人，正在低聲交談。</p>
+        <p>葉塵集中精神，傾聽他們的對話。</p>
+        <p>「……宴會當天，城主府的正門會有十二名築基期守衛巡邏。」左側的一名男子說道，聲音低沉而沙啞，「但後門的防禦相對薄弱——只有四名聚元期的護衛。我們可以在酉時三刻從後門進入，直達宴會大廳。」</p>
+        <p>「葉塵會在哪裡？」右側的女子問道。她的聲音清脆如鈴鐺，但帶著一種冰冷的殺意，「他的位置決定了我們的攻擊角度。」</p>
+        <p>「玄冥長老會安排他坐在東側的第三席。」中間的男子說道——葉塵認出了這個聲音，是趙明軒。「按照計劃，當幽影尊者發出信號時，所有在場的高層都會同時發動攻擊。葉塵沒有機會逃脫。」</p>
+        <p>葉塵的瞳孔微微收縮。他原本以為自己只是宴會上的目標之一，但現在看來，這是一場針對整個聯盟高層的清洗行動。幽影尊者要的不僅僅是他的命——他要的是徹底掌控宗門聯盟。</p>
+        <p>「影刃已經到位了嗎？」趙明軒問道。</p>
+        <p>「七名影刃分散在宴會的不同位置。」左側的男子回答，「他們會在信號發出後三息內完成包圍。葉塵的萬物歸宗功法雖然強大，但面對七名築基期巔峰的同時攻擊……」他頓了一下，「沒有生還的可能。」</p>
+        <p>倉庫內的空氣變得更加凝重。葉塵感到一股寒意從脊樑升起——不是因為恐懼，而是因為憤怒。這些人竟然如此輕視他的實力，將一場生死搏鬥視為一場簡單的清除行動。</p>
+        <p>但他現在不能暴露。</p>
+        <p>葉塵輕輕後退，從窗戶翻了出去。他落在地面上，灰色的斗篷在夜風中微微擺動。倉庫的方向傳來隱約的談話聲，但他已經聽不清了——他的思緒正在飛速運轉。</p>
+        <p>七名影刃……宴會上的包圍圈……趙明軒的背叛……</p>
+        <p>這些資訊像是一塊塊拼圖，逐漸拼湊出一幅完整的陰謀圖景。幽影尊者不僅僅是要殺死他——他要利用這次宴會消滅所有可能威脅到暗淵閣控制權的人，然後名正言順地接管宗門聯盟。</p>
+        <p>而趙明軒，這個曾經在外門刁難過他的執事，現在成了這場陰謀的執行者之一。</p>
+        <p>葉塵轉身面向城主府的方向。月光從雲層中透出來，照亮了他臉上的表情——那不是憤怒或恐懼，而是一種冰冷的、近乎殘忍的平靜。</p>
+        <p>他需要改變計劃。不是逃避宴會，而是主動進入——帶著靈魂鎖鏈，帶著第三世的記憶，帶著九世輪迴的核心力量。如果幽影尊者想要一場清洗，他就讓這場清洗變成反轉。</p>
+        <p>葉塵邁開腳步，灰色的身影消失在夜色中。他的心中已經有了決定：三天後的宴會，不會是他死亡的開始，而是暗淵閣在靈界統治的終結。</p>
+        <p>葉塵在天穹城中穿梭了整整一夜。他沒有直接返回城主府，而是先來到了聯盟議會的所在地——一座位於城市中心的高塔建築。從外部看來，這座塔樓與天穹城的其他建築並無二致，但葉塵知道，它的內部隱藏著一個古老的密室，那裡存放著宗門聯盟最機密的檔案。</p>
+        <p>第三世的記憶告訴他，密室的入口隱藏在議會大廳的地板下方，需要三把鑰匙同時插入三個特定的位置才能開啟。而他已經有了前三把——雲塵印、凝元鎮塵印，以及從虛空之眼繼承的空間之鑰。</p>
+        <p>但現在不是進入密室的時機。宴會當天才是最佳機會——當幽影尊者發動攻擊、所有人都在忙於戰鬥的時候，他才有機會潛入密室並拿到那本記錄所有高層身份的冊子。</p>
+        <p>葉塵站在議會塔樓的對面，透過靈力感知觀察著周圍的一切。他敏銳地察覺到，塔樓周圍有數名修士在暗中巡邏——他們的氣息中帶著一股熟悉的黑暗力量，是暗淵閣的人。幽影尊者顯然已經開始佈局，甚至在宴會之前就已經將人手部署到了關鍵位置。</p>
+        <p>「看來我沒有看錯。」葉塵在心中默念，目光變得更加銳利。</p>
+        <p>他轉身離開議會塔樓，向城主府方向走去。灰色的斗篷在夜風中翻飛，像是某種古老的預兆。三天後的宴會不會是他死亡的開始——而是暗淵閣在靈界統治的終結。而他要做的，就是在最危險的時刻，給敵人致命的一擊。</p>
+        <p>月光從雲層中透出來，照亮了葉塵前行的道路。他的身影在天穹城的夜色中逐漸遠去，只留下淡淡的灰色光暈在空氣中緩緩消散。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-174.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-176.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

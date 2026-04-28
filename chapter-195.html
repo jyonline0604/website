@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第195章：背後的刀刃 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-195.html">
+    <link rel="prev" href="https://kofhk.com/chapter-194.html">
+    <link rel="next" href="https://kofhk.com/chapter-196.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第195章 · 背後的刀刃</h1>
+    <main>
+        <p>天穹城城主府的殘墟在黎明中散發著令人窒息的沉默。</p>
+        <p>月璃站在噴水池的邊緣，深紫色的眼眸看著眼前的一片狼藉——破碎的石柱、焦黑的樹木、被靈力爆炸撕碎的建築碎片散落在花園的每一寸土地上。玄冥長老和無面已經在昨晚的戰鬥後離開了，但他們留下的痕跡提醒著每個人：這場襲擊不是偶然的混亂，而是一次精心策劃的攻擊。幽影尊者的計劃正在按部就班地推進，而天穹城只是第一個棋子。</p>
+        <p>「城主。」一個低沉的聲音從身後傳來。「凌風大人希望您能去他府上一敘。」</p>
+        <p>月璃沒有轉身——她知道那個聲音的主人。趙明軒。那個在外門時期就喜歡在葉塵面前炫耀執事身份的傢伙，如今已經成為了凌風城主的心腹謀士。他的臉上掛著那種熟悉的假笑——溫和、禮貌，但每一句話背後都藏著刀刃。</p>
+        <p>「我不需要和任何人敘舊。」月璃的聲音冷淡得像冬日的冰面。「我只關心一件事：昨夜宴會上發生的事情，暗淵閣的立場到底是什麼？」</p>
+        <p>趙明軒的笑容微微僵硬了一瞬——然後恢復了原來的模樣。「暗淵閣一直以來都是天穹城的忠實盟友。昨晚的事情……只是某些人的個人行為。幽影尊者已經下令停止所有針對城主府的軍事行動。」</p>
+        <p>「個人行為？」月璃終於轉過身來，深紫色的眼眸中閃爍著銳利的目光。「你告訴我無面和玄冥的攻擊是某個執事擅自行動的結果？你在開玩笑嗎？而且——」她的聲音變得更加尖銳，「你昨晚坐在凌風身邊。你看到了什麼？听到了什麼？」</p>
+        <p>趙明軒的目光閃了一下。「月璃小姐，我建議你不要在這件事上過於深究。有些真相對某些人來說可能比死亡更加可怕。」</p>
+        <p>「威脅我？」月璃的聲音中第一次出現了一丝怒意。她的左手在袖口內做出了微小的動作——那是她向暗淵閣眼線發送警告信號的手勢。「你以為我不知道暗淵閣的真正目的嗎？你們不是在幫助天穹城——你們是在利用它作為跳板，為幽影尊者的虛空之眼計劃創造條件。」</p>
+        <p>趙明軒的表情徹底變了——那種溫和的假笑消失了，取而代之的是一種冰冷的、毫不掩飾的殺意。「你比我預期的更加聰明。但也比你預期的更加危險。」他抬起手，掌心浮現出一枚紫色的能量刃——和暗淵閣標誌完全一致的顏色。「如果幽影尊者知道你知道了這些事情……他的處理方式會讓你後悔出生在這個世界上。」</p>
+        <p>月璃沒有後退半步。「那我就告訴你另一個真相：葉塵現在就在虛空之眼的裂縫內部。他帶著四把鑰匙，正在試圖完成封印。而你——趙明軒——你以為你在為幽影尊者效忠，但你真正服務的只是他自己的權力慾望。暗淵閣的每一個成員都知道這一點——包括那些表面上最忠誠的人。」</p>
+        <p>她頓了一下，聲音變得更加低沉：「無面昨晚沒有殺葉塵——他放走了他。這說明什麼？說明即使在幽影尊者的核心圈中也有分歧。有人在試圖阻止他的計劃，只是還沒找到正確的方法。」</p>
+        <p>趙明軒的掌心微微顫動了一下——那枚紫色的能量刃在他手中發出了一次不穩定的閃爍。月璃捕捉到了那個微小的變化：他在動搖。不是因為她的話語，而是因為她指出了暗淵閣內部已經存在的裂痕。</p>
+        <p>「如果你願意幫助我……」月璃的聲音突然變得柔和了下來。「我可以告訴你一些事情——關於幽影尊者的弱點，關於虛空之眼核心的封印方法。但我需要你的合作。」</p>
+        <p>趙明軒沉默了片刻。然後他做了件出乎她意料的事情：收回了能量刃，轉身離去。</p>
+        <p>「我會把昨夜的事情從記錄中刪除。」他的聲音從遠處傳來。「但這不代表我站在你這一邊——只代表我還在觀察你的價值。如果你有任何背叛暗淵閣的跡象……我不會猶豫第二次。」</p>
+        <p>月璃看著他消失在殘墟盡頭的背影，深紫色的眼眸中閃過一絲複雜的情緒。她不知道趙明軒最後的那句話到底是威脅還是某種形式的警告——但她知道一件事：在暗淵閣內部，並不是所有人都忠誠於幽影尊者。有些人和她一樣，只是在等待一個能夠看清全局的機會。</p>
+        <p>她抬起手，掌心浮現出一枚小小的紫色符石——那是她与葉塵之間的聯絡信物。符石中傳遞著虛空之眼裂縫的能量波動信號，距離正在緩慢縮短。裂縫的擴張速度比預期的更快——也許只有三天時間了。</p>
+        <p>「葉塵……」她低聲說道。「你要撐住。我在外面為你爭取時間。」</p>
+        <p>月璃轉身走向城主府大廳的方向——那裡還留有宴會期間的能量殘跡，其中可能藏著一些對她有用的信息。靈魂鎖鏈的神魂感知在她體內緩緩運轉，灰色的意識像一張細網一樣覆蓋了整片區域。她發現了幾處值得注意的痕跡：在大厅東側角落的一張長桌下面，確實藏著一枚小型的傳送陣法——靈力頻率與暗淵閣標誌完全一致；而在主位旁邊的地板上，有一道深紫色的灼燒痕跡，那是無面長劍留下的能量殘留。</p>
+        <p>更重要的是，她在城主府的地下密室中找到了一封信件——信封上蓋著幽影尊者的黑色印章。信件的內容只有一句話：「第七日子夜，裂縫擴張至最大寬度後啟動最終儀式。」</p>
+        <p>這印證了守塵記憶碎片中的警告——幽影尊者確實計劃在第七天子夜完成最後一步。而葉塵必須在那之前找到另外兩把殘留鑰匙的力量，否則一切都太遲了。</p>
+        <p>月璃將信件小心翼翼地收入袖中——她需要盡快將其送到葉塵手中。但通往虛空之眼裂縫的路徑現在充滿了危險：玄冥長老的天階宗武裝力量正在全城戒備搜索可疑人物，暗淵閣的眼線們遍布每一個角落，而趙明軒的態度依然不確定。</p>
+        <p>她需要做一個抉擇：是冒险直接前往裂縫區域尋找葉塵——還是先繞道去聯絡其他可以信任的盟友？</p>
+        <p>深紫色的眼眸中閃過一絲決斷。她知道時間不夠了——三天可能只夠完成其中一件事。而她必須選擇最關鍵的那一條路。</p>
+        <p>「葉塵，等我。」她低聲說道，身影在晨光中化為一道紫色的流光，朝著城市外圍的方向掠去。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-194.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-196.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

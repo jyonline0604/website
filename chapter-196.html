@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第196章：碎片之舞 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-196.html">
+    <link rel="prev" href="https://kofhk.com/chapter-195.html">
+    <link rel="next" href="https://kofhk.com/chapter-197.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第196章 · 碎片之舞</h1>
+    <main>
+        <p>石柱的表面觸摸起來溫熱而粗糙，像是某種活著的生物的皮肤。</p>
+        <p>葉塵的雙手分別按在石柱左右兩側的金色符文上——左邊的是時之碎片，右邊的是空之碎片。每一枚碎片都散發著與他懷中金色碎片完全不同的能量頻率：一枚是緩慢、深沉、帶有時間流動感的波動；另一枚則是急促、尖銳、充滿空間扭曲感的高頻震顫。</p>
+        <p>「不要試圖用力量去控制它們。」塵影站在石柱的另一側，灰色的雙眼注視著葉塵的動作。「這兩把碎片的力量本質上與你的九世輪迴核心是完全不同的系統——如果你強行融合，只會導致能量反噬。你必須讓它們自己選擇是否與你產生共鳴。」</p>
+        <p>「那要怎麼做？」葉塵的聲音中帶著一絲焦躁。他已經在石柱前站了將近兩個時辰，雙手按在碎片上沒有任何感覺——兩把碎片就像死物一樣沉默著。</p>
+        <p>「闭上眼睛，放開靈魂鎖鏈的感知，讓你的意識沉入最深的層次。」塵影說道。「想像你不是在尋找它們——而是在邀請它們加入你。」</p>
+        <p>葉塵按照指示閉上了雙眼。他將靈魂鎖鏈的神魂感知從被動的掃描模式轉為主動的连接模式——灰色的意識像一根細線一樣緩緩延伸出去，觸碰著兩枚碎片表面的能量頻率。起初什麼都沒有發生；然後在某一個瞬間，左邊的時之碎片突然產生了一絲微弱的共鳴震顫。</p>
+        <p>那不是物理上的震動——而是時間流動本身發生了變化。葉塵感覺到周圍的空間緩慢地凝固了：空氣中漂浮的灰色粒子停止了旋轉，塵影的身影變得模糊不清，連他自己心跳的聲音都變得更為緩慢、更加悠長。</p>
+        <p>「它在測試你。」塵影的聲音在凝固的時間中依然清晰可辨，像是從另一個維度傳來的——「時之碎片只會與那些能夠承受時間重量的靈魂產生共鳴。如果你害怕它會拖慢你的意識，它就會拒絕你。」</p>
+        <p>葉塵沒有說話。他將所有意識集中在那一絲微弱的共鳴上，任由那種緩慢的節奏滲透進他的經脈。時間的感覺從手腕開始向下蔓延——不是痛楚，而是一種深沉的重量感，像是整個宇宙的歷史都在壓迫著他的靈魂。</p>
+        <p>然後他做了一個出乎自己預料的動作：他沒有抵抗那股重量，而是順勢讓它流遍全身。灰色的光芒從他身上散發出來，與時之碎片的波動產生了第一次真正的同步——</p>
+        <p>右邊的空氣突然爆裂了。空之碎片被左邊的共鳴觸發了反應，它的能量頻率瞬間變得更加尖銳、更加狂暴。空間開始扭曲——石柱的表面出現了裂縫，灰色的岩石像水面一樣泛起漣漪，葉塵的身形在扭曲的幾何結構中不斷改變著位置。</p>
+        <p>「兩者同時響應！」塵影的聲音中第一次出現了一丝驚奇。「這不可能——從來沒有人在接觸的第一時間就讓兩枚碎片產生交叉共鳴。」</p>
+        <p>葉塵聽不見那些話了——他的世界只剩下兩股截然不同的能量頻率在他體內交織、碰撞、融合。時之碎片的沉緩與空之碎片的尖銳像是兩種完全不同的樂器在演奏同一首曲子，而他就是那個指揮者——必須將它們統合成一個和諧的和聲。</p>
+        <p>靈魂鎖鏈在他的意識中瘋狂運轉——但這次的目的不是攻擊或防禦，而是連接。灰色的意識束像橋樑一樣跨越了時空兩個維度的鴻溝，將兩枚碎片的能量頻率匯聚到一起。他的經脈開始承受前所未有的壓力：左側的血液流動變得更加緩慢，右側的神魂感知卻被推向了極限的敏銳度——</p>
+        <p>「就是現在！」塵影的聲音從遠方傳來。「讓它們融合！不要抵抗！」</p>
+        <p>葉塵張開雙臂——灰色的光芒從他身上爆發出去，與時之碎片和空之碎片的能量產生了一次前所未有的共振。三枚碎片的力量在他體內匯聚成了一股全新的能量洪流——不是簡單的相加，而是化學反應般的質變。他的九世輪迴核心在心口處劇烈跳動，每一次搏動都將那股能量推向更高的強度——</p>
+        <p>然後某種東西碎裂了。</p>
+        <p>不是物理上的破碎，而是靈魂深處的某個屏障。葉塵感覺到一股前所未有的力量從九世輪迴的更古老層次中湧現出來——那是第六世的記憶碎片在共鳴的作用下開始覺醒。他看見了自己前世站在一片廣闊的戰場上，雙手分別握著兩枚不同顏色的符文碎片，周圍是無數被虛空吞噬的世界殘骸。</p>
+        <p>「這就是……我曾經做過的事情。」他在心中默念。「不止一次——很多次。」</p>
+        <p>能量洪流的強度達到了一個臨界點——然後突然停止了增長。葉塵緩緩放下了按在石柱上的雙手，灰色的雙眼中閃爍著前所未有的光芒。他的掌心浮現出了一枚全新的符文：時與空交織在一起形成的螺旋圖案，散發著銀白色的光芒。</p>
+        <p>「你做到了。」塵影的聲音中帶著一種深沉的感慨。「你讓三枚碎片產生了永久性的融合。現在你擁有了一把能夠同時操控時間和空間頻率的全新鑰匙——它將成為封印裂縫的最核心力量。」</p>
+        <p>葉塵握緊了那枚符文，感受着其中湧動的強大能量。「還有最後一步——找到另外兩把殘留力量的實體碎片，然後完成完整的封印儀式。」</p>
+        <p>「但你必須在三天內做到這一點。」塵影說道。「因為就在剛才的融合過程中，虛空之眼的外部裂縫已經擴大到了新的規模。天穹城的上方——那道紫色裂縫現在已經超過了十丈寬。」</p>
+        <p>葉塵閉上雙眼，靈魂鎖鏈的神魂感知向外鋪展——他能夠感覺到裂縫的能量波動正在以肉眼可見的速度增強。三天。七十二個小時。距離幽影尊者的計劃完全實現只差最後一步。</p>
+        <p>而他要做的第一件事，就是離開這個地方，回到現實世界中去。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-195.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-197.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

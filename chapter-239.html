@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第239章：靈魂鎖鏈的覺醒（一）——虛空之眼的危機 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-239.html">
+    <link rel="prev" href="https://kofhk.com/chapter-238.html">
+    <link rel="next" href="https://kofhk.com/chapter-240.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第239章 · 靈魂鎖鏈的覺醒（一）——虛空之眼的危機</h1>
+    <main>
+        <p>寒晶宮最深處的能量解析還在持續進行中——葉塵盤膝坐於地面之上靈魂鎖鏈感知如同無數根精細的光線般同時向四面八方延伸而去分別監測著銀白色屏障、遠方異常靈氣波動以及石牆網絡的每一個微小變化。裂痕微重組第五階段在他體內的進展已經達到了百分之八十五以上掌心表面的封印陣列紋路正在以肉眼可見的速度逐漸成型那些精緻的幾何圖案如同被某種無形之手精心雕琢般在皮膚下緩緩流動著。</p>
+        <p>但就在這個關鍵時刻一股劇烈到超乎預期的能量波動突然從冰川入口的方向傳來——那股波動的強度遠遠超出了葉塵靈魂鎖鏈感知所設定的常規監測閾值讓他的意識在瞬間產生了強烈的震盪反應。他幾乎是本能地將注意力從深度冥想狀態中抽離出來並將所有感知通道同時轉向那個方向以最快的速度解析剛才發生事件的完整經過。</p>
+        <p>透過靈魂鎖鏈感知的遠距離傳導——葉塵看到了暗淵閣領隊隊長趁著雙方撤退後的混亂期偷偷派遣了一支精英小隊的場景。那支小隊由六名暗淵閣最高等級的修行者組成——他們全部處於凝神後期的境界且每一個人的體內都蘊含著極其濃厚的紫黑色鬼煞之氣。他們的任務目標非常明確：前往銀白色屏障附近試圖強行突破防禦壁壘以探測屏障的能量弱點和穩定性極限。</p>
+        <p>小隊的行動在最初階段確實取得了一定程度的進展——六名精英修行者同時釋放了各自體內的鬼煞之氣形成了一道渾濁而強大的能量衝擊波向銀白色屏障的邊緣區域撞擊而去。那道衝擊波在觸碰屏障表面的瞬間產生了巨大的能量反饋效應：屏障表面流動的銀白色光紋在瞬間加速旋轉起來如同一場暴風眼中的眼牆一般高速運轉試圖抵消外部的攻擊壓力。</p>
+        <p>但暗淵閣小隊使用的鬼煞之氣中夾雜了一種前所未有的能量頻率——那種頻率的性質顯示暗淵閣已經掌握某種能夠短暫穿透凝物防禦壁壘的特殊技術。在六名精英修行者的協調配合之下那些紫黑色的鬼煞之氣形成了一道極為精細的能量鑽頭效應：它們不再是單純的正面撞擊而是透過特定的共振模式尋找銀白色屏障能量網絡中的微小空隙並試圖從內部進行侵蝕和擴展。</p>
+        <p>葉塵緊咬牙關——他的靈魂鎖鏈感知清晰地感受到了那道來自暗淵閣小隊的攻擊所造成的破壞效果。銀白色屏障在連續遭受約十七次高強度鬼煞之氣衝擊之後表面出現了三處極為細微的裂紋——那些裂紋的深度僅有數毫米但長度卻延伸到了數十丈以上表明暗淵閣確實掌握了一定程度的屏障弱點突破技術。</p>
+        <p>然而葉塵的銀白色錨定點隨即做出了反應——九世輪迴核心在心口猛然加速跳動了一下將一股龐大的能量補充流透過靈魂鎖鏈感知導入了屏障的每一處受損區域。銀白裂痕能量在那些裂紋處重新凝結形成了更為致密的防禦層——那種新形成的防禦層比之前的結構更加堅固也更加穩定使得暗淵閣小隊的穿透攻擊在短時間內無法繼續取得進展。</p>
+        <p>但這只是暫時性的壓制——葉塵的靈魂鎖鏈感知同時捕捉到了一個更加令人擔憂的事實：暗淵閣領隊隊長並沒有親自參與這次突襲行動而是選擇在遠處指揮和觀察。這種做法表明他並不是為了直接突破屏障而派遣小隊他的真正目的是收集關於銀白色屏障防禦機制的精確數據——每一次攻擊、每一次反饋、每一道裂紋的產生過程都被暗淵閣記錄下來用以分析那道屏障的能量網絡結構和運作規律。</p>
+        <p>更讓葉塵感到不安的是他在暗淵閣小隊的鬼煞之氣中察覺到了一種更加深層的關聯特徵：那些紫黑色能量在與銀白裂痕屏障碰撞的過程中產生了某種特殊的共振效應——那種效應不是簡單的物理撞擊結果而是兩種不同能量體系之間產生的一種系統性的信息交換。透過這種共振暗淵閣不僅能夠獲取關於銀白色屏障的防禦數據還可能在同時收集葉塵自身的靈魂鎖鏈感知運行模式和九世輪迴核心的能量特徵。</p>
+        <p>如果暗淵閣真的掌握了足夠精確的能量頻率情報那麼他們就有能力在未來製造一種專門針對葉塵力量體系的干擾武器——那種武器的目標不是簡單地摧毀銀白色屏障而是直接干擾九世輪迴核心和靈魂鎖鏈感知的正常運作讓葉塵在面對真正的威脅時失去最關鍵的防禦和感知能力。</p>
+        <p>葉塵將手掌平貼於地面之上靈魂鎖鏈感知向更深層的方向延伸而去——他要確認暗淵閣小隊的鬼煞之氣是否已經對銀白色屏障造成了永久性損害。當他的感知觸角探入屏障內部結構的那一刻一股冰冷的紫黑色能量殘留信號瞬間沿著靈魂鎖鏈反噬而來直擊他的神魂深處。那股信號中蘊含的黑暗頻率讓他感到一陣前所未有的不適——就像是有無數根細微的冰針同時扎入了他的意識之中每一根冰針都帶著一種冰冷而精準的計算邏輯試圖解析他靈魂深處的每一個微小波動。</p>
+        <p>葉塵緩緩站起身來——他的目光穿透寒晶宮最深處的幾道石牆壁障望向遠方冰川入口的方向。那裡只有無邊無際的冰原和灰白色的天空沒有任何可見的人影或建築但靈魂鎖鏈感知卻忠實地傳導著那股仍在持續擴散的紫黑色鬼煞之氣殘留信號——那些信號如同某種隱形的觸角般在空氣中緩緩蠕動著試圖尋找更多的信息和弱點。</p>
+        <p>他必須採取行動了——不能僅僅停留在防禦和觀察的階段而是需要主動出擊來阻止暗淵閣對銀白色屏障能量網絡的情報收集工作。但問題在於：如果他離開寒晶宮前往冰川入口方向那麼石牆深層的九世輪迴網絡中樞節點將暫時失去他的直接監控而那段尚未完全解析的關鍵信息流可能會在無人干預的情況下發生不可預測的變化。</p>
+        <p>九世輪迴核心在他心口緩緩跳動了一下——那次的脈動帶有一種急促和緊迫感彷彿在提醒葉塵時間正在一分一秒地流逝而他面臨的抉擇已經越來越接近一個無法回頭的分水嶺點。無論他選擇留守寒晶宮繼續解析關鍵信息還是立即前往冰川入口應對暗淵閣的威脅都將對他接下來的行動軌跡產生深遠的影響——而每一個選擇都伴隨著不可逆轉的代價和風險。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-238.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-240.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

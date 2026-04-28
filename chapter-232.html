@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第232章：沉默的回應 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-232.html">
+    <link rel="prev" href="https://kofhk.com/chapter-231.html">
+    <link rel="next" href="https://kofhk.com/chapter-233.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第232章 · 沉默的回應</h1>
+    <main>
+        <p>銀白色屏障如一面巨大的琉璃鏡矗立在冰川入口之上，將天階宗與暗淵閣分隔於兩端。寒風吹過屏障表面時發出低沉的嗡鳴聲——那不是物理意義上的音波震動，而是銀白裂痕能量在空氣中產生的一種特殊共振頻率。這種頻率在靈魂鎖鏈感知的感知範圍內形成了一種獨特的紋理，如同冰面上自然形成的霜花圖案，每一道紋路都蘊含著精確的能量數據和微妙的波動規律。</p>
+        <p>凌風站在天階宗陣型的最前方，面罩下的雙眼緊盯著屏障上流動的每一道光紋。他的表情看起來平靜如水——嘴角微微上扬，帶著一種令人安心的溫和微笑——但袖中的右手卻以極快的速度在袖中玉簡上劃過一道道靈力符文。那些符文如同微小的金色觸手般延伸而出，精準地捕捉並記錄著銀白裂痕能量的每一個特徵參數：能量密度、頻率分佈、共振模式、以及屏障表面那些流動紋路的變化規律。</p>
+        <p>副手站在凌風身後三步的位置，低聲說道：「宗主，對方的力量远超我們之前的預判。那道屏障的穩定性令人難以置信——即使是我方築基後期高手同時攻擊，也無法在屏障上留下一道裂痕。」</p>
+        <p>凌風沒有立刻回應。他的目光仍然鎖定在那道銀白色屏障上，但眼神中多了一層更為深沉的思考。片刻之後他才緩緩說道：「不是無法留下裂痕，而是他不想讓我們看到裂痕的極限所在。」</p>
+        <p>這句話如同一根細針刺入了副手的思緒——是的，葉塵展現出的力量雖然強大，但那種克制和收放自如的態度反而讓凌風感到更加不安。一個願意展示自己底牌的人或許還能預測他的行動軌跡；但一個選擇隱藏實力深淺的人就像一片被濃霧籠罩的深海——你永遠不知道水面之下潛藏著什麼樣的巨獸。</p>
+        <p>「繼續記錄所有數據，尤其是屏障邊緣與冰川冰層接觸的部分。」凌風的聲音壓得很低，只有站在身後的副手能夠聽見。「那些接觸點的能量流動模式很可能暴露出他力量的核心機制和運行規律。我們需要知道那道屏障的強度上限在哪裡、它的穩定性能持續多長時間、以及在極端條件下會以什麼樣的方式崩解。」</p>
+        <p>副手點了點頭，手指在玉簡上的動作更加急促。金色的符文數據如同瀑布般流轉，將銀白裂痕能量的每一個細節都封存其中——這些記錄將成為日後天階宗制定後續戰略時最為關鍵的情報依據。而在凌風的內心深處，一個更大的計劃正在悄然成形：如果無法直接突破那道屏障，那麼就從其他方向尋找解決方案；如果葉塵主張遺跡屬於所有人，那麼天階宗最合理的策略就是讓這個「所有人」的概念變得對自己最有利。</p>
+        <p>暗淵閣陣型中的反應則完全截然不同——那裡沒有低聲討論，沒有數據記錄，只有一片沈默中蘊含著的殺意與計算。銀白色屏障的對面，紫黑色的鬼煞之氣如同沸騰的黑水一般滾動翻湧，每一次波盪都在屏障表面激起一層層細微的能量漣漪——那些漣漪中夾雜著黑色血管碎片和暗金色的虛空之眼殘餘波動，形成了一幅令人不安的畫面。</p>
+        <p>暗淵閣領隊隊長站在陣型最前方，面罩下的嘴角勾起了一絲冷笑。那是一個極為複雜的表情——既包含了對葉塵所展現力量的認可，也蘊含著一種毫不掩飾的輕蔑和不屑。在他眼中，葉塵此刻所做的不過是幼稚的理想主義者在面對殘酷現實時的徒勞掙扎。</p>
+        <p>「天真。」領隊隊長從面具後吐出了這兩個字，聲音低啞卻清晰。「你以為憑藉一道能量屏障就能將這個世界分割成公平與不公的兩半？這世間從來不存在什麼屬於所有人的東西——只有強者能夠佔有的一切。」</p>
+        <p>他的手掌緩緩抬起，掌心朝上。紫黑色的鬼煞之氣從他體內的每一處穴道涌出，在他掌心凝聚成一團渾濁而危險的能量球——那團能量球的中心有一個極小的黑色裂縫，裂縫中滲透出的波動讓周圍的空氣都產生了扭曲效應。那是虛空之眼殘餘力量的一種特殊形態，能夠在短時間內對銀白裂痕屏障造成實質性的損耗和侵蝕。</p>
+        <p>但領隊隊長並沒有真正出手——他只是將那團能量球舉起，然後又緩緩放下。這個動作如同一個明確的信號：暗淵閣暫時不會採取武力行動，但這並不意味著他們會放棄爭奪冰川遺跡的權利。在他們的計劃中，時間站在自己這一側——只要葉塵的能量屏障隨著時間推移而逐漸衰弱，只要暗淵閣能夠找到突破那道屏障的方法，冰川入口最終還是會落入他們的手中。</p>
+        <p>「撤軍。」領隊隊長的面具後傳出一聲低沉的命令語氣。「但不是撤退——是後退到一個更有利的位置。」</p>
+        <p>紫黑色的鬼煞之氣如同一場翻滾的黑霧般向後湧去，暗淵閣的陣型開始緩緩後移。他們的步伐極為整齊有序，每一個人的靈力波動都保持在最精確的狀態——這不是慌亂的敗退，而是一種經過精心計算的战略轉移。他們會在冰川邊緣的另一側重新部署兵力，選擇一個距離封印門更遠但更具戰略優勢的位置進行觀察和等待。</p>
+        <p>就在雙方陣型開始緩緩撤退之際，一道突兀的能量波動從天階宗方向傳來——那是一個極為年輕、極為稚嫩的靈力波動，帶著一股毫不掩飾的衝動與急切。一名年約二十出頭的天階宗弟子在撤退過程中不知為何突然停下了腳步，他的目光死死鎖定在銀白色屏障後方的封印門上——那道門此刻正處於銀白裂痕能量的滋養之中，表面的古老符文重新亮起微弱的金色光芒，散發出一種令人著迷的吸引力。</p>
+        <p>那名年輕弟子的瞳孔微微收縮——他看到了封印門表面那些正在恢復光彩的符文，看到了一道隱藏在符文深處、幾乎無法察覺的細小裂縫。那道裂縫中透出的微弱靈氣波動讓他的靈魂產生了前所未有的悸動——那是一種來自上古文明的召喚，一種與凝元鎮塵印副本中記載的力量同源的神秘吸引力。</p>
+        <p>「……不！」年輕弟子從喉嚨深處發出了一聲嘶啞的低吼——他的雙腿彷彿被某種無形的力量牽引般向前邁出了第一步、第二步。在他身後的師兄們試圖拉住他，但那種來自封印門的召喚太過強烈——強大到讓一個築基前期的年輕人完全失去了理智判斷的能力。</p>
+        <p>銀白色屏障在年輕弟子接近到一定距離的瞬間產生了劇烈的能量反饋——那道屏障表面上原本流轉平緩的銀白色光紋突然加速旋轉起來，如同風暴中心的眼牆一般開始高速運轉。一道刺耳的嗡鳴聲從屏障內部傳出，伴隨著一股強大的排斥力波向四周擴散開去。</p>
+        <p>年輕弟子被那股排斥力狠狠地彈了回來——他的身體在空中劃出一道凌亂的弧線後重重地摔在冰面上。銀白色的能量波紋在他的周身激發出一圈又一圈的漣漪，那些漣漪中夾雜著細微的能量碎片，如同暴雨中的冰雹一般砸落在他身上每一處穴道和經脈上。</p>
+        <p>「你做了什麼！」天階宗的一名師兄憤怒地大喊一聲——但他很快意識到問題不在於屏障本身，而在於那名年輕弟子觸碰了封印門附近區域所引發的連鎖反應。銀白色屏障對進入其保護範圍內的任何非許可靈力波動都具備自動防禦機制，而那個年輕弟子的舉動恰好觸發了那道機制中最嚴厲的反噬模式。</p>
+        <p>葉塵站在屏障另一端的冰峰之巔，靈魂鎖鏈感知清晰地感受到了剛才發生的那一幕——他的眉心微微皺起，但並沒有因此產生絲毫的憤怒或焦慮。相反，他注意到銀白色屏障在這次能量反饋之後出現了極為細微的變化：屏障表面的光紋流動速度比之前快了約百分之三，能量的穩定性也下降了不到百分之一的幅度。</p>
+        <p>這是一種正常的波動——銀白裂痕能量在承受了來自外部的意外干擾後進入了短暫的自我調節狀態。但葉塵同時意識到了一個更為重要的問題：那道封印門附近的能量場已經產生了微妙的失衡。年輕弟子的反噬雖然被控制在最小範圍內，但他所觸碰的冰面區域出現了一條細小的裂縫——那條裂縫中滲透出的靈氣波動性質與銀白裂痕能量完全不同，反而更加接近虛空之眼裂隙的擴散頻率。</p>
+        <p>葉塵緩緩閉上眼睛，靈魂鎖鏈感知繼續向遠方延伸而去。他需要時間來分析剛才發生的事件所暴露出來的問題，也需要時間來確定下一步的方向——但在那之前，他必須先確保銀白色屏障能夠在接下來的時間內保持足夠的穩定性。</p>
+        <p>九世輪迴核心在他心口緩緩跳動了一下——第四次的脈動平穩而有力，如同一個冷靜的計時器，提醒著葉塵時間正在一分一秒地流逝，而他沒有太多猶豫的空間。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-231.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-233.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

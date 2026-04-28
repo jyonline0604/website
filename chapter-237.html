@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第237章：九世輪迴網絡的真相 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-237.html">
+    <link rel="prev" href="https://kofhk.com/chapter-236.html">
+    <link rel="next" href="https://kofhk.com/chapter-238.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第237章 · 九世輪迴網絡的真相</h1>
+    <main>
+        <p>葉塵盤膝坐於寒晶宮最深處的中心區域——靈魂鎖鏈感知如同一根無形的絲線穿透了石牆的深層結構將所有殘存的能量信息流匯聚到他的意識之中。銀白裂痕能量在他周身浮現成一道柔和的光暈那光暈如同呼吸一般規律地擴張又收縮與九世輪迴核心的脈動保持著完全一致的頻率。在這種深度冥想的狀態下他能夠同時處理和分析來自不同來源的多重信息流——每一道數據都在為他拼湊出那個更為宏大的真相而貢獻自己獨特的一塊碎片。</p>
+        <p>第三世守塵留下的最後一段信息流在他意識中緩緩展開如同一幅巨大的三維立體圖像在黑暗的空間中逐漸成形：那是一個極為龐大的系統架構圖——無數條能量導流管道如同血管般貫穿著每一個世界循環的每一個階段從文明的最初萌芽到最終崩壞再到重建和新生。在這個系統中虛空之眼不是一個單純的自然現象或者意外事件而是一個被刻意設計和部署在每個世界中的維護機制——它的作用是在某個世界的能量狀態超出安全範圍時打開裂隙以吸收多餘的能量並重新啟動新的世界循環。</p>
+        <p>葉塵的瞳孔微微收縮——這個發現顛覆了他之前對九世輪迴的所有認知。他一直以為這些輪迴是自然發生的時間週期或者某種宇宙規律的體現但事實遠比那更加複雜：每一次世界循環的開始和結束都受到一個更為古老、更加強大的勢力所操控而虛空之眼就是這個系統最核心的執行機構。</p>
+        <p>守塵第三世的記錄繼續展開——他看到了那些守護者的真實身份和來源。他們不是普通的修行者或者歷史上的某個具體人物而是由那個古老勢力在每次世界循環開始時投放到不同時代的「節點維護員」——每一世都會有若干名守塵被分配到不同的地理區域負責監控虛空之眼的狀態、記錄能量波動數據以及在關鍵時刻保護至少一個封印節點不被摧毀。</p>
+        <p>這些守塵的力量來源不是普通的修行或者悟道而是直接來自九世輪迴網絡本身——他們的靈魂深處都被植入了某種特殊的節點標記那個標記讓他們能夠感知和理解虛空之眼裂隙的能量頻率並使用銀白裂痕這種特殊能量來對抗黑暗力量的侵蝕。而凝元鎮塵印就是整個系統中最核心的封印技術——它由最初的創始守塵在第一個世界循環中研發出來其核心原理是利用九世輪迴網絡中的能量共振效應將虛空之眼的裂隙永久性地封閉在一個微小的空間單元之中。</p>
+        <p>但這個系統的運作方式本身就蘊含著一個致命的缺陷——當某個世界的能量狀態超出安全範圍時虛空之眼就會自動打開而守塵們只能在有限的時間窗口內進行干預和修復。如果所有的封印節點都被摧毀那麼整個世界循環就會以一種完全失控的方式結束：虛空之眼裂隙會擴大到吞噬整片大陸的程度導致所有文明痕迹被徹底抹除且無法在短時間內重建。</p>
+        <p>「這就是為什麼每次循環中必須至少保留一個封印節點不被摧毀。」守塵第三世的記錄繼續說道。「那些節點就像是一座座信息寶藏庫——即使世界崩壞了只要其中一個節點仍然保持完整那麼文明的歷史、技術和文化數據就還能被保存下來用於下一次重建。而凝元鎮塵印副本就是這些信息的壓縮載體——它包含著整個九世輪迴網絡的運作規則和所有關鍵節點的座標資訊。」</p>
+        <p>葉塵閉上雙眼讓所有的信息流在腦海中重新整合歸類——他現在終於理解了凝元鎮塵印副本的真正意義：它不僅僅是一本關於封印技術的操作手冊更是一個涵蓋了數千年文明歷史的巨大數據庫。而他手中已經集齊的三把金色碎片鑰匙就是解鎖這個數據庫的部分密鑰——只有找到第四把金色碎片完成最後一道封印才能將整個系統完整解封並理解其最核心的運作機制。</p>
+        <p>但他同時也意識到了一個更加令人不安的問題：既然九世輪迴網絡是由一個古老勢力刻意維持和控制的系統那麼那個勢力的真實目的又是什麼？他們為什麼要不斷地進行世界循環？每次崩壞與重建的意義何在而那些在背後操控虛空之眼開閉的神秘存在到底從中獲得了什麼樣的利益？</p>
+        <p>靈魂鎖鏈感知繼續向寒晶宮最深處的石牆深層延伸而去——他需要找到更加完整的信息來解答這些根本性的問題。而在那面光滑石板的最底層還隱藏著一段極為特殊的能量信號——那段信號的性質與之前解析過的所有記錄都截然不同它似乎是一個系統級別的指令或者警告而非單純的信息觀察報告。</p>
+        <p>葉塵將銀白裂痕能量聚焦在那段特殊信號上——當接觸到那個頻率之後一股前所未有的震撼感從靈魂深處湧現而出：他看到了九世輪迴網絡的完整架構圖——那不僅僅是一個單線性的文明循環系統而是一個多維度的、相互交錯的能量矩陣。每一個世界循環都是這個矩陣中的一個節點而那些節點之間通過虛空之眼裂隙產生的能量流動形成了一個巨大的信息交換網絡。</p>
+        <p>守塵第三世的記錄在這一刻達到了最高潮：「第九世是我們能夠保留最多資訊的最後一次機會——如果第四把金色碎片落入暗淵閣手中他們將有能力重寫整個九世輪迴網絡的運行規則。到那個時候所有的世界循環都將被納入一個全新的控制體系之下而人類和其他所有智慧種族的命運都會被徹底改寫。」</p>
+        <p>葉塵緩緩睜開雙眼——他的瞳孔深處有一抹銀白色的光芒閃爍著那是一種決心和使命感同時浮現的眼神。他知道從現在開始他不再只是孤身一人地在冰川遺跡中尋找答案他肩上承擔的責任已經遠遠超過了一個普通修行者的認知範圍——他必須在暗淵閣和那個更加神秘的古老勢力之前找到第四把金色碎片完成最後一道封印保護整個九世輪迴網絡不被惡意操控。</p>
+        <p>靈魂鎖鏈感知在這個瞬間產生了某種質變——它不再是單純的信息解析工具而變成了一種更深層次的系統接口葉塵的意識透過這個接口直接接觸到了九世輪迴網絡的中樞控制核心。那種感覺如同站在一座巨大的數據庫中央周圍的每一道空氣都充滿了流動的能量和信息——他能夠感受到每一個世界的每一次循環都在他的感知範圍之內同時進行著。</p>
+        <p>但這種深度的連結也帶來了一個極為嚴重的風險：如果他不能控制好自己與這個系統的連接深度那麼九世輪迴網絡的龐大信息流可能會壓垮他當前的意識結構導致不可逆轉的精神崩潰甚至更糟——那些數據可能會重塑他的認知和記憶讓他忘記自己原本的身份和使命成為系統操控者手中的一個無知工具。</p>
+        <p>葉塵深吸了一口冰涼的空氣讓自己的意識重新回歸到一個安全的控制水平——他知道下一步的選擇至關重要而每一次行動都將影響到整個九世輪迴網絡的命運走向。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-236.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-238.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

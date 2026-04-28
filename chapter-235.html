@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第235章：北境寒晶宮（二） - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-235.html">
+    <link rel="prev" href="https://kofhk.com/chapter-234.html">
+    <link rel="next" href="https://kofhk.com/chapter-236.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第235章 · 北境寒晶宮（二）</h1>
+    <main>
+        <p>銀白色保護光暈在寒晶宮的地下空間中緩緩擴散——葉塵站在中央石柱群的最前方，靈魂鎖鏈感知如同一場無形的雨般從他的體內滲透而出，均勻地覆蓋了整座建築的每一寸牆壁、每一根石柱和每一塊地面石板。那些古老石質表面所殘存的能量信息流在靈魂鎖鏈的觸碰下開始逐漸顯現——不是以文字或圖畫的形式呈現，而是以一種極為特殊的靈力共振頻率將信息直接傳導至他的意識深處。</p>
+        <p>葉塵緩緩抬起右手掌心朝向身旁最近的一根石柱——銀白裂痕能量從指尖延伸而出如同極細的光線般觸碰在石柱表面的雕刻紋路上。那些紋路在他靈魂鎖鏈的解析下發生了前所未有的變化：原本只是靜態的石刻圖案開始流動起來，如同被某種看不見的靈力之手重新繪製了一遍一般逐漸轉化為一幅立體的、連續的圖像序列。</p>
+        <p>那是一幅關於時間長河的記錄——葉塵的目光穿透了石柱表面的石質層層疊疊的能量紋路，看到了數百年前甚至更久遠之前發生在冰川遺跡和寒晶宮周圍的景象。他看到了一個巨大的地下實驗室——數十名身穿白色長袍的修行者圍坐在一座圓形陣列中央進行著某種精密的靈力調控儀式；他看到了一座高聳入雲的觀星塔——塔頂的儀器不斷地捕捉著天空深處虛空之眼裂隙擴散的微小波動並將數據記錄在刻滿符文的石板之上；他也看到了無數次世界循環的更替——文明的興起、繁榮、崩壞、重建，如同潮水般一遍又一遍地在冰川遺跡周圍上演。</p>
+        <p>「這些不是封印符文。」葉塵在心中默念著這個判斷——他將靈魂鎖鏈感知轉向另一面牆壁，將銀白裂痕能量聚焦在那片區域的雕刻圖案上。「它們是記錄性質的信息載體——某種古代文明用來保存歷史觀察數據的特殊技術。」</p>
+        <p>牆壁上的石刻在他靈魂鎖鏈的解析下再次發生變化——這一次呈現出的內容更加具體而詳細。每一幅圖像序列都伴隨著一段精確的文字描述——那些文字使用的是一種極為古老的語言體系，但在九世輪迴核心的作用下葉塵能夠以直覺的方式理解其含義。這些記錄從第三世的守塵開始一直延續到第九世的最後一位守護者——每一位守護者在每次世界循環結束時都會來到這座寒晶宮中，將關於虛空之眼狀態、能量波動特徵以及關鍵封印節點變化的詳細報告刻入石牆之中。</p>
+        <p>葉塵緩慢地走動著——靈魂鎖鏈感知如同閱讀一卷巨大的長卷般逐一解析每一面牆壁上的記錄內容。他看到了第三世守塵的第一份報告：那是關於虛空之眼首次大規模打開的觀察記錄，其中描述了那股力量如何從天穹之城的上方裂縫中滲透而出、如何以極快的速度吞噬周圍數百里的靈氣資源、以及最後是如何被初代守望者們用凝元鎮塵印的力量重新封閉在一個微小的空間裂隙之中。</p>
+        <p>他看到了第五世守塵的記錄：那份報告更加詳細也更加令人不安——虛空之眼在這一次循環中展現出了一種前所未有的新能力：它不再只是單純地吸收能量而是開始主動影響修行者的意識深處，試圖通過精神層面的滲透來加速世界崩壞的過程。守塵在記錄中警告說：「若下次循環中虛空眼再次打開，必須確保至少有一個封印節點不被摧毀——那是文明重建的唯一希望。」</p>
+        <p>他看到了第七世守塵的觀察記錄：那份報告中包含了極為精確的能量頻率分析數據——每一種不同類型的靈氣波動都被詳細地分類和標記，其中特別提到了銀白裂痕能量的一種特殊應用方式。第七世守塵在記錄中指出：「銀白裂痕並非虛空之眼的對立面而是其共生體——它們共同構成了一個更大的能量循環系統。只有在完全理解這種共生關係的前提下才能真正掌握封印的核心要義。」</p>
+        <p>第九世的記錄最為簡短卻也最讓人震撼——那是最後一位守護者在他生命的最後時刻刻下的文字：「天穹之城地下最深處的封印密室中藏有第四把金色碎片。但它已被一種全新的力量所封鎖——那種力量的特徵與暗淵閣使用的紫黑色鬼煞之氣有某種深層關聯。找到它之前，不要輕易與暗淵閣正面衝突。」</p>
+        <p>每一個記錄都像是一把鑰匙逐步解開九世輪迴網絡的奧秘——葉塵站在寒晶宮的石柱之間靈魂鎖鏈感知如同一條無形的絲線將所有這些分散的信息碎片縫合成一幅完整的歷史圖景。他看到了無數代守望者在這片土地上留下的痕跡、付出了什麼樣的代價、以及傳承了什麼樣的信息——每一個字句都在告訴他一件同樣的事情：虛空之眼的威脅從未真正消失它只是在等待下一次能量失衡的機會重新打開裂隙吞噬一切。</p>
+        <p>葉塵緩緩閉上雙眼讓所有解析過的數據在腦海中重新整理和歸類。靈魂鎖鏈感知繼續向前延伸而去——他的目光穿透了寒晶宮最深處的幾道石牆壁障來到了那座建築的最核心區域。那裡應該存放著最為關鍵的信息——關於第四把金色碎片的完整線索、關於凝元鎮塵印副本的真正用途、以及關於如何應對虛空之眼再次打開的緊急預案。</p>
+        <p>但他同時也意識到一個更加深刻的問題：這些記錄中反覆提及的「九世輪迴網絡」究竟是一個怎樣的系統？它為什麼會在時間長河中循環九次之後就戛然而止？那些守望者們到底是什麼身份和來源？他們的任務是什麼而誰在背後操控著整個系統的運行？</p>
+        <p>靈魂鎖鏈感知在這座寒晶宮中最深處的區域觸碰到了某種特殊的能量紋路——那種紋路的性質與之前解析過的記錄符文完全不同：它不是一種單純的信息保存技術而是某種更為複雜的能量網絡的中樞節點。葉塵能夠感受到那股網絡的脈動節奏雖然微弱卻極為穩定——就像是一顆沉睡千年的古老心臟仍在深層持續跳動著，等待著某個特定的頻率將其喚醒。</p>
+        <p>他將靈魂鎖鏈感知聚焦在那個中樞節點的周圍區域——銀白裂痕能量在接觸到那條特殊紋路的瞬間產生了劇烈的共振反應。那種共振不是攻擊性的也不是防禦性的而是一種極為複雜的、多層次的能量交互模式——彷彿某種更為古老的力量正在通過那道紋路與九世輪迴核心進行著跨時空的對話和交流。</p>
+        <p>葉塵的心跳不由自主地加速了一下——他知道自己正站在一扇通往更深層次真相的大門之前而門後的內容將徹底改變他對整個九世輪迴網絡的理解和認知。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-234.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-236.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

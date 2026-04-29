@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三百三十六章 · 共振的代價</title>
+    <link rel="canonical" href="{canonical}">
+    <link rel="prev" href="chapter-335.html">
+    <link rel="next" href="chapter-337.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第三百三十六章 · 共振的代價</h1>
+    <main>
+<p>葉塵在遺址中盤膝坐下的那一刻彷彿整個世界的聲音都從他耳邊褪去了只剩下九世輪迴網絡深處那股關於五個穩定節點的信息仍在以不同的頻率不斷地反覆震盪那種震蕩不是簡單的記憶回放而是某種更為深層次的意義在時間與空間的交叉點上持續釋放的餘波。</p>
+<p>他閉著雙眼將全部的精神力沉入一種極為特殊的冥想狀態——這種狀態不同於平常修煉時那種單純的能量凝聚和靈根強化它要求的是一種完全開放卻同時極度集中的意識模式在那種模式中思維不再是單線性的推進而是如同展開一把摺扇般在多個維度上同時探索所有可能的可能性。</p>
+<p>天穹守夜人的頻率合約在他腦海中浮現——那份他曾經以為只是單純的監測與保障機制的協議此刻展現出了完全不同的一面：如果那份合約的本質目的之一是防止被監視者在沒有充分理解封印層激活機制的情況下進行單點強化從而避免連鎖反應式的災難性後果那麼這份合約就不是限制他們自由的枷鎖而是一種保護性的框架。</p>
+<p>這個認識對於葉塵來說既是安慰也是更加沉重的壓力因為他現在必須在一個極其複雜的條件下做出決定：既要完成五個穩定節點的強化任務又不能觸發任何可能導致頻率織物撕裂的連鎖反應既不能依靠現代人所常用的快速激活手段也不能簡單地等待自然共振週期因為時間已經不站在他們這邊。</p>
+<p>就在他沉浸在這種深度的戰略分析之中時一股極為微弱卻異常清晰的能量波動從遺址的方向傳來——那種波動不是來自於石柱或信息載體的自然殘餘而是某種外部力量正在接近的信號。</p>
+<p>葉塵的注意力瞬間被拉回了現實他的精神力如同展開的網一般向四周擴散出去捕捉著每一個可能的細節。</p>
+<p>凌風的聲音在他身後響起帶著一種壓抑了許久的緊張：「有人來了。</p>
+<p>」那個聲音中的不尋常之處在於它不是恐懼而是某種混合了警覺與期待的複雜情緒因為來者的頻率特徵既沒有寒淵組織冷能波紋的冰冷銳利也沒有無麵軍團那種極端壓迫感的能量密度反而帶著一種極為溫和卻同時極為穩定的古老韻律。</p>
+<p>葉塵緩緩睜開雙眼站起身來他的目光穿過晶體平原上方那層薄霧般的靈氣向著遠方望去——在那裡幾道身影正以一種異常沉穩的步調越過最後一片密集的晶體帶向他們走來那些身影的外形並不令人感到威脅每一個人都穿著質樸無華的長袍但他們的步伐卻散發出一種歷經數千年磨礪之後特有的從容與堅定。</p>
+<p>走在最前方的人是一位老者他的面容刻滿了時間的痕跡但那雙眼睛卻明亮得如同初生的星辰——他的皮膚呈現出一種極為特殊的琥珀色調那是一種長期接觸某種特定頻率能量後在身體表面形成的自然保護層在葉塵的感知中那股頻率與之前在信息柱中感應到的波動完全一致。</p>
+<p>老者在距離三人約十丈的地方停下了腳步然後以一種極為溫和卻同時帶著不容置疑力量的聲音說道：「我們在這裡守望了三千年等待著能夠正確讀取信息柱的人——你們終於來了。</p>
+<p>」他的話語如同投入平靜湖面的一顆石子在葉塵的心中激起了層層疊疊的波紋因為這句話不僅僅是一句簡單的問候它背後所承載的重量和含義遠超任何文字本身所能表達的范围。</p>
+<p>老者身後跟著的四名守護者同樣以沉穩的目光注視著三人其中兩人的手中各自握著一枚與七枚鑰匙極為相似的物件但那不是普通的頻率調節器——它們的表面刻滿了更加複雜的紋路那些紋路的組合方式顯示出它們是某種更為精密的能量控制工具的殘存版本。</p>
+<p>月璃此時上前了一步她的目光在老者及其追隨者的身上仔細掃視然後她以一種極為禮貌卻同時帶著某種试探性的語氣問道：「閣下如何稱呼？又是誰將你們守護在這裡的？」老者的嘴角浮現出一絲極其淺淡的微笑——那是一種包含了無數歲月滄桑之後依然保持著純粹善意的表情：「我叫墨岩——是這座聚落最後一代守望者之一的後裔。</p>
+<p>我們的祖先在第一次循環中選擇了隱藏而不是一同消亡因為他們相信總有一天會有新的力量能夠理解封印層的真正意義。</p>
+<p>」他的聲音在晶體平原上空迴盪彷彿每一個字都在與周圍的頻率紋路產生某種微妙的共鳴。</p>
+<p>墨岩的目光轉向葉塵然後他以一種更為直接的方式說道：「你剛才激活了信息柱——你的精神頻率中帶著七枚鑰匙的共振特徵我能夠感知到——這意味著你是被選中的一員但你還沒有完全理解你所需要面對的東西。</p>
+<p>」這句話如同一根針般刺穿了葉塵心中最為柔軟的地方因為它不僅指出了他目前所處的信息狀態更暗示了一個更加深遠的使命正在等待著他去承擔。</p>
+<p>凌風站在不遠處他的警戒姿勢雖然沒有放鬆但眼中的敵意已經被某種更為複雜的情感所取代——他知道眼前的這群人不是敵人而是一種可能改變整個戰略格局的關鍵因素。</p>
+<p>葉塵深吸了一口氣然後向墨岩深深地鞠了一躬——那個動作中包含了他對這些在漫長歲月中始終守望的古老存在的深深敬意：「請告訴我一切——關於封印層的真相、關於七枚鑰匙的真正用途、關於我們應該如何走下去。</p>
+<p>」墨岩點了點頭他的目光中帶著一絲欣慰因為他能夠從葉塵的態度中看到某種極為珍貴的特質——那是一種願意理解而非僅僅追求力量的智慧。</p>
+<p>他緩緩伸出手掌將一股極為精細的頻率信息注入到葉塵的感知之中——那種信息流雖然溫和卻攜帶著極為龐大的內容量讓葉塵在短時間內就對封印層的整體架構有了更加立體的認識：五個穩定節點並非孤立存在它們之間通過一種稱為「世界脈絡」的能量網絡相連接那個網絡的每一個節點都與其他四個節點保持著微妙的平衡關係而任何一個點的變動都會透過網絡傳遞到其餘所有節點。</p>
+<p>墨岩看著葉塵的表情變化然後繼續說道：「你現在應該明白了——你們面臨的不僅是一個戰略問題更是一個關於世界根本運行規律的問題。</p>
+<p>古代守望者們用數千年的時間來研究這個網絡他們最終發現了一個極為深刻的真理：封印層的真正意義不在於封鎖或開啟而在於維持。</p>
+<p>」。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-335.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-337.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

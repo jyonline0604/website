@@ -60,6 +60,7 @@ def print_checklist():
     print("    □ 有 top-bar 導航列")
     print("    □ 有『返回目錄』連結")
     print("    □ 有字體/主題設定按鈕")
+    print("    □ 驗證 <title> 標籤是否為「第三百XX章 · 標題」而非占位符")
     print()
     print("【5】完成後必做")
     print("    □ 更新 chapters.html")

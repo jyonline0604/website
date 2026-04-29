@@ -139,6 +139,20 @@
             background: var(--accent);
             color: white;
         }
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        }
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -215,10 +229,10 @@
         <p>監測站的石牆外傳來了遠處的鐘聲——那是天穹城清晨的集合信號。葉塵將寫滿數據的石片收進袖中，目光望向北方那片被晨霧籠罩的遠方。永凍裂谷的入口在等待著他們，而裂谷最深處隱藏的秘密可能比所有人想像中的更加複雜。</p>
         <p>衰減節點的頻率偏移指向了一個方向——那道方向的終點或許就是第八封印柱真正所在的位置，又或許只是守尘留下的又一道保險機制。無論是哪一種，葉塵都必須親自去確認。</p>
     </main>
-    <nav class="nav">
-        <a href="https://kofhk.com/chapter-302.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/chapter-304.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-302.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-303/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-304.html">下一章 →</a>
     </nav>
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
     <script>

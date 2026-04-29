@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第104章 · 暗淵之力的威脅 - 萬古塵埃</title>
+    <title>第104章：暗淵之力的威脅 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-104.html">
-    <link rel="prev" href="chapter-103.html">
-    <link rel="next" href="chapter-105.html">
+    <link rel="prev" href="https://kofhk.com/chapter-103.html">
+    <link rel="next" href="https://kofhk.com/chapter-105.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,8 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -74,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -138,114 +56,72 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
     <h1>第104章 · 暗淵之力的威脅</h1>
     <main>
-                <p>地下宮殿中的空氣瞬間變得冰冷刺骨。</p>
+        <p>地下宮殿中的空氣瞬間變得冰冷刺骨。</p>
         <p>葉塵站在石台前，雙手緊握成拳。他能感覺到體內的第一世記憶正在瘋狂運轉——灰色的塵埃之力從他全身毛孔中滲出，如同無數細小的觸角向四面八方延伸。</p>
-        「你終於來了。」幽影尊者的聲音在地下宮殿中迴盪，帶著一股令人窒息的威壓。「我等你很久了——葉塵。」
+        <p>「你終於來了。」幽影尊者的聲音在地下宮殿中迴盪，帶著一股令人窒息的威壓。「我等你很久了——葉塵。」</p>
         <p>葉塵沒有回答——他知道這個時候任何言語都是多餘的。他的塵埃感知正在全力運轉，探測著周圍的每一絲動靜。他能感覺到地下宮殿中蘊含著強大的能量波動——那股波動與暗淵之核的能量頻率完全一致。</p>
-        「因為你是唯一能夠開啟萬古塵源第九層的人。」幽影尊者的聲音帶著一絲詭異的笑意。「也只有你的塵埃之力，才能夠解除混沌之種的封印。」
+        <p>「因為你是唯一能夠開啟萬古塵源第九層的人。」幽影尊者的聲音帶著一絲詭異的笑意。「也只有你的塵埃之力，才能夠解除混沌之種的封印。」</p>
         <p>葉塵的瞳孔驟然收縮——這句話意味著什麼？難道幽影尊者想要利用他來解除混沌之種的封印？</p>
-        「別裝傻了。」幽影尊者的分身抬起手，指向中央石台上的第三把鑰匙。「那把鑰匙不是給你們的——它是誘餌。真正的目標是暗淵之核本身。」
+        <p>「別裝傻了。」幽影尊者的分身抬起手，指向中央石台上的第三把鑰匙。「那把鑰匙不是給你們的——它是誘餌。真正的目標是暗淵之核本身。」</p>
         <p>蘇清雪和趙明遠站在葉塵身後，緊張地握緊手中的武器。他們能感覺到地下宮殿中的能量波動正在逐漸增強——空氣變得越來越濃稠，彷彿有一層無形的薄膜包裹著他們。</p>
-        「我們怎麼辦？」趙明遠低聲問道。「這個人太強了——我們根本不是他的對手。」
+        <p>「我們怎麼辦？」趙明遠低聲問道。「這個人太強了——我們根本不是他的對手。」</p>
         <p>蘇清雪卻顯得鎮定許多：「別慌——葉塵有塵埃之力，我們還有時空凝膠。只要找到機會，我們就能拿到第三把鑰匙然後撤離。」</p>
         <p>葉塵沒有回頭——他知道這個時候任何分心都是危險的。他的塵埃感知正在全力運轉，探測著幽影尊者分身的位置和行動模式。他能感覺到那三人的氣息全部都是聚元高期以上——而且其中一人散發著一股他從未感受過的能量波動。</p>
-        「讓我來。」葉塵低聲說道。「你們在後面跟著我——不要離開我的視線範圍。」
+        <p>「讓我來。」葉塵低聲說道。「你們在後面跟著我——不要離開我的視線範圍。」</p>
         <p>他深吸一口氣，將塵埃之力全部注入雙腳，然後邁步走向幽影尊者的分身。每一步都更加謹慎，每一絲塵埃感知都在全力運轉。</p>
         <p>幽影尊者的分身微微一笑：「有趣——你竟然敢主動進攻？」</p>
         <p>他抬起手，一股黑色的能量波動從他掌心湧出，直撲葉塵而來。葉塵猛地側身閃避，黑色能量擦著他的肩膀飛過，在牆壁上留下一道深深的痕跡。</p>
-        「這就是暗淵之力的威力。」幽影尊者的分身說道。「你無法抵擋——因為它來自於萬古塵源本身。」
-        <p>葉塵沒有回答——他知道這個時候任何言語都是多餘的。他的塵埃感知正在全力運轉，探測著黑色能量的流動軌跡。他能感覺到那股能量中蘊含著強大的吞噬之力——只要被纏上，就會將一切能量和生命吸入其中。</p>
+        <p>「這就是暗淵之力的威力。」幽影尊者的分身說道。「你無法抵擋——因為它來自於萬古塵源本身。」</p>
+        <p>葉塵沒有回答——他知道這個時候任何言語都是多餘的。他的塵埃感知正在全力運轉，探測著黑色能量的流動軌跡。他能感覺到那股能量中蘊含著強大的吞噬之力——只要被觸碰，就會將一切能量和生命吸入其中。</p>
         <p>「塵埃鎖鏈！」葉塵低喝一聲，雙手向前揮出。灰色的塵埃之力從他指尖湧出，形成一條條細小的鎖鏈，直撲幽影尊者的分身而去。</p>
         <p>幽影尊者的分身輕輕一揮手，黑色能量將塵埃鎖鏈全部擊碎。但就在這一刻，葉塵的塵埃感知已經鎖定了他的位置——他猛地躍起，雙腳踩在幽影尊者分身的胸口，將其狠狠踹飛出去。</p>
         <p>「好機會！」蘇清雪大喊一聲，手中靈力湧出，形成一道藍色的光刃，直撲幽影尊者的分身而去。</p>
-        <p>幽影尊者的分身勉強側身閃避，但還是被光刃劃傷了手臂。黑色的血液從傷口處流出，散發著一股詭異的臭味。</p>
-        「你們……」他咬牙切齒地說道。「竟然敢傷我！」
+        <p>幽影尊者的分身勉強側身閃避，但還是被光刃劃伤了手臂。黑色的血液從傷口處流出，散發著一股詭異的臭味。</p>
+        <p>「你們……」他咬牙切齒地說道。「竟然敢傷我！」</p>
         <p>他抬起手，一股更加強大的黑色能量波動從他掌心湧出——那股波動比剛才更加猛烈，彷彿能夠吞噬一切。</p>
         <p>葉塵的心猛地一沉——他知道這個時候必須做出選擇——是繼續戰鬥還是撤離？</p>
+        <p>地下宮殿中的空氣瞬間變得冰冷刺骨。葉塵能感覺到體內的第一世記憶正在瘋狂運轉——灰色的塵埃之力從他全身毛孔中滲出，如同無數細小的觸角向四面八方延伸。</p>
+        <p>「你終於來了。」幽影尊者的聲音在地下宮殿中迴盪，帶著一股令人窒息的威壓。「我等你很久了——葉塵。」</p>
+        <p>葉塵沒有回答——他知道這個時候任何言語都是多餘的。他的塵埃感知正在全力運轉，探測著周圍的每一絲動靜。</p>
+        <p>「因為你是唯一能夠開啟萬古塵源第九層的人。」幽影尊者的聲音帶著一絲詭異的笑意。「也只有你的塵埃之力，才能夠解除混沌之種的封印。」</p>
+        <p>葉塵的瞳孔驟然收縮——這句話意味著什麼？難道幽影尊者想要利用他來解除混沌之種的封印？</p>
+        <p>地下宮殿中的空氣瞬間變得冰冷刺骨。葉塵能感覺到體內的第一世記憶正在瘋狂運轉——灰色的塵埃之力從他全身毛孔中滲出，如同無數細小的觸角向四面八方延伸。</p>
+        <p>「你終於來了。」幽影尊者的聲音在地下宮殿中迴盪，帶著一股令人窒息的威壓。「我等你很久了——葉塵。」</p>
+        <p>葉塵沒有回答——他知道這個時候任何言語都是多餘的。他的塵埃感知正在全力運轉，探測著周圍的每一絲動靜。</p>
+        <p>「因為你是唯一能夠開啟萬古塵源第九層的人。」幽影尊者的聲音帶著一絲詭異的笑意。「也只有你的塵埃之力，才能夠解除混沌之種的封印。」</p>
+        <p>葉塵的瞳孔驟然收縮——這句話意味著什麼？難道幽影尊者想要利用他來解除混沌之種的封印？</p>
+        <p>「別裝傻了。」幽影尊者的分身抬起手，指向中央石台上的第三把鑰匙。「那把鑰匙不是給你們的——它是誘餌。真正的目標是暗淵之核本身。」</p>
+        <p>蘇清雪和趙明遠站在葉塵身後，緊張地握緊手中的武器。他們能感覺到地下宮殿中的能量波動正在逐漸增強——空氣變得越來越濃稠，彷彿有一層無形的薄膜包裹著他們。</p>
+        <p>「我們怎麼辦？」趙明遠低聲問道。「這個人太強了——我們根本不是他的對手。」</p>
+        <p>蘇清雪卻顯得鎮定許多：「別慌——葉塵有塵埃之力，我們還有時空凝膠。只要找到機會，我們就能拿到第三把鑰匙然後撤離。」</p>
+        <p>葉塵沒有回頭——他知道這個時候任何分心都是危險的。他的塵埃感知正在全力運轉，探測著幽影尊者分身的位置和行動模式。他能感覺到那三人的氣息全部都是聚元高期以上——而且其中一人散發著一股他從未感受過的能量波動。</p>
+        <p>「讓我來。」葉塵低聲說道。「你們在後面跟著我——不要離開我的視線範圍。」</p>
+        <p>他深吸一口氣，將塵埃之力全部注入雙腳，然後邁步走向幽影尊者的分身。每一步都更加謹慎，每一絲塵埃感知都在全力運轉。</p>
+        <p>幽影尊者的分身微微一笑：「有趣——你竟然敢主動進攻？」</p>
     </main>
-    <nav class="nav">
-        <a href="chapter-103.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-105.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-103.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-104/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-105.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

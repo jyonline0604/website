@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第13章：外門新丁 - 萬古塵埃</title>
+    <title>第13章：未定標題 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-13.html">
-    <link rel="prev" href="chapter-12.html">
-    <link rel="next" href="chapter-14.html">
+    <link rel="prev" href="https://kofhk.com/chapter-12.html">
+    <link rel="next" href="https://kofhk.com/chapter-14.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,55 +56,26 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第13章 · 外門新丁</h1>
+    <h1>第13章 · 未定標題</h1>
     <main>
+        <p>第13章 · 外門新丁</p>
         <p>第二天清晨，葉塵被一陣喧囂聲吵醒。</p>
         <p>他推開門走出小院，看到外門弟子院的廣場上已經站滿了人——大約有上百名身穿白色長袍的年輕子弟，他們排成數列，表情各異：有的興奮、有的緊張、有的不屑。葉塵站在隊伍的中間位置，低頭看著自己的腳尖，試圖讓自己看起來更加不起眼一些。</p>
         <p>「都安靜！」</p>
@@ -229,42 +117,11 @@
         <p>沒有蓄力，沒有喝聲，只是簡單地向前推了一下。但木樁卻猛地一震——從內部震動起來，表面出現了一道裂紋。</p>
         <p>葉塵收回手，看著那道裂紋，心裡湧起一股難以言喻的激動。這不是靈氣修煉能做到的——靈氣的攻擊需要積累、需要爆發，而剛才那種力量是瞬間產生的，就像灰塵本身擁有的某種隱含能量被觸發了一樣。</p>
         <p>他知道從今天開始，他將在外門中秘密修煉《塵埃訣》——不被任何人發現，不被任何人理解。但這正是他想要的：一條屬於自己的路。</p>
-
     </main>
-    <nav class="nav">
-        <a href="chapter-12.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-14.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-12.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-13/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-14.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

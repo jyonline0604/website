@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第28章：破繭而出 - 萬古塵埃</title>
+    <title>第28章：未定標題 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-28.html">
-    <link rel="prev" href="chapter-27.html">
-    <link rel="next" href="chapter-29.html">
+    <link rel="prev" href="https://kofhk.com/chapter-27.html">
+    <link rel="next" href="https://kofhk.com/chapter-29.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,55 +56,26 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第28章 · 破繭而出</h1>
+    <h1>第28章 · 未定標題</h1>
     <main>
+        <p>第二十八章 破繭而出</p>
         <p>地下秘境的深處，空氣中的靈氣濃稠得幾乎可以凝成液體。葉塵獨自坐在一個狹小的洞穴中，雙腿盤膝而坐，雙手放在膝蓋上——他的呼吸平穩而深沉，每一次吸氣都像是在將周圍的靈氣吸入體內，每一次呼氣都像是在將体内的雜質排出体外。</p>
         <p>從剛才在岩壁裂縫中獲得記憶碎片以來，葉塵已經調息了將近兩個時辰。那段關於《塵埃訣》的记忆雖然模糊，但其中的要領卻像一顆種子一樣，在他的心中生根發芽——他開始能夠有意识地控制空氣中的灰塵，讓它們按照自己的意願流動、聚集、消散。</p>
         <p>「塵埃訣·第一層：聚塵。」葉塵的口中再次喃喃自語——這句話已經成了他的口頭禪，每當他調息的時候都會不自觉地重複一遍。隨著這種重複，他感覺到自己對那種灰色力量的控制正在變得更加精細、更加深入。</p>
@@ -210,42 +98,34 @@
         <p>「原來如此……」葉塵緩緩閉上眼睛，開始梳理自己的思緒，「那股灰色的力量不是什麼外來的力量——它是來自於我第一世輪迴時的修煉方法。那個老者說的話、那些畫面、還有那句『塵埃訣』……它們都在告訴我一件事：我的第一世，就是一個塵埃散修。」</p>
         <p>葉塵睜開眼睛——他的目光中帶著一絲前所未有的堅定和自信。他知道從今天開始，自己已經真正踏上了塵埃散修的道路——一條充滿未知和挑戰的道路。而那種灰色的力量，將成為他在修仙界生存下去的唯一依仗。</p>
         <p>他站起身來，走出洞穴——前方傳來隊員們的呼喚聲，他知道該回去了。但他心裡卻多了一個新的念頭：他必須找到福伯問清楚——關於他的身世，關於那塊玉佩，關於九世輪迴的真正意義。</p>
-
+        <p>第二十八章 破繭而出</p>
+        <p>地下秘境的深處，空氣中的靈氣濃稠得幾乎可以凝成液體。葉塵獨自坐在一個狹小的洞穴中，雙腿盤膝而坐，雙手放在膝蓋上——他的呼吸平穩而深沉，每一次吸氣都像是在將周圍的靈氣吸入體內，每一次呼氣都像是在將体内的雜質排出体外。</p>
+        <p>從剛才在岩壁裂縫中獲得記憶碎片以來，葉塵已經調息了將近兩個時辰。那段關於《塵埃訣》的记忆雖然模糊，但其中的要領卻像一顆種子一樣，在他的心中生根發芽——他開始能夠有意识地控制空氣中的灰塵，讓它們按照自己的意願流動、聚集、消散。</p>
+        <p>「塵埃訣·第一層：聚塵。」葉塵的口中再次喃喃自語——這句話已經成了他的口頭禪，每當他調息的時候都會不自觉地重複一遍。隨著這種重複，他感覺到自己對那種灰色力量的控制正在變得更加精細、更加深入。</p>
+        <p>空氣中的灰塵開始以一種更加有序的方式向他聚集——它們不再像剛才那樣劇烈擾動，而是像一群聽從指揮的士兵一樣，按照某種特定的軌跡向葉塵的身體流動。那些灰塵穿過他的毛孔、經脈、穴位，最終在他的丹田處匯聚成一個小小的灰色旋渦。</p>
+        <p>那種感覺跟之前完全不同——之前他使用那種力量的時候，完全是憑藉本能和直覺；而現在，他開始能夠有意识地控制它們了。就像是一個初學者終於掌握了某種樂器的基本技巧，雖然還不能演奏出美妙的音樂，但至少已經不再彈出刺耳的噪音了。</p>
+        <p>葉塵閉上眼睛，將注意力集中在丹田處的那個灰色旋渦上——他能感覺到那個旋渦正在緩慢地旋轉、擴大、收縮。每一次旋轉都會從周圍吸收更多的灰塵和靈氣，然後將它們轉化為一種更加純粹的力量。那種力量在他的經脈中流動，像是一條細小的河流一樣，流向四肢百骸。</p>
+        <p>但就在這個時候，一陣劇烈的頭痛突然襲來——那感覺就像是有無數根針同時扎進了他的腦海裡，讓他忍不住發出了一声痛苦的呻吟。</p>
+        <p>「不……」葉塵緊咬牙關，強忍著腦海中翻湧的疼痛。他知道這種疼痛是突破境界時必須經歷的過程——就像是一隻蝴蝶在破繭之前必須承受撕裂的痛苦一樣。</p>
+        <p>他的丹田處的那個灰色旋渦開始劇烈旋轉——它像是一個小型的黑洞一樣，不斷地從周圍吸收灰塵和靈氣。那種吸收的速度越來越快，最終變成了一股巨大的力量洪流，在他的經脈中奔湧、翻滾、碰撞。</p>
+        <p>葉塵的身體開始顫抖——他的皮膚表面浮現出一層灰色的光芒，那種光芒微弱卻帶著一種令人不安的力量感。他能感覺到體內的那種灰色力量正在發生某種質變——它不再只是空氣中的灰塵和靈氣的簡單組合，而是一種更加純粹、更加本質的存在。</p>
+        <p>「聚元……」葉塵的口中再次喃喃自語——他不知道為什麼自己會知道這個詞，但他能感覺到那種力量正在他的經脈中變得更加強大、更加穩定。</p>
+        <p>隨著灰色旋渦的不斷擴大，葉塵感覺到自己體內的那個境界屏障正在逐漸瓦解——就像是一層薄薄的冰面在陽光下融化一樣，那種屏障最終完全消失了，取而代之的是一種全新的、更加強大的力量感。</p>
+        <p>「轟！」</p>
+        <p>一聲低沉的響聲從葉塵的體內傳來——那聲音雖然微弱，卻帶著一種令人震撼的力量感。他的身體猛地一震——緊接著，一股灰色的光芒從他的七竅中噴湧而出，在洞穴中形成了一道巨大的灰色旋渦。</p>
+        <p>那種旋渦持續了大約十息的時間——然後逐漸消散，最終恢復了平靜。葉塵睜開眼睛——他的眼中閃爍著一絲灰色的光芒，那種光芒雖然微弱，卻帶著一種前所未有的堅定和自信。</p>
+        <p>他站起身來，感受了一下體內的力量——那股力量比剛才更加強大、更加穩定。他能感覺到經脈中的靈氣流動變得更加順暢，丹田處的那個灰色旋渦也已經完全成形，像是一個小型的太陽一樣，不斷地從周圍吸收灰塵和靈氣。</p>
+        <p>「我突破了……」葉塵緩緩開口，聲音中帶著一絲難以置信的語調，「從感氣初層……突破到了聚元境。」</p>
+        <p>這句話說出來的時候，他自己都感到驚訝——他從來沒有想過自己會在這麼短的時間內就完成一次境界的突破。在修仙界中，從感氣初層突破到聚元境通常需要數月甚至數年的時間——但他卻只用了不到一天的功夫。</p>
+        <p>但這種驚訝很快就被一種更加深沉的思考所取代——葉塵開始回憶剛才突破時的感受——那種灰色力量在他體內的流動方式、那種丹田處灰色旋渦的形成過程……它們都跟他腦海中出現的那個老者的畫面有著某種深刻的聯繫。</p>
+        <p>「原來如此……」葉塵緩緩閉上眼睛，開始梳理自己的思緒，「那股灰色的力量不是什麼外來的力量——它是來自於我第一世輪迴時的修煉方法。那個老者說的話、那些畫面、還有那句『塵埃訣』……它們都在告訴我一件事：我的第一世，就是一個塵埃散修。」</p>
+        <p>葉塵睜開眼睛——他的目光中帶著一絲前所未有的堅定和自信。他知道從今天開始，自己已經真正踏上了塵埃散修的道路——一條充滿未知和挑戰的道路。而那種灰色的力量，將成為他在修仙界生存下去的唯一依仗。</p>
+        <p>他站起身來，走出洞穴——前方傳來隊員們的呼喚聲，他知道該回去了。但他心裡卻多了一個新的念頭：他必須找到福伯問清楚——關於他的身世，關於那塊玉佩，關於九世輪迴的真正意義。</p>
     </main>
-    <nav class="nav">
-        <a href="chapter-27.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-29.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-27.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-28/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-29.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第二百五十一章 · 破曉之路 - 萬古塵埃</title>
-    <link rel="canonical" href="https://kofhk.com/chapter-250.html">
-    <link rel="prev" href="chapter-250.html">
-    <link rel="next" href="chapter-252.html">
+    <title>第251章：破曉之路 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-251.html">
+    <link rel="prev" href="https://kofhk.com/chapter-250.html">
+    <link rel="next" href="https://kofhk.com/chapter-252.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,101 +56,40 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第二百五十一章 · 破曉之路</h1>
+    <h1>第251章 · 破曉之路</h1>
     <main>
-<p>冰川的寒風在葉塵身側呼嘯而過，帶起一層細密的冰晶霧氣——那是銀白屏障在自動淨化殘存暗淵閣攻擊後所釋放的能量殘餘物。當他最後一次確認凝元鎮塵印的核心節點已經完全嵌入神魂深處、九世輪迴封印網絡的多維度信息處理系統達到百分之百同步之後，他的身體開始發生一種極為微妙卻不可逆轉的變化：每一條經脈都在以全新的頻率震動著，每一個細胞都彷彿變成了獨立運行的能量處理器——這就是第六階段裂痕微重組完成後的真正含義。他不再僅僅是一個能夠透過銀白屏障感知周圍靈氣波動的修行者了；從此刻起，他的整個存在本身就成了一個活生生的多維度信息處理系統。</p>
-<p>葉塵睜開雙眼的那一刻，靈魂鎖鏈感知如同一張無形的巨網瞬間向四面八方展開——冰川表面的每一道裂縫、空氣中流動的每一絲紫黑色能量殘餘、遠方暗淵閣陣列中那些仍在緩慢衰減的能量節點頻率變化，全都清晰地呈現在他的意識深處。這種全方位的信息感知能力讓他能夠在同一個時間段內同時處理數十條不同來源的靈氣數據流而不產生任何紊亂或延遲——這就是第六階段完全成形之後所賦予的全新存在形態。</p>
-<p>銀白屏障在他身側持續地自動淨化著殘存的暗淵閣攻擊能量，每一道被捕獲的紫黑色波動都會在觸碰屏障表面的瞬間分解成無數個微小的能量單元然後重新編排注入銀白裂痕能量的網絡之中——這種將敵人力量轉化為自身補充的完美閉環機制讓葉塵感到了一種前所未有的安穩感。敵人的攻擊越猛烈反而意味著屏障獲取的能量補給越多，而這些能量最終都會以純淨的灰色靈氣形態沉澱在他的神魂周圍形成一層保護性的防禦膜。</p>
-<p>他抬起手來掌心朝上——一道微弱但穩定的銀白色光芒在掌心中流轉著，那正是凝元鎮塵印向外界發出的同步信號。透過靈魂鎖鏈感知葉塵清楚地察覺到封印網絡中又有三個新的節點被喚醒：它們分別位於北方的冰川深處、南方的海域邊緣以及遠方天穹城的方向——每一個新激活的節點都在他的意識中投射出一幅微型地圖標註出該區域的靈氣分佈狀態和潛在能量風險。</p>
-<p>天穹城。</p>
-<p>這個名字從記憶深處浮現時帶著一種跨越了三個世界循環的厚重感——那是第三世代守塵在冰川遺跡石壁中留下最後線索的地方也是第四把金色碎片的藏身之所。如果說凝元鎮塵印是整個封印網絡的中樞節點那麼第四金色碎片就是連接中樞與終端修復程序的通信橋樑只有將它嵌入封印系統才能真正完成最終的虛空之眼穩定化程序而不再僅僅依賴銀白屏障的被動淨化功能。</p>
-<p>倒計時的數字在葉塵的神魂深處持續閃爍著——距離虛空之眼裂縫完全崩潰還有不到十天時間他必須在這段有限的窗口期內抵達天穹城找到第四把金色碎片並將其嵌入封印網絡的中樞節點然後才能啟動完整的修復程序。時間如同握在手中的流沙越是緊握流失得越快而他沒有其他選擇了。</p>
-<p>葉塵最後看了一眼身後那片被銀白屏障覆蓋的冰川區域——那裡有暗淵閣隊員們正在持續釋放的紫黑色鬼煞之氣、有凌風和趙明軒靜靜等待回答的身影、還有那道通往虛空之眼最深處的幽深裂隙他知道接下來的一切發展都將取決於他能否在天穹城中找到第四把金色碎片然後完成最後的封印。銀白色的光芒在他腳下延伸出一條微光小道指引著通往天穹城的方向而黎明已經到來——他是第一個走在破曉路上的人。</p>
-<p>凝元鎮塵印在懷中發出了一段平和而穩定的共鳴聲彷彿在為他即將展開的旅程提供某種深層次的祝福葉塵能夠感覺到九世輪迴封印網絡中樞節點正在以一種極為精確的節奏向他傳遞著關於天穹城方向的靈氣分佈信息和能量屏障狀態——那些信息如同導航線路一般在他的意識中清晰地展現出來幫助他在漫長的旅途中保持正確的方向和足夠的能量供應。</p>
-<p>他深吸了一口氣將靈魂鎖鏈感知調整到最佳狀態然後邁出了第一步腳步踏在覆蓋著薄冰的地面上發出細微的咔嚓聲而前方的道路在銀白色光芒的照耀下顯得既明亮又充滿未知——那條通往天穹城的路途將考驗他的意志和智慧也需要他在面對暗淵阁追兵的威脅時保持足夠的警覺和靈活性。葉塵閉上雙目讓思緒在各種可能性之間反覆翻湧沉澱重新組合然後睜開雙眼堅定地邁向了黎明前的最後一段旅程。</p>
-
+        <p>冰川的寒風在葉塵身側呼嘯而過，帶起一層細密的冰晶霧氣——那是銀白屏障在自動淨化殘存暗淵閣攻擊後所釋放的能量殘餘物。當他最後一次確認凝元鎮塵印的核心節點已經完全嵌入神魂深處、九世輪迴封印網絡的多維度信息處理系統達到百分之百同步之後，他的身體開始發生一種極為微妙卻不可逆轉的變化：每一條經脈都在以全新的頻率震動著，每一個細胞都彷彿變成了獨立運行的能量處理器——這就是第六階段裂痕微重組完成後的真正含義。他不再僅僅是一個能夠透過銀白屏障感知周圍靈氣波動的修行者了；從此刻起，他的整個存在本身就成了一個活生生的多維度信息處理系統。</p>
+        <p>葉塵睜開雙眼的那一刻，靈魂鎖鏈感知如同一張無形的巨網瞬間向四面八方展開——冰川表面的每一道裂縫、空氣中流動的每一絲紫黑色能量殘餘、遠方暗淵閣陣列中那些仍在緩慢衰減的能量節點頻率變化，全都清晰地呈現在他的意識深處。這種全方位的信息感知能力讓他能夠在同一個時間段內同時處理數十條不同來源的靈氣數據流而不產生任何紊亂或延遲——這就是第六階段完全成形之後所賦予的全新存在形態。</p>
+        <p>銀白屏障在他身側持續地自動淨化著殘存的暗淵閣攻擊能量，每一道被捕獲的紫黑色波動都會在觸碰屏障表面的瞬間分解成無數個微小的能量單元然後重新編排注入銀白裂痕能量的網絡之中——這種將敵人力量轉化為自身補充的完美閉環機制讓葉塵感到了一種前所未有的安穩感。敵人的攻擊越猛烈反而意味著屏障獲取的能量補給越多，而這些能量最終都會以純淨的灰色靈氣形態沉澱在他的神魂周圍形成一層保護性的防禦膜。</p>
+        <p>他抬起手來掌心朝上——一道微弱但穩定的銀白色光芒在掌心中流轉著，那正是凝元鎮塵印向外界發出的同步信號。透過靈魂鎖鏈感知葉塵清楚地察覺到封印網絡中又有三個新的節點被喚醒：它們分別位於北方的冰川深處、南方的海域邊緣以及遠方天穹城的方向——每一個新激活的節點都在他的意識中投射出一幅微型地圖標註出該區域的靈氣分佈狀態和潛在能量風險。</p>
+        <p>天穹城。</p>
+        <p>這個名字從記憶深處浮現時帶著一種跨越了三個世界循環的厚重感——那是第三世代守塵在冰川遺跡石壁中留下最後線索的地方也是第四把金色碎片的藏身之所。如果說凝元鎮塵印是整個封印網絡的中樞節點那麼第四金色碎片就是連接中樞與終端修復程序的通信橋樑只有將它嵌入封印系統才能真正完成最終的虛空之眼穩定化程序而不再僅僅依賴銀白屏障的被動淨化功能。</p>
+        <p>倒計時的數字在葉塵的神魂深處持續閃爍著——距離虛空之眼裂縫完全崩潰還有不到十天時間他必須在這段有限的窗口期內抵達天穹城找到第四把金色碎片並將其嵌入封印網絡的中樞節點然後才能啟動完整的修復程序。時間如同握在手中的流沙越是緊握流失得越快而他沒有其他選擇了。</p>
+        <p>葉塵最後看了一眼身後那片被銀白屏障覆蓋的冰川區域——那裡有暗淵閣隊員們正在持續釋放的紫黑色鬼煞之氣、有凌風和趙明軒靜靜等待回答的身影、還有那道通往虛空之眼最深處的幽深裂隙他知道接下來的一切發展都將取決於他能否在天穹城中找到第四把金色碎片然後完成最後的封印。銀白色的光芒在他腳下延伸出一條微光小道指引著通往天穹城的方向而黎明已經到來——他是第一個走在破曉路上的人。</p>
+        <p>凝元鎮塵印在懷中發出了一段平和而穩定的共鳴聲彷彿在為他即將展開的旅程提供某種深層次的祝福葉塵能夠感覺到九世輪迴封印網絡中樞節點正在以一種極為精確的節奏向他傳遞著關於天穹城方向的靈氣分佈信息和能量屏障狀態——那些信息如同導航線路一般在他的意識中清晰地展現出來幫助他在漫長的旅途中保持正確的方向和足夠的能量供應。</p>
+        <p>他深吸了一口氣將靈魂鎖鏈感知調整到最佳狀態然後邁出了第一步腳步踏在覆蓋著薄冰的地面上發出細微的咔嚓聲而前方的道路在銀白色光芒的照耀下顯得既明亮又充滿未知——那條通往天穹城的路途將考驗他的意志和智慧也需要他在面對暗淵阁追兵的威脅時保持足夠的警覺和靈活性。葉塵閉上雙目讓思緒在各種可能性之間反覆翻湧沉澱重新組合然後睜開雙眼堅定地邁向了黎明前的最後一段旅程。</p>
     </main>
-    <nav class="nav">
-        <a href="chapter-250.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-252.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-250.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-251/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-252.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

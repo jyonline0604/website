@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第48章：榮耀與抉擇 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-48.html">
-    <link rel="prev" href="chapter-47.html">
-    <link rel="next" href="chapter-49.html">
+    <link rel="prev" href="https://kofhk.com/chapter-47.html">
+    <link rel="next" href="https://kofhk.com/chapter-49.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,56 +56,26 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
     <h1>第48章 · 榮耀與抉擇</h1>
     <main>
-        <p>雲霄宗主殿前的廣場上，旌旗招展。</p>
+        <p>雲天宗主殿前的廣場上，旌旗招展。</p>
         <p>今日是百年大比的頒獎大典——整座山門都張燈結綵，連平日裡嚴肅的長老們也難得露出了笑容。數百名內外門弟子聚集在主殿前的石階下，按照各自的修為和資質分列成整齊的隊形。</p>
         <p>趙明軒身著執事長袍立於高台之上，手中捧著一卷金色的名冊。他的目光掃過台下眾人，聲音洪亮而莊重：「本屆大比歷時三月有餘，共有二百四十七名弟子參與角逐。經過初賽、複賽、半決賽和今天的決賽，最終的排名已經確定。」</p>
         <p>他頓了頓，目光落在葉塵身上——那一眼中帶著難以掩飾的讚賞：「第一名，外門弟子葉塵！」</p>
@@ -198,10 +85,10 @@
         <p>蘇清雪站在隊伍的邊緣位置，一身淡藍色長裙隨風輕擺。她微微頷首，臉上帶著平靜而從容的微笑——那笑容中既有勝利的滿足，也有一絲對葉塵的欣慰。</p>
         <p>趙明軒合上名冊，雙手背在身後：「根據宗主大人親筆簽署的命令，本次大比的獲獎者將獲得以下獎勵。」</p>
         <p>他伸出右手，逐一數來：「第一名葉塵——凝元靈泉三年使用權、破境丹一枚、內門弟子資格優先考慮。第二名蘇清雪——凝元靈泉一年使用權、天階功法冊一本。」</p>
-        <p>台下再次響起驚嘆聲。凝元靈泉是雲霄宗最珍貴的修煉資源之一，能夠極大地加速修士的修為提升；破境丹更是傳說中的寶物，據說能夠幫助修士突破境界瓶頸——這兩樣東西加在一起，足以讓一個聚元境的弟子在短時間內達到前所未有的高度。</p>
+        <p>台下再次響起驚嘆聲。凝元靈泉是雲天宗最珍貴的修煉資源之一，能夠極大地加速修士的修為提升；破境丹更是傳說中的寶物，據說能夠幫助修士突破境界瓶頸——這兩樣東西加在一起，足以讓一個聚元境的弟子在短時間內達到前所未有的高度。</p>
         <p>「此外……」趙明軒的聲音突然變得更加莊重，「宗主大人特別下令：葉塵因其在本屆大比中展現出的非凡天賦和堅韌意志，破格授予『內門核心弟子』之稱號。即日起，他將搬入內門洞府，享有與內門執事同等的修煉資源配額。」</p>
-        <p>這句話如同巨石投入平靜的湖面——整個廣場瞬間沸騰起來。核心弟子！這是雲霄宗內部最高的榮譽之一，通常只授予那些已經達到聚元高層或者擁有特殊資質的天才弟子。而葉塵不僅在決賽中獲勝，更以破格的方式獲得了這個稱號——這意味著他已經正式進入了雲霄宗的核心圈層。</p>
-        <p>葉塵站在原地，心中湧起一股複雜的情緒。核心弟子的榮耀固然令人興奮，但他知道這份榮譽背後所承載的責任同樣沉重——從今天開始，他不再只是一個普通的外門弟子，而是代表著雲霄宗未來的希望之一。</p>
+        <p>這句話如同巨石投入平靜的湖面——整個廣場瞬間沸騰起來。核心弟子！這是雲天宗內部最高的榮譽之一，通常只授予那些已經達到聚元高層或者擁有特殊資質的天才弟子。而葉塵不僅在決賽中獲勝，更以破格的方式獲得了這個稱號——這意味著他已經正式進入了雲天宗的核心圈層。</p>
+        <p>葉塵站在原地，心中湧起一股複雜的情緒。核心弟子的榮耀固然令人興奮，但他知道這份榮譽背後所承載的責任同樣沉重——從今天開始，他不再只是一個普通的外門弟子，而是代表著雲天宗未來的希望之一。</p>
         <p>頒獎儀式結束後，趙明軒親自將葉塵和蘇清雪引到主殿後方的偏廳中。一張石桌上已經擺放好了本次大比的獎勵物品：一枚通體晶瑩剔透的玉瓶——裡面裝著凝元靈泉；一個黑色的木盒——裡面躺著那枚傳說中的破境丹；還有一卷金色的證書——上面用古老的符文寫著核心弟子的身份證明。</p>
         <p>「葉塵。」趙明軒的聲音中帶著嚴肅和認真，「這枚破境丹是你用實力贏來的，但我要提醒你一件事——它雖然能夠幫助你突破境界瓶頸，但也需要極高的修為基礎才能承受其藥力。以你目前的聚元中期修為來說，服用破境丹的風險仍然很大。」</p>
         <p>葉塵點點頭：「我知道。但我有把握控制它的藥力——我的灰色力量已經達到了一定的精純程度，能夠在體內形成一個緩衝層，防止藥力過猛導致經脈損傷。」</p>
@@ -211,46 +98,15 @@
         <p>趙明軒搖搖頭：「他只說了一句話——『塵埃歸源之日，便是真相大白之時』。」</p>
         <p>葉塵將令牌收入懷中，目光轉向窗外。陽光透過窗櫺灑在庭院中的青石板上，形成了一片溫暖的光斑。他能感覺到體內那股灰色力量正在與令牌產生共鳴——那種共鳴讓他感到既興奮又不安。</p>
         <p>「蘇師姐。」他轉過身來，看著坐在對面的蘇清雪。「你接下來有什麼打算？」</p>
-        <p>蘇清雪放下手中的茶杯，目光平靜而深邃：「我準備進入凝元靈泉修煉一年。莫問天離開之前告訴我，雲霄宗的後山深處有一片被遺忘的洞府——那裡可能藏著關於九世輪迴的更多線索。」她頓了頓，嘴角浮現出一絲若有若無的微笑。「如果你也打算去的話……我們可以一起。」</p>
+        <p>蘇清雪放下手中的茶杯，目光平靜而深邃：「我準備進入凝元靈泉修煉一年。莫問天離開之前告訴我，雲天宗的後山深處有一片被遺忘的洞府——那裡可能藏著關於九世輪迴的更多線索。」她頓了頓，嘴角浮現出一絲若有若無的微笑。「如果你也打算去的話……我們可以一起。」</p>
         <p>葉塵看著她的眼睛——那雙清澈而堅定的眼眸中，沒有嫉妒、沒有算計，只有一種純粹的信任和期待。他知道從今天開始，自己與蘇清雪之間的羈絆已經超越了普通的師姐妹關係——他們是同一條道路上的同行者，共同面對著九世輪迴帶來的所有未知和挑戰。</p>
         <p>「好。」葉塵輕聲說道。「等我在凝元靈泉中完成第一階段的修煉之後，我們就一起出發。」</p>
         <p>窗外，一陣微風吹過庭院中的老樹，落葉在空中旋轉、飄舞，最終輕輕地落在青石板上——就像無數微小的塵埃找到了它們歸宿的地方。</p>
-
     </main>
-    <nav class="nav">
-        <a href="chapter-47.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-49.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-47.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-48/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-49.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

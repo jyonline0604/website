@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第二百五十八章 · 虛空之眼的真相（下） - 萬古塵埃</title>
-    <link rel="canonical" href="https://kofhk.com/chapter-257.html">
-    <link rel="prev" href="chapter-257.html">
-    <link rel="next" href="chapter-259.html">
+    <title>第258章：虛空之眼的真相（下） - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-258.html">
+    <link rel="prev" href="https://kofhk.com/chapter-257.html">
+    <link rel="next" href="https://kofhk.com/chapter-259.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,102 +56,41 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第二百五十八章 · 虛空之眼的真相（下）</h1>
+    <h1>第258章 · 虛空之眼的真相（下）</h1>
     <main>
-<p>石盤上的符文光芒完全消退之後葉塵仍然站在原地沒有移動第八世留下的意識殘影雖然消散了但它所傳遞的信息卻在他神魂深處激起了層層漣漪——每一個關於虛空之眼和第九世輪迴系統的事實都在重塑他對整個任務的理解方式。他閉上雙眼將多維度感知從外部環境收回內部的凝元鎮塵印核心在那個由九世記憶碎片和銀白屏障節點構成的複雜網絡中他能看見一條清晰的路徑被標記了出來——那是第八世預留的修復程序啟動線路從凝元鎮塵印的中樞出發經過四個主要節點的轉接最終匯入天穹城高塔的金色碎片接口。</p>
-<p>如果按照幽影尊者的理解方向來行動那麼整個封印系統應該被徹底摧毀以解放虛空之眼；但如果遵循第八世的修復路線則是將凝元鎮塵印的力量通過七把鑰匙重新導向到正確的運行軌道上這兩種方案之間的差異不僅是技術層面的——它們代表了對這個世界本質的兩種完全不同的認知：一個認為自由意味着打破所有束縛另一個則相信平衡需要在限制與開放之間找到微妙的交點。</p>
-<p>葉塵睜開雙眼凝視著石盤表面那些已經暗淡下來的符文線路他現在能夠理解為什麼幽影尊者要如此急切地追求虛空之眼的解放——因為在他的視野中封印系統不僅是阻礙世界進化的枷鎖更是第八世失敗後留下的永久性傷疤而對葉塵來說問題不在於是否應該打破束縛而在於如何在自由的同時保持穩定。</p>
-<p>就在他沉思之際懷中的凝元鎮塵印突然發出了一段急促的共鳴——這次不是來自封印網絡節點的喚醒信號而是銀白屏障感知到了一股極為接近且充滿敵意的能量波動葉塵立刻將多維度感知的注意力轉向四面八方在短短數息之間便定位到了那股波動的來源：三股靈力信號正從不同方向快速逼近石盤所在的山脊高地區域其能量特徵與暗淵阁的精銳追兵完全一致。他們找到這裡了——葉塵在心中盤算著時間線他剛離開風鳴谷不久但暗淵阁的追蹤小隊顯然掌握了一套極為精密的定位技術——可能是通過銀白屏障節點網絡的反向追踪也可能是利用某種專門針對凝元鎮塵印能量特徵的探測儀器。</p>
-<p>他快速環顧四周尋找掩護和撤退路線石盤位於山脊高地的中央位置三面都是陡峭的坡面只有一側通向一條較為寬闊的山谷通道——那正是他來時的方向如果追兵從其他三個方向包抄過來唯一的脫身之路就是沿著山谷通道向東南方行進。葉塵將最後一絲源塵注入石盤的核心符文中觸發了一個短暫的能量爆發——這道爆發不是用於攻擊而是作為一道迷惑性的靈力煙幕在石盤周圍形成了一片高密度的能量擾動區足以干擾追兵的探測儀器至少一刻鐘的時間。</p>
-<p>他轉身奔入山谷通道時身後已經能聽見急促的腳步聲和兵器碰撞的聲音——暗淵阁的追兵比預期中的到達速度更快他們幾乎是緊跟著他的腳印進入了高地區域葉塵將多維度感知調整到最大敏銳度試圖在複雜的山地地形中尋找任何可以利用的天然優勢或隱藏通道。前方的山谷逐漸收窄形成了一處狹窄的峽谷入口——兩側岩壁之間的最寬處不足五丈地面佈滿了碎石和鬆散的泥土非常適合防禦陣法的部署但不利於大範圍的包抄行動。葉塵停下了腳步將掌心貼向地面的岩層表面開始建構一道簡單的防禦屏障——銀光透過他的手掌滲入地下激活了石盤中殘留的一小部分符文網絡形成了一個以峽谷入口為中心的能量環形區域。</p>
-<p>當第一股追兵的身影出現在峽谷入口處時葉塵已經完成了基本的防禦佈局三到五名身穿黑色戰甲的武者從狹窄的通道中魚貫而出他們的臉上覆蓋著光滑如鏡的面具手中握著的武器散發出一種與暗淵阁黑暗能量同源但經過精細加工的靈力波動。為首的那人摘下了面具露出了一張冷酷而堅毅的面孔——那是一個中年男子左臉上一道深深的疤痕從額頭延伸到下顎雙眼中閃爍著毫不掩飾的殺意。</p>
-<p>葉塵——他的聲音低沉而帶有命令式的權威幽影尊者邀請你前往暗淵阁本部進行一場對話——以合作者的身份而非囚犯。</p>
-<p>這句話讓葉塵心中產生了警惕——如果按照凌風信中透露的情報幽影尊者的真正目的是解放虛空之眼而非修復它那麼這個「合作者」的邀請很可能是一個陷阱或者說服的手段。但另一方面第八世留下的資訊告訴他虛空之眼本身並沒有惡意只是被錯誤指令驅動的而已——而真正的敵人應該是那個趁機植入腐蝕代碼的存在幽影尊者本人可能也只是被自己的信念蒙蔽了認知。</p>
-<p>葉塵站在防禦屏障的核心區域內保持沉默讓多維度感知在內部快速分析著這個局面——追兵只有三到五個人並且看起來不打算強行突破他的防禦屏障而是選擇用言語勸說這種策略說明他們確實希望以和平方式解決問題而不是直接武力捕獲。</p>
-<p>你告訴幽影尊者我暫時沒有時間進行對話——葉塵最終做出了回應他的聲音在峽谷中迴盪著沉穩而堅定——我需要前往天穹城完成一件比任何談判都更加重要的事情然後我們會再談。中年男子沉默了片刻隨後緩緩點頭示意他的追兵開始有序地撤離峽谷入口——沒有留下一個字或一個眼神的解釋只是如同執行一道嚴格的命令一般消失在岩壁之後葉塵站在原地保持警覺直到最後一股靈力波動完全消失在地平線上才將手掌從地面移開。銀白屏障的能量環形區域在他收回力量的瞬間開始消退但峽谷內的空氣仍然殘留著濃重的能量擾動痕跡那些被干擾的靈力流動如同水面上的漣漪一般緩慢平息每一道波動都在向葉塵傳遞著關於暗淵阁追蹤小隊實力水平的情報：這些武者的個人修為雖然不算特別高強但他們的戰術協調性和情報獲取能力遠超普通追兵的標準——這意味著他們不是普通的巡邏部隊而是一支專門針對凝元鎮塵印能量特徵進行訓練的精銳單位。他需要盡快離開這個位置暗淵阁既然已經掌握了他的大致行進路線和當前狀態就不可能輕易放棄追蹤行動下一次派出的可能會是更為強大的追擊力量或者部署更精密的攔截網葉塵將最後一絲源塵注入防禦屏障的核心節點中作為延遲裝置——如果追兵在幾個時辰後返回這裡這個延遲屏障會產生一次短暫但強烈的能量爆鳴以提醒他注意危險。轉身沿著峽谷通道向東南方繼續前行之前他最後看了一眼那片被炸裂的岩壁——碎石仍在緩緩滑落而銀白屏障的薄膜已經在裂縫處重新生長出細微的光絲如同大地本身正在癒合傷口一樣自然且不可逆轉。</p>
-
+        <p>石盤上的符文光芒完全消退之後葉塵仍然站在原地沒有移動第八世留下的意識殘影雖然消散了但它所傳遞的信息卻在他神魂深處激起了層層漣漪——每一個關於虛空之眼和第九世輪迴系統的事實都在重塑他對整個任務的理解方式。他閉上雙眼將多維度感知從外部環境收回內部的凝元鎮塵印核心在那個由九世記憶碎片和銀白屏障節點構成的複雜網絡中他能看見一條清晰的路徑被標記了出來——那是第八世預留的修復程序啟動線路從凝元鎮塵印的中樞出發經過四個主要節點的轉接最終匯入天穹城高塔的金色碎片接口。</p>
+        <p>如果按照幽影尊者的理解方向來行動那麼整個封印系統應該被徹底摧毀以解放虛空之眼；但如果遵循第八世的修復路線則是將凝元鎮塵印的力量通過七把鑰匙重新導向到正確的運行軌道上這兩種方案之間的差異不僅是技術層面的——它們代表了對這個世界本質的兩種完全不同的認知：一個認為自由意味着打破所有束縛另一個則相信平衡需要在限制與開放之間找到微妙的交點。</p>
+        <p>葉塵睜開雙眼凝視著石盤表面那些已經暗淡下來的符文線路他現在能夠理解為什麼幽影尊者要如此急切地追求虛空之眼的解放——因為在他的視野中封印系統不僅是阻礙世界進化的枷鎖更是第八世失敗後留下的永久性傷疤而對葉塵來說問題不在於是否應該打破束縛而在於如何在自由的同時保持穩定。</p>
+        <p>就在他沉思之際懷中的凝元鎮塵印突然發出了一段急促的共鳴——這次不是來自封印網絡節點的喚醒信號而是銀白屏障感知到了一股極為接近且充滿敵意的能量波動葉塵立刻將多維度感知的注意力轉向四面八方在短短數息之間便定位到了那股波動的來源：三股靈力信號正從不同方向快速逼近石盤所在的山脊高地區域其能量特徵與暗淵阁的精銳追兵完全一致。他們找到這裡了——葉塵在心中盤算著時間線他剛離開風鳴谷不久但暗淵阁的追蹤小隊顯然掌握了一套極為精密的定位技術——可能是通過銀白屏障節點網絡的反向追踪也可能是利用某種專門針對凝元鎮塵印能量特徵的探測儀器。</p>
+        <p>他快速環顧四周尋找掩護和撤退路線石盤位於山脊高地的中央位置三面都是陡峭的坡面只有一側通向一條較為寬闊的山谷通道——那正是他來時的方向如果追兵從其他三個方向包抄過來唯一的脫身之路就是沿著山谷通道向東南方行進。葉塵將最後一絲源塵注入石盤的核心符文中觸發了一個短暫的能量爆發——這道爆發不是用於攻擊而是作為一道迷惑性的靈力煙幕在石盤周圍形成了一片高密度的能量擾動區足以干擾追兵的探測儀器至少一刻鐘的時間。</p>
+        <p>他轉身奔入山谷通道時身後已經能聽見急促的腳步聲和兵器碰撞的聲音——暗淵阁的追兵比預期中的到達速度更快他們幾乎是緊跟著他的腳印進入了高地區域葉塵將多維度感知調整到最大敏銳度試圖在複雜的山地地形中尋找任何可以利用的天然優勢或隱藏通道。前方的山谷逐漸收窄形成了一處狹窄的峽谷入口——兩側岩壁之間的最寬處不足五丈地面佈滿了碎石和鬆散的泥土非常適合防禦陣法的部署但不利於大範圍的包抄行動。葉塵停下了腳步將掌心貼向地面的岩層表面開始建構一道簡單的防禦屏障——銀光透過他的手掌滲入地下激活了石盤中殘留的一小部分符文網絡形成了一個以峽谷入口為中心的能量環形區域。</p>
+        <p>當第一股追兵的身影出現在峽谷入口處時葉塵已經完成了基本的防禦佈局三到五名身穿黑色戰甲的武者從狹窄的通道中魚貫而出他們的臉上覆蓋著光滑如鏡的面具手中握著的武器散發出一種與暗淵阁黑暗能量同源但經過精細加工的靈力波動。為首的那人摘下了面具露出了一張冷酷而堅毅的面孔——那是一個中年男子左臉上一道深深的疤痕從額頭延伸到下顎雙眼中閃爍著毫不掩飾的殺意。</p>
+        <p>葉塵——他的聲音低沉而帶有命令式的權威幽影尊者邀請你前往暗淵阁本部進行一場對話——以合作者的身份而非囚犯。</p>
+        <p>這句話讓葉塵心中產生了警惕——如果按照凌風信中透露的情報幽影尊者的真正目的是解放虛空之眼而非修復它那麼這個「合作者」的邀請很可能是一個陷阱或者說服的手段。但另一方面第八世留下的資訊告訴他虛空之眼本身並沒有惡意只是被錯誤指令驅動的而已——而真正的敵人應該是那個趁機植入腐蝕代碼的存在幽影尊者本人可能也只是被自己的信念蒙蔽了認知。</p>
+        <p>葉塵站在防禦屏障的核心區域內保持沉默讓多維度感知在內部快速分析著這個局面——追兵只有三到五個人並且看起來不打算強行突破他的防禦屏障而是選擇用言語勸說這種策略說明他們確實希望以和平方式解決問題而不是直接武力捕獲。</p>
+        <p>你告訴幽影尊者我暫時沒有時間進行對話——葉塵最終做出了回應他的聲音在峽谷中迴盪著沉穩而堅定——我需要前往天穹城完成一件比任何談判都更加重要的事情然後我們會再談。中年男子沉默了片刻隨後緩緩點頭示意他的追兵開始有序地撤離峽谷入口——沒有留下一個字或一個眼神的解釋只是如同執行一道嚴格的命令一般消失在岩壁之後葉塵站在原地保持警覺直到最後一股靈力波動完全消失在地平線上才將手掌從地面移開。銀白屏障的能量環形區域在他收回力量的瞬間開始消退但峽谷內的空氣仍然殘留著濃重的能量擾動痕跡那些被干擾的靈力流動如同水面上的漣漪一般緩慢平息每一道波動都在向葉塵傳遞著關於暗淵阁追蹤小隊實力水平的情報：這些武者的個人修為雖然不算特別高強但他們的戰術協調性和情報獲取能力遠超普通追兵的標準——這意味著他們不是普通的巡邏部隊而是一支專門針對凝元鎮塵印能量特徵進行訓練的精銳單位。他需要盡快離開這個位置暗淵阁既然已經掌握了他的大致行進路線和當前狀態就不可能輕易放棄追蹤行動下一次派出的可能會是更為強大的追擊力量或者部署更精密的攔截網葉塵將最後一絲源塵注入防禦屏障的核心節點中作為延遲裝置——如果追兵在幾個時辰後返回這裡這個延遲屏障會產生一次短暫但強烈的能量爆鳴以提醒他注意危險。轉身沿著峽谷通道向東南方繼續前行之前他最後看了一眼那片被炸裂的岩壁——碎石仍在緩緩滑落而銀白屏障的薄膜已經在裂縫處重新生長出細微的光絲如同大地本身正在癒合傷口一樣自然且不可逆轉。</p>
     </main>
-    <nav class="nav">
-        <a href="chapter-257.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-259.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-257.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-258/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-259.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

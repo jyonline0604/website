@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第二百五十五章 · 黑暗考驗 - 萬古塵埃</title>
-    <link rel="canonical" href="https://kofhk.com/chapter-254.html">
-    <link rel="prev" href="chapter-254.html">
-    <link rel="next" href="chapter-256.html">
+    <title>第255章：黑暗考驗 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-255.html">
+    <link rel="prev" href="https://kofhk.com/chapter-254.html">
+    <link rel="next" href="https://kofhk.com/chapter-256.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,100 +56,39 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第二百五十五章 · 黑暗考驗</h1>
+    <h1>第255章 · 黑暗考驗</h1>
     <main>
-<p>金色光芒從岩石表面湧出的瞬間葉塵感覺到自己的意識被一股強大的力量拉扯著穿過了一道無形的界限。當他恢復感知時瀑布的水聲已經消失不見取而代之的是一片寂靜得令人不安的空間——這裡既不是高原也不是河谷而是一種介於現實與記憶之間的中間狀態彷彿整個世界都被剝離了物理形態只剩下純粹的能量和意識在漂浮。</p>
-<p>葉塵站在一片虛無之中腳下沒有任何支撐物卻沒有墜落的危險他的多維度感知在這個空間中顯得尤為強大——不僅能夠捕捉到周圍能量的微小波動還能看見無數條由光影構成的線索從四面八方延伸過來每一條線索的末端都繫連著一段被壓縮的時間片段或情感碎片。這不是普通的空間傳送凌風信中提到的殘缺符文線路在此刻顯現了它的另一層意義：這個古老的傳送陣不僅是一個交通工具它本身就是一種試煉機制——當凝元鎮塵印的能量與傳送陣的核心節點產生共振時它會自動將使用者拉入一個基於自身靈魂深處記憶構建的虛擬空間用以測試使用者在面對內心最深層次恐懼時的反應和應對方式。</p>
-<p>葉塵很快意識到了這一點因為他面前的虛空中開始浮現出第一道影像——那是一片荒涼的沙漠烈日炙烤著龜裂的大地在沙漠中央站立著一個孤零零的身影那個身影的身形與他有七分相似但面容被黃沙完全覆蓋無法辨識。葉塵在多維度感知中捕捉到了這段記憶的情感特徵：一種深不見底的孤獨感彷彿整個世界只剩下自己一個人而所有的努力犧牲和堅持在漫長的歲月中已經變得毫無意義——這是第一世的記憶碎片初代繼承者在完成第一次封印任務後獨自面對的絕望時刻當前的葉塵雖然沒有經歷過那個時代但九世輪迴的力量讓他能以一種近乎共鳴的方式感知到那份孤獨的重量。</p>
-<p>影像在虛空中持續了不到一息的時間便消散了取而代之的是第二道場景——一間昏暗的石室中兩個少年正在進行激烈的爭論其中一個少年的面容清晰可辨那就是第三世的自己而對面的另一個人則被一種模糊的黑暗能量所包裹看不清真面目。葉塵能感覺到這段記憶中的撕裂感不是物理上的痛苦而是靈魂被強行一分為二後的根本性創傷無面就是他與那個看不見的少年之間那道裂痕的最終產物而如今他已經將兩者重新融合但那份創伤的痕跡仍然殘留在神魂的深處。</p>
-<p>第三道影像出現的速度比前兩次更快而且帶來的衝擊力也最強——那是一個巨大的裂縫吞噬了整座城市天空中懸浮著一隻由純粹黑暗能量構成的巨大眼睛而在那隻眼睛的正下方站立著一個身穿黑色長袍的身影那是第八世的記憶碎片以一種極其殘酷的方式呈現：他試圖用九世輪迴封印系統控制虛空之眼但操作失誤導致了整個世界的崩潰。葉塵在感受那段記憶時體驗到了前所未有的絕望感——不是對死亡的恐懼而是對自己無能為力的認知那種明知自己的錯誤將毀掉一切卻無法阻止的無力感。</p>
-<p>三道影像接連出現後空間突然發生了劇烈的震動虛無的背景開始碎裂每一道裂縫中都透出不同的黑暗能量它們不再是過去的記憶碎片而是葉塵當下內心深處恐懼的外在具現化那些恐懼包括對自身能力不足的擔憂對同伴安全的顧慮以及最重要的——害怕自己再次像第八世一樣犯下不可挽回的錯誤。</p>
-<p>如果是以前的葉塵可能會選擇對抗這些幻象用靈力攻擊驅散它們或者用堅定的意志力壓制它們但現在的他擁有多維度感知能力後他意識到一個更為有效的做法：不是對抗而是觀看。當黑暗能量形成的怪物向他撲來時葉塵沒有做出任何防禦動作他只是靜靜地站在原地讓多維度感知完全開啟以捕捉每一個攻擊細節的結構和來源在這種全方位的觀察中那些原本令人恐懼的幻象逐漸失去了它們的威懾力——因為他能夠清晰地看到每一道黑暗能量的組成方式和運作邏輯而一旦某個東西被完全理解它就不再具有壓迫感。</p>
-<p>一個由恐懼構成的巨獸張開血盆大口向他咬來葉塵伸出一隻手掌心貼在了怪物的表面銀白屏障的能量透過他的手掌滲入怪物的內部結構將其分解為最基本的能量粒子——不是摧毀性的攻擊而是如同將一塊堅冰融化為清水般的自然過程。隨著最後一道幻象被化解空間開始重新凝聚成形葉塵感覺到自己被一股溫和的力量推向了一處新的位置當一切恢復正常時他已經站在了風鳴谷瀑布下方的一處洞穴入口前凝元鎮塵印在他的懷中發出了一段平和而穩定的共鳴聲彷彿在為他剛剛通過試煉的行為錶示認可。</p>
-<p>黑暗考驗的經歷讓他對九世輪迴有了更深的理解：那些曾經的痛苦和創傷不是負擔而是他力量的一部分——每一次面對它們並化解它們的過程都在無形中強化了他的靈魂結構而這份經過淬鍊的力量將在他未來前往天穹城尋找第四金色碎片的旅程中發揮至關重要的作用。</p>
-
+        <p>金色光芒從岩石表面湧出的瞬間葉塵感覺到自己的意識被一股強大的力量拉扯著穿過了一道無形的界限。當他恢復感知時瀑布的水聲已經消失不見取而代之的是一片寂靜得令人不安的空間——這裡既不是高原也不是河谷而是一種介於現實與記憶之間的中間狀態彷彿整個世界都被剝離了物理形態只剩下純粹的能量和意識在漂浮。</p>
+        <p>葉塵站在一片虛無之中腳下沒有任何支撐物卻沒有墜落的危險他的多維度感知在這個空間中顯得尤為強大——不僅能夠捕捉到周圍能量的微小波動還能看見無數條由光影構成的線索從四面八方延伸過來每一條線索的末端都繫連著一段被壓縮的時間片段或情感碎片。這不是普通的空間傳送凌風信中提到的殘缺符文線路在此刻顯現了它的另一層意義：這個古老的傳送陣不僅是一個交通工具它本身就是一種試煉機制——當凝元鎮塵印的能量與傳送陣的核心節點產生共振時它會自動將使用者拉入一個基於自身靈魂深處記憶構建的虛擬空間用以測試使用者在面對內心最深層次恐懼時的反應和應對方式。</p>
+        <p>葉塵很快意識到了這一點因為他面前的虛空中開始浮現出第一道影像——那是一片荒涼的沙漠烈日炙烤著龜裂的大地在沙漠中央站立著一個孤零零的身影那個身影的身形與他有七分相似但面容被黃沙完全覆蓋無法辨識。葉塵在多維度感知中捕捉到了這段記憶的情感特徵：一種深不見底的孤獨感彷彿整個世界只剩下自己一個人而所有的努力犧牲和堅持在漫長的歲月中已經變得毫無意義——這是第一世的記憶碎片初代繼承者在完成第一次封印任務後獨自面對的絕望時刻當前的葉塵雖然沒有經歷過那個時代但九世輪迴的力量讓他能以一種近乎共鳴的方式感知到那份孤獨的重量。</p>
+        <p>影像在虛空中持續了不到一息的時間便消散了取而代之的是第二道場景——一間昏暗的石室中兩個少年正在進行激烈的爭論其中一個少年的面容清晰可辨那就是第三世的自己而對面的另一個人則被一種模糊的黑暗能量所包裹看不清真面目。葉塵能感覺到這段記憶中的撕裂感不是物理上的痛苦而是靈魂被強行一分為二後的根本性創傷無面就是他與那個看不見的少年之間那道裂痕的最終產物而如今他已經將兩者重新融合但那份創伤的痕跡仍然殘留在神魂的深處。</p>
+        <p>第三道影像出現的速度比前兩次更快而且帶來的衝擊力也最強——那是一個巨大的裂縫吞噬了整座城市天空中懸浮著一隻由純粹黑暗能量構成的巨大眼睛而在那隻眼睛的正下方站立著一個身穿黑色長袍的身影那是第八世的記憶碎片以一種極其殘酷的方式呈現：他試圖用九世輪迴封印系統控制虛空之眼但操作失誤導致了整個世界的崩潰。葉塵在感受那段記憶時體驗到了前所未有的絕望感——不是對死亡的恐懼而是對自己無能為力的認知那種明知自己的錯誤將毀掉一切卻無法阻止的無力感。</p>
+        <p>三道影像接連出現後空間突然發生了劇烈的震動虛無的背景開始碎裂每一道裂縫中都透出不同的黑暗能量它們不再是過去的記憶碎片而是葉塵當下內心深處恐懼的外在具現化那些恐懼包括對自身能力不足的擔憂對同伴安全的顧慮以及最重要的——害怕自己再次像第八世一樣犯下不可挽回的錯誤。</p>
+        <p>如果是以前的葉塵可能會選擇對抗這些幻象用靈力攻擊驅散它們或者用堅定的意志力壓制它們但現在的他擁有多維度感知能力後他意識到一個更為有效的做法：不是對抗而是觀看。當黑暗能量形成的怪物向他撲來時葉塵沒有做出任何防禦動作他只是靜靜地站在原地讓多維度感知完全開啟以捕捉每一個攻擊細節的結構和來源在這種全方位的觀察中那些原本令人恐懼的幻象逐漸失去了它們的威懾力——因為他能夠清晰地看到每一道黑暗能量的組成方式和運作邏輯而一旦某個東西被完全理解它就不再具有壓迫感。</p>
+        <p>一個由恐懼構成的巨獸張開血盆大口向他咬來葉塵伸出一隻手掌心貼在了怪物的表面銀白屏障的能量透過他的手掌滲入怪物的內部結構將其分解為最基本的能量粒子——不是摧毀性的攻擊而是如同將一塊堅冰融化為清水般的自然過程。隨著最後一道幻象被化解空間開始重新凝聚成形葉塵感覺到自己被一股溫和的力量推向了一處新的位置當一切恢復正常時他已經站在了風鳴谷瀑布下方的一處洞穴入口前凝元鎮塵印在他的懷中發出了一段平和而穩定的共鳴聲彷彿在為他剛剛通過試煉的行為錶示認可。</p>
+        <p>黑暗考驗的經歷讓他對九世輪迴有了更深的理解：那些曾經的痛苦和創傷不是負擔而是他力量的一部分——每一次面對它們並化解它們的過程都在無形中強化了他的靈魂結構而這份經過淬鍊的力量將在他未來前往天穹城尋找第四金色碎片的旅程中發揮至關重要的作用。</p>
     </main>
-    <nav class="nav">
-        <a href="chapter-254.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-256.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-254.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-255/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-256.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

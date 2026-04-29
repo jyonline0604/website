@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第42章：大比前夕 - 萬古塵埃</title>
+    <title>第42章：未定標題 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-42.html">
-    <link rel="prev" href="chapter-41.html">
-    <link rel="next" href="chapter-43.html">
+    <link rel="prev" href="https://kofhk.com/chapter-41.html">
+    <link rel="next" href="https://kofhk.com/chapter-43.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,63 +56,34 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第42章 · 大比前夕</h1>
+    <h1>第42章 · 未定標題</h1>
     <main>
+        <p>第四十二章 大比前夕</p>
         <p>黎明前的天空呈現出一種奇異的灰藍色，像是有人在天幕上灑了一層薄薄的墨汁。葉塵睜開眼睛的那一刻，便感覺到體內那股灰色力量與兩枚令牌產生了前所未有的共鳴——它們不再只是靜靜地懸掛在胸前，而是像兩顆微弱的心臟般跳動著，每一次搏動都將一股細微的能量注入他的經脈。</p>
-        <p>他起身走到洞府外的小溪邊，掬起一捧冷水潑在脸上。水珠順著下巴滴落，帶走了一夜修煉積累的疲憊感。葉塵抬頭望向遠處的山巒，雲霄宗的主峰在晨霧中若隱若現，宛如一座漂浮在雲端的神殿。</p>
+        <p>他起身走到洞府外的小溪邊，掬起一捧冷水潑在脸上。水珠順著下巴滴落，帶走了一夜修煉積累的疲憊感。葉塵抬頭望向遠處的山巒，雲天宗的主峰在晨霧中若隱若現，宛如一座漂浮在雲端的神殿。</p>
         <p>「大比就在明天。」他自言自語道，轉身往回走去。</p>
         <p>洞府外的空地上，蘇清雪已經等在那裡了。她穿著一襲淡青色的長裙，髮髻上插著一支白玉簪，晨光落在她的側臉上，勾勒出柔和的輪廓線。看到葉塵走來，她微微一笑，那笑容如同初春的第一縷陽光，溫暖而不刺眼。</p>
         <p>「你來了。」蘇清雪的聲音輕柔如水。「我等你很久了。」</p>
         <p>葉塵走到她面前，從懷中取出兩枚令牌，將莫問天所說的一切原原本本地告訴了她。蘇清雪靜靜地聽完，沒有表現出驚慌或質疑，只是伸手輕輕撫摸著那枚白玉佩的表面。</p>
         <p>「萬古塵源……」她低聲念道，眉頭微微蹙起。「我在宗門的古籍中讀過這個名字。據說那是上古時期一位大能者留下的修煉之地，裡面儲存著無數失傳的功法與寶物。但那個地方已經消失了數百年，沒有人知道它究竟在哪裡。」</p>
-        <p>「莫問天說這枚印章可以打開那扇門。」葉塵將令牌合璧後出現的圖像描述了一遍。「地圖顯示在雲霄宗西北方三百里處。」</p>
+        <p>「莫問天說這枚印章可以打開那扇門。」葉塵將令牌合璧後出現的圖像描述了一遍。「地圖顯示在雲天宗西北方三百里處。」</p>
         <p>蘇清雪沉默了片刻，然後抬起頭來看著他：「你打算去？」</p>
         <p>「我必須去。」葉塵的回答毫不猶豫。「不僅僅是為了尋找答案——福伯告訴我，這枚玉佩與我的身世有關。萬古塵源裡可能藏著關於我父母的線索。」</p>
         <p>蘇清雪的瞳孔微微收縮了一下，但她很快恢復了平靜：「我會陪你去。」</p>
@@ -214,55 +102,24 @@
         <p>葉塵握緊雙拳，感受著能量場中湧動的強大力量。他忽然意識到自己與一個月前的自己已經截然不同——那個時候的他還只能勉強操控幾縷灰色力量，如今卻已經能夠在體內維持一個完整的融合領域。這種成長的速度連他自己都感到驚訝。</p>
         <p>「你也在進步。」蘇清雪似乎看穿了他的心思。「我的雲氣凝練度又提升了一個層次。大比之後，我們一起去後山瀑布那裡修煉——那裡的水流聲能幫助你更好地掌握塵埃的節奏。」</p>
         <p>兩人相視一笑，那種默契不需要言語來表達。</p>
-        <p>與此同時，在雲霄宗的另一側，王虎正站在自己的洞府中對著一面銅鏡整理衣襟。他已經不再是那個聚元初層的莽撞少年——過去幾天裡，他通過一種特殊的手段將修為提升到了聚元高層。那是一種禁忌的方法，需要借助一件邪門的法器來強行沖刷經脈、榨取潛力。</p>
+        <p>與此同時，在雲天宗的另一側，王虎正站在自己的洞府中對著一面銅鏡整理衣襟。他已經不再是那個聚元初層的莽撞少年——過去幾天裡，他通過一種特殊的手段將修為提升到了聚元高層。那是一種禁忌的方法，需要借助一件邪門的法器來強行沖刷經脈、榨取潛力。</p>
         <p>王虎從懷中掏出一枚暗紅色的珠子，那珠子表面佈滿了細密的血紋，散發著一股令人不安的腥甜氣息。他將珠子貼在胸口，閉上眼睛開始運功。隨著能量的湧入，他的身體微微顫抖起來，皮膚表面浮現出幾道暗紅色的血管紋路——那是邪術反噬的跡象。</p>
         <p>「哼，葉塵……」王虎睜開眼睛，瞳孔中閃爍著一絲瘋狂的光芒。「明天的大比就是你的終點。你以為憑藉那些旁門左道的本事就能贏我？太天真了。」</p>
-        <p>他將血珠重新收回懷中，然後走出洞府。大比的場地已經布置完畢——雲霄宗的主演武場被擴建了一個巨大的擂台，四周環繞著觀戰的看台。外宗弟子們三兩成群地聚集在看台下，議論紛紛。大多數人都認為這次大比的最大熱門是蘇清雪和另一位天才弟子林風，很少有人將目光放在葉塵身上。</p>
+        <p>他將血珠重新收回懷中，然後走出洞府。大比的場地已經布置完畢——雲天宗的主演武場被擴建了一個巨大的擂台，四周環繞著觀戰的看台。外宗弟子們三兩成群地聚集在看台下，議論紛紛。大多數人都認為這次大比的最大熱門是蘇清雪和另一位天才弟子林風，很少有人將目光放在葉塵身上。</p>
         <p>「聽說葉塵最近表現不錯，但跟王虎相比還差得遠。」一個弟子小聲說道。</p>
         <p>「王虎可是用了邪術的，誰知道他的底線在哪裡？」另一人壓低聲音回答。「不過大比規矩森嚴，使用禁器會被直接取消資格——他應該不敢明目張膽地用。」</p>
         <p>「賭一把吧，我押蘇清雪贏。」</p>
         <p>看台之上，趙明軒正與幾位內宗長老交談。他的目光不時掃過下方的弟子們，最終落在了葉塵的身上。那位老人眼中閃過一絲複雜的神色——他既希望看到這個年輕人成長，又擔心他會捲入某些不該捲入的漩渦之中。</p>
         <p>「趙師叔。」一位長老開口道。「那個叫葉塵的孩子……你覺得他能走到哪一步？」</p>
-        <p>趙明軒沉默了片刻：「不可輕視任何一個願意付出努力的弟子。雲霄宗之所以能屹立不倒，靠的不只是天才，還有那些在黑暗中默默前行的人。」</p>
+        <p>趙明軒沉默了片刻：「不可輕視任何一個願意付出努力的弟子。雲天宗之所以能屹立不倒，靠的不只是天才，還有那些在黑暗中默默前行的人。」</p>
         <p>夜幕降臨，大比的前一夜安靜得有些詭異。葉塵坐在洞府的石床上，雙手捧著兩枚令牌，閉目調息。蘇清雪教他的「協調者」理念正在逐漸滲透到他的修煉方式中——他不再試圖掌控一切，而是學會了與自己的力量和諧共處。</p>
         <p>胸前的白玉佩和黑鐵牌微微發熱，彷彿在回應他的呼吸節奏。葉塵不知道明天的大比會帶給他什麼樣的結果，但他知道一件事：無論勝負如何，這都將是他修行之路上一個重要的轉折點。</p>
-        <p>遠處的鐘聲響起，悠長而沉穩。那是雲霄宗的晨鐘——大比的日期到了。</p>
-
+        <p>遠處的鐘聲響起，悠長而沉穩。那是雲天宗的晨鐘——大比的日期到了。</p>
     </main>
-    <nav class="nav">
-        <a href="chapter-41.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-43.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-41.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-42/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-43.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

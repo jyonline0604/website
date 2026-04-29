@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第25章：暗流湧動 - 萬古塵埃</title>
+    <title>第25章：未定標題 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-25.html">
-    <link rel="prev" href="chapter-24.html">
-    <link rel="next" href="chapter-26.html">
+    <link rel="prev" href="https://kofhk.com/chapter-24.html">
+    <link rel="next" href="https://kofhk.com/chapter-26.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,55 +56,26 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第25章 · 暗流湧動</h1>
+    <h1>第25章 · 未定標題</h1>
     <main>
+        <p>第二十五章 暗流湧動</p>
         <p>地下秘境的通道狹窄而曲折，岩壁上佈滿了濕滑的青苔。葉塵獨自走在隊伍的後方，耳邊還迴盪著剛才巨狼倒下的聲音。他的胸口微微起伏，體內那股灰色的力量正在逐漸平息——但那種被反噬的感覺卻像一根細針一樣，始終扎在他的經脈深處。</p>
         <p>「你們先走，我去前面探路。」陳默的聲音從前方傳來。他已經帶著大部分隊員向前探索了，只留下葉塵和劉芳在後面收拾巨狼的屍體。</p>
         <p>葉塵點點頭，彎腰撿起地上的一塊發光礦石碎片——那是剛才戰鬥中掉落的，散發著微弱的藍色光芒。他將它放進懷中的布袋裡，然後站起身來，準備跟上隊伍。</p>
@@ -213,42 +101,37 @@
         <p>他知道從今天開始，自己已經真正踏上了塵埃散修的道路——一條充滿未知和挑戰的道路。而那種灰色的力量，將成為他在修仙界生存下去的唯一依仗。</p>
         <p>當他走出通道的時候，腦海中突然閃過一個畫面——那是離開葉家前夜，福伯在月光下對他說的話：「葉塵，你身上的秘密比你想像中的更加深遠。」當時他以為那只是老人家的胡言亂語，但現在他開始懷疑——也許福伯知道一些關於他那塊玉佩、關於九世輪迴的秘密。</p>
         <p>葉塵加快腳步向前走去——前方傳來隊員們的呼喚聲，他知道該回去了。但他心裡卻多了一個新的念頭：他必須找到福伯問清楚——關於他的身世，關於那塊玉佩，關於九世輪迴的真正意義。</p>
-
+        <p>第二十五章 暗流湧動</p>
+        <p>地下秘境的通道狹窄而曲折，岩壁上佈滿了濕滑的青苔。葉塵獨自走在隊伍的後方，耳邊還迴盪著剛才巨狼倒下的聲音。他的胸口微微起伏，體內那股灰色的力量正在逐漸平息——但那種被反噬的感覺卻像一根細針一樣，始終扎在他的經脈深處。</p>
+        <p>「你們先走，我去前面探路。」陳默的聲音從前方傳來。他已經帶著大部分隊員向前探索了，只留下葉塵和劉芳在後面收拾巨狼的屍體。</p>
+        <p>葉塵點點頭，彎腰撿起地上的一塊發光礦石碎片——那是剛才戰鬥中掉落的，散發著微弱的藍色光芒。他將它放進懷中的布袋裡，然後站起身來，準備跟上隊伍。</p>
+        <p>就在他轉身的瞬間，一道黑影從側面的岩壁後閃了出來。</p>
+        <p>「葉塵。」那聲音低沉而陰冷，帶著一絲壓抑的怒意。</p>
+        <p>葉塵的身體猛地一僵——他認得這個聲音。王虎。那個在葉家時就經常欺負他的外門弟子，也是他在宗門中最大的敵人之一。</p>
+        <p>「你……」葉塵緩緩轉過身來，目光警惕地盯著從岩壁後走出來的王虎。王虎穿著黑色的勁裝，臉上帶著一絲猙獰的笑容——那笑容讓葉塵想起了在廢棄練功場上第一次交手時的情景。但這次不同——上次是在眾目睽睽之下，而這次，周圍沒有任何其他人。</p>
+        <p>「你以為擊敗一隻巨狼就能在宗門裡出頭了嗎？」王虎一步步走近，每一步都帶著沉重的腳步聲，「你不過是個廢物而已——就算有點運氣，也改變不了你是垃圾的事實。」</p>
+        <p>葉塵沒有說話——他只是靜靜地看著王虎靠近。他能感覺到空氣中的灰塵正在緩慢聚集，就像上次擊敗巨狼時一樣。但這次的情況不同——對手不是靈獸，而是另一個修士。他不知道這種力量對人是否有效，更不知道使用之後會帶來什麼樣的後果。</p>
+        <p>「我勸你識相一點。」王虎已經走到了葉塵面前不到三步的距離，「把你剛才撿到的礦石碎片交出來——還有你的腰帶，上面那塊玉佩看起來也不錯。」</p>
+        <p>葉塵的目光落在王虎的手上——那只手正握著一把短刀，刀刃在昏暗的光線中閃爍著寒光。他深吸一口氣，然後緩緩開口：「我沒有什麼好給你的。」</p>
+        <p>這句話像是點燃了王虎心中的怒火——他的眼睛瞬間變得猙獰，手中的短刀猛地揮出，直刺葉塵的胸口。</p>
+        <p>葉塵的身體本能地向後閃避——但他的速度遠遠跟不上王虎的攻擊。刀刃劃破了他的衣袖，在他的手臂上留下一道血痕。疼痛讓他清醒了過來——他知道自己不能再退讓了。</p>
+        <p>空氣中的灰塵開始劇烈擾動——它們像被某種無形的力量牽引著，向葉塵的手掌聚集。那種感覺跟上次擊敗巨狼時一模一樣——但這次更加強烈、更加急迫。</p>
+        <p>「你……」王虎愣了一下——他發現葉塵的雙手正在散發出一種灰色的光芒，那種光芒微弱卻帶著一種令人不安的力量感。</p>
+        <p>葉塵沒有猶豫——他將那股灰色的力量凝聚在拳頭上，然後猛地揮出。他的動作依然緩慢——就像是在空氣中游泳一樣——但這一拳的速度和力度卻遠遠超過了王虎的預期。</p>
+        <p>拳頭擊中了王虎的胸口——不是那種硬碰硬的衝擊，而是一種彷彿穿透了身體的奇怪力量。王虎的身體瞬間僵硬——他感覺到自己的體內有一股灰色的力量在翻湧，像是一粒粒細小的沙子在經脈中流動，讓他的靈氣運轉出現了短暫的中斷。</p>
+        <p>「嗚……」王虎發出一聲痛苦的悶哼，然後不可阻擋地向後退去——最終重重地摔在地面上，手中的短刀也脫手飛了出去。</p>
+        <p>葉塵站在原地，大口喘著氣——他能感覺到體內的那種灰色力量正在劇烈反噬，就像是一把雙刃劍一樣，使用得越多，對身體的負擔就越重。他的手臂上那道血痕還在流血，但那種疼痛卻被他體內翻湧的力量所掩蓋了。</p>
+        <p>他低頭看著倒在地上的王虎——對方的臉色蒼白如紙，呼吸微弱而急促。葉塵知道，如果剛才那一拳再重一分，王虎可能就會受重傷甚至喪命。但他沒有選擇——在這種情況下，他只能使用那種力量來保護自己。</p>
+        <p>「你……」王虎艱難地抬起頭，目光中帶著一絲恐懼和憤怒，「你到底是什麼人？」</p>
+        <p>葉塵沒有回答——他只是彎腰撿起地上的短刀，然後將它扔到了王虎的身邊。接著他轉身離開了這條狹窄的通道，腳步雖然有些虛浮，但眼神卻比以往更加堅定。</p>
+        <p>他知道從今天開始，自己已經真正踏上了塵埃散修的道路——一條充滿未知和挑戰的道路。而那種灰色的力量，將成為他在修仙界生存下去的唯一依仗。</p>
+        <p>當他走出通道的時候，腦海中突然閃過一個畫面——那是離開葉家前夜，福伯在月光下對他說的話：「葉塵，你身上的秘密比你想像中的更加深遠。」當時他以為那只是老人家的胡言亂語，但現在他開始懷疑——也許福伯知道一些關於他那塊玉佩、關於九世輪迴的秘密。</p>
+        <p>葉塵加快腳步向前走去——前方傳來隊員們的呼喚聲，他知道該回去了。但他心裡卻多了一個新的念頭：他必須找到福伯問清楚——關於他的身世，關於那塊玉佩，關於九世輪迴的真正意義。</p>
     </main>
-    <nav class="nav">
-        <a href="chapter-24.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-26.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-24.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-25/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-26.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

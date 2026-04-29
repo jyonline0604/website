@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第41章：令牌合璧 - 萬古塵埃</title>
+    <title>第41章：未定標題 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-41.html">
-    <link rel="prev" href="chapter-40.html">
-    <link rel="next" href="chapter-42.html">
+    <link rel="prev" href="https://kofhk.com/chapter-40.html">
+    <link rel="next" href="https://kofhk.com/chapter-42.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,55 +56,26 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第41章 · 令牌合璧</h1>
+    <h1>第41章 · 未定標題</h1>
     <main>
+        <p>第四十一章 令牌合璧</p>
         <p>夜色如墨，葉塵盤膝坐在洞府中央的石床上，雙手捧著兩枚令牌。月光從石縫間滲入，在青灰色的地面上投下一片冷白的光暈。他低垂著眼簾，目光落在掌心那兩塊截然不同的物件上——一枚是溫潤的白玉佩，表面刻滿了細密如蟻的文字；另一枚則是漆黑的鐵牌，質地沉重，邊緣處還殘留著幾道不知名的血跡。</p>
         <p>莫問天離開後留下的那張紙條攤在石床一角，上面的古篆文字在月光下顯得格外詭異。葉塵已經反覆研讀了整整兩個時辰，那些彎曲如蛇的筆畫彷彿活過來一般在他眼前遊走，卻始終無法拼湊出完整的含義。</p>
         <p>「塵埃之印……萬古塵源……」他喃喃自語，指尖輕輕撫過白玉佩的表面。玉質溫潤，觸感如同母親的手——這個念頭讓他心中一緊，隨即又將注意力集中到令牌上。</p>
@@ -198,8 +86,8 @@
         <p>他咬緊牙關，將兩枚令牌緩緩壓合在一起。</p>
         <p>就在白玉佩與黑鐵牌接觸的瞬間，一道灰白色的光芒從縫隙中迸發而出。那光芒並不刺眼，反而柔和如月光，卻帶著一種令人肅然起敬的威嚴感。葉塵下意識地想要鬆手，但令牌之間的力量已經將它們牢牢鎖定在一起，無法分離。</p>
         <p>光芒逐漸擴散，籠罩了整個洞府。在灰白光的映照下，石壁上的紋路變得清晰可見——那些原本只是自然形成的裂縫和礦脈，此刻竟組合成了一幅完整的圖案。葉塵瞪大了眼睛，看著那幅圖案逐漸成形：一座巨大的山門矗立在群山環抱之中，山門上方懸掛著一塊匾額，上面刻著四個古篆大字——萬古塵源。</p>
-        <p>「這就是……」葉塵的呼吸變得急促起來。他仔細端詳著那幅圖像，發現山門的位置並非隨意繪製，而是與周圍的山川河流形成了某種特定的地理關係。圖中還標註了一些路線和標誌性的地標，從雲霄宗的外圍開始，一路向西北方向延伸，最終指向一片被群山環抱的峽谷。</p>
-        <p>「萬古塵源在雲霄宗西北方……大約三百里之外。」葉塵在心中默默記下了這個位置。他注意到圖中還有一些細小的符號標註在路線沿途，這些符號與白玉佩上的文字如出一轍，顯然也是某種古老的符文。</p>
+        <p>「這就是……」葉塵的呼吸變得急促起來。他仔細端詳著那幅圖像，發現山門的位置並非隨意繪製，而是與周圍的山川河流形成了某種特定的地理關係。圖中還標註了一些路線和標誌性的地標，從雲天宗的外圍開始，一路向西北方向延伸，最終指向一片被群山環抱的峽谷。</p>
+        <p>「萬古塵源在雲天宗西北方……大約三百里之外。」葉塵在心中默默記下了這個位置。他注意到圖中還有一些細小的符號標註在路線沿途，這些符號與白玉佩上的文字如出一轍，顯然也是某種古老的符文。</p>
         <p>灰白色的光芒逐漸收斂，最終凝聚成一枚完整的印章形狀——正是莫問天所說的「塵埃之印」。印章的表面光滑如鏡，正反兩面分別刻著不同的圖案：正面是一朵盛開的蓮花，花瓣層層疊疊，每一片花瓣上都嵌著一粒微小的灰白色光點；背面則是一個複雜的陣圖，中心是一個圓形符文，周圍環繞著八個小符文，排列成八卦的形狀。</p>
         <p>葉塵將印章翻來覆去地觀察了一番，發現當他將拇指按在蓮花圖案的中心時，印章內部會傳來一陣溫熱的能量流動。那股能量與他體內的灰色力量完美融合，彷彿找到了久別重逢的故人。</p>
         <p>「這枚印章……不僅僅是一把鑰匙。」葉塵心中閃過一個念頭。「它還是一個容器，儲存著某種強大的力量。」</p>
@@ -216,42 +104,11 @@
         <p>當這個念頭浮現時，葉塵忽然意識到自己已經不再是那個孤身一人的少年了。從遇見福伯、從與蘇清雪結下緣分、從踏上這條修行之路開始，他身邊的人越來越多，肩上的擔子也越來越重。</p>
         <p>「塵埃雖微，聚之成山。」葉塵閉上眼睛，嘴角浮現出一絲微笑。「或許這就是我這一世該走的路。」</p>
         <p>他盤膝坐下，開始調息運功。灰色力量在體內緩緩流動，與白玉佩和黑鐵牌中的能量產生了新的共鳴。一夜無話，只有遠處的山風聲伴隨著他的呼吸起伏。</p>
-
     </main>
-    <nav class="nav">
-        <a href="chapter-40.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-42.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-40.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-41/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-42.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

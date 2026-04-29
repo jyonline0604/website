@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第40章：暗中的窺視 - 萬古塵埃</title>
+    <title>第40章：未定標題 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-40.html">
-    <link rel="prev" href="chapter-39.html">
-    <link rel="next" href="#">
+    <link rel="prev" href="https://kofhk.com/chapter-39.html">
+    <link rel="next" href="https://kofhk.com/chapter-41.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,55 +56,26 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第40章 · 暗中的窺視</h1>
+    <h1>第40章 · 未定標題</h1>
     <main>
+        <p>第四十章 暗中的窺視</p>
         <p>報名大比後的第三天，葉塵像往常一樣來到了後山竹林進行晨練。清晨的空氣中瀰漫著淡淡的霧氣，翠竹在微風中輕輕搖曳，發出沙沙的響聲。他盤膝坐在空地中央，雙手結印，開始了每日的修煉。</p>
         <p>銀灰色的混合力場在他周身緩緩旋轉，灰色能量與白色靈氣在經脈中形成穩定的循環。經過半個月的密集訓練，他的流雲訣已經達到了相當純熟的境界，兩種力量的融合也更加自然流暢。聚元中期的修為穩固後，他開始嘗試更高階的技巧——將混合力場分為多個獨立的部分，分別執行不同的任務。</p>
         <p>就在他沉浸於修煉之中時，一陣異樣的感覺突然襲來。</p>
@@ -212,7 +100,7 @@
         <p>葉塵的思緒飛速運轉。他想起福伯曾經說過的話：「這枚令牌不簡單，它和你頸間的玉佩一樣，都與你父親的失蹤有關。」當時他只當是老人為了安慰他而說的話，但現在看來，事情遠比他想象的更加複雜。</p>
         <p>「我父親……」葉塵的聲音有些顫抖，「他还活著嗎？」</p>
         <p>老人沉默了片刻：「這個問題的答案，只有你自己去尋找才能知道。但我可以告訴你一件事——你父親並沒有失蹤，他是為了保護這枚玉佩的秘密而主動消失的。」</p>
-        <p>他站起身來，拍了拍身上的灰塵：「我名叫莫問天，曾經是雲霄宗的一位隱世長老。三十年前，我和你父親一起行走於萬古戰場之間，學習塵埃之道的奧義。後來……發生了很多事情，我們分道揚鑣。你父親選擇了隱藏身份、保護玉佩的秘密，而我則繼續尋找通往萬古塵源的線索。」</p>
+        <p>他站起身來，拍了拍身上的灰塵：「我名叫莫問天，曾經是雲天宗的一位隱世長老。三十年前，我和你父親一起行走於萬古戰場之間，學習塵埃之道的奧義。後來……發生了很多事情，我們分道揚鑣。你父親選擇了隱藏身份、保護玉佩的秘密，而我則繼續尋找通往萬古塵源的線索。」</p>
         <p>莫問天的目光變得深邃：「現在，時機已經成熟了。你的塵埃之力正在覺醒，玉佩中的記憶也在逐漸解封。當兩者完全融合的那一刻，你就能開啟通往萬古塵源的通道——那裡有你父親留下的答案，也有你第一世未能完成的使命。」</p>
         <p>葉塵握緊雙拳，心中湧起一股複雜的情緒。他一直以為自己的灰色力量是某種神秘的遺傳，但現在看來，這背後隱藏著一個更加龐大的秘密——關乎他的父親、他的第一世、以及塵埃之道的真正起源。</p>
         <p>「你為什麼告訴我這些？」他問道。</p>
@@ -225,42 +113,11 @@
         <p>竹林深處，一陣微風吹過，竹葉沙沙作響。莫問天的身影已經消失無蹤，但他留下的線索卻為葉塵指明了一條全新的道路——一條通往萬古塵源、通往真相的道路。</p>
         <p>他轉身離開空地，腳步堅定而有力。三個月後的外門大比將是他證明實力的舞台，但在那之後，還有更加重要的使命在等待著他。</p>
         <p>塵埃之道，才剛剛開始。</p>
-
     </main>
-    <nav class="nav">
-        <a href="chapter-39.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="#" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-39.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-40/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-41.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

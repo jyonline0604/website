@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第26章：深淵迷蹤 - 萬古塵埃</title>
+    <title>第26章：未定標題 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-26.html">
-    <link rel="prev" href="chapter-25.html">
-    <link rel="next" href="chapter-27.html">
+    <link rel="prev" href="https://kofhk.com/chapter-25.html">
+    <link rel="next" href="https://kofhk.com/chapter-27.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,55 +56,26 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第26章 · 深淵迷蹤</h1>
+    <h1>第26章 · 未定標題</h1>
     <main>
+        <p>第二十六章 深淵迷蹤</p>
         <p>地下秘境的通道在王虎事件之後變得更加危險。葉塵跟隨隊伍深入了大約半個時辰，空氣中的靈氣越來越濃稠——那種感覺就像是在水中行走一樣，每一步都需要消耗更多的體力。</p>
         <p>「前面就是核心區域了。」陳默的聲音從前方傳來，帶著一絲興奮和緊張交織的語調，「根據宗門提供的地圖，這裡應該有一顆『凝元草』——那是聚元境修士最需要的靈藥之一。」</p>
         <p>葉塵點點頭，跟在其他隊員的身後繼續前行。他能感覺到空氣中的灰塵正在變得更加活躍——它們像是一群被驚擾的小鳥一樣，在通道中飛舞、旋轉、聚集。那種感覺讓他既興奮又不安：他不知道這種變化是否跟自己有關，更不知道它會帶來什麼樣的影響。</p>
@@ -219,42 +107,43 @@
         <p>整個地下空間再次安靜了一瞬——緊接著，所有隊員都向葉塵投來了敬畏的目光。</p>
         <p>「你……」陳默走上前來，聲音中帶著一絲難以置信的語調，「你到底隱藏了多少秘密？」</p>
         <p>葉塵沒有回答——他只是低頭看著自己的手，手指上的灰色紋路在紫光的映照下顯得更加清晰了。他心中暗自盤算：剛才那一戰消耗了他太多的力量，如果再遇到同樣強度的敵人，他可能無法再次支撐。必須找到一個方法來提升對這種力量的控制——否則，它終將成為他的負擔。</p>
-
+        <p>第二十六章 深淵迷蹤</p>
+        <p>地下秘境的通道在王虎事件之後變得更加危險。葉塵跟隨隊伍深入了大約半個時辰，空氣中的靈氣越來越濃稠——那種感覺就像是在水中行走一樣，每一步都需要消耗更多的體力。</p>
+        <p>「前面就是核心區域了。」陳默的聲音從前方傳來，帶著一絲興奮和緊張交織的語調，「根據宗門提供的地圖，這裡應該有一顆『凝元草』——那是聚元境修士最需要的靈藥之一。」</p>
+        <p>葉塵點點頭，跟在其他隊員的身後繼續前行。他能感覺到空氣中的灰塵正在變得更加活躍——它們像是一群被驚擾的小鳥一樣，在通道中飛舞、旋轉、聚集。那種感覺讓他既興奮又不安：他不知道這種變化是否跟自己有關，更不知道它會帶來什麼樣的影響。</p>
+        <p>就在他們即將進入核心區域的時候，一陣低沉的吼叫聲從前方的黑暗中傳來——那聲音比剛才巨狼的吼叫更加深沉、更加震耳欲聾，彷彿連岩壁都在隨著那種聲音顫抖。</p>
+        <p>「所有人準備戰鬥！」陳默大聲喊道，同時舉起手中的劍擺出防禦姿勢。</p>
+        <p>葉塵站在隊伍的中間位置，低頭看著自己的腳尖。他能感覺到空氣中的灰塵正在劇烈擾動——它們像被龍捲風捲起一樣，向黑暗深處聚集。那種流動方向跟他剛才在狹窄通道中擊敗王虎時感覺到的完全一致：靈氣和灰塵正在被某種強大的力量牽引著。</p>
+        <p>「吼！」</p>
+        <p>一聲更加響亮的吼叫從黑暗中傳來——緊接著，一個巨大的黑影從岩壁的裂縫中衝了出來。那是一隻體型約莫三丈長的靈獸——渾身覆蓋著黑色的鱗片，雙眼散發著紫色的光芒，嘴裡露出鋒利的獠牙。它的四肢強壯有力，每一步都在地面上留下深深的爪印。尾巴末端還帶著一簇發光的紫色火焰。</p>
+        <p>「紫焰龍蜥！」陳默的聲音中帶著一絲驚恐，「高階靈獸——它的攻擊力相當於感氣六層以上的修士！而且它還會噴射紫色的火焰——那種火焰能夠灼燒經脈，讓修士在短時間內失去戰鬥能力！」</p>
+        <p>葉塵的心猛地一跳。他從來沒有見過這麼強大的靈獸——在葉家的後山，他最多隻看過一些小型的靈蟲，從未有過這種體型的生物。但同時他也知道，這正是他考驗自己的機會——如果他能夠保護隊友不被這隻紫焰龍蜥傷害，他就證明了自己已經具備了在修仙界生存的能力。</p>
+        <p>「所有人後退！」陳默大聲喊道，「葉塵，你站在最後面——你的靈氣波動太弱了，不適合正面作戰。」</p>
+        <p>這句話像一根針一樣刺進葉塵的心裡——但他沒有反駁，因為他知道陳默說的是對的。以他現在的實力，確實不適合與一隻高階靈獸正面對抗。</p>
+        <p>但當紫焰龍蜥衝向隊伍的時候，葉塵感覺到空氣中的灰塵發生了劇烈的變化——它們像被某種無形的力量牽引著，向紫焰龍蜥的方向聚集。而葉塵自己的身體，則自然地順應了這種流動——他的身體微微側移半步，恰好避開了紫焰龍蜥的第一次撲擊。</p>
+        <p>「你……」陳默愣了一下。他剛才明明已經打中了目標的位置，但葉塵卻像一片落葉一樣輕巧地閃了開來。</p>
+        <p>還沒等他反應過來，紫焰龍蜥的尾巴猛地甩出——末端的那簇紫色火焰直撲向隊伍中一個體型較小的外門弟子。那個弟子嚇得呆立原地，根本無法躲閃。</p>
+        <p>葉塵沒有猶豫——他將那股灰色的力量凝聚在雙手上，然後猛地向前推出。他的動作依然緩慢——就像是在空氣中游泳一樣——但那一推的力量卻遠遠超出了所有人的預期。</p>
+        <p>灰色的光芒從葉塵的雙手之間爆發出來——它像是一道無形的屏障一樣，擋在了紫色火焰和那個小弟子之間。紫色的火焰撞擊在灰色屏障上，發出一陣刺耳的嘶嘶聲——然後不可阻擋地被吞噬、消散了。</p>
+        <p>整個地下空間安靜了一瞬，然後爆發出一陣嘩然。</p>
+        <p>「剛才那是什麼招式？怎麼看起來那麼奇怪？」</p>
+        <p>「葉塵什麼時候變得這麼強了？」</p>
+        <p>「不對，他的靈氣波動明明還是零啊！」</p>
+        <p>陳默走上前來，仔細觀察了那道灰色屏障的殘留——它像是一層薄薄的灰霧一樣，在空氣中緩緩消散。他轉頭看向葉塵，目光中帶著一絲敬畏和疑惑：「你……你是怎麼做到的？」</p>
+        <p>葉塵沒有回答——他只是低頭看著自己的手，手指上的灰色紋路在紫光的映照下顯得更加清晰了。他能感覺到體內的那種力量正在緩慢消散——就像是一張拉滿的弓終於釋放了箭矢。但這次的情況跟上次不同——剛才他保護的不僅僅是自己，而是整個隊伍中的一個人。那種感覺讓他內心深處產生了某種前所未有的觸動。</p>
+        <p>紫焰龍蜥被灰色屏障擋住之後，發出一聲憤怒的吼叫——它的身體開始燃燒起紫色的火焰，整隻靈獸變成了一團紫色的火球，然後向葉塵的方向衝了過來。</p>
+        <p>「所有人後退！」陳默大聲喊道，同時舉起手中的劍擺出防禦姿勢。</p>
+        <p>但這次葉塵沒有退讓——他站在原地，雙手再次凝聚灰色的力量。空氣中的灰塵像被某種無形的力量牽引著，向他雙手的方向聚集——它們形成了一道又一道灰色的旋渦，在葉塵的周圍旋轉、翻湧。</p>
+        <p>紫焰龍蜥衝到葉塵面前的時候，葉塵猛地將雙手向前推出——那道由灰色旋渦組成的屏障再次出現，而且比剛才更加強大、更加堅固。紫色的火焰撞擊在屏障上，發出一陣震耳欲聾的爆炸聲——然後不可阻擋地被吞噬、消散了。</p>
+        <p>紫焰龍蜥的身體開始變得虛弱——它感覺到自己的體內有一股奇怪的力量在翻湧，像是一粒粒細小的沙子在經脈中流動，讓它的靈氣運轉出現了嚴重的紊亂。最終，它發出一聲痛苦的嘶吼，然後重重地摔在地面上，再也無法站起來了。</p>
+        <p>整個地下空間再次安靜了一瞬——緊接著，所有隊員都向葉塵投來了敬畏的目光。</p>
+        <p>「你……」陳默走上前來，聲音中帶著一絲難以置信的語調，「你到底隱藏了多少秘密？」</p>
+        <p>葉塵沒有回答——他只是低頭看著自己的手，手指上的灰色紋路在紫光的映照下顯得更加清晰了。他心中暗自盤算：剛才那一戰消耗了他太多的力量，如果再遇到同樣強度的敵人，他可能無法再次支撐。必須找到一個方法來提升對這種力量的控制——否則，它終將成為他的負擔。</p>
     </main>
-    <nav class="nav">
-        <a href="chapter-25.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-27.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-25.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-26/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-27.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

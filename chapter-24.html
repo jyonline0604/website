@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第24章：靈獸襲擊 - 萬古塵埃</title>
+    <title>第24章：未定標題 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-24.html">
-    <link rel="prev" href="chapter-23.html">
-    <link rel="next" href="chapter-25.html">
+    <link rel="prev" href="https://kofhk.com/chapter-23.html">
+    <link rel="next" href="https://kofhk.com/chapter-25.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,55 +56,26 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第24章 · 靈獸襲擊</h1>
+    <h1>第24章 · 未定標題</h1>
     <main>
+        <p>第二十四章 靈獸襲擊</p>
         <p>葉塵從冥想中睜開雙眼的瞬間，洞穴中的空氣彷彿凝固了一瞬。指尖那縷灰色光柱悄然消散，融入周圍的灰塵之中。他站起身來，拍了拍膝蓋上的灰塵，準備繼續探索這個神秘的地下世界。</p>
         <p>然而，就在他邁出第一步的時候，腳下的地面突然劇烈震動起來。葉塵本能地向後躍開，只見前方的洞穴壁上裂開了一道巨大的縫隙，從中湧出了一股令人窒息的腥臭味。那味道如同腐爛的肉塊混合著硫磺的刺鼻氣味，讓葉塵幾乎窒息。</p>
         <p>「吼——！」一聲震耳欲聾的咆哮從縫隙中傳來，緊接著，一頭體型龐大的靈獸從黑暗中衝了出來。那是一頭形似巨狼的生物，全身覆蓋著青黑色的鱗片，每一片鱗片的邊緣都閃爍著幽藍色的光芒。它的雙眼如同兩盞燃燒的火焰，死死地盯住了葉塵。</p>
@@ -216,42 +104,40 @@
         <p>蘇清雪看著他，眼中閃過一絲讚賞：「你變了。剛才那一戰，你的實力至少提升了十倍不止。」她的聲音中帶著一絲疑惑——她無法理解葉塵是如何在短短時間內發生如此巨大的變化。</p>
         <p>葉塵沒有解釋。他只是輕輕摸了摸胸前的玉佩，感受著那股熟悉的溫熱感。他知道，這一切才剛剛開始。塵埃之淵的秘密、第一世的記憶、還有那枚玉佩所隱藏的真相——所有的一切都在等待他去揭開。</p>
         <p>洞穴中的灰塵在微光中緩緩飄動，彷彿在為這場未知的旅程奏響序曲。葉塵深吸一口氣，朝著洞穴深處邁出了第一步。他的腳步堅定而從容，因為他知道，無論前方有多少危險，他都已不再是那個任人欺凌的廢物少年。</p>
-
+        <p>第二十四章 靈獸襲擊</p>
+        <p>葉塵從冥想中睜開雙眼的瞬間，洞穴中的空氣彷彿凝固了一瞬。指尖那縷灰色光柱悄然消散，融入周圍的灰塵之中。他站起身來，拍了拍膝蓋上的灰塵，準備繼續探索這個神秘的地下世界。</p>
+        <p>然而，就在他邁出第一步的時候，腳下的地面突然劇烈震動起來。葉塵本能地向後躍開，只見前方的洞穴壁上裂開了一道巨大的縫隙，從中湧出了一股令人窒息的腥臭味。那味道如同腐爛的肉塊混合著硫磺的刺鼻氣味，讓葉塵幾乎窒息。</p>
+        <p>「吼——！」一聲震耳欲聾的咆哮從縫隙中傳來，緊接著，一頭體型龐大的靈獸從黑暗中衝了出來。那是一頭形似巨狼的生物，全身覆蓋著青黑色的鱗片，每一片鱗片的邊緣都閃爍著幽藍色的光芒。它的雙眼如同兩盞燃燒的火焰，死死地盯住了葉塵。</p>
+        <p>更令葉塵感到不安的是，這頭靈獸的身後還跟著三頭體型稍小的同類。它們從不同的方向包抄過來，將葉塵圍在了中間。葉塵的心臟猛地收縮了一下——他從未見過這種靈獸，但身體中那股剛剛覺醒的《塵埃訣》力量卻在瘋狂地警示他：這些靈獸極其危險，絕對不能硬碰硬。</p>
+        <p>四頭巨狼同時發出了低沉的咆哮聲，那聲音在洞穴中迴盪，形成了一種令人毛骨悚然的共鳴。葉塵能感覺到它們的眼神中沒有一絲感情——只有純粹的殺意和捕食者的冷酷。</p>
+        <p>最前方的一頭巨狼沒有給葉塵任何反應的時間，它四肢猛蹬地面，如同一道黑色的閃電般朝葉塵撲來。那張佈滿鋒利獠牙的大嘴距離葉塵的咽喉只有不到三尺的距離。</p>
+        <p>在千鈞一髮之際，葉塵的身體比思維更快地做出了反應。他沒有選擇躲避或格擋——因為以他目前的修為，任何躲避都來不及。相反，他將雙手按在地面上，催動《塵埃訣》的力量。瞬間，周圍所有的灰塵粒子都開始瘋狂地湧向他掌心的位置，凝聚成一道灰色的屏障。</p>
+        <p>巨狼的利爪狠狠抓在灰色屏障上，發出一陣刺耳的金屬摩擦聲。屏障表面出現了數道裂紋，但並沒有破裂。葉塵感覺一股巨大的力量從掌心傳來，他的雙腳在地面上滑出了兩道深深的溝壑，但他死死咬緊牙關，沒有退讓半步。</p>
+        <p>就在這時，另外三頭巨狼也同時發動了攻擊。它們從不同的方向撲向葉塵，利爪和獠牙在灰塵中劃出一道道殘影。葉塵心中一沉——如果同時抵擋四頭靈獸的攻擊，他的《塵埃訣》力量根本無法支撐。</p>
+        <p>「這頭靈獸的鱗片之間有縫隙！」葉塵在腦海中閃過這個念頭。他注意到巨狼每一次攻擊時，鱗片的接合處都會短暫地暴露出來——那是它防禦最薄弱的地方。而且，這些靈獸雖然數量眾多，但它們之間的配合並不默契，每一頭的攻擊都帶有明顯的個人風格。</p>
+        <p>葉塵突然鬆開了按在地面上的雙手，向後躍開數丈遠。這個動作讓所有四頭巨狼同時撲了個空，它們的利爪抓在了堅硬的地面上，濺起了一陣灰塵。就在這短暫的空檔中，葉塵將雙掌對合，催動《塵埃訣》中剛剛領悟的第一個招式——「塵聚成刃」。</p>
+        <p>空氣中的灰塵瞬間凝聚成一把半透明的灰色長劍，懸浮在葉塵的掌心上方。他手腕一抖，長劍如同一道灰色的閃電般朝最前方那頭巨狼飛去，精準地刺入了它左肩鱗片之間的縫隙之中。</p>
+        <p>「嗷——！」巨狼發出一聲淒厲的慘叫，身體劇烈抽搐了一下。灰色長劍在它的體內爆發出一陣強烈的能量波動，將那些鱗片之間的縫隙徹底撕裂。鮮血從傷口處噴湧而出，染紅了周圍的地面。</p>
+        <p>另外三頭巨狼見同伴受傷，立刻停止了攻擊，退後數丈遠，低聲咆哮著。它們的眼神中第一次出現了恐懼——這是一種捕食者面對更強大獵物時的本能反應。</p>
+        <p>葉塵沒有給它們喘息的机会。他再次催動《塵埃訣》，空氣中的灰塵在他身前凝聚成數十道細小的灰色絲線。這些絲線如同活物一般朝巨狼飛去，纏繞住其中兩頭靈獸的四肢和尾巴，將它們牢牢地固定在地面上。</p>
+        <p>然而，葉塵很快發現了一個問題——《塵埃訣》雖然強大，但以他目前感氣初層的修為，無法長時間維持這種強力的攻擊。他的經脈中開始傳來陣陣刺痛，體內的力量正在快速消耗。如果繼續下去，他很可能會因為靈氣枯竭而陷入被動。</p>
+        <p>就在葉塵準備發動最後一擊的時候，洞穴深處突然傳來了另一個聲音：「住手！」</p>
+        <p>葉塵猛地回頭，看見蘇清雪從洞穴的另一端跑了過來。她的身後跟著王虎、劉芳、陳默和林小白——第三組的其他成員。顯然，他們也經歷了墜入深淵的過程，並且一路追尋著葉塵的痕跡來到了這裡。</p>
+        <p>「葉塵！這頭靈獸是塵埃之淵的守護者，殺了它會觸發整個洞穴的防禦機制！」蘇清雪大聲喊道，她的聲音中帶著一絲焦急。「我剛才在附近探路時發現了一些古老的刻文，上面記載著這些靈獸的習性。」</p>
+        <p>葉塵愣了一下，隨即鬆開了對灰色絲線的控制。兩頭被纏住的巨狼趁機掙脫束縛，發出不甘的低吼聲。而受傷的那頭巨狼則拖著傷腿，與其他三頭一起鑽回了洞穴縫隙之中。那道裂縫在靈獸們進入後緩緩合攏，最終恢復了平靜。</p>
+        <p>王虎走到葉塵面前，臉上帶著一絲複雜的表情：「你剛才用的那是什麼功法？我從未見過這種力量。」他的聲音中既有驚訝也有嫉妒——作為外門中自詡天才的弟子，他無法接受一個曾經被他欺負的人突然展現出如此強大的實力。</p>
+        <p>葉塵看了他一眼，沒有回答。他知道，現在不是解釋的時候。他轉向蘇清雪：「你說這頭靈獸是守護者？那它守護的是什麼？」</p>
+        <p>蘇清雪的臉色變得凝重起來：「我不確定。但我剛才在追尋你的痕跡時，發現了這個。」她從懷中取出一塊黑色的石板，石板上刻滿了與光門上相同的古老符文。「這些符文我從未見過，但其中有一個字我能辨認——那是『源』字。」</p>
+        <p>葉塵接過石板，仔細端詳著上面的符文。他的目光突然凝固——在符文的深處，他看到了一條通往更深處的通道圖示。那條通道的盡頭，標註著那個古老的「源」字。而在那個字的周圍，還有一圈細小的文字，葉塵勉強能辨認出其中幾個：「萬物之源」「塵埃歸處」。</p>
+        <p>「看來，我們還有很長的路要走。」葉塵將石板遞还给蘇清雪，低聲說道。他的心中湧起了一股難以抑制的興奮——這塊石板證明了塵埃之淵中確實隱藏著某個重要的秘密，而那個「源」字，很可能就是通往真相的關鍵。</p>
+        <p>蘇清雪看著他，眼中閃過一絲讚賞：「你變了。剛才那一戰，你的實力至少提升了十倍不止。」她的聲音中帶著一絲疑惑——她無法理解葉塵是如何在短短時間內發生如此巨大的變化。</p>
+        <p>葉塵沒有解釋。他只是輕輕摸了摸胸前的玉佩，感受著那股熟悉的溫熱感。他知道，這一切才剛剛開始。塵埃之淵的秘密、第一世的記憶、還有那枚玉佩所隱藏的真相——所有的一切都在等待他去揭開。</p>
+        <p>洞穴中的灰塵在微光中緩緩飄動，彷彿在為這場未知的旅程奏響序曲。葉塵深吸一口氣，朝著洞穴深處邁出了第一步。他的腳步堅定而從容，因為他知道，無論前方有多少危險，他都已不再是那個任人欺凌的廢物少年。</p>
     </main>
-    <nav class="nav">
-        <a href="chapter-23.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-25.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-23.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-24/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-25.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

@@ -139,6 +139,20 @@
             background: var(--accent);
             color: white;
         }
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        }
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -221,10 +235,10 @@
         <p>逆轉封印陣法的拆解仍在繼續，但地脈中的能量洩漏速度正在加快。葉塵能感覺到每一道被瓦解的幾何連線都在向地下釋放出一股紫色的壓力波——那種壓力波如果不及時導引，就會在天穹城的地基中累積成不可控的力量。</p>
         <p>他必須做出抉擇了。</p>
     </main>
-    <nav class="nav">
-        <a href="https://kofhk.com/chapter-297.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/chapter-299.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-297.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-298/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-299.html">下一章 →</a>
     </nav>
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
     <script>

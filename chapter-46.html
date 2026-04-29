@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第46章：決賽前夜 - 萬古塵埃</title>
+    <title>第46章：未定標題 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-46.html">
-    <link rel="prev" href="chapter-45.html">
-    <link rel="next" href="chapter-47.html">
+    <link rel="prev" href="https://kofhk.com/chapter-45.html">
+    <link rel="next" href="https://kofhk.com/chapter-47.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,56 +56,27 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第46章 · 決賽前夜</h1>
+    <h1>第46章 · 未定標題</h1>
     <main>
-        <p>深夜的雲霄宗安靜得如同沉睡的巨獸。月光透過窗櫺灑在葉塵的洞府地面上，形成了一條銀白色的光帶。他盤膝坐在石床上，雙手放在膝蓋上，閉目調息——但今晚他的意識並沒有完全沉入修煉的狀態，而是漂浮在一種半夢半醒之間。</p>
+        <p>第四十六章 決賽前夜</p>
+        <p>深夜的雲天宗安靜得如同沉睡的巨獸。月光透過窗櫺灑在葉塵的洞府地面上，形成了一條銀白色的光帶。他盤膝坐在石床上，雙手放在膝蓋上，閉目調息——但今晚他的意識並沒有完全沉入修煉的狀態，而是漂浮在一種半夢半醒之間。</p>
         <p>明天的決賽即將到來。對手是王虎，一個已經使用邪術將修為提升到聚元高層的危险人物。葉塵知道這場比賽不會輕鬆——王虎的實力遠超他原本的水平，而且那種暗紅色的能量波動讓他感到一陣不適，彷彿有一股邪惡的力量在侵蝕著他的感知。</p>
         <p>但他並不害怕。經過這幾輪大比的磨礪，他已經找到了一種與自身力量和諧共處的方式——不再是試圖掌控一切，而是讓灰色力量和雲氣自由流動、互相呼應。那種「協調者」的狀態正在逐漸變得更加自然、更加穩定。</p>
         <p>然而，在平靜的表面之下，葉塵的心中仍然隱藏著一個巨大的疑問：他的第一世記憶究竟來自哪裡？那個灰袍老者又是誰？為什麼那些記憶會在他面對特定類型的對手時自動浮現？這些問題像是一團迷霧，籠罩在他的思緒之上，讓他無法完全安心。</p>
@@ -204,7 +92,7 @@
         <p>他走上前來，將雙手按在地面上。灰色的塵土從裂縫中湧出，在他們腳下形成了一個巨大的漩渦——那個漩渦不斷旋轉、擴散，最終形成了一幅幅畫面：一座古老的修煉洞府、無數失傳的功法典籍、一件件散發著強大能量波動的寶物……</p>
         <p>「萬古塵源就是這樣的地方。」老者說道。「它不僅僅是一個修煉之地——它是九世輪迴的起點和終點。在那裡，你將找到關於你父母的全部線索，也會發現自己真正的身世。」</p>
         <p>葉塵的心跳加速了：「我的父母……他們與萬古塵源有什麼關係？」</p>
-        <p>老者的表情變得嚴肅起來：「你的父親曾經是雲霄宗的一位長老——但他不是普通的長老。他是上一代塵埃之印的持有者，也是萬古塵源的守護者。你的母親則來自一個更加古老的家族——那個家族的成員天生就擁有與塵埃共鳴的能力。」</p>
+        <p>老者的表情變得嚴肅起來：「你的父親曾經是雲天宗的一位長老——但他不是普通的長老。他是上一代塵埃之印的持有者，也是萬古塵源的守護者。你的母親則來自一個更加古老的家族——那個家族的成員天生就擁有與塵埃共鳴的能力。」</p>
         <p>這句話如同一道驚雷在葉塵的腦海中炸響。他一直以為自己只是一個普通的孤兒，被福伯撫養長大；但現在他才知道，自己的身世遠比想象中複雜得多——他的父母不僅是強大的修士，更是某種古老傳統的繼承者。</p>
         <p>「那枚玉佩……」葉塵的聲音有些顫抖。「它不只是儲存記憶的工具——它是塵埃之印的一部分，也是我父親留給我的遺物。」</p>
         <p>老者點點頭：「正是如此。但你要記住一件事——萬古塵源雖然充滿了寶物和秘密，但它也蘊含著巨大的危險。那些失傳的功法固然強大，但如果使用不當，它們可能會反噬使用者——就像王虎所使用的邪術一樣。」</p>
@@ -217,43 +105,12 @@
         <p>當他睜開眼睛時，發現自己仍然坐在石床上，月光依舊灑在地面上。洞府外的風聲輕輕吹過，帶來一陣涼意。葉塵站起身來，走到窗前，望著外面漆黑的夜空。</p>
         <p>明天的決賽即將到來——但他已經不再感到緊張或不安。因為他知道無論勝負如何，這都將是他修行之路上一個重要的轉折點。而在那之後，還有一條更加漫長的道路等待著他去探索：萬古塵源、塵埃之印、以及關於自己身世的真相。</p>
         <p>「塵埃雖微，聚之成山。」葉塵輕聲說道。「無論前方有多少艱險，我都會走下去。」</p>
-        <p>遠處的鐘聲響起，悠長而沉穩。那是雲霄宗的晨鐘——決賽的日子到了。</p>
-
+        <p>遠處的鐘聲響起，悠長而沉穩。那是雲天宗的晨鐘——決賽的日子到了。</p>
     </main>
-    <nav class="nav">
-        <a href="chapter-45.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-47.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-45.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-46/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-47.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第101章 · 暗淵閣總部探路 - 萬古塵埃</title>
+    <title>第101章：暗淵閣總部探路 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-101.html">
-    <link rel="prev" href="chapter-100.html">
-    <link rel="next" href="chapter-102.html">
+    <link rel="prev" href="https://kofhk.com/chapter-100.html">
+    <link rel="next" href="https://kofhk.com/chapter-102.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,8 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -74,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -138,121 +56,80 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
     <h1>第101章 · 暗淵閣總部探路</h1>
     <main>
-                <p>夜色如墨，萬里無雲。</p>
+        <p>夜色如墨，萬里無雲。</p>
         <p>葉塵站在懸崖邊緣，望著遠方那片被黑暗籠罩的山脈。那裡就是暗淵閣的總部位置——一座隱藏在群山深處的龐大建築群，四周環繞著濃厚的陰煞之氣，連天空都被染成了灰黑色。</p>
         <p>「這就是暗淵閣總部？」趙明遠站在葉塵身後，聲音中帶著一絲緊張。</p>
         <p>蘇清雪輕輕拍了拍他的肩膀：「別怕，我們已經集齊了兩把鑰匙，只要再拿到第三把，就能打開萬古塵源的第九層。」</p>
         <p>葉塵沒有回頭，他的雙眼閉著，但體內的第一世記憶正在運轉。灰色的塵埃之力從他全身毛孔中滲出，如同無數細小的觸角向四面八方延伸。這是他在天機閣修煉《塵埃之印》後獲得的新能力——塵埃感知。</p>
         <p>透過塵埃的流動，葉塵能夠「看見」周圍的一切。空氣中的灰塵、土壤中的微粒、甚至遠處建築中散逸的能量波動，都化為他腦海中的一幅立體地圖。</p>
-        「暗淵閣總部的防禦比我想象的還要嚴密。」葉塵緩緩開口，灰色眼眸中閃爍著微光。「四周有七座陰煞陣眼，每隔三個時辰會輪流啟動。大門處有三名聚元高期的守衛，內部還有至少十名散修佈置的警戒陣法。」
+        <p>「暗淵閣總部的防禦比我想象的還要嚴密。」葉塵緩緩開口，灰色眼眸中閃爍著微光。「四周有七座陰煞陣眼，每隔三個時辰會輪流啟動。大門處有三名聚元高期的守衛，內部還有至少十名散修佈置的警戒陣法。」</p>
         <p>趙明遠倒吸一口涼氣：「這麼多人？我們只有三個人啊！」</p>
         <p>蘇清雪卻顯得鎮定許多：「暗淵閣是靈天界三大勢力之一，總部有這麼多守衛很正常。關鍵是要找到第三把鑰匙的位置。」</p>
         <p>葉塵的塵埃感知繼續延伸，越過外圍防禦，深入建築群內部。他看到了主殿、藏經閣、煉丹房……以及最深處的一座地下宮殿。那裡散發著一股詭異的能量波動，與萬古塵源中感受到的氣息極為相似。</p>
-        「第三把鑰匙就在地下宮殿。」葉塵睜開眼睛，灰色瞳孔中閃過一絲精光。「但那裡有強大的封印陣法，需要兩把鑰匙同時啟動才能打開。」
+        <p>「第三把鑰匙就在地下宮殿。」葉塵睜開眼睛，灰色瞳孔中閃過一絲精光。「但那裡有強大的封印陣法，需要兩把鑰匙同時啟動才能打開。」</p>
         <p>趙明遠皺眉道：「也就是說，我們必須先拿到第二把鑰匙，才能進入地下宮殿？」</p>
         <p>葉塵搖搖頭：「不，我們已經有了兩把。第一把在雲夢世家遺址，第二把在禁地古老陣法中。只要將它們同時放入地下宮殿的凹槽，封印就會解除。」</p>
         <p>蘇清雪眼中閃過一絲擔憂：「可是暗淵閣的守衛……」</p>
-        「所以我們需要一個計劃。」葉塵轉身面對兩人，表情嚴肅。「我建議分兩組行動——我和趙明遠從正面吸引守衛注意力，你利用雲夢世家的身份進入地下宮殿取鑰匙。」
+        <p>「所以我們需要一個計劃。」葉塵轉身面對兩人，表情嚴肅。「我建議分兩組行動——我和趙明遠從正面吸引守衛注意力，你利用雲夢世家的身份進入地下宮殿取鑰匙。」</p>
         <p>趙明遠立刻反對：「不行！太危險了！」</p>
         <p>蘇清雪卻沉思片刻後點頭：「這個計劃可行。但我必須跟葉塵一起從正面突破——暗淵閣中有很多我父親留下的痕跡，我想親手毀掉他們。」</p>
         <p>葉塵看著她堅定的眼神，心中湧起一股複雜的情緒。他想起第四世記憶中那個為了保護蒼生而戰死的將軍，想起自己曾經許下的承諾——要讓所有被黑暗吞噬的生命重新見到天日。</p>
-        「好。」葉塵點頭同意。「但我們還需要更多準備。特別是時空凝膠，它能讓我們在穿越時間之力時不受影響。」
+        <p>「好。」葉塵點頭同意。「但我們還需要更多準備。特別是時空凝膠，它能讓我們在穿越時間之力時不受影響。」</p>
         <p>趙明遠從懷中掏出一個小瓶：「我已經製作了三份時空凝膠，足夠我們三人使用。」</p>
         <p>葉塵接過瓶子，打開蓋子聞了聞。濃郁的靈藥香氣撲鼻而來，這是他用天機閣中的珍稀材料精心煉製的成果。</p>
-        「很好。」他將瓶子收好，目光再次投向遠方的暗淵閣總部。「明天晚上，月蝕之時，我們行動。」
+        <p>「很好。」他將瓶子收好，目光再次投向遠方的暗淵閣總部。「明天晚上，月蝕之時，我們行動。」</p>
         <p>夜風吹過懸崖，帶來陣陣陰寒之氣。葉塵閉上眼睛，讓塵埃之力在體內緩緩運轉。他能感覺到第一世記憶中的那股灰色力量正在與自己的經脈融合，越來越強大。</p>
         <p>這就是散修的修煉方式——不依賴宗門資源，不依靠天賦異稟，而是透過對世界本質的理解，將最微小的塵埃化為最強大的武器。</p>
-        「葉塵。」蘇清雪突然開口。「你覺得……我們能成功嗎？」
+        <p>「葉塵。」蘇清雪突然開口。「你覺得……我們能成功嗎？」</p>
         <p>葉塵沉默片刻，然後微微一笑：「我不知道。但我相信，只要我們在一起，就沒有什麼是不可能的。」</p>
-        <p>趙明遠看著兩人，無奈地搖搖頭：「你們兩個總是這麼浪漫。不過說真的——我有點害怕。」</p>
+        <p>趙明遠看著兩人，無奈地搖搖頭：「你們兩個總是這麼浪漫。不過說真的——我有点害怕。」</p>
         <p>蘇清雪忍不住笑了出來：「別怕，有我們在呢。」</p>
         <p>葉塵看著他們，心中湧起一股暖流。這就是他戰鬥的理由——不是為了力量，不是為了榮耀，而是為了保護這些珍貴的人。</p>
-        <p>月光灑在懸崖上，將三人的身影拉得細長。遠方的暗淵閣總部在夜色中若隱若現，如同蟄伏的野獸等待著獵物自投羅網。</p>
+        <p>月光灑在懸崖上，將三人的身影拉得細長。遠方的暗淵閣總部在夜色中若隱若現，如同蛻伏的野獸等待著獵物自投羅網。</p>
         <p>明天晚上，一切都會改變。</p>
+        <p>葉塵閉上眼睛，讓思緒飄向遠方。他想起了第一世記憶中的那個自己——一個沒有宗門資源、沒有天賦異稟的散修。那個自己曾經站在同樣的懸崖上，望著同樣的黑暗，心中充滿了絕望和不甘。</p>
+        <p>「你還在猶豫什麼？」葉塵在心中問道。「你已經走了這麼遠的路，難道要在最後關頭放棄嗎？」</p>
+        <p>灰色眼眸中閃過一絲堅定的光芒。他知道，無論前方有多少危險，他都不能退縮。因為他肩負的不僅僅是自己的命運，還有所有被黑暗吞噬的生命所寄予的希望。</p>
+        <p>蘇清雪走到葉塵身邊，輕輕握住他的手：「別想太多了。我們已經準備好了，對吧？」</p>
+        <p>葉塵反握住她的手，感受著她掌心的溫度：「是的，我們已經準備好了。」</p>
+        <p>趙明遠站在不遠處，望著遠方的暗淵閣總部，心中湧起一股複雜的情緒。他知道，明天晚上的行動將決定他們的命運——成功，他們就能打開萬古塵源的第九層，獲得足以改變世界格局的力量；失敗，他們就可能永遠被困在黑暗中，再也見不到天日。</p>
+        <p>「我……我真的能行嗎？」趙明遠低聲自問。</p>
+        <p>蘇清雪走到他身邊，輕輕拍了拍他的肩膀：「你能行。你是天機閣最優秀的弟子之一，這點小任務難不倒你。」</p>
+        <p>趙明遠深吸一口氣，點了點頭：「好，我會努力的。」</p>
+        <p>「你還在猶豫什麼？」葉塵在心中問道。「你已經走了這麼遠的路，難道要在最後關頭放棄嗎？」</p>
+        <p>蘇清雪走到葉塵身邊，輕輕握住他的手：「別想太多了。我們已經準備好了，對吧？」</p>
+        <p>葉塵反握住她的手，感受著她掌心的溫度：「是的，我們已經準備好了。」</p>
+        <p>「我……我真的能行嗎？」趙明遠低聲自問。</p>
+        <p>蘇清雪走到他身邊，輕輕拍了拍他的肩膀：「你能行。你是天機閣最優秀的弟子之一，這點小任務難不倒你。」</p>
+        <p>趙明遠深吸一口氣，點了點頭：「好，我會努力的。」</p>
+        <p>葉塵深吸一口氣，感覺體內的第一世記憶正在逐漸穩定下來——那股力量雖然強大，但也需要時間來適應和掌控。他知道從今以後，他不再是一個普通的散修——他肩負著保護混沌之種的使命，也承擔著喚醒父親靈魂的希望。</p>
+        <p>蘇清雪走上前來，輕輕握住葉塵的手：「你沒事吧？剛才的戰鬥看起來很激烈。」</p>
+        <p>葉塵微微一笑：「我没事——反而感覺更加強大了。剛才的戰鬥讓我實現了一次突破——將凝元鎮塵印、塵埃風暴和雲塵印完美結合在一起。」</p>
+        <p>趙明遠也露出了欣慰的笑容：「太好了——這樣我們就有更大的把握拿到第三把鑰匙了。」</p>
     </main>
-    <nav class="nav">
-        <a href="chapter-100.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-102.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-100.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-101/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-102.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

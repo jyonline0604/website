@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第22章：墜入深淵 - 萬古塵埃</title>
+    <title>第22章：未定標題 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-22.html">
-    <link rel="prev" href="chapter-21.html">
-    <link rel="next" href="chapter-23.html">
+    <link rel="prev" href="https://kofhk.com/chapter-21.html">
+    <link rel="next" href="https://kofhk.com/chapter-23.html">
     <style>
         :root {
             --bg: #FAFBFC;
@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,55 +56,26 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第22章 · 墜入深淵</h1>
+    <h1>第22章 · 未定標題</h1>
     <main>
+        <p>第二十二章 墜入深淵</p>
         <p>光門的瞬間，葉塵感覺自己的身體彷彿被撕裂成無數碎片。沒有疼痛，只有一種難以言喻的空虛感，像是靈魂被從肉體中強行抽離。他試圖睜開眼睛，卻發現自己已經失去了視覺、聽覺和一切感官。時間的概念在這片虛無之中變得毫無意義——也許是一瞬，也許是千年。</p>
         <p>不知過了多久，一種下墜的感覺突然襲來。葉塵猛然意識到自己正在急速下落。四周是一片無邊無際的黑暗，黑暗中漂浮著無數細小的光點，那些光點如同星辰般閃爍，卻又比星辰更加微弱、更加飄忽不定。他試圖伸手去抓那些光點，但手指穿過的只有冰冷的空氣和無盡的空虛。</p>
         <p>他試圖運轉體內那微薄的靈氣來減緩下墜的速度，但感氣初層的修為在這深淵之中幾乎毫無作用。靈氣像是落入大海的水滴，瞬間便被周圍的黑暗吞噬殆盡。葉塵感到一陣恐慌——如果靈氣無法保護他，那麼他拿什麼來對抗這深淵中的未知危險？</p>
@@ -207,42 +95,31 @@
         <p>葉塵低頭看向自己的雙手。他的手掌上佈滿了細小的裂紋，那些裂紋中滲出淡淡的灰色光暈。他握緊拳頭，感覺體內湧動著一股前所未有的力量——那不是靈氣，而是更加原始、更加純粹的能量。他能感覺到空氣中的每一粒灰塵都在與他產生共鳴，彷彿整個洞穴都是他的延伸。</p>
         <p>「我活下來了。」葉塵喃喃自語。他站起身來，拍了拍身上的灰塵。就在這時，他的腳下突然傳來一陣震動。洞穴深處傳來了低沉的咆哮聲，那聲音中蘊含著令人膽寒的殺意。</p>
         <p>葉塵的眼神瞬間變得銳利起來。他握緊雙拳，感受著體內那股新獲得的力量在經脈中奔湧。他知道，這只是開始。</p>
-
+        <p>第二十二章 墜入深淵</p>
+        <p>光門的瞬間，葉塵感覺自己的身體彷彿被撕裂成無數碎片。沒有疼痛，只有一種難以言喻的空虛感，像是靈魂被從肉體中強行抽離。他試圖睜開眼睛，卻發現自己已經失去了視覺、聽覺和一切感官。時間的概念在這片虛無之中變得毫無意義——也許是一瞬，也許是千年。</p>
+        <p>不知過了多久，一種下墜的感覺突然襲來。葉塵猛然意識到自己正在急速下落。四周是一片無邊無際的黑暗，黑暗中漂浮著無數細小的光點，那些光點如同星辰般閃爍，卻又比星辰更加微弱、更加飄忽不定。他試圖伸手去抓那些光點，但手指穿過的只有冰冷的空氣和無盡的空虛。</p>
+        <p>他試圖運轉體內那微薄的靈氣來減緩下墜的速度，但感氣初層的修為在這深淵之中幾乎毫無作用。靈氣像是落入大海的水滴，瞬間便被周圍的黑暗吞噬殆盡。葉塵感到一陣恐慌——如果靈氣無法保護他，那麼他拿什麼來對抗這深淵中的未知危險？</p>
+        <p>就在絕望即將將他的意志徹底擊潰之際，他的身體突然穿過了一層薄薄的霧氣。那霧氣並非普通的霧，而是由無數細小的灰塵粒子組成的能量層。當那些灰塵粒子接觸到他的皮膚時，一股奇異的感覺從全身每一個毛孔湧入體內。</p>
+        <p>那不是疼痛，也不是溫暖，而是一種前所未有的充盈感。葉塵清晰地感覺到，那些灰塵粒子正在滲透進他的經脈、他的血肉、甚至他的骨髓之中。它們像是找到了歸宿的遊子，瘋狂地涌入他身體的每一處空隙。每一粒灰塵都帶著一種古老的記憶碎片，那些碎片在他的意識中閃爍不定，彷彿在訴說著某個被遺忘的時代的故事。</p>
+        <p>「這是……」葉塵在心中驚呼。他想起三叔曾經告訴過他的話——在凡塵界最古老的傳說中，有一種修行者不吸收天地靈氣，而是以空氣中的塵埃為食。這種修行方式被稱為「塵埃之道」，但因為極其艱難且危險，早已失傳數百年之久。那些嘗試走這條道路的修行者，不是被灰塵撐爆經脈而死，就是被灰塵侵蝕心智而瘋。</p>
+        <p>此刻，葉塵的身體正在不自覺地實踐著這條失傳的道路。而且他發現了一件更加不可思議的事情——他的身體不僅沒有排斥這些灰塵粒子，反而在主動吸收它們、消化它們、將它們轉化為一種全新的能量。這種能量的性質與靈氣截然不同，它更加原始、更加純粹、也更加強大。</p>
+        <p>下墜的速度越來越快，葉塵穿過了一層又一層的灰塵能量帶。每一層的能量濃度都比前一層更加濃郁，帶來的衝擊也更加猛烈。他的身體開始發燙，經脈中傳來陣陣刺痛，但他沒有退縮——因為他清楚地知道，這些痛苦正是力量在積聚的證明。</p>
+        <p>當他穿過第三層灰塵能量帶時，葉塵感覺自己的五感突然恢復了。他看到了深淵中的景象——那是一個完全由灰塵構成的世界。無數的灰塵粒子在空中旋轉、碰撞、融合，形成了一個個微小的漩渦和光暈。這些灰塵漩渦中蘊含著強大的能量，它們相互吸引又相互排斥，在深淵中形成了一種奇妙的平衡。</p>
+        <p>葉塵的身體在這個世界中就像是一顆投入水中的石子，激起了層層漣漪。那些原本平靜的灰塵漩渦開始向他湧來，彷彿在歡迎一位久違的客人。他伸出手臂，任由那些灰塵粒子在他的指尖上旋轉飛舞。每一粒灰塵都帶著一種獨特的頻率，當它們接觸到他的皮膚時，葉塵能夠感覺到那種頻率與自己體內某種隱藏的力量產生了共鳴。</p>
+        <p>「原來如此……」葉塵在心中恍然大悟。這枚玉佩之所以會產生共鳴，不是因為它指向了某個特定的位置，而是因為它本身就是一種灰塵能量的載體。而他自己——他的身體、他的靈魂、他的一切——都在等待著與這種能量重新結合的時刻。</p>
+        <p>在最深的一層灰塵能量帶中，葉塵突然看到了一縷金色的光線。那光線從深淵的底部向上延伸，如同通往天國的階梯。它的顏色與周圍的灰色形成了鮮明的對比，散發出一種令人敬畏的威嚴感。葉塵的身體不由自主地被那股力量牽引著，朝著光線的盡頭墜去。</p>
+        <p>就在即將觸及那道金色光線的瞬間，葉塵感覺自己的意識開始模糊。他試圖保持清醒，但強大的吸力已經將他的思維撕裂成無數碎片。在最後一刻，他看到了一張臉——那是一張蒼老而慈祥的臉，臉上佈滿了歲月留下的皺紋，雙眼中卻閃爍著如同星辰般的光芒。</p>
+        <p>那人對他說了一句什麼話，但聲音被深淵的風暴淹沒了。葉塵只捕捉到了兩個字：「塵……埃……」</p>
+        <p>然後，一切都陷入了黑暗。</p>
+        <p>當葉塵再次恢復意識時，他發現自己正躺在一片柔軟的土地上。身下是厚厚的灰塵層，那些灰塵在月光般的微光中閃爍著細微的光芒。他緩緩坐起身來，環顧四周。這裡是一個巨大的地下洞穴，洞穴的頂部高聳入雲，看不見盡頭。洞壁上佈滿了晶瑩剔透的石鐘乳，每一根石鐘乳的末端都滴落著散發微光的液體。那些液體落在地面上，匯聚成一条条細小的溪流，在灰塵中蜿蜒流淌。</p>
+        <p>葉塵低頭看向自己的雙手。他的手掌上佈滿了細小的裂紋，那些裂紋中滲出淡淡的灰色光暈。他握緊拳頭，感覺體內湧動著一股前所未有的力量——那不是靈氣，而是更加原始、更加純粹的能量。他能感覺到空氣中的每一粒灰塵都在與他產生共鳴，彷彿整個洞穴都是他的延伸。</p>
+        <p>「我活下來了。」葉塵喃喃自語。他站起身來，拍了拍身上的灰塵。就在這時，他的腳下突然傳來一陣震動。洞穴深處傳來了低沉的咆哮聲，那聲音中蘊含著令人膽寒的殺意。</p>
+        <p>葉塵的眼神瞬間變得銳利起來。他握緊雙拳，感受著體內那股新獲得的力量在經脈中奔湧。他知道，這只是開始。</p>
     </main>
-    <nav class="nav">
-        <a href="chapter-21.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-23.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-21.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-22/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-23.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

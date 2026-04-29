@@ -17,47 +17,6 @@
             --font-size: 18px;
             --line-height: 1.8;
         }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Noto Serif TC', serif;
             background: var(--bg);
@@ -65,9 +24,7 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
+            padding: 20px;
         }
         h1 {
             font-size: 1.8em;
@@ -75,51 +32,11 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
-            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -139,53 +56,23 @@
             background: var(--accent);
             color: white;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
     <h1>第194章 · 深淵底層</h1>
     <main>
         <p>灰色能量走廊像一條巨蟒一樣蜿蜒向下，消失在遙遠的黑暗深處。</p>
@@ -203,7 +90,7 @@
         <p>「因為守塵故意封印了它們。」塵影的聲音變得低沉了一些。「他知道如果幽影尊者知道了這兩把碎片的存在，就會提前發動計劃來搶奪。所以他選擇將資訊分散到不同的輪迴繼承者身上——你是第一個覺醒第五世記憶的人，但另外兩把碎片的力量分別被封印在了靈界的兩個極端位置：一座是北境永凍之巔的寒晶宮，另一座在南海深處的沉龍淵。幽影尊者已經派出了暗淵閣的高手前去搜尋。」</p>
         <p>葉塵的表情變得更加嚴肅了。「還有多少時間？」</p>
         <p>「根據虛空之眼目前的擴張速度——三天。如果七天內不能完成封印，裂縫會擴大到無法控制的程度。而現在你只剩下三天了。」</p>
-        <p>葉塵沉默了片刻。然後他說道：「告訴我幽影尊者的真正目的。」</p>
+        <p>葉尘沉默了片刻。然後他說道：「告訴我幽影尊者的真正目的。」</p>
         <p>塵影的表情變得沉重起來。「他不只是要重塑天道——他要消滅九世輪迴本身。每一世輪迴的覺醒都在消耗天地法則的能量，而他認為這種消耗最終會導致世界的徹底崩潰。所以他想要用虚空之眼吞噬整個世界，將所有的一切轉化為虛空碎片，然後在那基礎上建立一個完全不受天道約束的新秩序。到時候他成為了那個新秩序的創始者——凌駕於一切規則之上。」</p>
         <p>「那他為什麼不直接自己完成九世輪迴？」葉塵問道。</p>
         <p>「因為他只有一世的記憶和力量。」塵影說道。「九世輪迴的核心不在於個體的力量累積——而在於九次轉世的融合。他只能擁有一世，所以他選擇用虛空之眼來模擬那種融合效果：將所有世界的碎片拼湊在一起，創造出一個集所有力量於一體的假象。但那不是真正的九世輪迴——那只是它的扭曲倒影。」</p>
@@ -211,40 +98,10 @@
         <p>「你沒有選擇。」塵影說道。「但在那之前……」他抬起手，指向石柱的左右兩側。「讓我先教你如何使用這兩把碎片的力量。如果你不掌握它們的頻率控制方法，即使找到了它們也無法使用——而且可能會被它們的能量反噬。」</p>
         <p>葉塵點了點頭，朝著石柱走去。他知道從這裡開始，每一次抉擇都會影響整個靈界的命運。而他唯一能做的，就是向前走——一步接一步地走下去。</p>
     </main>
-    <nav class="nav">
-        <a href="https://kofhk.com/chapter-193.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/chapter-195.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-193.html">← 上一章</a>
+        <a href="https://kofhk.com/manga/chapter-194/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-195.html">下一章 →</a>
     </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
 </body>
 </html>

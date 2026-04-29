@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第326章 · 迷宮的出口 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-326.html">
+    <link rel="prev" href="https://kofhk.com/chapter-325.html">
+    <link rel="next" href="https://kofhk.com/chapter-327.html">
+    <style>
+
+
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
+    
+    
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第326章 · 迷宮的出口</h1>
+    <main>
+        <p>空間摺疊通道在葉塵、月璃和凌風三人完全進入的那個瞬間達到了它的最終彎曲極限——通道的淡金色光壁在那一刻同時收縮然後迅速消散而他們的身體也因此從一種幾乎無法感知的頻率移動狀態轉化為一種極為明確的物理存在。</p>
+        <p>他們的腳下不再是不穩定的冰質地麵也不是一條由純粹能量構成的隱形路徑而是一種堅硬且帶有極度精細幾何紋路的石材表麵——那種石材的質感與永凍裂谷最深處的冰川完全不同它的每一個表麵都刻有極為複雜且高度規律的頻率導向網絡那些網絡的每一條線條都承載著特定週期的智慧碎片信息並且在持續不斷地散發著一種溫和卻極其穩定的淡金色光暈。</p>
+        <p>「我們已經到達了。</p>
+        <p>」月璃的聲音中帶著一絲難以察覺的鬆弛她的目光在四周的環境上快速移動試圖確認這個空間是否真的完全安全。</p>
+        <p>「這道空間摺疊通道的終端位置應該是在古代寒晶宮設施的一個深層子區域——從石材表麵的幾何紋路分佈來看這裡曾經是一個極為重要的數據儲存中心。</p>
+        <p>」
+    
+    凌風的目光鎖定在通道出口方向的那麵巨大石壁上他的表情變得極為嚴肅：「這座地下設施的規模遠超預期——我能夠看見至少三道不同的隱藏通道分別通向三個完全不同的方向。</p>
+        <p>其中一道通道的牆麵上刻有極為清晰的南海沉龍渊頻率特徵而那道特徵與石柱內部釋放的第一道封印層數據矩陣存在著極為精確的對應關係。</p>
+        <p>」
+    
+    密室的崩塌、永凍裂谷最深處的冰層崩解以及空間摺疊通道中經歷的一切在他們的意識中如同剛剛發生的一般清晰——但此刻他們麵前的這個地下設施卻散發出一種完全不同的穩定感。</p>
+        <p>這裡的環境溫度雖然仍然偏冷但那種寒冷已經不再像永凍裂谷那樣極端和具有侵略性它的空氣中也殘留著極為細小的淡金色光絲那些光絲在石材表麵緩慢飄浮又在極短的時間內消散像是某個龐大的信息系統在完成一次重要的數據傳輸之後自動進入的短暫休眠狀態。</p>
+        <p>葉塵緩緩睜開雙眼他的目光在那麵刻有南海沉龍渊頻率特徵的石壁前停留了許久——他能夠感覺到自己體內九世輪迴網絡中的第四到第七世記憶碎片正在與眼前這個空間的频率環境產生一種極為深度的共振效應。</p>
+        <p>那些在空間摺疊通道中浮現出的過去世代智慧碎片現在在這裡找到了它們的物理對應物——每一麵石壁、每一條刻痕都承載著特定週期的守望者留下的信息而那些信息的完整性遠遠超出了他之前在冥想狀態中的預期。</p>
+        <p>「這座設施確實如月璃所說的那樣——它是守尘在最初建立連接機制時預設的備份數據中心之一。</p>
+        <p>」他的聲音極為低沉但其中的確定性卻極其強烈。</p>
+        <p>「它不僅僅存放了所有八個週期的記錄還包含了一份關於凝元鎮塵印原始設計圖紙的頻率映射——那份映射直接確認了我的理解：七把鑰匙應該同時被激活而不是逐一解碼。</p>
+        <p>」
+    
+    月璃的手指在身邊懸浮的月輪盤上快速操作著她的目光死死鎖定在那道光暈表麵上試圖從古代寒晶宮設施的數據庫中提取出任何能夠證實葉塵所說內容的信息。</p>
+        <p>「我已經開始掃描這個空間中的頻率導向網絡——雖然大部分石刻信息因為永凍裂谷的形成過程而受到了不同程度的損壞但核心數據區域仍然保持著相對完整的狀態。</p>
+        <p>如果守尘確實將這裡作為備份中心那麼我們應該能夠找到關於所有八個週期的完整記錄。</p>
+        <p>」
+    
+    凌風的目光在三道隱藏通道之間來回移動他的表情中帶著一種極為複雜的神色——既有對這個地下設施發現的震撼也有對接下來的行進方向選擇所帶來風險的擔憂。</p>
+        <p>「我已經初步確認了這三道通道的具體指向——第一道通往設施的主數據庫區域那裡應該存放著守尘留下的大部分原始記錄；第二道通道沿著一個極度狹窄且蜿蜒的路徑向下延伸它的牆壁上刻有極為明顯的南海沉龍渊頻率特徵而那道特徵暗示著它可能直接連接到永凍裂谷最深處的冰川系統之下；第三道通道的方向則完全出乎我的意料——它不是指向南方的南海也不是指向北方的寒淵組織控制區而是朝向一個我從未在暗淵閣情報網絡中見过的地理方位。</p>
+        <p>」
+    
+    密室的空間在那個瞬間開始浮現出一道又一道極為細小的淡金色光紋那些光紋沿著石材表麵緩慢蔓延又在極短的時間內消散——那是古代寒晶宮備份數據中心在接收到外界共振信號時自動產生的反饋效應。</p>
+        <p>葉塵的九世輪迴網絡在那種效應的影響下開始與石壁上的頻率導向網絡產生更為深入的同步而那種同步的結果讓他在最短的時間內獲取了關於這個設施最為關鍵的信息。</p>
+        <p>「我已經讀取到了關於霜痕的背景信息。</p>
+        <p>」他的聲音在地下設施的空氣中顯得格外深沉。</p>
+        <p>「守尘留下的記錄清楚地顯示霜痕是第四世守望者守護團隊的直接後裔——他的家族世代擔任著連接機制數據中心的監護人而那個身份解釋了為什麼他對石柱封印機制的理解如此深入也解釋了為什麼他主流派系的領導層會對他產生這麼大的警惕。</p>
+        <p>如果他真的將南海沉龍渊通道的完整信息公之於眾那麼寒淵組織主流派系在永凍裂谷最深處所花費的所有努力都可能因為他的背叛而徹底失效。</p>
+        <p>」
+    
+    月璃微微點頭但她的表情中仍然帶著一絲極為明顯的疑慮：「如果霜痕真的是第四世守望者守護團隊的後裔那麼他在永凍裂谷最深處對我們的觀察和最終提出的交易條件就都有了更為合理的解釋——他不是在試圖利用我們來獲取利益而是在通過一種極為間接的方式確保南海沉龍渊通道的數據矩陣能夠被正確地分享到所有相關方手中。</p>
+        <p>」
+    
+    凌風的聲音從第三道隱藏通道方向傳來帶著一絲極為明顯的緊迫感：「我已經在第二條通道的盡頭位置發現了一個極為重要的信息——那道通道雖然沿著南海沉龍渊的方向延伸但它並非直接通往那座深海設施而是需要穿過一片由未知勢力控制的區域。</p>
+        <p>我在通道入口的石壁上發現了一道極為特殊的頻率刻痕而那種刻痕的分佈特徵與暗淵閣、寒淵組織以及無麵軍團的任何一種頻率網絡都不相符——它屬於一個完全不同的勢力。</p>
+        <p>」
+    
+    密室的空氣中淡金色的光線繼續在石壁表麵緩緩浮現又消散形成了一道極為規律且持續不斷的能量脈衝——那是古代備份數據中心在正常運轉時的典型特徵。</p>
+        <p>葉塵能夠感覺到自己體內能量的流動正在逐漸趨於平穩——在經過永凍裂谷最深處的崩塌和空間摺疊通道的極端頻率環境之後他的身體雖然仍然處於較為虛弱的狀態但也已經開始自動適應這個地下設施相對溫和的能量環境。</p>
+        <p>「我現在明白了一個極為重要的事實：通往南海沉龍渊的最安全路徑不僅需要我們避開寒淵組織主流派系、霜痕分支以及無麵軍團的監控還需要通過一個未知勢力的控制區域。</p>
+        <p>」他的聲音極為平靜但其中的決斷力卻絲毫不減。</p>
+        <p>「如果那道頻率刻痕確實屬於一個我們尚未察覺的全新勢力那麼我們必須在進入那片區域之前盡可能地了解對方的背景和目的以防備任何可能的衝突或陷阱。</p>
+        <p>」
+    
+    月璃微微點頭但她的手指仍然在月輪盤上快速操作著：「我正在嘗試掃描第三道通道入口的頻率特徵——雖然那種刻痕與我所知道的任何已知勢力的頻率網絡都不相符但也許通過對那些刻痕的分佈規律進行分析我們能夠推測出它們背後所代表的組織結構和可能的行事風格。</p>
+        <p>」
+    
+    凌風的目光鎖定在那道通往南海沉龍渊方向的隱藏通道上他的表情變得極為嚴肅：「我建議我們在進入任何一道通道之前先完成這個地下設施的全麵調查——如果這裡確實存放著守尘留下的完整記錄那麼我們可能能夠從中找到關於那個未知勢力以及前往南海沉龍渊最安全路徑的關鍵信息。</p>
+        <p>」
+    
+    葉塵重新閉上雙眼他的凝神期力量開始在這個地下備份數據中心中進行更為深入的信息掃描——他將九世輪迴網絡中的所有週期記憶與石壁上的頻率導向網絡進行了全麵對比分析然後將那些匹配結果轉化為一份極為完整且詳細的行進指南。</p>
+        <p>當那種轉化完成之後他終於明白了一件事：通往南海沉龍渊的旅程不僅僅是一場穿越地理空間的物理行動它還需要他在多方勢力的競爭和未知風險中保持那份理解的純粹性不讓任何一個敵對勢力能夠利用他們釋放的信息來達到自己的目的。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-325.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-326/" class="manga-btn">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-327.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

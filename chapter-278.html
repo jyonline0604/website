@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第278章：幽暗海域 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-278.html">
+    <link rel="prev" href="https://kofhk.com/chapter-277.html">
+    <link rel="next" href="https://kofhk.com/chapter-279.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第278章 · 幽暗海域</h1>
+    <main>
+        <p>天穹城與南海之間的空間折疊通道在銀白屏障的能量驅動下逐漸成形那種成形的過程並非傳統的物理現象而是一種信息結構的重新排列——數百段記憶碎片在封印網絡中被喚醒它們以極為精確的方式組合成了一個完整的通道將葉塵和凌風從天穹城外圍直接連接到了南海區域的入口位置。</p>
+        <p>當他們踏出通道的瞬間一股強烈的海洋氣息撲面而來那種氣味混合了海水的鹹腥味和深處能量的陰冷感形成了一種極為複雜而獨特的環境信號葉塵在多維度感知中看到了周圍的能量分佈圖——南海沉龙渊所在的海域被分為好幾個不同的能量層面每一層都承載著特定類型的能量信息而那些能量之間存在着極為精密的平衡關係任何一層的失衡都會導致整個防護系統的崩潰。</p>
+        <p>凌風站在潮濕的沙灘上讓目光掃視四周那片廣闊無垠的海洋在他的視野中呈現出一種令人敬畏的壯觀景象——海面在晨光的照射下閃爍著無數道金色的光芒而遠方雲霧籠罩的方向正是沉龙渊所在的海溝那裡的海水被一種極為古老的封印能量所覆蓋任何未經授權的觸碰都會引發巨烈的防禦反饋。</p>
+        <p>「我們距離幽暗海溝大約十里。」葉塵說道他的聲音低沉而堅定那些關於南海區域的能量分佈數據正在他的靈魂鎖鏈中不斷更新每一個節點都在以極快的速度進行自我優化而那些優化的結果正在向他們提供越來越精確的導航信息。「按照守尘留言中的描述沉龙渊入口位於海溝最深處那裡的海水壓力是外界數十倍而防護屏障的能量頻率必須與第八世的修復指令完全匹配才能通過第一道防線。」</p>
+        <p>凌風點了點頭但隨即從懷中取出了幾枚小巧的符文石递到葉塵面前——這些是他之前在天穹城外圍準備的警示符文只要有人觸碰就會立即發出信號提醒他注意危險。「我會在這裡守護通道確保你不會被暗淵閣追兵干擾——如果你需要返回的話隨時啟動這個符文我會立刻通過折疊通道趕過來。」</p>
+        <p>葉塵看著凌風的眼神中流露出一絲感激然後將掌心貼向海面開始引導銀白屏障的能量深入海水之中在那些古老的封印能量之間建立了一條連接他們與沉龙渊入口的能量通路那種通路的品質遠超之前的任何一種能量波動——那是凝元鎮塵印在新狀態下自動生成的最優化導航線路而每一個節點都在持續地監測著環境變化並在發現任何異常的時候自動進行修正。</p>
+        <p>他深吸了一口氣然後踏上了通往幽暗海溝的旅程——銀白色的裂痕能量在他腳下延伸出了一條微光小道而那些來自四面八方的靈力信號正在以驚人的速度縮短著與沉龙渊入口的距離時間不多了因為暗淵閣的主力部隊已經開始向南海方向推進而他們必須在對方到達之前完成第七把鑰匙的尋找和收集。</p>
+        <p>遠方的海面逐漸變暗——濃密的雲霧從海洋深處升起遮蔽了天空中的陽光那種陰影般的覆蓋不僅僅是視覺上的改變更是能量環境發生劇烈變化的前兆預示著他們即將進入沉龙渊的真正保護範圍之中。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-277.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-279.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第275章：隱藏的通道 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-275.html">
+    <link rel="prev" href="https://kofhk.com/chapter-274.html">
+    <link rel="next" href="https://kofhk.com/chapter-276.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第275章 · 隱藏的通道</h1>
+    <main>
+        <p>天穹城高塔的深處比葉塵想象中更加幽暗而複雜銀白色的裂痕能量在他的指尖流淌而出形成了一道通往黑暗前方的微光小道那種光芒雖然柔和但方向極為明確它指向了封印網絡中那個與沉龍渊第一道防護屏障完全一致的節點。凌風跟在他身後不遠處安靜地守護著他的目光在那條通道兩側的牆壁之間來回移動似乎在評估這場探索的風險和收益——畢竟在凝元鎮塵印剛剛完成重構之後就進入高塔的未知區域無異於踏上一條沒有任何安全保障的道路但同時他也清楚阻止對方的唯一方式就是直接請求而那種請求在當前的情況下是不會被接受的。</p>
+        <p>通道內的空氣流動比外界更加緩慢那種緩慢並非物理層面上的風速降低而是因為能量密度過高所導致的分子運動受限葉塵在多維度感知中看到了那種限制的具體表現——空氣中的靈力粒子如同被某種無形的力量束縛一樣無法自由移動它們只能在極小的範圍內進行微弱的震動而那些震動的頻率恰好與通道兩側牆壁上殘留的符文線路的能量共振頻率保持一致。</p>
+        <p>他開始按照多維度感知提供的指引緩慢前行每一步都經過精密的計算和判斷因為在這種高能量密度的環境中任何一個微小的失誤都可能引發不可預測的能量反應而那種反應的後果將是無法預料的。在行進了大約百步之後前方的空間逐漸收窄形成了一處由金色金屬構成的拱形門洞那道門洞的表面佈滿了細密的符文線路那些紋路在銀白色裂痕能量的照射下逐個亮起形成了一個完整的能量循環回路。</p>
+        <p>葉塵將掌心貼向門洞表面開始引導凝元鎮塵印的核心能量透過銀白屏障注入那些符文線路之中他能感覺到封印系統正在對他進行一場複雜的身份驗證——那是一種極為精密的能量交換過程需要他提供足夠的授權信息來證明自己有權進入門後的空間而那些信息的獲取依賴於九世輪迴網絡中每一段記憶碎片所承載的特定頻率。</p>
+        <p>在驗證的過程中他的多維度感知自動捕捉到了門後空間的一些基本信息——那裡是一個被第八世遺忘已久的儲備設施裡面可能存放著關於南海區域能量分佈的詳細地圖以及進入沉龍渊所需的最關鍵工具但同時他也發現了另一個令人擔憂的事實：那個空間的表面覆蓋著一層極為強大的防護屏障那種屏障的能量特徵與暗淵阁的紫黑色體系同源卻經過了更為精密的加工意味著如果有人試圖從外部強行突破這個區域整個設施可能就會被徹底摧毀。</p>
+        <p>他立刻將這個發現記錄在了靈魂鎖鏈的感知系統中然後睜開雙眼對凌風說道：「我們需要小心——這裡可能有某種防禦機制在防止未經授權的訪問所以我必須逐個驗證每個節點的授權信息。」</p>
+        <p>就在他的聲音傳出的瞬間懷中的凝元鎮塵印突然發出了一段極為急促的能量波動——那股力量如同遠方的雷鳴一般在空氣中震蕩著每一道波動都在向葉塵傳遞著一個明確的信息：身份驗證已經開始而時間正在以驚人的速度流逝。</p>
+        <p>凌風站在一旁安靜地守護著他的目光在那條通道和遠方天穹城的外圍之間來回移動——暗淵閣的主力部隊似乎已經察覺到了某種異常並正在向高塔的方向推進那種推進的速度比預期中要快得多而他們必須在對方到達之前完成所有必要的準備工作否則一旦幽影尊者重新控制天穹城葉塵將失去一個極為重要的情報來源和撤退後路。</p>
+        <p>通道兩側牆壁上的符文線路在葉塵的能量注入下逐個亮起形成了一條通往深處的金色光之路徑那種光芒雖然柔和但方向極為明確指引著他們走向那個被遺忘已久的儲備設施。凌風跟在後面讓目光掃視四周的每一個細節——那些古老的符文不僅僅是裝飾性的更是承載著封印系統運行信息的關鍵節點任何一個符文的損壞都可能導致整個系統的崩潰。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-274.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-276.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

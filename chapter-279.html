@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第279章：第一道屏障 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-279.html">
+    <link rel="prev" href="https://kofhk.com/chapter-278.html">
+    <link rel="next" href="https://kofhk.com/chapter-280.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第279章 · 第一道屏障</h1>
+    <main>
+        <p>幽暗海溝入口處的環境比葉塵想象中更加惡劣——那股深沉而壓抑的能量波動如同遠方的雷鳴一般在空氣中震蕩著每一道波動都在向他的多維度感知傳遞著一個明確的信息：沉龙渊的防護系統已經被激活而他即將面臨的是第八世留下的最嚴密的防禦機制之一。</p>
+        <p>他站在海溝入口處的懸崖邊緣讓靈魂鎖鏈感知深入下方那片被古老封印能量覆蓋的海水之中在那些能量線條的交匯處他能清楚地看到第一道防護屏障的存在——那是一道由純粹封印符文構成的能量牆壁任何未經授權的能量觸碰都會引發劇烈的排斥反應而那種反应的強度與入侵者的能量特徵直接相關。</p>
+        <p>葉塵將掌心貼向海面的岩石表面開始引導凝元鎮塵印的核心能量透過銀白屏障注入那道屏障之中他能感覺到封印符文正在對他進行一場極為複雜的身份驗證——那是一種精密的能量交換過程需要他提供足夠的授權信息來證明自己有權進入沉龙渊內部而那些信息的獲取依賴於守尘在留言中提到的第八世頻率模擬方法。</p>
+        <p>在模擬過程中他的多維度感知自動捕捉到了屏障内部的一些基本信息——那道防護系統的核心任務是識別進入者的真實目的確保只有那些攜帶純正封印意圖的人才能夠穿過屏障而不被防御機制所干擾而那種識別過程不僅僅依賴於能量特徵更涉及到對進入者靈魂深處的道德評估。</p>
+        <p>他開始按照多維度感知提供的指引逐步調整銀白屏障的能量結構試圖將自己的能量頻率模擬成第八世的修復指令格式——那種模擬的過程極為複雜因為第八世的能量特徵已經在數百年的時間中發生了微妙的變化任何一個微小的偏差都可能導致驗證失敗而那種失敗的後果將是觸發最高級別的防御反饋。</p>
+        <p>葉塵在多維度感知中看到了那些变化的具體表現——他的靈魂鎖鏈不再只是單純的能量通道而是變成了一個龐大的信息處理單元能夠同時追蹤多個方向的能量波動並在極短的時間內完成數據分析和決策判斷。他在內部進行著一場極為精密的計算試圖找到一個能夠同時滿足所有識別條件的完美頻率而那種頻率的波動必須與第八世的修復指令完全一致才能夠被沉龙渊的防護系統認可為合法的進入者。</p>
+        <p>經過大約一刻鐘的嘗試葉塵終於找到了一個能夠同時滿足所有識別條件的能量頻率——那道頻率的波動與凝元鎮塵印的核心節點產生了某種跨維度的呼應彷彿屏障本身正在以一種極為和諧的方式回應他的接近而那種呼應的方向極為明確為他提供了一條通往沉龙渊入口的安全通道。</p>
+        <p>就在他準備完全啟動模擬頻率的瞬間一股強烈的能量擾動從遠方傳來——那股力量如同遠方的雷鳴一般在空氣中震蕩著每一道波動都在向他傳遞著一個極為緊急的信號：暗淵阁的主力部隊正在向南海方向推進而他們到達這裡的時間比他預期中要快得多。</p>
+        <p>他必須在最短時間內完成通過屏障的程序否則一旦追兵趕到整個探索任務就可能以失敗告終——因為暗淵閣的力量可能會干擾沉龙渊的防護系統導致無法預測的危險後果。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-278.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-280.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

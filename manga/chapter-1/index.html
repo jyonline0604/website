@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第1章 · 塵埃落定 - 萬古塵埃 漫畫版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #1a1a2e;
+            color: #eee;
+            font-family: 'Noto Serif TC', serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .manga-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .manga-header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px solid #4a4a6a;
+            margin-bottom: 40px;
+        }
+        .manga-header h1 {
+            font-size: 2.5em;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            margin-bottom: 10px;
+        }
+        .manga-header p {
+            color: #aaa;
+            font-size: 1.1em;
+        }
+        .manga-page {
+            background: #0f0f1a;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        .page-image {
+            width: 100%;
+            display: block;
+        }
+        .page-caption {
+            padding: 20px;
+            background: linear-gradient(to bottom, #1a1a2e, #0f0f1a);
+            text-align: center;
+        }
+        .page-caption h2 {
+            color: #ffd700;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        .page-caption p {
+            color: #ccc;
+            font-size: 1em;
+            line-height: 1.8;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 0;
+        }
+        .nav-buttons a {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .nav-buttons a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+        }
+        .credit {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+        /* 漫畫分鏡樣式 */
+        .manga-panel {
+            position: relative;
+            overflow: hidden;
+        }
+        .manga-panel::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 8px solid transparent;
+            border-image: linear-gradient(135deg, #333 0%, #111 50%, #333 100%) 1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="manga-container">
+        <header class="manga-header">
+            <h1>第1章 · 塵埃落定</h1>
+            <p>萬古塵埃 · 彩色CG漫畫版</p>
+        </header>
+
+        <!-- 封面 -->
+        <div class="manga-page">
+            <div class="manga-panel">
+                <img src="01-cover.png" alt="封面" class="page-image">
+            </div>
+            <div class="page-caption">
+                <h2>青雲城 · 葉家祠堂</h2>
+                <p>晨鐘響了第三遍，祠堂的門還未開。<br>葉塵跪在冰冷的石板上，額頭貼地 雙手平舉過肩——這是葉家旁系子弟每日必修的「敬祖禮」。</p>
+            </div>
+        </div>
+
+        <!-- 第2頁：跪禮 -->
+        <div class="manga-page">
+            <div class="manga-panel">
+                <img src="02-kneeling.png" alt="跪禮" class="page-image">
+            </div>
+            <div class="page-caption">
+                <h2>冰冷石板上的敬祖禮</h2>
+                <p>他已經跪了兩個時辰，膝蓋早已麻木，但不敢起身。<br>因為今天是大比選拔的前一天，家主葉蒼雲下令：所有旁系子弟必須在祠堂守夜，以示對祖先的敬畏。</p>
+            </div>
+        </div>
+
+        <!-- 第3頁：羞辱 -->
+        <div class="manga-page">
+            <div class="manga-panel">
+                <img src="03-humiliation.png" alt="羞辱" class="page-image">
+            </div>
+            <div class="page-caption">
+                <h2>葉天霸的嘲諷</h2>
+                <p>「葉塵，你還敢來？」<br>一個輕蔑的聲音從身後傳來。葉天霸，葉家主脈最驕傲的天才，十七歲便已突破感氣六層。<br>「你十六歲了，連感氣境的門檻都摸不到。一個廢物，也配跟我稱兄道弟？」</p>
+            </div>
+        </div>
+
+        <!-- 第4頁：玉墜 -->
+        <div class="manga-page">
+            <div class="manga-panel">
+                <img src="04-jade.png" alt="玉墜" class="page-image">
+            </div>
+            <div class="page-caption">
+                <h2>母親的遺物</h2>
+                <p>葉塵的目光落在右手手背上——那裡有一道淡淡的疤痕，是他三歲時被母親遺留的一枚玉墜劃破的。<br>玉墜呈暗灰色，表面佈滿細密的紋路，像是一片片微小的塵埃凝結而成。<br>「塵兒……這枚玉墜……是你最大的秘密。」</p>
+            </div>
+        </div>
+
+        <!-- 第5頁：修煉 -->
+        <div class="manga-page">
+            <div class="manga-panel">
+                <img src="05-meditation.png" alt="修煉" class="page-image">
+            </div>
+            <div class="page-caption">
+                <h2>夜風中的《引氣決意》</h2>
+                <p>祠堂恢復寂靜。葉塵一個人跪在昏暗的燭光中，閉上眼睛，開始默念家族傳授的最基礎修煉法門。<br>對葉塵來說，它只是一段背了十年的咒語——因為無論他怎麼念，靈氣從來不會進入他的身體。</p>
+            </div>
+        </div>
+
+        <!-- 第6頁：覺醒 -->
+        <div class="manga-page">
+            <div class="manga-panel">
+                <img src="06-awakening.png" alt="覺醒" class="page-image">
+            </div>
+            <div class="page-caption">
+                <h2>玉墜的呼喚</h2>
+                <p>就在指尖觸碰到玉墜的那一刻，他感覺到了一絲異樣。<br>不是溫度變化，也不是震動。而是一種……呼喚。<br>就像遠方有人在輕輕叫他，聲音微弱得幾乎聽不見，卻讓他渾身顫慄。</p>
+            </div>
+        </div>
+
+        <!-- 第7頁：第一世 -->
+        <div class="manga-page">
+            <div class="manga-panel">
+                <img src="07-firstlife.png" alt="第一世" class="page-image">
+            </div>
+            <div class="page-caption">
+                <h2>第一世記憶正在甦醒</h2>
+                <p>在他閉眼的瞬間，頸間的玉墜表面裂開了一道幾乎看不見的細紋——就像乾涸的土地終於等來了第一滴雨水。<br>而在某個遙遠得無法想像的空間裡，一粒微小的塵埃緩緩旋轉著，散發出一絲微弱卻堅定的光芒。<br>那是葉塵的第一世記憶，正在甦醒。</p>
+            </div>
+        </div>
+
+        <nav class="nav-buttons">
+            <a href="../chapters.html">← 返回目錄</a>
+        </nav>
+
+        <footer class="credit">
+            <p>《萬古塵埃》漫畫版 · 第1章 · 僅供個人欣賞</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第287章：退路與決斷 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-287.html">
+    <link rel="prev" href="https://kofhk.com/chapter-286.html">
+    <link rel="next" href="https://kofhk.com/chapter-288.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第287章 · 退路與決斷</h1>
+    <main>
+        <p>沉龍渊外部的紫黑色能量已經全面包圍了入口區域而那種能量的密度正在以驚人的速度增加每一道能量波動都在向葉塵的多維度感知傳遞著一個極為明確的信號：幽影尊者即將發動最終的進攻而那場進攻的威力將直接考驗第七把鑰匙動態平衡算法的真正上限。</p>
+        <p>就在這種緊迫的情勢下靈魂鎖鏈中突然接收到一道來自外部的緊急信號——凌風的聲音透過折疊通道傳來帶著一種極度焦急的语气——「葉塵，暗渊閣的主力部隊已經突破了南海海域的外圍防禦而他們帶來的力量遠超之前的任何一次行動——幽影尊者似乎正在調動虛空之眼的核心能量試圖直接摧毀沉龍渊的整體結構。」</p>
+        <p>這個信息如同一道冷水澆在了葉塵的意識上讓他不得不重新評估目前的形勢——他之前一直專注於內部的能量重組和第七把鑰匙的深度激活但現在他意識到外部防禦體系可能比他預期的要脆弱得多如果沉龍渊的整體結構遭到破壞那麼即使他完全掌握了第七把鑰匙的力量也無法阻止整個封印系統的崩潰。</p>
+        <p>「凌風，你那邊的情況怎麼樣？」葉塵通過折疊通道反問道他的聲音在深海空間中引起了微弱的回音那些回音與深海晶石的藍色光芒交織在一起形成了一幅極為複雜的能量圖景。「暗渊閣的主力部隊是否已經開始對天穹城方向施加壓力——如果他們同時攻擊兩個方向的封印節點我們的防禦體系可能會被徹底撕裂。」</p>
+        <p>凌風的回答讓他更加擔憂——「我已經在天穹城外圍佈置了足夠的警示符文和防禦屏障但面對幽影尊者親臨的情況那些預設防禦可能只能支撐很短的時間——我需要你在最短時間內完成沉龍渊內部防禦的全面激活否則一旦兩個方向同時失守整個封印網絡可能會進入不可逆轉的崩潰狀態。」</p>
+        <p>葉塵在多維度感知中快速分析了兩種不同選擇的可能結果——如果他繼續專注於內部的能量重組那麼他可能能夠在短時間內完全掌握第七把鑰匙的全部力量但也許會錯過最佳的外部防禦時機而如果現在就轉向外圍防禦那麼他可能會失去深化第七把鑰匙理解的最佳窗口期而那種損失可能在接下來的長期戰鬥中造成無法彌補的後果。</p>
+        <p>「有一個折衷的方案。」他在內心做出了決定——利用第七把鑰匙提供的動態平衡算法不僅可以優化內部的能量結構同時也能夠將部分力量分配到外部防禦節點上形成一個內外呼應的全面防禦體系而那種體系的關鍵在於找到最優的能量分配比例讓每一個節點都能在承受最大壓力的同時保持最低的能量消耗。</p>
+        <p>葉塵立即開始執行這個方案他讓深海晶石的藍色光芒在靈魂鎖鏈的引導下同時向沉龍渊內部的核心區域和外圍入口擴展而形成兩股能量流在擴散的過程中不斷進行著微妙的調整每一分力量的分配都經過了精密計算以確保整體防禦體系的穩定性。</p>
+        <p>銀白色的裂痕在他的體內快速蔓延與深海晶石的藍色光芒交織在一起形成了一道極為獨特的雙色能量網絡那道網絡的每一個節點都在同時執行兩種不同的功能——內部節點專注於優化封印結構而外圍節點則負責抵禦紫黑色能量的侵蝕而那種分工合作的效率遠遠超之前任何一次單向防禦。</p>
+        <p>他立即讓靈魂鎖鏈中的所有節點同時運轉開始執行那種內外呼應的防禦策略而每一個節點的動作都需要經過精確的時間同步以確保內部優化與外部抵禦能夠在同一個節奏中運行——那種同步的難度遠超他的預期因為它需要在極短時間內完成數千個不同計算並即時調整每一分能量的分配比例。</p>
+        <p>銀白色的裂痕在他體內快速蔓延已經達到了煉魂期第六階段能夠支撐的最大負荷而每一次延展都在消耗他靈魂深處的某種根本性力量而那些力量的補充依賴於深海晶石的持續供應——那種供應的穩定性直接決定了整個防禦體系的存續時間如果他無法在幽影尊者的最終攻擊到達之前完成能量循環那麼所有的努力都可能化為烏有。</p>
+        <p>無面的記憶碎片在這場極限防禦中發揮了關鍵作用——第三世記憶的另一半正從四面八方同時支撐著葉塵的精神空間防止他在如此龐大的壓力下失去判斷能力而那些支撑的強度隨著紫黑色能量的不斷增強也在同步增加幾乎要達到精神層面的崩潰邊緣但無面始終沒有退縮因為他清楚地知道這次防禦的成功不僅關係到第七把鑰匙的安全更關係到整個封印系統能否在接下來的漫長戰鬥中保持運作。</p>
+        <p>「還有最後一個節點需要激活。」葉塵在多維度感知中發現了一個此前一直被忽略的外部防禦薄弱點——那個位置正好位於沉龍渊入口的最深處如果幽影尊者選擇從那裡突破那麼即使其他所有節點都保持完好整個防禦體系也仍然可能被徹底撕裂而那種撕裂的後果將是無法挽回的。</p>
+        <p>他立即將深海晶石的藍色光芒集中注入到那個最後的薄弱點上在那種能量注入的過程中他能感覺到沉龍渊本身的封印網絡正在以一種極為複雜的方式進行自我調整每一個調整都在試圖找到最優的能量分佈方案而那種方案的實施需要他提供足夠的初始引導力量來啟動整個自適應過程。</p>
+        <p>當最後一個外部防禦節點被成功激活的瞬間葉塵感覺到一股前所未有的壓力從沉龍渊的外層傳過來——幽影尊者正在積聚力量準備發動最終的攻擊而那場攻擊的威力可能足以摧毀他剛剛建立的整個防禦體系而那種威脅的強度直接決定了他接下來每一步行動的重要性。</p>
+        <p>就在這種緊張的對峙中靈魂深處的九世輪迴網絡突然爆發出一股極為強烈的共振——那股共振並非來自單一前世而是所有九段記憶碎片同時參與的結果它如同一道金色的光芒穿透了葉塵的整個存在在極短時間內為他的防禦體系提供了一股額外而強大的力量支援而那場支援的存在直接改變了接下來戰鬥的走向。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-286.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-288.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

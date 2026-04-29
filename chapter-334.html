@@ -139,6 +139,33 @@
             background: var(--accent);
             color: white;
         }
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        }.catalog-btn {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .catalog-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        }
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -214,10 +241,11 @@
 <p>葉塵深吸了一口氣然後做出了決定：他需要親自前往那座山谷與那些古老守護者進行面對面的交流因為無論霜痕從他們那裡獲得了什麼信息那種間接的知識傳遞都無法替代真正的對話和理解而這種理解在接下來的旅程中可能成為最為關鍵的資源。</p>
 
     </main>
-    <nav class="nav">
-        <a href="chapter-333.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-335.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-333.html">← 上一章</a>
+        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
+        <a href="https://kofhk.com/manga/chapter-334/" class="manga-btn">🎨 漫畫</a>
+        <a href="https://kofhk.com/chapter-335.html">下一章 →</a>
     </nav>
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
     <script>

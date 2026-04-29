@@ -139,6 +139,33 @@
             background: var(--accent);
             color: white;
         }
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        }.catalog-btn {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .catalog-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        }
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -212,10 +239,11 @@
 <p>墨岩站在葉塵面前雙手合十然後緩緩將一股極為精細卻同時極其龐大的信息流推送到了葉塵的精神感知之中——那股信息包含了五個穩定節點的完整原始頻率模板每一個節點都擁有數百條不同的共振特徵曲線這些曲線分別對應著不同季節、不同天象條件和不同地脈活動狀態下的最佳頻率匹配方案。</p>
 
     </main>
-    <nav class="nav">
-        <a href="chapter-337.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-339.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-337.html">← 上一章</a>
+        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
+        <a href="https://kofhk.com/manga/chapter-338/" class="manga-btn">🎨 漫畫</a>
+        <a href="https://kofhk.com/chapter-339.html">下一章 →</a>
     </nav>
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
     <script>

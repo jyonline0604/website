@@ -139,6 +139,33 @@
             background: var(--accent);
             color: white;
         }
+.manga-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .manga-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        }.catalog-btn {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .catalog-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        }
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -217,10 +244,11 @@
 <p>幾人之間短暫的沉默在晶體平原的微光中緩緩流淌著那種沉默不是尷尬或疏離而是某種更為深層次的理解和默契正在三人之間悄然形成——他們現在不再是三個單獨行動的個體而是已經在某種意義上成為了同一條道路上的共同行者無論前方等待著他們的是什麼他們都已經準備好一起麵對了。</p>
 
     </main>
-    <nav class="nav">
-        <a href="chapter-339.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="chapter-341.html" id="nextLink">下一章 →</a>
+        <nav class="nav">
+        <a href="https://kofhk.com/chapter-339.html">← 上一章</a>
+        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
+        <a href="https://kofhk.com/manga/chapter-340/" class="manga-btn">🎨 漫畫</a>
+        <a href="https://kofhk.com/chapter-341.html">下一章 →</a>
     </nav>
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
     <script>

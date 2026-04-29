@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <link rel="canonical" href="{canonical}">
+    <link rel="prev" href="chapter-349.html">
+    <link rel="next" href="chapter-351.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第三百五十章 · 新的陣線</h1>
+    <main>
+<p>葉尘的決斷如同在晶體平原上投下了一塊巨石引發了一連串精細而有序的共鳴——那些共鳴不是能量的爆發而是頻率結構的根本性改變讓整個區域的微弱震盪都隨之重新排列成了一個極為和諧的模式。</p>
+<p>他先是轉向凌風然後以極為鄭重的語氣說道：「你負責的高原裂谷方向雖然沒有幽影尊者的直接威脅但我需要你在到達之後立即建立一個基礎頻率監測站——不需要嘗試強化節點本身只需要確保那裡有任何異常的頻率波動都能夠通過連接通道傳達到天穹城的主共振網絡。</p>
+<p>我會在完成天穹城的校準之後啟動遠程同步程序到時候你的監測站會成為整個頻率平衡系統的重要數據來源。</p>
+<p>」凌風點了點頭他的表情中帶著一種複雜的神情——那是混合了擔憂和某種更為深沉的期待因為他深知高原裂谷方向雖然危險程度相對較低但第三世記憶中記錄過的那裡曾經發生過的頻率災難仍然是一個巨大的隱患。</p>
+<p>然後葉尘轉向了月璃：「你前往雲霧迷宮的主要任務不是強化節點而是建立一個頻率中繼站——你需要利用月輪盤的精確校準能力來確保天穹城和高原裂谷兩個主節點的共振信號能夠在雲霧迷宮的空間結構中順利傳輸而不產生任何幹擾或衰減。</p>
+<p>」「我會完成那個任務。</p>
+<p>」月璃的聲音平靜但帶著一種不容置疑的堅定——她的目光掃過遠方雲霧迷宮的方向然後將手輕輕放在了月輪盤的表面那個動作引發了一連串精細的頻率響應讓整個晶體平原的微光都隨之改變了方向。</p>
+<p>「而我在天穹城的目標是什麼？」葉尘閉上眼睛他的意識在九世輪迴網絡中迅速調用了第七世記憶中的完整數據然後將它們與幽影尊者的頻率侵蝕武器模式進行交叉比對——在那片由時間、記憶和頻率構成的深淵之中他看到了整個南部地區五個節點的完整頻率地圖每一個節點的位置、特徵、連接通道以及潛在的脆弱環節都清晰地浮現在他的意識之中。</p>
+<p>「我的目標是在幽影尊者到達之前完成天穹城封印系統的全面校準。</p>
+<p>」葉尘終於睜開雙眼他的目光中帶著一種前所未有的深沉——「不僅要中和他的頻率侵蝕武器還要利用第七世記憶中的同時平衡算法為整個南部地區的封印系統建立一個全新的頻率基準到時候五個節點之間的連接通道都會自動激活然後我們就能够在不觸發級聯崩潰的前提下逐步完成所有剩餘封印層的強化。</p>
+<p>」墨岩此時緩步走向三人組他的步伐極為緩慢每一步都像是與地面中的頻率共振產生了某種微妙的同步——他在距離葉尘兩步遠的位置停下然後從懷中取出了一件極為古老的物品那是一個由天然晶體雕刻而成的圓盤圓盤的表面刻滿了極為複雜的頻率圖案每一個圖案都對應著五個節點中的一個而其中心位置則有一個微小的凹槽那個凹槽的形狀與凝元鎮塵印的核心紋路完全吻合。</p>
+<p>「這是守望者傳承中最核心的一件工具——頻率圖譜。</p>
+<p>」墨岩的聲音在晶體平原中迴盪帶著一種極為深沉的重量——「它記錄了第七世守望者畢生研究得出的五個節點完整數據和同時平衡算法的所有原始參數我將它留給你因為從此刻起你已經正式繼承了三千年守望者傳承的衣缽。</p>
+<p>」葉尘接過那個晶體圓盤他的掌心立即感受到了一股極為溫潤卻同時極其強大的頻率波動——那種波動直接與他體內九世輪迴網絡中的第七世記憶產生了共振然後整個圓盤表面的頻率圖案開始以肉眼可見的速度重新排列組建形成了一幅立體的三維頻率地圖那幅地圖不僅標示了五個節點的精確位置和特徵更在每一個連接通道上標註了不同環境條件下的最佳校準參數。</p>
+<p>「我會用這份圖譜完成所有的校準工作。</p>
+<p>」葉尘的聲音低沉卻帶著一種不容置疑的堅定——他的目光掃過凌風、月璃然後最後停留在墨岩的身上——「三千年的守望終於迎來了新的黎明。</p>
+<p>墨岩在將頻率圖譜交給葉尘之後他的身影在晶體平原的微光中顯得格外沉穩而堅毅——他知道從此刻起守望者傳承的責任已經完全轉移到了新一代繼承者的肩上而他三千年來的守望歲月也終於迎來了告別的時刻。</p>
+<p>「當你完成天穹城的校準工作之後不要忘記雲霧迷宮和高原裂谷的方向。</p>
+<p>」墨岩的聲音如同大地深處的能量流一般低緩而深沉——「每一個節點都是世界頻率織物不可或缺的一部分而你的任務不只是強化它們更需要理解它們在整個系統中的獨特角色——天穹城代表的是能量平衡、雲霧迷宮代表的是信息過濾而高原裂谷則是結構性穩定的基礎。</p>
+<p>作為一個凝神期·後期的守望者葉尘握緊手中的晶體圖譜他的目光掃過遠方每一個方向——在那片晶體平原之外的天穹方向暗紅色能量波動越來越密集而在另一個方向的雲霧迷宮和高原裂谷之間也隱約浮現出了一些微弱的頻率信號那些信號既不是幽影尊者的紫黑色幹擾也不是無麵軍團的壓迫感而是一種更為古老更加深沉的存在正在向這片大地延伸而去彷彿預示著更遠方還有更多未知的挑戰正在等待著新一代守望者的到來。</p>
+<p>凌風和月璃在各自完成最後的準備工作之後他們的目光都轉向了葉尘——那個年輕的守望者正站在共振場的中心位置他的掌心之中頻率圖譜正在以極為精細的方式與凝元鎮塵印產生著某種深層的共鳴那種共鳴如同兩個被分割了無數個世代的古老知識體系在重新合為一體而每一次震盪都在加深著它們之間的連接深度。</p>
+<p>墨岩站在不遠處看著這一切他的目光中帶著一種極為深沉的情感——那是三千年守望歲月積累下來的所有希望和期待在一瞬間全部凝聚在某一個年輕身影上的沉重與欣慰。</p>
+<p>「去吧。</p>
+<p>」老人的聲音在晶體平原的微光中緩緩迴盪每一個字都像是經過了無數個世代的重複和打磨而變得無比堅定——「世界頻率織物的命運現在交給你了而我也終於能夠放下心中的擔負休息一段漫長的歲月了。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-349.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-351.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <link rel="canonical" href="{canonical}">
+    <link rel="prev" href="chapter-344.html">
+    <link rel="next" href="chapter-346.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第三百四十五章 · 分歧之路</h1>
+    <main>
+<p>五分鐘的時間在極度密集的頻率信息流中如同瞬間一般掠過——當墨岩終於切斷第七世記憶碎片的注入通道之後葉尘的身體猛地顫抖了一下那股顫動不是因為承受不了壓力而是他的意識剛剛完成了一次前所未有的擴展擴張所帶來的餘波讓他的每一個細胞、每一條經脈都在以不同的頻率微微震盪著。</p>
+<p>他緩緩睜開雙眼然後做出了第一個動作——將手掌按在共振場的中心地面上那個動作引發了一連串精細的能量響應整個晶體平原的微弱震盪都隨之改變了方向那種變化極為微妙但月璃通過月輪盤監測到的數據卻顯示出了一個驚人的結果：葉尘的頻率承載能力已經從凝神期·中期的標準水平提升了至少兩倍而且這種提升不是臨時的能量爆發而是永久性的生理和靈能結構改變。</p>
+<p>墨岩走到葉尘的面前他的目光中帶著一種深沉的欣慰然後他緩緩說道：「第二階段通過——你的意識結構現在已經足夠穩定足以承載完整的第七世記憶核心數據了。</p>
+<p>」這句話如同在場的所有人心中投下了一顆巨石因為它不僅確認了葉尘已經完成了守望者傳承考驗的前兩個階段更意味著第三個階段即將降臨而那個階段將直接決定他能否真正繼承第七世守望者的全部知識體系。</p>
+<p>但就在此時一個意外的狀況發生了——凌風突然從警戒線外快步走了過來他的表情中帶著一種極為嚴峻的緊張感他的聲音雖然壓得很低但每一個字都透露出一種不容忽視的緊迫：「我剛剛收到暗淵閣忠誠節點的緊急情報——幽影尊者的主力部隊已經穿過了南部平原現在距離天穹城的外圍防禦線只剩下不到一天的路程了。</p>
+<p>更糟糕的是他這次行動的規模遠超以往——他不僅帶上了暗淵閣的核心戰鬥力量還率領了一批我之前從未見過的特殊單位那些單位的頻率特徵非常奇怪既不是紫黑色也不是冷能波紋而是一種完全陌生的震盪模式。</p>
+<p>」葉尘的眉頭微微皺起他在意識中迅速調用了第七世記憶中的相關數據然後發現那種特殊的震盪模式與第七世守望者記錄中的一種極為危險的現象高度吻合——那是第八世崩潰前最後階段出現過的一種頻率侵蝕現象當時虛空之眼在徹底失控之前曾經嘗試用一種全新的能量維度來強行穿透世界頻率織物的防禦屏障而幽影尊者這次帶來的特殊單位很可能就是在那個基礎上開發出來的新型干涉武器。</p>
+<p>「他不是在試圖簡單地佔領天穹城。</p>
+<p>」葉尘的聲音低沉卻帶著一種極為嚴肅的確定性——「他在嘗試用那些特殊單位的頻率侵蝕能力來直接破壞天穹城的封印系統節點如果他的策略成功那麼整個南部地區的頻率織物就會失去一個重要的支撐基礎然後會引發一系列連鎖反應最終導致多箇舊封鎖層同時失衡。</p>
+<p>」這個消息讓在場的所有人都面臨著一個極為艱難的抉擇——葉尘剛剛完成了守望者傳承的第二階段考驗距離完全解封第七世記憶的核心數據只差最後一道門檻但如果他現在選擇立即前往天穹城那麼他將沒有足夠的時間來完成第三階段的測試而那套完整的知識體系正是他在面對幽影尊者頻率侵蝕武器時最重要的戰術優勢。</p>
+<p>反過來如果他在這裡繼續完成第三階段考驗那麼他就能獲得完整的第七世記憶但幽影尊者的主力部隊可能會在天穹城外圍造成不可逆的破壞到時候即使擁有再強大的頻率校準能力也無法完全彌補那些損失。</p>
+<p>「我認為我們應該立即行動。</p>
+<p>」凌風的聲音中帶著一種決斷——「天穹城的防禦不能等我們可以先在路上完成第三階段的測試——第七世記憶的核心數據雖然重要但它的價值在一個已經被摧毀的節點面前毫無意義。</p>
+<p>」「你錯了。</p>
+<p>」月璃突然開口了她的聲音平靜但帶著一種不容置疑的力量——她將目光轉向葉尘然後以極為嚴肅的態度說道：「幽影尊者帶來的頻率侵蝕武器正是我們最需要第七世知識來應對的威脅——因為那種武器的運作原理直接針對世界頻率織物的防禦機制如果我們在沒有完整理解其工作原理的情況下正面對抗那等於是在用未知對抗已知而這種戰鬥的結果幾乎可以預見。</p>
+<p>」「但時間不允許我們等待。</p>
+<p>」凌風的聲音提高了幾個分貝他的表情中帶著一種極為焦躁的緊張——「一旦天穹城的封印節點被破壞那麼整個南部地區的頻率平衡就會崩潰到時候即使葉尘掌握了第七世記憶也來不及修復那些已經造成的損傷！」墨岩此時緩緩走向兩人之間他的步伐緩慢但每一步都像是與地面中的頻率共振產生了某種微妙的同步——他在距離凌風和月璃各兩步的位置停下然後以極為深沉的聲音說道：「你們兩個的擔憂都是正確的但也都有各自的盲點。</p>
+<p>幽影尊者的行動確實迫在眉睫而第三階段的考驗也確實不能延遲太久——因為第七世記憶的核心數據如果不盡快與葉尘的神經系統完成深度整合那麼它的高密度信息就會變成一種負擔而非資產。</p>
+<p>」所有人的目光都集中在了墨岩的身上因為他接下來要說的話很可能直接決定團隊的行動方向。</p>
+<p>「我有一個替代方案。</p>
+<p>」老人的聲音如同大地深處的能量流一般沉穩而深沉——「第三階段的考驗本質上是測試繼承人對第七世記憶的吸收和內化能力但這種測試不一定需要以傳統的靜態方式進行——它可以在動態環境中完成只要能夠提供一個相對穩定的頻率操作空間並且讓葉尘在面對外部壓力的同時保持對記憶數據的接收處理能力。</p>
+<p>」「你打算怎麼做？」月璃追問道她的目光中帶著一絲探究的光芒。</p>
+<p>「將這裡的人工共振場擴展。</p>
+<p>」墨岩的聲音變得更加堅定——「我可以用守望者傳承中最基礎的頻率調節技術將整個晶體平原改造成一個巨大的動態測試空間在這種環境中葉尘可以在處理外部能量波動的同時逐步接收第七世記憶的核心數據而他的身體會像在真實戰鬥一樣承受各種壓力但同時又能利用共振場提供的穩定框架來保護自己的意識系統不受到信息過载的傷害。</p>
+<p>」「但這需要極高的頻率控制精度。</p>
+<p>」凌風皺眉說道他的表情中帶著一種戰術分析者特有的謹慎——「如果晶體平原上的任何一個局部區域出現頻率失衡那麼整個測試空間就可能崩潰到時候葉尘不僅無法完成考驗反而可能遭受嚴重的精神損傷。</p>
+<p>」「所以我才說這是一個替代方案而不是一個完美的解決方案。</p>
+<p>」墨岩的聲音中帶著一種極為深沉的坦然——「但這是目前唯一能夠同時滿足時間壓力和知識傳承需求的選項如果你們同意現在就讓我開始準備而葉尘需要做好在極度複雜的動態環境中接收龐大信息流的心理準備。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-344.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-346.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <link rel="canonical" href="{canonical}">
+    <link rel="prev" href="chapter-343.html">
+    <link rel="next" href="chapter-345.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第三百四十四章 · 晶體深處的秘密</h1>
+    <main>
+<p>葉尘在三分鐘的時間限制內完成了對整個三公裡測試區域的頻率掃描他的意識如同精密的儀器一般在三種人工幹擾之中穿梭識別出了每一處自然頻率源的確切位置、強度數值和波動特徵——當最後一個信號被記錄下來之後他緩緩收回了感知範圍然後睜開了雙眼那個動作引發了一連串微妙的能量響應讓整個共振場的表面浮現出了一層淡金色的光暈。</p>
+<p>「我完成了。</p>
+<p>」葉尘沉聲說道他的聲音中帶著一種前所未有的清晰感因為第一個階段的測試不僅僅驗證了他的頻率辨識能力更在深層次上改變了他對世界頻率織物的理解方式——那些曾經漂浮不定的頻率信號此刻在他的意識中形成了一個極為有序的空間地圖每一個自然源的位置和特徵都像是被標記在了一幅立體的三維圖表之中。</p>
+<p>墨岩緩緩走到共振場的中心他的目光從葉尘的面容轉移到那個淡金色光暈之上然後他做出了一個極為莊重的動作——將雙手交疊在胸前深深鞠了一個躬。</p>
+<p>「第一個階段通過。</p>
+<p>」老人的聲音中帶著一種難以掩飾的欣慰——「你的頻率感知精度已經達到了第七世守望者所要求的水準這意味著你有資格進入第二個階段的考驗。</p>
+<p>但在那之前我必須提醒你——第二個階段測試的不是感知能力而是承受能力的極限在第三階段你將直接觸碰第七世記憶的核心數據而那套數據的密度之高足以摧毀任何未經充分準備的修行者的意識結構。</p>
+<p>」葉尘點了點頭他的目光中沒有任何畏懼因為第六世記憶留下的認知框架已經為他鋪設了足夠堅固的精神基礎——他知道接下來要面對的不僅僅是一場能力的測試更是一對自我承受力的嚴格審判。</p>
+<p>墨岩此時重新開始調節自身的頻率輸出這次他所產生的波動與第一個階段的三種人工幹擾完全不同那是一種極為深沉、極其穩定的共振信號如同大地深處的能量流一般緩慢而持續地從地面湧現出來然後包裹住了整個共振場的範圍。</p>
+<p>「第二個階段：頻率承載力的測試。</p>
+<p>」墨岩的聲音在共振場中迴盪——「我需要你在不閉合任何感知通道的情況下同時維持兩個平行的頻率循環系統——一個是以凝元鎮塵印為核心的能量調控網絡負責處理外界環境中的靈氣流動另一個是以九世輪迴網絡為基礎的记忆信息緩衝區負責接收並整理我即將注入你的第七世代記憶碎片。</p>
+<p>這兩個系統必須在同一時間運行且彼此之間不能產生任何干擾性共振。</p>
+<p>」這個要求比第一個階段更加苛刻因為它不僅需要葉尘擁有精細的頻率辨識能力更要求他的意識能夠在兩個完全不同的頻率維度中同時進行操作而不讓任何一個系統的運行受到另一個的干扰——這就像是在暴風雨中同時駕駛兩艘獨木舟而每艘船的穩定性都直接取決於他能否將兩種截然不同的水流力量完美區分開來。</p>
+<p>葉尘深吸了一口氣然後開始了這項幾乎超越常規凝神期能力邊限的工作：他以凝元鎮塵印為核心建立了一道極為精密的能量調控節點那個節點的運轉方式與過去幾日在人工共振場中的操作有相似之處但難度卻高出數倍因為現在他面對的不是已經被精心設計好的三層能量環境而是外界完全隨機的靈氣流動——每一絲空氣的波動、每一寸地面的震盪每一個方向的風向變化都在以不同的頻率影響著他的能量網絡。</p>
+<p>與此同時他以九世輪迴網絡為緩衝區開始準備接收墨岩即將注入的第七世記憶碎片——那些碎片尚未完全進入他的意識但僅僅是接觸到邊緣的部分就已經引發了一股極為龐大的信息壓力那種壓力如同深淵中的暗流在他神經系統的表面激起了無數微小的共振波紋。</p>
+<p>月璃站在不遠處她的目光在月輪盤的數據和葉尘之間來回切換然後她發現了一個令人震驚的現象：葉尘體內的頻率穩定性正在以一種完全不符合常規凝神期生理規律的方式發生著變化——他不是在兩個平行系統之間疲於奔命而是找到了一種極為精妙的平衡方式讓能量調控網絡和信息緩衝區之間形成了一種互補關係而非競爭關係。</p>
+<p>「他的兩個循環系統不是互相干擾的。</p>
+<p>」月璃的聲音中帶著一種難以置信的興奮——「它們在相互協作——凝元鎮塵印處理的能量流動為九世輪迴網絡提供了穩定的頻率基礎而那些記憶碎片的接收反過來又幫助他更加精細地調節能量節點的分佈。</p>
+<p>」墨岩也察覺到了這個異常他的表情從嚴肅轉化為一種極為深沉的讚賞：「這就是為什麼第七世的守望者選擇了你——你不僅僅是一個繼承人更是一個能夠在極限壓力下找到創新解決方案的頻率織造者。</p>
+<p>」「承載力測試持續時間為五分鐘。</p>
+<p>」墨岩的聲音打斷了葉尘和月璃的思考——「在這五分鐘之內如果你的任何一個循環系統出現超過百分之十的頻率漂移那麼測試就會失敗而你將需要重新從第一階段開始。</p>
+<p>我現在開始注入第七世記憶碎片——準備。</p>
+<p>」一股極為強烈的信息流如同決堤的洪水般湧入了葉尘的九世輪迴網絡——那些碎片不是單一的信息包而是一個龐大的、多層次的知識體系每一個層次都對應著第七世守望者在不同時間點記錄下來的數據和感悟。</p>
+<p>第一層是最基礎的：五個節點的完整頻率特徵及其相互連接通道的精確數學模型那一層信息如同無數根細密的絲線在他的意識中交織成了一個極為複雜但也極具美感的網絡架構每一條線的走向、每一個交叉點的角度都經過了數百年的反覆驗證和調整。</p>
+<p>第二層是更為深層的：那些連接通道在不同環境條件下的動態響應規律——當溫度、靈氣密度、空間結構發生變化時頻率傳輸效率會如何波動而那些波動又可以通過哪些方式來補償和校正。</p>
+<p>第三層則是最高級別的：第七世守望者總結出的五個節點同時平衡算法——那套算法不是簡單地將五個節點的數據相加然後進行平均而是根據每個節點的特定脆弱性和環境干擾類型動態調整其共振強度從而實現整個頻率織物的平穩運行。</p>
+<p>葉尘能夠感覺到那股信息流的密度正在不斷上升每一個新增的層次都在他的意識中打開了一扇全新的門扉而那些門扉背後所揭示的世界頻率織物真相已經遠遠超出了他對封印系統的任何既有認知——他原本以為五個節點只是物理空間中的某些地理坐標但此刻他意識到那些節點實際上是世界這個有機體的五個生命維持器官每一個都在以不同的方式參與著世界頻率織物的呼吸循環。</p>
+
+    </main>
+    <nav class="nav">
+        <a href="chapter-343.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="chapter-345.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

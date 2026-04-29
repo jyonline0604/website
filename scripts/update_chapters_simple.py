@@ -89,6 +89,12 @@ def update_chapters_html():
             button_groups.append(f"{start}-{end}")
     
     # 生成按鈕 HTML
+    # 生成隱藏的 group id 元素（用於錨點跳轉）
+    group_ids_html = ""
+    for group in button_groups:
+        group_id = f"group-{group}"
+        group_ids_html += f'        <div id="{group_id}" style="position:absolute; opacity:0; pointer-events:none; height:1px; overflow:hidden;"></div>\n'
+
     buttons_html = '<div class="chapter-groups" id="chapterGroups">\n'
     buttons_html += '            <a href="#" class="group-btn active" >全部</a>\n'
     for group in button_groups:
@@ -127,7 +133,7 @@ def update_chapters_html():
             pos = next_close + 6
     
     # 保留 groups_start 之前的內容 + 新的按鈕 HTML + groups_end 之後的內容
-    content = content[:groups_start] + buttons_html + '\n        ' + content[groups_end:]
+    content = content[:groups_start] + group_ids_html + buttons_html + '\n        ' + content[groups_end:]
     print(f"✅ 已更新按鈕組: {button_groups[0]}, 71-80, 61-70...")
     
     # 生成章節列表HTML（從第1章到最新章）

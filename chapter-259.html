@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第259章：暗淵閣的追殺 - 萬古塵埃</title>
+    <title>第259章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-259.html">
     <link rel="prev" href="https://kofhk.com/chapter-258.html">
     <link rel="next" href="https://kofhk.com/chapter-260.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第259章 · 暗淵閣的追殺</h1>
+    <h1>第259章</h1>
     <main>
-        <p>葉塵沿著峽谷通道向東南方繼續前行的過程中靈魂鎖鏈感知持續監測著周圍環境的每一絲變化——岩層的靈力分佈、空氣中的濕度梯度、以及遠方可能存在的任何能量波動。銀白屏障的能量環形區域在他收回力量的瞬間開始消退但峽谷內的空氣仍然殘留著濃重的能量擾動痕跡那些被干擾的靈力流動如同水面上的漣漪一般緩慢平息每一道波動都在向葉塵傳遞著關於暗淵阁追蹤小隊實力水平的情報：這些武者的個人修為雖然不算特別高強但他們的戰術協調性和情報獲取能力遠超普通追兵的標準——這意味著他們不是普通的巡邏部隊而是一支專門針對凝元鎮塵印能量特徵進行訓練的精銳單位。</p>
+<p>葉塵沿著峽谷通道向東南方繼續前行的過程中靈魂鎖鏈感知持續監測著周圍環境的每一絲變化——岩層的靈力分佈、空氣中的濕度梯度、以及遠方可能存在的任何能量波動。銀白屏障的能量環形區域在他收回力量的瞬間開始消退但峽谷內的空氣仍然殘留著濃重的能量擾動痕跡那些被干擾的靈力流動如同水面上的漣漪一般緩慢平息每一道波動都在向葉塵傳遞著關於暗淵阁追蹤小隊實力水平的情報：這些武者的個人修為雖然不算特別高強但他們的戰術協調性和情報獲取能力遠超普通追兵的標準——這意味著他們不是普通的巡邏部隊而是一支專門針對凝元鎮塵印能量特徵進行訓練的精銳單位。</p>
         <p>他需要盡快離開這個位置暗淵阁既然已經掌握了他的大致行進路線和當前狀態就不可能輕易放棄追蹤行動下一次派出的可能會是更為強大的追擊力量或者部署更精密的攔截網葉塵將最後一絲源塵注入防禦屏障的核心節點中作為延遲裝置——如果追兵在幾個時辰後返回這裡這個延遲屏障會產生一次短暫但強烈的能量爆鳴以提醒他注意危險。轉身沿著峽谷通道向東南方繼續前行之前他最後看了一眼那片被炸裂的岩壁——碎石仍在緩緩滑落而銀白屏障的薄膜已經在裂縫處重新生長出細微的光絲如同大地本身正在癒合傷口一樣自然且不可逆轉。</p>
         <p>他在行走過程中偶爾會停下腳步讓多維度感知掃描前方區域的地形特徵和潛在的能量干擾源這些掃瞄結果在他意識中逐漸構建出一幅越來越完整的天穹城外圍防禦布局圖——三層同心圓能量屏障的覆蓋範圍探測節點的間距密度以及守衛部隊常規巡邏的路線和時間週期所有這些信息都與凌風信中提供的情報相互印證證實了對方所提供的情報來源確實可靠。</p>
         <p>在感知深層中他還捕捉到了一個極為微妙的信號：從天穹城高塔的方向傳來了一段極低頻率的金色共鳴波——那種波動的頻率與凝元鎮塵印的核心共振節點產生了某種跨維度的呼應彷彿第四金色碎片正在以一種幾乎無法察覺的方式感知著他的接近這種感應雖然微弱但方向極為明確為他提供了比任何地圖都更為可靠的導航信息。</p>
@@ -136,11 +198,41 @@
         <p>葉塵加快了腳步在多維度感知的引導下一路穿過了數片茂密的灌木叢和崎嶇的岩石區那些銀白裂痕能量在他的周身持續跳動著與九世輪迴網絡中樞節點之間保持著一條穩定的信息通路他知道在那個深層的節點之中某個古老的意志正在等待他的最終決定那個意志跨越了三個世界循環的漫長時間仍然在這片大地之中守護著某種比個人生死更加重要的東西。他將靈魂鎖鏈感知調整到最大敏銳度試圖在複雜的地形中尋找任何可以利用的天然優勢或隱藏通道同時也在持續監測著暗淵阁監控節點的能量波動頻率——那些節點的探測信號正在逐漸加強表明他們已經開始鎖定他的具體位置而時間正以驚人的速度流逝每一秒的延誤都可能導致他失去進入天穹城的最佳機會。</p>
         <p>銀白色的光芒在他腳下延伸出一條微光小道指引著通往風鳴谷的方向而黎明已經到來——他是第一個走在破曉路上的人。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-258.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-259/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-260.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-258.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-259/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-260.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

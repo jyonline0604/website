@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第94章：未定標題 - 萬古塵埃</title>
+    <title>第94章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-94.html">
     <link rel="prev" href="https://kofhk.com/chapter-93.html">
     <link rel="next" href="https://kofhk.com/chapter-95.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第94章 · 未定標題</h1>
+    <h1>第94章</h1>
     <main>
-        <p>第94章：凝元靈泉修煉</p>
+<p>第94章：凝元靈泉修煉</p>
         <p>離開天機閣的第三天傍晚，葉塵來到了雲霄宗禁地邊緣的一片幽靜山谷。這裡有一處天然的靈泉——凝元靈泉，是宗主在內門大比中獎勵給他的三項獎品之一。靈泉的水面呈現出一種淡淡的藍色，散發著柔和而純淨的能量波動。泉水周圍長滿了翠綠的苔蘚和幾株珍稀的靈草，空氣中瀰漫著一股清新而寧靜的氣息。</p>
         <p>蘇清雪已經在泉邊等候多時了。她看到葉塵走來，微微一笑：「你在天機閣的三天裡表現如何？福伯有沒有教你一些有用的東西？」</p>
         <p>葉塵在她身邊坐下，將這三天來的收穫簡要地告訴了她——包括《塵埃之印》的進階修煉、封印之道的基礎知識，以及關於暗淵閣和幽影尊者的情報。蘇清雪聽完後，表情變得凝重起來：「混沌之種……我從來沒有聽說過這種存在。如果它真的脫困而出，整個修真界都將面臨毀滅。」</p>
@@ -148,11 +210,41 @@
         <p>葉塵點了點頭：「我明白。所以明天我會去找趙明遠——他之前提到過一些關於萬古塵源的線索。如果我們能夠將所有的情報匯總起來，或許能找到對抗混沌之種的方法。」</p>
         <p>兩人一起離開了靈泉山谷。月光灑在他們的身上，拉出兩道长长的影子。葉塵抬頭仰望星空，心中默默念道：無論前方有多少危險，我都不會退縮——因為那是我唯一的希望。萬古塵源的第九層，我一定會找到父親。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-93.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-94/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-95.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-93.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-94/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-95.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第28章：未定標題 - 萬古塵埃</title>
+    <title>第28章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-28.html">
     <link rel="prev" href="https://kofhk.com/chapter-27.html">
     <link rel="next" href="https://kofhk.com/chapter-29.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第28章 · 未定標題</h1>
+    <h1>第28章</h1>
     <main>
-        <p>第二十八章 破繭而出</p>
+<p>第二十八章 破繭而出</p>
         <p>地下秘境的深處，空氣中的靈氣濃稠得幾乎可以凝成液體。葉塵獨自坐在一個狹小的洞穴中，雙腿盤膝而坐，雙手放在膝蓋上——他的呼吸平穩而深沉，每一次吸氣都像是在將周圍的靈氣吸入體內，每一次呼氣都像是在將体内的雜質排出体外。</p>
         <p>從剛才在岩壁裂縫中獲得記憶碎片以來，葉塵已經調息了將近兩個時辰。那段關於《塵埃訣》的记忆雖然模糊，但其中的要領卻像一顆種子一樣，在他的心中生根發芽——他開始能夠有意识地控制空氣中的灰塵，讓它們按照自己的意願流動、聚集、消散。</p>
         <p>「塵埃訣·第一層：聚塵。」葉塵的口中再次喃喃自語——這句話已經成了他的口頭禪，每當他調息的時候都會不自觉地重複一遍。隨著這種重複，他感覺到自己對那種灰色力量的控制正在變得更加精細、更加深入。</p>
@@ -175,11 +237,41 @@
         <p>葉塵睜開眼睛——他的目光中帶著一絲前所未有的堅定和自信。他知道從今天開始，自己已經真正踏上了塵埃散修的道路——一條充滿未知和挑戰的道路。而那種灰色的力量，將成為他在修仙界生存下去的唯一依仗。</p>
         <p>他站起身來，走出洞穴——前方傳來隊員們的呼喚聲，他知道該回去了。但他心裡卻多了一個新的念頭：他必須找到福伯問清楚——關於他的身世，關於那塊玉佩，關於九世輪迴的真正意義。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-27.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-28/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-29.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-27.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-28/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-29.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

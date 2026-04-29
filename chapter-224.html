@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第224章：北境寒晶宮 - 萬古塵埃</title>
+    <title>第224章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-224.html">
     <link rel="prev" href="https://kofhk.com/chapter-223.html">
     <link rel="next" href="https://kofhk.com/chapter-225.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第224章 · 北境寒晶宮</h1>
+    <h1>第224章</h1>
     <main>
-        <p>瞬影步在最高輸出狀態下啟動的那一刻，葉塵的身影化為一道灰黑色的殘影。冰面在他足尖掠過的瞬間結出了一層薄薄的霜痕——那霜痕並非因為寒冷而凝結，而是因為他極速移動時體內靈氣被強制壓縮所產生的物理效應。銀白色的後影像碎裂的鏡片般散落在身後，每一片都短暫地停留在原地，隨後才緩緩消散在寒冷的空氣中。</p>
+<p>瞬影步在最高輸出狀態下啟動的那一刻，葉塵的身影化為一道灰黑色的殘影。冰面在他足尖掠過的瞬間結出了一層薄薄的霜痕——那霜痕並非因為寒冷而凝結，而是因為他極速移動時體內靈氣被強制壓縮所產生的物理效應。銀白色的後影像碎裂的鏡片般散落在身後，每一片都短暫地停留在原地，隨後才緩緩消散在寒冷的空氣中。</p>
         <p>他沒有回頭看戰場上的雙方面勢力——因為他知道一旦有任何延誤，天階宗或暗淵閣的任何一名凝神初期指揮官都有可能在最短的時間內將攻擊鎖定在他身上。那種程度的靈氣感知範圍足以覆蓋整個冰川入口廣場，而此刻他正處於裂痕重創後的脆弱狀態，經脈中的能量流動尚未恢復正常，靈魂鎖鏈感知也因為剛才的過度負荷而出現了不同程度的損耗。如果在此時被任何一方鎖定，無論對方的意圖是敵是善，他所面臨的處境都會變得極度危險。</p>
         <p>灰黑色的身影在冰面上疾速穿梭。葉塵的瞬影步雖然在速度上達到了臨界值，但他的身體狀態已經無法支撐長距離的高強度移動。每一次蹬踏冰面，腳下的霜痕就會延伸出半丈左右的距離——那是他靈氣殘留的痕跡，也是追擊者可能追蹤的路徑標記。葉塵必須儘快找到一個既能提供遮蔽又不會限制自己進一步行動的位置。</p>
         <p>冰川表面的地形並不複雜——平坦的冰原、零散分佈的巨大冰塊以及偶爾出現的冰裂縫構成了主要的地貌特徵。但正是在這些看似簡單的地理結構中，隱藏著葉塵需要的避難所。他的灰瞳在高速移動中快速掃描著前方的環境，最終鎖定了一道位於兩側冰川岩壁之間的狹窄裂縫。那道裂縫寬度大約只容一人通過，深度則深不可測——從入口處向下望去，只能看到一片濃稠的黑暗連接著看不盡底的幽暗空間。</p>
@@ -149,11 +211,41 @@
         <p>葉塵緩緩站起身來，腳下的冰面在裂痕微弱的銀白光芒映照下泛著一絲淡金色的反光。他的身體狀態仍然處於恢復期中——經脈中的能量流動雖然已經趨向穩定，但裂痕周圍的能量輸出能力尚未完全恢復到正常水平。即便如此，他也知道不能再繼續拖延了。寒晶宮的秘密等著他去揭開，而戰場上的局勢也不允許他長時間置身事外。</p>
         <p>他必須做出選擇。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-223.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-224/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-225.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-223.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-224/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-225.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第223章：裂痕之痛 - 萬古塵埃</title>
+    <title>第223章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-223.html">
     <link rel="prev" href="https://kofhk.com/chapter-222.html">
     <link rel="next" href="https://kofhk.com/chapter-224.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第223章 · 裂痕之痛</h1>
+    <h1>第223章</h1>
     <main>
-        <p>紫黑色的能量團從冰原右側疾射而來，速度快得幾乎在視線中留下了殘影。那道攻擊的軌跡並未指向天階宗的陣型——它越過了交鋒線，直衝封印門的方向而去。葉塵沒有思考的時間，他的身體比意識更快一步做出了反應。</p>
+<p>紫黑色的能量團從冰原右側疾射而來，速度快得幾乎在視線中留下了殘影。那道攻擊的軌跡並未指向天階宗的陣型——它越過了交鋒線，直衝封印門的方向而去。葉塵沒有思考的時間，他的身體比意識更快一步做出了反應。</p>
         <p>凝物的力量在他掌心瞬間凝聚。</p>
         <p>這不是他第一次嘗試凝物——在那座冰川核心設施中，他曾經成功將銀白色的裂紋能量壓縮成了一個直徑不到寸許的微型球體。但那次操作是在安全、靜止的環境下進行的，靈氣輸出穩定而可控。此刻的情況截然不同：戰場上的靈能湍流如同暴風中的海浪般翻湧不息，每一道來自天階宗的金光劍氣與暗淵閣的紫黑色鬼煞之氣交錯衝擊，產生了一種極為混亂的能量環境。在這樣的條件下進行凝物，任何一個微小的偏差都足以導致整個結構崩潰。</p>
         <p>葉塵深吸一口氣，灰瞳中閃過一絲決然。他將雙手向前推出，掌心時空符文的銀白光芒如同噴泉般湧出——不是像往常那樣穩定地流動，而是被他的意志強行壓縮、收攏，形成了一團明亮而密集的能量核心。裂痕在他的體表劇烈震顫起來，銀白色的光芒從裂隙邊緣四處蔓延，將他的雙臂籠罩在一片細碎的光網之中。他感覺到靈魂鎖鏈感知在這一瞬間發生了某種微妙的變化——灰色的意識絲線不再只是向外延伸以感知靈氣波動，而是開始主動地捕捉、收攏周圍的能量粒子，將它們引導至掌心凝聚的核心之中。</p>
@@ -150,11 +212,41 @@
         <p>他知道自己沒有太多時間來應對這個局面了——裂痕的負荷狀態正在逐漸恢復，但同時他的身體也因為剛才的巨大能量衝擊而出現了明顯的疲勞跡象。無論接下來發生什麼事，他都必須在最短的時間內做出判斷：是選擇與其中一方合作，還是試圖將雙方都推開以保護遺跡的安全——又或者採取一種更激進的方式，徹底終止這座冰川入口處持續不下的戰役。</p>
         <p>寒風掠過冰原廣場，卷起了地面細碎的冰晶。那些冰晶在空中飛旋了片刻之後又緩緩落下，最終沉積在了封印門前那道銀白色裂纹的邊緣上——將那條裂縫半掩埋在一片潔白之中，彷彿大自然也在等待著這個局面的下一個轉折點出現。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-222.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-223/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-224.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-222.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-223/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-224.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

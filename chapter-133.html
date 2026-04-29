@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第133章：守衛與試煉 - 萬古塵埃</title>
+    <title>第133章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-133.html">
     <link rel="prev" href="https://kofhk.com/chapter-132.html">
     <link rel="next" href="https://kofhk.com/chapter-134.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第133章 · 守衛與試煉</h1>
+    <h1>第133章</h1>
     <main>
-        <p>深入總部內部後，三人來到了通往核心區域的必经之路——「寂靜長廊」。這條長廊狹窄而幽深，兩側牆壁上掛滿了發光的晶石，將整個空間照得如同白晝。然而，這種明亮並未帶來安全感，反而讓人心生寒意，因為長廊的每一寸地面都佈滿了隱形的禁制，一旦觸碰，就會引發強烈的爆炸。「不能踩錯一步。」葉塵低聲提醒道。他閉上雙眼，將感氣境的靈識擴展到極限，試圖感知地面的靈氣波動。他能感覺到腳下傳來陣陣細微的震動，那是禁制運轉的痕跡。這些禁制並非隨機分佈，而是遵循著某種特定的規律，彷彿是一張巨大的網，籠罩著整條長廊。</p>
+<p>深入總部內部後，三人來到了通往核心區域的必经之路——「寂靜長廊」。這條長廊狹窄而幽深，兩側牆壁上掛滿了發光的晶石，將整個空間照得如同白晝。然而，這種明亮並未帶來安全感，反而讓人心生寒意，因為長廊的每一寸地面都佈滿了隱形的禁制，一旦觸碰，就會引發強烈的爆炸。「不能踩錯一步。」葉塵低聲提醒道。他閉上雙眼，將感氣境的靈識擴展到極限，試圖感知地面的靈氣波動。他能感覺到腳下傳來陣陣細微的震動，那是禁制運轉的痕跡。這些禁制並非隨機分佈，而是遵循著某種特定的規律，彷彿是一張巨大的網，籠罩著整條長廊。</p>
         <p>同伴們小心翼翼地跟隨在葉塵身後，每一步都走得極其謹慎。他們知道，一旦有人失足觸發禁制，不僅會暴露行蹤，更可能直接喪命。走了約莫一刻鐘，前方突然出現了一道轉角。葉塵停下腳步，抬手示意同伴停步。他能夠感覺到轉角處有一股強大的靈氣波動，那是守衛的氣息。「前面有埋伏。」葉塵低聲說道，「我們不能硬闖。」</p>
         <p>他從袖中取出一枚煙霧彈，輕輕扔向前方。瞬間，濃厚的黑煙瀰漫開來，遮蔽了前方的視線。趁著守衛們被煙霧迷惑的瞬間，葉塵身形一閃，如同鬼魅般穿過轉角，來到了一處隐蔽的角落。同伴們緊隨其後，三人躲在一根巨大的石柱後面，觀察著前方的情況。只見長廊盡頭站著三名身穿黑袍的守衛，他們手持長槍，周身環繞著濃重的黑氣，神情警惕地掃視著四周。「必須解決掉他們。」葉塵低聲說道，「否則無法通過。」</p>
         <p>他從懷中取出雲塵印，輕輕一揮。瞬間，一股灰色的霧氣從法器中噴湧而出，迅速籠罩了前方的三名守衛。這霧氣並非普通之物，而是雲塵印蘊含的「散靈之力」，能夠侵蝕修為者的靈氣根基，即便是聚元境的修者，也會感到不適。然而，這次霧氣的效果似乎大打折扣。那三名守衛僅僅皺了皺眉，便揮袖將霧氣驅散。其中一人冷笑一聲：「小小的雲塵印，也想困住我們？真是天真。」</p>
@@ -140,11 +202,41 @@
         <p>葉塵卻沒有時間思考這些。他能夠感覺到，隨著第三把鑰匙的插入，暗淵之核正在發生某種變化。那股陰冷而壓抑的气息逐漸消散，取而代之的是一種溫暖而柔和的力量。這股力量彷彿在呼喚著他的靈魂，讓他感到一種莫名的親切感。「這就是……第一世記憶的觸媒？」葉塵心中一震。他想起之前獲得的線索，暗淵之核不僅是力量的源泉，更是開啟輪迴記憶的關鍵。此刻，隨著鑰匙的插入，他感覺到自己的意識正在被拉入一個深邃的空間，那裡充滿了塵封已久的畫面與聲音。</p>
         <p>周圍的景象開始變得模糊不清，彷彿置身於一片混沌的虛無之中。葉塵能夠感覺到一股強大的力量在拉扯著他的靈魂，試圖將他吞噬。「保持清醒！」葉塵在心中默念，強迫自己集中精神。他知道，這不僅僅是幻覺，而是暗淵之核設下的最後一道防線——心魔試煉。只有通過这道試煉，才能真正掌控核心，否則將會永遠迷失在虛無之中。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-132.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-133/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-134.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-132.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-133/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-134.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

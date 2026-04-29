@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第256章：源塵的覺醒 - 萬古塵埃</title>
+    <title>第256章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-256.html">
     <link rel="prev" href="https://kofhk.com/chapter-255.html">
     <link rel="next" href="https://kofhk.com/chapter-257.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第256章 · 源塵的覺醒</h1>
+    <h1>第256章</h1>
     <main>
-        <p>洞穴內的溫度比外部低了很多岩壁上滲出細密的水珠在微弱的光線中閃爍著銀色的光澤。葉塵沿著通道緩步前行多維度感知在這片封閉空間中呈現出一種極為豐富的資訊密度——每一滴水珠都記錄了它從懸崖頂端流下的完整路徑和沿途遭遇的靈力變化岩層的內部結構在他眼中如同一幅立體的解剖圖清晰展示了數百年來暗淵阁能量殘留所留下的微妙痕跡。</p>
+<p>洞穴內的溫度比外部低了很多岩壁上滲出細密的水珠在微弱的光線中閃爍著銀色的光澤。葉塵沿著通道緩步前行多維度感知在這片封閉空間中呈現出一種極為豐富的資訊密度——每一滴水珠都記錄了它從懸崖頂端流下的完整路徑和沿途遭遇的靈力變化岩層的內部結構在他眼中如同一幅立體的解剖圖清晰展示了數百年來暗淵阁能量殘留所留下的微妙痕跡。</p>
         <p>凝元鎮塵印在懷中持續發出一種平穩而悠長的共鳴聲彷彿整個洞穴都在與這塊玉石產生某種深層次的共振葉塵將注意力集中到這種共鳴上他發現銀白屏障累積在他體內的源塵正在自行運行——不是以他主動引導的方式而是遵循一種更為自然且自發的循環模式在經脈和神魂之間流動。這種自動運行的過程帶來了一種前所未有的舒適感：就像一條長期乾涸的河床終於迎來了豐水期每一寸土地都在吸收並轉化為滋潤的力量。葉塵能感覺到源塵中的黑暗能量殘渣在經過銀白屏障的多重過濾後變得越來越純淨最終形成了一種既非光明也非黑暗的中間狀態——一種真正中性的修復能量它不偏向任何一方只專注於重建和愈合。</p>
         <p>當他走到通道的盡頭時前方出現了一個極為壯觀的景象：一個天然的地下洞穴空間內地面中央矗立著一座由無數晶體構成的柱狀結構——那些晶體相互交錯嵌合形成了一種複雜而精密的幾何圖案每一面都反射出銀白色的光芒。這就是凌風信中提到的源塵之井——銀白屏障網絡的核心節點之一負責將暗淵阁的能量轉化為純淨源塵並反饋給整個封印系統。</p>
         <p>葉塵走近源塵之井多維度感知立刻捕捉到了它的內部狀態：晶體柱的表面存在若干微小的裂紋和損壞區域但核心結構仍然保持完整更重要的是他能夠看見銀白屏障釋放出的源塵正源源不斷地流入這座井中——每一個流入的源塵粒子都經過了精確的分類和提純最終沉積在晶體柱的底部形成了一層極為濃縮的能量堆積。</p>
@@ -139,11 +201,41 @@
         <p>離開源塵之井後葉塵沿著洞穴的另一側通道繼續前行通道的盡頭是一處天然形成的出口通向一片開闊的山谷區域——那裡的地表上生長著一些被黑暗能量侵蝕的植物殘骸枝幹枯黃扭曲葉片呈現出病態的灰白色。他走到最近的一株植物前蹲下身來嘗試用掌心凝聚一小團源塵輕柔地接觸它的根部起初沒有任何反應那株植物的枯萎程度似乎已經超出了單一源塵所能恢復的範圍但當葉塵將更多銀光注入其中並保持持續的能量供應時他察覺到了一個微妙的變化：在植物根部的土壤深處一種極為微弱的新生力量正在緩慢甦醒——那是這株植物自身殘存的自我修復本能，在源塵的催化下被重新激活了。</p>
         <p>葉塵沒有停止他繼續向著更遠的植物延伸銀光的範圍每一株被覆蓋到的植物都在不同程度的恢復中展現出了各自的反應：有的只是根部微微發出了一點新綠有的則開始緩慢舒展枯黃的枝幹這個過程極為緩慢——不可能在短時間內讓整個村落恢復正常但每一個微小的變化都證明了源塵不僅能用於防禦和自我強化還具備主動修復受損世界的能力。當他完成對這一小片區域的淨化後葉塵站起身來深吸了一口氣遠方的天空逐漸亮了起來太陽正在雲海之上緩緩升起金色的晨光穿透霧氣灑落在他身上黎明前的黑暗已經開始消退而他手中的源塵正是迎接真正黎明的第一束光。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-255.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-256/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-257.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-255.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-256/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-257.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

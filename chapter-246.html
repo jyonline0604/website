@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第246章：裂痕之路（三） - 萬古塵埃</title>
+    <title>第246章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-246.html">
     <link rel="prev" href="https://kofhk.com/chapter-245.html">
     <link rel="next" href="https://kofhk.com/chapter-247.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第246章 · 裂痕之路（三）</h1>
+    <h1>第246章</h1>
     <main>
-        <p>紫黑色干擾節點切換到了最高頻率輸出模式。</p>
+<p>紫黑色干擾節點切換到了最高頻率輸出模式。</p>
         <p>這一變化並非毫無預兆——葉塵的多維度感知在數息之前便已經捕捉到了那些分散在冰川表面的暗淵閣能量節點的異常波動。它們原本以一種穩定的節奏向著銀白色屏障發射著特定頻率的黑霧波但此刻那種節奏被徹底打亂取而代之的是一種更加急促也更加狂暴的能量噴湧。紫黑色的光團如同沸騰的血漿般在每個節點內部翻滾不息然後以極高的速度向外擴散形成了一片濃厚的黑暗能量雲團。那片雲團迅速向著銀白色屏障的表面壓迫而來覆蓋範圍之廣、密度之大幾乎遮蔽了冰川入口處所有的自然光線——彷彿整個天地都在瞬間被拖入了一個深不見底的永夜之中。</p>
         <p>暗淵閣的領隊隊長站在遠端的位置高舉雙臂手中的武器揮舞出一道道紫黑色的能量軌跡那些軌跡如同鞭子般抽打在黑暗能量雲團的表面每一次抽打都使得雲團的密度和強度增加一分。他的面具在紫黑色光芒的映襯下顯得格外猙獰——那不是勝利在望的興奮表情而是一種孤注一擲的瘋狂。他清楚知道自己正在做什麼：這是一次將所有底蘊傾注而出的最後搏殺如果能夠在這一次攻擊中撕開銀白色屏障的任何一個裂縫那麼暗淵閣便有望重新奪回對冰川入口的控制權；但如果失敗了等待他們的將是無法承受的後果——不僅是那龐大能量消耗所導致的修行根基損傷更是整個暗淵閣在這一地區的聲望和威望可能由此崩塌的致命危機。</p>
         <p>然而令所有暗淵閣修行者感到絕望的事實是——他們的最終攻擊不再能夠對銀白色屏障造成任何實質性的損害。</p>
@@ -157,11 +219,41 @@
         <p>冷風從冰川深處吹來帶著刺骨的寒意但葉塵周身浮現的銀白色光紋始終如常地在脈動著——那是第六階段微重構後獲得的全新生命節奏一種與整個靈氣維度和物質世界深度共振的生命節律。在他的腳下冰川的表面反射出淡金色的晨光那些光線在空氣中形成了一個巨大的能量場如同一座無形的橋梁連接著過去和未來、毀滅和希望、以及萬物塵埃之中所有尚未被揭曉的奧秘。</p>
         <p>而那座橋梁的最遠端——在那個即將到來的新章節裡——一名天階宗密探正帶著他從冰川深處帶來的信息和問題向著銀白色屏障的方向緩緩走近每一步都像是在為這個世界的未來寫下新的註腳。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-245.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-246/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-247.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-245.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-246/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-247.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

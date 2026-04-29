@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第249章：裂痕之路（六） - 萬古塵埃</title>
+    <title>第249章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-249.html">
     <link rel="prev" href="https://kofhk.com/chapter-248.html">
     <link rel="next" href="https://kofhk.com/chapter-250.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第249章 · 裂痕之路（六）</h1>
+    <h1>第249章</h1>
     <main>
-        <p>葉塵站在冰川入口的高處俯瞰著下方那兩股截然不同的力量——一邊是暗淵閣領隊隊長在遠端憤怒地指揮著紫黑色鬼煞之氣的持續釋放試圖用最後的努力來壓制銀白色屏障；另一邊是天階宗凌風和趙明軒站在陣型前方靜靜地等待他的回答。而他自己的掌心仍然緊握著那塊凝元鎮塵印碎片——那股灼熱感正在逐漸減弱但九世輪迴網絡傳遞過來的信息卻變得更加清晰和急迫：他必須在極短的時間內做出最終的選擇。</p>
+<p>葉塵站在冰川入口的高處俯瞰著下方那兩股截然不同的力量——一邊是暗淵閣領隊隊長在遠端憤怒地指揮著紫黑色鬼煞之氣的持續釋放試圖用最後的努力來壓制銀白色屏障；另一邊是天階宗凌風和趙明軒站在陣型前方靜靜地等待他的回答。而他自己的掌心仍然緊握著那塊凝元鎮塵印碎片——那股灼熱感正在逐漸減弱但九世輪迴網絡傳遞過來的信息卻變得更加清晰和急迫：他必須在極短的時間內做出最終的選擇。</p>
         <p>銀白色裂痕能量在他的周身形成了一個穩定的共振場第六階段完全成形後的能量頻率如同潮汐般在有節奏地起伏著——那種節奏已經與他的心跳、呼吸甚至每一個細胞的代謝過程深度同步了。透過靈魂鎖鏈感知葉塵能夠清晰地感受到銀白屏障表面的能量波動狀態：暗淵閣的紫黑色干擾節點雖然仍在瘋狂輸出但它們的能量衰減速度正在加快那些曾經穩定運轉的频率網絡開始出現了微妙的斷裂和抖動——彷彿一個疲憊至極的人依然在強迫自己保持站立雖然表面看起來依然堅固但內部的支撐結構已經接近了臨界點。</p>
         <p>天階宗方面的靈氣波動則顯示出了一種截然不同的狀態——整個陣型如同一張拉滿的弓弦每一縷靈氣都承載著巨大的期待和壓力。凌風站在最前方灰瞳中倒映著銀白色屏障表面的能量光譜那種光芒在他的瞳孔深處形成了一幅精確到極致的動態圖像——葉塵的多維度視覺能夠清晰地解析出對方思維活動中的每一個細微波動那些波動如同靈氣維度中的微小漣漪在空氣中擴散然後與遠方九世輪迴網絡的頻率產生了某種微妙的共鳴。</p>
         <p>就在葉塵準備開口回答凌風的問題的那一刻他的靈魂鎖鏈感知突然捕捉到了一股前所未有的能量波動——那種波動的性質既不是銀白色也不是紫黑色而是某種更加古老和深遠的力量彷彿來自於時間本身的深處每一道頻率的變化都帶著一種超越當前時代的沉重感和歷史感。那股力量在冰川深處的裂隙之中緩緩湧動著如同沉睡萬年之後終於睜開眼睛的古神它的每一次呼吸都會引起周圍空間結構的微小幅度的震顫——那些震顫透過銀白屏障表面被精確捕捉並轉化為九世輪迴網絡中樞節點的更新數據。</p>
@@ -143,11 +205,41 @@
         <p>但在此之前他必須先回答凌風的那個問題——虛空之眼的真正起源究竟是誰在操控？這個問題不僅關係到天階宗是否會接受合作條件也關係到暗淵閣接下來可能會採取什麼樣的行動而更重要的是它將決定整個冰川入口區域的力量格局以及九世輪迴網絡在這個時代的最終命運。</p>
         <p>葉塵閉上雙目讓思緒在各種可能性之間反覆翻湧沉澱重新組合——靈魂鎖鏈感知如同無數根細微的光線穿透了空氣捕捉著每一縷靈氣波動的每一個微小變化他正在以第六階段完全成形之後的多維度信息處理能力分析著每一個可能的回答所對應的後果和影響。銀白裂痕能量在他的周身持續跳動著與九世輪迴網絡中樞節點之間保持著一條穩定的信息通路——他知道在那個深層的節點之中某個古老的意志正在等待他的最終決定那個意志跨越了三個世界循環的漫長時間仍然在這片冰川之中守護著某種比個人生死更加重要的東西。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-248.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-249/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-250.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-248.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-249/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-250.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

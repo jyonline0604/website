@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第220章：真相與抉擇 - 萬古塵埃</title>
+    <title>第220章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-220.html">
     <link rel="prev" href="https://kofhk.com/chapter-219.html">
     <link rel="next" href="https://kofhk.com/chapter-221.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第220章 · 真相與抉擇</h1>
+    <h1>第220章</h1>
     <main>
-        <p>入口通道處傳來陣陣震耳欲聾的爆炸聲——凌風的先頭部隊和暗淵閣追擊部隊正在冰川門戶的外圍進行最後一波衝鋒。那股能量碰撞通過封印屏障滲透進核心設施產生了劇烈的頻率擾動使得牆壁上的銀白色迴路圖案開始忽明忽暗像是某種古老的記憶正在試圖抵抗外來能量的侵襲。</p>
+<p>入口通道處傳來陣陣震耳欲聾的爆炸聲——凌風的先頭部隊和暗淵閣追擊部隊正在冰川門戶的外圍進行最後一波衝鋒。那股能量碰撞通過封印屏障滲透進核心設施產生了劇烈的頻率擾動使得牆壁上的銀白色迴路圖案開始忽明忽暗像是某種古老的記憶正在試圖抵抗外來能量的侵襲。</p>
         <p>葉塵閉上雙眼讓靈魂鎖鏈的神魂感知同時處理兩條信息線：一條是牆壁上守尘留下的修行筆記中關於九世輪迴真正意義的核心秘密另一條則是外圍戰鬥的能量分佈和時間推演。他能夠感覺到裂痕對那種多任務處理的天然適應能力——那道紋路中記錄着第八世曾經使用過的頻率轉換參數而這些數據現在直接轉化為他理解「萬物歸宗」本質的鑰匙。</p>
         <p>「第九世的輪迴不是個人的……」葉塵低聲復誦着守尘留下的最後一段記憶碎片。「而是整個世界的輪迴週期——每一次虛空之眼的裂縫擴大都代表着一個世界線的崩潰而九世輪迴的真正目的就是在那種崩潰發生之前找到所有的金色碎片用它們組成一把能夠重新封印裂縫的鑰匙。」</p>
         <p>他讓靈魂鎖鏈的感知更加仔細地分析那些牆壁回路的能量分佈——銀白色的裂痕能量像液體一樣沿紋路流動然後在觸碰到每一個節點的瞬間產生了微弱的共振。他能夠感覺到那股力量中夾雜着一絲極為微弱的紫色頻率那是暗淵閣追蹤者的腳步聲正在逐漸逼近入口通道而守尘留下的銀白色保護光暈已經開始減弱。</p>
@@ -143,11 +205,41 @@
         <p>他的腳步聲在巨大的地下空間中迴盪——銀白色的裂痕能量在他的周身形成了一层薄薄的保護膜而靈魂鎖鏈的神魂感知同時捕捉着前方每一個微小的地形變化。他知道從這一瞬間起他不再是那個只會用瞬影步逃跑的年輕修士了而是某個更古老、更深沉事物的載體而他需要盡快掌握那些守尘留下的核心設施中的信息才能在即將到來的衝突中存活下來。</p>
         <p>九世輪迴的核心在他心口緩緩跳動了一下——像是某種古老樂曲的第二個音符等待著後續的和聲。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-219.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-220/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-221.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-219.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-220/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-221.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

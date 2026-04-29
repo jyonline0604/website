@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第137章：機關與陷阱 - 萬古塵埃</title>
+    <title>第137章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-137.html">
     <link rel="prev" href="https://kofhk.com/chapter-136.html">
     <link rel="next" href="https://kofhk.com/chapter-138.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第137章 · 機關與陷阱</h1>
+    <h1>第137章</h1>
     <main>
-        <p>葉塵的意識逐漸沉入暗淵之核引發的精神空間中。周圍的景象變得模糊不清，彷彿置身於一片混沌的虛無之中。他能感覺到一股強大的力量在拉扯著他的靈魂，試圖將他吞噬。「保持清醒！」葉塵在心中默念，強迫自己集中精神。他知道，這不僅僅是幻覺，而是暗淵之核設下的最後一道防線——心魔試煉。只有通過这道試煉，才能真正掌控核心，否則將會永遠迷失在虛無之中。</p>
+<p>葉塵的意識逐漸沉入暗淵之核引發的精神空間中。周圍的景象變得模糊不清，彷彿置身於一片混沌的虛無之中。他能感覺到一股強大的力量在拉扯著他的靈魂，試圖將他吞噬。「保持清醒！」葉塵在心中默念，強迫自己集中精神。他知道，這不僅僅是幻覺，而是暗淵之核設下的最後一道防線——心魔試煉。只有通過这道試煉，才能真正掌控核心，否則將會永遠迷失在虛無之中。</p>
         <p>隨著他的意識深入，周圍的景象開始變化。混沌逐漸散去，取而代之的是一片荒涼的大地。天空中懸掛著兩輪血紅色的月亮，大地裂開無數道深淵，散發著令人作嘔的腐臭氣息。這是一個充滿了死亡與絕望的世界，彷彿是某種災難後的殘骸。「這是……哪裡？」葉塵心中驚疑不定。他能夠感覺到這個世界散發出的靈氣極為稀薄，甚至帶有一種侵蝕性，讓他的身體感到一陣陣刺痛。</p>
         <p>突然，前方出現了一道身影。那是一個身穿黑袍的老者，面容蒼老而猙獰，雙眼中閃爍著貪婪的光芒。他盯著葉塵，冷笑一聲：「終於來了嗎？我等待了許久的容器。」葉塵心中一沉，他知道這老者並非實體，而是暗淵之核幻化出的心魔。這老者試圖誘導他陷入絕望與恐懼之中，從而吞噬他的靈魂。「我不是你的容器。」葉塵冷冷說道，手中長劍閃爍著寒光，直刺老者而去。</p>
         <p>老者並未躲閃，只是輕輕抬手，一股強大的靈氣衝擊波將葉塵震飛出去。葉塵在空中調整身形，穩穩落地，但他知道，這僅僅是開始。老者的實力遠超他想象，即便是心魔幻象，也擁有著堪比聚元巔峰的修為。「你逃不掉的。」老者一步步逼近，周身黑氣翻湧，「你的靈魂將成為我重生的養分。」葉塵緊握長劍，神色平靜：「那就試試看吧。」</p>
@@ -143,11 +205,41 @@
         <p>葉塵卻沒有給他機會。他雙手結印，雲塵印與凝元鎮塵印同時釋放出一股強大的靈氣衝擊波，將老者的身體震飛出去。隨後，他身形一閃，來到了老者面前，長劍輕輕一揮，斬下了他的頭顱。隨著老者的隕落，其餘兩名黑袍人也失去了戰意，轉身欲逃。葉塵並未追趕，他知道這些人不過是棋子，真正的威脅還在後面。</p>
         <p>他轉過身，看向懸浮在空中的暗淵之核。此刻，那球體已經不再散發陰冷的气息，而是變得溫暖而柔和，彷彿一顆跳動的心脏。葉塵能夠感覺到，核心內部隱藏著巨大的力量，只要他願意，隨時可以將其摧毀。「就是現在。」葉塵低聲說道，伸手抓向暗淵之核。然而，就在他指尖觸碰到球體的瞬間，一股強大的排斥力將他彈飛出去。「怎麼回事？」葉塵心中驚疑不定。他能夠感覺到，核心內部似乎還有另一股力量在抵抗著他的入侵。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-136.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-137/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-138.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-136.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-137/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-138.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

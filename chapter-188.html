@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第188章：風暴來臨 - 萬古塵埃</title>
+    <title>第188章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-188.html">
     <link rel="prev" href="https://kofhk.com/chapter-187.html">
     <link rel="next" href="https://kofhk.com/chapter-189.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第188章 · 風暴來臨</h1>
+    <h1>第188章</h1>
     <main>
-        <p>大廳中央的紫色光芒像一朵巨大的蘑菇雲一樣升騰起來，將整個宴會現場照得如同地獄一般詭異。來賓們的尖叫声和器物破碎聲交織成一片混亂的噪音——有人試圖逃向出口，但那些門口不知道什麼時候已經被暗淵閣的眼線們佈下了防禦陣法。</p>
+<p>大廳中央的紫色光芒像一朵巨大的蘑菇雲一樣升騰起來，將整個宴會現場照得如同地獄一般詭異。來賓們的尖叫声和器物破碎聲交織成一片混亂的噪音——有人試圖逃向出口，但那些門口不知道什麼時候已經被暗淵閣的眼線們佈下了防禦陣法。</p>
         <p>葉塵在光芒爆發的瞬间做出了決定：他不跟凌風走，也不逃離大廳。相反，他讓瞬影步的技巧在體內啟動，灰色身影瞬間消失在了原地——然後出現在大廳正中央那團紫色光霧的前方五丈處。</p>
         <p>紫色的能量束在大廳中橫衝直撞——桌椅被擊碎成無數碎片，靈石燈籠在爆炸中化作漫天光點，來賓們的尖叫声和器物破碎聲交織成一片混亂的噪音。葉尘讓瞬影步的技巧運轉到極限，灰色的身影在紫色光束之間穿梭閃避，每一次移動都精準地避開了能量束的主要威力範圍。</p>
         <p>他注意到大廳中的許多來賓已經開始慌亂逃竄——但那些出口不知道什麼時候被暗淵閣的眼線們佈下了防禦陣法，紫色的光幕將每個門口完全封鎖住了。有些人試圖用靈力強行突破，但那些光幕比他們想像中更加堅固。</p>
@@ -153,11 +215,41 @@
         <p>瞬影步在體內啟動——灰色身影瞬間消失在了原地。葉塵出現在月璃身邊，然後兩個人一起朝着大廳側面的出口方向閃避而去。身後傳來無面的怒吼和玄冥的金色能量束轟擊聲——但他們已經不在射程範圍之內了。</p>
         <p>衝出大廳的那一刻，葉塵回頭看了一眼那團混亂的光影。他知道從這一瞬間起，他已經正式向暗淵閣宣戰了——而這場戰爭的結果將決定整個靈界的命運。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-187.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-188/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-189.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-187.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-188/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-189.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

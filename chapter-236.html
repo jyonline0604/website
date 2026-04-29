@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第236章：北境寒晶宮（三）——九世的真相 - 萬古塵埃</title>
+    <title>第236章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-236.html">
     <link rel="prev" href="https://kofhk.com/chapter-235.html">
     <link rel="next" href="https://kofhk.com/chapter-237.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第236章 · 北境寒晶宮（三）——九世的真相</h1>
+    <h1>第236章</h1>
     <main>
-        <p>靈魂鎖鏈感知在寒晶宮最深處的石壁之間緩緩流動如同一條無形的河流穿過無數座隱藏的門戶和隧道。銀白色裂痕能量在每一個接觸點上都產生了一種獨特的共鳴頻率——那種頻率如同古老的語言般與石牆深層的網絡節點進行著跨越時空的對話和交流。葉塵站在最深處的中心區域裡雙目緊閉靈魂鎖鏈感知則如同一場無邊無際的大雨般將整座寒晶宮的每一寸空間都浸泡在精細的能量解析之中。</p>
+<p>靈魂鎖鏈感知在寒晶宮最深處的石壁之間緩緩流動如同一條無形的河流穿過無數座隱藏的門戶和隧道。銀白色裂痕能量在每一個接觸點上都產生了一種獨特的共鳴頻率——那種頻率如同古老的語言般與石牆深層的網絡節點進行著跨越時空的對話和交流。葉塵站在最深處的中心區域裡雙目緊閉靈魂鎖鏈感知則如同一場無邊無際的大雨般將整座寒晶宮的每一寸空間都浸泡在精細的能量解析之中。</p>
         <p>他面前的石壁上有一塊明顯與其他區域不同的表面——那是一面極為光滑的石板幾乎沒有任何雕刻紋路或能量導流槽道但在那片看似空白的表面上靈魂鎖鏈感知卻捕捉到了一種極為微弱、極為深層的靈力波動。那種波動的性質與之前解析過的記錄符文完全不同：它不是信息保存也不是觀察報告而是一種更為複雜的、多層次的系統架構圖——某種巨大網絡的中樞控制節點所留下的最終指引。</p>
         <p>葉塵緩緩伸出手掌——銀白裂痕能量從掌心延伸而出如同一道極細的白色光線觸碰在那片光滑石板的表面。觸碰的瞬間石板內部開始產生一系列極為複雜的能量漣漪那些漣漪如同水面的波紋般向四面八方擴散開去在擴散的過程中逐漸形成了三維立體的圖像序列——那是一種跨越了文字和圖畫的限制直接將信息投射到觀者意識深處的古老技術。</p>
         <p>第一幅圖像展現了一座巨大的地下城市——它的規模遠遠超出任何已知文明的建築記錄。無數高聳入雲的塔樓以精確的幾何模式排列著每一座塔樓之間都由能量導流管道相連接形成了一個完整的城市級別的能量網絡系統。在那座城市的最深處有一個極為龐大的密室空間密室中央懸浮著一枚金色的碎片——那枚碎片的形狀與葉塵手中已經集齊的三把金色碎片鑰匙完全一致但它的表面卻散發出一種更加古老、更加深邃的光芒。</p>
@@ -143,11 +205,41 @@
         <p>但他知道無論選擇哪一條路都必須先理解一個更加根本的問題：九世輪迴網絡的本質究竟是怎樣的它為什麼會在循環了九次之後就戛然而止那些守望者們到底在背後維護著什麼樣的目標以及真正操控整個系統的古老勢力又是誰？</p>
         <p>靈魂鎖鏈感知繼續向石牆的深層延伸而去——在那面光滑石板的最底層還隱藏著最後一段信息流。那段信息的內容比之前所有的記錄都要更加重要也更加危險因為它直接涉及到了九世輪迴網絡的核心運作機制和背後操控者的真實意圖。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-235.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-236/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-237.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-235.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-236/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-237.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第228章：裂痕重塑 - 萬古塵埃</title>
+    <title>第228章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-228.html">
     <link rel="prev" href="https://kofhk.com/chapter-227.html">
     <link rel="next" href="https://kofhk.com/chapter-229.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第228章 · 裂痕重塑</h1>
+    <h1>第228章</h1>
     <main>
-        <p>黑暗。完全的、純粹的、沒有任何光線滲透或聲音傳入的黑暗。</p>
+<p>黑暗。完全的、純粹的、沒有任何光線滲透或聲音傳入的黑暗。</p>
         <p>葉塵在這種狀態中失去了對時間的所有感知——他不知道自己墜落了多久，也不知道自己是否還在持續下墜。靠近虛空之眼裂隙的空間扭曲效應將他的感官體驗切割成了無數碎片化的瞬間：有時候他感覺自己在急速下落但身體卻完全沒有位移感；有時候他又彷彿靜止在空中而周圍的黑暗在瘋狂地旋轉和收縮。這種時間與空間感知上的紊亂是正常修行者在接近虛空能量核心區域時經常遇到的現象——它不是因為物理層面上的運動狀態改變，而是因為裂隙附近的靈氣場本身存在著不規則的流動模式從而干擾了所有依賴於常規靈氣感知系統的意識活動。</p>
         <p>當第一縷感覺重新回到身體的時候，葉塵首先感受到的是腳底的觸感。那不是冰層的冰冷或者岩壁的粗糙——而是一種平滑、溫潤且帶有輕微彈性的表面，像是某種經過無數歲月打磨而成的天然水晶地面。他的雙手本能地撐開了身體來維持平衡姿態，指尖所接觸到的平面散發著極為微弱的銀白色光芒——那種光線不足以照亮整個空間但足以讓他分辨出周圍的大致輪廓和結構特徵。</p>
         <p>葉塵緩慢地站直了身體並開始環顧四周。他發現自己處於一個球形空間的中心位置——這個房間的直徑大約在三十丈左右，穹頂與地面之間的高度完全對等，四壁的曲率呈現出完美的幾何形狀。最令他震撼的是牆壁本身的材質：那不是任何已知岩石或冰晶的自然結構，而是由一種半透明的天然水晶形成的整體性構件，每一個表面都刻滿了複雜而精密的幾何圖案——那些圖案不是雕刻上去的，而是從水晶內部自然生長出來的紋理網絡，每一道線條和交匯點都精確得彷彿是由某種超越人類理解的算法所生成。</p>
@@ -148,11 +210,41 @@
         <p>晶體核心的光芒開始變得更加劇烈地閃爍起來——那是因為信息傳輸已經到達了臨界閾值，而裂痕微重組也進入了最後的關鍵階段。葉塵的靈魂鎖鏈感知正在以極速向四面八方延伸去探測周圍環境的任何變化——同時他也在內部系統中維持著那道剛剛開始成型的能量循環網絡。雙重任務並行推進的狀態讓他的意識承受了極為沉重的負擔，但他沒有退路了——無論前方等待的是什麼，他都必須堅持到最後一刻才能確保九世輪迴的使命不會因為個人的失敗而徹底崩潰。</p>
         <p>球形房間的水晶牆壁在銀白色光芒的照射下開始發生微妙的變化——那些古老的幾何圖案逐漸變得更加清晰和明亮，彷彿也在參與這場關鍵的能量傳輸過程並為葉塵提供某種深層次的支援力量。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-227.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-228/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-229.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-227.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-228/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-229.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

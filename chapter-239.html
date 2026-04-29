@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第239章：靈魂鎖鏈的覺醒（一）——虛空之眼的危機 - 萬古塵埃</title>
+    <title>第239章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-239.html">
     <link rel="prev" href="https://kofhk.com/chapter-238.html">
     <link rel="next" href="https://kofhk.com/chapter-240.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第239章 · 靈魂鎖鏈的覺醒（一）——虛空之眼的危機</h1>
+    <h1>第239章</h1>
     <main>
-        <p>寒晶宮最深處的能量解析還在持續進行中——葉塵盤膝坐於地面之上靈魂鎖鏈感知如同無數根精細的光線般同時向四面八方延伸而去分別監測著銀白色屏障、遠方異常靈氣波動以及石牆網絡的每一個微小變化。裂痕微重組第五階段在他體內的進展已經達到了百分之八十五以上掌心表面的封印陣列紋路正在以肉眼可見的速度逐漸成型那些精緻的幾何圖案如同被某種無形之手精心雕琢般在皮膚下緩緩流動著。</p>
+<p>寒晶宮最深處的能量解析還在持續進行中——葉塵盤膝坐於地面之上靈魂鎖鏈感知如同無數根精細的光線般同時向四面八方延伸而去分別監測著銀白色屏障、遠方異常靈氣波動以及石牆網絡的每一個微小變化。裂痕微重組第五階段在他體內的進展已經達到了百分之八十五以上掌心表面的封印陣列紋路正在以肉眼可見的速度逐漸成型那些精緻的幾何圖案如同被某種無形之手精心雕琢般在皮膚下緩緩流動著。</p>
         <p>但就在這個關鍵時刻一股劇烈到超乎預期的能量波動突然從冰川入口的方向傳來——那股波動的強度遠遠超出了葉塵靈魂鎖鏈感知所設定的常規監測閾值讓他的意識在瞬間產生了強烈的震盪反應。他幾乎是本能地將注意力從深度冥想狀態中抽離出來並將所有感知通道同時轉向那個方向以最快的速度解析剛才發生事件的完整經過。</p>
         <p>透過靈魂鎖鏈感知的遠距離傳導——葉塵看到了暗淵閣領隊隊長趁著雙方撤退後的混亂期偷偷派遣了一支精英小隊的場景。那支小隊由六名暗淵閣最高等級的修行者組成——他們全部處於凝神後期的境界且每一個人的體內都蘊含著極其濃厚的紫黑色鬼煞之氣。他們的任務目標非常明確：前往銀白色屏障附近試圖強行突破防禦壁壘以探測屏障的能量弱點和穩定性極限。</p>
         <p>小隊的行動在最初階段確實取得了一定程度的進展——六名精英修行者同時釋放了各自體內的鬼煞之氣形成了一道渾濁而強大的能量衝擊波向銀白色屏障的邊緣區域撞擊而去。那道衝擊波在觸碰屏障表面的瞬間產生了巨大的能量反饋效應：屏障表面流動的銀白色光紋在瞬間加速旋轉起來如同一場暴風眼中的眼牆一般高速運轉試圖抵消外部的攻擊壓力。</p>
@@ -143,11 +205,41 @@
         <p>他必須採取行動了——不能僅僅停留在防禦和觀察的階段而是需要主動出擊來阻止暗淵閣對銀白色屏障能量網絡的情報收集工作。但問題在於：如果他離開寒晶宮前往冰川入口方向那麼石牆深層的九世輪迴網絡中樞節點將暫時失去他的直接監控而那段尚未完全解析的關鍵信息流可能會在無人干預的情況下發生不可預測的變化。</p>
         <p>九世輪迴核心在他心口緩緩跳動了一下——那次的脈動帶有一種急促和緊迫感彷彿在提醒葉塵時間正在一分一秒地流逝而他面臨的抉擇已經越來越接近一個無法回頭的分水嶺點。無論他選擇留守寒晶宮繼續解析關鍵信息還是立即前往冰川入口應對暗淵閣的威脅都將對他接下來的行動軌跡產生深遠的影響——而每一個選擇都伴隨著不可逆轉的代價和風險。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-238.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-239/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-240.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-238.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-239/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-240.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第131章：暗淵前夕 - 萬古塵埃</title>
+    <title>第131章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-131.html">
     <link rel="prev" href="https://kofhk.com/chapter-130.html">
     <link rel="next" href="https://kofhk.com/chapter-132.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第131章 · 暗淵前夕</h1>
+    <h1>第131章</h1>
     <main>
-        <p>夜色如墨，濃霧籠罩著荒原邊緣。葉塵靜坐在一塊巨石之上，手中把玩著那枚散發著微弱寒光的「時空凝膠」。這是一種極為罕見的煉製材料，能夠在短時間內扭曲周圍的靈氣流動，從而掩蓋修為波動。對於即將深入敵營的三人來說，這是唯一的保命符。</p>
+<p>夜色如墨，濃霧籠罩著荒原邊緣。葉塵靜坐在一塊巨石之上，手中把玩著那枚散發著微弱寒光的「時空凝膠」。這是一種極為罕見的煉製材料，能夠在短時間內扭曲周圍的靈氣流動，從而掩蓋修為波動。對於即將深入敵營的三人來說，這是唯一的保命符。</p>
         <p>風從遠方的山脊吹來，帶著一股陰冷的氣息，捲起地上的枯葉與碎石。葉塵閉上雙眼，感應著體內靈氣的運轉。感氣境中期的修為讓他對環境的變化極為敏銳，他能夠感覺到前方有一股陰沉而壓抑的力量在湧動，那是暗淵之核散發出氣息。那股力量如同深淵中的巨口，隨時準備吞噬一切靠近的生靈。</p>
         <p>「凝膠已經穩定好了。」葉塵低聲說道，將手中那團半透明的凝膠遞給身旁的同伴。他的眼神平靜如水，但指尖微微顫動，暴露出內心的一絲緊張。這不僅僅是一次偷襲，更是一場賭上性命的豪賭。暗淵閣總部盤踞在靈脈深處，四周佈滿陣法與巡邏隊員，稍有不慎就會陷入萬劫不復之地。</p>
         <p>另外兩名同伴點了點頭，神色肅穆。他們三人早已達成共識：奪取第三把鑰匙，摧毀暗淵之核，這是終結這場紛爭的唯一途徑。兩把鑰匙已經集齊，此刻正緊緊貼在葉塵的胸口，透過衣料傳來陣陣溫熱，彷彿在訴說著某種古老的召喚。</p>
@@ -149,11 +211,41 @@
         <p>葉塵伸手撥開藤蔓和雜草，露出了一條狹窄的通道。通道內陰冷潮濕，散發著一股腐臭的气息。他閉上雙眼，將靈識擴展到極限，試圖感知通道內的危險。他能感覺到前方有一股微弱的靈氣波動，那是守衛巡邏的痕跡。「小心。」葉塵低聲提醒道，「前面有守衛。我們必須等他們走過之後才能通過。」</p>
         <p>三人躲在暗處，耐心等待著守衛的離開。約莫一刻鐘後，前方的腳步聲逐漸遠去，葉塵才站起身來，帶領同伴們進入通道。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-130.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-131/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-132.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-130.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-131/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-132.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第252章：銀白之光 - 萬古塵埃</title>
+    <title>第252章 - 萬古塵埃</title>
     <link rel="canonical" href="https://kofhk.com/chapter-252.html">
     <link rel="prev" href="https://kofhk.com/chapter-251.html">
     <link rel="next" href="https://kofhk.com/chapter-253.html">
     <style>
-        :root {[data-theme="light"] {
+
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
             --bg: #FAFBFC;
             --text: #1F2937;
             --border: #E5E7EB;
@@ -44,13 +54,10 @@
             --border: #4A5568;
             --panel-bg: #2D3748;
         }
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
             font-family: 'Noto Serif TC', serif;
@@ -59,7 +66,9 @@
             line-height: var(--line-height);
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             font-size: 1.8em;
@@ -67,11 +76,51 @@
             padding: 30px 0;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 30px;
+            margin-top: 60px;
         }
         p {
             text-indent: 2em;
             margin: 1em 0;
             font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
         }
         .nav {
             display: flex;
@@ -91,20 +140,33 @@
             background: var(--accent);
             color: white;
         }
-.manga-btn {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
-        .manga-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        .back-to-top.visible {
+            display: flex;
         }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -126,9 +188,9 @@
             </select>
         </div>
     </div>
-    <h1 style="margin-top: 60px;">第252章 · 銀白之光</h1>
+    <h1>第252章</h1>
     <main>
-        <p>葉塵走在冰川與天穹城之間的那條狹長山脊通道上，腳步踏在覆蓋著薄冰的地面上發出細微的咔嚓聲。銀白色的光芒在他的腳下延伸出一條微微發光的道路——那是一道由靈魂鎖鏈感知所驅動的靈氣導流線路專門為他指引方向而設的。透過多維度信息處理系統他的意識同時接收到了來自四面八方的大量數據：冰川入口處銀白屏障仍在持續淨化暗淵閣殘餘能量的頻率波形、天穹城方向的微弱金色共振信號、以及空氣中流動的每一縷寒風所攜帶的温度梯度和靈氣濃度變化。</p>
+<p>葉塵走在冰川與天穹城之間的那條狹長山脊通道上，腳步踏在覆蓋著薄冰的地面上發出細微的咔嚓聲。銀白色的光芒在他的腳下延伸出一條微微發光的道路——那是一道由靈魂鎖鏈感知所驅動的靈氣導流線路專門為他指引方向而設的。透過多維度信息處理系統他的意識同時接收到了來自四面八方的大量數據：冰川入口處銀白屏障仍在持續淨化暗淵閣殘餘能量的頻率波形、天穹城方向的微弱金色共振信號、以及空氣中流動的每一縷寒風所攜帶的温度梯度和靈氣濃度變化。</p>
         <p>這種全方位的信息感知能力雖然強大但也帶來了難以忽視的疲勞感——彷彿他的意識正被無數條細線向不同方向拉扯每一條線都要求他投入一部分注意力去回應和處理。葉塵不得不偶爾閉上雙眼讓意識暫時收斂回核心區域如同將散開的絲線重新纏繞成一個緊密的線團每次收斂之後掌心的銀光會短暫增強彷彿銀白屏障在為他的神魂補充能量。</p>
         <p>山脊兩側的地形逐漸從冰川地貌過渡到了一片崎嶇不平的岩石區——這些岩石表面佈滿了細密的紋路那是過去數百年間暗淵阁能量洶湧所留下的痕跡葉塵將掌心輕輕貼在一塊岩石上銀光透過指尖滲入岩層深處多維度感知立刻捕捉到了岩層內部的一處空間折疊痕跡。那是一個極為微小的裂縫長度不到半丈但深度卻直達地下數十米的位置透過裂隙的邊緣他能夠看見下方存在一個更為龐大的地下空間結構——那些岩石表面的紋路與冰川遺跡中銀白屏障節點的排列方式極為相似暗示著這片區域曾經建立過一套完整的能量轉化網絡。</p>
         <p>就在他準備進一步探查時掌心的銀光突然受到了某種外力的干擾——一道極為微弱但方向明確的靈力波動從裂隙深處向上涌來其能量特徵與凌風之前留下的空間裂縫完全一致這意味著對方不僅經過了這裡而且很可能在地下空間中留下了某些信息或物品等待被發現。葉塵決定先不深入探查前往天穹城的時間壓力不容許他在此過多停留但他將一道銀色的能量線索投入裂隙深處作為記號以便在返程時能夠快速定位這個位置那道銀光如同落入深淵的流星一般迅速墜落在消失之前發出了一陣短暫而清脆的金屬共鳴聲彷彿地下空間中懸掛著某種巨大的鐘鐸結構。</p>
@@ -136,11 +198,41 @@
         <p>他在一處山丘頂端停下腳步讓意識重新聚焦於銀白屏障的核心網絡狀態——透過靈魂鎖鏈的深層連接他能感知到冰川入口處的銀白屏障仍然在自動運行著那些紫黑色的暗淵阁能量正在被持續分解和轉化而凝元鎮塵印則忠實地維護著九世輪迴封印網絡中樞節點的穩定性。這種遠程監控能力是他能夠安心離開冰川的原因所在：那道自動維護程序已經經過了足夠的測試足以在他不在場的期間維持基本的防禦功能——儘管葉塵知道如果暗淵阁派出更為強大的追擊力量那道屏障仍然需要他的直接介入才能抵禦。</p>
         <p>銀白裂痕能量在他的周身持續跳動著與九世輪迴網絡中樞節點之間保持著一條穩定的信息通路他知道在這條通路的深處第三世代守塵留下的古老意志正在等待他的最終決定而那個決定關乎整個封印系統的最終命運和虛空之眼的真正未來。他抬起手來掌心朝上感受掌心中銀白色光芒的微弱脈動那種節奏正與靈魂鎖鏈感知中傳來的天穹城金色共振信號產生著某種跨維度的共鳴彷彿兩股不同方向的信息流正在他的體內交汇融合形成一種全新的能量循環模式這種模式的形成標誌著他的多維度信息處理系統正在逐步進化到一個更為成熟和高效的階段為接下來的天穹城之旅做好了準備。</p>
     </main>
-            <nav class="nav">
-        <a href="https://kofhk.com/chapter-251.html">← 上一章</a>
-        <a href="https://kofhk.com/chapters.html" class="catalog-btn">📚 目錄</a>
-        <a href="https://kofhk.com/manga/chapter-252/" class="manga-btn">🎨 漫畫</a>
-        <a href="https://kofhk.com/chapter-253.html">下一章 →</a>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-251.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-252/" class="manga-btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">🎨 漫畫版</a>
+        <a href="https://kofhk.com/chapter-253.html" id="nextLink">下一章 →</a>
     </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
 </body>
 </html>

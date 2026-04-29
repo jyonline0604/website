@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第295章：暗淵的裂縫 - 萬古塵埃</title>
+    <link rel="canonical" href="https://kofhk.com/chapter-295.html">
+    <link rel="prev" href="https://kofhk.com/chapter-294.html">
+    <link rel="next" href="https://kofhk.com/chapter-296.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第295章 · 暗淵的裂縫</h1>
+    <main>
+        <p>天穹城西南角的封印網絡在葉塵的多維度感知中正在經歷一場前所未有的激烈博弈——那些曾經被紫黑色能量污染的節點現在在他的共振反饋機制引導下逐漸恢復正常運行但與此同時遠端第四陣地的力量也在不斷嘗試重新建立連接而那些連接的企圖正以一種極為精細的方式向天穹城內部滲透彷彿有一股更宏大的意志正在背後進行著精密而持久的操控。</p>
+        <p>銀白色的裂痕在他的體內快速蔓延他能夠感覺到第七核心節點的雛形正在逐漸成熟但那種成熟的過程並非一帆風順——每一個新建立的共振反饋回路都在與來自外部的紫黑色能量進行激烈的對抗而那些對抗的強度正在以一種驚人的速度增加彷彿第四陣地的力量中心正在不斷調動更多的資源來維持它在天穹城內部的滲透通道而那些通道的數量雖然不多但每一個都恰好位於凝元鎮塵印防禦矩陣中最關鍵的能量分流節點上。</p>
+        <p>就在他全力應對這場內部防線的同時靈魂深處的九世輪迴網絡突然爆發出一股極為強烈的警覺信號——那股信號來自於第六世記憶碎片所在的區域而那個區域現在正在以一種前所未有的速度進行著重新編織那些編織的結果指向了一個極其重要的發現——在逆轉封印陣法的核心樞紐位置存在一個隱藏的監控節點而那個監控節點的性質暗示著第四陣地不僅僅是在遠端操控整個程序更可能有一個具體的人在背後親自監督每一個步驟的推進。</p>
+        <p>葉塵在多維度感知中仔細追蹤了那道監控節點的具體特徵——它能夠清晰地識別出那種能量頻率與暗淵閣嫡系部隊完全不同更加精細也更加複雜彷彿承載著某種跨越了極長時間的深度沉澱而那個頻率的深層信息中隱藏著一個極為關鍵的线索它指向了一個此前完全未被察覺的人物身份——此人曾是第八世守望者守塵身邊最信任的助手之一而在第八世失敗後他並未如其他人那樣選擇封印或逃避而是獨自一人踏上了尋找虛空之眼真相的道路。</p>
+        <p>「原來第四陣地的領導者並非暗淵閣的外圍成員。」他在內心分析著這個發現而那種分析的結果正在將整個故事推向一個更加深刻的層次——如果那個神秘人物確實是守塵的親信那麼他不僅可能對第八世的失敗有著更為深入的瞭解更可能在凝元鎮塵印的原始設計中留下了某些連守塵本人都不完全知道的隱藏機制而那些機制的存在可能直接影響到接下來的戰鬥走向。</p>
+        <p>就在葉塵深入分析的同時天穹城內部的能量環境突然發生了一種極為劇烈的變化——那些曾經逐漸恢復正常的封印節點現在開始出現一種前所未有的異常波動而那種波動的性質正指向一個令他擔憂的結論第四陣地正在加速整個逆轉封印程序的激活進程而那個加速的過程可能已經達到了某個臨界點的邊緣。</p>
+        <p>他能感覺到天穹城地下深处的能量線路正在承受巨大的壓力——每一個被污染的節點現在都在以極快的速度向外圍擴展而那些擴展的方向恰好與他之前規劃的共振反饋回路形成了某種激烈的碰撞而那種碰撞的結果不僅導致了部分封印結構的暫時性損壞更在整個城市範圍內引發了一場令人不安的能量風暴。</p>
+        <p>葉塵不得不將更多的注意力從凝元鎮塵印最終形態的完善上轉移到應對眼前的緊急危機——他讓靈魂鎖鏈中的所有可用節點同時運轉形成了一道多層次的防禦矩陣那道矩陣的每一層都承載著不同前世的力量特質而那些力量的疊加正在試圖抵禦來自第四陣地的強大壓力。</p>
+        <p>銀白色的裂痕在他體內快速蔓延已經達到了煉魂期第六階段能夠支撐的最大負荷而每一次延展都在消耗他靈魂深處的某種根本性力量而那些力量的補充依賴於深海晶石的持續供應——那種供應的穩定性直接決定了整個防禦體系的存續時間如果他無法在最短時間內完成最終形態的部署並且消除逆轉封印陣法的威脅那麼所有的努力都可能化為烏有。</p>
+        <p>就在這種緊張的對峙中靈魂深處的第六世記憶碎片突然爆發出一股極為強烈的共振——那股共振並非來自被動的資訊提供而是一種主動的能量引導它正在試圖將葉塵的意識帶向一個更為深層的領域那個領域承載著關於第八世失敗真相的核心信息而那個信息的揭示可能不僅能夠幫助他更好地掌握凝元鎮塵印的最終形態更可能為應對第四陣地提供一把足以改變整個戰局的關鍵鑰匙。</p>
+        <p>「你必須做出選擇。」第六世的聲音在他精神空間中響起帶著一種跨越了無數年的沉重和決斷——「你是要繼續專注於防禦矩陣的維護還是冒險進入那段關於第八世失敗真相的記憶深層去尋找那個能夠徹底破解逆轉封印的關鍵信息前者可能確保你在短期內的生存但後者可能會在長遠上提供一個更加根本性的解決方案而那個方案的代價是你必須承擔極高的風險因為進入那段記憶的最深層可能觸碰到你一直以來都在避免面對的關於九世輪迴最深層的真相。」</p>
+        <p>葉塵在多維度感知中仔細分析了第六世的建議——他知道這個選擇的重要性不僅在於它直接決定了接下來戰鬥的走向更在於它所指向的那個更深層次的答案——如果虛空之眼的真相確實如守塵所暗示的那樣與第八世的失敗有著不可分割的關聯那麼理解那段歷史可能將為整個封印系統提供一個全新的運行邏輯而那種邏輯的應用可能讓凝元鎮塵印最終形態的威力達到前所未有的水平。</p>
+        <p>銀白色的雙色能量網絡在他的體內全面展開每一個節點都在同時執行防禦和探索的雙重功能——外圍節點專注於抵禦第四陣地的持續攻擊而內部節點則在第六世記憶碎片的引導下逐漸向更深的層次滲透而那些渗透的結果正在為接下來的戰鬥提供一個全新的戰略視角。</p>
+    </main>
+    <nav class="nav">
+        <a href="https://kofhk.com/chapter-294.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/chapter-296.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

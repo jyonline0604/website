@@ -8,7 +8,42 @@
     <link rel="prev" href="https://kofhk.com/chapter-111.html">
     <link rel="next" href="https://kofhk.com/chapter-113.html">
     <style>
-        :root {
+        :root {[data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
             --bg: #FAFBFC;
             --text: #1F2937;
             --accent: #6366F1;
@@ -73,7 +108,25 @@
     </style>
 </head>
 <body>
-    <h1>第112章 · 萬古塵源的第九層</h1>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1 style="margin-top: 60px;">第112章 · 萬古塵源的第九層</h1>
     <main>
         <p>天機閣最深處，一座古老的石室靜靜地矗立在黑暗中。</p>
         <p>葉塵三人穿過九轉玄天陣的防護罩，來到了這座被稱為「源心殿」的石室前。石室的門扉由整塊黑曜石雕琢而成，表面刻滿了古老的符文——這些符文與之前在密室中看到的完全不同，更加複雜、更加古老，散發著一股令人敬畏的威壓。</p>

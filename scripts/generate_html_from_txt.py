@@ -184,10 +184,10 @@ def process_chapter(chapter_num):
     return True
 
 def main():
-    print("=== 從txt生成HTML ===\n")
+    print("=== 從txt生成HTML (351-400) ===\n")
     
-    # 處理 351-360
-    for ch in range(351, 361):
+    # 處理 351-400
+    for ch in range(351, 401):
         process_chapter(ch)
     
     print("\n完成!")

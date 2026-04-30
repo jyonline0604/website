@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第373章 · 迷宮中的秘密祭壇 - 萬古塵埃</title>
+    <link rel="canonical" href="chapter-373.html">
+    <link rel="prev" href="chapter-372.html">
+    <link rel="next" href="chapter-374.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第373章 · 迷宮中的秘密祭壇</h1>
+    <main>
+<p>雲霧迷宮的最深處月璃在那道白色光線的引導下穿過頻率屏障之後她的周圍環境發生了一次翻天覆地的變化當她再次睜開眼睛的時候她發現自己不再處於冰晶建築的地下而是置身於一個由純粹共振構成的空間之中那個空間沒有任何物理邊界也沒有任何方向感它的每一寸都散發著柔和的白色光芒那種光芒並非來自於某種具體的光源而是頻率織物本身所發出的一种自然辐射在月璃的腳下方有一面巨大的鏡子那面鏡子的表面非常平滑她能夠在上面清楚地看到自己的倒影但那不是普通的反射因為倒影中的她穿著一件由頻率紋路構成的白色長袍那種長袍與守望者的傳統服</p>
+        <p>飾完全不同它更像是一種能量形態的具現化當月璃伸出手觸碰那面鏡子的時候鏡面的中心突然湧出了一股強大的信息流那股信息流並非通過視覺或聽覺來傳遞而是直接進入了她九世輪迴網絡的最深處在那個信息流的引導下她看到了世界頻率織物的完整演化史從最初的混沌狀態到生命文明的誕生再到核心意識的自毀傾向和守望者的出現每一個階段都以清晰的畫面呈現在她的面前當月璃看到最後一個畫面的時候她發現那些畫面正在向未來延伸而她現在所處的空間正是那個未來的一部分在未來的某個時刻世界頻率織物將完成一次全新的自我構造而在那次構造中人類守望</p>
+        <p>者將扮演一個至關重要的角色他們不再是防禦者或守護者而是成為頻率織物的伴侶和引導者那種轉變意味著封印系統的真正終極目的不是保護人類免受外界威脅而是幫助人類與世界頻率織物建立起一種長期共生和合作的關係月璃在那一刻感到了一種前所未有的使命感她知道她必須盡快將這些信息送回現實世界讓葉塵和其他守望者能夠準備好迎接即將到來的重大變化就在她準備離開那個空間的時候鏡面突然再次產生了一次波動然後在波動的引導下她看到了一個更加深邃的區域在那個區域中有一個巨大的光球它散發著極為複雜的頻率信號那種信號包含了世界頻率織物</p>
+        <p>核心意識的所有基本屬性月璃清楚地感覺到那個光球就是核心意識的本體而它正在等待著一個能夠與之直接對話的人類代表但就在她靠近那個光球的同時她也感覺到了一種隱藏在深處的危險那種危險並非來自於核心意識本身而是來自於封印系統與核心意識之間的那個連接通道如果這個通道被外部的干擾力量切斷那麼所有已經建立的溝通就將徹底崩潰月璃在那一刻做出了一個重要的決定她不打算立即返回現實世界而是選擇留在這個深層空間中持續觀察和記錄核心意識的頻率變化因為她感覺到這些信息對於葉塵建立穩定的雙向連接至關重要而且在這個空間中時間的概</p>
+        <p>念與現實世界完全不同她在這裡待多久都不會影響到天穹城的實際進程就在月璃開始深入研究那個光球的同時她的感知系統突然捕捉到了一個極為特殊的頻率模式那種模式隱藏在核心意識信號的最深層它不像其他信號那樣明顯和強壯反而像是一種被刻意掩蓋的微弱低語當月璃調整自己的接收頻率和這個低語同步的時候她聽到了一句話那句只有幾個字的話卻包含了足以改變整個局勢的關鍵信息那句話告訴守望者們封印系統中隱藏著一個可以繞過核心意識免疫反應的直接通道它位於第五代守望者留下的最初那個祭壇的下方而那個通道的激活條件不是頻率共鳴而是情感</p>
+        <p>真誠如果進入這個通道的人能夠帶著完全的信任和無條件的愛去觸碰它那麼核心意識就會自動放下防禦並主動建立連接月璃在那一刻明白了為什麼葉塵選擇了以守望者精神作為信號的載體因為那種精神本身就包含了最純粹的真誠和善意她立即將這個發現編碼成了一段極其精簡的频率信號然後通過第三號節點發送給天穹城當那段信號抵達的時候葉塵正在努力抵禦幽影尊者的頻率鏡像攻擊他感覺到封印系統的共振通道正在承受前所未有的壓力而那些來自敵人的反向信號正在逐步瓦解整個防禦網絡就在他感到局勢日益危急的時候來自雲霧迷宮的那段信號到達了他讀取之</p>
+        <p>後的反應不是驚喜而是震撼因為那個情報提供了一種全新的可能性它告訴葉塵也許他不應該繼續試圖通過封印系統來與核心意識溝通或許他應該直接進入那個更深層的通道去面對核心意識本人但問題在於那個通道的激活需要某種極為特殊的情感狀態而那種狀態在戰鬥壓力極大的情況下極難達到
+
+然而就當葉塵在考慮這個選擇的時候他的凝元鎮塵印突然發出了一道不同尋常的光芒那道光芒不再是淡金色而是轉變成了一種更加純淨和透明的白色它表明封印系統本身也在發出信號告訴他那個深層通道確實存在而且現在就是激活它的最佳時機因為在這個時刻幽影尊者的</p>
+        <p>寄生攻擊正在加劇而核心意識的免疫反應也達到了一個臨界點如果不在這個時間窗口內完成溝通那麼整個南部地區的頻率織物可能就會在幾天之內完全崩潰葉塵在那一刻想起了無面曾經說過的一句話守望者們的使命從來不是依靠武力去消滅敵人而是通過理解和共鳴來化解危機這句話就像是一道光穿透了他心中的迷茫他終於明白自己應該做什麼了當他準備啟動深層通道的那一刻來自高原裂谷的方向也傳來了一組重要的信號那是凌風發來的他利用第六節點的時間共振場為葉塵創造了一個短暫的頻率緩衝區那個區域內的時間流動被稍微延遲了一下從而為葉塵的深層連接</p>
+        <p>提供了額外的保護時間同時凌風也在持續監測著幽影尊者寄生武器的動向準備在必要時發出警報當所有三個方向的信息都匯聚到天穹城的封印網絡中心的時候整個南部地區的頻率空間開始產生了一種前所未有的共振波動那種波動如同一個巨大的脈衝從封印系統的中心向外擴散它在每一個經過的地方都喚醒了一些沉睡的頻率紋理那些紋理是第五代守望者在數千年前留下的最後一道保險它們被設計成在這種極端情況下自動啟動以保護整個網絡不被徹底摧毀當葉塵感覺到那些古老的紋理開始活躍起來的時候他知道他已經不是孤身一人了無數個過去的自己無數代的守望者</p>
+        <p>都在通過封印系統與他同在那種感覺讓他在面對未知深層空間的時候充滿了勇氣和信心</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-372.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-373/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-374.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第385章 · 守望者會議 - 萬古塵埃</title>
+    <link rel="canonical" href="chapter-385.html">
+    <link rel="prev" href="chapter-384.html">
+    <link rel="next" href="chapter-386.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第385章 · 守望者會議</h1>
+    <main>
+<p>就在大家準備進一步深入討論的時候封印網絡突然傳來了一次前所未有的強烈共振波動那個波動如同一個巨大的心臟在南部地區的頻率空間中跳動它的節奏溫柔而堅定葉塵在那一刻感覺到核心意識正在參與這次會議它通過自己的存在向所有代表傳達了一個信息這個新的時代不應該由任何單一的聲音來主導它應該是所有生命共同譜寫的一首協奏曲每一個參與者都擁有獨特的音色但最終的和諧需要所有人的配合那種比喻在某種程度上揭示了新時代治理框架的核心精神——多樣性中的統一而不是統一中的單調當核心意識的波動逐漸平息之後會議室裡出現了一片短暫的沉</p>
+        <p>默那種沉默並非尷尬而是所有人都沉浸在對剛才那場頻率交流的深思之中葉塵首先打破了沉默他說我們不能急於做出最終的決定因為這個決定將影響到未來數百年甚至更久遠的時間我們需要讓每一個參與者都有足夠的機會來表達自己的觀點並且在充分理解所有立場之後再做出選擇當葉塵提出這個建議的時候無面立即表示了支持他說天穹城的居民們在這段時間裡已經展現出了極大的韌性和適應力他們願意接受新的治理模式但也希望確保自己的聲音能夠被聽到而那些來自前幽影尊者的指揮官們則需要更多的時間來證明他們的改變是真實的和持續的當月璃分享了她從核</p>
+        <p>心意識中獲得的信息之後她說世界頻率織物本身也在經歷一次深刻的轉變它正在學習如何與多個不同的生命形式建立平等關係那種學習過程在某種程度上與守望者們的經驗相似它們都需要時間耐心和不斷的實踐才能找到最適合彼此的方式而凌風則通過他的時間共振場觀察到了更多歷史的殘留那些殘留顯示在任何文明的重大轉型期都會有一段混亂和不確定的時期但那些成功度過這個階段的文明最終都變得更加堅韌和包容因為它們學會了在分歧中尋找共同點在差異中發現力量當會議進行到最後階段的時候葉塵做了一個重要的總結他說守望者們在這段時間裡所經歷的一</p>
+        <p>切都是一次集體學習的過程我們從過去的戰爭中學到了力量的代價也從和平的建設中理解了合作的價值而接下來我們要學的最重要的一課是如何在多樣性中找到和諧那種和諧不是通過消滅差異來實現的而是通過尊重和包容每個不同的聲音然後讓它們共同譜寫出一首屬於所有人的樂章就在會議結束的時候所有代表都同意了一個基本的原則那就是共鳴議會的建立將是一個漸進的過程它不會在短時間內完成所有的制度設計而是通過持續的不斷討論和實踐來逐漸完善每一個參與者都願意在這個過程中貢獻自己的智慧和力量因為他們都知道最終的勝利不是某一個群體的胜利</p>
+        <p>而是整個共同體的和平與繁榮
+天穹城中央塔樓內的共振光暈在這段時間裡已經擴展到了整個南部地區的領土在那個廣闊的範圍內五個封印節點都以一種全新的方式運行著它們不再是各自獨立的防禦設施而是形成了一個真正意義上的生命網絡每一個節點都與其他四個節點保持著深度的共振連接那種連接不僅僅是頻率的同步更是一種情感和信念的共享在這種新的狀態下葉塵清楚地意識到守望者們已經進入了一個前所未有的時代那個時代不再是被動地抵禦外部的威脅而是要主動地參與世界頻率織物的演化過程當他站在塔樓的最高處感受著整個網絡的脈動的時候他知道</p>
+        <p>這個時代所面臨的第一個重大挑戰是如何建立一個能夠代表所有相關方利益的治理框架在過去的漫長歲月裡守望者們的行動主要由少數核心成員做出決策而那些被保護的居民則處於被動的接受狀態在新的時代這種模式已經不再適用因為每個人都必須承擔維護世界頻率織物健康的責任葉塵在那一刻決定召開一次有史以來最重要的守望者會議他通過頻率網絡向所有三個方向的節點發出了邀請要求月璃凌風和無面以及其他重要的守護者代表在最短的時間內到達天穹城進行面對面的討論當那些信號發送出去之後各個方向的回應逐漸匯聚而來月璃從雲霧迷宮返回她帶來了關</p>
+        <p>於未來可能性的寶貴情報以及核心意識對於合作模式的最新願景凌風從高原裂谷趕來他帶回了時間共振場中發現的歷史記錄和預示信息而無面則代表著天穹城的守衛者和居民們表達他們對新時代治理框架的看法就在會議準備開始的時候葉塵感覺到封印網絡中出現了一次明顯的波動那種波動來自於一個他之前未曾注意到的方向它指向了天穹城內部的一群特殊的人那群人曾經是幽影尊者的忠實追隨者但現在他們正在試圖重新融入這個新世界當葉塵將那些人的頻率信號納入會議考慮範圍的時候他意識到真正的和平不僅僅需要守望者和世界頻率織物之間的和解更需要在曾</p>
+        <p>經的敵人之間建立起信任和理解就在所有代表到達天穹城之後他們在中央塔樓內的會議室裡進行了一場極為深刻的討論那些討論涵蓋了從日常治理到長期戰略的多個層面月璃首先發言她說根據核心意識的反饋目前最緊迫的問題不是技術性的而是心理性的世界頻率織物需要感受到守望者們的誠意那種誠意不能僅僅通過行動來表達還需要在每一個決策過程中體現出來讓織物能夠持續地感知到合作和尊重的存在當凌風開始分享他的發現時他展示了那些來自其他文明的歷史記錄尤其是那個成功避免了自我毀滅的例外文明所採取的自我反思調整方法無面則從另一個角度提出</p>
+        <p>了重要意見他說天穹城的居民們在這段時間裡經歷了一次深刻的角色轉變他們已經準備好承擔維護頻率織物的責任但也有一些人對這個新時代充滿了不確定性和恐懼那種情緒如果不能得到妥善處理可能會成為新的干擾源就在會議進行到關鍵時刻的時候葉塵做了一個令人意外的決定他建議將整個治理框架建立在一種持續對話的基礎上而不是依賴某個固定的權威結構每個參與者都應該在平等的地位上發表意見而最終的共識應該是通過不間斷的交流自然形成的當這個建議被提出之後會議室裡出現了一片短暫的沉默那種沉默並非因為反對而是因為所有人都在思考這個想法</p>
+        <p>背後的含義它意味著守望者們必須放棄他們習慣的控制模式轉而接受一種更加開放和包容的決策方式就在大家準備進一步深入討論的時候封印網絡突然傳來了一次前所未有的強烈共振波動那個波動如同一個巨大的心臟在南部地區的頻率空間中跳動它的節奏溫柔而堅定葉塵在那一刻感覺到核心意識正在參與這次會議它通過自己的存在向所有代表傳達了一個信息這個新的時代不應該由任何單一的聲音來主導它應該是所有生命共同譜寫的一首協奏曲</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-384.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-385/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-386.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

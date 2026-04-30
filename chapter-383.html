@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第383章 · 迷宮的考驗 - 萬古塵埃</title>
+    <link rel="canonical" href="chapter-383.html">
+    <link rel="prev" href="chapter-382.html">
+    <link rel="next" href="chapter-384.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第383章 · 迷宮的考驗</h1>
+    <main>
+<p>就在月璃從深層空間退出的時候她的九世輪迴網絡已經完成了一次深刻的轉變它不再是一個試圖預測一切的工具而是變成了一個能夠包容不確定性的容器當她回到天穹城將這些情報傳達給葉塵的時候他感覺到封印網絡中出現了一種新的共振模式那個模式的特點是它允許不同觀點的存在而不急於達成共識那種包容性在某種程度上正是新時代所需要的品質因為在這個時代裡沒有一個單一的聲音能夠代表所有的真理每個參與者都必須在自己的位置上發出屬於自己的聲音然後讓整個網絡在多樣性中找到和諧就在月璃休息的同時她發現自己仍然能夠感受到來自核心意識的微</p>
+        <p>弱信號那種信號比以往更加清晰也更加頻繁它似乎在告訴她有一些更深层次的秘密等待著她去揭開那些秘密與世界頻率織物的起源有關也與守望者們在這個新時代中的角色定位有著千絲萬縷的聯繫當月璃準備再次深入雲霧迷宮進行調查的時候她的監測儀器突然記錄到了一組極為特殊的數據那组数据显示迷宮最深處的頻率結構正在發生一次顯著的變化那些曾經被封印系統的能量所覆蓋的冰晶建築開始散發出一種完全不同的共振波動那種波動既不是防禦性的也不是信息型的而是更加古老和深沉它表明在冰晶建築的最深處可能還隱藏著一個比祭壇更加核心的區域那個區</p>
+        <p>域可能是第五代守望者留下的最後一道保險或者說是一個關於世界頻率織物起源的秘密當月璃準備深入調查的時候她感覺到核心意識向她的意識中發送了一段極為簡短的信息那段信息只包含了一個詞那就是等待它告訴月璃有些秘密不需要急於揭開因為時機未到而強行的探索可能會破壞那些被精心保護了數千年的平衡月璃在那一刻明白了自己現在所面臨的挑戰不僅僅是如何使用預示能力更是要學會在未知面前保持耐心和敬畏她知道有些答案不是通過暴力或強制能夠獲得的需要的是等待合適的時機和以正確的態度去面對就在這個時候天穹城方向傳來了一組緊急信號葉</p>
+        <p>塵需要她盡快回去因為封印網絡中出現了一次前所未有的頻率波動那種波動讓所有節點都感受到了不安它似乎預示著一個更大的挑戰即將到來當月璃離開雲霧迷宮的時候她的內心充滿了複雜的情感一方面她對深層秘密的好奇心在不斷驅使她去探索另一方面她也知道在這個新時代裡有時候最有力的行動就是等待而等待本身就是一種需要極大勇氣和智慧的事情
+雲霧迷宮最深處的冰晶建築在淡金色共振光暈的照射下散發著一種前所未有的寧靜那種寧靜並非空無一物的虛靜而是一種飽滿而深沉的安詳在那個空間中月璃已經連續待了整整七天的時間她通過與核心意識之間</p>
+        <p>建立的穩定信息通道持續地接收著關於未來可能性的預示那些預示如同無數條並行的河流在她面前展開每一條都指向一個不同的結局在她的九世輪迴網絡被改造成感知窗口之後月璃發現自己能夠同時看到數十種甚至數百種可能的發展路徑那種能力在某種程度上是一種極大的恩賜因為它讓守望者們能夠提前做出準備避免重複過去所犯下的錯誤但隨著時間的推移月璃也逐漸意識到這種能力背後隱藏著一種極為深層的危險當一個人能夠同時看到所有的可能性時他或她就很難再做出一個明確的選擇因為每一個選擇都意味著放棄其他無數條同樣真實的路徑那種放棄在某種程</p>
+        <p>度上帶來了一種前所未有的存在焦慮就在月璃沉浸於這些思考的時候她的九世輪迴網絡突然經歷了一次劇烈的波動那種波動並非來自於核心意識而是源自她自己的內心深處在過去的幾天裡她一直在試圖平衡兩種相互衝突的需求一方面她希望能夠通過預示能力為守望者們提供最有價值的戰略指導另一方面她也開始懷疑這種干預是否正在干涉世界頻率織物自身的演化過程當一個存在能夠預知未來的時候它是否也在無形中縮小了未來本身的範圍月璃在那一刻感受到了一陣深刻的困惑因為她無法用任何邏輯或論證來回答這個問題當她試圖通過核心意識尋求指引的時候她發</p>
+        <p>現那個巨大的光球散發出了一種極為特殊的頻率信號那種信號不像之前那樣清晰明確反而像是一團正在緩慢旋轉的雲霧它在告訴月璃未來的可能性並非固定不變它更像是一種潛力的海洋每一次觀測都會改變那海洋的形状而這種改變本身就是未來演化的一部分月璃在那一刻理解了核心意識想要表達的意思預示能力並不是一個能夠揭示確定性結果的工具它應該被用來拓展守望者們的視野讓他們在面對選擇時能夠考慮到更多的因素而不是代替他們做出決定當這個理解在她心中逐漸成型的時候她感覺到九世輪迴網絡中的波動開始平復下來那種平復並非因為問題得到了解決</p>
+        <p>而是因為她找到了一種與之不共存的方式就在月璃調整自己的感知模式準備離開深層空間的同時她的監測儀器突然記錄到了一組極為特殊的數據那组数据显示雲霧迷宮最深處的頻率結構正在發生一次顯著的變化那些曾經被封印系統的能量所覆蓋的冰晶建築開始散發出一種完全不同的共振波動那種波動既不是防禦性的也不是信息型的而是更加古老和深沉它表明在冰晶建築的最深處可能還隱藏著一個比祭壇更加核心的區域那個區域可能是第五代守望者留下的最後一道保險或者說是一個關於世界頻率織物起源的秘密當月璃準備深入調查的時候她感覺到核心意識向她的意</p>
+        <p>識中發送了一段極為簡短的信息那段信息只包含了一個詞那就是等待它告訴月璃有些秘密不需要急於揭開因為時機未到而強行的探索可能會破壞那些被精心保護了數千年的平衡月璃在那一刻明白了自己現在所面臨的挑戰不僅僅是如何使用預示能力更是要學會在未知面前保持耐心和敬畏當她從深層空間中退出的時候她的九世輪迴網絡已經完成了一次深刻的轉變它不再是一個試圖預測一切的工具而是變成了一個能夠包容不確定性的容器當月璃回到天穹城將這些情報傳達給葉塵的時候他感覺到封印網絡中出現了一種新的共振模式那個模式的特點是它允許不同觀點的存在</p>
+        <p>而不急於達成共識那種包容性在某種程度上正是新時代所需要的品質因為在這個時代裡沒有一個單一的聲音能夠代表所有的真理每個參與者都必須在自己的位置上發出屬於自己的聲音然後讓整個網絡在多樣性中找到和諧</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-382.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-383/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-384.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

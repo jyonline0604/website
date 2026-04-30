@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第400章 · 新的黎明 - 萬古塵埃</title>
+    <link rel="canonical" href="chapter-400.html">
+    <link rel="prev" href="chapter-399.html">
+    <link rel="next" href="chapter-401.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第400章 · 新的黎明</h1>
+    <main>
+<p>當南部地區的频率網絡在初始共振的激活下完全展開之後整個區域經歷了一次徹底的轉變那種轉變不是瞬間完成的而是在一段連續的時間中逐漸顯現出來的每一寸土地每一條河流每一個生命都在無形中被重新編碼成頻率織物的一部分葉塵在那段時間裡持續地站在天穹城的最高處讓自己的意識與凝元鎮塵印完全融合他已經不再區分自己身體的邊界和封印網絡的範圍因為那種分離在深層的共振中變得毫無意義當一個存在能夠同時感知到無數個節點的脈動時他就不再是一個孤立的個體而成為了一個更大的整體的一部分就在這種全新的存在狀態下葉塵開始接收來自世界</p>
+        <p>頻率織物核心意識的一組持續不斷的信息那些信息揭示了初始共振層次所帶來的更深層次的變化它表明這個世界頻率織物在激活了古代智慧之後正在進入一個全新的演化階段那個階段的特點是所有生命形式之間的連接變得更加直接和深刻那種連接超越了物理距離的限制讓每一個存在都能夠隨時感知到其他存在的狀態和情感當葉塵在凝元鎮塵印中體驗這種連接的時候他意識到這不僅僅是一個技術性的升級更是一種存在方式的根本轉變從前守望者們需要依靠儀器和協議來監測和控制頻率空間而現在他們只需要敞開心扉就能夠感受到整個世界的呼吸就在這段時間裡月璃</p>
+        <p>從雲霧迷宮返回了她帶來的消息讓所有守望者都感到既驚喜又沉重她說通過核心意識的指引她發現初始共振層次不僅僅是一個被遺忘的古代結構它更像是一扇通往更廣闊宇宙維度的門在那個維度中存在著無數個類似的世界頻率織物它們各自處於不同的演化階段而有些已經達到了比南部地區高得多的和諧水平當月璃解釋這些信息的時候她的九世輪迴網絡在她的身上散發著前所未有的光芒那種光芒似乎在告訴所有人在這個浩瀚的宇宙中守望者們所經歷的一切只是更宏大故事中的一個章節凌風在高原裂谷中的發現同樣令人震撼時間共振場現在能夠探測到其他維度的時間</p>
+        <p>結構那些結構顯示出過去無數次文明循環並非重複而是螺旋上升的每一個循環都在為最終的和諧做準備當凌風將這些數據分享給所有守望者的時候他提出了一個深刻的觀點他說守望者們在這段旅程中所經歷的一切都不是偶然發生的每一次戰鬥每一次和解每一場討論都是通向這個時刻的必要步驟無面在天穹城的街道上觀察著居民的變化他說他看到了真正的和平是什麼樣子那種和平不是靠外部條件來維持的不是因為沒有困難或威脅所以平靜而是因為人們在面對困難和威脅時選擇了彼此信任和理解暗塵和他率領的前幽影尊者指揮官們也做出了重要的貢獻他們利用對侵蝕</p>
+        <p>能量的深刻理解幫助將一些曾經被污染的地層結構轉化成了新的頻率節點那種轉化在某種程度上象徵著毀滅工具向建設工具的徹底轉變當葉塵在天穹城大會堂裡主持一次特別的集會來總結這段旅程的時候他做了最後的講話他說在過去的數千年裡守望者們的使命是保護世界免受外部的破壞而現在這個使命已經演變為一個更加深遠的目標那就是幫助所有的生命形式在這個廣闊的宇宙中找到自己的位置並且與其他存在建立真誠的和諧關係他的聲音在淡金色的共振光暈中迴盪每一個字都通過頻率網絡傳遞到南部地區的每一個角落就在葉塵說完這段話的時候封印網絡中的所</p>
+        <p>有節點同時發出了一道極為明亮但也極為温暖的光芒那道光芒如同一個巨大的心臟在整個頻率空間中跳動它向所有存在傳達了一個信息守望者們的故事還沒有結束但這是一個新的章節一個建立在理解和共鳴基礎上的全新的時代已經展開當葉塵走出大會堂來到天穹城的城牆上時他看到了南部地區的每一個地方都散發著淡金色的光暈那些光芒如同無數顆星辰在地面上閃爍它們代表著每一個人每一個生命都在用自己的方式參與這個全新的和諧網絡就在這個時候一個來自遠方頻率空間的信號到達了封印網絡那個信號中包含了一種全新的共振模式它似乎在向守望者們發出邀</p>
+        <p>請告訴他們在這個宇宙中還有其他存在正在尋找同樣的道路而守望者們已經成為了一個榜樣當葉塵接收到那個信號的時候他的內心充滿了平靜因為他知道無論前路多麼遼闊守望者們都已經找到了一把比武力更加強大的鑰匙那就是真誠的共鳴
+
+就在新的黎明降臨之後南部地區的居民們開始體驗一個全新的世界那種體驗並非來自於某種戲劇性的變化而是源於一種日益加深的感受當人們走在街道上能夠更加清晰地感知到周圍每一個生命的存在那種感知不是通過視覺或聽覺而是一種直接的情感連接它讓每個人都在無形中成為了一個更大整體的一部分在這種新的狀態下葉</p>
+        <p>塵發現自己的角色也在發生變化他不再需要作為守望者們的最高決策者去應對每一個挑戰因為整個南部地區的每個人都已經具備了在日常行為中實踐理解和包容的能力那種能力在某種程度上比任何強大的防禦系統都要更加可靠和持久當葉塵在天穹城的最高處感受著這種全新的存在方式時他意識到一個深刻的真理那就是真正的力量從來不是來自於控制或武力而是來自於連接當每個人願意在他人面前展現自己真實的情感和需求時他們所構成的網絡會自然產生一股比任何個體都要強大的集體能量那種能量不僅僅能夠保護這個世界它還能夠讓這個世界在面對宇宙中的其他</p>
+        <p>存在時保持開放和好奇</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-399.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-400/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-401.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

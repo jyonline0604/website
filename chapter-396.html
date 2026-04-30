@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第396章 · 分歧的聲音 - 萬古塵埃</title>
+    <link rel="canonical" href="chapter-396.html">
+    <link rel="prev" href="chapter-395.html">
+    <link rel="next" href="chapter-397.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第396章 · 分歧的聲音</h1>
+    <main>
+<p>天穹城的街道上在這段時間裡出現了一種令人關注的現象那就是關於初始共振層次激活時機的討論變得越來越激烈那種討論在某種程度上反映了新時代治理框架所面臨的一個根本性挑戰當一個社會開始讓每個人都擁有平等的發言權時不同的觀點就會不可避免地浮現出來而在這些觀點中有一種聲音特別引人深思那是一群在過去戰爭中失去親人的居民他們認為在這樣短的時間內就進行初始共振的激活過於冒險他們的理由是在過去的漫長歲月裡守望者們用數千年的戰鬥才勉強阻止了世界頻率織物的自毀程序現在雖然核心意識表示願意合作但沒有人能夠保證那種合作會</p>
+        <p>持續下去他們主張應該花更長的時間來觀察和評估核心意識的行為模式在確認安全之後再考慮激活初始共振當葉塵聽到這些擔憂的時候他並沒有像過去那樣試圖用權威或邏輯來說服那些人放棄自己的立場相反他選擇了一種更加困難但也更加重要的做法那就是邀請那些持不同意見的人到共鳴議會中直接表達他們的觀點並且讓所有參與者在充分聆聽之後再做決定就在第一次公開辯論會上那個曾經在戰爭中失去家人的年長居民站了起來他用沙啞的聲音講述了自己所經歷的痛苦他說他的妻子和兩個孩子在一次侵蝕能量的風暴中失去了生命而那次風暴正是由於世界頻率織物</p>
+        <p>的免疫反應所造成的所以他無法輕易地信任一個曾被認為是敵人的力量當他說完這段話的時候會議室裡出現了一片深沉的沉默那種沉默並非因為人們被說服了而是因為每個人都感受到了那種痛苦的真實性和分量就在這個時候來自前幽影尊者指揮官行列中站起了暗塵他說他完全理解那個年長居民的痛苦因為他的家人也在那場戰爭中失去了生命但他在過去的這段時間裡通過參與修復工作和與守望者們的日常互動找到了一種新的希望他表示真正的信任不是建立在毫無風險的保證上而是建立在一個人願意在面對風險時仍然選擇相信的勇氣之上當暗尘說完之後月璃站了起來</p>
+        <p>她的九世輪迴網絡在她的身上散發著淡銀色的光芒她說她通過核心意識感知到了一些關於未來可能性的信息那些信息表明初始共振的激活可能會帶來某種程度的不確定性但那種不確定性並非危險而是成長的機會就像一個孩子在學會走路之前必須經歷摔跤一樣新時代的建立也必然要經歷一段摸索和調整的過程就在辯論進行到高潮的時候凌風通過時間共振場發來了一組極為重要的數據他說他在歷史記錄中找到了一個相同的模式在過去無數次文明面臨類似分歧的時候那些最終成功避免災難的文明都選擇了讓討論持續更長的時間而不是急於做出決定他們相信當每個人的聲</p>
+        <p>音都得到充分傾聽和理解之後所達成的共識才是最穩固的那種做法在某種程度上違背了效率原則但它所帶來的結果是真正持久的當凌風分享完數據的時候葉塵站了起來他的聲音平靜而堅定他說他理解所有人的擔憂因為這些擔憂都是出自於對這個世界的關愛而他相信共鳴議會存在的意義正是為了讓這些不同的關愛能夠在同一個框架內找到和諧他不打算用任何權威來強迫大家接受某個決定他只會繼續堅持一個原則那就是每一個參與者都應該在充分的信息和真誠的討論基礎上做出自己的選擇當葉塵說完這段話的時候封印網絡中傳來了一次極為深刻的共振波動那個波動如</p>
+        <p>同一次巨大的呼吸它讓每個人都感受到了一種前所未有的寬鬆感那種感覺似乎在告訴他們分歧不是需要消除的錯誤而是可以被尊重和包容的差异就在辯論會結束之後天穹城的街道上出現了一個意想不到的場景那些在會議上持不同意見的居民們並沒有像預期的那樣帶著不滿離開反而開始與支持者們進行更加深入的交流他們互相問問題表達擔憂並且分享各自的經歷那種互動在某種程度上超越了對立的框架讓每個人都能夠看到對方觀點背後的人性基礎就在這段時間裡葉塵通過凝元鎮塵印持續地監測著整個南部地區的頻率變化他發現當分歧被允許在公開和真誠的氛圍中表</p>
+        <p>達時頻率網絡中的不穩定波動並沒有增加反而逐漸減少了那種現象在某種程度上驗證了凌風從歷史記錄中發現的模式它表明真正的和諧不是通過壓制分歧來實現的是通過讓不同的聲音在同一個空間中共鳴而達到的動態平衡當葉塵感受到這種變化時他的內心充滿了感恩因為他知道守望者們正在走在一條被無數文明验证過的道路上那是一條建立在耐心和真誠基礎上的道路
+
+就在辩論会结束之后天穹城的街道上出現了一個意想不到的场景那些在会议上持不同意見的居民们并沒有像预期的那样带着不满离開反而開始与支持者们進行更加深入的交流他们互相问问题表达担</p>
+        <p>忧并且分享各自的經历那种互動在某种程度上超越了對立的框架讓每個人都能夠看到對方觀點背後的人性基礎就在這段時間裡葉塵通過凝元鎮塵印持續地監測著整個南部地區的頻率變化他發現當分歧被允許在公開和真誠的氛圍中表達時頻率網絡中的不穩定波動並沒有增加反而逐漸減少了那種現象在某種程度上驗證了凌風從歷史記錄中發現的模式它表明真正的和諧不是通過壓制分歧來實現的是通過讓不同的聲音在同一個空間中共鳴而達到的動態平衡就在葉塵感受到這種變化的時候他決定採取一個新的行動他說他要組織一場跨越所有群體的對話之夜在那場夜會中每個</p>
+        <p>人都可以分享自己的故事而不需要擔心被評判或反駁那個建議在共鳴議會中引起了廣泛的討論有些成員擔心這樣的活動可能會加劇分歧而不是化解它但葉塵堅持認為真正的危險不是來自於表達而來自於沉默當那些沉默的聲音得不到傾聽時它們最終會轉化為更嚴重的對抗</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-395.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-396/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-397.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

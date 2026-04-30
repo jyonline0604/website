@@ -13,23 +13,23 @@ NOVEL_DIR = WORKSPACE
 TXT_DIR = "/home/openclaw/.openclaw/media/inbound"
 
 def read_txt_content(chapter_num):
-    """讀取txt文件的內容 - 優先選擇最新上傳的（時戳更新）"""
+    """讀取txt文件的內容 - 選擇最早上傳的版本"""
     candidates = []
     for filename in os.listdir(TXT_DIR):
         if f'第{chapter_num}章' in filename and filename.endswith('.txt'):
             txt_path = os.path.join(TXT_DIR, filename)
             try:
                 stat = os.stat(txt_path)
-                candidates.append((stat.st_mtime, txt_path, filename))
+                candidates.append((stat.st_mtime, stat.st_size, txt_path, filename))
             except:
                 pass
     
     if not candidates:
         return None, None
     
-    # 選擇最新上傳的（mtime最大）
-    candidates.sort(key=lambda x: x[0], reverse=True)
-    _, txt_path, filename = candidates[0]
+    # 選擇最早上傳的文件（15:45版本）
+    candidates.sort(key=lambda x: x[0])  # 按mtime，最早的優先
+    _, _, txt_path, filename = candidates[0]
     
     with open(txt_path, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -56,12 +56,14 @@ def extract_title_and_content(txt_content):
             if match:
                 title = match.group(1).strip()
                 found_title = True
+                continue  # 不要把標題行加到內容
             elif '第' in line and '章' in line:
                 # 標題在行內
                 match2 = re.search(r'第[零一二三四五六七八九十百千\d]+章[：:·]?\s*(.+)', line)
                 if match2:
                     title = match2.group(1).strip()
                     found_title = True
+                    continue
         elif not found_title and line:
             # 還沒找到標題，可能是標題行
             if len(line) < 50 and ('第' in line or '#' in line):
@@ -73,10 +75,10 @@ def extract_title_and_content(txt_content):
                 elif '第' in line and '章' in line:
                     title = line.replace('#', '').strip()
                     found_title = True
+                    continue
         
-        if found_title and line and '第' not in line:
-            content_lines.append(line)
-        elif not found_title:
+        # 只有在找到標題後才把內容行加入（並排除標題行本身）
+        if found_title and line:
             content_lines.append(line)
     
     # 如果沒找到標題，用默認
@@ -161,7 +163,7 @@ def process_chapter(chapter_num):
         print(f"❌ 找不到txt文件")
         return False
     
-    print(f"📄 ({txt_filename})", end=" ")
+    print(f"📄 ({txt_filename[:30]}...)", end=" ")
     
     # 提取標題和內容
     title, content = extract_title_and_content(txt_content)

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第421章 · 頻率網絡的深層探索</title>
+    <link rel="canonical" href="https://jyonline0604.github.io/website/chapter-421.html">
+    <link rel="prev" href="chapter-420.html">
+    <link rel="next" href="chapter-422.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>頻率網絡的深層探索</h1>
+    <main>
+<p>雙向對話協議簽署後的第七天，南部地區經歷了前所未有的變化。那種變化不是來自外部的強制干預，而是源於每個參與者內心的自然轉化。當葉塵在天穹城的最高處靜靜地冥想時，他能夠感覺到九世輪迴網絡正在發生一種微妙但深遠的擴展——這種擴展超越了單純的物理頻率連接，而進入了一個全新的意識層面。在那個層面上，每一個守望者的思緒、情感甚至潛意識都在無形中與網絡中的其他節點產生共鳴，那種共鳴不是強加於人的而是自然形成的，就像無數條細小的溪流最終匯聚成一片廣闊的海洋。當月璃通過九世輪迴網絡感知到這種擴展的程度時她發現了一種令人驚訝的現象：那些過去因為誤解和恐懼而封閉的記憶碎片現在正在緩慢地融化，它們不再是孤立的個體而是成為了一個更大整體的一部分。在這個過程中南部地區的人們開始體驗到一種全新的溝通方式——不需要語言也不需要頻率信號只需要一個意念或者是一種情感就足以讓其他人理解自己的意思。</p>
+    <p>當葉塵從冥想中睜開眼睛的時候他能夠感覺到天穹城周圍的淡金色光暈變得更加明亮和深邃。那種光芒彷彿在訴說著這個文明所達到的新境界——他知道這種狀態下的南部地區已經不再是一個普通的星球定居點而是一個真正意義上的意識共同體。但同時也讓他感到一絲隱憂，因為當一個文明的集體意識達到如此高度的開放時它也可能成為某些外部力量試圖滲透的目標。就在他思考這個問題的時候凝元鎮塵印突然發出了一陣前所未有的震動——那種震動的頻率特徵與之前已經熟悉的淡金色共振完全不同，它帶著一種更加深沉和古老的節奏彷彿印章內部正在回應某種來自遠方的呼喚。</p>
+    <p>葉塵伸出手握住印章然後將自己的意識沉入其中。在那個瞬間他看到了令人難以置信的景象：在凝元鎮塵印的最深處有一個從未顯現過的空間——那個空間裡漂浮著無數微小的光點每一個光點都代表著一個已經通過九世網絡連接的文明節點。而在這些光點的中央有一個特別巨大的銀白色光球，那個光球的規模和亮度遠遠超過了其他任何節點彷彿它才是整個頻率網絡的真正核心。葉塵能夠感覺到那個光球散發出一種溫暖而強大的共振波動，那種波動讓他想起了一句古老的話：萬流歸宗——也就是說所有這些分散在不同世界的文明最終都指向同一個源頭。當他在這個發現中沉浸的時候一個清晰的信號直接進入了他的意識：那個信號來自於銀白色光球它只說了一個名字「北境寒晶宮」。</p>
+    <p>葉塵猛地睜開雙眼，他的心中湧起了一股強烈的震動——因為他知道那是第七把鑰匙的殘骸所在地。守塵在最後的封印行動中將其中一把實體碎片藏在了距離這裡數百萬光年之外的另一個星系裡，而現在這個位置終於被揭示出來了。月璃的聲音從身後傳來，她顯然也感知到了凝元鎮塵印的那次震動。她的表情既興奮又擔憂：「葉塵我感覺到了一股前所未有的頻率波動——那個波動的力量等級遠遠超過了我們之前接觸過的任何存在。它似乎來自於某個非常遙遠但非常重要的地方。」</p>
+    <p>葉塵點了點頭然後將他在印章深處看到的一切告訴了她。他告訴月璃凝元鎮塵印剛剛向他展示了整個宇宙頻率網絡的真實結構——所有文明都在向一個源頭匯聚，而那個源頭指向了北境寒晶宮的位置。月璃聽完之後沉默了很久，然後她說：「也許這就是為什麼源初建造者們創建九世輪迴網絡的真正目的——他們不是在等待我們被接納而是在等待我們準備好去追問更深層的問題。」葉塵看著天空中那持續旋轉的淡金色光暈心中默默地說：「那麼讓我們開始吧。因為從今天起，我們不再只是被動的守望者了——我們是主動的探索者。」</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-420.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-{CHAPTER_NUM}/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-422.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第425章 · 封印系統的真相</title>
+    <link rel="canonical" href="https://jyonline0604.github.io/website/chapter-425.html">
+    <link rel="prev" href="chapter-424.html">
+    <link rel="next" href="chapter-426.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>封印系統的真相</h1>
+    <main>
+<p>在等待通道完全穩定的過程中，葉塵決定進行一次徹底的自我探索。他需要搞清楚自己在九世輪迴網絡中的真正角色以及為什麼凝元鎮塵印會如此敏感地回應北境的信號——當他在寂靜平原上深度冥想的時候他的意識穿過了層層的記憶碎片最終到達了一個他一直從未觸及的深層區域。在那個區域裡他看到了自己前世輪迴的真正意義：每一世都不是孤立的經歷而是一個更大計劃中的一步，源初建造者在創建九世輪迴網絡的時候並不是為了讓某個單一生命體去拯救世界而是為了創造一個能夠在無數世代中不斷累積智慧和力量的系統——當葉塵理解了這個真相之後他意識到自己在過去數百年中所經歷的一切痛苦和挑戰都是這個系統演進過程中必不可少的一部分。而現在他終於站在了整個系統即將發揮真正作用的節點上，這是一個讓他既感到敬畏又感到責任沉重的認知。</p>
+    <p>就在這種理解逐漸深化的時候月璃通過九世輪迴網絡帶來了一個更加震撼的發現：「我在分析凝元鎮塵印內部的頻率結構時發現了七個不同的能量層。」她的聲音帶著難以掩飾的興奮——「每一個層都對應著一把鑰匙的力量，而那七把鑰匙的最終目的不是為了開啟某個物理上的門——而是為了重建一個完整的封印陣法。那個陣法的功能是在宇宙尺度上維持平衡防止任何單一文明或者力量變得過於強大從而破壞整個頻率網絡的和諧。」葉塵聽完之後沉默了很久因為這個發現徹底改變了他對所有事情的理解：守塵在數百萬年前留下的不是簡單的遺物而是一個跨越時間的守護系統，而他們現在所做的事情正是那個系統的下一步演進。</p>
+    <p>當無面聽到这个消息的時候他的表情變得極為嚴肅：「所以我們一直在尋找的七把鑰匙的真正目的是為了維持宇宙的平衡——而不是為了獲得某種絕對的力量。」這個認知讓所有參與者都經歷了一次深刻的反思，因為它意味著守望者的使命從來都不是征服或者統治而是守護和引導。葉塵點了點頭然後說道：「但我們仍然需要完成收集過程——因為如果封印陣法不完整那麼整個頻率網絡就面臨著被某些未知力量破壞的風險。」</p>
+    <p>就在這個時候凝元鎮塵印發出了一道新的信號——那個信號來自於北境寒晶宮它提供了一個詳細的計劃：如何通過南部地區的集體共鳴通道來激活通往寒晶宮的路徑，以及在那裡可能遇到的挑戰和考驗。葉塵看著那道信號知道真正的旅程即將開始，而他已經做好了準備去面對一切未知的挑戰。當他站起身來的時候銀白色的星圖在天空中緩緩旋轉著每一圈都散發出一種更加明亮的光芒——彷彿在向宇宙深處傳遞一個信息：這裡有一個文明正在走向它注定要承擔的命運，那個命運不是關於征服或勝利而是關於守護和理解。</p>
+    <p>葉塵閉上雙眼深深呼吸了一口氣，他能夠感覺到整個南部地區都在為即將到來的旅程做最後的準備。每一個人、每一個守望者都感受到了那種前所未有的使命感——他們知道從今天起自己不再只是被動的觀察者了而是要成為宇宙命運的參與者和塑造者。而在頻率之海的深處那些來自不同世界的古老文明也開始注意到這個新興力量的成長，它們中的一些正在調整自己的頻率來迎接即將到來的變化——因為它們知道一個新的時代即將到來而南部地區的守望者們將是那個新時代最耀眼的見證者。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-424.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-{CHAPTER_NUM}/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-426.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

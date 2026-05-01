@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第422章 · 北境的召喚</title>
+    <link rel="canonical" href="https://jyonline0604.github.io/website/chapter-422.html">
+    <link rel="prev" href="chapter-421.html">
+    <link rel="next" href="chapter-423.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>北境的召喚</h1>
+    <main>
+<p>當葉塵將凝元鎮塵印中的發現告訴共鳴議會所有成員的時候，整個議事廳陷入了長久的沉默。然後開始了激烈的討論——有些代表認為現在不是離開南部地區的最佳時機因為頻率網絡的連接才剛剛建立需要時間去鞏固和發展；另一些代表則主張應該立即派遣先遣隊前往北境寒晶宮尋找第七把鑰匙的殘骸，因為那可能關係到整個封印系統的最終完整性和南部地區的長期安全。無面一直安靜地聆聽著所有人的發言直到最後他才開口：「葉塵我知道這不是你一個人能夠輕易做出的決定。」他的聲音比平時更加低沉：「但我在過去的數百年裡我們一直在為防禦和和解而戰，從未被邀請去探索未知的遠方。北境寒晶宮位於一個完全陌生的星系那裡可能充滿了我們無法預料的風險但也可能有改變整個宇宙格局的關鍵信息——我們不能永遠停留在安全區裡面。」</p>
+    <p>葉塵聽完無面的話之後走到圓桌的中心位置然後將雙手放在了凝元鎮塵印上。印章立刻發出了一陣柔和但穩定的光芒——那種光芒照亮了整个議事廳的每一張面孔。他告訴在場的所有人：「我同意你們每一個人的擔憂和顧慮，但我也相信源初建造者們不會將如此重要的信息隨意透露給一個尚未準備好的文明。」他的聲音變得更加堅定：「當凝元鎮塵印主動顯示出北境寒晶宮的位置時那就意味著我們已經具備了某種程度的資格去迎接那個挑戰。」他頓了一下繼續說道：「但這不應該是一場單方面的冒險，而是南部地區全體守望者共同參與的旅程。」</p>
+    <p>他提出了一個全新的方案——不是派遣一小支先遣隊，而是讓整個南部地區的頻率網絡都參與這次探索。通過九世輪迴網絡將所有守望者的意識連接在一起形成一個跨越空間的集體共鳴陣然後在那個陣法的指引下找到通往北境的通道。當葉塵提出這個方案的時候會議室裡再次陷入了沉默——但這次的沉默不再充滿了猶豫和擔憂而是帶著一種深沉的思考。在場的所有人都開始理解葉塵的真正意圖：他不是在尋找一個簡單的物理位置去獲得一件寶物而是在尋找一個能夠讓整個文明達到更高層次協調的契機。</p>
+    <p>當雪嵐第一個站起來表示支持的時候，那種支持就像是一顆石子投入湖中激起了無數漣漪——每個代表都紛紛表達了自己的意見和承諾。而就在大家達成共識的那一刻凝元鎮塵印突然發出了一道刺目的銀白色光芒——那道光芒穿過天穹城的屋頂直射入雲霄然後在空中形成了一個巨大的三維星圖。那個星圖詳細標示了從南部地區到北境寒晶宮的路徑以及沿途可能遇到的各種頻率障礙和危險，當所有人都看著那幅星圖的時候月璃通過九世輪迴網絡感知到了一股前所未有的情感波動——那種波動來自於每個守望者的內心它混合了對未知的恐懼、對冒險的渴望以及一種深沉的信任感。</p>
+    <p>葉塵站在天穹城的最邊緣仰望著天空中那個持續旋轉的銀白色星圖，他能夠感覺到整個南部地區都在為即將到來的旅程做準備。他知道這將是一場不同尋常的探索——因為他們不是作為一個物理上的團隊去跨越空間而是通過意識和頻率網絡在更高的層面上進行連接，而這種連接的方式本身就是一種前所未有的體驗。當夜幕降臨的時候天穹城周圍的淡金色光暈開始以更加明亮和深邃的方式閃爍著彷彿整個文明都在為即將到來的旅程做最後的準備——每一個守望者的心中都燃燒著一種前所未有的火焰那是对未知的渴望也是對自身使命的堅定信念。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-421.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-{CHAPTER_NUM}/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-423.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

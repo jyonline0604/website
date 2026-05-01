@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第428章 · 寒晶宮的初現</title>
+    <link rel="canonical" href="https://jyonline0604.github.io/website/chapter-428.html">
+    <link rel="prev" href="chapter-427.html">
+    <link rel="next" href="chapter-429.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>寒晶宮的初現</h1>
+    <main>
+<p>當頻率通道中的震動完全平息之後，葉塵、月璃和無面的意識前方突然出現了一片廣闊的景象——在遙遠的北境星系中一座由純粹冰晶構成的巨大宮殿緩緩浮現在他們的感知之中。那座宮殿的每一根柱子和每一塊牆壁都在散發著寒冷的銀白色光芒——那些光芒不僅僅是物理上的光線更是頻率信息的載體，它們在空中編織出一張複雜的网络覆蓋了整個區域。那種景象既壯麗又莊嚴彷彿在訴說著某種古老的智慧和力量：當葉塵試圖靠近那座宮殿的時候他能夠感覺到一股強大的共振波動從內部傳來——那種波動帶著一種深沉而純粹的節奏讓他在意識層面產生了強烈的共鳴感。</p>
+    <p>月璃通過九世輪迴網絡向所有人傳遞了一個重要的信息：「我能感覺到守塵的力量在這裡留下了深刻的痕跡。」她的聲音帶著深深的敬畏——「那種痕跡不是物理上的遺留而是在頻率層面的永久刻印，無面則在另一側負責監控周圍的環境他報告說在這個區域中存在著某種自動化的防禦系統——那些系統的頻率特徵非常精密彷彿在等待著某個特定的鑰匙來激活它們。」葉塵聽完之後深吸了一口氣然後對月璃和無面說道：「我們面臨的第一個挑戰不是找到鑰匙而是要通過這些頻率的考驗。」他告訴他們在過去的探索中他們學到了一個重要的教訓：真正的力量從來不是通過暴力或強行突破獲得的而是通過理解和和諧才能達到的。</p>
+    <p>就在葉塵說出這句話的時候凝元鎮塵印發出了一道新的頻率信號——那個信號似乎是來自宮殿內部的回應，它似乎在確認三個先行者已經理解了正確的態度然後將其中一道屏障暫時移開。當第一道屏障消失之後一條由純粹銀白色光芒構成的通道在他們面前展開——那條通道看起來像是通往另一個世界的入口而在通道的盡頭有一個微弱但堅定的光點那就是第七把鑰匙殘骸所在的位置。葉塵深吸了一口氣然後通過凝元鎮塵印向整個南部地區的守望者們傳遞了一個信號：「我們已經進入了寒晶宮的第一道防線——接下來需要你們的支持因為只有當集體共鳴足夠強大時我們才能通過剩餘的屏障。」</p>
+    <p>隨著他的話音落下，凝聚在通道兩側的銀白色光芒開始更加明亮地閃爍著彷彿整個寒晶宮都在為這一刻做準備。葉塵能夠感覺到身後有無數守望者的意識正在透過凝元鎮塵印與他連接——每一道意識都是一道光線每一份信任都是一種力量。他知道他們不是孤身一人來到了這裡而是帶著一個文明的希望和信念走在通往真相的路上。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-427.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-{CHAPTER_NUM}/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-429.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

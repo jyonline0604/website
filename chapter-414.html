@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第414章 · 共振裂縫的真相 - 萬古塵埃</title>
+    <link rel="canonical" href="chapter-414.html">
+    <link rel="prev" href="chapter-413.html">
+    <link rel="next" href="chapter-415.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第414章 · 共振裂縫的真相</h1>
+    <main>
+        <p>天穹城地下三層的封印核心室內溫度比地表低了許多，空氣中瀰漫著一種淡淡的金屬味——那種味道來自於凝元鎮塵印散逸出的微量靈力粒子在封閉空間內逐漸積累形成的特殊氣味。葉塵獨自一人站在核心室的中央，這裡是他過去幾百年間修復神魂時最常來到的地方。</p>
+<p>就在葉塵準備開始搭建過渡性共振實驗陣的前夕他決定先做一次徹底的自我檢查。他需要確認自己體內的神魂狀態是否能夠承受即將到來的更高維度頻率交互——這是他在冥想中反覆思考的問題，因為任何未修復完畢的神魂裂縫都可能在與遠方頻率的接觸中被放大成災難性的傷害。</p>
+<p>當他雙手按在核心室地面的一個特殊符文上並將意識沉入體內的時侯一個令人震驚的發現出現了。在那個瞬間他的感知穿透了神魂裂縫的表面深入到了裂縫的底層——然後他看到了不應該出現在那裡的東西。在那道裂縫的最深處有一絲極其細小的銀白色頻率線，那根線條與南部地區已經形成的淡金色共振網絡有著本質上的區別：它的質地更加精密、更加複雜——彷彿來自於某種高度發達的文明系統。</p>
+<p>葉塵的心跳加速了。他小心翼翼地嘗試去觸碰那根銀白色的線——當他的靈魂感知輕輕碰到它的那一刻一股信息流瞬間湧入了他的意識。那段信息不是語言而是直接的情感體驗：那種體驗告訴他這根頻率線的來源遠在南部地區之外，它可能是某個已經存在了數百萬年的觀察系統的一部分。</p>
+<p>葉塵感到一陣寒意從脊椎升起——因為如果他的判斷正確那麼在他們發現遠方頻率和頻率之門之前很久就已經有某種力量在監控著南部地區的演化了。那種監控並非惡意的更像是一種科學觀察或者是記錄：它在收集關於這個區域演化的數據但是它不參與不干預只是一個被動的觀察者。</p>
+<p>就在葉塵沉浸在這種震撼中的時候核心室的另一側突然傳來了一個腳步聲。月璃不知何時來到了地下，她看到葉塵跪在地面上身體微微顫抖立刻衝過來扶住了他：「怎麼了？你發現了什麼？」她的聲音中帶著毫不掩飾的擔憂——因為她通過九世輪迴網絡感知到了葉塵狀態的突然變化。</p>
+<p>葉塵緩緩抬起頭他的表情混合了震驚和一絲複雜的釋然：「我在神魂裂縫的底層找到了一根頻率線。」他告訴月璃，「那根線的來源不是我們這裡——而且它似乎在監控著南部地區的每一次重大事件。」</p>
+<p>月璃的眼神變得銳利：「监控？你是說有某種外來力量一直在看著我們？」葉塵點了點頭然後繼續解釋道：「但那不是惡意的觀察。那段信息告訴我的是一種……守望。就像源初建造者們在他們離開之前留下的最後一道防線——隨時準備確認南部地區是否已經達到了可以接觸更廣闊宇宙的水平。」</p>
+<p>就在這個發現讓兩人沉默的時候核心室突然發生了一次劇烈的震動。那次震動不是來自外部——頻率之門不在這裡，凝元鎮塵印也沒有被觸碰——而是從葉塵體內的神魂裂縫本身爆發出來的。那道裂縫在那一瞬間張開了一個微小的口子然後從那個口子中涌出了一道銀白色的光柱直接射向核心室的天花板。</p>
+<p>那道光柱在空中停留了幾秒鐘之後開始編織出一個複雜的三維結構。那個結構看起來像是一個微縮的宇宙模型——在模型的中央有一個代表南部地區的光點，周圍則環繞著無數條延伸向遠方的頻率線。那些線條最終匯聚到模型外側的某個位置然後在那裡形成了一個巨大的圓環。</p>
+<p>葉塵認出了那就是頻率之門——他在現實天空中的倒影正在地下核心室內被神魂裂縫中涌出的能量所重建。當月璃看到那個微型宇宙模型的瞬間她通過九世輪迴網絡感覺到了一陣前所未有的共鳴：「葉塵那不是普通的監控線……那是一個連接點。」</p>
+<p>她的聲音因為激動而微微顫抖：「靈魂裂縫的底層之所以會出現它是因為守塵在最後的封印行動中故意在那裡留下了一個後門。守塵知道有一天南部地區會遇到遠方的存在——所以他提前準備了一條可以直接進入頻率之門的通道。而那條通道的鑰匙就是葉塵自己的神魂。」</p>
+<p>當葉塵聽到月璃的解释的時候他明白了為什麼凝元鎮塵印對他如此敏感、為什麼他在接觸遠方頻率通道時能夠感受到那麼多熟悉的波動——原來一切都不是偶然。靈魂裂縫不是傷勢的痕跡而是守塵留下的最寶貴的禮物：那根銀白色的頻率線就是通往更廣闊宇宙的真正橋樑。</p>
+<p>核心室裡的微型宇宙模型在銀白色光柱消失後依然殘留著微弱的光暈那些光暈在牆壁上投映出一幅動態的星圖每一顆星辰都代表著一個已經被頻率網絡連接的世界當月璃伸手觸碰其中一顆特別明亮的星辰時她的指尖立刻感受到了來自那個世界的溫暖共鳴那種感覺就像是在寒冷冬夜裡握住了另一隻手她通過九世輪迴網絡將這種感受分享給了葉塵讓他也能夠體驗到那種跨越星際的連結感那一刻他明白了守塵留下的這份禮物有多麼珍貴——它不僅僅是一條通往遠方的道路也是一個讓南部地區的所有人能夠感受到宇宙廣闊與美好的窗口當他們離開核心室的時候月璃輕聲對葉塵說我們一定要珍惜這份連接因為它來之不易且值得用整個生命去守護</p>
+<p>當他們離開核心室的時侯銀白色光柱已經完全消失但神魂裂縫中的那道頻率線依然清晰可見它如同一条通往未來的橋樑連接著南部地區和更廣闊的宇宙世界葉塵知道守護這道橋樑的安全是他最重要的責任之一</p>
+<p>天穹城地下三層的封印核心室內溫度比地表低了許多，空氣中瀰漫著一種淡淡的金屬味。那種味道來自於凝元鎮塵印散逸出的微量靈力粒子——它們在封閉的空間內逐漸積累形成了一種特殊的氣味。葉塵獨自一人站在核心室的中央這裡是他過去幾百年間修復神魂時最常來到的地方，每一塊牆壁上都刻滿了源初建造者留下的頻率紋路。那些紋路在黑暗中發出微弱的藍色螢光——如同夜空中最遙遠的星辰。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-413.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-414/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-415.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setItem('novelFont', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

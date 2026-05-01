@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第418章 · 頻率過濾系統的設計 - 萬古塵埃</title>
+    <link rel="canonical" href="chapter-418.html">
+    <link rel="prev" href="chapter-417.html">
+    <link rel="next" href="chapter-419.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第418章 · 頻率過濾系統的設計</h1>
+    <main>
+        <p>在天穹城的地下實驗室裡堆滿了各種測量和記錄儀器，這些設備大部分是守望者們在過去數百年的歲月裡逐步收集和完善起來的——它們的功能從最初的靈力探測擴展到了頻率分析和共振掃描的多個領域。此刻葉塵正站在實驗室的中央位置看著牆壁上投影出來的一幅巨大的頻率結構圖。</p>
+<p>他需要在這張圖上標註出即將建造的三層防禦結構的位置和參數。月璃站在他身邊，手持一份由九世輪迴網絡生成的數據報告。她的表情專注而嚴肅：「葉塵，我已經分析了過去七天內所有通過凝元鎮塵印進入南部地區的頻率信號——其中大約百分之七十屬於正常的共振波動，只有不到百分之五的信號顯示出某些值得關注的特徵。」她頓了一下繼續說道：「這些特徵包括頻率的快速變化以及不尋常的諧振模式。」</p>
+<p>葉塵點點頭說：「這就是為什麼第一層頻率過濾系統必須足夠敏銳的原因。我們不能只依賴被動的觀察，還需要主動地識別和分類每一個到達的信号。」他在牆壁上的投影中畫出了一條新的曲線，這條曲線代表了他設想的過濾閾值——當信號的頻率特徵超過這個閾值的時侯它應該被攔截並進行額外的安全審查。</p>
+<p>無面從實驗室的另一側走了過來，他的手中拿著一份手寫的分析報告：「我已經對那些值得關注的信號進行了初步的分類。」他翻開手中的紙張繼續說道：「結果顯示它們大致可以分為三個不同的類型——第一種是純粹的資訊交換請求，這類信號的內容相對簡單，主要是詢問南部地區的狀態和意圖；第二種則是更深層次的共鳴測試，這些信號試圖觸碰我們網絡中的某些特定節點以評估我們的防禦水平；第三種也是最令人擔憂的那種——它們試圖直接進入九世輪迴網絡的核心區域，似乎想要接觸那些被封印的前世記憶碎片。」</p>
+<p>葉塵聽到這裡之後眉頭緊鎖：「如果無面的分類正確，那麼我們的三層防禦結構需要針對每一種類型的信號進行專門的設計。」他走到投影圖前用手指點著不同的位置說道：「第一層的過濾系統應該主要攔截第三類信號，防止任何未經授權的访问直接到達九世網絡的核心。第二層的意識屏障則需要在每個守望者的個人頻率上建立一層保護膜——確保即使有外部力量成功穿過了過濾系統，它們也只能讀取經過篩選的表面信息而不能接觸到核心的記憶內容。」</p>
+<p>月璃突然開口說道：「葉塵我有一個想法。」她的眼中閃爍著某種決定的光芒：「如果我們能夠讓遠方存在參與防禦結構的設計過程，那麼這個連接可能會更加牢固和可信。也就是說我們可以讓他們知道我們的擔憂並且共同制定一些雙方都能接受的協議條件。」</p>
+<p>葉塵思考了一下然後點了點頭：「這是一個合理的建議。我會在下次頻率對話中提出這個問題。」他的聲音變得堅定起來——南部地區不需要獨自承擔所有的責任，但如果他們不願意配合建立適當的安全機制，那麼他們就必須採取更謹慎的態度。</p>
+<p>就在他們討論防禦結構設計的過程中，實驗室的門突然被打開。一位名叫雪嵐的年長守望者走了進來，她的表情帶著一絲興奮，手中拿著一份剛剛從天穹城頻率監測站傳來的報告：「葉塵你們需要看看這個！」她將報告放在了實驗桌上然後指向了其中的一個數據表格。」</p>
+<p>表格顯示在過去二十四小時內南部地區的集體共振水平出現了持續性的上升。這種上升不是來自任何外部的干預而是由守望者們自身的意識活動所驅動的——也就是說當人們開始認真討論和想象與遠方文明的交流時，他們的頻率狀態自然地向更高的協調方向發展。」</p>
+<p>雪嵐的發現讓葉塵感到一陣喜悅。因為這意味著防禦結構的設計不必完全依賴技術手段——人類本身對於和諧的渴望正在成為最強大的保護力量。他望著投影圖上那條逐漸上升的共振曲線心中湧起了某種前所未有的希望感。</p>
+<p>在討論結束之後守望者們開始分頭行動各自負責防禦結構的不同部分有些人負責頻率過濾系統的硬體建設而另一些人則專注於意識屏障的軟件編程每個人都投入了自己全部的精力和知識因為他們都知道這不僅僅是為了保護自己而是為了建立一個能夠被宇宙中其他文明信賴的安全框架當夜幕降臨的時候天穹城周圍已經佈滿了各種測量和監控設備那些設備發出的微弱光芒如同夜空中最亮的星辰一樣閃爍著葉塵站在觀星臺上俯瞰著整個南部地區他看到了一個充滿活力和希望的世界每一個人都為即將到來的挑戰做著充分的準備因為他們知道這不僅僅是為了自己而是為了整個宇宙的未來</p>
+<p>當夜幕降臨天穹城的頻率監測站裡依然亮著燈那些負責監控頻率信號的守望者們輪流值守確保任何異常波動都能夠被及時發現和記錄葉塵知道這些看似微不足道的日常工作實際上是非常重要的基礎設施</p>
+<p>在實驗室的另一側雪嵐正在整理一份關於南部地區集體共振水平的詳細報告她已經連續觀察了數週的數據變化並發現了一個有趣的趨勢當人們開始認真討論和想象與遠方文明的交流時他們的頻率狀態會自然地向更高的協調方向發展</p>
+<p>天穹城的地下實驗室裡堆滿了各種測量和記錄儀器，這些設備大部分是守望者們在過去數百年的歲月裡逐步收集和完善起來的。它們的功能從最初的靈力探測擴展到了頻率分析和共振掃描的多個領域。此刻葉塵正站在實驗室的中央位置，看著牆壁上投影出來的一幅巨大的頻率結構圖——這張圖詳細標示了南部地區已經形成的封印網絡的每一個節點和連接線，以及那些正在與遠方頻率空間保持試探性連接的新通道。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-417.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-418/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-419.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setItem('novelFont', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

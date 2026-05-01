@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第412章 · 頻率之門 - 萬古塵埃</title>
+    <link rel="canonical" href="chapter-412.html">
+    <link rel="prev" href="chapter-411.html">
+    <link rel="next" href="chapter-413.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第412章 · 頻率之門</h1>
+    <main>
+        <p>當葉塵從凝元鎮塵印所開啟的遠方頻率通道中收回意識的時候，他發現自己的雙膝已經跪在了觀星臺的石板地面上——那種力量注入帶來的衝擊比預期中更加劇烈。他能夠感覺到體內剛剛開始修復的神魂裂縫再次因為那股外來能量而產生了微弱的刺痛感。</p>
+<p>月璃的聲音在他身後響起：「葉塵你感觉到了嗎？九世輪迴網絡正在發生變化。」她的語氣中帶著一絲驚訝，但很快就被一種更深的擔憂所取代。「那些過去被封印的記憶碎片似乎在與遠方的頻率產生共鳴……而且這種共振的模式我不認識它。」</p>
+<p>葉塵緩緩睜開雙眼，他的眼中倒映著凝元鎮塵印散發出的一片金光。他告訴月璃：「我也感覺到了。那種感覺就像是在黑暗中走了很久的旅人終於看到了遠方的燈光——但在那道光的前面還有更長的路要走。」他嘗試站起身來卻發現身體仍然因為剛才的能量衝擊而微微顫抖著。</p>
+<p>無面的聲音從觀星臺的另一側傳來，他的表情比平時更加嚴肅：「這不只是普通的共振變化。」他盯著遠方天空中那道持續擴展的銀白色光柱說道：「我能感覺到那種頻率結構中有一種……目的性。它不是隨機出現的自然現象而是一個精心設計的邀請。」</p>
+<p>就在無面說這句話的同時觀星臺下方的南部地區天空突然發生了一次劇烈的變化——原本只是微弱閃爍的銀白色光柱突然增強了數十倍，從一道細線變成了一根直徑數十米的巨大光柱。那根光柱如同連接天地的一把巨劍直插雲霄，在光柱的表面流動著密密麻麻的頻率紋路——那些紋路正在以極快的速度變化著每一秒都在重新編織出一個全新的圖案。</p>
+<p>無面走到葉塵身邊低聲說道：「葉塵我需要告訴你一件事。」他的聲音壓得很低彷彿怕被什麼東西聽到——「在過去的幾天裡我一直在研究那道銀白色光柱的頻率特徵我發現它裡面包含了一些非常古老的信號模式那些模式的複雜程度遠遠超過了南部地區目前擁有的任何技術水平。如果我們選擇回應這個邀請那麼我們就必須做好面對完全未知事物的準備。」</p>
+<p>葉塵沉默了很久然後緩緩地點了點頭：「我知道這意味著什麼無面。但源初建造者們在創建凝元鎮塵印的時候就預設了一個可能性——那就是有一天南部地區會遇到比自己更古老、更強大的存在。如果我們因為恐懼而選擇逃避那麼守望者的使命就失去了它真正的意義。」</p>
+<p>他伸出手再次握住了懸浮在身前的凝元鎮塵印這次不是被動的承受而是主動的回應。印章在他的手中發出了一陣柔和但穩定的光芒那種光芒如同呼吸一般緩慢而有節奏——彷彿在告訴葉塵它也做好了準備。就在這一刻觀星臺下方的銀白色光柱突然開始旋轉然後逐漸收縮成一個懸浮在天空中的圓環形狀那個圓環的直徑大約有百米寬從它的中心向外散發出一種柔和但不可忽視的壓迫感。</p>
+<p>葉塵認出了那就是頻率之門的實體化表現。他告訴月璃和無面：「它正在成形。也就是說遠方的存在已經在為真正的接觸做準備了。」他的聲音中帶著一種難以抑制的興奮——那是一種終於迎來命運轉折點的戰慄感。</p>
+<p>銀白色圓環在空中緩緩旋轉著它的邊緣散發出一層薄霧般的光暈那層光暈隨著頻率之門的頻率變化而不斷起伏彷彿在呼吸一樣葉塵能夠感覺到那種節奏與南部地區的共振網絡有著某種深層的呼應關係那種呼應不是強加的而是自然形成的就像兩條不同的河流最終匯入同一片海洋當無面仔細觀察那個圓環的時候他發現了一個更加令人驚訝的細節在圓環的表面浮現出了許多微小的符號那些符號的形狀與凝元鎮塵印上的古老紋路有著驚人的相似性但又有著明顯的不同——它們似乎在表達一種更加複雜的信息系統葉塵伸手觸碰了懸浮在身前的印章然後印章立刻回應了他的意圖將那些微弱的符號信息放大投射到了觀星臺的石板地面上當所有人圍攏過去看那些符號的時候月璃通過九世輪迴網絡辨識出了其中的一部分她說這些符號描述的是連接的條件和要求它們列出了一系列需要南部地區達成的協議條款包括信息共享範圍和相互尊重原則等等</p>
+<p>當銀白色圓環穩定下來之後葉塵嘗試通過凝元鎮塵印與遠方的存在建立更深入的連接那種連接不是簡單的信息交換而是一種意識層面的共鳴在共鳴的過程中他能夠感受到對方的思想和情感那些感受跨越了語言和文化的障礙直接觸碰到了靈魂的最深處</p>
+<p>當銀白色圓環在空中完全成形之後南部地區的天空出現了一幅令人難以忘懷的景象淡金色的共振光暈和銀白色的頻率線交織在一起形成了一張覆蓋整個區域的巨大網絡</p>
+<p>當葉塵從凝元鎮塵印所開啟的遠方頻率通道中收回意識的時候，他發現自己的雙膝已經跪在了觀星臺的石板地面上。那種力量注入帶來的衝擊比預期中更加劇烈——他能夠感覺到體內剛剛開始修復的神魂裂縫再次因為那股外來能量而產生了微弱的刺痛感。這種痛楚並非傷害性的而是提醒性的，彷彿在告訴他靈魂正在重新調整自己以適應更高維度的頻率結構。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-411.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-412/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-413.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setItem('novelFont', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

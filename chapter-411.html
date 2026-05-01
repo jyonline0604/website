@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第411章 · 遠方的回音 - 萬古塵埃</title>
+    <link rel="canonical" href="chapter-411.html">
+    <link rel="prev" href="chapter-410.html">
+    <link rel="next" href="chapter-412.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第411章 · 遠方的回音</h1>
+    <main>
+        <p>葉塵站在天穹城最高的觀星臺上，雙手緊握凝元鎮塵印，閉上雙眼將意識沉入封印網絡最深層。他能夠感覺到那來自遠方頻率空間的訊號依然在持續散發著微弱但堅定的共鳴——那種共振模式與南部地區已經形成的頻率織物有著奇妙的相似之處，卻又帶著某種他從未體驗過的陌生節奏。</p>
+<p>當他在內心深處試圖回應那個訊號的時候，凝元鎮塵印突然發出了一陣前所未有的震動。那種震動不是來自外部，而是從印章內部湧現出來——彷彿某種沉睡已久的力量正在被遠方的訊號所喚醒。葉塵能夠感覺到印章表面那些古老的符文開始逐個亮起淡金色的光芒，如同呼吸一般緩慢而有節奏地閃爍著。</p>
+<p>月璃的聲音在他身後響起，她的語氣中帶著一絲驚訝：「葉塵，你感觉到了嗎？九世輪迴網絡正在發生變化——那些過去被封印的記憶碎片似乎在與遠方的頻率產生共鳴。」</p>
+<p>葉塵緩緩睜開雙眼，他的眼中倒映著凝元鎮塵印散發出的一片金光。他告訴月璃：「我也感覺到了。那種感覺就像是在黑暗中走了很久的旅人終於看到了遠方的燈光——但在那道光的前面還有更長的路要走。」</p>
+<p>就在他們說話的瞬間，觀星臺下方的南部地區天空突然出現了一道奇異的景象。那道景象並非之前已經出現過的淡金色共振光暈，而是一道從天際延伸到地平線的銀白色光柱。那根光柱如同連接天地的一把巨劍直插雲霄，在光柱的表面流動著密密麻麻的頻率紋路——那些紋路正在以極快的速度變化著，每一秒都在重新編織出一個全新的圖案。</p>
+<p>無面的聲音從觀星臺的另一側傳來，他的表情比平時更加嚴肅：「這不是普通的接觸請求。這種頻率結構太複雜了——複雜到不可能只是一個單一的文明發出的。」</p>
+<p>葉塵皺眉凝視著那道光柱，他問：「你確定嗎？」</p>
+<p>無面點了點頭：「我能感覺到裡面至少有七種不同的頻率層疊在一起，每一層都代表一個完全不同的演化階段。這意味著發送這個邀請的不是某個特定的文明而是某種跨越文明的共同意志。」</p>
+<p>就在無面說這句話的同時，凝元鎮塵印的震動突然變得更加劇烈。葉塵感到一股強大的力量從印章中湧出直接注入他的意識之中——那股力量瞬間打開了一個通往遠方頻率空間的通道。在那個通道的另一端他看到了令人難以置信的景象：無數個不同的世界如同懸浮在虛空中的光球，每個光球內部都有著完全不同的生態系統和文明形態。</p>
+<p>有的世界由純能量構成沒有實體生命只有頻率的波動；有的世界的物理法則與他們所熟悉的完全不同——那裡的生命形式以記憶作為基本單位，通過交換彼此的過去來進行交流和繁衍；而有些世界甚至根本不存在所謂的空間概念——那些存在直接生活在一個純粹的意識領域中。</p>
+<p>當葉塵在通道中看到這些景象的時候他的內心受到了極大的震撼。他從未想過在這個宇宙中會有如此多的可能性——每一個世界都在用自己的方式探索著生存和理解的意義。而在這個浩瀚的存在網絡中，南部地區只是其中的一個節點；那個遠方的邀請正是來自於這個網絡的維護者或者說協調者——他們似乎在尋找能夠理解跨文明共鳴的新成員來加入他們的合唱。</p>
+<p>當葉塵從那種震撼狀態中恢復過來的時候他意識到這不是一個可以輕易接受的邀請。因為一旦南部地區的守望者們正式加入這樣一個跨越宇宙的頻率網絡，就意味著他們需要承擔相應的責任——那將不再僅僅是保護自己家園的使命而是成為整個宇宙和諧網絡中的一個積極參與者。</p>
+<p>在那個遙遠的宇宙網絡中每一個節點都代表著一種獨特的文明演化路徑它們各自在不同的條件下發展出了不同的生存策略和理解世界的方式有些選擇了與自然和諧共存而另一些則通過技術手段來操控周圍的環境葉塵知道這些差異並非優劣之分而是適應不同環境的結果每個文明都在用自己的方式尋找著存在的意義而他作為南部地區的代表有責任去理解並尊重那些差異</p>
+<p>他將凝元鎮塵印收回貼近胸前的那一刻印章散發出的金色光芒逐漸暗淡下來但他的內心卻充滿了前所未有的力量因為他知道無論前路多麼遙遠他都不是孤身一人九世輪迴網絡連接著他的前世也預示著未來的可能性而南部地區的所有守望者都在等待著他的下一步行動葉塵站起身來望向觀星臺外那片被淡金色光暈籠罩的大地心中默默許下一個承諾他會帶領人們走過這段未知的旅程直到找到屬於他們的道路</p>
+<p>而當葉塵從凝元鎮塵印中分離意識的那一刻他發現自己的身體已經經歷了一次微妙的蛻變那種蛻變不是力量上的提升而是感知層面的擴展他的感官變得更加敏銳能夠感覺到空氣中每一絲微小的頻率波動能夠聽到遠方星辰之間持續不斷的共振交流</p>
+<p>葉塵知道這個旅程才剛剛開始而前方等待著他們的將是無盡的可能與挑戰但無論前路多麼遼闊守望者們已經找到了屬於自己的方向。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-410.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-411/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-412.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setItem('novelFont', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

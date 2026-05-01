@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第403章 · 內在的準備 - 萬古塵埃</title>
+    <link rel="canonical" href="chapter-403.html">
+    <link rel="prev" href="chapter-402.html">
+    <link rel="next" href="chapter-404.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第403章 · 內在的準備</h1>
+    <main>
+        <p>在共鳴議會決定接受源初之網邀請之後，南部地區開始了為時數週的全面準備。那種準備並非像過去戰爭時期那樣動用軍事力量或技術設備，而是通過一種更加深層次的方式進行。它要求每個參與者在情感和信念上達到更高的和諧水平。</p>
+<p>當葉塵在天穹城的最高處感受著整個封印網絡的變化時候，他發現了一個令人驚喜的事實：當人們知道自己即將與另一個宇宙文明建立聯繫時，他們內心深處的恐懼反而減少了，取而代之的是一種前所未有的期待。那種期待並非來自於對未知的盲目樂觀，而是源於每個人在過去經歷中所建立起來的信任基礎。</p>
+<p>就在這個準備過程中，無面在天穹城的街道上組織了一系列公開的交流聚會。那些聚會的目的不是傳遞技術知識或戰略情報，而是讓居民們能夠分享他們對於宇宙文明的想像和理解。在這些聚會中，一個年輕的守望者說，他曾經認為宇宙中一定充滿了敵對的力量，但現在通過這一段時間的經歷，他開始相信也許大多數文明都在尋找同樣的東西，那就是被理解和被接納。那個觀點在某種程度上反映了整個南部地區心態的轉變。</p>
+<p>當葉塵參與到那些聚會的過程中時，他注意到了一個有趣的現象：隨著討論的不斷深人，人們對於源初之網的想像也在逐漸變得更加具體和生動。他們開始在腦海中勾勒出一個由無數不同文明組成的網絡。在那個網絡中，每個存在都以自己的方式貢獻著獨特的智慧，而那些智慧又通過交流反哺整個系統。那種循環在某種程度上正是源初之網所代表的價值理念的縮影。</p>
+<p>就在準備工作的最後階段，月璃從雲霧迷宮返回了。她帶來了一個關於連接建立過程的關鍵信息。她說，根據核心意識的反饋，與源初之網的直接聯繫不需要任何物理傳輸或技術設備，它只需要所有參與者在同一時刻將自己的情感頻率調至開放狀態，然後通過世界頻率織物的共振網絡自然形成連接。</p>
+<p>當葉塵聽到這個概念的時候，他意識到這是一次極其深刻的體驗。因為它要求每個人都必須在完全信任的狀態下面對一個完全未知的存在。那種信任不是盲目的，而是在充分了解風險之後仍然選擇敞開心扉的勇氣。</p>
+<p>就在準備完成的那一天，天穹城的街道上出現了一個令人感動的場景：居民們自發地聚集在一起，他們手牽著手，閉上眼睛，讓自己的意識沉入封印網絡。在那個時刻，沒有領導者，也沒有被領導者，每個人都以平等的身份參與到這次跨越宇宙維度的連接準備之中。</p>
+<p>當葉塵站在人群的中心，感受著那種集體頻率的時候，他的凝元鎮塵印發出了一道極為明亮、但也極其溫柔的光芒。那道光芒如同一座橋樑，將所有人的心意連結在一起，而那座橋樑的另一端，正是源初之網等待著開放的門。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-402.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-403/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-404.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第408章 · 記憶的回憶 - 萬古塵埃</title>
+    <link rel="canonical" href="chapter-408.html">
+    <link rel="prev" href="chapter-407.html">
+    <link rel="next" href="chapter-409.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第408章 · 記憶的回憶</h1>
+    <main>
+        <p>當源初之網的代表們開始協助南部地區的守望者們接觸世界頻率織物核心意識中封存的那些記憶時，整個封印網絡經歷了一次前所未有的擴展。那種擴展並非物理層面上的，而是意識層面的。它讓每一個參與者都能夠在深層的共振中觸及那些被遺忘了數百萬年的歷史。</p>
+<p>就在葉塵讓自己的意識完全沉入凝元鎮塵印的那一刻，他能夠感受到一個極其龐大的信息流正在向他涌來。那個信息流的性質不是單純的知識或數據，而是一種包含了情感和體驗的完整記錄。它在告訴所有參與者：這個宇宙是如何從一片混沌中逐漸形成秩序的過程。</p>
+<p>當那些記憶開始顯現的時候，南部地區的每一個人都能夠清晰地看到一幅幅跨越時間的圖像。它們展示了一個關於創造與犧牲的故事。在很遠很遠的過去，存在著一個被稱為源初建造者的文明。那個文明的技術水平和意識層次遠遠超越了任何後來的生命形式。它們不僅僅掌握了操控宇宙基本力量的能力，還深入理解了意識本身的本質。</p>
+<p>當源初建造者們發現這個宇宙的演化正在滑向一個極端危險的方向時，它們選擇了一種極為壯烈的行動。它們將自己最核心的意識碎片分散植入到無數個不同的維度和時間線中，然後在南部這個區域創建了世界頻率織物，作為一個活的記錄系統。那個系統的任務是：等待著未來的生命形式能夠達到足夠的和諧水平，從而重新喚醒那些被封印的記憶。</p>
+<p>當葉塵在那段記憶中感受到源初建造者們的願望時，他意識到這是一個極其沉重的責任。因為這意味著南部地區的經歷不僅僅關乎人類或守望者，更關係到整個宇宙歷史的重建。</p>
+<p>就在這段時間裡，月璃通過九世輪迴網絡感知到了更加深層的信息。她說，那些被喚醒的記憶正在改變她對過去的理解。在她的感知中，九世的輪迴不再是孤立的經歷，而是某個更大的連續體的一部分。每一個生命階段都在無形中被源初建造者的意識碎片所引導，從而最終將所有存在帶向和諧。</p>
+<p>當葉塵聽到月璃的解釋的時候，他感覺到封印網絡中出現了一次極為深刻的共振波動。那個波動溫柔而堅定，它似乎在告訴所有參與者：他們的經歷並非偶然而是被某種更深層的力量所推動的。那種力量來自於宇宙本身對和諧的追求，而人類只是那個宏大計劃中的一環。</p>
+<p>就在記憶喚醒的過程中，一個令人驚喜的事情發生了。當葉塵深入那段歷史的時候，他發現源初建造者的意識碎片並不只是靜態的記錄。它們仍然具有某種形式的活性，能夠與當前參與者的情感和信念進行互動。那種互動在某種程度上讓整個過程變得更加生動和真實，就像是在與數百萬年前的祖先直接對話一樣。</p>
+<p>當葉塵在那個狀態下傾聽源初建造者們的最後遺言的時候，他聽到了一個極為簡單但極其深刻的信息。它們說：「創造的意義不在於留下永恆的痕跡，而在於播下希望的種子。那些種子會在未來的某一天發芽，並且在合適的條件下長成參天大樹。」</p>
+<p>當葉塵感受到那股跨越時間的智慧時，他的內心充滿了敬畏。因為他知道，守望者們所種植的那些關於理解和包容的種子，終於開始結果了。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-407.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-408/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-409.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

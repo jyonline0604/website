@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第435章 · 頻率之網 - 萬古塵埃</title>
+    <link rel="canonical" href="https://jyonline0604.github.io/website/chapter-435.html">
+    <link rel="prev" href="chapter-434.html">
+    <link rel="next" href="chapter-436.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第435章 · 頻率之網</h1>
+    <main>
+<p>月璃和無面離開後，青嵐平原上只剩下葉塵一個人面對著十七座頻率石柱。那些散發微弱綠色光芒的石柱在夕陽的餘暉中顯得格外寂寥——它們像是沉默的守衛者，靜靜地矗立在廣袤的大地上，等待著有人能夠重新喚醒它們沉睡的力量。</p>
+<p>葉塵走到距離他最近的一座石柱面前，將手掌輕輕貼附在粗糙的冰涼表面之上。透過靈力的感應，他能清晰地感受到石柱內部那紊亂不堪的能量流動——原本應該是規律而和諧的頻率波紋如今變得雜亂無章，像是被無數隻粗暴的手揉搓過一般。暗淵閣的人在這些節點上做了嚴重破壞，不僅打斷了內部的能量導流通道，還在核心位置注入了大量混亂的暗能量雜質。</p>
+<p>「修復頻率網絡的工作比我想像中更加困難。」葉塵低聲自言自語。「每個節點都需要重新編排內部的能量結構——這就像是把一團被扯成亂絲的毛線重新梳理整齊一樣。而且我只有大約一天的時間，因為無面和月璃正在追擊暗淵閣的精銳部隊，如果他們失敗了……」</p>
+<p>他深吸一口氣，將全部的精神力量集中於石柱之上。永恆之鑰殘骸的能量從掌心滲入石柱表面——那是一種極其精純而溫和的綠色波動，與石柱內部原本的能量頻率產生了初步的共鳴。葉塵開始嘗試引導這種共鳴深入石柱的核心區域，希望能找到被破壞最嚴重的能量斷點。</p>
+<p>隨著靈力的不斷注入，石柱內部的暗能量雜質開始逐漸浮現——它們像黑色的斑點一樣散佈在綠色的能量網絡中，阻礙著正常頻率的流動。葉塵小心翼翼地將永恆之鑰的能量包裹住這些黑色斑點，然後一點一點地將其從原有的網絡結構中剝離出來。這是一個極其精細且耗時的工作——任何一個動作過快或用力不當都可能导致石柱內部已經脆弱的能量結構完全崩潰。</p>
+<p>大約過了兩個小時之後，第一座石柱的修復工作終於完成了大半。原本雜亂無章的能量流動開始變得有條不紊，石柱頂端的光芒也從微弱的灰綠色逐漸轉為明亮的翠绿色——那是頻率網絡恢復正常運作的標誌性信號。</p>
+<p>葉塵擦了擦額頭上的汗珠，剛想鬆一口氣時，掌心的通訊玉簡突然傳來一陣急促的能量波動——那是月璃發來的緊急訊息！</p>
+<p>「葉塵！不好——！」月璃的聲音中帶著明顯的焦急和緊張。「我們追蹤到的暗淵閣精銳部隊比預想像中更加強大。他們不僅有築基後期的武者，還配備了某種特殊的頻率干擾裝置——這種裝置能夠屏蔽我們的靈力感應，讓我們幾乎無法察覺到他們的蹤跡。」</p>
+<p>葉塵皺起眉頭，立刻將永恆之鑰的能量調至最高敏感度來接收訊息。「無面呢？他能不能感知到那些干擾信號？」</p>
+<p>「無面正在努力破解頻率干擾裝置的運行原理——但他的灰霧身體在這種強烈的干擾下受到了影響，行動能力下降了大約三成。我們目前被迫退守到南側裂谷附近的一片峽谷中，暫時與暗淵閣的人保持了對峙狀態。」月璃的聲音斷續而急促，顯然通訊環境也不是很好。「最糟糕的是——他們已經開始破壞裂谷深處的核心節點了！如果讓那個人完成的話……」</p>
+<p>葉塵的心沉了下去。他立刻將目光轉向凝元鎮塵印——掌心中的三維路線圖顯示出南側裂谷核心節點的位置，以及當前正在進行的暗淵閣破壞行動的進度條。「他們破壞的進度已經超過了百分之五十——按照這個速度推算，最多還有三個小時的時間就能完成整個節點的摧毀。」</p>
+<p>「葉塵！你那邊的頻率網絡修復進展如何？能不能加速修復工作，然後過來支援我們？」月璃的聲音中帶著一絲期盼。</p>
+<p>葉塵沉默了片刻。他知道這是一個艱難的選擇——留下來繼續修復當前的頻率節點能夠穩定南部地區大部分的防禦體系；但如果他去支援月璃和無面，又可能導致當前修復進度嚴重滯後，甚至讓已經修復好的節點重新崩潰。</p>
+<p>「我決定過去幫忙。」葉塵最終做出了決定。「南側裂谷的核心節點一旦失守，整個南部地區的頻率網絡都會受到連鎖反應的波及——到時候就算我修復了再多的其他節點也沒有意義。你堅持住，我馬上趕過來支援你們。」</p>
+<p>他迅速將掌心的永恆之鑰能量調至全力輸出模式，開始對最近的两座石柱進行快速修復。這一次的修復過程比之前更加粗暴且直接——葉塵不再小心翼翼地逐個清除暗能量雜質，而是用永恆之鑰的強大能量直接覆蓋並重置了石柱內部的頻率網絡結構。這種方法雖然效率極高，但也會消耗大量的靈力儲備，並且可能對石柱本身造成一定的永久性損傷。</p>
+<p>兩座石柱在短短半小時之內就完成了修復工作——翠綠色的光芒從頂端噴薄而出，照亮了周圍數百丈的區域。葉塵能感覺到永恆之鑰殘骸在掌心微微發燙——這是能量過度消耗的警訊，但他已經顧不上那麼多了。</p>
+<p>「月璃！我準備好了——你告訴我具體的位置和地形信息，我會立刻趕過去！」</p>
+<p>通訊玉簡中傳來月璃如釋重負的聲音：「感謝你！我們目前在裂谷東側的峽谷入口處——那裡有一片被藤蔓覆蓋的懸崖，你可以從懸崖頂端下滑進入谷底。但是要小心——暗淵閣的人很可能已經在周圍佈下了防禦陣法和陷阱。」</p>
+<p>葉塵收起通訊玉簡，將永恆之鑰殘骸重新收入秘匣中。他最後看了一眼身後那些剛剛修復好的石柱——翠綠色的光芒在夕陽下閃爍著希望與不安並存的色彩。「我會盡快回來繼續修復剩下的節點。」他低聲說道。</p>
+<p>隨後，葉塵化作一道金色流光，朝著南側裂谷的方向疾馳而去。風在他耳邊呼嘯而過，帶起了陣陣塵土和枯草的碎屑。他的心中充滿了緊張與焦慮——不知道月璃和無面在那裡面臨著怎樣的危險，也不知道暗淵閣的精銳部隊究竟有多少埋伏等待著他們。</p>
+<p>但無論前方有多少艱險，他都沒有退路了。永恆之鑰已經在手，南部地區的頻率網絡正在崩潰之中，而南海沉龍淵的秘密通道隨時可能被暗淵閣開啟——每一個環節都容不得絲毫失誤。葉塵咬緊牙關，將全部的精神力量集中於前方那片被夕陽染成金紅色的天際線上——他知道，真正的戰鬥才剛剛開始。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-434.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-435/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-436.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

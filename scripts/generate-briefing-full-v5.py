@@ -474,7 +474,7 @@ class FullBriefingGeneratorV5:
         )
         
         # 構建完整簡報
-        briefing = f"""📰 香港簡報 ({current_date}) {emoji} {briefing_type}
+        briefing = f"""📰 香港簡報 ({current_date}) 📊 {briefing_type}
 
 【天氣】🌤️ 香港天文台實時數據
 🌡️ 氣溫：{current_weather['temperature']}度

@@ -28,10 +28,13 @@ def get_all_chapters():
                         content = f.read(2000)
                         title_match_a = re.search(r'<title>第[零一二三四五六七八九十百千萬\d]+章\s+[·]\s*([^<]+?)\s*-\s*萬古塵埃</title>', content)
                         title_match_b = re.search(r'<title>第[零一二三四五六七八九十百千萬\d]+章\s+([^·<]+?)\s*[·]\s*萬古塵埃</title>', content)
+                        title_match_c = re.search(r'<title>第[零一二三四五六七八九十百千萬\d]+章\s+[·]\s*([^<]+?)(?:\s*-\s*萬古塵埃)?</title>', content)
                         if title_match_a:
                             title = title_match_a.group(1).strip()
                         elif title_match_b:
                             title = title_match_b.group(1).strip()
+                        elif title_match_c:
+                            title = title_match_c.group(1).strip()
                         else:
                             title = None
                         if title:

@@ -24,13 +24,18 @@ def get_all_chapters():
                 # 讀取章節標題
                 filepath = os.path.join(NOVEL_DIR, filename)
                 try:
-                    with open(filepath, 'r', encoding='utf-8') as f:
+                    with open(filepath, 'r', encoding='utf-8-sig') as f:
                         content = f.read(2000)
-                        title_match = re.search(r'<title>第[零一二三四五六七八九十百千萬\d]+章\s+([^<]+?)\s*[·-]\s*萬古塵埃</title>', content)
-                        if title_match:
-                            title = f"第{chapter_num}章：{title_match.group(1).strip()}"
+                        title_match_a = re.search(r'<title>第[零一二三四五六七八九十百千萬\d]+章\s+[·]\s*([^<]+?)\s*-\s*萬古塵埃</title>', content)
+                        title_match_b = re.search(r'<title>第[零一二三四五六七八九十百千萬\d]+章\s+([^·<]+?)\s*[·]\s*萬古塵埃</title>', content)
+                        if title_match_a:
+                            title = title_match_a.group(1).strip()
+                        elif title_match_b:
+                            title = title_match_b.group(1).strip()
                         else:
-                            title = f"第{chapter_num}章"
+                            title = None
+                        if title:
+                            title = f"第{chapter_num}章：{title}"
                 except:
                     title = f"第{chapter_num}章"
                 
@@ -49,7 +54,7 @@ def update_chapters_html():
     chapters_path = os.path.join(NOVEL_DIR, "chapters.html")
     
     # 讀取章節目錄模板
-    with open(chapters_path, 'r', encoding='utf-8') as f:
+    with open(chapters_path, 'r', encoding='utf-8-sig') as f:
         content = f.read()
     
     # 獲取所有章節
@@ -139,12 +144,14 @@ def update_chapters_html():
     # 生成章節列表HTML（從第1章到最新章）
     chapters_html = ""
     for chap in valid_chapters:
-        # 提取章節名稱（去掉"第X章："部分）
-        full_title = chap["title"]
+        # 提取章節名稱（去掉"第X章："部分，並移除·前綴）
+        full_title = chap["title"] or f"第{chap['num']}章"
         if "：" in full_title:
             chapter_name = full_title.split("：", 1)[1]
         else:
-            chapter_name = "科技修真傳"
+            chapter_name = full_title
+        # 移除 · 前綴（如果有的話）
+        chapter_name = chapter_name.lstrip('·').strip()
         
         chapters_html += f'''
             <a href="{chap['filename']}" class="chapter-item">
@@ -208,7 +215,7 @@ def update_chapters_html():
                         f'id="totalChapters">共 {total_chapters} 章</div>', new_content)
     
     # 寫回文件
-    with open(chapters_path, 'w', encoding='utf-8') as f:
+    with open(chapters_path, 'w', encoding='utf-8-sig') as f:
         f.write(new_content)
     
     print(f"✅ 已更新章節目錄，包含 {total_chapters} 個章節")

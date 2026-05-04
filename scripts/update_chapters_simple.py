@@ -26,7 +26,7 @@ def get_all_chapters():
                 try:
                     with open(filepath, 'r', encoding='utf-8') as f:
                         content = f.read(2000)
-                        title_match = re.search(r'<title>第[零一二三四五六七八九十百千萬\d]+章\s*[·:：]\s*([^<]+?)(?:\s*-\s*萬古塵埃)?</title>', content)
+                        title_match = re.search(r'<title>第[零一二三四五六七八九十百千萬\d]+章\s+([^<]+?)\s*[·-]\s*萬古塵埃</title>', content)
                         if title_match:
                             title = f"第{chapter_num}章：{title_match.group(1).strip()}"
                         else:

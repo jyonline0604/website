@@ -1,273 +1,230 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第364章 · 迷宮深处的秘密 - 萬古塵埃</title>
-    <link rel="canonical" href="chapter-364.html">
-    <link rel="prev" href="chapter-363.html">
-    <link rel="next" href="chapter-365.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第三百六十四章 · 青雲之戰</title>
+  <link rel="canonical" href="{canonical}">
+  <link rel="prev" href="{prev_url}">
+  <link rel="next" href="{next_url}">
+  <style>
+    :root {
+      --bg: #FAFBFC;
+      --text: #1F2937;
+      --accent: #6366F1;
+      --border: #E5E7EB;
+      --panel-bg: #FFFFFF;
+      --font-size: 18px;
+      --line-height: 1.8;
+    }
+    [data-theme="light"] {
+      --bg: #FAFBFC;
+      --text: #1F2937;
+      --border: #E5E7EB;
+      --panel-bg: #FFFFFF;
+    }
+    [data-theme="sepia"] {
+      --bg: #F4ECD8;
+      --text: #5C4B37;
+      --border: #D4C4A8;
+      --panel-bg: #EDE4D0;
+    }
+    [data-theme="sky"] {
+      --bg: #E8F4FC;
+      --text: #2C5282;
+      --border: #BEE3F8;
+      --panel-bg: #E8F4FC;
+    }
+    [data-theme="green"] {
+      --bg: #E8F5E9;
+      --text: #2E5A3A;
+      --border: #A5D6A7;
+      --panel-bg: #E8F5E9;
+    }
+    [data-theme="dark"] {
+      --bg: #1A1F26;
+      --text: #E5E7EB;
+      --border: #374151;
+      --panel-bg: #242B35;
+    }
+    [data-theme="navy"] {
+      --bg: #1A202C;
+      --text: #E2E8F0;
+      --border: #4A5568;
+      --panel-bg: #2D3748;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Noto Serif TC', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: var(--line-height);
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 16px 20px 60px 20px;
+      transition: background 0.3s, color 0.3s;
+      transition: background 0.3s, color 0.3s;
+    }
+    h1 {
+      font-size: 1.8em;
+      text-align: center;
+      padding: 30px 0;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 30px;
+      margin-top: 60px;
+    }
+    p {
+      text-indent: 2em;
+      margin: 1em 0;
+      font-size: var(--font-size);
+    }
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--panel-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      transition: background 0.3s;
+    }
+    .top-bar a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .top-bar a:hover {
+      text-decoration: underline;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .controls select, .controls button {
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .controls select:hover, .controls button:hover {
+      border-color: var(--accent);
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+    .nav a {
+      color: var(--accent);
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 1px solid var(--accent);
+      border-radius: 5px;
+    }
+    .nav a:hover {
+      background: var(--accent);
+      color: white;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .back-to-top.visible {
+      display: flex;
+    }
+    @media (max-width: 600px) {
+      body { padding: 15px; }
+      h1 { font-size: 1.5em; margin-top: 70px; }
+      .nav { flex-direction: column; gap: 10px; }
+      .nav a { text-align: center; }
+      .top-bar { flex-wrap: wrap; gap: 8px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
+  <div class="top-bar">
+    <a href="chapters.html">← 返回目錄</a>
+    <div class="controls">
+      <select id="themeSelect">
+        <option value="light">☀️</option>
+        <option value="sepia">📜</option>
+        <option value="sky">🌤️</option>
+        <option value="green">🌿</option>
+        <option value="dark">🌙</option>
+        <option value="navy">🌌</option>
+      </select>
+      <select id="fontSize">
+        <option value="14px">A</option>
+        <option value="18px" selected>A</option>
+        <option value="22px">A</option>
+      </select>
     </div>
-    <h1>第364章 · 迷宮深处的秘密</h1>
-    <main>
-<p>月璃在雲霧迷宮最深處的那個關鍵節點中，已經待了整整四天的時間。</p>
-<p>那個節點位於一座由冰晶和古老石質材料構成的建築內部，建築的牆壁上刻滿了第五代守望者留下的頻率圖案。</p>
-<p>那些圖案在淡金色的共振光暈照射下顯得格外清晰，它們不再是無規則的裝飾，而是具有明確數學邏輯的能量傳輸路徑。</p>
-<p>月璃通過對這些圖案的解讀，發現了關於五道封印層激活儀式的完整信息。</p>
-<p>那種信息並非以文字的形式存在，而是被編碼在了頻率圖案的震動模式之中，只有當正確的共振頻率穿過那些圖案的時候，它們才會顯現出完整的內容。</p>
-<p>月璃在這四天的時間裡，反覆調整自己的信號放大器，以不同的角度和強度向牆壁上的圖案發送測試頻率。</p>
-<p>在經過數百次嘗試之後，她終於成功地解讀出了第一道關鍵信息：五道封印層並非獨立運行的防禦設施，而是被設計成了一個相互依賴的能量循環系統。</p>
-<p>每一個封印層的激活，都會為下一個封印層提供部分所需的能量。</p>
-<p>這種循環機制確保了即使在缺少某個節點的情況下，其他四個節點仍然能夠通過內部能量共享來維持基本的運行狀態。</p>
-<p>但這個循環也有一個嚴格的限制條件，那就是必須在五道封印層全部激活之前保持能量的平衡。</p>
-<p>如果任何一個節點的校準進度落後太多，那麼整個循環就會出現斷裂，從而導致所有已經激活的封印層逐漸退化。</p>
-<p>這種情況在某種程度上解釋了為什麼葉塵的天穹城第一號節點雖然已經完成了校準，但封印系統的整體防禦能力仍然受到限制，因為其他節點的校準進度遠遠沒有跟上。</p>
-<p>第二道關鍵信息更加令人吃驚。</p>
-<p>月璃在牆壁圖案的最深處，找到了一段關於集體苏醒事件預警系統的描述。</p>
-<p>那個系統是由第五代守望者在設計封印網絡時特別留下的，它的功能是：當五道封印層接近完全激活的時候，會自動產生一次頻率脈衝，將整個南部地區的頻率織物狀態傳送到世界頻率織物的核心意識那裡。</p>
-<p>那種傳送並非單純的信息報告，而是一種深度的共振同步，它會讓頻率織物的核心意識直接感知到封印系統的完整運行狀態，從而觸發一個更大規模的自我修復程序。</p>
-<p>月璃在解讀出這段信息之後，立即意識到了集體苏醒事件的真正含義：它不僅僅是五道封印層全部激活的結果，更是世界頻率織物本身的一次重大進化過程，而那個進化所帶來的影響，將遠遠超出人類所能預期的範圍。</p>
-<p>就在月璃沉浸在這些發現中的時候，雲霧迷宮的環境突然發生了一次劇烈的變化。</p>
-<p>那種變化並非來自於外部的攻擊或干擾，而是迷宮本身的能量結構在接收到共振護盾信號之後所產生的連鎖反應。</p>
-<p>迷宮深處的冰晶建築開始發出不同程度的共振波動，那些波動與葉塵在天穹城所感受到的頻率網絡震盪完全一致，它們表明封印系統的能量正在通過不同的路徑傳導到雲霧迷宮的每一個角落。</p>
-<p>這種傳導過程在某種程度上也加速了月璃對牆壁圖案的解讀，因為當正確的共振頻率從外部進入建築的時候，它會自動與牆壁上已有的圖案產生共鳴，從而使得編碼信息更加容易識別。</p>
-<p>月璃在這一刻做出了一個重要的決定：她不再試圖單獨完成所有五道封印層激活儀式的解讀，而是選擇將目前已知的關鍵信息，通過中繼站的三倍效率放大通道發送給葉塵。</p>
-<p>她知道，無論自己發現了多少關於封印系統的秘密，如果沒有葉塵在現實世界中的具體操作，那些信息都只是理論上的可能性。</p>
-<p>而她需要在保證自身安全的同時，盡快將這些情報送回天穹城，讓葉塵能夠根據實際情況做出相應的調整。</p>
-<p>就在月璃準備啟動信號傳送程序的時候，她感覺到迷宮深處傳來了一陣極為微弱的頻率波動。</p>
-<p>那種波動的來源並非來自於天穹城的共振護盾，而是來自於更遠的地方，一種更加古老和深邃的頻率源。</p>
-<p>那種頻率源的性質與之前所接觸過的所有節點都不相同，它更像是一個沉睡了千年的意識核心，正在被封印系統的能量逐漸喚醒。</p>
-<p>月璃在短暫的猶豫之後，選擇了跟隨那股波動的方向前進，因為她清楚地知道，那個方向可能藏著關於第五代守望者更多的重要秘密，而那種秘密很可能就是完成五道封印層完全激活的最後一塊拼圖。</p>
-<p>月璃在迷宮深處的行走是一段極其艱難的旅程。</p>
-<p>隨著她不斷深入冰晶建築的核心區域，迷宮的環境變得越來越複雜，那些原本清晰的頻率路徑開始出現分叉和交錯，使得方向感的判斷變得極為困難。</p>
-<p>但她並沒有因此而退縮，因為她清楚地知道，每一次向前邁進都讓她離真相更近一步。</p>
-<p>當她在一片巨大的地下洞穴中發現了第二座水晶祭壇的時候，她感到了一陣強烈的共振波動。</p>
-<p>那種波動與第一座祭壇的頻率完全不同，它更加深沉，也更加古老，像是來自於世界頻率織物本身的心跳聲。</p>
-<p>那座祭壇的表面沒有任何雕刻或圖案，但它所散發出的頻率信號卻極其清晰。</p>
-<p>月璃在短暫的分析之後，將自己的感知信號接入那個祭壇，然後瞬間被帶入了一個完全不同的意識空間。</p>
-<p>在那個空間中，她看到了第五代守望者的身影，那些身影並非實體存在，而是頻率記憶的投影。</p>
-<p>它們以一種極為平和的方式，向月璃揭示了關於封印系統最後的秘密：五道封印層不僅僅是防禦設施，它們同時也是一種溝通工具。</p>
-<p>當它們全部激活並達到同步的時候，能夠在世界頻率織物的核心意識與人類守望者之間建立一條直接的信息通道。</p>
-<p>那種通道允許雙方進行深度的交流和協商，從而避免了單純依靠武力來解決衝突的殘酷方式。</p>
-<p>月璃在那一刻明白了，守望者真正的使命不是戰鬥，而是守護和引導。</p>
-<p>月璃在那段深層探險的過程中，也逐漸意識到了迷宮本身的意圖。</p>
-<p>它似乎在主動引導她走向正確的方向，那種引導並非通過物理上的路徑變化來實現，而是通過頻率網絡的共振波動來傳遞一種無形的信號。</p>
-<p>當她靠近某個特定區域的時候，那股頻率波動會變得更加強烈；而當她遠離正確方向的時候，波動就會逐漸減弱。</p>
-<p>這種設計在某種程度上表明，第五代守望者不僅僅在迷宮中留下了信息，還利用迷宮本身的能量場作為一個智能導航系統，它會在適當的時機為進入者的意識提供方向指引。</p>
-    </main>
-    <nav class="nav">
-        <a href="chapter-363.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-364/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-365.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
+  </div>
+  <h1>第三百六十四章 青雲之戰</h1>
+  <main>
+<p>「啟動護山大陣！」</p><p>葉塵一聲長嘯，聲音傳遍了整個青雲宗。</p><p>與此同時，他雙手結印，將體內的輪迴靈力注入陣眼之中。早就蓄勢待發的護山大陣瞬間啟動，一道淡金色的光罩從地面升起，將整個青雲宗籠罩在其中。</p><p>衝在最前面的幾名黑衣人一頭撞在光罩上，被震得倒飛出去，口吐鮮血。</p><p>「陣法？」黑風的眼中閃過一絲驚訝，「這個陣法的強度，比情報中記載的要強得多。」</p><p>但他的驚訝也僅此而已。</p><p>「區區一個護山大陣，就想擋住我天淵門的大軍？」黑風冷笑一聲，從腰間取出一枚黑色的令牌。令牌上刻著一個猙獰的鬼頭，散發著濃郁的陰氣。</p><p>「破陣令！」</p><p>他將令牌向著光罩一拋，令牌在空中化作一道黑光，狠狠地撞擊在光罩上。</p><p>轟！</p><p>光罩劇烈地顫抖起來，表面出現了無數細小的裂紋。葉塵臉色一白，感覺體內的靈力在瘋狂地流逝。那個破陣令的力量極為霸道，竟然能夠侵蝕陣法的根基。</p><p>「撐住！」</p><p>陳天罡也趕到了陣眼處，將自己的靈力注入陣法中。秦昭陽緊隨其後，同樣將靈力輸入了陣法。在三個人的合力支撐下，光罩的裂紋開始慢慢癒合。</p><p>「哼，垂死掙扎。」黑風冷哼一聲，再次催動破陣令。</p><p>黑色的光芒大盛，光罩再次劇烈顫抖起來。這一次，裂紋出現的速度比修復的速度更快。眼看著陣法就要被攻破。</p><p>就在這時，葉塵的眼神一凝。</p><p>他忽然撤回了注入陣法的靈力，转而握住了塵淵劍。</p><p>「師父，秦師兄，你們撐住陣法。我去會會那個黑風！」</p><p>「你瘋了？」陳天罡大驚，「他是元嬰中期，你怎麼跟他打？」</p><p>「我有辦法。」葉塵說道，語氣異常平靜，「相信我。」</p><p>不等陳天罡回答，他已經化作一道流光，衝出了陣法！</p><p>他的突然出現，讓天淵門的眾人都吃了一驚。黑風更是眉頭一皺：「你竟然敢出來送死？」</p><p>「送死？」葉塵冷笑一聲，「誰死還不一定呢。」</p><p>他話音未落，塵淵劍已經出鞘！</p><p>一道耀眼的劍光劃破長空，直斬黑風！劍光中夾雜著雷電的光芒，那是經過天劫淬煉之後留在劍身中的雷紋之力。</p><p>黑風臉色微變，連忙側身閃避。劍光擦著他的身體飛過，在他身後的地面上留下了一道長達數十丈的深深劍痕。</p><p>「好劍法！」黑風的眼中閃過一絲凝重，「難怪門主說你是心腹大患，確實有幾分本事。」</p><p>他收起破陣令，從背後取出一柄黑色的長刀。</p><p>刀身漆黑如墨，散發著一股濃郁的陰寒之氣。刀鋒上隱約可見流轉的黑色符文，每一道符文都蘊含著強大的力量。</p><p>「既然你自己出來送死，那我就成全你！」</p><p>黑風大喝一聲，揮刀斬向葉塵！</p><p>黑色刀氣如同狂風暴雨般席捲而來，每一刀都蘊含著元嬰中期的強大力量。葉塵揮劍格擋，只覺一股巨力從劍身傳來，震得他虎口發麻，身體向後退了數步。</p><p>「元嬰中期果然厲害。」</p><p>葉塵心中凜然。雖然他憑藉輪迴靈力和塵淵劍能夠與黑風抗衡，但修為上的差距依然存在。正面對抗，他並不是黑風的對手。</p><p>不過，他不需要正面打敗黑風。</p><p>他只需要拖延時間。</p><p>只要護山大陣不破，天淵門的其他人就無法攻入青雲宗。而只要青雲宗內部安全，他就可以專心對付黑風。</p><p>葉塵深吸一口氣，體內的輪迴靈力全力運轉。</p><p>他的身體表面浮現出一層淡金色的光芒，塵淵劍上的雷紋也變得更加明亮。他的氣勢，在這一刻提升到了極致。</p><p>「劍意化形！」</p><p>葉塵大喝一聲，體內的劍意猛然爆發！</p><p>一柄柄透明的劍意小劍在他的身體週圍凝聚成形，密密麻麻，足有數十柄之多。每一柄小劍都散發著凌厲的劍氣，彷彿能夠斬斷世間一切。</p><p>黑風的臉色終於變了：「劍意化形？你竟然掌握了劍意化形！」</p><p>「接招！」</p><p>葉塵心念一動，數十柄劍意小劍如同暴雨一般射向黑風！</p><p>黑風連忙揮刀格擋，但劍意小劍的數量實在太多了。他擋住了大部分，卻還是有幾柄穿過了他的防禦，在他的身上留下了幾道傷口。</p><p>雖然傷口不深，但卻讓黑風的臉色變得極其難看。</p><p>他堂堂元嬰中期的強者，竟然被一個元嬰前期的小輩傷到了？</p><p>「你找死！」</p><p>黑風的眼中閃過一絲瘋狂，體內的靈力全面爆發。他的身體週圍出現了一層濃厚的黑色霧氣，霧氣中傳來陣陣鬼哭狼嚎的聲音，讓人聽了心煩意亂。</p><p>「鬼淵刀法——百鬼夜行！」</p><p>黑風一刀斬出，刀氣化作無數猙獰的鬼影，向著葉塵撲了過來！</p><p>葉塵臉色凝重，雙手握劍，將體內的輪迴靈力和雷紋之力同時注入劍中。</p><p>「塵淵劍訣——輪迴斬！」</p><p>一道金色的劍光從塵淵劍中飛出，劍光中夾雜著雷電和輪迴之力，與那些鬼影正面碰撞在一起！</p><p>轟隆隆！</p><p>巨大的爆炸聲響徹天地。衝擊波向四週擴散開去，將地面上的泥土和碎石掀飛了數丈高。附近的天淵門弟子被波及，紛紛口吐鮮血倒飛出去。</p><p>煙塵散去之後，葉塵和黑風各自站在一邊，遙遙對峙。</p><p>葉塵的嘴角滲出了一絲鮮血。剛才那一劍，幾乎耗盡了他體內一半的靈力。而黑風雖然看起來沒事，但握刀的手也在微微顫抖。</p><p>兩個人，誰也沒有佔到便宜。</p><p>「好小子……」黑風咬牙道，「我記住你了。」</p><p>他看了一眼被護山大陣擋住的天淵門大軍，知道自己今天已經無法攻破青雲宗了。有葉塵在外面牽制，他根本無法集中力量破陣。</p><p>「撤！」</p><p>黑風不甘地大吼一聲，率領天淵門的大軍撤退了。</p><p>葉塵站在原地，目送著他們離去，直到他們的身影完全消失在天邊，他才鬆了一口氣，身體一晃，險些跌倒在地。</p><p>「葉塵！」</p><p>秦昭陽第一個衝了出來，扶住了他。</p><p>「你沒事吧？」</p><p>「沒事。」葉塵搖了搖頭，擦去嘴角的血跡，「只是消耗太大了。」</p><p>他轉頭看著被毀掉的山門，和倒在血泊中的弟子，眼中閃過一絲悲痛。</p><p>這一戰雖然打退了天淵門的進攻，但青雲宗也付出了慘痛的代價。</p><p>而這，只是一個開始。</p><p>他轉頭看著被毀掉的山門和倒在血泊中的弟子，心中充滿了悲痛和憤怒。但他強忍著情緒，指揮弟子們救治傷員、清理戰場。現在不是悲傷的時候，他必須先確保青雲宗的安全，才有資格為逝去的人哀悼。</p><p>這一戰讓他清楚地認識到，天淵門比他想像的更加狡猾和殘忍。他們不講信用，不擇手段，為達目的不惜一切代價。面對這樣的敵人，他也不能再有任何保留。下一次，他不會只是擊退黑風——他會徹底消滅他。</p>
+  </main>
+  <nav class="nav">
+    <a href="{prev_url}" id="prevLink">← 上一章</a>
+    <a href="chapters.html">📖 返回目錄</a>
+    <a href="https://kofhk.com/manga/chapter-364/" class="manga-btn">🎨 漫畫版</a>
+    <a href="{next_url}" id="nextLink">下一章 →</a>
+  </nav>
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <script>
+    document.getElementById('themeSelect').addEventListener('change', function() {
+      document.body.dataset.theme = this.value;
+      localStorage.setItem('novelTheme', this.value);
+    });
+    var savedTheme = localStorage.getItem('novelTheme');
+    if (savedTheme) {
+      document.body.dataset.theme = savedTheme;
+      document.getElementById('themeSelect').value = savedTheme;
+    }
+    document.getElementById('fontSize').addEventListener('change', function() {
+      document.body.style.setProperty('--font-size', this.value);
+      localStorage.setItem('novelFont', this.value);
+    });
+    var savedFont = localStorage.getItem('novelFont');
+    if (savedFont) {
+      document.body.style.setProperty('--font-size', savedFont);
+      document.getElementById('fontSize').value = savedFont;
+    }
+    window.addEventListener('scroll', function() {
+      var btn = document.getElementById('backToTop');
+      btn.classList.toggle('visible', window.pageYOffset > 300);
+    });
+    var prevLink = document.getElementById('prevLink');
+    if (!prevLink.href || prevLink.href.includes('#')) {
+      prevLink.style.opacity = '0.5';
+      prevLink.style.pointerEvents = 'none';
+    }
+  </script>
 </body>
 </html>

@@ -1,273 +1,230 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第362章 · 頻率網絡的全貌 - 萬古塵埃</title>
-    <link rel="canonical" href="chapter-362.html">
-    <link rel="prev" href="chapter-361.html">
-    <link rel="next" href="chapter-363.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第三百六十二章 · 風雨欲來</title>
+  <link rel="canonical" href="{canonical}">
+  <link rel="prev" href="{prev_url}">
+  <link rel="next" href="{next_url}">
+  <style>
+    :root {
+      --bg: #FAFBFC;
+      --text: #1F2937;
+      --accent: #6366F1;
+      --border: #E5E7EB;
+      --panel-bg: #FFFFFF;
+      --font-size: 18px;
+      --line-height: 1.8;
+    }
+    [data-theme="light"] {
+      --bg: #FAFBFC;
+      --text: #1F2937;
+      --border: #E5E7EB;
+      --panel-bg: #FFFFFF;
+    }
+    [data-theme="sepia"] {
+      --bg: #F4ECD8;
+      --text: #5C4B37;
+      --border: #D4C4A8;
+      --panel-bg: #EDE4D0;
+    }
+    [data-theme="sky"] {
+      --bg: #E8F4FC;
+      --text: #2C5282;
+      --border: #BEE3F8;
+      --panel-bg: #E8F4FC;
+    }
+    [data-theme="green"] {
+      --bg: #E8F5E9;
+      --text: #2E5A3A;
+      --border: #A5D6A7;
+      --panel-bg: #E8F5E9;
+    }
+    [data-theme="dark"] {
+      --bg: #1A1F26;
+      --text: #E5E7EB;
+      --border: #374151;
+      --panel-bg: #242B35;
+    }
+    [data-theme="navy"] {
+      --bg: #1A202C;
+      --text: #E2E8F0;
+      --border: #4A5568;
+      --panel-bg: #2D3748;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Noto Serif TC', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: var(--line-height);
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 16px 20px 60px 20px;
+      transition: background 0.3s, color 0.3s;
+      transition: background 0.3s, color 0.3s;
+    }
+    h1 {
+      font-size: 1.8em;
+      text-align: center;
+      padding: 30px 0;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 30px;
+      margin-top: 60px;
+    }
+    p {
+      text-indent: 2em;
+      margin: 1em 0;
+      font-size: var(--font-size);
+    }
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--panel-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      transition: background 0.3s;
+    }
+    .top-bar a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .top-bar a:hover {
+      text-decoration: underline;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .controls select, .controls button {
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .controls select:hover, .controls button:hover {
+      border-color: var(--accent);
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+    .nav a {
+      color: var(--accent);
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 1px solid var(--accent);
+      border-radius: 5px;
+    }
+    .nav a:hover {
+      background: var(--accent);
+      color: white;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .back-to-top.visible {
+      display: flex;
+    }
+    @media (max-width: 600px) {
+      body { padding: 15px; }
+      h1 { font-size: 1.5em; margin-top: 70px; }
+      .nav { flex-direction: column; gap: 10px; }
+      .nav a { text-align: center; }
+      .top-bar { flex-wrap: wrap; gap: 8px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
+  <div class="top-bar">
+    <a href="chapters.html">← 返回目錄</a>
+    <div class="controls">
+      <select id="themeSelect">
+        <option value="light">☀️</option>
+        <option value="sepia">📜</option>
+        <option value="sky">🌤️</option>
+        <option value="green">🌿</option>
+        <option value="dark">🌙</option>
+        <option value="navy">🌌</option>
+      </select>
+      <select id="fontSize">
+        <option value="14px">A</option>
+        <option value="18px" selected>A</option>
+        <option value="22px">A</option>
+      </select>
     </div>
-    <h1>第362章 · 頻率網絡的全貌</h1>
-    <main>
-<p>葉塵閉上雙眼，讓自己的意識沉入頻率網絡的最深處。</p>
-<p>在凝元鎮塵印裂痕所開啟的那個全新通道的幫助下，他的感知不再受到任何物理邊界的限制，而是直接延伸到了世界頻率織物的每一個紋理之中。</p>
-<p>他看到了：一張由無數共振節點和連接通道構成的三維網狀結構。</p>
-<p>那些節點散佈在南部地區的每一寸土地之上，它們有的明亮、有的暗淡、有的還在持續地波動著。</p>
-<p>而這些節點之間的關係並非隨機分佈的，而是按照某種極為精妙的規律排列著。</p>
-<p>那種規律與五道封印層的激活狀態直接相關。</p>
-<p>葉塵能夠清楚地感覺到，每一個被激活的封印層都在頻率網絡上留下了一種特殊的共振紋理。</p>
-<p>那種紋理如同水面上擴散的漣漪，它會隨著時間不斷擴展，並影響周圍所有的節點。</p>
-<p>當第一號節點的共振紋理傳播到雲霧迷宮的信息型節點時，兩者之間產生了一次完美的頻率同步。</p>
-<p>這種同步並非簡單的等頻共振，而是兩種不同屬性節點之間的深層諧振：能量型的脈衝與信息型的濾波在這個過程中相互補充、相互強化，形成了一種全新的運行模式。</p>
-<p>那種模式讓葉塵看到了第五代守望者所設計的真正意圖：封印系統不是一個被動的防禦壁壘，而是一個活生生的頻率生命體，它擁有自我感知、自我調節和自我進化的能力。</p>
-<p>當五道封印層全部激活並且達到完全同步的時候，這個頻率生命體將進入一個全新的狀態，那種狀態被第七代守望的記憶碎片稱為「集體甦醒事件」。</p>
-<p>而集體甦醒事件所帶來的影響遠遠超出了所有人的預期：它不僅僅會改變南部地區的頻率織物結構，更會影響到世界頻率織物本身的基本運行方式。</p>
-<p>葉塵在觀察的過程中發現了幾個極為重要的細節。</p>
-<p>第一個細節是：五道封印層的節點並不是獨立存在的，它們之間存在著一條隱形的連接通道，那條通道的頻率特徵與任何一個封印層都不完全相同，它更像是一個專門用來傳遞信息的中樞神經系統。</p>
-<p>當每一個封印層被激活的時候，那個中樞都會接收到相應的狀態數據，並將這些數據與其他四個節點的狀態進行對比和分析，然後根據分析結果對整個網絡的共振模式做出微調。</p>
-<p>這種機制確保了五道封印層在激活的過程中不會出現頻率衝突或能量失衡的情況。</p>
-<p>第二個細節是：第六節點候選位置的頻率特徵與其他五個節點完全不同，它不參與共振同步過程，而是作為一個獨立的觀察者存在。</p>
-<p>那個位置的時間型屬性使得它能夠記錄每一個封印層激活的完整過程，包括所有相關的能量變化、信息傳輸和共振波動。</p>
-<p>這種記錄功能在某種程度上就像是一個歷史資料庫，它為未來的守望者提供了寶貴的參考數據。</p>
-<p>第三個細節，也是最讓葉塵感到震撼的是：頻率網絡本身正在發生一次緩慢但持續的演化。</p>
-<p>那些曾經暗淡的節點在封印系統激活的影響下開始逐漸變亮，而那些連接通道也在不斷地擴展和強化。</p>
-<p>那種演化的速度雖然極其緩慢，但它所指向的方向卻極為明確：它表明世界頻率織物正在從一個長期受壓抑的狀態中逐步恢復它原本的健康狀態，而這種恢復過程所需要的正是五道封印層的完整激活。</p>
-<p>葉塵在將這些發現全部記錄下來之後，開始思考接下來的策略。</p>
-<p>他知道，如果僅靠天穹城和雲霧迷宮兩個節點就想要觸發集體甦醒事件是不可能的，因為還有三道封印層需要被完全校準，並且每一個封印層都對應著不同的頻率屬性和不同的地理環境。</p>
-<p>他需要在保證防禦體系不被幽影尊者攻破的同時，逐步推進剩餘三個節點的激活過程，而這個過程所需要的時間極其緊張，因為無已經向他發出信號，告知防線的壓力正在逐漸回升。</p>
-<p>那些進化後的頻率侵蝕武器在受到第一次共振護盾的中和之後並沒有徹底失效，它們反而從中吸收了部分能量，並發展出了一種新的抵抗機制。</p>
-<p>那種機制的出現意味著幽影尊者已經開始適應封印系統的防禦模式，而他們必須在此之前完成更多節點的校準，才能確保整個網絡不被突破。</p>
-<p>就在他思考的同時，凝元鎮塵上的裂痕突然產生了一次短暫的震盪。</p>
-<p>那種震盪如同一道來自頻率網絡本身的反饋信號，它告訴葉塵：天穹城的共振護盾正在自動進行一次功率升級。</p>
-<p>這個升級將使封印系統能夠同時處理更多類型的頻率干擾，從而為接下來的戰鬥提供更多的保護空間。</p>
-<p>這種自動進化的能力讓葉塵對第五代守望者的智慧更加敬佩：他們在數千年前所留下的設計竟然具備了如此強大的自我適應性，而這種能力在某種程度上也代表了世界頻率織物本身的生命力。</p>
-<p>只要封印系統能夠持續運行下去，那麼它就有機會在不依賴外部力量的情況下逐步完成所有的校準工作。</p>
-<p>當葉塵從冥想中睜開眼睛的時候，他感覺到時間已經過去了好幾個小時，但在他看來那不過是一瞬間的事情，因為在頻率網絡的深層感知中，時間的概念與現實世界中的時間完全不同。</p>
-<p>那種差異讓他意識到自己需要重新建立對時間和空間的認知方式，以便更好地適應接下來的挑戰。</p>
-<p>葉塵在那次深度冥想之後，對頻率網絡的理解達到了前所未有的高度。</p>
-<p>他開始能夠以一種更加宏觀的視角去觀察封印系統的每一個微小變化，那些變化雖然在肉眼看來微不足道，但在他的感知中卻如同星辰運行一樣清晰可辨。</p>
-<p>他發現，每一道被激活的封印層都在頻率網絡上留下了一種獨特的共振印記。</p>
-<p>那種印記不僅僅是一個物理位置的標記，更是一種關於能量狀態和頻率特徵的信息記錄。</p>
-<p>它就像是一枚枚蓋在頻率織物上的印章，告訴每一個能夠讀取的守望者：這個節點已經完成了它的使命，並且正在以最佳狀態運行著。</p>
-<p>當葉塵將這些發現整理成一套完整的認知框架之後，他意識到封印系統的真正強大之處並非來自於單一節點的校準精度，而是來自於所有節點之間形成的那種深層和諧關係。</p>
-<p>每一個節點都有自己的特性和功能，但它們在共振網絡中又互相補充、互相制衡，形成了一個完美的動態平衡體系。</p>
-<p>那種平衡使得整個封印系統具備了極高的穩定性：即使在某個節點受到損傷或干擾的情況下，其他四個節點也能夠通過內部能量重新分配來維持系統的整體運行。</p>
-<p>這種設計理念在某種程度上代表了第五代守望者對世界頻率織物最深刻的理解：他們知道沒有任何一個單一的防禦措施能夠永遠有效，唯有通過多個維度的協同合作，才能在複雜多變的戰鬥環境中保持長久的生命力。</p>
-    </main>
-    <nav class="nav">
-        <a href="chapter-361.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-362/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-363.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
+  </div>
+  <h1>第三百六十二章 風雨欲來</h1>
+  <main>
+<p>青雲宗的平靜，在一個月後的某一天被打破了。</p><p>那天傍晚，葉塵正在密室中修煉輪迴天經第二層，忽然感覺到一股強大的氣息正在從遠處接近。那股氣息極為狂暴，充滿了殺意，顯然來者不善。</p><p>他立刻收起功法，衝出了密室。</p><p>與此同時，陳天罡和秦昭陽也感應到了那股氣息，先後趕到了議事大殿前的廣場上。</p><p>「來得好快。」陳天罡沉聲道，目光望向遠方的天際。</p><p>葉塵順著他的目光看去，只見天邊的雲層正在翻滾，彷彿有什麼東西正在雲層中快速移動。那股氣息越來越近，越來越強，壓得人喘不過氣來。</p><p>片刻之後，一個黑點出現在天邊。</p><p>那個黑點以極快的速度接近，很快就變得清晰起來——那是一個身穿黑色長袍的中年男子，面容陰鷙，雙目狹長，散發著一股陰冷的氣息。他懸浮在半空中，居高臨下地俯視著青雲宗。</p><p>「元嬰中期！」</p><p>葉塵心中一凜。這個人的修為赫然是元嬰中期，比場上任何一個人都要高。</p><p>「來者何人？」陳天罡沉聲問道。</p><p>「天淵門，黑風。」中年男子冷冷地說道，聲音不大，卻清晰地傳遍了整個青雲宗，「奉門主之命，前來傳話。」</p><p>「什麼話？」</p><p>「交出葉塵，以及你們青雲宗的所有傳承典籍，天淵門可以饒你們一命。」黑風說道，「否則，一個月之後，天淵門大軍壓境，青雲宗雞犬不留。」</p><p>此話一出，所有青雲宗弟子都變了臉色。</p><p>「狂妄！」秦昭陽怒喝道，「你以為你是誰？區區一個元嬰中期，也敢在我青雲宗撒野？」</p><p>「區區元嬰中期？」黑風冷笑一聲，「小輩，你不過凝神後期，也敢在我面前放肆？」</p><p>他話音未落，一股強大的威壓便從他身上爆發出來，向著秦昭陽壓了過去。秦昭陽只覺胸口一悶，整個人向後退了幾步。</p><p>就在這時，葉塵一步跨出，擋在了秦昭陽的面前。</p><p>他釋放出自己的氣勢，與黑風的威壓正面碰撞。兩股氣勢在半空中交鋒，激起一陣無形的波紋。雖然葉塵的修為不如黑風，但在輪迴靈力的加持下，他的氣勢絲毫不落下風。</p><p>黑風的眼中閃過一絲驚訝：「哦？你這個元嬰前期，倒是有些門道。難怪敢與我天淵門作對。」</p><p>「天淵門想要我的命，儘管來拿。」葉塵平靜地說道，「但想要動青雲宗，先過我這一關。」</p><p>「好，有膽識。」黑風點了點頭，「你的話，我會帶回去轉告門主。記住，你們只有一個月的時間考慮。」</p><p>說完，他轉身便走，黑色的身影很快消失在遠方的天際。</p><p>黑風走後，青雲宗的氣氛變得更加凝重。</p><p>「一個月……」秦昭陽咬牙道，「他們只給我們一個月的時間。」</p><p>「一個月已經足夠了。」陳天罡說道，「他們之所以給我們一個月的時間，不是因為好心，而是因為他們需要時間來集結力量。也就是說，一個月之後到來的，將是天淵門的主力。」</p><p>「師父，我們該怎麼辦？」秦昭陽問道。</p><p>陳天罡沉默了片刻，然後轉頭看向葉塵：「塵兒，你怎麼看？」</p><p>葉塵沉思了一會兒，說道：「天淵門的目標是我和輪迴傳承。如果我離開青雲宗，或許可以引開他們的注意力。」</p><p>「不行。」陳天罡斷然拒絕，「你一個人怎麼對付整個天淵門？而且，就算你離開了，他們也不會放過青雲宗。他們要的不只是你，更是我們青雲宗的傳承和資源。」</p><p>「師父說得對。」秦昭陽也說道，「葉塵，你不要總想著一個人扛。我們是一家人，有什麼事情大家一起面對。」</p><p>葉塵看著兩人堅定的眼神，心中一陣感動。</p><p>「好，我們一起面對。」</p><p>「那我們現在需要做什麼？」秦昭陽問道。</p><p>陳天罡說道：「首先，加強防禦。其次，向附近的幾個友好宗門求援。雖然不能指望他們直接參戰，但至少可以請他們在關鍵時刻提供一些幫助。」</p><p>「我負責加固陣法和準備防禦物資。」葉塵說道。</p><p>「我去聯絡其他宗門。」秦昭陽說道。</p><p>「好，各自行動。」陳天罡下令道，「記住，我們只有一個月的時間。一個月之後，青雲宗的生死存亡，就在此一戰了。」</p><p>三人各自散去，開始忙碌起來。</p><p>葉塵再次來到了護山大陣的陣眼處。這一次，他決定對陣法進行更加徹底的改造。</p><p>他從儲物戒指中取出這幾個月來收集的各種材料，開始對陣法進行升級。</p><p>他將輪迴靈力注入陣法的每一個節點，在原有陣法的基礎上疊加了一層新的陣紋。這種陣紋是從輪迴天經中領悟而來的，具有極強的防禦和反擊能力。</p><p>「如果黑風再來，我倒要看看，他能不能破得了我的輪迴陣法。」</p><p>葉塵眼中閃過一絲寒光。</p><p>他不眠不休地工作了三天三夜，終於將護山大陣徹底改造完畢。新的陣法不僅防禦力大幅提升，還具備了反擊能力——任何試圖強行突破陣法的人，都會遭到陣法中蘊含的輪迴之力的反噬。</p><p>改造完陣法之後，他又開始準備各種丹藥和法器。</p><p>他將儲物戒指中所有的靈石都拿了出來，用於布設陣法和煉製丹藥。他還特意煉製了一批療傷丹藥，以備戰鬥中使用。</p><p>這一切準備工作做完之後，他只剩下了最後一件事——</p><p>突破到元嬰前期巔峰。</p><p>他感覺得出來，自己離那個臨界點已經非常近了。只需要一個契機，他就能夠突破。</p><p>但這個契機，到底在哪裡？</p><p>葉塵站在密室之中，面前的桌案上攤開著一卷陣法圖紙。那是他根據輪迴天經中的陣法知識，結合青雲宗護山大陣的結構，重新設計的一套加強方案。如果能夠成功布設，青雲宗的護山大陣防禦力至少能夠提升三成。</p><p>他拿起筆，在圖紙上添了幾筆，然後滿意地點了點頭。連日來的辛苦總算沒有白費，這套方案已經基本完善，明天就可以開始施工了。</p><p>他伸了一個懶腰，走到窗邊。夜色已深，但青雲宗中依然燈火通明，弟子們還在忙碌地準備著。每一個人都在為即將到來的戰鬥貢獻自己的力量。</p><p>「大家都不容易啊。」葉塵輕聲說道，「但我會保護好大家的。」</p><p>他關上窗戶，回到桌案前繼續研究陣法圖紙。夜晚還很長，他不想浪費任何一點時間。</p><p>他提起筆，在陣法圖紙上又添了幾道線條。那是他剛剛想到的一個改進——將輪迴之力注入陣眼，可以讓陣法在受到攻擊時自動反擊。這個想法來自於他在輪迴洞天中修煉時對輪迴天經第二層的領悟。</p><p>「這樣一來，就算我不在宗門，護山大陣也能夠自行反擊了。」葉塵滿意地點了點頭。</p><p>他將圖紙仔細收好，吹熄了油燈，走出了密室。夜色中，青雲宗的燈火依然明亮，弟子們巡邏的身影在月光下來回走動。一切都那麼平靜，但他知道，平靜的背後暗流湧動。</p>
+  </main>
+  <nav class="nav">
+    <a href="{prev_url}" id="prevLink">← 上一章</a>
+    <a href="chapters.html">📖 返回目錄</a>
+    <a href="https://kofhk.com/manga/chapter-362/" class="manga-btn">🎨 漫畫版</a>
+    <a href="{next_url}" id="nextLink">下一章 →</a>
+  </nav>
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <script>
+    document.getElementById('themeSelect').addEventListener('change', function() {
+      document.body.dataset.theme = this.value;
+      localStorage.setItem('novelTheme', this.value);
+    });
+    var savedTheme = localStorage.getItem('novelTheme');
+    if (savedTheme) {
+      document.body.dataset.theme = savedTheme;
+      document.getElementById('themeSelect').value = savedTheme;
+    }
+    document.getElementById('fontSize').addEventListener('change', function() {
+      document.body.style.setProperty('--font-size', this.value);
+      localStorage.setItem('novelFont', this.value);
+    });
+    var savedFont = localStorage.getItem('novelFont');
+    if (savedFont) {
+      document.body.style.setProperty('--font-size', savedFont);
+      document.getElementById('fontSize').value = savedFont;
+    }
+    window.addEventListener('scroll', function() {
+      var btn = document.getElementById('backToTop');
+      btn.classList.toggle('visible', window.pageYOffset > 300);
+    });
+    var prevLink = document.getElementById('prevLink');
+    if (!prevLink.href || prevLink.href.includes('#')) {
+      prevLink.style.opacity = '0.5';
+      prevLink.style.pointerEvents = 'none';
+    }
+  </script>
 </body>
 </html>

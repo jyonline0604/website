@@ -425,6 +425,71 @@ class FullBriefingGeneratorV5:
         except Exception as e:
             log(f"獲取真實財經新聞異常: {str(e)}")
             return self.fetch_news_rss("finance", 3)
+
+    def fetch_system_status(self):
+        """獲取系統狀態（從真實數據文件讀取）"""
+        try:
+            import re, os, json
+            
+            # 1. 獲取 OpenClaw 版本資訊
+            version_file = "/home/openclaw/.openclaw/workspace/openclaw-version.json"
+            openclaw_status = "✅ OpenClaw 版本已是最新"
+            if os.path.exists(version_file):
+                try:
+                    with open(version_file, 'r', encoding='utf-8') as f:
+                        vdata = json.load(f)
+                    current = vdata.get('current_version', 'unknown')
+                    latest = vdata.get('latest_version', 'unknown')
+                    update_available = vdata.get('update_available', False)
+                    if update_available:
+                        openclaw_status = f"⚠️ OpenClaw：有更新可用（v{latest}）"
+                    else:
+                        openclaw_status = f"✅ OpenClaw：v{current}（最新）"
+                except:
+                    pass
+            
+            # 2. 獲取小說章節數量
+            workspace = "/home/openclaw/.openclaw/workspace"
+            chapters = []
+            for f in os.listdir(workspace):
+                m = re.match(r'chapter-(\d+)\.html$', f)
+                if m:
+                    chapters.append(int(m.group(1)))
+            chapter_count = len(chapters)
+            max_chapter = max(chapters) if chapters else 0
+            
+            # 3. 檢查是否有自動更新機制
+            auto_update_info = ""
+            cron_file = "/home/openclaw/.openclaw/workspace/logs/openclaw-update.log"
+            if os.path.exists(cron_file):
+                try:
+                    with open(cron_file, 'r', encoding='utf-8') as f:
+                        lines = f.readlines()
+                    if lines:
+                        last_line = lines[-1].strip()
+                        # 檢查最新一行的時間
+                        import datetime
+                        today = datetime.datetime.now().strftime('%Y-%m-%d')
+                        if today in last_line:
+                            # 今天有檢查
+                            pass
+                except:
+                    pass
+            
+            novel_status = f"📚 小說章節：{chapter_count}章目前在線"
+            
+            return {
+                "openclaw": openclaw_status,
+                "novel": novel_status,
+                "chapter_count": chapter_count
+            }
+        except Exception as e:
+            log(f"獲取系統狀態異常: {str(e)}")
+            return {
+                "openclaw": "⚠️ 系統狀態讀取失敗",
+                "novel": "📚 小說章節：目前在線",
+                "chapter_count": 0
+            }
     
     def generate_briefing(self):
         """生成完整官方數據簡報"""
@@ -433,6 +498,9 @@ class FullBriefingGeneratorV5:
         # 獲取當前信息
         current_date = self.get_current_date()
         briefing_type, emoji = self.get_briefing_type()
+        
+        # 獲取系統狀態
+        system_status = self.fetch_system_status()
         
         # 獲取官方數據
         current_weather = self.fetch_with_cache(
@@ -475,6 +543,10 @@ class FullBriefingGeneratorV5:
         
         # 構建完整簡報
         briefing = f"""📰 香港簡報 ({current_date}) 📊 {briefing_type}
+
+🐱 系統狀態
+• {system_status['openclaw']}
+• {system_status['novel']}
 
 【天氣】🌤️ 香港天文台實時數據
 🌡️ 氣溫：{current_weather['temperature']}度

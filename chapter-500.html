@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五百章 · 塵埃落定</title>
+    <link rel="canonical" href="chapter-500.html">
+    <link rel="prev" href="chapter-499.html">
+    <link rel="next" href="chapter-501.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第五百章 塵埃落定</h1>
+    <main>
+<p>三個月後。</p>
+<p>輪迴殿最深處的密室中，葉塵盤膝而坐，週身被濃郁的金色光芒包裹。金色的光輝如同實質般在他身體週圍流轉，將整間密室照得如同白晝。</p>
+<p>他的氣息在不斷攀升，體內的元嬰正在發生最後的蛻變。經過三個月的苦修，他終於將師祖的傳承完全消化，觸碰到了元嬰後期巔峰的最後一層屏障。</p>
+<p>半個月前，他已經能夠將天地元氣化為實質——一開始是一柄小劍，然後是一朵蓮花，最後是一座大山。元嬰後期巔峰的門檻，他已經邁過了大半。</p>
+<p>只需要最後一步，就能夠真正踏入元嬰後期巔峰。</p>
+<p>但他選擇了停下。</p>
+<p>不是因為他做不到，而是因為他不想。</p>
+<p>經過這些天的修行和思考，他漸漸明白了一個道理——境界的高低，並不是衡量一個修士強大與否的唯一標準。真正的強者，是那些能夠守住本心的人。</p>
+<p>元嬰後期巔峰也好，元嬰境也罷，都不過是修行路上的一個標記。真正的目標，是理解這個世界，理解生命，理解輪迴。</p>
+<p>他睜開眼睛，金色的光芒在瞳孔中閃爍，然後斂去。密室中的光芒也隨之暗淡下來，恢復了平靜。</p>
+<p>「原來如此……」</p>
+<p>他喃喃自語，嘴角浮現出一絲笑容。他站起身，走向密室的出口。</p>
+<p>來到輪迴殿的大殿時，輪迴老人正在等他。看到葉塵的狀態，輪迴老人眼中閃過一絲驚訝。</p>
+<p>「你還沒有突破元嬰後期巔峰？」</p>
+<p>葉塵搖頭：「還沒有。我想再等一等。」</p>
+<p>輪迴老人深深地看了他一眼，然後笑了：「你比你的父親更加沉穩。當年的他，一得到突破的契機就迫不及待地衝擊元嬰後期巔峰，結果根基不穩，留下了隱患。你能夠忍住突破的誘惑，說明你已經真正理解了修行的真諦。」</p>
+<p>他頓了頓，又問道：「那你接下來打算做什麼？」</p>
+<p>葉塵走到大殿門口，望著外面蒼翠的山巒，說道：「我想去更遠的地方看看。聽說西域的深處有一片被稱為永恆沙漠的地方，那裡隱藏著遠古文明的遺蹟。還聽說北海中有一座龍宮，是龍族的居住地。還有南疆的密林中，據說有通往另一個世界的通道。」</p>
+<p>「這個世界很大，我想去探索。」</p>
+<p>輪迴老人微笑點頭：「去吧。年輕人就應該多走走，多看看。修行不只是在密室中打坐，更是在天地中感悟。」</p>
+<p>葉塵轉身，向輪迴老人深深鞠了一躬：「多謝師祖這段時間的教導。」</p>
+<p>「不必客氣。」輪迴老人扶起他，「記住，輪迴殿的大門永遠為你敞開。如果你在外面累了，隨時可以回來。」</p>
+<p>葉塵鄭重地點頭，然後去找鐵牛和白淺。</p>
+<p>三人收拾好行裝，告別了輪迴老人和秦長老，離開了輪迴殿。</p>
+<p>他們沿著來時的路，走出了蒼茫山脈。站在山脈的盡頭，眼前是一望無際的平原。平原上長滿了金黃色的野草，在風中搖曳，如同金色的海洋。天空遼闊，白雲朵朵，陽光溫暖而柔和。</p>
+<p>「這就是西域嗎？」鐵牛興奮地說道，「比東域開闊多了！」</p>
+<p>腳下的大地傳來陣陣細微的震動，彷彿地底深處有什麼東西在甦醒。空氣中的靈氣變得更加濃郁，每一次呼吸都能感受到那股力量的滋養。這片天地雖然看似荒涼，卻蘊含著無盡的生機和奧秘。</p>
+<p>他的思緒在這一刻變得格外清晰，那些曾經困擾他的問題似乎都有了答案。修行的路上沒有捷徑，只有一步一步走下去，才能到達終點。每一次的磨練都是成長的契機。</p>
+<p>白淺也感嘆道：「天地靈氣雖然不如東域濃郁，但卻更加活潑，充滿了生機。」</p>
+<p>他的眼神堅定而平靜，彷彿歷經了無數滄桑之後終於找到了方向。那些曾經的迷茫和困惑都已經煙消雲散，取而代之的是一種前所未有的清明和篤定。</p>
+<p>週圍的一切都沉浸在寧靜之中，只有遠處偶爾傳來一兩聲鳥鳴，打破了這份寂靜。陽光透過雲層灑落在地面上，形成斑駁的光影，隨風搖曳。他的呼吸與天地融為一體，感受著這份安詳與平和。</p>
+<p>空氣中瀰漫著一股淡淡的清香，混合著泥土和草木的氣息，讓人感到無比舒暢。微風拂過，帶來遠方的聲音，像是這個世界在低聲訴說著它的秘密。</p>
+<p>葉塵深吸一口氣，感受著西域大地的氣息。這裡的天地規則與東域略有不同，讓他的輪迴之力產生了一種奇異的共鳴。</p>
+<p>「走吧，前面還有很多東西等著我們去發現。」</p>
+<p>他的目光投向遠方，思緒在廣闊的天地間飛翔。那些經歷過的戰鬥和考驗，讓他變得更加堅強，也讓他對這個世界有了更深的認識。</p>
+<p>他的眼神堅定而平靜，彷彿歷經了無數滄桑之後終於找到了方向。那些曾經的迷茫和困惑都已經煙消雲散，取而代之的是一種前所未有的清明和篤定。</p>
+<p>他的目光掃過週圍的景物，將每一處細節都收入眼底。那些看似平凡的景象中，往往隱藏著天地法則的奧秘，等待著有緣人去發現。一草一木皆有靈性，一沙一石皆含大道。</p>
+<p>腳下的土地散發著古老的氣息，彷彿承載了無數歲月的記憶。他能夠感受到這片大地中蘊含的力量，那是時間的積澱，是生命的傳承。</p>
+<p>他率先向前走去，鐵牛和白淺緊隨其後。</p>
+<p>三人的身影在金黃色的草原上漸行漸遠，最終消失在地平線上。</p>
+<p>與此同時，遙遠的東域，青雲宗後山。</p>
+<p>一棵老樹下，一個白髮老者正坐在石桌前，面前放著一壺茶。他是青雲宗的太上長老——雲鶴真人。</p>
+<p>他端起茶杯，輕輕抿了一口，目光望向遠方。</p>
+<p>「葉塵那小傢伙，現在應該已經到西域了吧。」</p>
+<p>他放下茶杯，微微一笑。作為親眼見證了葉塵從一個普通弟子成長為元嬰後期巔峰境強者的長輩，他心中充滿了欣慰。</p>
+<p>「葉滄海，你有一個好兒子。」</p>
+<p>他輕聲說道，然後端起茶杯，將杯中茶水一飲而盡。</p>
+<p>風吹過，樹葉飄落，在空中旋轉。</p>
+<p>深淵已毀，輪迴已復，塵埃落定。</p>
+<p>蒼茫海的海面上，一道金色的光芒劃過，那是某個遠行者的身影。</p>
+<p>他的身後，是已經閉合的深淵之門，是已經修復的輪迴通道，是那些已經進入輪迴的靈魂。</p>
+<p>他的前方，是無邊無際的大海，是更廣闊的天地，是無限的可能。</p>
+<p>他握緊了手中的輪迴令，感受著其中父親留下的溫暖氣息。</p>
+<p>「父親，我會繼續走下去。為了您，為了母親，為了所有我在乎的人。」</p>
+<p>他抬頭望向天空，陽光穿過雲層，灑在他的臉上。</p>
+<p>「輪迴不滅，天道永存。」</p>
+<p>他的身影在陽光中化作一道金光，向著遠方飛去。</p>
+<p>海天相接處，一片新的天地正在等待著他。</p>
+    </main>
+    <nav class="nav">
+        <a href="chapter-499.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-500/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-501.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

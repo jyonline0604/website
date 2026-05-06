@@ -5,7 +5,7 @@
 每次處理新章節前，必須完成並通過此檢查清單。
 沒有通過檢查，無法繼續執行任務。
 
-【2026-05-05 更新 v2.1】
+【2026-05-06 更新 v2.2】
 - 新增：assets/chapters-data.json 同步檢查（每次章節變更必須重新生成）
 - 新增：三處章節數量同步：author.html + chapters.html meta + chapters-data.json
 - 更新：默認章節數從 460 改為 500
@@ -165,10 +165,12 @@ def print_checklist(new_chapters_info):
     print("    □ 更新 SKILL.md 並同步到 Second-brain 和 Max-backup")
     print()
     print("【6】⚠️ 四處章節數量同步（必須全部更新）")
+    print("    □ index.html: meta description + 文字描述 + 統計數字 (500+)")
+    print("    □ home.html: meta description + JSON-LD numberOfPages (500)")
+    print("    □ chapters.html meta: description/og:description/twitter:description (500章)")
     print("    □ author.html: <span id=\"chapterCount\">500</span>")
-    print("    □ chapters.html meta: description/og:description/twitter:description")
     print("    □ assets/chapters-data.json: 完整重新生成（不能只追加）")
-    print("    □ 驗證命令：grep '500章\|chapterCount\"\>500' author.html chapters.html")
+    print("    □ 驗證命令：grep '500\|chapterCount\"\>500' index.html home.html author.html chapters.html")
     print()
     print("【7】JSON 檔案注意事項")
     print("    ⚠️ assets/chapters-data.json 每次必須完整重新生成，不能只修改部分！")

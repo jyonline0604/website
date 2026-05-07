@@ -79,3 +79,38 @@ Add whatever helps you do your job. This is your cheat sheet.
 - **優勢**: 聲音質量可能比 Edge TTS 更好
 - **需求**: GPU 或 Apple Silicon
 - **狀態**: 收藏中
+
+---
+
+## 🚀 Dropbox 小説自動化（2026-05-07 新增）
+
+### Dropbox 賬號
+- **Email**: hotcha2028@gmail.com
+- **Name**: Lam liu
+- **資料夾**: `/萬古塵埃/第二卷/` (CH501-CH700)
+
+### Token
+- 位置：`.token-store/dropbox-token.txt` (600 權限)
+- 類型：OAuth2 Access Token
+
+### 自動化腳本
+- **主腳本**: `scripts/dropbox_volume2_sync.py` — 下載、轉換、生成HTML、更新網站、推送GitHub
+- **Cron Shell**: `scripts/dropbox-daily-sync.sh`
+
+### Cron 定時任務
+| 時間 | 任務 | 頻率 |
+|------|------|------|
+| 08:00 | Dropbox第二卷同步6章 | 每天 |
+
+### 功能
+- 自動檢測 Dropbox 新章節
+- 簡體→繁體轉換
+- HTML模板生成（使用 chapter-template.html）
+- 更新 chapters.html + home.html
+- GitHub 推送
+- 狀態追蹤（`.dropbox-sync/volume2_state.json`）
+
+### 流程
+1. 掃描 Dropbox/第二卷 → 比對本地已有章節
+2. 取前6章未處理的
+3. 下載 → 簡轉繁 → 生成 HTML → 驗證 → 更新網站 → 推送 GitHub

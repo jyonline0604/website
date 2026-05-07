@@ -21,6 +21,7 @@ import sys
 import json
 import time
 import subprocess
+import requests
 from datetime import datetime
 from pathlib import Path
 
@@ -170,9 +171,68 @@ def cn_to_arabic(cn_str):
     result += current  # remaining digit
     return result
 
+def refresh_access_token():
+    """用 Refresh Token 換新的 Access Token"""
+    creds_path = os.path.join(os.path.dirname(TOKEN_FILE), 'dropbox-app-creds.txt')
+    if not os.path.exists(creds_path):
+        return False
+    
+    # 讀取 credentials
+    creds = {}
+    with open(creds_path, 'r') as f:
+        for line in f:
+            if '=' in line:
+                k, v = line.strip().split('=', 1)
+                creds[k] = v
+    
+    refresh_token = creds.get('REFRESH_TOKEN', '')
+    app_key = creds.get('APP_KEY', '')
+    if not refresh_token or not app_key:
+        return False
+    
+    log("  🔄 Token 已過期，自動刷新...")
+    try:
+        resp = requests.post('https://api.dropboxapi.com/oauth2/token', data={
+            'grant_type': 'refresh_token',
+            'refresh_token': refresh_token,
+            'client_id': app_key,
+        })
+        if resp.status_code != 200:
+            log(f"  ❌ Refresh 失敗: {resp.status_code} {resp.text[:100]}")
+            return False
+        
+        data = resp.json()
+        new_token = data['access_token']
+        
+        # 保存新 token
+        with open(TOKEN_FILE, 'w') as f:
+            f.write(new_token)
+        os.chmod(TOKEN_FILE, 0o600)
+        
+        log(f"  ✅ Token 已刷新 (新 token: {new_token[:15]}...)")
+        return True
+    except Exception as e:
+        log(f"  ❌ Refresh 異常: {e}")
+        return False
+
 def get_dropbox_client():
     token = open(TOKEN_FILE).read().strip()
-    return dropbox.Dropbox(token)
+    dbx = dropbox.Dropbox(token)
+    
+    # 測試 token 是否有效
+    try:
+        dbx.users_get_current_account()
+    except dropbox.exceptions.AuthError:
+        # Token 過期，嘗試刷新
+        if refresh_access_token():
+            # 重新讀取新 token
+            token = open(TOKEN_FILE).read().strip()
+            dbx = dropbox.Dropbox(token)
+        else:
+            log("  ❌ Token 刷新失敗！請檢查 refresh token 配置")
+            raise
+    
+    return dbx
 
 def load_state():
     os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
@@ -582,6 +642,23 @@ def process_batch():
         
         # 鏈接檢查
         run_link_check()
+        
+        # 更新總章節數量（三處同步）
+        total_ch = max(existing) + success_count
+        log(f"  📊 更新總章節數量為 {total_ch}...")
+        subprocess.run(
+            ['python3', os.path.join(SCRIPT_DIR, 'update_chapter_counts.py')],
+            capture_output=True, timeout=30
+        )
+        # 同步 chapters.html 的 meta 和 JSON-LD
+        html_file = os.path.join(WORKSPACE, 'chapters.html')
+        with open(html_file, 'r', encoding='utf-8') as f:
+            html_content = f.read()
+        html_content = re.sub(r'完整收錄\d+章', f'完整收錄{total_ch}章', html_content)
+        html_content = re.sub(r'"numberOfItems": \d+,', f'"numberOfItems": {total_ch},', html_content)
+        with open(html_file, 'w', encoding='utf-8') as f:
+            f.write(html_content)
+        log(f"  ✅ 總章節數已更新")
         
         # Git 推送
         git_commit_and_push(ch_start, ch_end)

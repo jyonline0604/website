@@ -94,3 +94,13 @@ git log --all --oneline --source --remotes --grep="sk-\|ghp_" 2>/dev/null | head
 
 **如發現問題**：立即生成報告並通知
 
+
+## Dropbox 第二卷同步檢查
+
+每天檢查 Dropbox Volume 2 同步是否正常進行：
+
+- 檢查 volume2_state.json 是否存在
+- 檢查最近一次批量是否成功
+- 檢查 Dropbox token 是否過期
+
+**如果發現問題**：重新生成 token 或重啟 cron job

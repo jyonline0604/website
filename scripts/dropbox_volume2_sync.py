@@ -355,7 +355,9 @@ def generate_chapter_html(ch_num, title, paragraphs_html, prev_url, next_url):
         '{canonical}': '',
         '{prev_url}': prev_url,
         '{next_url}': next_url,
-        '{chapter_content}': paragraphs_html,
+        '{chapter_title}': f'第{ch_num}章 · {title}',
+        '{CHAPTER_NUM}': str(ch_num),
+        '{content}': paragraphs_html,
     }
     
     for key, value in replacements.items():

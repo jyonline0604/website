@@ -47,21 +47,22 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 #### 可用模型
 | 模型 | ID | 備註 |
 |------|-----|------|
+| **MiniMax Image-01** | `image-01` | ✅ **預設模型** |
 | Seedream 4.5 | `seedream-4-5-251128` | 需 Token 有權限 |
 | Seedream 4.0 | `seedream-4-0-250828` | 需 Token 有權限 |
-| Gemini 3 Pro | `gemini-3-pro-image-preview` | ✅ 已確認可用 |
+| Gemini 3 Pro | `gemini-3-pro-image-preview` | 備用 |
 
 ### 快速調用
 ```bash
-# Gemini 3 Pro（已確認可用）
-# Gemini 3 Pro（已確認可用）
+# MiniMax Image-01（預設）
+SEEDREAM_API_KEY="sk-...45382" \
+python3 .../generate_image.py \
+  --prompt "描述" --model "image-01" --size "1024x1024"
+
+# Gemini 3 Pro（備用）
 SEEDREAM_API_KEY="sk-...45382" \
 python3 .../generate_image.py \
   --prompt "描述" --model "gemini-3-pro-image-preview" --size "1024x1024"
-
-# Seedream 4.5
-SEEDREAM_API_KEY="sk-...45382" \
-python3 .../generate_image.py --prompt "描述" --model "seedream-4-5-251128"
 ```
 
 ---

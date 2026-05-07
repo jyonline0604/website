@@ -658,6 +658,28 @@ def process_batch():
         html_content = re.sub(r'"numberOfItems": \d+,', f'"numberOfItems": {total_ch},', html_content)
         with open(html_file, 'w', encoding='utf-8') as f:
             f.write(html_content)
+        
+        # 同步 assets/chapters-data.json
+        log(f"  📊 更新 chapters-data.json...")
+        subprocess.run(['python3', '-c', r'''
+import json, os, re
+WORKSPACE = "/home/openclaw/.openclaw/workspace"
+jp = os.path.join(WORKSPACE, "assets/chapters-data.json")
+chapters = []
+for fname in os.listdir(WORKSPACE):
+    m = re.match(r"chapter-(\d+)\.html", fname)
+    if m:
+        ch = int(m.group(1))
+        with open(os.path.join(WORKSPACE, fname), "r", encoding="utf-8") as f:
+            content = f.read()
+        tm = re.search(r"<title>第\d+章\s*[·:：]\s*(.+?)\s*-\s*萬古塵埃</title>", content)
+        title = tm.group(1).strip() if tm else f"第{ch}章"
+        chapters.append({"num": ch, "title": title})
+chapters.sort(key=lambda x: x["num"])
+json.dump(chapters, open(jp, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+print(f"✅ chapters-data.json: {len(chapters)}章")
+'''], cwd=WORKSPACE, capture_output=True, text=True, timeout=30)
+        
         log(f"  ✅ 總章節數已更新")
         
         # Git 推送

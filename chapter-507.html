@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第507章 · 古族宴會 - 萬古塵埃</title>
+    <link rel="canonical" href="">
+    <link rel="prev" href="chapter-506.html">
+    <link rel="next" href="chapter-508.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第507章 · 古族宴會</h1>
+    <main>
+<p>「這是路線之爭。」葉塵看著清單，「這種矛盾最容易被人利用。」</p>
+        <p>「你的意思是……」</p>
+        <p>「如果有人從中挑撥，風族內部的矛盾就會激化。」葉塵目光微凝，「而這背後，可能正是深淵勢力的手筆。」</p>
+        <p>鐵牛撓了撓頭：「那我們要不要提醒風伯山長老？」</p>
+        <p>「現在還不是時候。」葉塵搖了搖頭，「我們沒有證據，貿然提醒反而會引起懷疑。」</p>
+        <p>當天傍晚，風族派人送來了一封請柬。</p>
+        <p>「族長邀請我們參加今晚的宴會？」鐵牛驚訝地看著請柬，「風烈不是一直在閉關嗎？」</p>
+        <p>「可能是出關了。」葉塵收起請柬，「或者是有人假借族長的名義邀請我們。不管怎樣，既然來了，就去看看。」</p>
+        <p>夜幕降臨，風族族地燈火通明。</p>
+        <p>宴會在風族的主殿舉行，殿內擺滿了長桌，上面放著各種西域美食。有烤全羊、蜜餞、瓜果，還有西域特有的葡萄酒。</p>
+        <p>葉塵三人穿著風族準備的衣袍，走進大殿。殿內已經有不少人，都是風族的核心成員和受邀的貴客。</p>
+        <p>「葉公子來了！」</p>
+        <p>一個爽朗的聲音響起。葉塵抬頭看去，只見一個中年男子大步走來。他身材高大，面容威嚴，雙目炯炯有神，渾身散發著一股強悍的氣息。</p>
+        <p>「在下風烈，風族族長。」</p>
+        <p>葉塵心中一凜。眼前這個人，就是風族的族長風烈。他身上的氣息雄渾厚重，修為確實如傳聞中所說，已達元嬰後期大圓滿。</p>
+        <p>「見過風族長。」葉塵拱手行禮。</p>
+        <p>「不必多禮。」風烈哈哈一笑，拍了拍葉塵的肩膀，「聽說你在拍賣會上買下了那塊令牌？好眼光！那東西在我風族放了好幾年，沒人能認出它的價值，你一來就認出來了。」</p>
+        <p>「只是巧合而已。」</p>
+        <p>「巧合也是緣分。」風烈熱情地拉著葉塵入座，「來來來，今晚不談正事，只喝酒吃肉！」</p>
+        <p>宴會開始後，氣氛十分熱鬧。風烈雖然是一族之長，但為人豪爽，沒有什麼架子，與族人打成一片。</p>
+        <p>鐵牛很快就跟風族的年輕人混熟了，大口吃肉大口喝酒，好不快活。</p>
+        <p>白淺則安靜地坐在葉塵身旁，觀察著在場的每一個人。</p>
+        <p>「那個穿灰袍的老者，就是大長老風伯雲。」白淺低聲道。</p>
+        <p>葉塵順著她的目光看去。風伯雲坐在主位的下首，面色陰沉，與風烈的熱情形成了鮮明的對比。他的目光時不時掃過葉塵，帶著一絲審視的意味。</p>
+        <p>「他對我們有敵意。」</p>
+        <p>「應該是因為那塊令牌。」白淺分析道，「風族研究了那麼多年都沒能破解的令牌，被你一個外人買走了。以大長老的脾氣，肯定會覺得臉上無光。」</p>
+        <p>「不僅如此。」葉塵注意到，風伯雲的目光時不時落在風烈身上，眼神中帶著一絲不滿，「他對風烈族長，似乎也有意見。」</p>
+        <p>宴會進行到一半時，風烈突然站起來，高舉酒杯：「諸位，今晚除了宴請貴客，還有一件重要的事情要宣布！」</p>
+        <p>所有人的目光都集中過來。</p>
+        <p>風烈朗聲道：「我決定，派遣一支隊伍，前往永恆沙漠探索！」</p>
+        <p>此話一出，全場嘩然。</p>
+        <p>永恆沙漠——那是西域最危險的地方之一，傳說中有去無回。即使是古族的強者，也不敢輕易踏入那片禁地。</p>
+        <p>「族長！」風伯雲皺眉站起，「永恆沙漠太危險了，而且我們對那裡的了解太少。貿然前往，恐怕會損失慘重！」</p>
+        <p>「正是因為不了解，才要去探索。」風烈正色道，「永恆沙漠中藏著西域最大的秘密。如果能有所發現，對風族的發展將是巨大的幫助。」</p>
+        <p>「不用再說了。」風烈擺了擺手，打斷了風伯雲的話，「我心意已決，三日後出發。」</p>
+        <p>葉塵心中一震。永恆沙漠——這正是風伯山提到過的，萬古塵城所在的地方。風烈此時宣布前往永恆沙漠，絕非巧合。</p>
+        <p>宴會結束後，葉塵找到了風烈。</p>
+        <p>「風族長，您要去永恆沙漠？」</p>
+        <p>「沒錯。」風烈看著葉塵，眼中閃爍著莫名的光芒，「年輕人，你對永恆沙漠有興趣？」</p>
+        <p>「實不相瞞，晚輩此次來西域，正是為了尋找一些東西。而這些東西，可能就在永恆沙漠中。」</p>
+        <p>風烈沉默了片刻，然後哈哈大笑：「好！既然目標相同，不如結伴同行！」</p>
+        <p>葉塵愣了一下：「族長願意帶我們一起去？」</p>
+        <p>「有什麼不願意的？」風烈豪爽地說道，「你雖然是東域修士，但能在拍賣會上認出那塊令牌，說明你跟西域有緣。而且伯山那老傢伙對你讚不絕口，說你天賦過人。帶著你，說不定還能幫上忙。」</p>
+        <p>「多謝族長！」</p>
+        <p>「不必謝我。」風烈收起笑容，目光變得深邃，「不過我要提醒你，永恆沙漠不是普通的地方。那裡危機四伏，就算是元嬰後期的修士，也有隕落的風險。你考慮清楚。」</p>
+        <p>「晚輩已經考慮清楚了。」</p>
+        <p>「好。」風烈拍了拍他的肩膀，「三日後，黎明出發。」</p>
+        <p>回到客院後，白淺和鐵牛立刻圍了過來。</p>
+        <p>「你真的要跟他們去永恆沙漠？」白淺皺眉，「風烈此舉，恐怕另有目的。」</p>
+        <p>「我知道。」葉塵平靜地說道，「但他的目的，跟我的目的並不衝突。而且，我們對西域的了解太少，需要一個熟悉西域的嚮導。」</p>
+        <p>「萬一他是利用你呢？」</p>
+        <p>「那就看看誰算計得了誰。」葉塵眼中閃過一絲銳利的光芒，「我雖然只是元嬰後期巔峰，但在西域這片土地上，也不是任人宰割的。」</p>
+        <p>白淺還想說什麼，但最終還是把話嚥了回去。她知道，葉塵一旦決定了的事情，就不會輕易改變。</p>
+        <p>夜深了，風吼峽谷中傳來陣陣風聲，如同遠古的呼喚。</p>
+        <p>葉塵站在窗前，望著遠處黑暗中的沙漠。永恆沙漠就在那個方向，而萬古塵城，就沉睡在那片沙漠的深處。</p>
+        <p>「父親，你當年在西域留下了什麼……」</p>
+        <p>風聲呼嘯，沒有回答。</p>
+        <p>而在風族的另一處院落中，風伯雲正與幾個黑衣人秘密會面。</p>
+        <p>「族長要去永恆沙漠了。」風伯雲陰沉著臉，「這對我們來說，是個機會。」</p>
+        <p>「大長老的意思是……」</p>
+        <p>「在沙漠中，意外總是難免的。」風伯雲眼中閃過一絲寒光，「風烈若是出了什麼意外，族長的位置，自然就是我的了。」</p>
+        <p>黑衣人嘿嘿一笑：「大長老放心，我們會安排好一切的。」</p>
+        <p>夜色中，一場陰謀正在悄然醞釀。而風族族地中的人們，對此一無所知。</p>
+        
+    </main>
+    <nav class="nav">
+        <a href="chapter-506.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-507/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-508.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

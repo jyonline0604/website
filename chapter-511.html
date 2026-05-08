@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第511章 · 暗中調查 - 萬古塵埃</title>
+    <link rel="canonical" href="">
+    <link rel="prev" href="chapter-510.html">
+    <link rel="next" href="chapter-512.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第511章 · 暗中調查</h1>
+    <main>
+<p>然而就在這時，風烈的神色突然變得凝重。他轉頭看向隊伍中的三名護衛——風伯雲派來的那三人。此刻他們正站在遠處，似乎在低聲交談。</p>
+        <p>「風族長，需要我處理掉他們嗎？」葉塵低聲問道。</p>
+        <p>「不急。」風烈壓低聲音，「現在動手會打草驚蛇。先讓他們繼續跟著，看看他們到底想幹什麼。」</p>
+        <p>隊伍繼續向西北方向前進。永恆沙漠的晝夜溫差極大，白天氣溫高得能將人烤熟，到了夜晚卻冷得連呼吸都帶著白霧。</p>
+        <p>「這鬼地方真不是人待的。」鐵牛裹著厚厚的皮毛大衣，蜷縮在營火旁，「白天熱得要死，晚上冷得要命。」</p>
+        <p>白淺靜靜地坐在一旁，手中拿著一塊鏡石的碎片，仔細端詳。從地下空間出來時，她順手撿了一塊鏡石碎片，想要研究上面的符文。</p>
+        <p>「白淺，看出什麼了嗎？」葉塵走過來問道。</p>
+        <p>「這些符文……非常古老。」白淺抬起頭，「比西域現存的所有文字都要古老。但我注意到，這些符文的結構與輪迴令上的符文有很高的相似度，應該出自同一個體系。」</p>
+        <p>「也就是說，輪迴令的符文體系源自塵國？」</p>
+        <p>「很有可能。」白淺點頭道，「而且我懷疑，東域和西域的符文體系，可能都源自同一個源頭。只是後來在漫長的歷史中，各自發展成了不同的分支。」</p>
+        <p>葉塵若有所思。如果真如白淺所說，那東域和西域之間，可能存在著更深層次的聯繫。</p>
+        <p>第二日一早，隊伍繼續出發。</p>
+        <p>途中，葉塵注意到風伯雲派來的三名護衛一直在暗中觀察他，尤其是他懷中的令牌。他們的目光中帶著一絲貪婪，雖然隱藏得很好，但瞞不過葉塵的感知。</p>
+        <p>「他們想要令牌。」葉塵心中暗道。</p>
+        <p>中午時分，隊伍在一片沙丘地帶停下休息。葉塵藉機將風烈拉到一邊。</p>
+        <p>「風族長，那三個人恐怕很快就會動手了。」</p>
+        <p>「我知道。」風烈眼中閃過一絲寒光，「他們的耐心已經快耗盡了。如果我沒猜錯，他們會在今晚動手。」</p>
+        <p>「那我們……」</p>
+        <p>「將計就計。」風烈嘴角露出一絲笑意，「讓他們以為自己得手了，然後看看他們背後的人到底是誰。」</p>
+        <p>夜幕降臨，隊伍在一片窪地中紮營。風烈的精銳按照指示，故意放鬆了警戒，給那三名護衛製造機會。</p>
+        <p>果然，半夜時分，三名護衛悄悄起身，朝著葉塵的帳篷摸去。</p>
+        <p>葉塵早已有所準備。他躺在帳篷中，閉著眼睛假裝睡著，但右手已經握住了淵虹劍的劍柄。</p>
+        <p>三名護衛來到帳篷外，互相使了一個眼色。其中一人掀開帳篷的門簾，另外兩人同時衝了進去。</p>
+        <p>就在這時，帳篷中劍光一閃！</p>
+        <p>一聲慘叫劃破夜空。衝在最前面的護衛被一劍斬飛，撞在帳篷的支架上，昏了過去。另外兩人大驚失色，連忙後退。</p>
+        <p>「有埋伏！」</p>
+        <p>「現在才發現，晚了。」</p>
+        <p>葉塵緩緩走出帳篷，淵虹劍在月光下泛著寒光。與此同時，風烈帶著四名精銳從黑暗中走出，將兩名護衛團團圍住。</p>
+        <p>「風鵬、風舉，你們好大的膽子！」風烈冷冷地看著兩人，「說，是誰派你們來的？」</p>
+        <p>兩名護衛臉色蒼白，對視了一眼，突然同時咬碎了藏在口中的毒藥。</p>
+        <p>「不好！」風烈想要阻止，但已經來不及了。</p>
+        <p>兩名護衛口吐黑血，倒在地上，氣息全無。那名被葉塵斬昏的護衛也在昏迷中被他們下了毒，同樣斃命。</p>
+        <p>「好狠的手段。」風烈臉色陰沉，「寧可自殺也不透露主使。」</p>
+        <p>「他們怕暴露了主使，自己的家人會受到報復。」葉塵收起淵虹劍，「看來背後的人，在風族中的勢力很大。」</p>
+        <p>「伯雲……」風烈握緊了拳頭，眼中閃過一絲痛苦，「你果然已經不是我認識的那個兄長了。」</p>
+        <p>「風族長，現在不是傷心的時候。」葉塵說道，「既然他們已經動手了，就說明風伯雲不會善罷甘休。接下來，他恐怕會派人追殺我們。」</p>
+        <p>「嗯，所以我們要加快速度。」風烈深吸一口氣，「天亮之前就出發，甩開可能的追兵。」</p>
+        <p>當晚，隊伍連夜拔營，向西北方向疾行。一直到天色大亮，確認沒有追兵後，眾人才停下來稍作休息。</p>
+        <p>「前面不遠就是那處上古遺跡了。」葉塵指著遠方一片隆起的土丘，「根據地圖上的標記，令牌就在那個方向。」</p>
+        <p>眾人精神一振。經過兩天的奔波和昨夜的驚險，他們終於接近了第一個目標。</p>
+        <p>土丘周圍是一片平坦的沙地，沒有任何植被。土丘的頂部有一個洞口，斜斜地通向地下。洞口不大，只能容一人通過。</p>
+        <p>「我進去看看。」葉塵說道。</p>
+        <p>「我跟你一起。」風烈道。</p>
+        <p>兩人先後進入洞口。洞內是一條狹窄的通道，只能彎腰前進。走了約數十丈，前方豁然開朗，出現了一個約十丈見方的石室。</p>
+        <p>石室中央有一具骸骨，骸骨盤膝而坐，身上的衣物已經腐朽，只剩下潔白的骨架。在骸骨的身前，放著一塊黑色的令牌，正是他們要找的那一塊。</p>
+        <p>「找到了！」風烈驚喜道。</p>
+        <p>葉塵走上前，正要拿起令牌，突然警覺地停下腳步。他感應到一股微弱的氣息，從骸骨中散發出來。</p>
+        <p>「這是……殘留的意志？」葉塵皺眉。</p>
+        <p>骸骨似乎感應到了他的到來，微微震動了一下。一道虛幻的身影從骸骨中浮現，是一個面容清瘦的中年男子。</p>
+        <p>「終於有人來了。」中年男子的意志虛影微笑著看著葉塵，「我等這一天，已經等了很久。」</p>
+        <p>「前輩是……」</p>
+        <p>「我是塵國的一名守護者。」中年男子說道，「三千年前，塵國滅亡前夕，國師大人命令我們七名守護者各自帶著一塊令牌，分散到西域各地，等待傳承者的到來。」</p>
+        <p>「前輩在這裡等了三千年？」</p>
+        <p>「沒錯。」中年男子點頭道，「我的使命就是守護這塊令牌，直到有人帶著輪迴令前來。」</p>
+        <p>他看向葉塵懷中的輪迴令，眼中閃過一絲欣慰的色彩：「你果然帶著輪迴令。國師大人沒有看錯人。」</p>
+        <p>「前輩，那塊令牌……」</p>
+        <p>「拿去吧。」中年男子的意志虛影揮了揮手，令牌自動飛起，落入葉塵手中，「這是你的使命。找到七塊令牌，開啟萬古塵城，繼承塵國的傳承。」</p>
+        <p>「多謝前輩。」葉塵鄭重地收好令牌。</p>
+        <p>「我還有最後一句話要告訴你。」中年男子的意志虛影變得越來越淡，「小心深淵教團。他們的勢力，遠比你想像的更加龐大。在風族、火族、雷族中，都有他們的人。」</p>
+        <p>說完這句話，中年男子的意志虛影徹底消散，骸骨也化為粉末，隨風飄散。</p>
+        <p>葉塵和風烈走出洞窟，外面陽光正好。</p>
+        <p>「又得到了一塊令牌。」葉塵看著手中的令牌，加上之前從拍賣會上得到的，他手中已經有三塊了。</p>
+        <p>「距離目標越來越近了。」風烈拍了拍他的肩膀，「走吧，接下來去哪裡？」</p>
+        <p>葉塵看著地圖，指向南方：「下一塊令牌，在火族的領地中。」</p>
+        <p>「火族……」風烈的臉色變得有些凝重，「火族是七古族中最好戰的一族。而且火族的族長，跟我有些過節。」</p>
+        <p>「什麼過節？」</p>
+        <p>「年輕的時候，我打斷過他兒子的腿。」風烈有些不好意思地說道。</p>
+        <p>葉塵：「……」</p>
+        <p>鐵牛在一旁哈哈大笑：「風族長，你年輕的時候還挺能惹事的嘛！」</p>
+        <p>「咳咳，年少輕狂，年少輕狂。」風烈尷尬地咳嗽了兩聲，「不過你放心，既然要去火族，我自然有辦法。大不了……低調一點。」</p>
+        <p>葉塵無奈地搖了搖頭。看來接下來的火族之行，不會太平靜。</p>
+        <p>但無論如何，他都要集齊七塊令牌。因為這不僅關係到萬古塵城的秘密，更關係到父親當年在西域留下的足跡。</p>
+        
+    </main>
+    <nav class="nav">
+        <a href="chapter-510.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-511/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-512.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

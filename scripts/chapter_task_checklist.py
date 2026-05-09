@@ -5,10 +5,15 @@
 每次處理新章節前，必須完成並通過此檢查清單。
 沒有通過檢查，無法繼續執行任務。
 
-【2026-05-06 更新 v2.2】
+【2026-05-08 更新 v2.3】
 - 新增：assets/chapters-data.json 同步檢查（每次章節變更必須重新生成）
-- 新增：三處章節數量同步：author.html + chapters.html meta + chapters-data.json
-- 更新：默認章節數從 460 改為 500
+- 新增：四處章節數量同步：author.html + chapters.html meta + JSON-LD + chapters-data.json
+- 更新：默認章節數從 460 改為 512
+
+【2026-05-08 重要教訓】
+- 發現 chapters-data.json 有重複條目（CH66,67,78,80,81,82,90,92,93）
+- 導致顯示525章而非實際的512章
+- 每次生成 chapters-data.json 必須完整重新生成，不能追加！
 """
 
 import os

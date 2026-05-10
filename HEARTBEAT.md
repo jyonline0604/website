@@ -35,6 +35,13 @@
       "action_if_fail": "生成問題報告，列出異常文件"
     },
     {
+      "name": "GitHub推送結果驗證",
+      "schedule": "daily",
+      "time": "09:15",
+      "check": "檢查本地與 origin/main 的 commit 差異，確認所有章節都已推送到 GitHub",
+      "action_if_fail": "如果本地有未推送的 commit，立即執行 git push"
+    },
+    {
       "name": "記憶完整性檢查",
       "schedule": "daily",
       "time": "10:00",
@@ -102,5 +109,7 @@ git log --all --oneline --source --remotes --grep="sk-\|ghp_" 2>/dev/null | head
 - 檢查 volume2_state.json 是否存在
 - 檢查最近一次批量是否成功
 - 檢查 Dropbox token 是否過期
+- **檢查本地與 origin/main 的 commit 差異，確認所有章節都已推送到 GitHub**
 
 **如果發現問題**：重新生成 token 或重啟 cron job
+**如果發現本地有未推送的 commit**：立即執行 `git pull --rebase && git push`

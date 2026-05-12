@@ -254,7 +254,7 @@ def get_existing_chapters():
     """獲取網站上已有的章節號"""
     chapters = set()
     for fname in os.listdir(NOVEL_DIR):
-        m = re.match(r'chapter-(\d+)\.html', fname)
+        m = re.fullmatch(r'chapter-(\d+)\.html', fname)
         if m:
             chapters.add(int(m.group(1)))
     return chapters
@@ -667,7 +667,7 @@ WORKSPACE = "/home/openclaw/.openclaw/workspace"
 jp = os.path.join(WORKSPACE, "assets/chapters-data.json")
 chapters = []
 for fname in os.listdir(WORKSPACE):
-    m = re.match(r"chapter-(\d+)\.html", fname)
+    m = re.fullmatch(r"chapter-(\d+)\.html", fname)
     if m:
         ch = int(m.group(1))
         with open(os.path.join(WORKSPACE, fname), "r", encoding="utf-8") as f:

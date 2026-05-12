@@ -14,7 +14,14 @@
 - 發現 chapters-data.json 有重複條目（CH66,67,78,80,81,82,90,92,93）
 - 導致顯示525章而非實際的512章
 - 每次生成 chapters-data.json 必須完整重新生成，不能追加！
-"""
+
+【2026-05-12 重要教訓 - 根因徹底修復】
+- 重複條目的根因：`re.match(r"chapter-(\d+)\.html", fname)` 會匹配
+  `chapter-1-restored.html`、`chapter-1-working.html` 等非標準文件為 chapter-1
+- 導致 chapters-data.json 從正確的536條膨脹到549條
+- 修復方法：所有章節正則必須使用 `re.fullmatch` 而非 `re.match`
+- 徹底刪除 workspace 中所有非標準的 chapter-N-xxx.html 舊文件
+"""}}
 
 import os
 import re
@@ -174,7 +181,9 @@ def print_checklist(new_chapters_info):
     print("    □ home.html: meta description + JSON-LD numberOfPages (500)")
     print("    □ chapters.html meta: description/og:description/twitter:description (500章)")
     print("    □ author.html: <span id=\"chapterCount\">500</span>")
-    print("    □ assets/chapters-data.json: 完整重新生成（不能只追加）")
+    print("    □ assets/chapters-data.json: 完整重新生成（不能只追加）
+    □ ⚠️ 生成時必須用 re.fullmatch 而非 re.match！
+       chapter-1-restored.html 會被 re.match 誤匹配為 chapter-1！！！")
     print("    □ 驗證命令：grep '500\|chapterCount\"\>500' index.html home.html author.html chapters.html")
     print()
     print("【7】JSON 檔案注意事項")

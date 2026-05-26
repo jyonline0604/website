@@ -1,11 +1,12 @@
-// 科技修真傳 - Optimized Service Worker
-// 版本: 2.0.0 (with smart caching)
-// 日期: 2026-04-20
+// 萬古塵埃 - Optimized Service Worker
+// 版本: 2.1.0 (static cache key, removed dead refs)
+// 日期: 2026-05-26
 
-const CACHE_NAME = 'tech-cultivation-v2-' + Date.now();
-const STATIC_CACHE = 'static-assets-v1';
-const DYNAMIC_CACHE = 'dynamic-data-v1';
-const IMAGE_CACHE = 'images-v1';
+const CACHE_VERSION = 'v2.1.0';
+const CACHE_NAME = 'tech-cultivation-' + CACHE_VERSION;
+const STATIC_CACHE = 'static-assets-' + CACHE_VERSION;
+const DYNAMIC_CACHE = 'dynamic-data-' + CACHE_VERSION;
+const IMAGE_CACHE = 'images-' + CACHE_VERSION;
 
 // 靜態資源（長期緩存）
 const staticUrls = [
@@ -13,7 +14,7 @@ const staticUrls = [
   '/index.html',
   '/home.html',
   '/chapters.html',
-  '/av-novels.html',
+  // '/av-novels.html' — removed, page does not exist
   '/author.html',
   '/news.html',
   '/finance.html',
@@ -53,7 +54,7 @@ self.addEventListener('activate', event => {
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(name => {
-          // 刪除舊版本緩存（保留最近 3 個版本）
+          // 刪除所有舊版本緩存
           if (name.startsWith('tech-cultivation-') && name !== CACHE_NAME) {
             return caches.delete(name);
           }

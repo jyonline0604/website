@@ -49,6 +49,13 @@
       "action_if_fail": "嘗試從 Max-backup 恢復最新備份"
     },
     {
+      "name": "Cron任務健康檢查",
+      "schedule": "daily",
+      "time": "09:30",
+      "check": "檢查所有cron job的consecutiveErrors，特別關注Dropbox同步",
+      "action_if_fail": "如果有cron失敗，立即通知大肥喵並手動補救"
+    },
+    {
       "name": "OpenClaw版本檢查",
       "schedule": "daily",
       "time": "11:00",

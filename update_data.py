@@ -28,12 +28,6 @@ AI_RSS_SOURCES = [
         "category": "research",
         "icon": "🔬"
     },
-    {
-        "name": "VentureBeat AI",
-        "url": "https://venturebeat.com/category/ai/feed/",
-        "category": "industry",
-        "icon": "💼"
-    },
 ]
 
 # ── 財經新聞 RSS 來源 ──

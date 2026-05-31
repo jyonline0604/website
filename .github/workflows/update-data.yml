@@ -21,6 +21,10 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: 安裝依賴
+        run: |
+          pip install yfinance
+
       - name: 執行更新腳本
         run: python update_data.py
 

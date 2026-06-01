@@ -1,0 +1,49 @@
+name: 每日自動更新數據
+
+on:
+  schedule:
+    # 每天 UTC 時間 2:00 和 14:00 自動執行（香港時間 10:00 和 22:00）
+    - cron: '0 2,14 * * *'
+  workflow_dispatch:  # 允許手動觸發
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 檢出代碼
+        uses: actions/checkout@v4
+
+      - name: 設置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 安裝依賴
+        run: |
+          pip install yfinance
+
+      - name: 執行更新腳本
+        run: python update_data.py
+
+      - name: 檢查是否有變更
+        id: check_changes
+        run: |
+          if git diff --quiet -- '*.json'; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "📭 無需更新，JSON 文件未變化"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "📦 JSON 文件有變更"
+          fi
+
+      - name: 提交更新
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add news-data.json finance-news.json finance-data.json
+          git commit -m "📅 每日自動更新新聞和市場數據 ($(date -u '+%Y-%m-%d %H:%M UTC'))"
+          git push

@@ -393,37 +393,39 @@ class FinanceDataManager {
     
     updateNewsUI() {
         if (!this.financeNews) return;
-        
-        const container = document.getElementById('finance-news');
+
+        const container = document.getElementById('finance-news-grid');
         if (!container) return;
-        
+
         const news = this.financeNews.news || [];
         let html = '';
-        
-        // 顯示最新5條新聞
-        news.slice(0, 5).forEach(item => {
+
+        // 顯示最新6條新聞，匹配HTML卡片結構
+        news.slice(0, 6).forEach(item => {
             html += this.createNewsItem(item);
         });
-        
+
         container.innerHTML = html;
     }
-    
+
     createNewsItem(news) {
         const timeAgo = this.getTimeAgo(news.timestamp);
-        
+        const date = news.timestamp ? new Date(news.timestamp).toLocaleDateString('zh-HK') : '';
+        const icon = news.category === 'crypto' ? '₿' : (news.category === 'stocks' ? '📈' : '📰');
+        const cleanSummary = (news.summary || '').replace(/<[^>]*>/g, '').substring(0, 150);
+
         return `
-            <div class="news-item">
-                <div class="news-header">
-                    <h4>${news.title}</h4>
-                    <span class="news-source">${news.source}</span>
+            <a href="${news.link}" target="_blank" class="news-card" style="text-decoration: none; display: block;">
+                <div class="news-card-image">${icon}</div>
+                <div class="news-card-body">
+                    <h3 class="news-card-title">${news.title}</h3>
+                    <p class="news-card-desc">${cleanSummary || '點擊閱讀全文...'}</p>
+                    <div class="news-card-meta">
+                        <span class="news-card-source">${news.source}</span>
+                        <span class="news-card-date">${date}</span>
+                    </div>
                 </div>
-                <div class="news-summary">${news.summary || '無摘要'}</div>
-                <div class="news-footer">
-                    <span class="news-category">${news.category || '財經'}</span>
-                    <span class="news-time">${timeAgo}</span>
-                    <a href="${news.link}" target="_blank" class="news-link">閱讀原文</a>
-                </div>
-            </div>
+            </a>
         `;
     }
     

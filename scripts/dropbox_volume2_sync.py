@@ -546,7 +546,12 @@ def process_batch():
     log("=" * 50)
     
     # 每次執行前強制刷新 token（Access token 只有 4 小時有效，cron 24 小時才跑一次）
-    refresh_access_token()
+    if not refresh_access_token():
+        log("❌ Token 刷新失敗，中止執行")
+        raise RuntimeError("Dropbox token refresh failed")
+    elif not os.path.exists(TOKEN_FILE) or not open(TOKEN_FILE).read().strip():
+        log("❌ Token 檔案異常，中止執行")
+        raise RuntimeError("Dropbox token file is empty or missing")
     
     state = load_state()
     existing = get_existing_chapters()

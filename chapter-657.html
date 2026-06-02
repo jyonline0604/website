@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第657章 · 偽輪迴通道 - 萬古塵埃</title>
+    <link rel="canonical" href="">
+    <link rel="prev" href="chapter-656.html">
+    <link rel="next" href="chapter-658.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第657章 · 偽輪迴通道</h1>
+    <main>
+<p>深淵化身手中的黑色能量球在金色光芒的照耀下，竟然開始縮小！那些黑色的能量在金色的光芒中被不斷地淨化、驅散，像是冰雪遇到了烈陽一般快速消融。</p>
+        <p>「什麼？！」深淵化身的眼中充滿了驚駭！牠無法置信地看著自己的能量球在金色光芒中不斷縮小，那種力量中蘊含的輪迴法則奧義讓牠感到了一種來自靈魂深處的恐懼。</p>
+        <p>它能夠感覺到……葉塵正在施展的力量，已經超越了化物境的範疇！那股力量中蘊含著輪迴通道的法則奧義……雖然不完整，但已經足以威脅到它的化身！那種力量像是專門為了克製深淵之力而存在的，每一個法則紋路都在壓製著牠體內的黑暗力量。</p>
+        <p>「你怎麼可能掌握這種力量？！」深淵化身怒吼道！牠的聲音中充滿了憤怒和不解，牠無法理解一個化物境的修士怎麼可能施展出如此恐怖的力量。</p>
+        <p>葉塵沒有回答。他將全部的心神都沉浸在對偽輪迴通道的控製中。他的額頭上滲出了汗水，體內的靈力在急速消耗，但他知道自己不能停下。他知道……他必須在力量耗盡之前，完成這一擊！</p>
+        <p>他舉起長劍，將偽輪迴通道的力量引導到劍身上！</p>
+        <p>長劍發出劇烈的顫鳴！金色的光芒在劍身上流轉，將劍身染成了純金色！劍鋒上散發出切割一切的鋒芒……那種鋒芒，已經超越了化物境的極限，觸碰到了歸真境的領域！</p>
+        <p>「這一劍……」葉塵的聲音低沉而堅定，「是我全部的意志！」</p>
+        <p>他一劍刺出！</p>
+        <p>金色的劍光從劍尖射出，化作一道細長的光芒！那道光芒看起來並不起眼……但其中蘊含的力量，卻是葉塵全部實力的凝聚！</p>
+        <p>劍光射向深淵化身！</p>
+        <p>深淵化身臉色大變！它將手中的黑色能量球向劍光擲去！</p>
+        <p>但劍光太快了！</p>
+        <p>它穿透了黑色能量球……能量球在劍光的穿透下直接崩潰！黑色的能量向四周擴散，將周圍數百丈內的深淵造物全部吞噬！</p>
+        <p>然後……劍光射入了深淵化身的身體！</p>
+        <p>深淵化身的身體僵住了。</p>
+        <p>它低頭看向自己的胸口……那裡，被劍光射穿了一個小洞。小洞的邊緣燃燒著金色的火焰，那些火焰正在向四周蔓延，將它體內的深淵之力不斷淨化！</p>
+        <p>「這......這是......輪迴之火？！」深淵化身的聲音中充滿了難以置信！</p>
+        <p>「不……！」它發出痛苦的咆哮！</p>
+        <p>它的身體開始崩潰！黑色的霧氣從身體中噴湧而出，那些霧氣在金色火焰的燃燒下化作虛無！它的身體在快速縮小，氣息也開始下降！</p>
+        <p>從歸真境中期，跌落到歸真境前期……然後穩定在了歸真境前期巔峰！</p>
+        <p>雖然它沒有被徹底消滅，但實力已經大打折扣！</p>
+        <p>「小子……你很好！」深淵化身咬牙說道，「但你以為……這樣就結束了嗎？」</p>
+        <p>它的身體開始向後退去。城牆上的戰士們看到深淵化身後退，發出一陣歡呼！</p>
+        <p>但葉塵的臉色卻更加凝重了。</p>
+        <p>因為他知道……深淵化身的退卻，不是因為被擊敗了。而是因為它要去準備更強大的攻擊。</p>
+        <p>而且……他體內的靈力，已經完全耗盡了。</p>
+        <p>他的身體一軟，從空中墜落！</p>
+        <p>「葉塵！」白雲天飛身接住了他！</p>
+        <p>葉塵躺在白雲天的懷中，臉色蒼白如紙，氣息虛弱得彷彿隨時都會斷絕。他的經脈中空蕩蕩的，沒有一絲靈力……剛才那一劍，已經消耗了他所有的力量。</p>
+        <p>「你這個瘋子！」白雲天罵道，「你知不知道剛才那一劍有多危險？如果失敗了……你的經脈可能會徹底斷裂！」</p>
+        <p>「但我成功了。」葉塵微笑著說道。</p>
+        <p>「你......」白雲天無奈地搖了搖頭。「算了。你先休息吧。接下來的戰鬥……交給我們。」</p>
+        <p>葉塵點了點頭，閉上了眼睛。</p>
+        <p>他知道……戰鬥還沒有結束。深淵化身只是暫時退卻，它很快就會捲土重來。</p>
+        <p>但他已經盡力了。</p>
+        <p>現在……他需要休息。</p>
+        <p>城牆上，聖地的弟子和守靈人一族的戰士們正在歡呼。他們認為葉塵擊退了深淵化身，贏得了這場戰鬥的勝利。</p>
+        <p>但葉塵知道……真正的勝利，還很遙遠。</p>
+        <p>深淵化身雖然被他重創，但實力依然在歸真境前期巔峰。而且……深淵之主殘魂的本體還沒有降臨。一旦那個本體到來……他們現在的優勢就會全部化為烏有。</p>
+        <p>他在意識模糊之前，聽到了白雲天的聲音。</p>
+        <p>「傳令下去……全軍戒備！不要放鬆警惕！」</p>
+        <p>「深淵教團雖然退卻了，但他們一定還會再來！」</p>
+        <p>「我們……不能給他們任何可乘之機！」</p>
+        <p>葉塵的嘴角露出一絲微笑。</p>
+        <p>有白雲天在……他放心。白雲天雖然平時看起來粗枝大葉，但在關鍵時刻總能做出最正確的判斷和決策。</p>
+        <p>他的意識陷入了黑暗。在失去意識之前，他聽到了城牆上戰士們的歡呼和吶喊聲，那些聲音在他的耳中越來越遠，越來越模糊，最終完全消失在了黑暗中。</p>
+        <p>當葉塵再次睜開眼睛的時候，他發現自己躺在封印殿旁邊的一個房間中。房間中瀰漫著藥草的香氣，他的身上敷滿了各種靈藥，體內的經脈正在緩慢地恢復著。</p>
+        <p>白淺……竟然站在他的床邊。</p>
+        <p>「白淺？」葉塵驚訝地說道，「你怎麼在這裡？你不是在輪迴天城嗎？」</p>
+        <p>白淺白了他一眼。「你以為我會乖乖待在那裡等你回來？在你們離開準備的時候，輪迴天城的陣法都穩定了。我通過傳送陣來到了西域聖地，然後跟著聖地的人一起來到了萬古塵城。」</p>
+        <p>「你看你……又把自己搞成這樣。」</p>
+        <p>她的聲音中帶著責備，但眼中的關切卻藏不住。</p>
+        <p>葉塵苦笑了一下。「對不起。」</p>
+        <p>「別跟我說對不起。」白淺歎了口氣，「你好好休息吧。外面有聖主和族長他們守著，暫時不會有問題。」</p>
+        <p>葉塵點了點頭，但他的眉頭依然緊皺著。體內的傷勢雖然在緩慢恢復，但偽輪迴通道的力量消耗遠比他想像中更加巨大，他需要時間來恢復。</p>
+        <p>「怎麼了？」白淺問道。她注意到葉塵的表情，知道他一定在擔心什麼重要的事情。</p>
+        <p>「我在想……」葉塵緩緩說道，他的目光望向窗外，那裡是深淵化身退卻的方向，「深淵化身雖然退卻了，但它一定會再來。下一次……它可能會以更強大的姿態出現。我們現在雖然暫時取得了優勢，但真正的戰鬥才剛剛開始。」</p>
+        <p>「我們必須在那之前，找到擊敗它的方法。」</p>
+        <p>白淺沉默了片刻，然後說道。「你剛才用的那一招……偽輪迴通道……威力很大。但缺點也很明顯……消耗太大了。你用完之後連戰鬥力都沒有了。」</p>
+        <p>「如果能完善那個招式……讓它消耗更少的靈力，就能夠在戰鬥中使用更多次。」</p>
+        <p>葉塵點了點頭。「你說得對。但我需要時間來完善它……而我們最缺的就是時間。」</p>
+        <p>「那就創造時間。」白淺說道。</p>
+        <p>葉塵愣了一下，然後看到白淺臉上露出了一個狡黠的笑容。</p>
+        <p>「我有一個計劃……」她說道。</p>
+        <p>葉塵在房間中又待了一天的時間，仔細感受著體內偽輪迴通道的運轉。他發現……這個剛剛建立的循環雖然還很脆弱，但它確實正在改變他體內的靈力運轉方式。原本他的靈力在經脈中流動時，會有一些細微的損耗。但現在……在偽輪迴通道的作用下，那些損耗被降到了最低。靈力在循環中不斷被提純、被強化，然後反哺到他的身體各處。</p>
+        <p>他能夠感覺到，自己的身體正在發生著微妙的變化。肌肉變得更加結實，骨骼變得更加堅韌，五臟六腑也變得更加強健。這些變化雖然緩慢，但卻在持續發生著。</p>
+        <p>「如果讓偽輪迴通道繼續運轉下去……我的身體會變得越來越強。」葉塵若有所思地說道。他能夠感覺到體內的靈力在偽輪迴通道的循環中不斷地被提純，那些原本駁雜不純的靈力在循環中變得越來越精純，品質也在緩慢地提升。</p>
+        <p>但他也知道……偽輪迴通道還不完善。它需要更多的時間來穩定，也需要更多的法則理解來強化。而且偽輪迴通道畢竟不是真正的輪迴通道，它只能發揮出真正輪迴通道的一小部分力量。想要真正掌握輪迴通道的力量，他還需要收集更多的輪迴令。在接下來的日子裡，他必須將大量的時間投入到對法則的感悟中。</p>
+        <p>他走出房間，看到白淺正站在院子中。她的手臂上纏著繃帶，但氣色已經好了很多。</p>
+        <p>「你的傷勢怎麼樣了？」葉塵問道。</p>
+        <p>「已經沒有大礙了。」白淺活動了一下手臂，「生命之令的力量確實神奇……那些傷口已經開始癒合了。」</p>
+        <p>「那就好。」葉塵鬆了一口氣。</p>
+        <p>「你接下來打算做什麼？」白淺問道。</p>
+        <p>葉塵沉默了片刻，然後說道。「我需要去找聖地的那位老祖……向他請教關於歸真之門的奧秘。」</p>
+        <p>白淺的眼中閃過一絲驚訝。「你已經感覺到了歸真之門？」</p>
+        <p>葉塵點了點頭。「我感覺到了。它就在那裡……在我心靈深處的某個地方。但我還無法推開它。」</p>
+        <p>「因為……我還有放不下的東西。」</p>
+        <p>白淺沉默了片刻，然後輕聲說道。「那就慢慢來吧。有些東西……不是說放下就能放下的。」</p>
+        <p>葉塵看了她一眼，露出一個感激的笑容。「嗯。我知道。」</p>
+        
+    </main>
+    <nav class="nav">
+        <a href="chapter-656.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-657/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-658.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

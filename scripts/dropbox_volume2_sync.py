@@ -187,16 +187,20 @@ def refresh_access_token():
     
     refresh_token = creds.get('REFRESH_TOKEN', '')
     app_key = creds.get('APP_KEY', '')
+    app_secret = creds.get('APP_SECRET', '')
     if not refresh_token or not app_key:
         return False
     
-    log("  🔄 Token 已過期，自動刷新...")
+    log("  🔄 Token 過期，自動刷新...")
     try:
-        resp = requests.post('https://api.dropboxapi.com/oauth2/token', data={
+        token_data = {
             'grant_type': 'refresh_token',
             'refresh_token': refresh_token,
             'client_id': app_key,
-        })
+        }
+        if app_secret:
+            token_data['client_secret'] = app_secret
+        resp = requests.post('https://api.dropboxapi.com/oauth2/token', data=token_data)
         if resp.status_code != 200:
             log(f"  ❌ Refresh 失敗: {resp.status_code} {resp.text[:100]}")
             return False
@@ -540,6 +544,9 @@ def process_batch():
     log("=" * 50)
     log(f"🚀 開始處理批次 ({datetime.now().strftime('%Y-%m-%d %H:%M')})")
     log("=" * 50)
+    
+    # 每次執行前強制刷新 token（Access token 只有 4 小時有效，cron 24 小時才跑一次）
+    refresh_access_token()
     
     state = load_state()
     existing = get_existing_chapters()

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第669章 · 輪迴通道核心 - 萬古塵埃</title>
+    <link rel="canonical" href="">
+    <link rel="prev" href="chapter-668.html">
+    <link rel="next" href="chapter-670.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第669章 · 輪迴通道核心</h1>
+    <main>
+<p>這個核心，是塵帝當年都沒有完全實現的東西。</p>
+        <p>塵帝雖然同時擁有五枚輪迴令，但他是在不同的時間段分別獲得的……他沒有同時讓五枚輪迴令產生共鳴。因為那個時候，深淵之主已經開始衝擊封印，塵帝不得不將大部分力量用來維持封印，沒有時間去讓五枚輪迴令真正融合。</p>
+        <p>但葉塵卻在無意之中完成了這個壯舉。五枚輪迴令的力量在他體內交織，形成了一個全新的法則核心，這是連塵帝都沒有達到的高度。，塵帝不得不將大部分力量用來維持封印，沒有時間去讓五枚輪迴令真正融合。</p>
+        <p>但葉塵做到了。</p>
+        <p>這不是因為他比塵帝更強，而是因為時機。五枚輪迴令在幾十年的時間裡分散在世界各處，各自積累著力量。當它們最終齊聚時……那種積累了數十年的共鳴力量，一次性爆發了出來，催生了輪迴通道的核心。葉塵深知這份機緣來之不易，必須珍惜這個千載難逢的機會，徹底掌握輪迴通道的奧秘。</p>
+        <p>他在密室中靜坐了片刻，讓自己的心境完全平靜下來。窗外的風聲穿過縫隙傳來，帶來一絲涼意，但他絲毫不為所動。他的呼吸變得均勻而深沉，每一次吸氣都將天地間的靈氣納入體內，每一次呼氣都將體內的濁氣排出體外。在這種深層次的入定狀態下，他體內的輪迴通道核心開始發出柔和的金色光芒，那光芒透過他的身體，將整間密室都染上了一層淡淡的金色。那些光芒像是活物一般在他的身體周圍流動，形成了一個又一個玄奧的符文圖案。他知道，這是他與輪迴通道核心之間建立更深層次聯繫的信號。</p>
+        <p>葉塵盤膝坐在密室中，將心神沉入塵埃世界。</p>
+        <p>塵埃世界中，五枚輪迴令懸浮在世界中心的上空，排列成一個完美的圓環。圓環的中心是一團金色的光芒，那團光芒像是心臟一樣在跳動，每一次跳動都讓整個塵埃世界為之共鳴。，排列成一個完美的圓環。</p>
+        <p>葉塵的心神在塵埃世界中緩緩擴散，感受著這個由他親手創造的世界中的每一絲變化。山川河流在他的感知中清晰可見，花草樹木的生長節奏也盡在掌握。這個世界已經從最初的混沌雛形成長為了一個充滿生機的完整世界。圓環的中心……那團金色的光芒正在以一種玄妙的節奏跳動著，像是心臟的跳動。</p>
+        <p>每一次跳動……金色的光芒就會向四周擴散，滋養著整個塵埃世界。塵埃世界中的山河在這種滋養下變得更加真實，花草樹木在茁壯成長，天地之間充滿了生機。</p>
+        <p>他能夠感受到，那些金色光芒中蘊含著五種基礎法則的奧義——輪迴、空間、生命、時光、死亡——輪迴、空間、生命、時光、死亡。這五種法則在他的塵埃世界中交織運轉，形成了一個完整的循環系統，讓整個世界變得越來越完善。</p>
+        <p>葉塵的心神接觸到那團金色光芒……</p>
+        <p>在一瞬間，他的意識被拉入了一個奇妙的空間！</p>
+        <p>那個空間……沒有上下，沒有左右，沒有時間，沒有空間。這裡是一片虛無……但在虛無之中，有五條巨大的光帶在流轉！</p>
+        <p>五條光帶分別對應五種法則……輪迴、空間、生命、時光、死亡！</p>
+        <p>而五條光帶匯聚的地方……就是輪迴通道的核心！</p>
+        <p>葉塵的意識站在這個空間中，感受到了輪迴通道的奧秘！</p>
+        <p>他終於理解了……</p>
+        <p>輪迴通道，不僅僅是五種法則的循環。它是天地之間所有法則的源頭！所有的法則……無論是五行法則，還是風雷法則，還是陰陽法則……都源自輪迴通道！</p>
+        <p>五種基礎法則……輪迴、空間、生命、時光、死亡……構成了輪迴通道的五根支柱。而在這五根支柱的支撐下，其他所有的法則才能在天地之間運行！</p>
+        <p>這就是為什麼輪迴通道的完整重啟，能夠讓世界恢復平衡！</p>
+        <p>因為輪迴通道……就是這個世界的核心法則系統！</p>
+        <p>葉塵的心中充滿了震撼。</p>
+        <p>他對法則的理解……在這一刻有了質的飛躍！</p>
+        <p>那些困擾了他許久的疑惑在瞬間得到了解答，所有零散的知識和感悟在這一刻匯聚成了一幅完整的圖畫。</p>
+        <p>他原本以為，化物境是將自身化為萬物，歸真境是從萬物回歸本源。但現在他理解了……化物境和歸真境並不是對立的，而是一個循環的兩個階段。</p>
+        <p>化物是「化」，歸真是「歸」。</p>
+        <p>化為萬物，再從萬物中回歸……這就是一個小型的輪迴！</p>
+        <p>化物境和歸真境……本身就是輪迴通道的兩種表現形式！</p>
+        <p>而化物境的極致，是化為萬物；歸真境的開始，是從萬物中回歸自我。</p>
+        <p>從化物到歸真……不是一種提升，而是一種轉變。是一種從「散」到「聚」的轉變，是從「多」到「一」的轉變。</p>
+        <p>而要完成這個轉變……需要放下。</p>
+        <p>放下那些在化物境中積累的執念，回歸到最純粹的自我。</p>
+        <p>葉塵睜開眼睛，眼中閃爍著明悟的光芒。</p>
+        <p>他終於理解了自己為什麼無法觸碰歸真之門。這個問題困擾了他許久，如今終於找到了答案。</p>
+        <p>不是因為他實力不夠，而是因為他放不下。</p>
+        <p>他放不下對父親的愧疚，放不下對自己實力的不自信，放不下對這個世界的責任感。這些執念……在化物境中是他的動力，但到了歸真境的門檻前……卻成了他最大的阻礙。</p>
+        <p>他需要放下。</p>
+        <p>但……怎麼放下？</p>
+        <p>葉塵陷入了沉思。</p>
+        <p>他嘗試了各種方法……強迫自己不去想，用禪定來清空思緒，用靈力來壓製執念……但都不行。那些執念像是紮根在心靈深處的大樹，越是想要拔除，它們就紮得越深。</p>
+        <p>他煩躁地站起身，在密室中踱步。</p>
+        <p>「為什麼放不下？」他問自己。這個問題他已經問過自己無數次，但每次都沒有答案。那些執念就像紮根在靈魂深處的藤蔓，越是想要拔除，它們就纏得越緊。</p>
+        <p>「因為……那些執念是我的一部分。」</p>
+        <p>一個聲音在他的心中響起……那是他自己的聲音。</p>
+        <p>「對父親的愧疚，讓我時刻記得要變得更強。」</p>
+        <p>「對自己實力的不自信，讓我不敢鬆懈。」</p>
+        <p>「對這個世界的責任感，讓我堅持到現在。」</p>
+        <p>「如果放下這些……我還是原來的我嗎？」</p>
+        <p>葉塵愣住了。</p>
+        <p>他一直想要放下執念……但放下不等於拋棄。</p>
+        <p>放下……不是將那些執念從心中剔除，而是接受它們，理解它們，然後……超越它們。</p>
+        <p>他不需要忘記對父親的愧疚，但需要明白……父親已經不會回來了，他需要帶著父親的期望繼續前進。</p>
+        <p>他不需要對自己的實力充滿自信，但需要知道……他已經盡力了，沒有人能夠無所不能。</p>
+        <p>他不需要放下對這個世界的責任感，但需要理解……他不需要一個人承擔一切。他身邊還有夥伴、有朋友、有願意幫助他的人。</p>
+        <p>他需要……接受自己的不完美。每個人都有自己的局限和不足，真正的強者不是沒有缺點，而是能夠正視自己的缺點，並在此基礎上不斷進步。</p>
+        <p>他不需要成為無所不能的強者，他只需要在自己的道路上不斷前進。每一次跌倒都是為了更好地站起來，每一次失敗都是為了更深刻地理解成功。</p>
+        <p>然後……繼續前進。</p>
+        <p>葉塵的臉上露出了一個釋然的笑容。</p>
+        <p>他重新盤膝坐下，閉上眼睛。</p>
+        <p>這一次……他不再嘗試壓製那些執念。他只是靜靜地觀察它們，接受它們，理解它們。</p>
+        <p>「父親……我對不起您。我沒有在您最需要我的時候陪在您身邊。」</p>
+        <p>「但……我會繼承您的意志，守護這個您用生命保護的世界。」</p>
+        <p>「我可能不是最強的人。但……我會盡我所能。」</p>
+        <p>「我不是一個人。我有夥伴。有朋友。有相信我的人。」</p>
+        <p>「所以……」</p>
+        <p>「我願意接受這一切。」</p>
+        <p>「包括我的愧疚，我的不安，我的責任。」</p>
+        <p>「這些……都是讓我不斷前進的動力。」</p>
+        <p>「我不需要放下它們……」</p>
+        <p>「我只需要……超越它們。」</p>
+        <p>在這一刻……葉塵的心靈深處，有什麼東西悄然改變了。那些糾纏了他多年的心結，那些讓他夜不能寐的執念，在此刻全部化為了淡然和從容。</p>
+        <p>那些困擾了他多年的執念……不再是他前進的阻礙。它們變成了他的一部分，變成了他力量的源泉。</p>
+        <p>他的心中，一片澄澈。那些曾經讓他輾轉反側的疑惑，在這一刻全部煙消雲散，只剩下最純淨的感悟和明悟。</p>
+        <p>他睜開眼睛……眼中閃爍著前所未有的光芒。</p>
+        <p>那些曾經困擾他的執念和心結，在這一刻全部化為了他前進的動力。他不再需要刻意放下什麼，因為他已經學會了接受一切。</p>
+        <p>歸真之門……就在他的面前。</p>
+        <p>這一次……他清楚地看到了那扇門。</p>
+        <p>那是一扇由金色光芒構成的門，門上刻滿了古老的符文，散發著莊嚴肅穆的氣息。</p>
+        <p>他伸出手……輕輕地推向了那扇門。</p>
+        <p>在他的手指觸碰到門扉的瞬間，一股溫暖的金色光芒從門縫中流淌而出，將他包圍在其中。那些光芒中充滿了天地之間最原始的法則氣息——那是超越了五種基礎法則的、更加高層次的存在。葉塵感受到了一種前所未有的明悟——歸真境不僅僅是力量的提升，更是一種對世界本質的重新理解。</p>
+        <p>化物境讓他看到了世界的豐富多彩，而歸真境將讓他看到世界的統一與和諧。萬事萬物都有其根源，而歸真境就是回到那個根源。</p>
+        <p>他能夠感覺到，他距離那個境界越來越近了。只要他願意，隨時都可以推開那扇門，正式觸碰歸真之門。</p>
+        <p>但他的心中依然有一絲猶豫。因為他體內的那個輪迴通道核心還不夠穩定——如果他在這個時候突破，核心可能會承受不住歸真境力量的衝擊而崩潰。</p>
+        <p>他必須等待。等待核心成長到足夠強大的那一天。</p>
+        
+    </main>
+    <nav class="nav">
+        <a href="chapter-668.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-669/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-670.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

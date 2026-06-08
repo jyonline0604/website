@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第704章 · 劍意切磋 - 萬古塵埃</title>
+    <link rel="canonical" href="">
+    <link rel="prev" href="chapter-703.html">
+    <link rel="next" href="chapter-705.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第704章 · 劍意切磋</h1>
+    <main>
+<p>提到天漠城，劍無鋒的眼中閃過一絲複雜的光芒：「天漠城……還是老樣子。西域的環境你也知道，靈氣稀薄、資源匱乏，能夠修煉到歸真境已經是極限了。我這次來中州，除了參加歸真塔試煉之外，也是想看看有沒有機會在中州找到突破的契機。」</p>
+        <p>「西域的修煉環境確實比不上中州，」葉塵點頭說道，「不過西域也有西域的好處——在那種艱苦的環境中修煉出來的修士，根基往往比中州的修士更加扎實。劍道友能夠在西域突破到歸真境，本身就已經說明了你的天賦和毅力。」</p>
+        <p>劍無鋒微微一笑：「葉城主過獎了。說起來，葉城主在西域的名聲可比我要大得多。萬古塵城從一個小小的據點發展到西域數一數二的大勢力，只用了短短幾年的時間，這種速度在西域的歷史上都是罕見的。」</p>
+        <p>「那不是我一個人的功勞，」葉塵看了白淺一眼，「白淺在管理城市方面比我強得多。」</p>
+        <p>「你們兩個就不用互相謙虛了，」白淺笑道，「萬古塵城能夠有今天的成就，是我們兩個人共同努力的結果。」</p>
+        <p>三人聊了一會兒西域的近況，話題漸漸轉向了修煉方面。劍無鋒對葉塵在歸真塔中的經歷非常感興趣，葉塵也沒有隱瞞，將自己在歸真塔中的所見所聞大致講述了一遍。</p>
+        <p>聽完葉塵的講述後，劍無鋒沉默了一會兒，然後感嘆道：「法則之路、幻境考驗、法則之海、星空之路……光是聽你描述，就能感受到那些考驗的艱難。你能夠一路闖過去，還踏入了第七層的嬰變之門，實在是了不起。」</p>
+        <p>「運氣好而已，」葉塵謙虛地說道，「不過歸真塔中的考驗確實非同一般。如果劍道友進去了，一定要小心。特別是在幻境考驗中，千萬不要被心中的執念所迷惑。」</p>
+        <p>「多謝葉城主教誨，我一定謹記在心，」劍無鋒鄭重地說道。他頓了頓，然後有些猶豫地開口：「葉城主，我有一個不情之請……」</p>
+        <p>「請說，」葉塵說道。</p>
+        <p>「我想請葉城主指點一下我的劍道，」劍無鋒說道，語氣中帶著一絲期待和忐忑，「我知道這個要求有些冒昧，但我在西域修煉多年，一直沒有遇到過合適的對手和導師。這次來到中州，見到葉城主這樣的強者，實在不想錯過這個學習的機會。」</p>
+        <p>葉塵想了想，然後點了點頭：「也好。大家都是西域出身的修士，互相切磋交流，對彼此都有好處。不過我們只是切磋，不是生死之戰，點到為止。」</p>
+        <p>「多謝葉城主！」劍無鋒眼中閃過一絲興奮的光芒。</p>
+        <p>兩人來到客棧後院的一片空地。這裡環境清幽，平時很少有人打擾，正好適合切磋。白淺站在一旁觀戰，既是為了防止意外，也是想看看劍無鋒的實力如何。</p>
+        <p>葉塵站在空地中央，平靜地看著劍無鋒：「出手吧，不用留情。」</p>
+        <p>劍無鋒深吸一口氣，緩緩拔出了肩上的黑色長劍。劍身出鞘的瞬間，一股凌厲的劍意從他身上爆發出來，向著四周擴散開來。那股劍意鋒利而凌厲，仿佛能夠切開一切阻擋在前的障礙。</p>
+        <p>葉塵的眼中閃過一絲讚賞之色。劍無鋒雖然只是歸真前期，但他的劍意卻十分純粹，沒有任何雜質。這種純粹的劍意，往往只有在專注劍道多年的人身上才能看到。</p>
+        <p>「好劍意，」葉塵讚道，「來吧！」</p>
+        <p>劍無鋒沒有客氣，手中的黑色長劍化作一道黑色的閃電，向著葉塵當胸刺來。這一劍速度快到了極致，空氣中發出一聲尖銳的嘯音，劍尖上凝聚著一道凌厲的劍氣，仿佛能夠洞穿一切。</p>
+        <p>葉塵沒有閃避，也沒有動用歸真之力。他只是伸出了兩根手指，輕輕向著劍尖點去。</p>
+        <p>劍無鋒的瞳孔微微一縮。用兩根手指去接他的劍？這是什麼操作？但他已經來不及變招了，劍尖瞬間與葉塵的手指碰撞在了一起。</p>
+        <p>沒有想像中的撞擊聲，也沒有鮮血飛濺的場面。葉塵的兩根手指準確地夾住了劍尖，將那凌厲的一劍牢牢鉗住，紋絲不動。</p>
+        <p>劍無鋒感覺自己的一劍仿佛刺入了一座大山之中，無論他如何催動力量，都無法前進分毫。他體內的歸真之力瘋狂地湧入劍中，想要掙脫那兩根手指的鉗製，但葉塵的手指就像一把鐵鉗一般，將他的劍牢牢鎖住。</p>
+        <p>「你的劍意很純粹，但還不夠凝練，」葉塵放開劍尖，退後一步，平靜地說道，「劍道的精髓不在於力量的大小，而在於意志的集中。你的劍意雖然鋒利，但太過分散了。你試著將所有的劍意凝聚在一點上，不要讓它擴散開來。」</p>
+        <p>劍無鋒若有所思地點了點頭，再次出劍。這一次，他將所有的劍意凝聚在了劍尖一點上，整個人的氣息都變得更加凌厲。黑色的長劍呼嘯而出，帶著一股一往無前的氣勢。</p>
+        <p>葉塵依然沒有閃避。他伸出右手，食指和中指並攏，在身前輕輕一劃。一道無形的劍氣從他的指尖射出，精準地撞擊在劍無鋒的劍尖上。</p>
+        <p>一聲清脆的金屬交鳴聲響起。劍無鋒感覺一股強大的力量從劍尖傳來，震得他的手臂一陣發麻，手中的長劍差點脫手飛出。他連退了好幾步才穩住身形，臉上露出了震驚的表情。</p>
+        <p>「這就是歸真中期巔峰的實力嗎？」他喃喃自語道，眼中閃爍著複雜的光芒。</p>
+        <p>「不，這是劍意的運用，」葉塵說道，「你剛才那一劍已經有了很大的進步，但還是不夠。你的劍意雖然凝聚了，但在與我碰撞的那一刻，你的心中產生了猶豫，導致劍意出現了鬆動。」</p>
+        <p>「對，猶豫，」葉塵點頭道，「你在出劍的那一刻，心中在想什麼？是在想能不能刺中我，還是在想會不會傷到我？這些雜念會讓你的劍意出現破綻。劍道講究的是心無旁騖，出劍的那一刻，你的心中只能有劍，不能有任何雜念。」</p>
+        <p>劍無鋒沉默了一會兒，然後深深地吸了一口氣：「我明白了。多謝葉城主教誨。」</p>
+        <p>他閉上眼睛，靜靜地站了一會兒，調整自己的心態。當他再次睜開眼睛的時候，他的眼神變得清澈而堅定，沒有了之前的猶豫和忐忑。</p>
+        <p>「再來一次，」他說道。</p>
+        <p>「好，」葉塵點頭。</p>
+        <p>劍無鋒再次出劍。這一次，他的劍意比前兩次更加純粹，更加凝練。黑色的長劍在空中劃過一道優美的弧線，帶著一股一往無前的氣勢，向葉塵刺來。他的眼中只有劍，沒有其他任何雜念。</p>
+        <p>葉塵的眼中閃過一絲讚賞。他再次伸出右手，兩根手指向前一夾，再次準確地夾住了劍尖。</p>
+        <p>但這一次，劍無鋒的劍意沒有崩潰。雖然劍尖被鉗住，但他的劍意依然凝聚不散，繼續向前推進。一股強大的力量從劍身傳來，讓葉塵的手指微微顫動了一下。</p>
+        <p>「不錯，」葉塵放開劍尖，微笑著說道，「這一劍比剛才好了很多。你的劍意已經初步達到了凝聚不散的地步。只要繼續保持這種狀態，你在歸真塔中一定能夠發揮出不錯的實力。」</p>
+        <p>劍無鋒收劍而立，臉上露出了由衷的笑容：「多謝葉城主指點。今天這番切磋，讓我受益匪淺。」</p>
+        <p>「不必客氣，」葉塵說道，「劍道之路漫長，我也只是在摸索中前進。說到底，每個人的劍道都是獨一無二的，我的經驗只能作為參考，真正的劍道需要你自己去領悟。」</p>
+        <p>就在這時，一陣鼓掌聲從院門口傳來。</p>
+        <p>「好！好一個劍道講究心無旁騖！」</p>
+        <p>葉塵和劍無鋒轉頭看去，只見一個身穿白袍的年輕人正站在院門口，面帶微笑地看著他們。這個年輕人的面容英俊，氣質出塵，腰間掛著一把古樸的長劍，整個人散發著一股淡淡的劍意。</p>
+        <p>葉塵的瞳孔微微一縮。這個年輕人他認識——在城主府的宴會上見過，他是天劍宗的人，而且不僅僅是普通的弟子，而是天劍宗這次的核心人物之一。他的修為在歸真中期巔峰，體內的劍意凌厲而內斂，顯然在劍道上有著極深的造詣。</p>
+        <p>「在下天劍宗柳白，冒昧打擾，還請見諒，」年輕男子抱拳道，語氣溫和，「剛才路過此地，感受到這裡有劍意的波動，一時好奇過來看看。沒想到見到了一場精彩的劍道切磋。兩位剛才的對話，讓我受益匪淺。」</p>
+        <p>葉塵心中微微一動。天劍宗的人主動找上門來，這絕不是巧合。但他臉上卻不動聲色，微笑著回禮道：「柳道友客氣了。在下葉塵，來自西域萬古塵城。這位是我的同鄉劍無鋒。」</p>
+        <p>「葉城主的大名，我已經聽說過了，」柳白微笑著說道，「歸真塔第七層嬰變之門的傳承者，這份成就，即便是在天劍宗中，也足以引起重視。」</p>
+        <p>他的話說得非常直接，讓葉塵心中不由得提高了警惕。但柳白的語氣真誠，並沒有惡意，更像是一種表達友好的方式。</p>
+        <p>「柳道友過獎了，」葉塵謙虛地說道，「我只是運氣好罷了。」</p>
+        <p>「運氣也是實力的一部分，何況能夠在歸真塔中走到第七層，絕不僅僅是運氣能夠解釋的，」柳白說道。他頓了頓，目光落在葉塵身上，眼中閃過一絲戰意：「葉城主，既然今天有緣相遇，不如我們也切磋一劍如何？純粹的劍意較量，不涉及修為高低。」</p>
+        <p>葉塵想了想，然後點頭答應了：「好，既然柳道友有興趣，那我就奉陪一下。」</p>
+        <p>兩人走到空地中央，相隔三丈站定。劍無鋒退到一旁，眼中閃爍著興奮的光芒——能夠看到兩位歸真中期巔峰的劍道強者切磋，這對他來說是一個難得的學習機會。</p>
+        <p>柳白緩緩拔出腰間的長劍。他的劍與劍無鋒的黑色長劍截然不同——劍身纖細，泛著銀白色的光澤，仿佛由月光凝結而成，劍鋒上流轉著一層淡淡的光芒，散發著一股清冷而凌厲的劍意。</p>
+        <p>「這是我天劍宗的鎮宗之寶之一，名為『秋水』，」柳白說道，「不過今天我只用劍意，不動用劍本身的威能。葉城主請。」</p>
+        <p>葉塵點了點頭，依然伸出右手，兩根手指並攏，做出了與剛才同樣的姿勢。</p>
+        <p>柳白的眼中閃過一絲異色。用兩根手指來接他的劍？這讓他感到有些意外，但也更加激發了他的興趣。</p>
+        <p>「小心了！」</p>
+        <p>話音未落，秋水劍已經化作一道銀白色的光芒，向著葉塵刺來。這一劍的速度比劍無鋒快了數倍，空氣中甚至沒有發出任何聲音，仿佛劍身已經超越了聲音的速度。</p>
+        <p>但葉塵的歸真之眼早已鎖定了那一劍的軌跡。他的兩根手指精準地向前一夾，在劍尖即將刺中他的瞬間，再次將劍尖牢牢鉗住。</p>
+        <p>柳白的眼中閃過一絲驚訝。他能夠感覺到，葉塵的手指上覆蓋著一層極其凝練的歸真之力，那股力量的精純程度甚至超過了他。更重要的是，葉塵捕捉他劍尖的時機精準到了極致，仿佛是預先知道他的劍會刺向哪個位置一般。</p>
+        <p>「好眼力！」柳白讚了一聲，體內的劍意驟然爆發。</p>
+        <p>一股更加凌厲的劍意從秋水劍上湧出，如同一波又一波的浪潮，向著葉塵的手指衝擊而去。那股劍意鋒利到了極致，仿佛能夠切開一切阻擋。</p>
+        <p>但葉塵的手指依然紋絲不動。他的歸真之力在指尖形成了一個微小的漩渦，將柳白的劍意層層削弱、引導、消散。</p>
+        <p>兩人僵持了幾個呼吸的時間，然後同時收力，各自退後了一步。</p>
+        <p>「葉城主的劍意果然不凡，」柳白收劍入鞘，微笑著說道，「我之前還有些懷疑傳言的真實性，現在看來，傳言不但沒有誇大，反而還說得有些保守了。」</p>
+        <p>「柳道友的劍意也讓我大開眼界，」葉塵真誠地說道，「天劍宗不愧是中州第一劍道宗門，劍意傳承果然名不虛傳。」</p>
+        <p>「葉城主過獎了，」柳白笑道，「今天這番切磋，讓我獲益良多。三個月後歸真塔再開，希望能在那裡與葉城主再次切磋——不過到時候，我可不會只用劍意這麼簡單了。」</p>
+        <p>「到時候我一定奉陪，」葉塵微笑著說道。</p>
+        <p>柳白點了點頭，又看了一眼劍無鋒，說道：「你的劍意很純粹，好好跟葉城主學習，將來必成大器。」說完，他便轉身離開了。</p>
+        <p>劍無鋒看著柳白離去的背影，眼中閃爍著複雜的光芒：「天劍宗的人……果然強大。剛才那一劍，如果我來接，恐怕連一個呼吸都撐不住。」</p>
+        <p>「天劍宗的劍道確實有其獨到之處，」葉塵說道，「但那也不代表我們西域的修士就比他們差。修行之路，天賦固然重要，但毅力和心性更加重要。只要堅持下去，總有一天你也會達到他們的高度。」</p>
+        <p>劍無鋒鄭重地點了點頭：「我會努力的。」</p>
+        <p>那天下午，劍無鋒在歸來客棧待了很久，與葉塵深入交流了劍道心得。雖然他的修為不如葉塵，但他對劍道的執著和熱愛卻絲毫不遜於任何人。葉塵覺得，只要給他足夠的時間和機會，他一定能夠在劍道上取得不凡的成就。</p>
+        <p>當劍無鋒告辭離開的時候，夕陽已經將半邊天空染成了金紅色。葉塵站在小樓前，望著他遠去的背影，若有所思。</p>
+        <p>「你在想什麼？」白淺走到他身邊，輕聲問道。</p>
+        <p>「我在想，歸真塔中，會有多少像他那樣的人，」葉塵說道，「每一個人都有自己的故事，自己的執著，自己的目標。而在歸真塔中，我們都將為了各自的目標而戰。」</p>
+        <p>「你覺得他能走多遠？」白淺問道。</p>
+        <p>葉塵沉默了一會兒，然後說道：「如果他能夠保持今天這種純粹的劍心，歸真塔中，他一定能走得很遠。」</p>
+        <p>夜色降臨，中州城的燈火次第亮起。遠處的歸真塔在暮色中靜靜矗立，等待著三個月後的再次開啟。</p>
+        
+    </main>
+    <nav class="nav">
+        <a href="chapter-703.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-704/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-705.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

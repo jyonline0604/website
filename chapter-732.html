@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第732章 · 劍道大會 - 萬古塵埃</title>
+    <link rel="canonical" href="">
+    <link rel="prev" href="chapter-731.html">
+    <link rel="next" href="chapter-733.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第732章 · 劍道大會</h1>
+    <main>
+<p>天劍宗位於中州東方的一片山脈中，佔地極廣，方圓數百裡。宗門的建築依山而建，層層疊疊，在夕陽的映照下如同一幅壯麗的畫卷。山門由兩座巨大的石劍構成，高達百丈，劍身上刻滿了劍道符文，散發著一股凌厲的劍意。</p>
+        <p>山門前，已經聚集了來自各地的修士。他們三三兩兩地站在一起，有的在低聲交談，有的在閉目養神，有的則在打量著天劍宗的山門。</p>
+        <p>葉塵剛剛落下來，就看到柳白從山門中走了出來。</p>
+        <p>「葉城主！你終於來了！」柳白熱情地迎上來，抱拳道，「我等你很久了！」</p>
+        <p>「柳道友，別來無恙，」葉塵微笑著回禮道。</p>
+        <p>「好得很！走，我帶你進去，」柳白拉著他走入了山門。</p>
+        <p>天劍宗的內部比外面看起來更加壯觀。宗門中到處都是劍的痕跡——劍型的建築、劍型的雕塑、劍型的符文……仿佛整個宗門都是為了劍而存在的。空氣中彌漫著濃郁的劍意，讓每一個進入的人都感受到一股無形的壓力。</p>
+        <p>柳白將葉塵帶到了一間專門為來賓準備的院落中。院落雖然不大，但環境清幽，設施齊全，比起中州城的歸來客棧也不遑多讓。</p>
+        <p>「葉城主，你先在這裡休息一晚。明天一早，劍道大會正式開始，」柳白說道。</p>
+        <p>「好的，多謝柳道友，」葉塵說道。</p>
+        <p>當天晚上，葉塵沒有修煉，而是好好地睡了一覺。第二天清晨，他早早地起床，換上了一身乾淨的衣袍，向著大會的會場走去。</p>
+        <p>劍道大會的會場位於天劍宗的主峰頂端，是一個方圓數百丈的巨大廣場。廣場的中央是一個高臺，高臺周圍已經坐滿了來自各地的修士。五大宗門的人都在場：天劍宗、星辰閣、萬寶樓、煉神谷、蒼穹殿，每一個宗門都派出了精銳弟子參加。</p>
+        <p>葉塵在人群中看到了不少熟面孔——劍無痕、林逸風、金富貴，還有一些在歸真塔中見過的強者。他也看到了煉神谷的那位枯瘦老者，後者看到他的時候，目光閃爍了一下，但沒有過來找麻煩。</p>
+        <p>葉塵注意到，那位枯瘦老者的身邊站著幾個氣息陰冷的煉神谷弟子，他們的修為都在歸真後期左右。顯然煉神谷這次也是有備而來，想要在劍道大會上揚名立萬。不過葉塵並不擔心，以他現在的實力，只要不是嬰變境的強者親自出手，他都有把握應對。</p>
+        <p>劍道大會開始後，天劍宗宗主首先上臺致辭。他的話簡短而有力，主要是歡迎各位來賓的到來，以及強調切磋交流、友誼第一的原則。</p>
+        <p>隨後，大會正式開始。</p>
+        <p>劍道大會的規則很簡單：參加者輪流上臺切磋，可以使用任何手段，但不能故意傷人性命。最後根據勝場數來決定排名，排名前列的人可以獲得天劍宗提供的獎勵。</p>
+        <p>葉塵沒有急著上臺，而是坐在觀眾席上，靜靜地觀察著那些參加者的實力和風格。</p>
+        <p>第一個上臺的是天劍宗的一個年輕弟子，修為在歸真中期，劍法凌厲而純熟。他的對手是一個來自散修的歸真中期強者，兩人打了大約一炷香的時間，最終天劍宗弟子以一招險勝。</p>
+        <p>第二場、第三場……一場接一場的比賽在進行著。葉塵看得津津有味，從每一場比賽中都學到了一些東西。</p>
+        <p>到了下午的時候，終於輪到了葉塵。</p>
+        <p>他的對手是一個歸真後期巔峰的蒼穹殿強者，一個面容冷峻的中年男子，背負一把黑色的長刀。</p>
+        <p>「請指教，」葉塵走上高臺，抱拳道。</p>
+        <p>「請，」蒼穹殿的強者簡短地回答道。</p>
+        <p>兩人相對而立，各自體內的歸真之力開始運轉。葉塵沒有動用半步嬰變的力量，而是將修為壓製在了歸真後期巔峰。即便是這樣，他體內的歸真之力依然比普通的歸真後期巔峰更加渾厚。</p>
+        <p>蒼穹殿的強者率先出手了。他的黑色長刀化作一道漆黑的刀芒，向著葉塵當頭斬來。那一刀的速度快到了極致，力量也大得驚人，空氣中發出一聲尖銳的爆鳴聲。</p>
+        <p>葉塵沒有閃避，也沒有拔劍。他只是伸出了右手，食指和中指並攏，在身前輕輕一劃。</p>
+        <p>一道金色的劍氣從他的指尖射出，與那道黑色的刀芒碰撞在一起。</p>
+        <p>一聲清脆的金屬交鳴聲響起。黑色的刀芒被金色劍氣擊碎，化作漫天的黑色光點消散在空中。</p>
+        <p>蒼穹殿的強者臉色一變，連忙再次出刀。他的刀法如狂風暴雨一般，一刀接一刀，向著葉塵猛攻而來。刀氣縱橫，將高臺上的空氣都攪得一片混亂。</p>
+        <p>但葉塵依然站在原地，一步也沒有後退。他的指尖不斷射出金色劍氣，精準地擊碎了每一道刀芒。他的表情平靜而從容，仿佛在散步一般輕鬆寫意。</p>
+        <p>全場都安靜了下來。所有人都用震驚的目光看著葉塵——以歸真後期巔峰的修為，用手指射出的劍氣就擋住了蒼穹殿歸真後期巔峰強者的全力攻擊，這份實力已經超出了他們的認知。</p>
+        <p>「我認輸，」蒼穹殿的強者收起了長刀，乾脆俐落地說道。他知道，葉塵根本沒有用全力，再打下去也不會有任何勝算。</p>
+        <p>葉塵抱拳道：「承讓。」</p>
+        <p>高臺下爆發出了一陣熱烈的掌聲。</p>
+        <p>就在這時，一個聲音從人群中傳來：「葉城主果然好本事。不知道能不能也指點我一兩招？」</p>
+        <p>葉塵循聲望去，看到一個身穿黑袍的年輕人從人群中走了出來。他的面容陰冷，眼神銳利，修為在歸真後期巔峰，體內的氣息中帶著一股若有若無的靈魂波動。</p>
+        <p>煉神谷的人。</p>
+        <p>葉塵的眉頭微微皺起，但還是平靜地說道：「當然可以。請。」</p>
+        <p>黑袍年輕人走上高臺，站在葉塵的對面。他的嘴角露出了一絲冷笑，雙手結印，一股強大的靈魂波動從他的體內爆發出來。</p>
+        <p>「煉神谷，魂劍！」</p>
+        <p>他大喝一聲，一道無形的靈魂之劍向著葉塵的識海猛刺而來。這一劍的威力極為驚人，比之前在歸真塔中那位灰袍老者的靈魂衝擊強大了數倍。</p>
+        <p>葉塵的眼神微微一凝。他的歸真心經全力運轉，金色的光芒在識海中形成了一層堅固的屏障，將那道靈魂之劍擋了下來。</p>
+        <p>但就在這時，他感覺到一股若有若無的殺意從靈魂之劍的背後傳來。那股殺意隱藏得極深，如果不是他對靈魂波動極其敏感，根本無法察覺。</p>
+        <p>煉神谷的人果然不安好心。表面上是切磋交流，實際上卻想藉機暗算他。葉塵的心中湧起一股冷意，他原本不想在大會上暴露太多實力，但既然對方不講規矩，他也沒必要再保留什麼了。</p>
+        <p>「原來如此，」葉塵的眼中閃過一絲冷光，「靈魂之劍只是幌子，真正的殺招在後面。」</p>
+        <p>他不再保留，體內的歸真之力驟然爆發。半步嬰變的氣息毫無保留地釋放出來，一股恐怖的威壓向著四周擴散開來。整個廣場上的修士都感受到了那股威壓，臉色大變。</p>
+        <p>黑袍年輕人的臉色也變了。他沒有想到，葉塵竟然敢在大庭廣眾之下暴露真正的實力。</p>
+        <p>「該結束了，」葉塵淡淡地說道。他伸出手，對著黑袍年輕人一指。</p>
+        <p>一道金色的光芒從他的指尖射出，瞬間穿透了黑袍年輕人的護體真元，擊中了他的胸口。黑袍年輕人的身體向後倒飛出去，重重地摔在了地上，嘴角滲出了一絲鮮血。</p>
+        <p>全場一片寂靜。</p>
+        <p>所有人都用敬畏的目光看著葉塵。半步嬰變的實力，在年輕一代中幾乎是無敵的存在。</p>
+        <p>「多謝指教，」葉塵淡淡地說道，然後轉身走下了高臺。</p>
+        <p>劍道大會雖然還有很多場比賽沒有進行，但在所有人心中，冠軍已經沒有了懸念。葉塵的表現讓所有人心服口服，他用實力證明了自己不僅僅是一個年輕的後起之秀，更是一個已經成長起來的真正強者。那些原本對他心存輕視的人，在這一刻都收起了輕視之心，取而代之的是敬畏和欽佩。天劍宗的長老們甚至在私下議論，說葉塵的實力和天賦已經足以與那些成名已久的強者比肩，西域在他的統治下未來必將迎來更加輝煌的發展。葉塵的實力已經遠遠超過了同齡人的範疇，即使是那些修煉了幾十年的老牌強者，在他面前也感到了壓力。天劍宗的長老們看著他，眼中充滿了欣賞和期待。他們知道，這個年輕人的未來不可限量，只要不出意外，他必將成為大陸上的一方巨擘。</p>
+        <p>葉塵走下高臺後，被柳白拉到了一旁。柳白的臉上帶著興奮的笑容，連連感嘆剛才那場比賽的精彩。葉塵微笑著回應，但心中卻在思考著更深層次的問題。這次劍道大會讓他看到了中州各大勢力的實力格局，也讓他對自己的實力有了一個更加清晰的定位。半步嬰變的修為在年輕一代中確實罕有敵手，但與那些真正的老牌強者相比，他還有很長的路要走。他必須繼續努力，不斷提升自己的實力和境界，才能夠在即將到來的深淵危機中保護好自己想要保護的人和事物。天劍宗的劍道大會不僅是一場切磋交流，更是一次難得的歷練和學習的機會。</p>
+        
+    </main>
+    <nav class="nav">
+        <a href="chapter-731.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-732/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-733.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

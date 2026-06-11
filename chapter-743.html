@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第743章 · 封印惡化 - 萬古塵埃</title>
+    <link rel="canonical" href="">
+    <link rel="prev" href="chapter-742.html">
+    <link rel="next" href="chapter-744.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第743章 · 封印惡化</h1>
+    <main>
+<p>「你終於出關了，」她快步走到他面前，語氣急切，「封印那邊又出問題了。」</p>
+        <p>「怎麼了？」葉塵鎮定地問道，但他的心已經沉了下去。</p>
+        <p>「三天前，封印上的裂紋突然擴大了，」白淺神色凝重地說道，手指不自覺地抓緊了衣袖，「監視修士用緊急傳訊符傳回消息，說最大的裂縫已經有手臂粗細了。而且封印內部傳來的撞擊聲也變得更加頻繁：從之前每天幾次變成了每時每刻都在響，像是裡面的東西正在瘋狂地試圖衝破封印。」</p>
+        <p>葉塵的臉色沉了下來。他本以為封印還能支撐一段時間，沒想到情況惡化得這麼快。封印的惡化速度遠遠超出了他的預期，這說明封印內部的情況比他估計的更加嚴重。</p>
+        <p>「我馬上去看看，」他說道，轉身就要出發。</p>
+        <p>「等等，」白淺叫住他，語氣堅定，「我跟你一起去。」</p>
+        <p>「但是城裡……」</p>
+        <p>「城中的事務暫時交給張長老處理，」白淺打斷了他的話，眼神毫不退讓地看著他，「這次我要跟你一起去。萬一封印真的出了什麼問題，多一個人總能多一分力量。而且……我不想在這裡乾等著，什麼都做不了。」</p>
+        <p>葉塵看著她堅定的眼神，知道她已經下定了決心。他沉默了片刻，然後點了點頭：「好，走吧。」</p>
+        <p>兩人沒有再多說什麼，當即啟程向著深淵封印的方向飛去。他們的身影化作兩道流光，劃過天空，速度極快。一路上，兩人誰都沒有說話，風從耳邊呼嘯而過，將兩人的衣袍吹得獵獵作響，但誰都沒有心情去理會。葉塵的表情平靜，但內心卻波濤洶湧：他擔心封印的狀況，擔心父親的靈魂印記，擔心如果封印真的崩潰了該怎麼辦。</p>
+        <p>大半日後，他們到達了封印所在的地方。</p>
+        <p>眼前的景象，讓兩人的心都沉到了谷底。</p>
+        <p>封印上的裂縫比報告中說的還要嚴重：不僅原來那些裂紋擴大到了手臂粗細，還出現了許多新的裂縫，密密麻麻，像是蜘蛛網一樣布滿了封印的整個表面。金色的光芒從裂縫中滲出來，但已經非常暗淡，像是風中殘燭。封印核心處的光芒也變得微弱了許多，像是隨時可能熄滅。空氣中彌漫著一股陰冷的氣息——那是深淵之力從裂縫中洩漏出來的痕跡——讓人的靈魂都感到一陣刺骨的寒意。</p>
+        <p>周圍的地面上，原本暗紅色的沙礫現在覆蓋上了一層薄薄的黑霜，那是深淵氣息侵蝕的結果。一些靠近封印的植物已經枯萎變黑，顯然是被深淵之力汙染了。</p>
+        <p>葉塵走到封印前，將手貼在封印的表面。石面冰冷刺骨，但他毫不在意，將歸真之力順著手掌湧入封印中。</p>
+        <p>歸真之力沿著符文的軌跡流轉，他能夠清晰地感受到封印內部的狀況：比他預想的還要糟糕。封印內部的深淵之力已經積累到了一個極其恐怖的程度，像一座隨時可能噴發的火山，熾熱的岩漿在內部翻湧，只等著衝破最後一層阻礙。而封印核心中父親的靈魂印記，也變得更加虛弱了：那道模糊的人影現在幾乎已經完全透明，就像一層薄薄的水汽，彷彿一陣微風就能將它吹散。</p>
+        <p>他能夠感受到父親靈魂中傳來的訊息：那不是語言，而是一種更直接的靈魂層面的交流。他感受到了父親的疲憊：他已經支撐了太多年，從一個意氣風發的中年人變成了一個油盡燈枯的靈魂。他感受到了父親的痛苦：靈魂的持續消耗是一種難以想像的煎熬，就像一根蠟燭被同時從兩頭點燃。他也感受到了父親的不甘：不是對命運的不甘，而是對無法繼續守護這個世界的不甘。</p>
+        <p>葉塵收回手，沉默了很久。他的心中充滿了複雜的情緒——心疼、憤怒、無奈、不甘……但他知道，現在不是被情緒左右的時候。</p>
+        <p>「情況比我想像的還要糟糕，」他低聲說道，聲音中帶著壓抑的沉重，「父親的靈魂印記已經快要消散了。如果不能在三個月內找到加固封印的方法，封印就會徹底崩潰。到那個時候……」</p>
+        <p>他沒有把後果說出來，但兩人都知道那意味著什麼。深淵之門重新開啟，深淵中的存在降臨世間，整個大陸都將陷入浩劫。</p>
+        <p>「三個月……」白淺的臉色變得蒼白，「這麼短的時間，我們能做些什麼？」</p>
+        <p>葉塵沒有回答。他的大腦在飛速運轉，思考著每一種可能性。天機閣給他的三種方法：混沌之心杳無音訊，數萬年都沒有出現過的東西，不可能在三個月內找到。九耀鎮天陣需要九位嬰變境強者，但整個大陸的嬰變境強者加起來也不夠，據他所知，五大宗門中只有宗主級別的人物達到了嬰變境，而且他們各自心懷鬼胎，不可能齊心協力。只剩下第三種：輪迴之力。</p>
+        <p>但他對輪迴之道的領悟還遠遠不夠。</p>
+        <p>「我需要時間，」他沉聲說道，「更多的時間。」</p>
+        <p>「但我們沒有時間了啊，」白淺焦急地說道，聲音中帶著一絲顫抖。</p>
+        <p>葉塵沉默了一會兒，然後突然抬起頭，眼中閃爍著堅定的光芒。他已經下定了決心。</p>
+        <p>「有一個辦法，可以爭取一些時間。」</p>
+        <p>「什麼辦法？」白淺連忙問道。</p>
+        <p>「用我的歸真之力，暫時補充封印的能量，」葉塵說道，語氣平靜而篤定，「雖然不能根治問題，但至少可以讓封印再多撐一段時間。」他知道這不是一個完美的解決方案：這只是在借錢還債，用未來的潛力來填補現在的缺口。但這是目前唯一的選擇。</p>
+        <p>白淺的臉色一變，她立刻明白了這樣做意味著什麼：「這樣做會對你有什麼影響？」</p>
+        <p>葉塵沉默了一下，然後坦誠地說道：「我會損耗大量的歸真之力，可能需要幾個月的時間才能完全恢復。而且在恢復期間，我的實力會大幅下降，可能連歸真後期的水平都不到。如果這個時候有人對萬古塵城不利……」</p>
+        <p>白淺想要說什麼，但最終還是沒有說出口。</p>
+        <p>她看著葉塵，看著他堅定的眼神，知道她無法阻止他。這是現在唯一的辦法了：如果讓封印現在就崩潰，後果不堪設想。與其讓所有人都陷入危險，不如讓葉塵暫時付出一些代價，爭取到寶貴的時間。</p>
+        <p>「我明白了，」她輕聲說道，聲音中帶著一絲無奈，但更多的是一份堅定，「我會在這裡守著你。不管發生什麼，我都會在你身邊。」</p>
+        <p>葉塵點了點頭，沒有再多說什麼。他轉向封印，深吸一口氣，然後將雙手貼在了封印的表面上。</p>
+        <p>他體內的歸真之力開始全力運轉。金色的光芒從他的體內爆發出來，耀眼奪目，將周圍的空間都染成了一片金色，連天空的雲朵都被映照成了金色。他的衣袍在氣流的鼓動下飄動，頭髮也隨風飛揚。</p>
+        <p>他將掌心中的歸真之力源源不斷地注入封印中。</p>
+        <p>封印發出了低沉的嗡鳴聲：那不是痛苦的呻吟，而是飢渴的吸吮。它太長時間沒有得到新的能量補充了，就像一個乾渴的旅人突然看到了水源。表面的符文開始加速旋轉，瘋狂地吸收著葉塵輸入的力量。金色的光芒再次亮起，雖然還不如從前明亮，但至少暫時止住了衰敗的趨勢。</p>
+        <p>葉塵持續輸出著歸真之力，額頭上滲出了細密的汗珠，沿著臉頰滑落。他的臉色開始變得蒼白，嘴唇也失去了血色。</p>
+        <p>輸出這麼多的歸真之力，對他來說是一個巨大的負擔。他的經脈在承受著極大的壓力，像是被過度拉伸的橡皮筋。他的丹田也在快速消耗著積累的力量，像一個被迅速抽乾的水庫。但他咬著牙，緊抿著嘴唇，堅持著，將自己體內的所有力量都毫無保留地注入封印中。</p>
+        <p>時間一分一秒地過去。他的身體開始微微顫抖，但他依然沒有停下。白淺在一旁看著，拳頭緊握，指甲幾乎嵌進掌心，但她沒有出聲打擾他。</p>
+        <p>當葉塵終於收回雙手的時候，他身體一軟，幾乎站立不穩。白淺連忙上前扶住他。他的臉色蒼白得像一張紙，嘴唇乾裂，眼神也有些渙散：這是過度消耗的典型症狀。</p>
+        <p>體內九成以上的歸真之力都注入了封印中，現在他的經脈中空空蕩蕩，像一條乾涸的河床，只有極微弱的力量在緩慢流動。這種虛弱的感覺，他已經很多年沒有體驗過了，自從他踏入歸真境之後，就再也沒有感受過這種接近枯竭的虛弱。</p>
+        <p>「你還好嗎？」白淺擔憂地問道，緊緊地扶著他的手臂。</p>
+        <p>「還好，」葉塵勉強笑了笑，笑容有些蒼白，「只是有些脫力。休息一段時間就能恢復。」</p>
+        <p>他轉頭看向封印。金色的光芒雖然暗淡，但至少比來的時候穩定了一些。封印表面的裂縫雖然還在，但擴大的速度明顯減緩了：那些裂縫的邊緣甚至出現了一些微小的金色結晶，那是封印自我修復的跡象。按照這個速度，封印應該還能支撐四到五個月。</p>
+        <p>四到五個月——這是他用自己九成的力量為代價，為自己爭取到的時間。</p>
+        <p>夠嗎？他不確定。但他已經盡了最大的努力。</p>
+        <p>「我們回去吧，」他輕聲說道，聲音中帶著掩飾不住的疲憊，「我需要時間恢復，然後……想辦法真正解決問題。」</p>
+        <p>白淺點了點頭，將他的手臂搭在自己的肩膀上，攙扶著他向萬古塵城的方向飛去。</p>
+        <p>回程的速度比來時慢了很多：葉塵沒有足夠的力量支持高速飛行，白淺也只能放慢速度配合他。他們直到深夜才回到城中。</p>
+        <p>城主府中，燈火通明。白淺將葉塵送回修煉室，然後吩咐侍從準備恢復靈氣的丹藥和靈液。葉塵坐在蒲團上，接過丹藥服下，然後開始運轉歸真心經，緩慢地恢復著損耗的力量。</p>
+        <p>今夜之後，西域最強者的實力將暫時跌入低谷。而萬古塵城的敵人，隨時可能抓住這個機會。</p>
+        <p>但他並不後悔自己的選擇。如果再給他一次機會，他依然會毫不猶豫地將自己的力量注入封印中。因為有些東西比個人的力量更加重要：比如承諾，比如責任，比如對父親的思念。力量可以重新修煉回來，但封印一旦崩潰，一切都會太遲。</p>
+        <p>他閉上眼睛，繼續運轉歸真心經。金色的光芒在昏暗的修煉室中微微閃爍，像是黑夜中的一盞燈。雖然微弱，但從未熄滅。</p>
+        <p>在他的丹田深處，歸真之力正在緩慢地恢復著。每一絲靈氣被吸入經脈，都要經過九次流轉才能轉化為歸真之力。這是一個極其緩慢的過程，就像用滴管裝滿一個水桶，但這也是沒有辦法的事情。經脈受損後，就像一條被洪水衝壞的道路，需要先修補才能通車。他知道，這段時間他必須保持低調，不能讓敵人知道他現在的虛弱狀態。否則，煉神谷那邊的人絕對不會放過這個機會。</p>
+        <p>他感受著體內的變化，歸真之力雖然恢復緩慢，但每一次流轉都在修復著受損的經脈。照這個速度，大約需要兩個月的時間經脈才能完全癒合，三個月才能恢復到巔峰狀態。三個月——說長不長，說短不短。希望在這個期間，不會有敵人找上門來。</p>
+        <p>他在心中默默地計算著時間。封印還能支撐四到五個月，而他需要三個月恢復實力，然後還需要時間參悟輪迴之道：如果一切順利，他應該能在封印徹底崩潰之前找到解決的辦法。但前提是，這段時間萬古塵城不能出任何亂子。他希望煉神谷的人不會在這個時候來找麻煩，也希望西域的其他勢力能安分一些。但願望終究只是願望，他必須做好最壞的打算。</p>
+        
+    </main>
+    <nav class="nav">
+        <a href="chapter-742.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-743/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-744.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

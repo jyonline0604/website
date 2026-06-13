@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第771章 · 夜探 - 萬古塵埃</title>
+    <link rel="canonical" href="">
+    <link rel="prev" href="chapter-770.html">
+    <link rel="next" href="chapter-772.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第771章 · 夜探</h1>
+    <main>
+<p>他沿著白天已經觀察好的路線，在陰影中快速移動。他避開了所有巡邏的城衛軍，繞過了幾個可能有暗哨的關鍵位置，用了不到一炷香的時間，就來到了城主府的外圍。這一路他已經在心中演練了無數次，每一個轉角、每一個陰影都爛熟於心。</p>
+        <p>城主府的圍牆高約三丈，牆上刻著簡單的預警符文。但這些符文對於煉神谷執法堂的副堂主來說，實在是太過簡陋了。趙厲在圍牆外停了一下，仔細觀察了牆上符文的分布，然後找到了一個符文之間的縫隙，輕而易舉地翻了過去。他的手掌在接觸牆壁的瞬間釋放出一層薄薄的靈力，隔絕了與符文的接觸，沒有觸發任何警報。</p>
+        <p>他落在城主府的庭院中，隱身在一棵大樹的陰影中，觀察著周圍的情況。大樹的枝葉茂密，將他的身影完全遮擋，就算有人仔細查看也很難發現他的存在。</p>
+        <p>城主府的守衛比城中其他地方的守衛要嚴密得多。庭院中有四名守衛在巡邏，每個人都是元嬰後期的修為，而且巡邏路線設計得很合理，幾乎覆蓋了庭院中的所有角落。但趙厲的經驗豐富，他只是等了幾息的時間，就找到了守衛巡邏的規律：四名守衛每隔十五息會有一個短暫的視線盲區。在那個盲區出現的瞬間，從陰影中掠過，就能夠在不被發現的情況下穿過庭院。他耐心地等待著時機的到來，身體如同一尊雕像般一動不動，連呼吸都變得極其輕微。他的目光緊盯著守衛們的步伐節奏，在心中默數著時間，當盲區出現的瞬間，他的身體如同一道黑色的閃電，無聲無息地穿過了庭院，沒有驚動任何人。</p>
+        <p>在盲區出現的瞬間，他無聲地從樹陰中掠出，穿過庭院，閃身進入了主樓的陰影中。整個過程行雲流水，乾淨利落，沒有發出任何聲音。</p>
+        <p>主樓內部很安靜，只有幾盞油燈在走廊中發出昏暗的光芒。趙厲沿著走廊向深處走去，一邊走一邊用靈力感知周圍的動靜。他沒有感知到任何強者的氣息，這讓他有些意外。按道理說，堂堂城主府不可能沒有一個強者坐鎮。要麼是葉塵不在府中，要麼是他的修為遠遠超過了自己能夠感知的範圍。他隱約感覺到第二種可能性更大，但又不敢相信這個猜測。</p>
+        <p>趙厲傾向於前者。他不敢相信一個歸真後期的城主能夠將氣息隱藏得讓自己完全無法感知。</p>
+        <p>他繼續向深處走去。根據他白天收集的情報，城主府的地牢入口應該在主樓後方的一個院落中。他沿著走廊穿過了主樓，來到了一個露天的院落。院落中有一口古井，井邊堆放著一些雜物，看起來普普通通。那些雜物堆放得很隨意，看起來像是被隨手丟棄的垃圾。</p>
+        <p>但趙厲的目光卻落在了古井旁邊的地面上。那裏的地磚顏色和周圍的地磚有些微妙的差異，新舊程度完全不同。他走過去，蹲下身，用手指輕輕敲了敲那幾塊地磚。從聲音聽來，地磚下面是空的。</p>
+        <p>他的嘴角露出一絲笑意。找到了。煉神谷的經驗告訴他，這種隱藏入口的方式雖然不算高明，但在萬古塵城這樣的偏遠城市已經足夠隱蔽了。</p>
+        <p>他小心翼翼地將那幾塊地磚撬開，下面露出了向下的臺階。臺階很深，通向地下，黑暗中傳來一股潮濕而陰冷的氣息。那股氣息中夾雜著灰塵和霉味，顯然這個地牢已經很久沒有被打開過了。他沒有急著下去，而是先從懷中取出一枚綠色的丹藥含在口中。這是煉神谷特製的「閉息丹」，可以在半個時辰內讓他的氣息完全消失，連心跳和呼吸都變得極其微弱，即使是歸真後期的修士也無法感知到他的存在。這種丹藥極為珍貴，如果不是這次任務關係重大，他也不會輕易使用。整個煉神谷中，這種閉息丹的存貨也不超過十枚。</p>
+        <p>含好丹藥後，他沿著臺階向下走去。</p>
+        <p>臺階很長，大約走了數十級才到了底部。底部是一條狹窄的走廊，走廊兩側各有一個牢房。牢房中瀰漫著一股潮濕和鐵鏽的味道，牆壁上滲著水珠，只有牆上的幾盞油燈發出昏暗的光芒。燈光在潮濕的空氣中顯得昏黃而微弱，勉強照亮了周圍一小片區域。</p>
+        <p>其中一個牢房中，韓長老正坐在角落的草蓆上，低垂著頭，看起來十分虛弱。他的臉色蒼白，氣息紊亂，顯然在這裡的日子並不好過。</p>
+        <p>趙厲停在牢房前，目光在韓長老身上掃視了一遍，確認他雖然精神萎靡但並無性命之憂。他從懷中取出一枚丹藥，從欄杆的縫隙中遞了過去：「這是回元丹，先恢復一下體力。你的氣息很混亂，體內經脈似乎受過創傷，如果不盡快調理，會留下隱患。」他的語氣中帶著一絲若有若無的關心，作為煉神谷的同門，他雖然是來執行任務的，但也不願看到韓長老太過狼狽。</p>
+        <p>韓長老沒有接丹藥，而是抬起頭，目光複雜地看著趙厲：「你來了，說明煉神谷已經發現我的靈魂烙印消失了。谷主派你來，想必不只是為了接我回去吧？他還有什麼吩咐？」他的聲音沙啞而疲憊，但依然保持著一絲警惕。他知道煉神谷的人從來不會做沒有目的的事情。</p>
+        <p>趙厲將丹藥放在欄杆邊的臺階上，然後低聲說道：「韓長老，好久不見了。」</p>
+        <p>韓長老猛地抬起頭，看到趙厲的瞬間，他的眼中閃過一絲驚恐和複雜的情緒：「趙厲？你怎麼找到這裡的？」他的聲音沙啞而虛弱，顯然已經很久沒有好好說話了。</p>
+        <p>「靈魂烙印消失了，我就知道你在這裡，」趙厲淡淡地說道，目光在韓長老身上掃過，確認他沒有受到嚴重的傷勢，「谷主很關心你的情況。跟我回去吧。只要你願意回來，一切都還有商量的餘地。」</p>
+        <p>韓長老苦笑了一聲：「回去？回去接受懲罰嗎？煉神谷不會放過我的。我修煉了枯榮魔功，我還殺了內門弟子。回去就是死路一條。谷主的脾氣我最清楚不過，他從來不會放過背叛他的人。」</p>
+        <p>「不一定，」趙厲說道，他的語氣中帶著一絲安撫的意味，「谷主說了，如果你願意將枯榮魔功的完整功法交出來，他可以考慮從輕發落。谷主對那門功法很感興趣，只要你願意合作，他不會為難你。」</p>
+        <p>韓長老沉默了片刻，然後低下頭，聲音低沉地說道：「枯榮魔功的功法，我已經交給葉塵了。你想要，去找他要吧。」</p>
+        <p>趙厲的臉色一變：「你把功法交給他了？你瘋了嗎？那是煉神谷的機密！」</p>
+        <p>「他幫我消除了靈魂烙印，我總要有所回報，」韓長老抬起頭，嘴角帶著一絲嘲諷的笑容，「怎麼？你怕了？還是說你覺得自己對付不了那個年輕的城主？」</p>
+        <p>趙厲沒有回答他的挑釁，而是陷入了沉思。如果枯榮魔功的功法落到了葉塵手中，那事情就變得更加複雜了。他不僅要帶回韓長老，還要奪回功法。而且如果葉塵真的修煉了枯榮魔功，他的實力可能會在短時間內暴漲，對煉神谷的威脅也將更大。他必須在事態進一步惡化之前解決這個問題，否則煉神谷在整個西域的布局都可能受到影響。</p>
+        <p>他必須立刻行動。</p>
+        <p>但就在他準備打開牢門的時候，一個聲音突然從他身後傳來。</p>
+        <p>趙厲的瞳孔驟然收縮。他剛才已經用靈力仔細掃描過周圍的環境，確定這附近沒有其他人的氣息。閉息丹的效果應該還在持續才對，對方是怎麼發現他的？而且這個聲音距離他如此之近，說明對方早就知道他在這裡，只是一直沒有現身，等著他主動走入這個陷阱。他的心中湧起一股強烈的不安，因為他知道自己低估了這個年輕的城主。</p>
+        <p>「趙副堂主，深夜造訪我城主府，不知有何貴幹？」</p>
+        <p>趙厲的身體猛地一僵，緩緩轉過身。只見葉塵站在走廊的盡頭，背著雙手，靜靜地看著他。他的身上穿著一件簡單的白色長袍，月光從走廊頂端的通風口照進來，在他的身上灑下一片銀白色的光輝。</p>
+        <p>他的表情平靜，嘴角甚至還帶著一絲淡淡的微笑，就像他早就知道趙厲會來一樣。</p>
+        <p>趙厲的心中一沉。他低估了這個年輕的城主。他一直以為葉塵只是一個運氣好的年輕人，但現在他才知道，葉塵的實力和心機遠比他想像的要深。從自己進入城主府的那一刻起，葉塵可能就已經發現了他，只是一直沒有現身，等著看他會做些什麼。這種沉穩和耐心，絕對不是一個普通的歸真後期修士能夠擁有的。</p>
+        <p>「葉城主，久仰了，」他平靜地說道，表面上依然保持著鎮定，但握劍的手已經微微用力，「在下只是來探望一位故人，沒有惡意。韓長老畢竟是煉神谷的人，谷主讓我來帶他回去，也是情理之中的事情。」</p>
+        <p>「探望故人需要深夜翻牆嗎？」葉塵微微一笑，「趙副堂主，你們煉神谷的人行事方式還真是特別。」</p>
+        <p>趙厲沉默了片刻，然後緩緩地拔出腰間的長劍：「既然被發現了，那我也不隱瞞了。葉塵，交出韓長老和枯榮魔功的功法，我可以在谷主面前為你說幾句好話。」</p>
+        <p>葉塵的笑容不變：「如果我說不呢？」</p>
+        <p>「那你就是和煉神谷為敵，」趙厲的語氣冰冷了起來，手中的長劍在昏暗的光線下閃爍著寒光，「你想清楚了。以你現在的實力，能和煉神谷抗衡嗎？煉神谷的實力遠超你的想像，和我們作對不會有好下場。」</p>
+        <p>葉塵沒有回答，而是緩緩抬起右手，腳步不疾不徐地向趙厲走了兩步，擋在了牢房和趙厲之間。金色的歸真之力在掌心中凝聚，化作一柄金色的長劍，劍身通透如水晶，在昏暗的牢房中散發出耀眼的光芒。</p>
+        <p>「那就試試看吧。」他平靜地說道，金色的劍芒在昏暗的牢房中亮起，照亮了他那張堅定而從容的面孔。他的眼神中沒有一絲畏懼和退縮，反而帶著一種躍躍欲試的光芒，就像是一個等待了許久的戰士終於迎來了自己期待的對手。</p>
+        <p>趙厲的目光凝重了起來。他能夠感受到葉塵身上散發出的那股歸真之力的純淨和強大，遠超一般歸真後期修士的水準。那金色的光芒中蘊含著一種古老而深沉的力量，讓他這個煉神谷執法堂副堂主都感到了一絲壓力。他的手握緊了劍柄，體內靈力高速運轉，準備迎接即將到來的戰鬥。他發現自己低估了這個年輕人——葉塵不僅僅是一個運氣好的城主，更是一個真正擁有實力和膽魄的強者。這場戰鬥，恐怕不會像他想像中那麼輕鬆。</p>
+        <p>韓長老坐在牢房中，看著對峙的兩人，眼中閃過一絲複雜的神色。他沒有想到葉塵會為了保護他而與煉神谷正面對抗，這份情誼讓他既感動又慚愧。他猶豫了片刻，最終還是開口感嘆道：「葉城主，你不是他的對手。趙厲是煉神谷執法堂副堂主，修為已經達到了歸真巔峰，距離嬰變期只有一步之遙。他在煉神谷中以劍法凌厲著稱，曾經在正面戰鬥中擊殺過三名歸真巔峰的強者，你不要為了我這個糟老頭子冒險。」他的聲音中充滿了擔憂和自責，他不希望看到一個願意幫助他的年輕人因為自己而陷入危險。</p>
+        <p>但葉塵沒有退縮，反而向前又邁了一步，金色的劍芒更加明亮。他的眼神堅定如山，嘴角甚至還帶著一絲自信的微笑：「韓長老放心，我既然敢在這裡等他，就有把握應付。煉神谷雖然強大，但這裡是我的地盤，在我的城市裡，還輪不到他們說了算。」他的話語雖然平靜，但語氣中蘊含著不容置疑的自信和霸氣。</p>
+        
+    </main>
+    <nav class="nav">
+        <a href="chapter-770.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-771/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-772.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

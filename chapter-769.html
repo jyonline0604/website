@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第769章 · 烙印之爭 - 萬古塵埃</title>
+    <link rel="canonical" href="">
+    <link rel="prev" href="chapter-768.html">
+    <link rel="next" href="chapter-770.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第769章 · 烙印之爭</h1>
+    <main>
+<p>「你怎麼又來了？」韓長老問道，聲音沙啞而虛弱。</p>
+        <p>葉塵沒有回答，而是走到牢房前，蹲下身來，仔細觀察韓長老的身體。他體內的歸真之眼全力運轉，金色的光芒在瞳孔深處閃爍，掃視著韓長老體內的每一寸經脈和丹田。他的目光一寸一寸地移動，不放過任何一個細微的角落。</p>
+        <p>韓長老被他看得有些發毛：「你在看什麼？」</p>
+        <p>「別動，」葉塵沉聲說道，目光鎖定在韓長老丹田深處的一個微小印記上。</p>
+        <p>那個印記非常隱蔽，只有芝麻大小，藏在丹田最深處的經脈交匯處，散發著極其微弱的靈力波動。如果不是他刻意尋找，再加上歸真之眼的輔助，根本不可能發現它的存在。</p>
+        <p>靈魂烙印，果然有。</p>
+        <p>葉塵站起身來，臉色有些凝重：「你體內有靈魂烙印。煉神谷的人在你身上留下了追蹤印記。」</p>
+        <p>韓長老的臉色一變，顯然也沒有想到這件事：「靈魂烙印？我怎麼不知道？」</p>
+        <p>「這種印記非常隱蔽，平時不會有任何感覺，也不會影響你的修煉和戰鬥，」葉塵解釋道，「但只要你離開一定的範圍，施術者就能感應到你的位置。煉神谷的人就是靠這個找到西域來的。」</p>
+        <p>韓長老沉默了片刻，然後苦笑了一聲：「看來我還是太小看煉神谷了。他們早就做好了準備，即使我逃到天涯海角，他們也能找到我。」</p>
+        <p>葉塵沒有接話，而是陷入了沉思。</p>
+        <p>如果韓長老體內有靈魂烙印，那煉神谷的人一定已經知道他就在萬古塵城。那個五人小隊只是先遣隊。他們來西域的目的，就是確認韓長老的位置，然後回去報告。真正的威脅還在後面。</p>
+        <p>他必須在煉神谷的主力到來之前，處理掉這個烙印。如果讓煉神谷的人循著烙印找到萬古塵城，整座城市都會陷入危險之中。</p>
+        <p>「我能幫你消除這個烙印，」葉塵說道，「但過程會很痛苦。靈魂烙印和你的靈魂緊密相連，強行消除的話會對你的靈魂造成一定的損傷。」</p>
+        <p>韓長老抬起頭，看著葉塵，目光中帶著一絲複雜的情緒：「你願意幫我消除烙印？你不怕我消除烙印之後逃跑了嗎？」</p>
+        <p>「你逃不了，」葉塵淡淡地說道，「而且你也沒有地方可去。煉神谷的人正在抓你，西域聯盟也在監視你。你唯一活下去的機會，就是和我合作。」</p>
+        <p>韓長老沉默了很久，然後緩緩地點了點頭：「好。你動手吧。」</p>
+        <p>葉塵打開牢門，走了進去，在韓長老面前盤膝坐下。他深吸了一口氣，然後伸出手，按在韓長老的丹田上。</p>
+        <p>牢房中的氣氛在這一刻變得凝重起來。油燈的光芒在牆壁上投下搖曳的影子，將兩人的身影拉得很長。葉塵的手掌貼在韓長老的丹田位置，感受著對方體內靈力的流動情況。韓長老的身體繃得很緊，顯然對這個過程充滿了戒備和不安，但他知道葉塵說的是對的——如果不消除這個靈魂烙印，他就永遠無法擺脫煉神谷的追捕。</p>
+        <p>金色的歸真之力緩緩注入韓長老體內，沿著經脈向著那個烙印所在的位置移動。韓長老的身體微微顫抖了一下。歸真之力進入體內的感覺並不舒服，尤其是對於一個經脈被封的人來說。</p>
+        <p>葉塵小心翼翼地控製著力量，避免損傷韓長老的經脈。歸真之力像一條金色的絲線，在經脈中緩緩流淌，最終到達了那枚靈魂烙印所在的位置。</p>
+        <p>那是由黑色靈力構成的微小印記，形狀像是一朵含苞待放的黑色花朵，散發著陰冷而隱蔽的氣息。葉塵能感受到它和韓長老靈魂之間的緊密聯繫，就像一根看不見的絲線，將烙印和韓長老的靈魂深處連接在一起。</p>
+        <p>要消除烙印，就必須切斷那根絲線。</p>
+        <p>金色的歸真之力化作無數細微的絲線，像蛛網一樣包裹住了那枚靈魂烙印。然後他小心翼翼地將歸真之力滲入烙印內部，一點一點地分解烙印中的黑色靈力。</p>
+        <p>韓長老發出了一聲悶哼，額頭上滲出了豆大的汗珠。他的身體劇烈地顫抖著，雙手緊緊抓住了膝蓋上的衣服，指節因為用力而發白。靈魂被觸碰的痛苦遠比肉體的痛苦更加強烈，那種深入骨髓的刺痛感讓他幾乎要昏厥過去。</p>
+        <p>但葉塵沒有停下來。他穩穩地控製著歸真之力，繼續分解那枚烙印。他的額頭上也滲出了細密的汗珠，但他的手沒有一絲顫抖，穩定得像一塊磐石。歸真之力化成的金色絲線如同最精密的手術刀，小心翼翼地將烙印中的黑色靈力一層層剝離，每一次剝離都伴隨著韓長老身體的一陣痙攣。</p>
+        <p>時間一分一秒地過去。牢房中只剩下兩人粗重的呼吸聲和油燈偶爾爆出的燈花聲。葉塵的衣衫已經被汗水浸透，但他不敢有絲毫鬆懈。靈魂烙印和韓長老的靈魂緊密相連，任何一個細微的失誤都可能對韓長老的靈魂造成永久性的損傷。</p>
+        <p>大約過了一炷香的時間，那枚靈魂烙印終於被徹底分解了。</p>
+        <p>在最後一絲黑色靈力消散的瞬間，韓長老的身體猛地一僵，然後軟軟地癱倒在了地上，大口地喘著氣。他的臉色比剛才更加蒼白了，額頭上滿是汗水，整個人像是從水裡撈出來的一樣。但他的眼神中卻閃爍著一絲解脫的光芒。</p>
+        <p>「結……結束了？」他喘息著問道。</p>
+        <p>葉塵收回手，擦了擦額頭上的汗珠。他的臉色也有些蒼白，消除靈魂烙印消耗了他大量的精力，但總算成功了：「結束了。從現在開始，煉神谷的人再也感應不到你的位置了。」</p>
+        <p>韓長老閉上眼睛，長長地鬆了一口氣，身體放鬆了下來。</p>
+        <p>葉塵站起身來，走出了牢房。在離開之前，他回頭看了韓長老一眼，說道：「好好休息。明天，我需要你幫我做一件事。」</p>
+        <p>韓長老睜開眼睛，虛弱地問道：「什麼事？」</p>
+        <p>「煉神谷的先遣隊已經到了西域，」葉塵說道，「我需要你告訴我，他們的領頭人是誰，擅長什麼功法，有什麼弱點。」</p>
+        <p>韓長老沉默了片刻，然後說道：「如果我的猜測沒錯，帶隊的人應該是『鐵面』趙厲，煉神谷執法堂的副堂主，歸真後期巔峰，擅長一套名為『破軍劍法』的劍術。這個人心狠手辣，辦事極為果斷，在煉神谷中有『鐵面無私』之稱。」</p>
+        <p>葉塵將這些資訊記在了心中，然後點了點頭：「多謝。」</p>
+        <p>他走出了地牢。</p>
+        <p>夜色更深了。天空中烏雲密布，遮蔽了月亮和星辰，整座城市陷入了一片黑暗之中。只有城主府中的幾盞燈火還在亮著，在黑暗中搖曳不定。</p>
+        <p>地牢的沉重鐵門在他身後緩緩關閉，發出沉悶的金屬撞擊聲。石階上的青苔在夜色中泛著微弱的綠色螢光，那是靈氣在潮濕環境中沉澱後的產物。偶爾有幾滴露水從屋簷上滴落，在石階上濺起細小的水花，發出清脆的滴答聲。整座萬古塵城在夜晚顯得格外安靜，只有風聲和遠處偶爾傳來的幾聲犬吠打破了夜的寂靜。</p>
+        <p>葉塵站在地牢出口，感受著夜風吹在臉上的涼意。夜晚的空氣中帶著一絲潮濕的泥土氣息，預示著不久之後可能會有一場大雨。</p>
+        <p>葉塵站在夜色中，感受著夜風吹在臉上的涼意。他的目光穿過黑暗，望向煉神谷大軍可能到來的方向。他知道，接下來等待他的將是一場更加艱難的戰鬥，但他已經做好了準備。無論前方有多少困難，他都會一一克服，因為他肩負著保護萬古塵城和所有城中百姓的責任。</p>
+        <p>煉神谷的先遣隊已經到了西域，靈魂烙印也已經消除了，但真正的戰鬥才剛剛開始。趙厲發現烙印消失後，一定會意識到事情敗露了。接下來他會怎麼做？是直接攻打萬古塵城，還是先派人回煉神谷報告？葉塵的目光在黑暗中閃爍著。不管趙厲怎麼做，他都要做好準備。因為煉神谷的腳步，已經越來越近了。</p>
+        <p>微風吹過，帶來了遠方的氣息。葉塵深深地吸了一口氣，感受著這個世界的美好和生機。他知道，自己身上的責任重大，但他從不畏懼。因為他有著堅定的信念，有著支持他的夥伴，有著無論如何都不會放棄的決心。</p>
+        <p>夜空中的烏雲越積越厚，將最後一絲星光也遮蔽了。葉塵站在地牢外的小廣場上，感受著空氣中越來越濃重的濕氣。他知道，用不了多久，一場大雨就會降臨。這場雨或許能夠沖洗掉城中殘留的靈力痕跡，讓趙厲更難追蹤到韓長老的具體位置。但葉塵明白，真正的挑戰才剛剛開始。煉神谷的人既然已經到了西域，就不會輕易放棄。他必須在最短的時間內做好應對的準備，因為下一次，來的就不會只是五個人這麼簡單了。他轉身向城主府走去，步伐堅定而從容，心中已經開始規劃接下來的每一步行動。</p>
+        <p>他在心中默默盤算著接下來的計劃。首先要加強城中的戒備，特別是那些戰略要地的守衛力量。其次要派人密切監視趙厲一行人的動向，掌握他們的一舉一動。同時還要加快城防陣法的完善進度，確保在煉神谷主力到來之前，萬古塵城能夠做好充分的防禦準備。他要讓煉神谷明白，西域不是他們能夠隨意撒野的地方，萬古塵城更不是他們能夠輕易攻陷的目標。這場暗中的較量才剛剛拉開序幕，而他有信心成為最終的勝利者。</p>
+        
+    </main>
+    <nav class="nav">
+        <a href="chapter-768.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-769/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-770.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

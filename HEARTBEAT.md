@@ -49,6 +49,13 @@
       "action_if_fail": "嘗試從 Max-backup 恢復最新備份"
     },
     {
+      "name": "Git 健康檢查",
+      "schedule": "daily",
+      "time": "09:00",
+      "check": "檢查 git rebase/merge/detached HEAD 狀態，使用 scripts/git-health-check.sh",
+      "action_if_fail": "自動修復（abort rebase/merge，修復 detached HEAD）並通知大肥喵"
+    },
+    {
       "name": "Cron任務健康檢查",
       "schedule": "daily",
       "time": "09:30",

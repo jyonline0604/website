@@ -512,8 +512,27 @@ def run_link_check():
     log("  ✅ 鏈接檢查通過")
     return True
 
+def check_git_health():
+    """檢查 Git 健康狀態，自動修復卡住的 rebase"""
+    health_script = os.path.join(WORKSPACE, "scripts/git-health-check.sh")
+    if os.path.exists(health_script):
+        r = subprocess.run(
+            ['bash', health_script, '--fix'],
+            cwd=WORKSPACE, capture_output=True, text=True, timeout=30
+        )
+        for line in r.stdout.split('\n'):
+            if line.strip() and not line.startswith('='):
+                log(f"  🩺 {line.strip()}")
+        if r.stderr.strip():
+            log(f"  ⚠️ Git 健康檢查錯誤: {r.stderr.strip()[:200]}")
+    else:
+        log("  ⚠️ git-health-check.sh 不存在，跳過 Git 健康檢查")
+
 def git_commit_and_push(ch_start, ch_end):
     """提交並推送到 GitHub"""
+    # 先檢查 Git 健康狀態
+    check_git_health()
+    
     log("  📤 推送到 GitHub...")
     
     # Stage files
@@ -536,6 +555,8 @@ def git_commit_and_push(ch_start, ch_end):
         log("  ✅ GitHub 推送成功")
     else:
         log(f"  ❌ GitHub 推送失敗: {r.stderr[:200]}")
+    # 推送完成後再次檢查
+    check_git_health()
 
 # ==================== 主流程 ====================
 

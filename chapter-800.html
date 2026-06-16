@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第800章 · 連環計 - 萬古塵埃</title>
+    <link rel="canonical" href="">
+    <link rel="prev" href="chapter-799.html">
+    <link rel="next" href="chapter-801.html">
+    <style>
+        :root {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --accent: #6366F1;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+            --font-size: 18px;
+            --line-height: 1.8;
+        }
+        [data-theme="light"] {
+            --bg: #FAFBFC;
+            --text: #1F2937;
+            --border: #E5E7EB;
+            --panel-bg: #FFFFFF;
+        }
+        [data-theme="sepia"] {
+            --bg: #F4ECD8;
+            --text: #5C4B37;
+            --border: #D4C4A8;
+            --panel-bg: #EDE4D0;
+        }
+        [data-theme="sky"] {
+            --bg: #E8F4FC;
+            --text: #2C5282;
+            --border: #BEE3F8;
+            --panel-bg: #E8F4FC;
+        }
+        [data-theme="green"] {
+            --bg: #E8F5E9;
+            --text: #2E5A3A;
+            --border: #A5D6A7;
+            --panel-bg: #E8F5E9;
+        }
+        [data-theme="dark"] {
+            --bg: #1A1F26;
+            --text: #E5E7EB;
+            --border: #374151;
+            --panel-bg: #242B35;
+        }
+        [data-theme="navy"] {
+            --bg: #1A202C;
+            --text: #E2E8F0;
+            --border: #4A5568;
+            --panel-bg: #2D3748;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 60px 20px;
+            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+        p {
+            text-indent: 2em;
+            margin: 1em 0;
+            font-size: var(--font-size);
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .top-bar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .controls select, .controls button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .controls select:hover, .controls button:hover {
+            border-color: var(--accent);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            display: flex;
+        }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 1.5em; margin-top: 70px; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav a { text-align: center; }
+            .top-bar { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="chapters.html">← 返回目錄</a>
+        <div class="controls">
+            <select id="themeSelect">
+                <option value="light">☀️</option>
+                <option value="sepia">📜</option>
+                <option value="sky">🌤️</option>
+                <option value="green">🌿</option>
+                <option value="dark">🌙</option>
+                <option value="navy">🌌</option>
+            </select>
+            <select id="fontSize">
+                <option value="14px">A</option>
+                <option value="18px" selected>A</option>
+                <option value="22px">A</option>
+            </select>
+        </div>
+    </div>
+    <h1>第800章 · 連環計</h1>
+    <main>
+<p>「葉城主，這一仗打得漂亮！」李軍官率先開口說道，臉上帶著由衷的敬佩笑容，「煉神谷的補給基地被毀，他們的數萬大軍就斷了糧草和軍械來源，這下孫不二就算有通天本事也施展不出來了。用不了多久，他們就只能灰溜溜地撤出西域。」</p>
+        <p>「是啊，葉城主果然智勇雙全，這一招聲東擊西用得太妙了！」烈火宗的長老連連點頭附和，語氣中充滿了感嘆和欽佩。</p>
+        <p>「煉神谷這些年在西域橫行霸道，終於有人能夠治他們了！」</p>
+        <p>眾人紛紛附和，議事廳中的氣氛一片熱烈，充滿了樂觀和興奮的情緒。所有人都在慶祝這場來之不易的勝利，每個人都在暢想著煉神谷撤軍後西域的和平景象。</p>
+        <p>但葉塵卻沒有被勝利的喜悅沖昏頭腦。他靜靜地聽完了眾人的祝賀和議論，然後緩緩站了起來，舉起手示意眾人安靜。議事廳中的嘈雜聲漸漸停了下來，所有人的目光都集中到了葉塵的身上。</p>
+        <p>「諸位，我知道大家都很高興，我也很高興。摧毀煉神谷的補給基地，確實是我們的一次重大勝利，對整個戰局有著決定性的影響，值得好好慶祝一番，」葉塵環視全場，語氣誠摯地說道，然後話鋒一轉，語氣變得凝重了起來，「但是，我必須提醒大家，戰爭還沒有結束。孫不二不是一般人，他不會因為一次的失利就放棄西域。恰恰相反，這次失敗很可能會讓他採取更加極端的手段。」</p>
+        <p>眾人的笑容漸漸收斂了起來，開始認真地思考葉塵的話。</p>
+        <p>「孫不二這個人，我已經和他打過兩次交道了，對他有一定的了解，」葉塵繼續說道，「他的性格非常沉穩，心思縝密，謀定而後動，不會因為一時的憤怒就做出衝動的決定。以他的頭腦，現在一定已經在思考如何化解眼前的困境了。補給基地被毀，他們前線的數萬大軍確實面臨斷糧的危險，但煉神谷底蘊深厚，在中州還有其他的補給渠道。孫不二完全可以從中州調集新的補給，雖然耗時較長，但並非不可能。而且在新的補給到達之前，他也一定會採取行動來扭轉局面，不會坐以待斃。」</p>
+        <p>「那葉城主覺得，孫不二接下來會怎麼做？」李軍官皺著眉頭問道。</p>
+        <p>「有幾種可能，」葉塵豎起手指分析道，「第一，他可能會集中兵力，在補給耗盡之前對萬古塵城發動總攻，試圖在最短的時間內攻破城池，速戰速決。雖然這會付出慘重的代價，但以煉神谷的兵力優勢，並非完全沒有可能。第二，他可能會分兵劫掠西域各宗門，以戰養戰，從各個小宗門中獲取補給和物資，用搶來的糧食維持軍隊的運轉。這是最壞的情況，因為這意味著整個西域都會陷入戰火之中。第三，他可能會派人向中州的煉神谷總部求援，請求調派新的補給和援軍，同時在原地紮營固守，等待援軍到來。」</p>
+        <p>眾人聽完後，臉色都變得凝重了起來。葉塵分析的這三種可能，每一種都不好對付。特別是第二種——如果孫不二真的選擇分兵劫掠，整個西域都會變成戰場，各宗門都將面臨滅頂之災。</p>
+        <p>「那我們該怎麼辦？」一名長老問道。</p>
+        <p>孫不二的手指在護欄上輕輕敲擊著，腦海中飛速運轉。他在思考如何在不依賴補給的情況下扭轉戰局。萬古塵城的防禦堅固，葉塵的指揮能力出眾，正面強攻的代價太大。但他手中仍然握有一些底牌，那些底牌還沒有到使用的時候。他需要等待一個機會，一個能夠一舉扭轉局面的機會。他轉頭看向遠方，夕陽將天空染成了血紅色，像是預示著即將到來的血腥戰鬥。他的嘴角浮現出一絲冷笑，這場戰爭還遠遠沒有結束。 「兵來將擋，水來土掩，」葉塵沉聲說道，「我們不能把勝利的希望寄托在敵人犯錯上。必須主動出擊，進一步擴大我們的優勢，不給孫不二喘息的機會。我有一個計劃……」</p>
+        <p>當天傍晚，一封從萬古塵城發出的密信經由一條秘密渠道，以最快的速度送到了中州青州城慕容府中。慕容滄海和慕容青雲父子看完信後，相視一笑，眼中都閃爍著欣賞的光芒。</p>
+        <p>「這個葉塵，果然沒有讓我們失望，」慕容滄海將信放在桌上，手指輕輕敲擊著桌面，語氣中充滿了讚許和滿意，「摧毀煉神谷的後方補給基地，斷了他們在西域戰場上的糧道。這一招聲東擊西用得乾淨利落，連孫不二那種老狐狸都被他算計了。此子的戰略眼光和膽識，遠超同輩，將來必成大器。」</p>
+        <p>「父親，那我們是不是也該行動了？」慕容青雲問道。</p>
+        <p>「嗯，時機到了，」慕容滄海點了點頭，眼神中閃過一絲深邃的光芒，彷彿早已在等待這個機會，「孫不二的前線補給被斷，煉神谷總部勢必會從中州調集新的補給運往西域。我們慕容家族掌控著中州通往西域的幾條主要商道，只要我們以『剿匪』的名義封鎖道路，拖住他們的補給隊伍，就能為葉塵爭取更多的時間。」</p>
+        <p>「而且，煉神谷的注意力現在都集中在西域戰場上，中州的防禦必然空虛，」慕容青雲的眼中閃爍著智慧的光芒，接話道，「我們可以趁這個機會，暗中聯絡其他對煉神谷不滿的家族和宗門，進一步擴大我們的聯盟，為將來的行動做好準備。」</p>
+        <p>「不錯，」慕容滄海讚許地看了兒子一眼，然後又補充道，「另外，派一隊精銳暗中前往西域，必要的時候給葉塵提供支援。煉神谷的人做事向來不擇手段，孫不二更是一條毒蛇，誰也想不到他會做出什麼瘋狂的事情來。葉塵雖然足智多謀，但畢竟年輕，修為也只有半步嬰變，需要有人從旁策應。」</p>
+        <p>「孩兒明白，我這就去安排。」慕容青雲拱手說道，然後轉身快步走出了書房。</p>
+        <p>局勢正在按照葉塵的計劃逐步展開，但誰也不知道孫不二會做出什麼樣的反擊。葉塵知道，真正的戰鬥才剛剛開始。 與此同時，在煉神谷的軍營中，氣氛已經完全變了。補給基地被摧毀的消息已經傳遍了全軍，軍中人心惶惶，議論紛紛。士兵們的臉上失去了往日的驕橫和自信，取而代之的是迷茫和不安。他們知道，沒有了後方補給意味著什麼——沒有糧食，沒有箭矢，沒有靈石，再強大的軍隊也無法在荒漠中生存下去。</p>
+        <p>孫不二站在瞭望塔上，迎著夕陽，望著遠方萬古塵城的方向。他的臉上沒有任何表情，但眼神卻冰冷得可怕。他保持著這個姿勢已經整整一個時辰了，一句話都沒有說，彷彿化作了一尊雕塑，在夕陽的餘暉中投下長長的影子。</p>
+        <p>一名副官小心翼翼地走上瞭望塔，在孫不二身後三步遠的地方停下，躬身報告道：「副谷主，派往中州求援的信使已經出發了。同時，按照您的命令，軍中的糧食已經開始實行配給製，所有將士的口糧減半，預計還能維持二十天左右。」</p>
+        <p>「二十天……」孫不二緩緩重複了這三個字，聲音中聽不出任何情緒，只有一種難以言說的沉重感。</p>
+        <p>「另外，屬下還有一個壞消息要報告，」副官的語氣更加小心翼翼了，額頭上的冷汗順著鬢角滑落，「前往西域各宗門徵糧的隊伍……全部被拒了。那些小宗門要麼說自己也缺糧，要麼直接關門閉陣，根本不讓我們的人進去。看來，他們是鐵了心要和西域聯盟站在一起了。」</p>
+        <p>孫不二沉默了片刻，然後突然笑了起來。他的笑容中帶著一絲苦澀，一絲自嘲，還有一絲濃濃的興趣和戰意：「好一個葉塵，你這一手釜底抽薪，真是打得我措手不及。先是毀了我的補給基地，又提前聯合西域各宗門斷了我劫掠補給的路。每一步都算得很精準，每一招都打在了我的痛處上。看來，我是真的小看你了。」</p>
+        <p>他轉過身來，看著夕陽中那一片金色的天空，眼中的寒光漸漸收斂了起來，取而代之的是更加深沉和專注的神色：「既然你已經亮出了你的利劍，那接下來，就該輪到我出招了。」</p>
+        <p>孫不二的手指在護欄上輕輕敲擊著，腦海中飛速運轉。他在思考如何在不依賴補給的情況下扭轉戰局。萬古塵城的防禦堅固，葉塵的指揮能力出眾，正面強攻的代價太大。但他手中仍然握有一些底牌，那些底牌還沒有到使用的時候。他需要等待一個機會，一個能夠一舉扭轉局面的機會。</p>
+        
+    </main>
+    <nav class="nav">
+        <a href="chapter-799.html" id="prevLink">← 上一章</a>
+        <a href="chapters.html">📖 返回目錄</a>
+        <a href="https://kofhk.com/manga/chapter-800/" class="manga-btn">🎨 漫畫版</a>
+        <a href="chapter-801.html" id="nextLink">下一章 →</a>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.dataset.theme = this.value;
+            localStorage.setItem('novelTheme', this.value);
+        });
+        var savedTheme = localStorage.getItem('novelTheme');
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            document.getElementById('themeSelect').value = savedTheme;
+        }
+        document.getElementById('fontSize').addEventListener('change', function() {
+            document.body.style.setProperty('--font-size', this.value);
+            localStorage.setItem('novelFont', this.value);
+        });
+        var savedFont = localStorage.getItem('novelFont');
+        if (savedFont) {
+            document.body.style.setProperty('--font-size', savedFont);
+            document.getElementById('fontSize').value = savedFont;
+        }
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        var prevLink = document.getElementById('prevLink');
+        if (!prevLink.href || prevLink.href.includes('#')) {
+            prevLink.style.opacity = '0.5';
+            prevLink.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>

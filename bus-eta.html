@@ -46,9 +46,10 @@
 /* === Site Shell CSS === */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;-webkit-text-size-adjust:100%}
-body{font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0f;color:#e0e0e0;min-height:100vh}
+body{font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0f;color:#e0e0e0;min-height:100vh;background-image:url('assets/backgrounds/bus-bg.webp');background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(10,10,15,.55);z-index:-1;pointer-events:none}
 a{color:#00d4ff;text-decoration:none}
-header[role="banner"]{background:rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.1);padding:15px 0;position:sticky;top:0;z-index:1000}
+header[role="banner"]{background:rgba(0,0,0,0.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.1);padding:15px 0;position:sticky;top:0;z-index:1000}
 .header-content{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
 .logo{font-size:1.3rem;font-weight:700;color:#00d4ff;text-decoration:none}
 nav{display:flex;gap:5px}
@@ -56,10 +57,11 @@ nav a{color:#CCC;text-decoration:none;padding:6px 14px;border-radius:20px;font-s
 nav a:hover,nav a.active{background:rgba(0,212,255,0.2);color:#00d4ff}
 main{max-width:1200px;margin:0 auto;padding:30px 20px}
 .page-title{text-align:center;margin-bottom:15px}
-.page-title h1{font-size:1.5rem;color:#e0e0e0}
-.skip-navigation{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-1}
-footer{text-align:center;padding:30px 20px;color:#AAA;font-size:.8rem;border-top:1px solid rgba(255,255,255,.05);margin-top:40px}
+.page-title h1{font-size:1.5rem;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.page-title p{color:rgba(255,255,255,.7)!important;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+footer{text-align:center;padding:30px 20px;color:rgba(255,255,255,.6);font-size:.8rem;border-top:1px solid rgba(255,255,255,.08);margin-top:40px;text-shadow:0 1px 4px rgba(0,0,0,.4)}
 footer a{color:#00d4ff;text-decoration:none}
+.skip-navigation{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-1}
 
 /* === Bus App Container (replicates original body) === */
 .bus-app-container{max-width:500px;margin:0 auto;background:#f0f2f5;color:#1a1a2e;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.3);padding-bottom:80px;color-scheme:only light}

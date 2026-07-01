@@ -333,6 +333,17 @@
             background: rgba(255, 255, 255, 0.95); /* 白色背景 */
         }
         /* 響應式設計 */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 8px;
+            line-height: 1;
+        }
+
         @media (max-width: 768px) {
             .header {
                 padding: 0 16px;
@@ -13877,6 +13888,10 @@
         });
     </script>
     <script src="assets/main.js" defer></script>
+    <script>
+    document.getElementById('hamburger').addEventListener('click',function(){var n=document.getElementById('navMenu');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open'));});
+    document.addEventListener('click',function(e){var n=document.getElementById('navMenu');var h=document.getElementById('hamburger');if(!e.target.closest('#navMenu')&&!e.target.closest('#hamburger')){n.classList.remove('open');h.setAttribute('aria-expanded','false');}});
+    </script>
     <script>
         (function() {
             'use strict';

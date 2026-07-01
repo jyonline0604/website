@@ -703,15 +703,27 @@ async function showRouteStopsGMB() {
   if (!d) return;
 
   setStatus('載入車站資料...', true);
+  let stops = [];
   try {
     if (!S.gmbStopsCache) {
       S.gmbStopsCache = await fetch('data/gmb_route_stops.json').then(r=>r.json());
     }
     const rs = S.gmbStopsCache;
+    const key = `${d.routeId}_${d.routeSeq}`;
+    stops = (rs.data && rs.data[key]) ? rs.data[key] : [];
+
+    // Fallback: load from API if not found in local cache
+    if (!stops.length) {
+      console.warn('GMB stops not in cache, fetching from API:', key);
+      const apiRs = await api(CFG.GMB.base+CFG.GMB.routeStopEp(d.routeId, d.routeSeq));
+      const raw = (apiRs.data?.route_stops || apiRs.data || []);
+      stops = raw.map(s => ({
+        seq: s.stop_seq, stopId: s.stop_id,
+        nameTc: s.name_tc || '', nameEn: s.name_en || '',
+      }));
+    }
     clearStatus();
 
-    const key = `${d.routeId}_${d.routeSeq}`;
-    const stops = (rs.data && rs.data[key]) ? rs.data[key] : [];
     if (!stops.length) { showError('該方向無車站資料'); return; }
 
     const h = document.getElementById('routeHeader');

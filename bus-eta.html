@@ -13,7 +13,7 @@
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "香港巴士實時報站",
-      "description": "香港巴士實時到站時間查詢，支援九巴、城巴、港鐵巴士路線搜尋及實時ETA",
+      "description": "香港巴士實時到站時間查詢，支援九巴、城巴、港鐵巴士、專線小巴路線搜尋及實時ETA",
       "url": "https://kofhk.com/bus-eta.html",
       "publisher": {
         "@type": "Organization",
@@ -67,7 +67,7 @@ footer a{color:#00d4ff;text-decoration:none}
 .bus-app-container{max-width:500px;margin:0 auto;background:#f0f2f5;color:#1a1a2e;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.3);padding-bottom:80px;color-scheme:only light}
 
 /* === Original Bus App CSS (preserved exactly, with site adjustments) === */
-:root{--kmb:#e8302a;--ctb:#0076c0;--mtr:#00a03c;--bg:#f0f2f5;--card:#fff;--border:#e0e3e8;--text:#1a1a2e;--text2:#6b7280;--text3:#9ca3af}
+:root{--kmb:#e8302a;--ctb:#0076c0;--mtr:#00a03c;--gmb:#7c3aed;--bg:#f0f2f5;--card:#fff;--border:#e0e3e8;--text:#1a1a2e;--text2:#6b7280;--text3:#9ca3af}
 
 /* Company Bar */
 .company-bar{display:flex;gap:8px;padding:10px 16px;background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:55px;z-index:999}
@@ -76,6 +76,7 @@ footer a{color:#00d4ff;text-decoration:none}
 .company-btn[data-co="KMB"]{--active:var(--kmb)}.company-btn[data-co="KMB"].active{color:var(--kmb);border-color:var(--kmb);background:#fef2f2}
 .company-btn[data-co="CTB"]{--active:var(--ctb)}.company-btn[data-co="CTB"].active{color:var(--ctb);border-color:var(--ctb);background:#f0f7ff}
 .company-btn[data-co="MTR"]{--active:var(--mtr)}.company-btn[data-co="MTR"].active{color:var(--mtr);border-color:var(--mtr);background:#f0fdf4}
+.company-btn[data-co="GMB"]{--active:var(--gmb)}.company-btn[data-co="GMB"].active{color:var(--gmb);border-color:var(--gmb);background:#f5f0ff}
 
 /* Search */
 .search-section{padding:10px 16px;background:var(--card);margin-top:2cm}
@@ -97,6 +98,7 @@ footer a{color:#00d4ff;text-decoration:none}
 .route-co-tag.KMB{background:var(--kmb)}
 .route-co-tag.CTB{background:var(--ctb)}
 .route-co-tag.MTR{background:var(--mtr)}
+.route-co-tag.GMB{background:var(--gmb)}
 
 /* Direction Cards */
 .direction-section{padding:8px 16px;background:var(--card);display:none}
@@ -171,6 +173,7 @@ footer a{color:#00d4ff;text-decoration:none}
 .tag.KMB{background:var(--kmb)}
 .tag.CTB{background:var(--ctb)}
 .tag.MTR{background:var(--mtr)}
+.tag.GMB{background:var(--gmb)}
 .route-header .update-time{margin-left:auto;font-size:.65rem;opacity:.6}
 
 
@@ -250,6 +253,9 @@ footer a{color:#00d4ff;text-decoration:none}
   <button class="company-btn" data-co="MTR" onclick="selectCo('MTR')">
     港鐵巴士<span class="badge">MTR Bus</span>
   </button>
+  <button class="company-btn" data-co="GMB" onclick="selectCo('GMB')">
+    小巴<span class="badge">GMB</span>
+  </button>
 </div>
 
 <div class="search-section">
@@ -288,7 +294,7 @@ footer a{color:#00d4ff;text-decoration:none}
     <h3>搜尋香港巴士路線</h3>
     <p>選擇巴士公司，輸入路線號碼<br>即時查看所有車站到站時間</p>
     <div class="tips">
-      <div class="tip"><span class="tip-num">1</span> 選擇 九巴 / 城巴 / 港鐵巴士</div>
+      <div class="tip"><span class="tip-num">1</span> 選擇 九巴 / 城巴 / 港鐵巴士 / 小巴</div>
       <div class="tip"><span class="tip-num">2</span> 輸入路線號碼（如 1A, 10, 506, K51）</div>
       <div class="tip"><span class="tip-num">3</span> 選擇方向，查看實時到站時間</div>
     </div>
@@ -331,6 +337,14 @@ const CFG = {
     etaBase:'https://rt.data.gov.hk/v1/transport/mtr',
     etaEp:(line,sta)=>`/getSchedule.php?line=${encodeURIComponent(line)}&sta=${encodeURIComponent(sta)}`,
   },
+  GMB: {
+    label:'小巴', color:'#7c3aed',
+    base:'https://data.etagmb.gov.hk',
+    routeEp:'/route',
+    routeDetailEp:(region,code)=>`/route/${region}/${code}`,
+    routeStopEp:(routeId,routeSeq)=>`/route-stop/${routeId}/${routeSeq}`,
+    etaEp:(routeId,stopId)=>`/eta/route-stop/${routeId}/${stopId}`,
+  },
 };
 const API_TIMEOUT = 60000;
 
@@ -353,6 +367,8 @@ const S = {
   mtrStops: {},
   mtrDirections: [],
   mtrLineCode: null,
+  gmbRouteMap: {},
+  gmbRouteDetails: null,
 };
 
 // ===== API HELPERS =====
@@ -382,6 +398,8 @@ async function selectCo(co) {
   S.directionList = [];
   S.dataLoaded = false;
   S.dataLoading = false;
+  S.gmbRouteMap = {};
+  S.gmbRouteDetails = null;
 
   document.querySelectorAll('.company-btn').forEach(b=>
     b.classList.toggle('active', b.dataset.co===co));
@@ -395,6 +413,7 @@ async function selectCo(co) {
   document.getElementById('routeInput').placeholder =
     co==='KMB'?'輸入路線號碼 e.g. 1A, 960, 968':
     co==='CTB'?'輸入路線號碼 e.g. 1, 10, 970X, A11':
+    co==='GMB'?'輸入路線號碼 e.g. 1A, 20M, 44A':
     '輸入路線號碼 e.g. 506, K52, K75';
   closeAC();
 
@@ -429,6 +448,27 @@ async function selectCo(co) {
       } catch(e) {
         clearStatus();
         showError('無法載入港鐵巴士資料: '+e.message);
+      }
+    } else if (co === 'GMB') {
+      setStatus('載入小巴路線...', true);
+      try {
+        const d = await api(CFG.GMB.base+CFG.GMB.routeEp);
+        S.gmbRouteMap = {};
+        S.routes = [];
+        const regions = d.data?.routes || d.routes || {};
+        Object.keys(regions).forEach(region => {
+          regions[region].forEach(code => {
+            const key = code;
+            if (!S.gmbRouteMap[key]) S.gmbRouteMap[key] = [];
+            S.gmbRouteMap[key].push(region);
+            S.routes.push({ route: code, region: region, co: 'GMB' });
+          });
+        });
+        S.routes.sort((a,b)=>a.route.localeCompare(b.route));
+        clearStatus();
+      } catch(e) {
+        clearStatus();
+        showError('無法載入小巴路線: '+e.message);
       }
     } else {
       S.routes = [];
@@ -507,6 +547,9 @@ async function doSearch() {
 
   if (S.co === 'KMB') {
     await searchRouteKMB(v);
+    _searching = false;
+  } else if (S.co === 'GMB') {
+    await searchRouteGMB(v);
     _searching = false;
   } else {
     searchRouteCTB(v).finally(() => { _searching = false; });
@@ -599,6 +642,111 @@ async function searchRouteCTB(route) {
   } catch(e) {
     clearStatus();
     showError('載入失敗: '+e.message);
+  }
+}
+
+async function searchRouteGMB(route) {
+  const regions = S.gmbRouteMap[route];
+  if (!regions || !regions.length) { showError(`找不到小巴路線 ${route}`); return; }
+  hideError();
+
+  S.selectedRoute = route;
+  S.selectedBound = null;
+
+  setStatus('載入路線詳情...', true);
+  try {
+    const details = await Promise.all(regions.map(async region => {
+      const d = await api(CFG.GMB.base+CFG.GMB.routeDetailEp(region, route));
+      return { region, data: d };
+    }));
+    clearStatus();
+
+    const allDirs = [];
+    details.forEach(({region, data}) => {
+      const dirs = data.data || [];
+      dirs.forEach(dir => {
+        dir.directions.forEach(d => {
+          allDirs.push({
+            routeId: dir.route_id,
+            region: dir.region,
+            routeCode: dir.route_code,
+            routeSeq: d.route_seq,
+            orig: d.orig_tc,
+            dest: d.dest_tc,
+            origEn: d.orig_en,
+            destEn: d.dest_en,
+          });
+        });
+      });
+    });
+
+    if (!allDirs.length) { showError('無可用行車方向'); return; }
+
+    S.gmbRouteDetails = allDirs;
+    S.directionList = allDirs;
+
+    const section = document.getElementById('directionSection');
+    section.classList.add('visible');
+    document.getElementById('dirCards').innerHTML = allDirs.map((d, i) => {
+      return `<div class="dir-card" data-idx="${i}" onclick="pickDirGMB(${i})">
+        <div class="dir-label">往 → ${d.region}</div>
+        <div class="dir-arrow">${d.routeCode} →</div>
+        <div class="dir-dest">${d.orig} → ${d.dest}</div>
+      </div>`;
+    }).join('');
+    document.getElementById('routeHeader').classList.remove('visible');
+    document.getElementById('stopListContainer').innerHTML = '';
+    document.getElementById('refreshBtn').classList.remove('visible');
+  } catch(e) {
+    clearStatus();
+    showError('載入小巴路線詳情失敗: '+e.message);
+  }
+}
+
+function pickDirGMB(idx) {
+  const d = S.gmbRouteDetails[idx];
+  if (!d) return;
+  S.selectedBound = d.routeSeq;
+  S.selectedRouteData = d;
+  document.querySelectorAll('.dir-card').forEach(c=>c.classList.toggle('active', c.dataset.idx===String(idx)));
+  showRouteStopsGMB();
+}
+
+async function showRouteStopsGMB() {
+  const d = S.selectedRouteData;
+  if (!d) return;
+
+  setStatus('載入車站資料...', true);
+  try {
+    const rs = await api(CFG.GMB.base+CFG.GMB.routeStopEp(d.routeId, d.routeSeq));
+    clearStatus();
+
+    const stops = (rs.data?.route_stops || rs.data || []);
+    if (!stops.length) { showError('該方向無車站資料'); return; }
+
+    const h = document.getElementById('routeHeader');
+    const tag = document.getElementById('routeTag');
+    tag.className = 'tag GMB';
+    tag.textContent = d.routeCode;
+    document.getElementById('routeInfo').textContent = `${d.orig} → ${d.dest}`;
+    h.classList.add('visible');
+    setUpdateTime();
+
+    S.stopList = stops.map(s => ({
+      seq: s.stop_seq,
+      stopId: s.stop_id,
+      nameTc: s.name_tc || '',
+      nameEn: s.name_en || '',
+    }));
+
+    S.gmbRouteStops = stops;
+
+    renderStopList(S.stopList, {});
+    fetchAndUpdateETA();
+    startTimer();
+  } catch(e) {
+    clearStatus();
+    showError('載入車站資料失敗: '+e.message);
   }
 }
 
@@ -893,6 +1041,19 @@ async function fetchAndUpdateETA() {
             const dirKey = S.selectedBound==='O'?'UP':'DOWN';
             const arr = (raw[key]||{})[dirKey]||[];
             return {stopId: s.stopId, etas: arr.map(e=>({eta:e.time, rmk_tc:e.dest||''}))};
+          } else if (S.co === 'GMB') {
+            const rd = S.selectedRouteData;
+            d = await api(CFG.GMB.base+CFG.GMB.etaEp(rd.routeId, s.stopId));
+            const results = (d.data || []);
+            const etas = [];
+            results.forEach(r => {
+              if (r.stop_seq === s.seq && r.route_seq === rd.routeSeq) {
+                (r.eta||[]).forEach(e => {
+                  etas.push({eta: e.timestamp, rmk_tc: e.remarks_tc||'', diff: e.diff});
+                });
+              }
+            });
+            return {stopId: s.stopId, etas: etas};
           }
           return {stopId: s.stopId, etas: []};
         } catch(_) {
@@ -911,6 +1072,7 @@ async function fetchAndUpdateETA() {
           return e.route === route && e.dir === dirMap[S.selectedBound];
         }
         if (S.co === 'MTR') return true;
+        if (S.co === 'GMB') return true;
         return true;
       });
     });
@@ -974,6 +1136,7 @@ document.getElementById('routeInput').addEventListener('input', function() {
   const sug = S.routes
     .filter(r => {
       if (S.co === 'MTR') return r.route.startsWith(v);
+      if (S.co === 'GMB') return r.route.startsWith(v) && r.co==='GMB';
       return r.route.startsWith(v) && (S.co!=='CTB'|| r.co==='CTB');
     })
     .filter(r => {
@@ -985,7 +1148,9 @@ document.getElementById('routeInput').addEventListener('input', function() {
     .slice(0, 10);
 
   box.innerHTML = sug.map(r => {
-    const dest = S.co==='MTR' ? (r.name_tc||r.name_en) : ((r.orig_tc||r.orig_en)+' → '+(r.dest_tc||r.dest_en));
+    const dest = S.co==='MTR' ? (r.name_tc||r.name_en) :
+      S.co==='GMB' ? ('小巴 · '+r.region) :
+      ((r.orig_tc||r.orig_en)+' → '+(r.dest_tc||r.dest_en));
     return `<div class="autocomplete-item" onclick="pickAC('${r.route}')">
       <div><div class="route-num">${r.route}</div>
       <div class="route-dest">${dest}</div></div>
@@ -1061,7 +1226,7 @@ function showWelcome() {
     '<h3>搜尋香港巴士路線</h3>'+
     '<p>選擇巴士公司，輸入路線號碼<br>即時查看所有車站到站時間</p>'+
     '<div class="tips">'+
-    '<div class="tip"><span class="tip-num">1</span> 選擇 九巴 / 城巴 / 港鐵巴士</div>'+
+    '<div class="tip"><span class="tip-num">1</span> 選擇 九巴 / 城巴 / 港鐵巴士 / 小巴</div>'+
     '<div class="tip"><span class="tip-num">2</span> 輸入路線號碼（如 1A, 10, 506, K51）</div>'+
     '<div class="tip"><span class="tip-num">3</span> 選擇方向，查看實時到站時間</div>'+
     '</div></div>';

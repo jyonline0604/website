@@ -377,13 +377,44 @@
                 padding: 0 16px;
             }
             
-            .nav {
-                gap: 16px;
+            /* === 手機 Hamburger Menu === */
+            .hamburger {
+                display: block;
             }
-            
+            .nav {
+                display: none;
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 15, 0.98);
+                flex-direction: column;
+                gap: 0;
+                padding: 8px 0;
+                max-height: calc(100vh - 64px);
+                overflow-y: auto;
+                z-index: 999;
+                -webkit-backdrop-filter: blur(20px);
+                backdrop-filter: blur(20px);
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .nav.open {
+                display: flex;
+            }
             .nav a {
-                padding: 6px 12px;
-                font-size: 0.85rem;
+                padding: 14px 24px;
+                font-size: 1rem;
+                border-radius: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+            }
+            .nav a.active::after {
+                display: none;
+            }
+            .nav a.active {
+                background: rgba(99, 102, 241, 0.3);
+            }
+            .header-actions {
+                display: none;
             }
             
             .hero {
@@ -541,14 +572,14 @@
     <!-- 導航列 -->
     <header role="banner" class="header">
         <a href="home.html" class="logo">📖 萬古塵埃</a>
-        <nav aria-label="主要導航" class="nav">
+        <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">☰</button>
+        <nav aria-label="主要導航" class="nav" id="navMenu">
             <a href="home.html" class="active">首頁</a>
             <a href="chapters.html">章節</a>
             <a href="news.html">AI 新聞</a>
             <a href="finance.html">財經</a>
             <a href="https://itv.kofhk.com/" rel="noopener noreferrer">ITV</a>
             <a href="dashboard.html">城市儀表板</a>
-
             <a href="bus-eta.html">巴士報站</a>
         </nav>
         <div class="header-actions">

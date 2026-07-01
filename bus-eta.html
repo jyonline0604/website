@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    <meta name="theme-color" content="#1e293b">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "香港巴士實時報站",
+      "description": "香港巴士實時到站時間查詢，支援九巴、城巴、港鐵巴士路線搜尋及實時ETA",
+      "url": "https://kofhk.com/bus-eta.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "萬古塵埃",
+        "author": {"@type": "Person", "name": "大肥喵"}
+      },
+      "inLanguage": "zh-Hant",
+      "isPartOf": {"@type": "WebSite", "name": "萬古塵埃", "url": "https://kofhk.com"}
+    }
+    </script>
+    <link rel="canonical" href="bus-eta.html">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="萬古塵埃">
+    <meta property="og:title" content="香港巴士實時報站 - 萬古塵埃">
+    <meta property="og:description" content="香港巴士實時到站時間查詢，支援九巴、城巴、港鐵巴士路線搜尋及實時ETA">
+    <meta property="og:url" content="https://kofhk.com/bus-eta.html">
+    <meta property="og:image" content="https://kofhk.com/assets/book-cover.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
+    <meta property="og:locale" content="zh_HK">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="香港巴士實時報站 - 萬古塵埃">
+    <meta name="twitter:description" content="香港巴士實時到站時間查詢，支援九巴、城巴、港鐵巴士路線搜尋及實時ETA">
+    <meta name="twitter:image" content="https://kofhk.com/assets/book-cover.png">
+    <link rel="stylesheet" href="assets/fonts/master.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>香港巴士實時報站 | 萬古塵埃</title>
+<style>
+/* === Site Shell CSS === */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0f;color:#e0e0e0;min-height:100vh}
+a{color:#00d4ff;text-decoration:none}
+header[role="banner"]{background:rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.1);padding:15px 0;position:sticky;top:0;z-index:1000}
+.header-content{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.3rem;font-weight:700;color:#00d4ff;text-decoration:none}
+nav{display:flex;gap:5px}
+nav a{color:#CCC;text-decoration:none;padding:6px 14px;border-radius:20px;font-size:0.85rem;transition:all .3s}
+nav a:hover,nav a.active{background:rgba(0,212,255,0.2);color:#00d4ff}
+main{max-width:1200px;margin:0 auto;padding:30px 20px}
+.page-title{text-align:center;margin-bottom:15px}
+.page-title h1{font-size:1.5rem;color:#e0e0e0}
+.skip-navigation{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-1}
+footer{text-align:center;padding:30px 20px;color:#AAA;font-size:.8rem;border-top:1px solid rgba(255,255,255,.05);margin-top:40px}
+footer a{color:#00d4ff;text-decoration:none}
+
+/* === Bus App Container (replicates original body) === */
+.bus-app-container{max-width:500px;margin:0 auto;background:#f0f2f5;color:#1a1a2e;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.3);padding-bottom:80px;color-scheme:only light}
+
+/* === Original Bus App CSS (preserved exactly, with site adjustments) === */
+:root{--kmb:#e8302a;--ctb:#0076c0;--mtr:#00a03c;--bg:#f0f2f5;--card:#fff;--border:#e0e3e8;--text:#1a1a2e;--text2:#6b7280;--text3:#9ca3af}
+
+/* Company Bar */
+.company-bar{display:flex;gap:8px;padding:10px 16px;background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:55px;z-index:999}
+.company-btn{flex:1;padding:9px 0;border:2px solid var(--border);border-radius:10px;background:#fff;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--text2);text-align:center;touch-action:manipulation}
+.company-btn .badge{display:block;font-size:.6rem;font-weight:400;opacity:.5;margin-top:1px}
+.company-btn[data-co="KMB"]{--active:var(--kmb)}.company-btn[data-co="KMB"].active{color:var(--kmb);border-color:var(--kmb);background:#fef2f2}
+.company-btn[data-co="CTB"]{--active:var(--ctb)}.company-btn[data-co="CTB"].active{color:var(--ctb);border-color:var(--ctb);background:#f0f7ff}
+.company-btn[data-co="MTR"]{--active:var(--mtr)}.company-btn[data-co="MTR"].active{color:var(--mtr);border-color:var(--mtr);background:#f0fdf4}
+
+/* Search */
+.search-section{padding:10px 16px;background:var(--card);margin-top:2cm}
+.search-wrap{position:relative;display:flex;gap:8px}
+.search-wrap input{flex:1;padding:12px 14px;border:2px solid var(--border);border-radius:10px;font-size:1rem;outline:none;transition:border .2s;background:#f8f9fa}
+.search-wrap input:focus{border-color:var(--text);background:#fff}
+.search-wrap button{padding:12px 18px;background:var(--text);color:#fff;border:none;border-radius:10px;font-size:.85rem;font-weight:600;cursor:pointer;white-space:nowrap;touch-action:manipulation}
+.search-wrap button:disabled{opacity:.5;cursor:not-allowed}
+
+/* Autocomplete */
+.autocomplete{position:absolute;top:100%;left:0;right:80px;background:#fff;border:1px solid var(--border);border-radius:8px;margin-top:4px;max-height:280px;overflow-y:auto;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,.12);display:none}
+.autocomplete.show{display:block}
+.autocomplete-item{padding:10px 14px;cursor:pointer;border-bottom:1px solid #f0f0f0;display:flex;justify-content:space-between;align-items:center}
+.autocomplete-item:last-child{border-bottom:none}
+.autocomplete-item:hover{background:#f0f7ff}
+.autocomplete-item .route-num{font-weight:700;font-size:.9rem}
+.autocomplete-item .route-dest{font-size:.7rem;color:var(--text2);margin-top:1px}
+.autocomplete-item .route-co-tag{font-size:.6rem;padding:2px 7px;border-radius:4px;color:#fff;font-weight:600}
+.route-co-tag.KMB{background:var(--kmb)}
+.route-co-tag.CTB{background:var(--ctb)}
+.route-co-tag.MTR{background:var(--mtr)}
+
+/* Direction Cards */
+.direction-section{padding:8px 16px;background:var(--card);display:none}
+.direction-section.visible{display:block}
+.dir-cards{display:flex;gap:8px}
+.dir-card{flex:1;padding:12px;border:2px solid var(--border);border-radius:10px;cursor:pointer;text-align:center;touch-action:manipulation}
+.dir-card.active{border-color:var(--text);background:#f8f9fa;box-shadow:0 1px 6px rgba(0,0,0,.08)}
+.dir-card .dir-label{font-size:.6rem;text-transform:uppercase;color:var(--text2);font-weight:600;letter-spacing:.5px}
+.dir-card .dir-arrow{font-size:1.1rem;font-weight:700;margin:3px 0}
+.dir-card .dir-dest{font-size:.75rem;color:var(--text2)}
+
+/* Status Bar */
+.status-bar{display:none;padding:10px 16px;text-align:center}
+.status-bar.visible{display:block}
+.status-bar .msg{font-size:.8rem;color:var(--text2)}
+.status-wrap{display:inline-flex;align-items:center;gap:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{width:18px;height:18px;border:3px solid var(--border);border-top:3px solid var(--text);border-radius:50%;display:inline-block;animation:spin .8s linear infinite;flex-shrink:0}
+
+/* Error Box */
+.error-box{display:none;margin:8px 16px;padding:12px 14px;background:#fef2f2;border-radius:10px;text-align:center;font-size:.8rem;color:var(--kmb)}
+.error-box.visible{display:block}
+.error-box .retry-btn{margin-top:8px;padding:7px 18px;background:var(--kmb);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.75rem}
+
+/* Stop List */
+.stop-list{padding:8px 16px 80px}
+.stop-item{display:flex;align-items:stretch;background:var(--card);border-radius:10px;margin-bottom:6px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.stop-seq{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;width:38px;min-width:38px;background:#f8f9fa;padding-top:12px;position:relative}
+.stop-seq .num{font-size:.7rem;font-weight:700;color:var(--text2)}
+.stop-seq .dot{width:8px;height:8px;border-radius:50%;background:#d1d5db;margin-top:6px;flex-shrink:0}
+.stop-seq .dot.active{background:var(--text);width:10px;height:10px}
+.stop-seq .line{position:absolute;top:32px;width:2px;height:calc(100% - 32px);background:#e5e7eb}
+.stop-item:last-child .stop-seq .line{display:none}
+.stop-info{flex:1;padding:10px 10px;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.stop-name{font-size:.85rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stop-name-en{font-size:.62rem;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stop-etas{display:flex;align-items:center;gap:4px;padding:8px 8px 8px 4px;flex-shrink:0}
+.eta-item{text-align:center;padding:5px 7px;border-radius:7px;font-size:.7rem;font-weight:700;min-width:42px;line-height:1.2}
+.eta-item .eta-time{display:block;font-size:.85rem}
+.eta-item .eta-label{display:block;font-size:.52rem;font-weight:400;margin-top:1px}
+.eta-arriving{background:#fef2f2;color:#dc2626}
+.eta-arriving .eta-label{color:#dc2626}
+.eta-soon{background:#fffbeb;color:#b45309}
+.eta-soon .eta-label{color:#b45309}
+.eta-coming{background:#ecfdf5;color:#047857}
+.eta-coming .eta-label{color:#047857}
+.eta-scheduled{background:#f9fafb;color:var(--text3)}
+.eta-scheduled .eta-label{color:var(--text3)}
+.eta-none{font-size:.65rem;color:var(--text3);padding:4px 6px;white-space:nowrap}
+
+/* Placeholder */
+.placeholder{text-align:center;padding:80px 20px 40px;color:var(--text3)}
+.placeholder .icon{font-size:3.5rem;margin-bottom:12px;opacity:.4}
+.placeholder h3{font-size:1.1rem;color:var(--text2);margin-bottom:6px}
+.placeholder p{font-size:.8rem;line-height:1.6;color:var(--text3)}
+.placeholder .tips{margin-top:24px;display:flex;flex-direction:column;gap:10px;text-align:left;max-width:280px;margin-left:auto;margin-right:auto}
+.placeholder .tip{display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--text2)}
+.placeholder .tip-num{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0;color:var(--text2)}
+
+/* Refresh Button */
+.refresh-btn{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:1001;background:var(--text);color:#fff;border:none;border-radius:28px;padding:12px 24px;font-size:.85rem;font-weight:600;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.25);display:none;align-items:center;gap:8px;touch-action:manipulation;transition:transform .15s,box-shadow .15s}
+.refresh-btn.visible{display:inline-flex}
+.refresh-btn:active{transform:translateX(-50%) scale(.96)}
+.refresh-btn .icon-wrap{display:inline-flex;animation:none}
+.refresh-btn .icon-wrap.spinning{animation:spin 1s linear infinite}
+.refresh-btn .countdown{font-size:.65rem;opacity:.6;font-weight:400}
+
+/* Route info header */
+.route-header{display:none;padding:10px 16px;background:var(--card);border-bottom:1px solid var(--border);font-size:.75rem;color:var(--text2);align-items:center;gap:8px}
+.route-header.visible{display:flex}
+.route-header .tag{font-size:.6rem;padding:2px 8px;border-radius:4px;color:#fff;font-weight:600}
+.tag.KMB{background:var(--kmb)}
+.tag.CTB{background:var(--ctb)}
+.tag.MTR{background:var(--mtr)}
+.route-header .update-time{margin-left:auto;font-size:.65rem;opacity:.6}
+
+@media(max-width:360px){
+  .company-btn{font-size:.75rem}
+  .stop-etas{gap:3px}
+  .eta-item{min-width:36px;padding:4px 5px}
+}
+</style><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://datagovhk.blob.core.windows.net https://data.weather.gov.hk https://resource.data.one.gov.hk https://itv.kofhk.com https://rt.data.gov.hk https://data.etabus.gov.hk https://portal.csdi.gov.hk https://api.allorigins.win https://corsproxy.io; base-uri 'self'; form-action 'self';">
+
+</head>
+<body>
+
+<a href="#main-content" class="skip-navigation">跳到主要內容</a>
+<header role="banner">
+  <div class="header-content">
+    <a href="home.html" class="logo">📖 萬古塵埃</a>
+    <nav aria-label="主要導航" class="nav">
+      <a href="home.html">首頁</a>
+      <a href="chapters.html">章節</a>
+      <a href="news.html">AI 新聞</a>
+      <a href="finance.html">財經</a>
+      <a href="https://itv.kofhk.com/" rel="noopener noreferrer">ITV</a>
+      <a href="dashboard.html">城市儀表板</a>
+      <a href="author.html">作者</a>
+      <a href="bus-eta.html" class="active">巴士報站</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+  <div class="page-title">
+    <h1>🚌 香港巴士實時報站</h1>
+    <p style="color:#888;font-size:0.8rem;margin-top:4px;">HK Bus Real-time ETA · data.gov.hk</p>
+  </div>
+
+  <div class="bus-app-container">
+
+<div class="company-bar" id="companyBar">
+  <button class="company-btn active" data-co="KMB" onclick="selectCo('KMB')">
+    九巴<span class="badge">KMB / LWB</span>
+  </button>
+  <button class="company-btn" data-co="CTB" onclick="selectCo('CTB')">
+    城巴<span class="badge">Citybus</span>
+  </button>
+  <button class="company-btn" data-co="MTR" onclick="selectCo('MTR')">
+    港鐵巴士<span class="badge">MTR Bus</span>
+  </button>
+</div>
+
+<div class="search-section">
+  <div class="search-wrap">
+    <input type="text" id="routeInput" placeholder="輸入路線號碼 e.g. 1A, 960, 970X" autocomplete="off" spellcheck="false" inputmode="text">
+    <button id="searchBtn" onclick="doSearch()">搜尋</button>
+    <div class="autocomplete" id="autocomplete"></div>
+  </div>
+</div>
+
+<div class="route-header" id="routeHeader">
+  <span class="tag" id="routeTag"></span>
+  <span id="routeInfo"></span>
+  <span class="update-time" id="updateTime"></span>
+</div>
+
+<div class="direction-section" id="directionSection">
+  <div class="dir-cards" id="dirCards"></div>
+</div>
+
+<div class="error-box" id="errorBox">
+  <span id="errorMsg"></span>
+  <button class="retry-btn" onclick="doRetry()">重試 Retry</button>
+</div>
+
+<div class="status-bar" id="statusBar">
+  <div class="status-wrap">
+    <span class="spinner"></span>
+    <span class="msg" id="statusMsg">載入中...</span>
+  </div>
+</div>
+
+<div id="stopListContainer">
+  <div class="placeholder" id="welcome">
+    <div class="icon">🚌</div>
+    <h3>搜尋香港巴士路線</h3>
+    <p>選擇巴士公司，輸入路線號碼<br>即時查看所有車站到站時間</p>
+    <div class="tips">
+      <div class="tip"><span class="tip-num">1</span> 選擇 九巴 / 城巴 / 港鐵巴士</div>
+      <div class="tip"><span class="tip-num">2</span> 輸入路線號碼（如 1A, 10, 506, K51）</div>
+      <div class="tip"><span class="tip-num">3</span> 選擇方向，查看實時到站時間</div>
+    </div>
+  </div>
+</div>
+
+<button class="refresh-btn" id="refreshBtn" onclick="doRefresh()">
+  <span class="icon-wrap" id="refreshIcon">⟳</span>
+  <span>更新</span>
+  <span class="countdown" id="countdown"></span>
+</button>
+
+  </div><!-- .bus-app-container -->
+
+  <footer>
+    <p>數據來源：<a href="https://data.gov.hk" rel="noopener noreferrer">DATA.GOV.HK</a> 香港政府開放數據平台</p>
+    <p>© 2026 萬古塵埃 | 作者：大肥喵 | 巴士實時報站</p>
+  </footer>
+</main>
+
+<script>
+// ===== CONFIG =====
+const CFG = {
+  KMB: {
+    label:'九巴', color:'#e8302a',
+    base:'https://data.etabus.gov.hk/v1/transport/kmb',
+    routeEp:'/route', routeStopEp:'/route-stop', stopEp:'/stop',
+    etaEp:(s,r,t)=>`/eta/${s}/${r}/${t}`,
+  },
+  CTB: {
+    label:'城巴', color:'#0076c0',
+    base:'https://rt.data.gov.hk/v2/transport/citybus',
+    routeEp:()=>'/route/ctb',
+    routeStopEp:(r,d)=>`/route-stop/ctb/${r}/${d}`,
+    stopEp:s=>`/stop/${s}`,
+    etaEp:(s,r)=>`/eta/ctb/${s}/${r}`,
+  },
+  MTR: {
+    label:'港鐵巴士', color:'#00a03c',
+    etaBase:'https://rt.data.gov.hk/v1/transport/mtr',
+    etaEp:(line,sta)=>`/getSchedule.php?line=${encodeURIComponent(line)}&sta=${encodeURIComponent(sta)}`,
+  },
+};
+const API_TIMEOUT = 60000;
+
+// ===== STATE =====
+const S = {
+  co: 'KMB',
+  routes: [],
+  routeStops: {},
+  stops: {},
+  selectedRoute: null,
+  selectedBound: null,
+  selectedRouteData: null,
+  directionList: [],
+  stopList: [],
+  timer: null,
+  countdown: 30,
+  dataLoaded: false,
+  dataLoading: false,
+  mtrRoutes: [],
+  mtrStops: {},
+  mtrDirections: [],
+  mtrLineCode: null,
+};
+
+// ===== API HELPERS =====
+async function api(url, to=API_TIMEOUT) {
+  const c = new AbortController();
+  const t = setTimeout(()=>c.abort(), to);
+  try {
+    const r = await fetch(url, {signal:c.signal});
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return await r.json();
+  } catch(e) {
+    if (e.name === 'AbortError') throw new Error('請求超時 (Request timeout)');
+    throw e;
+  } finally { clearTimeout(t); }
+}
+
+// ===== COMPANY SELECTION =====
+async function selectCo(co) {
+  stopTimer();
+  S.co = co;
+  S.routes = [];
+  S.selectedRoute = null;
+  S.selectedBound = null;
+  S.routeStops = {};
+  S.stops = {};
+  S.stopList = [];
+  S.directionList = [];
+  S.dataLoaded = false;
+  S.dataLoading = false;
+
+  document.querySelectorAll('.company-btn').forEach(b=>
+    b.classList.toggle('active', b.dataset.co===co));
+  document.getElementById('directionSection').classList.remove('visible');
+  document.getElementById('routeHeader').classList.remove('visible');
+  document.getElementById('refreshBtn').classList.remove('visible');
+  showWelcome();
+  hideError();
+  document.getElementById('routeInput').value = '';
+  document.getElementById('routeInput').disabled = false;
+  document.getElementById('routeInput').placeholder =
+    co==='KMB'?'輸入路線號碼 e.g. 1A, 960, 968':
+    co==='CTB'?'輸入路線號碼 e.g. 1, 10, 970X, A11':
+    '輸入路線號碼 e.g. 506, K52, K75';
+  closeAC();
+
+  setStatus('載入路線列表...', true);
+  try {
+    if (co === 'KMB') {
+      const d = await fetch('data/kmb_routes.json').then(r=>r.json());
+      S.routes = d.data;
+      S.dataLoaded = false;
+    } else if (co === 'CTB') {
+      const d = await fetch('data/ctb_routes.json').then(r=>r.json());
+      S.routes = d.data||[];
+    } else if (co === 'MTR') {
+      setStatus('載入港鐵巴士路線...', true);
+      try {
+        const [rd, sd] = await Promise.all([
+          fetch('data/mtr_routes.json').then(r=>r.json()),
+          fetch('data/mtr_stops.json').then(r=>r.json()),
+        ]);
+        S.mtrRoutes = rd||[];
+        S.mtrStops = {};
+        (sd||[]).forEach(g => { S.mtrStops[g.key] = g.stops; });
+        const seen = new Set();
+        S.routes = [];
+        (rd||[]).forEach(r => {
+          if (!seen.has(r.ROUTE_ID)) {
+            seen.add(r.ROUTE_ID);
+            S.routes.push({ route: r.ROUTE_ID, name_tc: r.ROUTE_NAME_CHI, name_en: r.ROUTE_NAME_ENG, co: 'MTR' });
+          }
+        });
+        clearStatus();
+      } catch(e) {
+        clearStatus();
+        showError('無法載入港鐵巴士資料: '+e.message);
+      }
+    } else {
+      S.routes = [];
+    }
+    clearStatus();
+  } catch(e) {
+    clearStatus();
+    showError('無法載入路線列表: '+e.message);
+  }
+}
+
+async function ensureKMBData() {
+  if (S.dataLoaded) return true;
+  if (S.dataLoading) {
+    for (let i = 0; i < 150; i++) {
+      await new Promise(r => setTimeout(r, 200));
+      if (S.dataLoaded) return true;
+    }
+    return S.dataLoaded;
+  }
+  S.dataLoading = true;
+
+  setStatus('載入車站路線資料 (local cache)...', true);
+  try {
+    const rs = await fetch('data/kmb_route_stops.json').then(r=>r.json());
+    S.routeStops = {};
+    (rs.data||[]).forEach(s => {
+      const k = s.route+'_'+s.bound;
+      if (!S.routeStops[k]) S.routeStops[k] = [];
+      S.routeStops[k].push(s);
+    });
+  } catch(e) {
+    clearStatus();
+    showError('載入車站資料失敗: '+e.message);
+    S.dataLoading = false;
+    return false;
+  }
+
+  setStatus('載入車站名稱資料 (local cache)...', true);
+  try {
+    const ss = await fetch('data/kmb_stops.json').then(r=>r.json());
+    S.stops = {};
+    (ss.data||[]).forEach(s => { S.stops[s.stop] = s; });
+    S.dataLoaded = true;
+    clearStatus();
+    return true;
+  } catch(e) {
+    clearStatus();
+    showError('載入車站名稱失敗: '+e.message);
+    S.dataLoading = false;
+    return false;
+  }
+}
+
+// ===== SEARCH =====
+let _searching = false;
+async function doSearch() {
+  if (_searching) return;
+  const v = document.getElementById('routeInput').value.trim().toUpperCase();
+  if (!v) return;
+
+  if (S.co === 'MTR') {
+    searchRouteMTR(v);
+    _searching = false;
+    return;
+  }
+
+  if (!S.routes.length) {
+    showError('路線資料載入中，請稍候... Loading routes...');
+    return;
+  }
+
+  closeAC();
+  hideError();
+  _searching = true;
+
+  if (S.co === 'KMB') {
+    await searchRouteKMB(v);
+    _searching = false;
+  } else {
+    searchRouteCTB(v).finally(() => { _searching = false; });
+  }
+}
+
+async function searchRouteKMB(route) {
+  let matches = S.routes.filter(r=>r.route===route && r.service_type==='1');
+  if (!matches.length) {
+    matches = S.routes.filter(r=>r.route===route);
+  }
+  if (!matches.length) { showError(`找不到路線 ${route}`); return; }
+  hideError();
+
+  if (!S.dataLoaded) {
+    const ok = await ensureKMBData();
+    if (!ok) return;
+  }
+
+  S.selectedRoute = route;
+  S.directionList = matches;
+  S.selectedBound = null;
+
+  const section = document.getElementById('directionSection');
+  section.classList.add('visible');
+  document.getElementById('dirCards').innerHTML = matches.map(r => {
+    const b = r.bound==='O'?'往 →':'← 返';
+    return `<div class="dir-card" data-bound="${r.bound}" onclick="pickDirKMB('${r.bound}')">
+      <div class="dir-label">${b}</div>
+      <div class="dir-arrow">${r.route} ${r.bound==='O'?'→':'←'}</div>
+      <div class="dir-dest">${r.orig_tc||r.orig_en} → ${r.dest_tc||r.dest_en}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('routeHeader').classList.remove('visible');
+  document.getElementById('stopListContainer').innerHTML = '';
+  document.getElementById('refreshBtn').classList.remove('visible');
+}
+
+async function searchRouteCTB(route) {
+  const match = S.routes.find(r=>r.route===route && r.co==='CTB');
+  if (!match) { showError(`找不到路線 ${route}`); return; }
+  hideError();
+
+  S.selectedRoute = route;
+  S.selectedRouteData = match;
+  S.selectedBound = null;
+
+  setStatus('檢查行車方向...', true);
+  try {
+    const [ob, ib] = await Promise.all([
+      api(CFG.CTB.base+CFG.CTB.routeStopEp(route,'outbound')).catch(()=>null),
+      api(CFG.CTB.base+CFG.CTB.routeStopEp(route,'inbound')).catch(()=>null),
+    ]);
+    clearStatus();
+
+    const dirs = [];
+    if (ob && ob.data && ob.data.length) dirs.push({dir:'outbound', stops:ob.data, orig:match.orig_tc, dest:match.dest_tc});
+    if (ib && ib.data && ib.data.length) dirs.push({dir:'inbound', stops:ib.data, orig:match.dest_tc, dest:match.orig_tc});
+
+    if (!dirs.length) { showError('未能載入車站資料'); return; }
+
+    S.directionList = dirs;
+
+    const allIds = new Set();
+    dirs.forEach(d=>d.stops.forEach(s=>allIds.add(s.stop)));
+    const missing = [...allIds].filter(id=>!S.stops[id]);
+    const chunk = [];
+    for (let i=0; i<missing.length; i+=10) chunk.push(missing.slice(i,i+10));
+    for (const c of chunk) {
+      await Promise.all(c.map(async id=>{
+        try { const d=await api(CFG.CTB.base+CFG.CTB.stopEp(id)); if (d.data) S.stops[id]=d.data; } catch(_){}
+      }));
+    }
+
+    dirs.forEach(d=>{ S.routeStops[route+'_'+d.dir] = d.stops; });
+
+    const section = document.getElementById('directionSection');
+    section.classList.add('visible');
+    document.getElementById('dirCards').innerHTML = dirs.map(d => {
+      const arrow = d.dir==='outbound'?'→':'←';
+      return `<div class="dir-card" data-dir="${d.dir}" onclick="pickDirCTB('${d.dir}')">
+        <div class="dir-label">${d.dir==='outbound'?'往 →':'← 返'}</div>
+        <div class="dir-arrow">${route} ${arrow}</div>
+        <div class="dir-dest">${d.orig} → ${d.dest}</div>
+      </div>`;
+    }).join('');
+    document.getElementById('routeHeader').classList.remove('visible');
+    document.getElementById('stopListContainer').innerHTML = '';
+    document.getElementById('refreshBtn').classList.remove('visible');
+  } catch(e) {
+    clearStatus();
+    showError('載入失敗: '+e.message);
+  }
+}
+
+// ===== DIRECTION PICK =====
+function pickDirKMB(bound) {
+  S.selectedBound = bound;
+  S.selectedRouteData = S.directionList.find(r=>r.bound===bound);
+  document.querySelectorAll('.dir-card').forEach(c=>c.classList.toggle('active', c.dataset.bound===bound));
+  showRouteStopsKMB();
+}
+
+function pickDirCTB(dir) {
+  S.selectedBound = dir;
+  document.querySelectorAll('.dir-card').forEach(c=>c.classList.toggle('active', c.dataset.dir===dir));
+  showRouteStopsCTB();
+}
+
+// ===== MTR DIRECTION PICK =====
+function searchRouteMTR(route) {
+  const variants = (S.mtrRoutes||[]).filter(r => r.ROUTE_ID === route);
+  if (!variants.length) { showError(`找不到路線 ${route}`); return; }
+  hideError();
+
+  S.selectedRoute = route;
+  S.mtrDirections = [];
+  S.selectedBound = null;
+
+  variants.forEach(v => {
+    const parts = v.ROUTE_NAME_CHI.split('至');
+    const orig = parts[0] || '';
+    const dest = parts[1] || v.ROUTE_NAME_CHI;
+    const refId = v.REFERENCE_ID || v.ROUTE_ID;
+    const suffix = refId !== v.ROUTE_ID ? ` (${refId})` : '';
+
+    if (v.LINE_UP) {
+      S.mtrDirections.push({
+        routeId: v.ROUTE_ID,
+        lineCode: v.LINE_UP,
+        direction: 'O',
+        dirLabel: '往 ' + dest,
+        variantName: v.ROUTE_NAME_CHI + suffix,
+        orig: orig,
+        dest: dest,
+        refId: refId,
+      });
+    }
+    if (v.LINE_DOWN) {
+      S.mtrDirections.push({
+        routeId: v.ROUTE_ID,
+        lineCode: v.LINE_DOWN,
+        direction: 'I',
+        dirLabel: '往 ' + orig,
+        variantName: v.ROUTE_NAME_CHI + suffix,
+        orig: dest,
+        dest: orig,
+        refId: refId,
+      });
+    }
+  });
+
+  if (!S.mtrDirections.length) { showError(`路線 ${route} 沒有可用方向`); return; }
+
+  const section = document.getElementById('directionSection');
+  section.classList.add('visible');
+  document.getElementById('dirCards').innerHTML = S.mtrDirections.map((d, i) => {
+    return `<div class="dir-card" data-idx="${i}" onclick="pickDirMTR(${i})">
+      <div class="dir-label">${d.dirLabel}</div>
+      <div class="dir-arrow">${d.refId} ${d.direction==='O'?'→':'←'}</div>
+      <div class="dir-dest">${d.orig} → ${d.dest}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('routeHeader').classList.remove('visible');
+  document.getElementById('stopListContainer').innerHTML = '';
+  document.getElementById('refreshBtn').classList.remove('visible');
+}
+
+function pickDirMTR(idx) {
+  const d = S.mtrDirections[idx];
+  if (!d) return;
+  S.selectedBound = d.direction;
+  S.mtrLineCode = d.lineCode;
+  S.selectedRouteData = d;
+  document.querySelectorAll('.dir-card').forEach(c=>c.classList.toggle('active', c.dataset.idx===String(idx)));
+  showRouteStopsMTR();
+}
+
+function showRouteStopsMTR() {
+  const d = S.selectedRouteData;
+  if (!d) return;
+
+  const key = d.routeId + '_' + d.direction;
+  const stops = S.mtrStops[key] || [];
+  if (!stops.length) { showError('該方向無車站資料'); return; }
+
+  const h = document.getElementById('routeHeader');
+  const tag = document.getElementById('routeTag');
+  tag.className = 'tag MTR';
+  tag.textContent = d.refId;
+  document.getElementById('routeInfo').textContent = `${d.orig} → ${d.dest}`;
+  h.classList.add('visible');
+  setUpdateTime();
+
+  S.stopList = stops.map((s, i) => ({
+    seq: parseInt(s.STATION_SEQNO) || (i+1),
+    stopId: s.STATION_ID,
+    nameTc: s.STATION_NAME_CHI || '',
+    nameEn: s.STATION_NAME_ENG || '',
+  }));
+
+  renderStopList(S.stopList, {});
+  fetchAndUpdateETA();
+  startTimer();
+}
+
+// ===== BUILD STOP LIST =====
+function showRouteStopsKMB() {
+  const route = S.selectedRoute;
+  const bound = S.selectedBound;
+  const rd = S.selectedRouteData;
+  if (!route||!bound||!rd) return;
+
+  const key = route+'_'+bound;
+  const raw = (S.routeStops[key]||[])
+    .filter(rs=>rs.service_type==='1')
+    .sort((a,b)=>parseInt(a.seq)-parseInt(b.seq));
+  if (!raw.length) { showError('該方向無車站資料'); return; }
+
+  showRouteHeader(rd);
+
+  S.stopList = raw.map(rs => ({
+    seq: parseInt(rs.seq),
+    stopId: rs.stop,
+    nameTc: (S.stops[rs.stop]||{}).name_tc || '',
+    nameEn: (S.stops[rs.stop]||{}).name_en || '',
+  }));
+
+  renderStopList(S.stopList, {});
+  fetchAndUpdateETA();
+  startTimer();
+}
+
+function showRouteStopsCTB() {
+  const route = S.selectedRoute;
+  const dir = S.selectedBound;
+  if (!route||!dir) return;
+
+  const key = route+'_'+dir;
+  const raw = (S.routeStops[key]||[]).sort((a,b)=>a.seq-b.seq);
+  if (!raw.length) { showError('該方向無車站資料'); return; }
+
+  S.stopList = raw.map(s => ({
+    seq: s.seq,
+    stopId: s.stop,
+    nameTc: (S.stops[s.stop]||{}).name_tc || '',
+    nameEn: (S.stops[s.stop]||{}).name_en || '',
+  }));
+
+  if (S.directionList.length) {
+    const d = S.directionList.find(x=>x.dir===dir);
+    if (d) showRouteHeader2(d.orig, d.dest);
+  }
+
+  renderStopList(S.stopList, {});
+  fetchAndUpdateETA();
+  startTimer();
+}
+
+function showRouteHeader(rd) {
+  const h = document.getElementById('routeHeader');
+  const tag = document.getElementById('routeTag');
+  tag.className = 'tag KMB';
+  tag.textContent = rd.route;
+  document.getElementById('routeInfo').textContent =
+    `${rd.orig_tc||rd.orig_en} → ${rd.dest_tc||rd.dest_en}`;
+  h.classList.add('visible');
+  setUpdateTime();
+}
+
+function showRouteHeader2(orig, dest) {
+  const h = document.getElementById('routeHeader');
+  const tag = document.getElementById('routeTag');
+  tag.className = 'tag CTB';
+  tag.textContent = S.selectedRoute;
+  document.getElementById('routeInfo').textContent = `${orig} → ${dest}`;
+  h.classList.add('visible');
+  setUpdateTime();
+}
+
+function setUpdateTime() {
+  const now = new Date();
+  document.getElementById('updateTime').textContent =
+    '更新 ' + now.getHours().toString().padStart(2,'0') + ':' +
+    now.getMinutes().toString().padStart(2,'0') + ':' +
+    now.getSeconds().toString().padStart(2,'0');
+}
+
+// ===== RENDER STOP LIST =====
+function renderStopList(stopList, etaMap) {
+  const container = document.getElementById('stopListContainer');
+  if (!stopList.length) {
+    container.innerHTML = '<div class="placeholder"><p style="color:var(--text3)">該路線暫無車站資料</p></div>';
+    return;
+  }
+
+  container.innerHTML = '<div class="stop-list" id="stopList"></div>';
+  const list = document.getElementById('stopList');
+
+  stopList.forEach((stop, idx) => {
+    const etas = etaMap[stop.stopId] || [];
+    const isLast = idx === stopList.length - 1;
+
+    const item = document.createElement('div');
+    item.className = 'stop-item';
+    item.id = 'si-'+stop.stopId;
+
+    const seq = document.createElement('div');
+    seq.className = 'stop-seq';
+    seq.innerHTML = `<span class="num">${stop.seq}</span>
+      <div class="dot${idx===0?' active':''}"></div>
+      ${isLast?'':'<div class="line"></div>'}`;
+
+    const info = document.createElement('div');
+    info.className = 'stop-info';
+    info.innerHTML = `<div class="stop-name">${stop.nameTc||'—'}</div>
+      <div class="stop-name-en">${stop.nameEn||''}</div>`;
+
+    const etaCol = document.createElement('div');
+    etaCol.className = 'stop-etas';
+    etaCol.id = 'eta-'+stop.stopId;
+
+    if (etas.length) {
+      etas.slice(0,3).forEach(e => {
+        etaCol.appendChild(createEtaBadge(e.eta, e.rmk_tc));
+      });
+    } else {
+      etaCol.innerHTML = '<span class="eta-none">—</span>';
+    }
+
+    item.appendChild(seq);
+    item.appendChild(info);
+    item.appendChild(etaCol);
+    list.appendChild(item);
+  });
+}
+
+function createEtaBadge(etaStr, rmk) {
+  const min = getMin(etaStr);
+  const div = document.createElement('div');
+  div.className = 'eta-item '+min.cls;
+  div.innerHTML = `<span class="eta-time">${min.display}</span>
+    <span class="eta-label">${min.label}</span>`;
+  return div;
+}
+
+// ===== UPDATE ETA =====
+let _etaAborter = null;
+async function fetchAndUpdateETA() {
+  if (_etaAborter) try { _etaAborter.abort(); } catch(_){ }
+  if (!S.stopList.length || !S.selectedBound) return;
+
+  const aborter = new AbortController();
+  _etaAborter = aborter;
+  const icon = document.getElementById('refreshIcon');
+  if (icon) icon.classList.add('spinning');
+
+  try {
+    const etaMap = {};
+    const stopList = S.stopList;
+    const route = S.selectedRoute;
+
+    const batches = [];
+    for (let i=0; i<stopList.length; i+=8) batches.push(stopList.slice(i, i+8));
+
+    for (const batch of batches) {
+      if (aborter.signal.aborted) break;
+      const results = await Promise.all(batch.map(async s => {
+        try {
+          let d;
+          if (S.co === 'KMB') {
+            d = await api(CFG.KMB.base+CFG.KMB.etaEp(s.stopId, route, '1'));
+            return {stopId: s.stopId, etas: d.data||[]};
+          } else if (S.co === 'CTB') {
+            d = await api(CFG.CTB.base+CFG.CTB.etaEp(s.stopId, route));
+            return {stopId: s.stopId, etas: d.data||[]};
+          } else if (S.co === 'MTR') {
+            d = await api(CFG.MTR.etaBase+CFG.MTR.etaEp(route, s.stopId));
+            if (d.status === 0) {
+              return {stopId: s.stopId, etas: [], error: d.message||''};
+            }
+            const raw = d.data||{};
+            const key = route+'-'+s.stopId;
+            const dirKey = S.selectedBound==='O'?'UP':'DOWN';
+            const arr = (raw[key]||{})[dirKey]||[];
+            return {stopId: s.stopId, etas: arr.map(e=>({eta:e.time, rmk_tc:e.dest||''}))};
+          }
+          return {stopId: s.stopId, etas: []};
+        } catch(_) {
+          return {stopId: s.stopId, etas: []};
+        }
+      }));
+      results.forEach(r => { etaMap[r.stopId] = r.etas; });
+    }
+    if (aborter.signal.aborted) { if (icon) icon.classList.remove('spinning'); return; }
+
+    Object.keys(etaMap).forEach(id => {
+      etaMap[id] = etaMap[id].filter(e => {
+        if (S.co === 'KMB') return e.route === route && e.dir === S.selectedBound;
+        if (S.co === 'CTB') {
+          const dirMap = {outbound:'O', inbound:'I'};
+          return e.route === route && e.dir === dirMap[S.selectedBound];
+        }
+        if (S.co === 'MTR') return true;
+        return true;
+      });
+    });
+
+    stopList.forEach(s => {
+      const el = document.getElementById('eta-'+s.stopId);
+      if (!el) return;
+      const etas = etaMap[s.stopId] || [];
+      if (etas.length) {
+        el.innerHTML = '';
+        etas.slice(0,3).forEach(e => el.appendChild(createEtaBadge(e.eta, e.rmk_tc)));
+      } else {
+        el.innerHTML = '<span class="eta-none">—</span>';
+      }
+    });
+
+    setUpdateTime();
+  } catch(e) {
+  } finally {
+    if (_etaAborter === aborter) _etaAborter = null;
+    if (icon) icon.classList.remove('spinning');
+  }
+}
+
+// ===== TIMER =====
+function startTimer() {
+  stopTimer();
+  S.countdown = 30;
+  updateCD();
+  document.getElementById('refreshBtn').classList.add('visible');
+  S.timer = setInterval(() => {
+    S.countdown--;
+    updateCD();
+    if (S.countdown <= 0) doRefresh();
+  }, 1000);
+}
+
+function stopTimer() {
+  if (S.timer) { clearInterval(S.timer); S.timer = null; }
+  document.getElementById('refreshBtn').classList.remove('visible');
+}
+
+function updateCD() {
+  const el = document.getElementById('countdown');
+  if (el) el.textContent = S.countdown+'s';
+}
+
+function doRefresh() {
+  S.countdown = 30;
+  updateCD();
+  fetchAndUpdateETA();
+}
+
+// ===== AUTOCOMPLETE =====
+document.getElementById('routeInput').addEventListener('input', function() {
+  const v = this.value.trim().toUpperCase();
+  const box = document.getElementById('autocomplete');
+  if (!v || !S.routes.length) { box.classList.remove('show'); return; }
+
+  const seen = new Set();
+  const sug = S.routes
+    .filter(r => {
+      if (S.co === 'MTR') return r.route.startsWith(v);
+      return r.route.startsWith(v) && (S.co!=='CTB'|| r.co==='CTB');
+    })
+    .filter(r => {
+      if (S.co !== 'MTR' && r.bound && r.bound!=='O') return false;
+      if (seen.has(r.route)) return false;
+      seen.add(r.route);
+      return true;
+    })
+    .slice(0, 10);
+
+  box.innerHTML = sug.map(r => {
+    const dest = S.co==='MTR' ? (r.name_tc||r.name_en) : ((r.orig_tc||r.orig_en)+' → '+(r.dest_tc||r.dest_en));
+    return `<div class="autocomplete-item" onclick="pickAC('${r.route}')">
+      <div><div class="route-num">${r.route}</div>
+      <div class="route-dest">${dest}</div></div>
+      <span class="route-co-tag ${S.co}">${S.co}</span>
+    </div>`;
+  }).join('');
+  box.classList.add('show');
+});
+
+function pickAC(r) {
+  document.getElementById('routeInput').value = r;
+  closeAC();
+  doSearch();
+}
+
+function closeAC() {
+  document.getElementById('autocomplete').classList.remove('show');
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.search-wrap')) closeAC();
+});
+
+document.getElementById('routeInput').addEventListener('keydown', e => {
+  if (e.key==='Enter') { closeAC(); doSearch(); }
+});
+
+// ===== UTILITY =====
+function getMin(etaStr) {
+  if (!etaStr) return {display:'—', cls:'eta-scheduled', label:'預定'};
+  const min = (new Date(etaStr) - new Date()) / 60000;
+  if (!isFinite(min) || min < 0) return {display:'—', cls:'eta-scheduled', label:'預定'};
+  if (min < 1) return {display:'<1', cls:'eta-arriving', label:'到站'};
+  if (min < 4) return {display:Math.round(min)+"'", cls:'eta-arriving', label:'到站'};
+  if (min < 8) return {display:Math.round(min)+"'", cls:'eta-soon', label:'即將'};
+  if (min < 20) return {display:Math.round(min)+"'", cls:'eta-coming', label:' coming'};
+  if (min < 60) return {display:Math.round(min)+"'", cls:'eta-scheduled', label:' scheduled'};
+  const d = new Date(etaStr);
+  return {display:d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0'), cls:'eta-scheduled', label:'預定'};
+}
+
+function setStatus(msg, spin=true) {
+  const s = document.getElementById('statusBar');
+  s.classList.add('visible');
+  document.getElementById('statusMsg').textContent = msg;
+}
+
+function clearStatus() {
+  document.getElementById('statusBar').classList.remove('visible');
+}
+
+function showError(msg) {
+  const box = document.getElementById('errorBox');
+  box.classList.add('visible');
+  document.getElementById('errorMsg').textContent = msg;
+}
+
+function hideError() {
+  document.getElementById('errorBox').classList.remove('visible');
+}
+
+function doRetry() {
+  hideError();
+  if (S.selectedRoute) { doSearch(); }
+  else {
+    selectCo(S.co);
+  }
+}
+
+function showWelcome() {
+  document.getElementById('stopListContainer').innerHTML =
+    '<div class="placeholder"><div class="icon">🚌</div>'+
+    '<h3>搜尋香港巴士路線</h3>'+
+    '<p>選擇巴士公司，輸入路線號碼<br>即時查看所有車站到站時間</p>'+
+    '<div class="tips">'+
+    '<div class="tip"><span class="tip-num">1</span> 選擇 九巴 / 城巴 / 港鐵巴士</div>'+
+    '<div class="tip"><span class="tip-num">2</span> 輸入路線號碼（如 1A, 10, 506, K51）</div>'+
+    '<div class="tip"><span class="tip-num">3</span> 選擇方向，查看實時到站時間</div>'+
+    '</div></div>';
+}
+
+// ===== INIT =====
+selectCo('KMB');
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('assets/service-worker.js').catch(function(e){});
+}
+window.addEventListener('offline', function(){ document.body.classList.add('offline'); });
+window.addEventListener('online', function(){ document.body.classList.remove('offline'); });
+</script>
+<script src="assets/main.js" defer></script>
+</body>
+</html>

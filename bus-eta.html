@@ -212,7 +212,7 @@ footer a{color:#00d4ff;text-decoration:none}
                 background: rgba(99, 102, 241, 0.3);
             }
         }
-</style><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://datagovhk.blob.core.windows.net https://data.weather.gov.hk https://resource.data.one.gov.hk https://itv.kofhk.com https://rt.data.gov.hk https://data.etabus.gov.hk https://portal.csdi.gov.hk https://api.allorigins.win https://corsproxy.io; base-uri 'self'; form-action 'self';">
+</style><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://datagovhk.blob.core.windows.net https://data.weather.gov.hk https://resource.data.one.gov.hk https://itv.kofhk.com https://rt.data.gov.hk https://data.etabus.gov.hk https://portal.csdi.gov.hk https://api.allorigins.win https://corsproxy.io https://proxy.cors.sh; base-uri 'self'; form-action 'self';">
 
 </head>
 <body>
@@ -339,7 +339,7 @@ const CFG = {
   },
   GMB: {
     label:'小巴', color:'#7c3aed',
-    base:'https://data.etagmb.gov.hk',
+    base:'https://proxy.cors.sh/https://data.etagmb.gov.hk',
     routeEp:'/route',
     routeDetailEp:(region,code)=>`/route/${region}/${code}`,
     routeStopEp:(routeId,routeSeq)=>`/route-stop/${routeId}/${routeSeq}`,
@@ -369,6 +369,8 @@ const S = {
   mtrLineCode: null,
   gmbRouteMap: {},
   gmbRouteDetails: null,
+  gmbAllDetails: null,
+  gmbStopsCache: null,
 };
 
 // ===== API HELPERS =====
@@ -400,6 +402,8 @@ async function selectCo(co) {
   S.dataLoading = false;
   S.gmbRouteMap = {};
   S.gmbRouteDetails = null;
+  S.gmbAllDetails = null;
+  S.gmbStopsCache = null;
 
   document.querySelectorAll('.company-btn').forEach(b=>
     b.classList.toggle('active', b.dataset.co===co));
@@ -452,17 +456,19 @@ async function selectCo(co) {
     } else if (co === 'GMB') {
       setStatus('載入小巴路線...', true);
       try {
-        const d = await api(CFG.GMB.base+CFG.GMB.routeEp);
+        const d = await fetch('data/gmb_routes.json').then(r=>r.json());
+        S.gmbAllDetails = d.data || [];
         S.gmbRouteMap = {};
         S.routes = [];
-        const regions = d.data?.routes || d.routes || {};
-        Object.keys(regions).forEach(region => {
-          regions[region].forEach(code => {
-            const key = code;
-            if (!S.gmbRouteMap[key]) S.gmbRouteMap[key] = [];
-            S.gmbRouteMap[key].push(region);
-            S.routes.push({ route: code, region: region, co: 'GMB' });
-          });
+        S.gmbAllDetails.forEach(dir => {
+          const key = dir.route_code;
+          if (!S.gmbRouteMap[key]) {
+            S.gmbRouteMap[key] = [];
+            S.routes.push({ route: key, region: dir.region, co: 'GMB' });
+          }
+          if (!S.gmbRouteMap[key].includes(dir.region)) {
+            S.gmbRouteMap[key].push(dir.region);
+          }
         });
         S.routes.sort((a,b)=>a.route.localeCompare(b.route));
         clearStatus();
@@ -645,7 +651,7 @@ async function searchRouteCTB(route) {
   }
 }
 
-async function searchRouteGMB(route) {
+function searchRouteGMB(route) {
   const regions = S.gmbRouteMap[route];
   if (!regions || !regions.length) { showError(`找不到小巴路線 ${route}`); return; }
   hideError();
@@ -653,54 +659,34 @@ async function searchRouteGMB(route) {
   S.selectedRoute = route;
   S.selectedBound = null;
 
-  setStatus('載入路線詳情...', true);
-  try {
-    const details = await Promise.all(regions.map(async region => {
-      const d = await api(CFG.GMB.base+CFG.GMB.routeDetailEp(region, route));
-      return { region, data: d };
-    }));
-    clearStatus();
+  const allDirs = (S.gmbAllDetails || []).filter(d => d.route_code === route).map(d => ({
+    routeId: d.route_id,
+    region: d.region,
+    routeCode: d.route_code,
+    routeSeq: d.route_seq,
+    orig: d.orig_tc,
+    dest: d.dest_tc,
+    origEn: d.orig_en,
+    destEn: d.dest_en,
+  }));
 
-    const allDirs = [];
-    details.forEach(({region, data}) => {
-      const dirs = data.data || [];
-      dirs.forEach(dir => {
-        dir.directions.forEach(d => {
-          allDirs.push({
-            routeId: dir.route_id,
-            region: dir.region,
-            routeCode: dir.route_code,
-            routeSeq: d.route_seq,
-            orig: d.orig_tc,
-            dest: d.dest_tc,
-            origEn: d.orig_en,
-            destEn: d.dest_en,
-          });
-        });
-      });
-    });
+  if (!allDirs.length) { showError(`找不到小巴路線 ${route}`); return; }
 
-    if (!allDirs.length) { showError('無可用行車方向'); return; }
+  S.gmbRouteDetails = allDirs;
+  S.directionList = allDirs;
 
-    S.gmbRouteDetails = allDirs;
-    S.directionList = allDirs;
-
-    const section = document.getElementById('directionSection');
-    section.classList.add('visible');
-    document.getElementById('dirCards').innerHTML = allDirs.map((d, i) => {
-      return `<div class="dir-card" data-idx="${i}" onclick="pickDirGMB(${i})">
-        <div class="dir-label">往 → ${d.region}</div>
-        <div class="dir-arrow">${d.routeCode} →</div>
-        <div class="dir-dest">${d.orig} → ${d.dest}</div>
-      </div>`;
-    }).join('');
-    document.getElementById('routeHeader').classList.remove('visible');
-    document.getElementById('stopListContainer').innerHTML = '';
-    document.getElementById('refreshBtn').classList.remove('visible');
-  } catch(e) {
-    clearStatus();
-    showError('載入小巴路線詳情失敗: '+e.message);
-  }
+  const section = document.getElementById('directionSection');
+  section.classList.add('visible');
+  document.getElementById('dirCards').innerHTML = allDirs.map((d, i) => {
+    return `<div class="dir-card" data-idx="${i}" onclick="pickDirGMB(${i})">
+      <div class="dir-label">往 → ${d.region}</div>
+      <div class="dir-arrow">${d.routeCode} →</div>
+      <div class="dir-dest">${d.orig} → ${d.dest}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('routeHeader').classList.remove('visible');
+  document.getElementById('stopListContainer').innerHTML = '';
+  document.getElementById('refreshBtn').classList.remove('visible');
 }
 
 function pickDirGMB(idx) {
@@ -718,10 +704,14 @@ async function showRouteStopsGMB() {
 
   setStatus('載入車站資料...', true);
   try {
-    const rs = await api(CFG.GMB.base+CFG.GMB.routeStopEp(d.routeId, d.routeSeq));
+    if (!S.gmbStopsCache) {
+      S.gmbStopsCache = await fetch('data/gmb_route_stops.json').then(r=>r.json());
+    }
+    const rs = S.gmbStopsCache;
     clearStatus();
 
-    const stops = (rs.data?.route_stops || rs.data || []);
+    const key = `${d.routeId}_${d.routeSeq}`;
+    const stops = (rs.data && rs.data[key]) ? rs.data[key] : [];
     if (!stops.length) { showError('該方向無車站資料'); return; }
 
     const h = document.getElementById('routeHeader');

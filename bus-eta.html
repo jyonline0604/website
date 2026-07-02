@@ -13,7 +13,7 @@
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "香港巴士實時報站",
-      "description": "香港巴士實時到站時間查詢，支援九巴、城巴、港鐵巴士、專線小巴路線搜尋及實時ETA",
+      "description": "香港巴士實時到站時間查詢，支援九巴、城巴、輕鐵、專線小巴路線搜尋及實時ETA",
       "url": "https://kofhk.com/bus-eta.html",
       "publisher": {
         "@type": "Organization",
@@ -29,7 +29,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="萬古塵埃">
     <meta property="og:title" content="香港巴士實時報站 - 萬古塵埃">
-    <meta property="og:description" content="香港巴士實時到站時間查詢，支援九巴、城巴、港鐵巴士路線搜尋及實時ETA">
+    <meta property="og:description" content="香港巴士實時到站時間查詢，支援九巴、城巴、輕鐵、專線小巴路線搜尋及實時ETA">
     <meta property="og:url" content="https://kofhk.com/bus-eta.html">
     <meta property="og:image" content="https://kofhk.com/assets/book-cover.png">
     <meta property="og:image:width" content="1280">
@@ -37,7 +37,7 @@
     <meta property="og:locale" content="zh_HK">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="香港巴士實時報站 - 萬古塵埃">
-    <meta name="twitter:description" content="香港巴士實時到站時間查詢，支援九巴、城巴、港鐵巴士路線搜尋及實時ETA">
+    <meta name="twitter:description" content="香港巴士實時到站時間查詢，支援九巴、城巴、輕鐵、專線小巴路線搜尋及實時ETA">
     <meta name="twitter:image" content="https://kofhk.com/assets/book-cover.png">
     <link rel="stylesheet" href="assets/fonts/master.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -67,7 +67,7 @@ footer a{color:#00d4ff;text-decoration:none}
 .bus-app-container{max-width:500px;margin:0 auto;background:#f0f2f5;color:#1a1a2e;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.3);padding-bottom:80px;color-scheme:only light}
 
 /* === Original Bus App CSS (preserved exactly, with site adjustments) === */
-:root{--kmb:#e8302a;--ctb:#0076c0;--mtr:#00a03c;--gmb:#7c3aed;--bg:#f0f2f5;--card:#fff;--border:#e0e3e8;--text:#1a1a2e;--text2:#6b7280;--text3:#9ca3af}
+:root{--kmb:#e8302a;--ctb:#0076c0;--lrt:#c49b1a;--gmb:#7c3aed;--bg:#f0f2f5;--card:#fff;--border:#e0e3e8;--text:#1a1a2e;--text2:#6b7280;--text3:#9ca3af}
 
 /* Company Bar */
 .company-bar{display:flex;gap:8px;padding:10px 16px;background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:55px;z-index:999}
@@ -75,7 +75,7 @@ footer a{color:#00d4ff;text-decoration:none}
 .company-btn .badge{display:block;font-size:.6rem;font-weight:400;opacity:.5;margin-top:1px}
 .company-btn[data-co="KMB"]{--active:var(--kmb)}.company-btn[data-co="KMB"].active{color:var(--kmb);border-color:var(--kmb);background:#fef2f2}
 .company-btn[data-co="CTB"]{--active:var(--ctb)}.company-btn[data-co="CTB"].active{color:var(--ctb);border-color:var(--ctb);background:#f0f7ff}
-.company-btn[data-co="MTR"]{--active:var(--mtr)}.company-btn[data-co="MTR"].active{color:var(--mtr);border-color:var(--mtr);background:#f0fdf4}
+.company-btn[data-co="LRT"]{--active:var(--lrt)}.company-btn[data-co="LRT"].active{color:var(--lrt);border-color:var(--lrt);background:#fefdf0}
 .company-btn[data-co="GMB"]{--active:var(--gmb)}.company-btn[data-co="GMB"].active{color:var(--gmb);border-color:var(--gmb);background:#f5f0ff}
 
 /* Search */
@@ -97,7 +97,7 @@ footer a{color:#00d4ff;text-decoration:none}
 .autocomplete-item .route-co-tag{font-size:.6rem;padding:2px 7px;border-radius:4px;color:#fff;font-weight:600}
 .route-co-tag.KMB{background:var(--kmb)}
 .route-co-tag.CTB{background:var(--ctb)}
-.route-co-tag.MTR{background:var(--mtr)}
+.route-co-tag.LRT{background:var(--lrt)}
 .route-co-tag.GMB{background:var(--gmb)}
 
 /* Direction Cards */
@@ -172,7 +172,7 @@ footer a{color:#00d4ff;text-decoration:none}
 .route-header .tag{font-size:.6rem;padding:2px 8px;border-radius:4px;color:#fff;font-weight:600}
 .tag.KMB{background:var(--kmb)}
 .tag.CTB{background:var(--ctb)}
-.tag.MTR{background:var(--mtr)}
+.tag.LRT{background:var(--lrt)}
 .tag.GMB{background:var(--gmb)}
 .route-header .update-time{margin-left:auto;font-size:.65rem;opacity:.6}
 
@@ -250,8 +250,8 @@ footer a{color:#00d4ff;text-decoration:none}
   <button class="company-btn" data-co="CTB" onclick="selectCo('CTB')">
     城巴<span class="badge">Citybus</span>
   </button>
-  <button class="company-btn" data-co="MTR" onclick="selectCo('MTR')">
-    港鐵巴士<span class="badge">MTR Bus</span>
+  <button class="company-btn" data-co="LRT" onclick="selectCo('LRT')">
+    輕鐵<span class="badge">Light Rail</span>
   </button>
   <button class="company-btn" data-co="GMB" onclick="selectCo('GMB')">
     小巴<span class="badge">GMB</span>
@@ -294,8 +294,8 @@ footer a{color:#00d4ff;text-decoration:none}
     <h3>搜尋香港巴士路線</h3>
     <p>選擇巴士公司，輸入路線號碼<br>即時查看所有車站到站時間</p>
     <div class="tips">
-      <div class="tip"><span class="tip-num">1</span> 選擇 九巴 / 城巴 / 港鐵巴士 / 小巴</div>
-      <div class="tip"><span class="tip-num">2</span> 輸入路線號碼（如 1A, 10, 506, K51）</div>
+      <div class="tip"><span class="tip-num">1</span> 選擇 九巴 / 城巴 / 輕鐵 / 小巴</div>
+      <div class="tip"><span class="tip-num">2</span> 輸入路線號碼（如 1A, 10, 505, 44A）</div>
       <div class="tip"><span class="tip-num">3</span> 選擇方向，查看實時到站時間</div>
     </div>
   </div>
@@ -332,10 +332,10 @@ const CFG = {
     stopEp:s=>`/stop/${s}`,
     etaEp:(s,r)=>`/eta/ctb/${s}/${r}`,
   },
-  MTR: {
-    label:'港鐵巴士', color:'#00a03c',
-    etaBase:'https://rt.data.gov.hk/v1/transport/mtr',
-    etaEp:(line,sta)=>`/getSchedule.php?line=${encodeURIComponent(line)}&sta=${encodeURIComponent(sta)}`,
+  LRT: {
+    label:'輕鐵', color:'#c49b1a',
+    etaBase:'https://rt.data.gov.hk/v1/transport/mtr/lrt',
+    etaEp:stopId=>`/getSchedule?station_id=${encodeURIComponent(stopId)}`,
   },
   GMB: {
     label:'小巴', color:'#7c3aed',
@@ -363,10 +363,9 @@ const S = {
   countdown: 30,
   dataLoaded: false,
   dataLoading: false,
-  mtrRoutes: [],
-  mtrStops: {},
-  mtrDirections: [],
-  mtrLineCode: null,
+  lrtStations: [],
+  lrtRoutes: [],
+  lrtSelectedStation: null,
   gmbRouteMap: {},
   gmbRouteDetails: null,
   gmbAllDetails: null,
@@ -404,6 +403,7 @@ async function selectCo(co) {
   S.gmbRouteDetails = null;
   S.gmbAllDetails = null;
   S.gmbStopsCache = null;
+  S.lrtSelectedStation = null;
 
   document.querySelectorAll('.company-btn').forEach(b=>
     b.classList.toggle('active', b.dataset.co===co));
@@ -418,7 +418,8 @@ async function selectCo(co) {
     co==='KMB'?'輸入路線號碼 e.g. 1A, 960, 968':
     co==='CTB'?'輸入路線號碼 e.g. 1, 10, 970X, A11':
     co==='GMB'?'輸入路線號碼 e.g. 1A, 20M, 44A':
-    '輸入路線號碼 e.g. 506, K52, K75';
+    co==='LRT'?'輸入車站名稱 e.g. 兆康, 屯門, 天水圍':
+    '輸入路線號碼 e.g. 1A, 960, K51';
   closeAC();
 
   setStatus('載入路線列表...', true);
@@ -430,28 +431,19 @@ async function selectCo(co) {
     } else if (co === 'CTB') {
       const d = await fetch('data/ctb_routes.json').then(r=>r.json());
       S.routes = d.data||[];
-    } else if (co === 'MTR') {
-      setStatus('載入港鐵巴士路線...', true);
+    } else if (co === 'LRT') {
+      setStatus('載入輕鐵車站...', true);
       try {
-        const [rd, sd] = await Promise.all([
-          fetch('data/mtr_routes.json').then(r=>r.json()),
-          fetch('data/mtr_stops.json').then(r=>r.json()),
+        const [st, rd] = await Promise.all([
+          fetch('data/lrt_stations.json').then(r=>r.json()),
+          fetch('data/lrt_routes.json').then(r=>r.json()),
         ]);
-        S.mtrRoutes = rd||[];
-        S.mtrStops = {};
-        (sd||[]).forEach(g => { S.mtrStops[g.key] = g.stops; });
-        const seen = new Set();
-        S.routes = [];
-        (rd||[]).forEach(r => {
-          if (!seen.has(r.ROUTE_ID)) {
-            seen.add(r.ROUTE_ID);
-            S.routes.push({ route: r.ROUTE_ID, name_tc: r.ROUTE_NAME_CHI, name_en: r.ROUTE_NAME_ENG, co: 'MTR' });
-          }
-        });
+        S.lrtStations = st||[];
+        S.lrtRoutes = rd||[];
         clearStatus();
       } catch(e) {
         clearStatus();
-        showError('無法載入港鐵巴士資料: '+e.message);
+        showError('無法載入輕鐵資料: '+e.message);
       }
     } else if (co === 'GMB') {
       setStatus('載入小巴路線...', true);
@@ -536,8 +528,8 @@ async function doSearch() {
   const v = document.getElementById('routeInput').value.trim().toUpperCase();
   if (!v) return;
 
-  if (S.co === 'MTR') {
-    searchRouteMTR(v);
+  if (S.co === 'LRT') {
+    searchStationLRT(v);
     _searching = false;
     return;
   }
@@ -766,101 +758,111 @@ function pickDirCTB(dir) {
   showRouteStopsCTB();
 }
 
-// ===== MTR DIRECTION PICK =====
-function searchRouteMTR(route) {
-  const variants = (S.mtrRoutes||[]).filter(r => r.ROUTE_ID === route);
-  if (!variants.length) { showError(`找不到路線 ${route}`); return; }
+// ===== LRT STATION SEARCH =====
+function searchStationLRT(name) {
+  const q = name.toUpperCase();
+  let matches = S.lrtStations.filter(s =>
+    s.nameCh.includes(name) || s.nameEn.toUpperCase().includes(q) || s.stopCode.toUpperCase() === q || s.stopId === name
+  );
+  if (!matches.length) { showError(`找不到車站: ${name}`); return; }
   hideError();
 
-  S.selectedRoute = route;
-  S.mtrDirections = [];
-  S.selectedBound = null;
-
-  variants.forEach(v => {
-    const parts = v.ROUTE_NAME_CHI.split('至');
-    const orig = parts[0] || '';
-    const dest = parts[1] || v.ROUTE_NAME_CHI;
-    const refId = v.REFERENCE_ID || v.ROUTE_ID;
-    const suffix = refId !== v.ROUTE_ID ? ` (${refId})` : '';
-
-    if (v.LINE_UP) {
-      S.mtrDirections.push({
-        routeId: v.ROUTE_ID,
-        lineCode: v.LINE_UP,
-        direction: 'O',
-        dirLabel: '往 ' + dest,
-        variantName: v.ROUTE_NAME_CHI + suffix,
-        orig: orig,
-        dest: dest,
-        refId: refId,
-      });
-    }
-    if (v.LINE_DOWN) {
-      S.mtrDirections.push({
-        routeId: v.ROUTE_ID,
-        lineCode: v.LINE_DOWN,
-        direction: 'I',
-        dirLabel: '往 ' + orig,
-        variantName: v.ROUTE_NAME_CHI + suffix,
-        orig: dest,
-        dest: orig,
-        refId: refId,
-      });
-    }
-  });
-
-  if (!S.mtrDirections.length) { showError(`路線 ${route} 沒有可用方向`); return; }
-
-  const section = document.getElementById('directionSection');
-  section.classList.add('visible');
-  document.getElementById('dirCards').innerHTML = S.mtrDirections.map((d, i) => {
-    return `<div class="dir-card" data-idx="${i}" onclick="pickDirMTR(${i})">
-      <div class="dir-label">${d.dirLabel}</div>
-      <div class="dir-arrow">${d.refId} ${d.direction==='O'?'→':'←'}</div>
-      <div class="dir-dest">${d.orig} → ${d.dest}</div>
-    </div>`;
-  }).join('');
-  document.getElementById('routeHeader').classList.remove('visible');
-  document.getElementById('stopListContainer').innerHTML = '';
-  document.getElementById('refreshBtn').classList.remove('visible');
+  // Exact stopId match takes priority
+  const exact = matches.find(s => s.stopId === name);
+  showStationLRT(exact || matches[0]);
 }
 
-function pickDirMTR(idx) {
-  const d = S.mtrDirections[idx];
-  if (!d) return;
-  S.selectedBound = d.direction;
-  S.mtrLineCode = d.lineCode;
-  S.selectedRouteData = d;
-  document.querySelectorAll('.dir-card').forEach(c=>c.classList.toggle('active', c.dataset.idx===String(idx)));
-  showRouteStopsMTR();
-}
-
-function showRouteStopsMTR() {
-  const d = S.selectedRouteData;
-  if (!d) return;
-
-  const key = d.routeId + '_' + d.direction;
-  const stops = S.mtrStops[key] || [];
-  if (!stops.length) { showError('該方向無車站資料'); return; }
+function showStationLRT(station) {
+  S.lrtSelectedStation = station;
+  S.selectedBound = '1'; // need non-null for timer
+  S.stopList = []; // not used for LRT
 
   const h = document.getElementById('routeHeader');
   const tag = document.getElementById('routeTag');
-  tag.className = 'tag MTR';
-  tag.textContent = d.refId;
-  document.getElementById('routeInfo').textContent = `${d.orig} → ${d.dest}`;
+  tag.className = 'tag LRT';
+  tag.textContent = station.stopCode;
+  document.getElementById('routeInfo').textContent = station.nameCh + ' ' + station.nameEn;
   h.classList.add('visible');
   setUpdateTime();
 
-  S.stopList = stops.map((s, i) => ({
-    seq: parseInt(s.STATION_SEQNO) || (i+1),
-    stopId: s.STATION_ID,
-    nameTc: s.STATION_NAME_CHI || '',
-    nameEn: s.STATION_NAME_ENG || '',
-  }));
+  document.getElementById('directionSection').classList.remove('visible');
+  document.getElementById('stopListContainer').innerHTML =
+    '<div class="stop-list" id="stopList"><div class="placeholder"><div class="icon">🚋</div>'+
+    '<p style="color:var(--text2)">載入即時到站資訊...</p></div></div>';
 
-  renderStopList(S.stopList, {});
-  fetchAndUpdateETA();
+  fetchLrtETA();
   startTimer();
+}
+
+async function fetchLrtETA() {
+  const station = S.lrtSelectedStation;
+  if (!station) return;
+
+  const icon = document.getElementById('refreshIcon');
+  if (icon) icon.classList.add('spinning');
+
+  try {
+    const d = await api(CFG.LRT.etaBase + CFG.LRT.etaEp(station.stopId));
+    if (!d || d.status !== 1) {
+      showError('輕鐵實時數據暫不可用');
+      if (icon) icon.classList.remove('spinning');
+      return;
+    }
+    hideError();
+    setUpdateTime();
+    renderLrtPlatforms(d.platform_list || []);
+  } catch(e) {
+    showError('無法載入輕鐵到站時間: ' + e.message);
+  } finally {
+    if (icon) icon.classList.remove('spinning');
+  }
+}
+
+function renderLrtPlatforms(platforms) {
+  if (!platforms.length) {
+    document.getElementById('stopListContainer').innerHTML =
+      '<div class="placeholder"><p style="color:var(--text3)">暫無列車到站資訊</p></div>';
+    return;
+  }
+
+  let html = '<div class="stop-list" id="stopList">';
+  platforms.forEach(p => {
+    const trains = (p.route_list || []).sort((a,b) => {
+      const getSec = t => {
+        if (t.time_ch.includes('即將') || t.time_en.toLowerCase().includes('arriving')) return 0;
+        const m = t.time_en.match(/(\d+)\s*min/);
+        return m ? parseInt(m[1])*60 : 999;
+      };
+      return getSec(a) - getSec(b);
+    });
+
+    html += `<div class="lrt-platform" style="background:var(--card);border-radius:10px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="background:var(--lrt);color:#fff;padding:8px 12px;font-size:.75rem;font-weight:700">
+        ${p.platform_id} 號月台
+      </div>
+      <div style="padding:4px 0">`;
+
+    if (!trains.length) {
+      html += '<div style="padding:12px;text-align:center;font-size:.75rem;color:var(--text3)">暫無列車</div>';
+    } else {
+      trains.forEach(t => {
+        const isArriving = t.time_ch.includes('即將') || t.time_en.toLowerCase().includes('arriving');
+        const cls = isArriving ? 'eta-arriving' : (parseInt(t.time_en) < 5 ? 'eta-soon' : 'eta-coming');
+        html += `<div style="display:flex;align-items:center;padding:8px 12px;border-bottom:1px solid var(--border)">
+          <span style="font-weight:700;font-size:.9rem;min-width:50px">${t.route_no}</span>
+          <span style="font-size:.75rem;color:var(--text2);flex:1">往 ${t.dest_ch}</span>
+          <span class="eta-item ${cls}" style="min-width:auto">
+            <span class="eta-time">${t.time_ch.replace(' 分鐘',"'").replace('即將抵達','<1')}</span>
+          </span>
+          ${t.train_length > 1 ? '<span style="font-size:.6rem;color:var(--text3);margin-left:4px">' + t.train_length + '卡</span>' : ''}
+        </div>`;
+      });
+    }
+
+    html += '</div></div>';
+  });
+  html += '</div>';
+  document.getElementById('stopListContainer').innerHTML = html;
 }
 
 // ===== BUILD STOP LIST =====
@@ -1007,6 +1009,17 @@ function createEtaBadge(etaStr, rmk) {
 let _etaAborter = null;
 async function fetchAndUpdateETA() {
   if (_etaAborter) try { _etaAborter.abort(); } catch(_){ }
+
+  // Light Rail uses station-based ETA, handled separately (stopList is empty for LRT)
+  if (S.co === 'LRT') {
+    if (!S.lrtSelectedStation) return;
+    const icon = document.getElementById('refreshIcon');
+    if (icon) icon.classList.add('spinning');
+    await fetchLrtETA();
+    if (icon) icon.classList.remove('spinning');
+    return;
+  }
+
   if (!S.stopList.length || !S.selectedBound) return;
 
   const aborter = new AbortController();
@@ -1033,16 +1046,8 @@ async function fetchAndUpdateETA() {
           } else if (S.co === 'CTB') {
             d = await api(CFG.CTB.base+CFG.CTB.etaEp(s.stopId, route));
             return {stopId: s.stopId, etas: d.data||[]};
-          } else if (S.co === 'MTR') {
-            d = await api(CFG.MTR.etaBase+CFG.MTR.etaEp(route, s.stopId));
-            if (d.status === 0) {
-              return {stopId: s.stopId, etas: [], error: d.message||''};
-            }
-            const raw = d.data||{};
-            const key = route+'-'+s.stopId;
-            const dirKey = S.selectedBound==='O'?'UP':'DOWN';
-            const arr = (raw[key]||{})[dirKey]||[];
-            return {stopId: s.stopId, etas: arr.map(e=>({eta:e.time, rmk_tc:e.dest||''}))};
+          } else if (S.co === 'LRT') {
+            return {stopId: s.stopId, etas: []}; // handled by fetchLrtETA
           } else if (S.co === 'GMB') {
             const rd = S.selectedRouteData;
             d = await api(CFG.GMB.base+CFG.GMB.etaEp(rd.routeId, s.stopId));
@@ -1073,7 +1078,7 @@ async function fetchAndUpdateETA() {
           const dirMap = {outbound:'O', inbound:'I'};
           return e.route === route && e.dir === dirMap[S.selectedBound];
         }
-        if (S.co === 'MTR') return true;
+        if (S.co === 'LRT') return true;
         if (S.co === 'GMB') return true;
         return true;
       });
@@ -1130,19 +1135,37 @@ function doRefresh() {
 
 // ===== AUTOCOMPLETE =====
 document.getElementById('routeInput').addEventListener('input', function() {
-  const v = this.value.trim().toUpperCase();
+  const v = this.value.trim();
   const box = document.getElementById('autocomplete');
+
+  // LRT: search by station name
+  if (S.co === 'LRT') {
+    if (!v || !S.lrtStations.length) { box.classList.remove('show'); return; }
+    const q = v.toUpperCase();
+    const sug = S.lrtStations
+      .filter(s => s.nameCh.includes(v) || s.nameEn.toUpperCase().includes(q) || s.stopCode.toUpperCase().startsWith(q))
+      .slice(0, 10);
+    box.innerHTML = sug.map(s =>
+      `<div class="autocomplete-item" onclick="pickAC('${s.stopId}')">
+        <div><div class="route-num">${s.nameCh}</div>
+        <div class="route-dest">${s.nameEn} · ${s.routes.join(', ')}</div></div>
+        <span class="route-co-tag LRT">LRT</span>
+      </div>`
+    ).join('');
+    box.classList.toggle('show', sug.length > 0);
+    return;
+  }
+
   if (!v || !S.routes.length) { box.classList.remove('show'); return; }
 
   const seen = new Set();
   const sug = S.routes
     .filter(r => {
-      if (S.co === 'MTR') return r.route.startsWith(v);
-      if (S.co === 'GMB') return r.route.startsWith(v) && r.co==='GMB';
-      return r.route.startsWith(v) && (S.co!=='CTB'|| r.co==='CTB');
+      if (S.co === 'GMB') return r.route.startsWith(v.toUpperCase()) && r.co==='GMB';
+      return r.route.startsWith(v.toUpperCase()) && (S.co!=='CTB'|| r.co==='CTB');
     })
     .filter(r => {
-      if (S.co !== 'MTR' && r.bound && r.bound!=='O') return false;
+      if (S.co !== 'GMB' && r.bound && r.bound!=='O') return false;
       if (seen.has(r.route)) return false;
       seen.add(r.route);
       return true;
@@ -1150,8 +1173,7 @@ document.getElementById('routeInput').addEventListener('input', function() {
     .slice(0, 10);
 
   box.innerHTML = sug.map(r => {
-    const dest = S.co==='MTR' ? (r.name_tc||r.name_en) :
-      S.co==='GMB' ? ('小巴 · '+r.region) :
+    const dest = S.co==='GMB' ? ('小巴 · '+r.region) :
       ((r.orig_tc||r.orig_en)+' → '+(r.dest_tc||r.dest_en));
     return `<div class="autocomplete-item" onclick="pickAC('${r.route}')">
       <div><div class="route-num">${r.route}</div>
@@ -1165,6 +1187,12 @@ document.getElementById('routeInput').addEventListener('input', function() {
 function pickAC(r) {
   document.getElementById('routeInput').value = r;
   closeAC();
+  // LRT: r is a station ID, find station and show directly
+  if (S.co === 'LRT') {
+    const st = S.lrtStations.find(s => s.stopId === r);
+    if (st) { showStationLRT(st); }
+    return;
+  }
   doSearch();
 }
 
@@ -1216,8 +1244,11 @@ function hideError() {
 
 function doRetry() {
   hideError();
-  if (S.selectedRoute) { doSearch(); }
-  else {
+  if (S.co === 'LRT' && S.lrtSelectedStation) {
+    fetchLrtETA();
+  } else if (S.selectedRoute) {
+    doSearch();
+  } else {
     selectCo(S.co);
   }
 }
@@ -1228,8 +1259,8 @@ function showWelcome() {
     '<h3>搜尋香港巴士路線</h3>'+
     '<p>選擇巴士公司，輸入路線號碼<br>即時查看所有車站到站時間</p>'+
     '<div class="tips">'+
-    '<div class="tip"><span class="tip-num">1</span> 選擇 九巴 / 城巴 / 港鐵巴士 / 小巴</div>'+
-    '<div class="tip"><span class="tip-num">2</span> 輸入路線號碼（如 1A, 10, 506, K51）</div>'+
+    '<div class="tip"><span class="tip-num">1</span> 選擇 九巴 / 城巴 / 輕鐵 / 小巴</div>'+
+    '<div class="tip"><span class="tip-num">2</span> 輸入路線號碼（如 1A, 10, 505, 44A）</div>'+
     '<div class="tip"><span class="tip-num">3</span> 選擇方向，查看實時到站時間</div>'+
     '</div></div>';
 }

@@ -1185,14 +1185,17 @@ document.getElementById('routeInput').addEventListener('input', function() {
 });
 
 function pickAC(r) {
-  document.getElementById('routeInput').value = r;
   closeAC();
-  // LRT: r is a station ID, find station and show directly
+  // LRT: r is a station ID, set name as input value and show directly
   if (S.co === 'LRT') {
     const st = S.lrtStations.find(s => s.stopId === r);
-    if (st) { showStationLRT(st); }
+    if (st) {
+      document.getElementById('routeInput').value = st.nameCh;
+      showStationLRT(st);
+    }
     return;
   }
+  document.getElementById('routeInput').value = r;
   doSearch();
 }
 

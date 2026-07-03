@@ -54,7 +54,7 @@ const AQHI_DATA = {json.dumps({
             # 只在偶數整點推送到 GitHub
             now = datetime.datetime.now()
             if now.hour % 2 == 0 and now.minute < 5:
-                subprocess.run(['bash', 'scripts/git-push-with-lock.sh'], check=False)
+                subprocess.run(['bash', 'scripts/batch-push.sh'], check=False)
                 print("✅ 已推送到GitHub")
             else:
                 print(f"⏸️ 非推送時段（{now.hour:02d}:{now.minute:02d}），等待下個偶數整點")

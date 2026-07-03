@@ -131,15 +131,13 @@ def update_finance_news():
         json.dump(json_data, f, ensure_ascii=False, indent=2)
     print(f"✅ 已保存 JSON 數據: {json_path} ({len(news_list)} 條新聞)")
     
-    # Git commit & push (只提交 JSON)
+    # Git commit & push（使用批次推送，自動檢查 Pages 部署狀態）
     try:
         os.chdir(WORKSPACE)
         os.system('git add finance-news.json')
         commit_msg = f'docs: update finance news {datetime.now().strftime("%Y-%m-%d %H:%M")} ({len(news_list)}條)'
         os.system(f'git commit -m "{commit_msg}"')
-        # Pull first to avoid rejection
-        os.system('git pull origin main --rebase')
-        os.system('git push origin main')
+        os.system('bash scripts/batch-push.sh')
         print("✅ 已推送到 GitHub")
     except Exception as e:
         print(f"❌ Git Error: {e}")

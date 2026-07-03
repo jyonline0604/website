@@ -27,10 +27,10 @@ if [[ -n $(git status --porcelain finance-news.json) ]]; then
     git commit -m "docs: update finance news $(date '+%Y-%m-%d %H:%M')" || true
     
     if [ "$SHOULD_PUSH" = "1" ]; then
-        echo "  🕐 偶數整點，執行推送"
-        bash scripts/git-push-with-lock.sh
+        echo "  🕐 偶數整點，執行批次推送"
+        bash scripts/batch-push.sh
     else
-        echo "  ⏸️ 非推送時段（$CURRENT_HOUR:$CURRENT_MIN），跳過 push，等待下個整點"
+        echo "  ⏸️ 非推送時段（$CURRENT_HOUR:$CURRENT_MIN），跳過 push，等待下個偶數整點"
     fi
 else
     echo "📊 財經新聞無變化"

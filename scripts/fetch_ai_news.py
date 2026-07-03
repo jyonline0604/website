@@ -339,7 +339,7 @@ def update_ai_news():
         os.system('git add news.html news-data.json')
         commit_msg = f'fix: AI資訊版更新 {datetime.now().strftime("%Y-%m-%d %H:%M")}'
         os.system(f'git commit -m "{commit_msg}"')
-        os.system('bash scripts/git-push-with-lock.sh')
+        os.system('bash scripts/batch-push.sh')
         print("✅ 已推送到GitHub")
     except Exception as e:
         print(f"❌ Git Error: {e}")

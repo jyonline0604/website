@@ -85,8 +85,8 @@ Add whatever helps you do your job. This is your cheat sheet.
 ## 🚀 Dropbox 小説自動化（2026-05-07 新增）
 
 ### Dropbox 賬號
-- **Email**: hotcha2028@gmail.com
-- **Name**: Lam liu
+- **Email**: [見本地配置]
+- **Name**: [見本地配置]
 - **資料夾**: `/萬古塵埃/第二卷/` (CH501-CH700)
 
 ### Token

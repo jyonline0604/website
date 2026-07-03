@@ -3,7 +3,7 @@ import subprocess
 import sys
 import os
 
-os.environ["SEEDREAM_API_KEY"] = "sk-REDACTED"
+os.environ.setdefault("SEEDREAM_API_KEY", os.environ.get("SEEDREAM_API_KEY", "YOUR_KEY_HERE"))
 os.environ["PYTHONPATH"] = "/home/openclaw/.openclaw/skills/seedream-image-gen/scripts"
 
 script = "/home/openclaw/.openclaw/skills/seedream-image-gen/scripts/generate_image.py"

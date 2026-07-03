@@ -19,5 +19,5 @@ These need to be replaced with proper AI-generated images specific to chapter 46
 ## To Generate Images:
 Use the seedream-image-gen skill with Gemini 3 Pro model:
 ```bash
-SEEDREAM_API_KEY="sk-REDACTED" python3 /home/openclaw/.openclaw/skills/seedream-image-gen/scripts/generate_image.py --prompt "描述" --model "gemini-3-pro-image-preview" --size "1024x1024" --output-dir ./assets
+SEEDREAM_API_KEY="$SEEDREAM_API_KEY" python3 /home/openclaw/.openclaw/skills/seedream-image-gen/scripts/generate_image.py --prompt "描述" --model "gemini-3-pro-image-preview" --size "1024x1024" --output-dir ./assets
 ```

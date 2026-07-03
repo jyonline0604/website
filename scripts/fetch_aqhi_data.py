@@ -50,7 +50,7 @@ const AQHI_DATA = {json.dumps({
         if result.stdout.strip():
             commit_msg = f"docs: update AQHI data {data[0].get('publish_date', '')[:10]}"
             subprocess.run(['git', 'commit', '-m', commit_msg], check=False)
-            subprocess.run(['git', 'push', 'origin', 'main'], check=False)
+            subprocess.run(['bash', 'scripts/git-push-with-lock.sh'], check=False)
             print("✅ 已推送到GitHub")
     else:
         print("❌ 無法獲取AQHI數據")

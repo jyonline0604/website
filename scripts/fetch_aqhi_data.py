@@ -41,17 +41,23 @@ const AQHI_DATA = {json.dumps({
             f.write(js_content)
         print(f"✅ AQHI數據已更新: {output_file}")
         
-        # 自動提交到GitHub
+        # 自動提交到GitHub（每2小時才 push，減少 Pages build 頻率）
         import subprocess
         import os
+        import datetime
         os.chdir('/home/openclaw/.openclaw/workspace')
         subprocess.run(['git', 'add', 'aqhi-data.js'], check=False)
         result = subprocess.run(['git', 'status', '--porcelain'], capture_output=True, text=True)
         if result.stdout.strip():
             commit_msg = f"docs: update AQHI data {data[0].get('publish_date', '')[:10]}"
             subprocess.run(['git', 'commit', '-m', commit_msg], check=False)
-            subprocess.run(['bash', 'scripts/git-push-with-lock.sh'], check=False)
-            print("✅ 已推送到GitHub")
+            # 只在偶數整點推送到 GitHub
+            now = datetime.datetime.now()
+            if now.hour % 2 == 0 and now.minute < 5:
+                subprocess.run(['bash', 'scripts/git-push-with-lock.sh'], check=False)
+                print("✅ 已推送到GitHub")
+            else:
+                print(f"⏸️ 非推送時段（{now.hour:02d}:{now.minute:02d}），等待下個偶數整點")
     else:
         print("❌ 無法獲取AQHI數據")
 

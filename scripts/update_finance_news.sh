@@ -1,9 +1,7 @@
 #!/bin/bash
 # 財經新聞自動更新腳本
-# 每小時更新一次財經新聞
-
-# ⚠️ 不使用 set -e，避免 Python 腳本失敗時 script 靜默退出
-# git 相關錯誤由 git-push-with-lock.sh 處理
+# 每小時更新新聞，但每2小時才 push 到 GitHub
+# 減少 GitHub Pages build 頻率
 
 cd /home/openclaw/.openclaw/workspace
 
@@ -14,14 +12,26 @@ python3 scripts/fetch_finance_news.py || {
     echo "  ⚠️ fetch_finance_news.py 失敗（exit code: $?）"
 }
 
-# 如果有Git變更，用 lock 機制提交並推送
+# 判斷是否應該 push（每2小時：只在偶數整點推）
+CURRENT_HOUR=$(date '+%H')
+CURRENT_MIN=$(date '+%M')
+SHOULD_PUSH=0
+if [ "$CURRENT_MIN" = "00" ] && [ $((10#$CURRENT_HOUR % 2)) -eq 0 ]; then
+    SHOULD_PUSH=1
+fi
+
+# 如果有Git變更
 if [[ -n $(git status --porcelain finance-news.json) ]]; then
     echo "📝 檢測到財經新聞更新"
     git add finance-news.json
-    git commit -m "docs: update finance news $(date '+%Y-%m-%d %H:%M') (條)" || true
+    git commit -m "docs: update finance news $(date '+%Y-%m-%d %H:%M')" || true
     
-    # 使用鎖機制推送，防止多 cron 衝突
-    bash scripts/git-push-with-lock.sh
+    if [ "$SHOULD_PUSH" = "1" ]; then
+        echo "  🕐 偶數整點，執行推送"
+        bash scripts/git-push-with-lock.sh
+    else
+        echo "  ⏸️ 非推送時段（$CURRENT_HOUR:$CURRENT_MIN），跳過 push，等待下個整點"
+    fi
 else
     echo "📊 財經新聞無變化"
 fi

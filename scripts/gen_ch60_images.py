@@ -1,7 +1,7 @@
 import subprocess
 import os
 
-os.environ["SEEDREAM_API_KEY"] = "sk-REDACTED"
+os.environ.setdefault("SEEDREAM_API_KEY", os.environ.get("SEEDREAM_API_KEY", "YOUR_KEY_HERE"))
 
 prompts = [
     ("chapter-60-scene1", "Young Asian male, 20 years old, black short hair, sitting in a dark abandoned building rooftop machine room, glowing blue quantum crystal shaped like a heart pulsing on chest, blue data streams on forehead, wearing dark blue tech-combat suit, surrounded by ethereal blue spirit energy, multiple holographic UI panels floating in air showing cultivation progress data, moody cinematic lighting, sci-fi fantasy cultivation setting"),

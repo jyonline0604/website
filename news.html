@@ -621,7 +621,7 @@
         // Load news
         async function loadNews() {
             try {
-                const response = await fetch('news-data.json');
+                const response = await fetch('news-data.json?t=' + Date.now());
                 const data = await response.json();
                 allNews = data.news || [];
 

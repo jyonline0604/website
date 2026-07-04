@@ -20,6 +20,7 @@ class FinanceDataManager {
         
         // 設置定時更新
         setInterval(() => this.loadFinanceData(), this.updateInterval);
+        setInterval(() => this.loadFinanceNews(), this.updateInterval);
         
         // 更新UI
         this.updateUI();

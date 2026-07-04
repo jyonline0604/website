@@ -645,6 +645,9 @@
         }
 
         loadNews();
+
+        // 每5分鐘自動刷新新聞
+        setInterval(() => loadNews(), 300000);
     // SECURITY NOTE: Consider replacing innerHTML assignments with textContent
 // or DOM manipulation methods to prevent XSS vulnerabilities.
 // Example: element.textContent = value instead of element.innerHTML = value

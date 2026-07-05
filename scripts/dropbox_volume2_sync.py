@@ -193,19 +193,23 @@ def refresh_access_token():
     
     log("  🔄 Token 過期，自動刷新...")
     try:
-        token_data = {
-            'grant_type': 'refresh_token',
-            'refresh_token': refresh_token,
-            'client_id': app_key,
-        }
+        import subprocess
+        cmd = [
+            'curl', '-s', '-X', 'POST', 'https://api.dropboxapi.com/oauth2/token',
+            '-d', f'grant_type=refresh_token',
+            '-d', f'refresh_token={refresh_token}',
+            '-d', f'client_id={app_key}',
+        ]
         if app_secret:
-            token_data['client_secret'] = app_secret
-        resp = requests.post('https://api.dropboxapi.com/oauth2/token', data=token_data)
-        if resp.status_code != 200:
-            log(f"  ❌ Refresh 失敗: {resp.status_code} {resp.text[:100]}")
+            cmd.extend(['-d', f'client_secret={app_secret}'])
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        if result.returncode != 0:
+            log(f"  ❌ Refresh 失敗: curl error")
             return False
-        
-        data = resp.json()
+        data = json.loads(result.stdout)
+        if 'error' in data:
+            log(f"  ❌ Refresh 失敗: {data}")
+            return False
         new_token = data['access_token']
         
         # 保存新 token

@@ -75,6 +75,13 @@
       "time": "18:00",
       "check": "檢查上次任務中是否有遺留未更新的Skill更新日誌",
       "action_if_fail": "補更新並同步到Second-brain和Max-backup"
+    },
+    {
+      "name": "Git Hooks 健康檢查",
+      "schedule": "daily",
+      "time": "09:00",
+      "check": "檢查 pre-commit 和 pre-push hooks 是否存在且可執行",
+      "action_if_fail": "從備份恢復或重新建立 hook 腳本"
     }
   ]
 }

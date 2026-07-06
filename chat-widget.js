@@ -147,6 +147,21 @@
 }
 .kofhk-chat-empty-icon { font-size: 48px; opacity: .6; }
 
+.kofhk-chat-suggestions {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px;
+  justify-content: center;
+}
+.kofhk-chat-suggestion {
+  padding: 6px 12px; border-radius: 16px; border: 1px solid var(--kofhk-chat-border);
+  background: rgba(255,255,255,0.04); color: var(--kofhk-chat-text2);
+  font-size: .78rem; cursor: pointer; transition: all .2s;
+  white-space: nowrap; font-family: sans-serif;
+}
+.kofhk-chat-suggestion:hover {
+  background: rgba(0,212,255,0.12); border-color: var(--kofhk-chat-accent);
+  color: var(--kofhk-chat-accent);
+}
+
 .kofhk-chat-messages::-webkit-scrollbar { width: 4px; }
 .kofhk-chat-messages::-webkit-scrollbar-track { background: transparent; }
 .kofhk-chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 4px; }
@@ -188,6 +203,14 @@
         <div class="kofhk-chat-empty-icon">🐱</div>
         <div>你好！我是小肥喵～</div>
         <div style="font-size:.78rem;color:#666;">可以問我小說進度、網站導覽，或者任何問題！</div>
+        <div class="kofhk-chat-suggestions">
+          <button class="kofhk-chat-suggestion" data-query="萬古塵埃是什麼故事？">📖 故事介紹</button>
+          <button class="kofhk-chat-suggestion" data-query="主角葉塵的成長過程">🦸 主角介紹</button>
+          <button class="kofhk-chat-suggestion" data-query="萬古塵埃的境界體系">⚔️ 境界體系</button>
+          <button class="kofhk-chat-suggestion" data-query="小説總共有多少章？">📚 章節資訊</button>
+          <button class="kofhk-chat-suggestion" data-query="網站有哪些頁面？">🗺️ 網站導覽</button>
+          <button class="kofhk-chat-suggestion" data-query="作者大肥喵是誰？">✍️ 關於作者</button>
+        </div>
       </div>
     </div>
     <div class="kofhk-chat-input-wrap">
@@ -336,6 +359,18 @@
   input.addEventListener('input', function () {
     this.style.height = 'auto';
     this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+  });
+
+  // Quick reply suggestion buttons
+  messagesEl.addEventListener('click', function (e) {
+    const btn = e.target.closest('.kofhk-chat-suggestion');
+    if (!btn) return;
+    const query = btn.dataset.query;
+    if (query && !isSending) {
+      input.value = query;
+      input.dispatchEvent(new Event('input'));
+      send();
+    }
   });
 
   // ── Keyboard shortcut: Ctrl+Shift+K to open chat ──

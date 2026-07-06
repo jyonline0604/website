@@ -1,0 +1,13 @@
+name = "kofhk-chat"
+main = "index.js"
+compatibility_date = "2025-01-01"
+
+# Route: kofhk.com/api/chat and kofhk.com/api/status
+routes = [
+  { pattern = "kofhk.com/api/*", zone_name = "kofhk.com" }
+]
+
+# Environment variables (set secret with: wrangler secret put OPENROUTER_API_KEY)
+# [vars]
+# No public vars needed — API key is a secret
+

@@ -257,6 +257,12 @@
     panel.classList.remove('kofhk-chat-open');
     fab.classList.remove('kofhk-chat-hidden');
     isOpen = false;
+    // Clear history on close
+    history = [];
+    try { sessionStorage.removeItem('kofhk-chat-history'); } catch (e) { /* ignore */ }
+    // Remove all message elements
+    messagesEl.querySelectorAll('.kofhk-chat-msg').forEach(el => el.remove());
+    emptyEl.style.display = '';
   }
 
   fab.addEventListener('click', openPanel);

@@ -1,242 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第5章 · 進山準備 - 萬古塵埃</title>
-    <meta name="description" content="三天時間，轉瞬即逝。這三天裡，葉塵幾乎足不出戶，全力修煉塵埃訣。他驚訝地發現，這部功法的效果遠遠超出他的預期。第一世那個散修的修煉經驗，似乎烙印在了他的身體記憶中——雖然記憶還沒有完全解鎖，但每當他遇到瓶頸時，身體總會自然而然地做出正確的調整。這就是輪迴傳承的真正價值嗎。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-5.html">
-    <link rel="prev" href="https://kofhk.com/chapter-4.html">
-    <link rel="next" href="https://kofhk.com/chapter-6.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第5章 · 進山準備</h1>
-    <main>
-<p>三天時間，轉瞬即逝。這三天裡，葉塵幾乎足不出戶，全力修煉塵埃訣。他驚訝地發現，這部功法的效果遠遠超出他的預期。第一世那個散修的修煉經驗，似乎烙印在了他的身體記憶中——雖然記憶還沒有完全解鎖，但每當他遇到瓶頸時，身體總會自然而然地做出正確的調整。這就是輪迴傳承的真正價值嗎。不僅是記憶，還有經驗、本能、戰鬥直覺…… 三天下來，他的境界穩穩站在了感氣前期巔峰，距離中期只有一層窗戶紙。</p>
-        <p>更重要的是，他的經脈被拓寬了將近一倍，雖然還是比普通人略窄，但已經不再是「天生閉塞。的廢物體質了。「差不多了。這天清晨，葉塵收拾好簡單的行囊——一壺水、幾塊乾糧、一把生銹的匕首——準備出發前往蒼瀾山脈。剛走出門，他就看到了不遠處站著一個人。那是葉家的一個護衛，身形魁梧，面容冷峻，正靠在一棵樹上，像是專門在等他的。</p>
-        <p>「葉塵少爺，。護衛見他出來，抱拳行了一禮，語氣卻帶著一絲輕蔑，「家主吩咐，您若要出門，需由屬下陪同。葉塵眉頭一皺。說是陪同，其實就是監視吧。看來他在族會上展現的實力，已經引起了家族的注意。只是不知道家主究竟是什麼態度——是想保護他，還是想調查他。「不必了，我只是去鎮上買點東西。葉塵淡然拒絕。「家主有令，屬下不敢違抗。</p>
-        <p>護衛語氣堅定，顯然沒打算讓步。葉塵沉默片刻，點了點頭：「隨你。他轉身向鎮外走去。護衛愣了一下：「葉塵少爺，您不是說去鎮上嗎。「我改主意了。葉塵頭也不回，「去蒼瀾山脈。「什麼。護衛臉色一變，連忙追上：「少爺不可。蒼瀾山脈兇險萬分，您一個感氣前期的修為進山，簡直是送死。「那你就別跟著我。葉塵腳步不停，「反正進山之後，你也未必保護得了我。</p>
-        <p>「你——。護衛臉色一陣青一陣白，最終還是咬了咬牙，跟了上去。他是奉家主的命令來監視葉塵的，要是把人跟丟了，回去沒法交代。兩人一前一後，走出了青陽鎮，沿著一條崎嶇的小路向蒼瀾山脈的方向前進。一路上，葉塵嘗試著向護衛打聽了一些關於蒼瀾山脈的資訊。護衛名叫鐵三，是葉家僱傭的散修，修為在感氣後期巔峰，曾經多次進山獵殺野獸，對蒼瀾山脈的外圍地形相當熟悉。</p>
-        <p>「蒼瀾山脈外圍主要是一階野獸，實力相當於人類感氣期。鐵三雖然不情願，但還是大致介紹了一下，「偶爾會出現二階野獸，那就相當於築基期的強者了。碰上了只能跑，跑不掉就是死。「一階野獸的實力和感氣期相比如何。「同階野獸的肉身強度和戰鬥本能通常強於人類，但人類有功法、法器、戰技……總體來說，感氣中期的人類修士可以單獨對付大部分一階野獸。</p>
-        <p>鐵三看了葉塵一眼，語氣中帶著一絲不屑：「至於感氣前期……最多對付一些最低級的一階下品野獸，還是得小心翼翼的。葉塵沒有反駁，只是默默記下了這些資訊。兩個時辰後，他們終於來到了蒼瀾山脈的邊緣。巍峨的山巒連綿起伏，茂密的原始森林遮天蔽日，空氣中彌漫著潮濕的泥土氣息和淡淡的腥味。深處時不時傳來幾聲低沉的獸吼，讓人心生寒意。</p>
-        <p>鐵三停下腳步，面色凝重：「葉塵少爺，到此為止吧。再往裡走，我就不確保您的安全了——。他的話還沒說完，就看到葉塵竟然徑直走進了森林。「喂。你——。鐵三來不及阻止，只能咬牙跟上。進入森林後的光線驟然暗了下來。參天大樹的樹冠遮住了大部分陽光，只有幾縷光柱透過葉隙灑落。地面上鋪滿了厚厚的落葉，踩上去發出沙沙的聲響。</p>
-        <p>葉塵走在前面，目光不停地掃視四周。他的感知力在進入森林後變得異常敏銳——不知是塵埃訣的作用，還是九世輪迴帶來的潛能覺醒。他能夠清晰地感應到周圍的風吹草動，甚至能察覺到隱藏在落葉下的蟲蟻活動。「左前方十步，那棵大樹的根部，有一株靈草。葉塵腳步一頓，向那個方向走去。鐵三跟上去一看，愣了愣——那株靈草隱藏在樹根和落葉之間，如果不是仔細看，很容易就錯過了。</p>
-        <p>「這是……元氣草。低階靈草，可以輔助感氣期的修煉。鐵三有些驚訝地看了葉塵一眼，「你運氣不錯，這東西雖然不珍貴，但在鎮上也能賣幾兩銀子。葉塵小心翼翼地將元氣草挖出來，放進懷裡。他沒有說的是，剛才他之所以能發現這株靈草，靠的不是運氣—— 而是在觸碰到它的瞬間，識海深處浮現的一絲熟悉的感覺。那是第一世的記憶碎片在甦醒。</p>
-        <p>他對靈藥的辨識能力，是刻在骨子裡的。而這份能力，正在隨著記憶的解鎖，一點一滴地回到葉塵身上。</p>
-    </main>
-    <nav class="nav">
-        <a href="https://kofhk.com/chapter-4.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-5/" class="manga-btn">🎨 漫畫版</a>
-        <a href="https://kofhk.com/chapter-6.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第5章 · 進山準備 - 萬古塵埃</title><meta name="description" content="三天時間，轉瞬即逝。這三天裡，葉塵幾乎足不出戶，全力修煉塵埃訣。他驚訝地發現，這部功法的效果遠遠超出他的預期。第一世那個散修的修煉經驗，似乎烙印在了他的身體記憶中——雖然記憶還沒有完全解鎖，但每當他遇到瓶頸時，身體總會自然而然地做出正確的調整。這就是輪迴傳承的真正價值嗎。"><link rel="canonical" href="https://kofhk.com/chapter-5.html"><link rel="prev" href="https://kofhk.com/chapter-4.html"><link rel="next" href="https://kofhk.com/chapter-6.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第5章 · 進山準備</h1><main><p>三天時間，轉瞬即逝。這三天裡，葉塵幾乎足不出戶，全力修煉塵埃訣。他驚訝地發現，這部功法的效果遠遠超出他的預期。第一世那個散修的修煉經驗，似乎烙印在了他的身體記憶中——雖然記憶還沒有完全解鎖，但每當他遇到瓶頸時，身體總會自然而然地做出正確的調整。這就是輪迴傳承的真正價值嗎。不僅是記憶，還有經驗、本能、戰鬥直覺…… 三天下來，他的境界穩穩站在了感氣前期巔峰，距離中期只有一層窗戶紙。</p><p>更重要的是，他的經脈被拓寬了將近一倍，雖然還是比普通人略窄，但已經不再是「天生閉塞。的廢物體質了。「差不多了。這天清晨，葉塵收拾好簡單的行囊——一壺水、幾塊乾糧、一把生銹的匕首——準備出發前往蒼瀾山脈。剛走出門，他就看到了不遠處站著一個人。那是葉家的一個護衛，身形魁梧，面容冷峻，正靠在一棵樹上，像是專門在等他的。</p><p>「葉塵少爺，。護衛見他出來，抱拳行了一禮，語氣卻帶著一絲輕蔑，「家主吩咐，您若要出門，需由屬下陪同。葉塵眉頭一皺。說是陪同，其實就是監視吧。看來他在族會上展現的實力，已經引起了家族的注意。只是不知道家主究竟是什麼態度——是想保護他，還是想調查他。「不必了，我只是去鎮上買點東西。葉塵淡然拒絕。「家主有令，屬下不敢違抗。</p><p>護衛語氣堅定，顯然沒打算讓步。葉塵沉默片刻，點了點頭：「隨你。他轉身向鎮外走去。護衛愣了一下：「葉塵少爺，您不是說去鎮上嗎。「我改主意了。葉塵頭也不回，「去蒼瀾山脈。「什麼。護衛臉色一變，連忙追上：「少爺不可。蒼瀾山脈兇險萬分，您一個感氣前期的修為進山，簡直是送死。「那你就別跟著我。葉塵腳步不停，「反正進山之後，你也未必保護得了我。</p><p>「你——。護衛臉色一陣青一陣白，最終還是咬了咬牙，跟了上去。他是奉家主的命令來監視葉塵的，要是把人跟丟了，回去沒法交代。兩人一前一後，走出了青陽鎮，沿著一條崎嶇的小路向蒼瀾山脈的方向前進。一路上，葉塵嘗試著向護衛打聽了一些關於蒼瀾山脈的資訊。護衛名叫鐵三，是葉家僱傭的散修，修為在感氣後期巔峰，曾經多次進山獵殺野獸，對蒼瀾山脈的外圍地形相當熟悉。</p><p>「蒼瀾山脈外圍主要是一階野獸，實力相當於人類感氣期。鐵三雖然不情願，但還是大致介紹了一下，「偶爾會出現二階野獸，那就相當於築基期的強者了。碰上了只能跑，跑不掉就是死。「一階野獸的實力和感氣期相比如何。「同階野獸的肉身強度和戰鬥本能通常強於人類，但人類有功法、法器、戰技……總體來說，感氣中期的人類修士可以單獨對付大部分一階野獸。</p><p>鐵三看了葉塵一眼，語氣中帶著一絲不屑：「至於感氣前期……最多對付一些最低級的一階下品野獸，還是得小心翼翼的。葉塵沒有反駁，只是默默記下了這些資訊。兩個時辰後，他們終於來到了蒼瀾山脈的邊緣。巍峨的山巒連綿起伏，茂密的原始森林遮天蔽日，空氣中彌漫著潮濕的泥土氣息和淡淡的腥味。深處時不時傳來幾聲低沉的獸吼，讓人心生寒意。</p><p>鐵三停下腳步，面色凝重：「葉塵少爺，到此為止吧。再往裡走，我就不確保您的安全了——。他的話還沒說完，就看到葉塵竟然徑直走進了森林。「喂。你——。鐵三來不及阻止，只能咬牙跟上。進入森林後的光線驟然暗了下來。參天大樹的樹冠遮住了大部分陽光，只有幾縷光柱透過葉隙灑落。地面上鋪滿了厚厚的落葉，踩上去發出沙沙的聲響。</p><p>葉塵走在前面，目光不停地掃視四周。他的感知力在進入森林後變得異常敏銳——不知是塵埃訣的作用，還是九世輪迴帶來的潛能覺醒。他能夠清晰地感應到周圍的風吹草動，甚至能察覺到隱藏在落葉下的蟲蟻活動。「左前方十步，那棵大樹的根部，有一株靈草。葉塵腳步一頓，向那個方向走去。鐵三跟上去一看，愣了愣——那株靈草隱藏在樹根和落葉之間，如果不是仔細看，很容易就錯過了。</p><p>「這是……元氣草。低階靈草，可以輔助感氣期的修煉。鐵三有些驚訝地看了葉塵一眼，「你運氣不錯，這東西雖然不珍貴，但在鎮上也能賣幾兩銀子。葉塵小心翼翼地將元氣草挖出來，放進懷裡。他沒有說的是，剛才他之所以能發現這株靈草，靠的不是運氣—— 而是在觸碰到它的瞬間，識海深處浮現的一絲熟悉的感覺。那是第一世的記憶碎片在甦醒。</p><p>他對靈藥的辨識能力，是刻在骨子裡的。而這份能力，正在隨著記憶的解鎖，一點一滴地回到葉塵身上。</p></main><nav class="nav"><a href="https://kofhk.com/chapter-4.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-5/" class="manga-btn">🎨 漫畫版</a><a href="https://kofhk.com/chapter-6.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

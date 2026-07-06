@@ -1,276 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第94章 · 丹尊記憶 - 萬古塵埃</title>
-    <meta name="description" content="葉塵盤膝坐在屋內，面前懸浮著那枚紫色的晶石。晶石散發出柔和的光芒，將整個房間染成了淡紫色，光影在牆壁上流轉變幻，像是水面上的漣漪。他閉著眼睛，將意識沉入晶石之中，試圖觸碰其中深藏的傳承記憶。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-94.html">>
-    <link rel="prev" href="chapter-93.html">
-    <link rel="next" href="chapter-95.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第94章 · 丹尊記憶</h1>
-    <main>
-        <p>深冬的夜晚，萬籟俱寂。</p>
-        <p>葉塵盤膝坐在屋內，面前懸浮著那枚紫色的晶石。晶石散發出柔和的光芒，將整個房間染成了淡紫色，光影在牆壁上流轉變幻，像是水面上的漣漪。他閉著眼睛，將意識沉入晶石之中，試圖觸碰其中深藏的傳承記憶。</p>
-        <p>自從獲得紫晶以來，他已經解鎖了其中的一部分傳承，包括塵淵劍訣的完整劍譜和一些修煉心得。但他知道，這枚晶石中蘊含的遠不止這些。作為輪迴之主留下的傳承鑰匙，它承載著九世輪迴中某一世的全部記憶和經驗。</p>
-        <p>而那一世，是一位煉丹宗師。</p>
-        <p>紫晶在他的掌心中微微顫動，散發出越來越強烈的光芒。光芒像是有生命一般，順著他的手臂蔓延而上，最終匯聚到他的眉心處。一股龐大的信息洪流衝入識海，像是決堤的洪水，勢不可擋。</p>
-        <p>葉塵的身體猛地一震，額頭滲出細密的汗珠。</p>
-        <p>他的識海中，無數畫面如同走馬燈般閃過。</p>
-        <p>他看到了一片一望無際的藥園。五顏六色的靈草在微風中搖曳，散發出濃郁的藥香。有通體火紅的烈焰花，花瓣像是燃燒的火焰；有晶瑩剔透的冰心蓮，生長在寒潭之中，散發出陣陣寒氣；有閃爍著金色光芒的龍涎草，葉片上的紋路像是龍鱗一般；還有各種他叫不出名字的奇花異草，每一株都散發著強大的靈氣波動。</p>
-        <p>藥園中央，坐落著一座古樸的丹房。丹房的牆壁上刻滿了玄奧的符文，隨著光線的變化而流轉，像是活的一般。丹房內部，一尊巨大的丹爐立在大廳中央，爐身呈現出深沉的青銅色，表面雕刻著九條神龍，栩栩如生，彷彿隨時會衝破爐壁騰空而起。</p>
-        <p>一個身穿白色長袍的中年男子站在丹爐前。</p>
-        <p>他的面容清瘦，鬚髮整潔，眼神專注而深邃。他的手指修長而靈活，此刻正捏著一個複雜的手印，控制著丹爐下方的火焰。火焰在他的操控下變幻莫測，時而猛烈如狂風暴雨，時而溫柔如春風拂面。</p>
-        <p>他的每一個動作都充滿了韻律感，像是和丹爐、火焰、藥材融為了一體。</p>
-        <p>葉塵屏住了呼吸。</p>
-        <p>他知道，這個白衣男子就是某一世輪迴中的自己——那個被稱為「丹尊」的煉丹宗師。</p>
-        <p>畫面繼續流轉。</p>
-        <p>丹尊的一生在他眼前展開。從最初接觸煉丹的懵懂少年，到後來名震天下的煉丹宗師，其間經歷了無數的失敗和挫折。他曾經因為煉丹失誤炸毀了整座丹房，被藥材商人追債追得四處逃亡；他曾經為了尋找一味稀有的藥材，深入蠻荒禁地，九死一生；他也曾經為了煉製一枚絕世丹藥，連續三年不眠不休，最終丹成之時，自己也因此大病了一場。</p>
-        <p>但所有的磨難，最終都化為了他爐火純青的煉丹技藝。</p>
-        <p>葉塵看到丹尊煉製各種丹藥的畫面。從最基礎的一品凝氣丹，到傳說中的九品天丹，每一種丹藥的煉製過程都清晰地烙印在他的識海中。那些手法、火候、時機、配比，每一個細節都精確到了極致。</p>
-        <p>一轉眼，不知過了多久。</p>
-        <p>當葉塵再次睜開眼睛時，窗外的天色已經微微發亮。他發現自己渾身都被冷汗浸透了，額頭上的汗水順著臉頰滴落，在衣襟上暈開一片深色的水漬。但他的眼神中，卻閃爍著狂喜的光芒。</p>
-        <p>「原來……煉丹是這樣的。」</p>
-        <p>他的聲音有些沙啞，帶著一絲難以抑制的顫抖。</p>
-        <p>丹尊的記憶雖然只解鎖了一部分，但那一部分已經足夠讓他對煉丹的理解發生質的飛躍。以前他看煉丹，覺得那只是一種技術，按照丹方操作就可以了。但現在他才明白，煉丹是一門藝術，是一門需要用心去感受的學問。</p>
-        <p>同樣的藥材，同樣的丹方，不同的人煉製出來的效果截然不同。差別就在於煉丹師對火候的掌控、對藥性的理解、對時機的把握。這些東西不是靠看書就能學會的，需要長年累月的經驗積累，需要天賦和悟性，更需要一顆對煉丹真正的熱愛之心。</p>
-        <p>「讓我試試。」</p>
-        <p>葉塵站起身，活動了一下有些僵硬的身體。他的骨節發出咔咔的聲響，長時間的盤坐讓他的雙腿有些麻木，但他顧不上這些了。他快步走向放在角落裡的丹爐——那尊從丹房借來的小型青銅丹爐，雖然和丹尊記憶中的那尊九龍神爐不可同日而語，但對於現階段的他來說，已經足夠了。</p>
-        <p>他點燃爐火，開始暖爐。</p>
-        <p>按照丹尊記憶中的手法，他調整了自己的呼吸節奏，讓心跳和火焰的跳動頻率保持一致。他的手掌貼在丹爐的側面，感受著溫度的每一絲變化。以前他只知道大概的溫度範圍，但現在，他能清晰地感知到爐內每一處的溫度差異——爐底的溫度比爐壁高了三分，爐蓋處的溫度低了五分，爐內的熱量分佈並不完全均勻。</p>
-        <p>這就是丹尊的經驗帶給他的改變。</p>
-        <p>他開始投入藥材。</p>
-        <p>第一味藥是凝氣草，煉製凝氣丹的主藥。按照常規手法，凝氣草需要在爐溫達到七成時投入，然後用文火慢慢熬煉，將藥性逼出來。但丹尊的記憶告訴他，凝氣草的最佳投入時機其實是爐溫達到六成時，然後用武火瞬間加熱，將藥性激發出來，再轉為文火慢慢蘊養。</p>
-        <p>這樣煉製出來的凝氣草藥液，純度會比常規手法高出兩成。</p>
-        <p>葉塵毫不猶豫地選擇了丹尊的手法。</p>
-        <p>他的動作行雲流水，沒有一絲遲疑。投藥、控火、提煉、融合，每一步都精確到位，彷彿他已經煉過成千上萬次一樣。丹尊的記憶就像是一個老師傅在手把手地教他，讓他跳過了漫長的摸索階段，直接掌握了煉丹的核心技巧。</p>
-        <p>一盞茶的時間後，丹爐中傳出一陣淡淡的藥香。</p>
-        <p>那藥香清冽而純淨，像是清晨的露水混合著草藥的氣息，聞起來讓人心曠神怡。葉塵深吸一口氣，眼中閃過一絲喜悅。</p>
-        <p>成功了。</p>
-        <p>他打開丹爐，爐底靜靜地躺著三枚淡綠色的丹藥。丹藥表面光滑圓潤，散發出柔和的光澤，就像三顆打磨好的翡翠珠子。他拈起一枚，仔細端詳。丹藥的色澤均勻，藥香純正，沒有一絲雜質——這是一品凝氣丹中的極品，品質遠超普通手法煉製的丹藥。</p>
-        <p>「丹尊記憶……果然名不虛傳。」</p>
-        <p>他將丹藥小心地收進玉瓶中，然後坐下，閉上眼睛，開始消化剛才接收到的傳承記憶。</p>
-        <p>丹尊的記憶像是一本厚重的書，他剛才只是翻開了封面，看到了目錄。更多的內容還需要他慢慢去閱讀、去理解、去實踐。煉丹之道浩瀚如海，丹尊雖然是一代宗師，但也只是在這片海洋中走得比較遠而已。</p>
-        <p>「有了丹尊的記憶，我在煉丹一道上可以少走很多彎路。但最終能走到多遠，還是要看我自己的領悟。」</p>
-        <p>他睜開眼睛，目光中充滿了期待。</p>
-        <p>窗外的天色已經大亮，陽光透過窗戶照進來，在地板上投下一片溫暖的光影。遠處傳來弟子們晨練的聲音，整齊而有力。</p>
-        <p>新的一天開始了。</p>
-    </main>
-    <nav class="nav">
-        <a href="chapter-93.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-94/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-95.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第94章 · 丹尊記憶 - 萬古塵埃</title><meta name="description" content="葉塵盤膝坐在屋內，面前懸浮著那枚紫色的晶石。晶石散發出柔和的光芒，將整個房間染成了淡紫色，光影在牆壁上流轉變幻，像是水面上的漣漪。他閉著眼睛，將意識沉入晶石之中，試圖觸碰其中深藏的傳承記憶。"><link rel="canonical" href="https://kofhk.com/chapter-94.html">><link rel="prev" href="chapter-93.html"><link rel="next" href="chapter-95.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第94章 · 丹尊記憶</h1><main><p>深冬的夜晚，萬籟俱寂。</p><p>葉塵盤膝坐在屋內，面前懸浮著那枚紫色的晶石。晶石散發出柔和的光芒，將整個房間染成了淡紫色，光影在牆壁上流轉變幻，像是水面上的漣漪。他閉著眼睛，將意識沉入晶石之中，試圖觸碰其中深藏的傳承記憶。</p><p>自從獲得紫晶以來，他已經解鎖了其中的一部分傳承，包括塵淵劍訣的完整劍譜和一些修煉心得。但他知道，這枚晶石中蘊含的遠不止這些。作為輪迴之主留下的傳承鑰匙，它承載著九世輪迴中某一世的全部記憶和經驗。</p><p>而那一世，是一位煉丹宗師。</p><p>紫晶在他的掌心中微微顫動，散發出越來越強烈的光芒。光芒像是有生命一般，順著他的手臂蔓延而上，最終匯聚到他的眉心處。一股龐大的信息洪流衝入識海，像是決堤的洪水，勢不可擋。</p><p>葉塵的身體猛地一震，額頭滲出細密的汗珠。</p><p>他的識海中，無數畫面如同走馬燈般閃過。</p><p>他看到了一片一望無際的藥園。五顏六色的靈草在微風中搖曳，散發出濃郁的藥香。有通體火紅的烈焰花，花瓣像是燃燒的火焰；有晶瑩剔透的冰心蓮，生長在寒潭之中，散發出陣陣寒氣；有閃爍著金色光芒的龍涎草，葉片上的紋路像是龍鱗一般；還有各種他叫不出名字的奇花異草，每一株都散發著強大的靈氣波動。</p><p>藥園中央，坐落著一座古樸的丹房。丹房的牆壁上刻滿了玄奧的符文，隨著光線的變化而流轉，像是活的一般。丹房內部，一尊巨大的丹爐立在大廳中央，爐身呈現出深沉的青銅色，表面雕刻著九條神龍，栩栩如生，彷彿隨時會衝破爐壁騰空而起。</p><p>一個身穿白色長袍的中年男子站在丹爐前。</p><p>他的面容清瘦，鬚髮整潔，眼神專注而深邃。他的手指修長而靈活，此刻正捏著一個複雜的手印，控制著丹爐下方的火焰。火焰在他的操控下變幻莫測，時而猛烈如狂風暴雨，時而溫柔如春風拂面。</p><p>他的每一個動作都充滿了韻律感，像是和丹爐、火焰、藥材融為了一體。</p><p>葉塵屏住了呼吸。</p><p>他知道，這個白衣男子就是某一世輪迴中的自己——那個被稱為「丹尊」的煉丹宗師。</p><p>畫面繼續流轉。</p><p>丹尊的一生在他眼前展開。從最初接觸煉丹的懵懂少年，到後來名震天下的煉丹宗師，其間經歷了無數的失敗和挫折。他曾經因為煉丹失誤炸毀了整座丹房，被藥材商人追債追得四處逃亡；他曾經為了尋找一味稀有的藥材，深入蠻荒禁地，九死一生；他也曾經為了煉製一枚絕世丹藥，連續三年不眠不休，最終丹成之時，自己也因此大病了一場。</p><p>但所有的磨難，最終都化為了他爐火純青的煉丹技藝。</p><p>葉塵看到丹尊煉製各種丹藥的畫面。從最基礎的一品凝氣丹，到傳說中的九品天丹，每一種丹藥的煉製過程都清晰地烙印在他的識海中。那些手法、火候、時機、配比，每一個細節都精確到了極致。</p><p>一轉眼，不知過了多久。</p><p>當葉塵再次睜開眼睛時，窗外的天色已經微微發亮。他發現自己渾身都被冷汗浸透了，額頭上的汗水順著臉頰滴落，在衣襟上暈開一片深色的水漬。但他的眼神中，卻閃爍著狂喜的光芒。</p><p>「原來……煉丹是這樣的。」</p><p>他的聲音有些沙啞，帶著一絲難以抑制的顫抖。</p><p>丹尊的記憶雖然只解鎖了一部分，但那一部分已經足夠讓他對煉丹的理解發生質的飛躍。以前他看煉丹，覺得那只是一種技術，按照丹方操作就可以了。但現在他才明白，煉丹是一門藝術，是一門需要用心去感受的學問。</p><p>同樣的藥材，同樣的丹方，不同的人煉製出來的效果截然不同。差別就在於煉丹師對火候的掌控、對藥性的理解、對時機的把握。這些東西不是靠看書就能學會的，需要長年累月的經驗積累，需要天賦和悟性，更需要一顆對煉丹真正的熱愛之心。</p><p>「讓我試試。」</p><p>葉塵站起身，活動了一下有些僵硬的身體。他的骨節發出咔咔的聲響，長時間的盤坐讓他的雙腿有些麻木，但他顧不上這些了。他快步走向放在角落裡的丹爐——那尊從丹房借來的小型青銅丹爐，雖然和丹尊記憶中的那尊九龍神爐不可同日而語，但對於現階段的他來說，已經足夠了。</p><p>他點燃爐火，開始暖爐。</p><p>按照丹尊記憶中的手法，他調整了自己的呼吸節奏，讓心跳和火焰的跳動頻率保持一致。他的手掌貼在丹爐的側面，感受著溫度的每一絲變化。以前他只知道大概的溫度範圍，但現在，他能清晰地感知到爐內每一處的溫度差異——爐底的溫度比爐壁高了三分，爐蓋處的溫度低了五分，爐內的熱量分佈並不完全均勻。</p><p>這就是丹尊的經驗帶給他的改變。</p><p>他開始投入藥材。</p><p>第一味藥是凝氣草，煉製凝氣丹的主藥。按照常規手法，凝氣草需要在爐溫達到七成時投入，然後用文火慢慢熬煉，將藥性逼出來。但丹尊的記憶告訴他，凝氣草的最佳投入時機其實是爐溫達到六成時，然後用武火瞬間加熱，將藥性激發出來，再轉為文火慢慢蘊養。</p><p>這樣煉製出來的凝氣草藥液，純度會比常規手法高出兩成。</p><p>葉塵毫不猶豫地選擇了丹尊的手法。</p><p>他的動作行雲流水，沒有一絲遲疑。投藥、控火、提煉、融合，每一步都精確到位，彷彿他已經煉過成千上萬次一樣。丹尊的記憶就像是一個老師傅在手把手地教他，讓他跳過了漫長的摸索階段，直接掌握了煉丹的核心技巧。</p><p>一盞茶的時間後，丹爐中傳出一陣淡淡的藥香。</p><p>那藥香清冽而純淨，像是清晨的露水混合著草藥的氣息，聞起來讓人心曠神怡。葉塵深吸一口氣，眼中閃過一絲喜悅。</p><p>成功了。</p><p>他打開丹爐，爐底靜靜地躺著三枚淡綠色的丹藥。丹藥表面光滑圓潤，散發出柔和的光澤，就像三顆打磨好的翡翠珠子。他拈起一枚，仔細端詳。丹藥的色澤均勻，藥香純正，沒有一絲雜質——這是一品凝氣丹中的極品，品質遠超普通手法煉製的丹藥。</p><p>「丹尊記憶……果然名不虛傳。」</p><p>他將丹藥小心地收進玉瓶中，然後坐下，閉上眼睛，開始消化剛才接收到的傳承記憶。</p><p>丹尊的記憶像是一本厚重的書，他剛才只是翻開了封面，看到了目錄。更多的內容還需要他慢慢去閱讀、去理解、去實踐。煉丹之道浩瀚如海，丹尊雖然是一代宗師，但也只是在這片海洋中走得比較遠而已。</p><p>「有了丹尊的記憶，我在煉丹一道上可以少走很多彎路。但最終能走到多遠，還是要看我自己的領悟。」</p><p>他睜開眼睛，目光中充滿了期待。</p><p>窗外的天色已經大亮，陽光透過窗戶照進來，在地板上投下一片溫暖的光影。遠處傳來弟子們晨練的聲音，整齊而有力。</p><p>新的一天開始了。</p></main><nav class="nav"><a href="chapter-93.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-94/" class="manga-btn">🎨 漫畫版</a><a href="chapter-95.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

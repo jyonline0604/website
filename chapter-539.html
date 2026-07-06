@@ -1,275 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第539章 · 塵城共鳴 - 萬古塵埃</title>
-    <link rel="canonical" href="">
-    <link rel="prev" href="chapter-538.html">
-    <link rel="next" href="chapter-540.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第539章 · 塵城共鳴</h1>
-    <main>
-<p>「不要過去！」白淺大聲喊道，「這是塵城在認主！葉公子正在與塵城建立聯繫！」</p>
-        <p>鐵牛急得團團轉，但也只能眼睜睜地看著。</p>
-        <p>葉塵現在的感覺很奇妙。他的身體雖然無法動彈，但他的意識卻在不斷地擴散，與萬古塵城融為一體。</p>
-        <p>他「看」到了城門的結構——那不是普通的石材，而是由無數層塵埃壓縮而成，每一層塵埃中都封印著一個時代的記憶。他看到了城牆內部的符文陣列，那些符文相互連接，形成了一個龐大的陣法，維持著整座古城的運轉。</p>
-        <p>他的意識繼續深入，進入了城門內部的一片空間。</p>
-        <p>那是一片灰濛濛的空間，與靈域的虛空有些相似，但這裡的灰霧更加濃郁，帶著一種亙古不變的滄桑氣息。空間的正中央，懸浮著一團灰色的光芒，散發著柔和而溫暖的能量。</p>
-        <p>那就是萬古塵城的中樞——塵核。</p>
-        <p>葉塵的意識向塵核靠近。塵核感應到他的到來，散發出一陣愉悅的波動，然後緩緩向他飄來。</p>
-        <p>就在這時，異變突生。</p>
-        <p>一股強大的排斥力從塵核中爆發出來，將葉塵的意識狠狠地彈開。他的身體猛地一震，嘴角滲出了一絲鮮血。</p>
-        <p>「葉塵！」塵老的臉色一變，「塵核在排斥你！」</p>
-        <p>葉塵咬緊牙關，再次催動塵埃訣，將意識向塵核探去。但塵核的排斥力越來越強，根本不讓他靠近。</p>
-        <p>「為什麼……」葉塵心中充滿了疑惑，「我明明已經通過了三道考驗，為什麼塵核還會排斥我？」</p>
-        <p>就在這時，他體內的輪迴令發出了一陣急促的震動。與此同時，塵核的光芒也開始閃爍，像是在回應輪迴令的呼喚。</p>
-        <p>葉塵心中一動，將輪迴令的力量引導出來，包裹住自己的意識，再次向塵核探去。</p>
-        <p>這一次，塵核沒有排斥他。</p>
-        <p>輪迴令的力量彷彿是一把鑰匙，打開了塵核的防禦。葉塵的意識順利地進入塵核內部，感受到了一股溫暖而強大的能量。</p>
-        <p>塵核內部是一個小小的空間，空間中漂浮著無數細小的光點。那些光點像是有生命一般，在葉塵的意識周圍游動，彷彿在歡迎他的到來。</p>
-        <p>「你可以叫我……塵。」</p>
-        <p>一道蒼老而悠遠的聲音在空間中響起。</p>
-        <p>葉塵大吃一驚：「誰？誰在說話？」</p>
-        <p>「我就是萬古塵城的器靈，你可以叫我塵。」那道聲音再次響起，「孩子，我等了你好久。」</p>
-        <p>「器靈？」葉塵更加驚訝了。他聽說過一些頂級法寶會產生器靈，但沒想到萬古塵城這樣的古城也有器靈。</p>
-        <p>「你不必驚訝。」塵的聲音中帶著一絲笑意，「萬古塵城不僅是一座城市，更是一件古老的法寶。我作為器靈，已經存在了無數萬年，一直等待著有資格繼承塵城的人到來。」</p>
-        <p>「那我……」</p>
-        <p>「你通過了三道考驗，證明你有資格繼承塵城。」塵說道，「但塵核剛才排斥你，是因為你的力量還不夠強大。你現在是元嬰後期巔峰，要驅動整座塵城，至少要突破到更高的境界才行。」</p>
-        <p>葉塵心中一沉。更高的境界——他現在離那個門檻還有一段距離，但他並不氣餒。修煉之路本就漫長，他一步步走到今天，靠的就是持之以恆的努力。</p>
-        <p>「不過，你不需要完全驅動塵城。」塵繼續說道，「你只需要打開塵城的大門，進入城中，獲得塵埃訣的完整傳承和輪迴之眼的初步使用權就夠了。等你將來突破到更高的境界，再回來完全繼承塵城。」</p>
-        <p>葉塵鬆了一口氣：「那請前輩助我打開城門。」</p>
-        <p>「當然。」塵說道，「我已經等了太久太久，等的就是這一天。不過你記住，城門打開的時候，會釋放出一股強大的能量波動，可能會驚動一些不該驚動的存在。」</p>
-        <p>「我知道。深淵教團的人已經在附近了。」</p>
-        <p>「深淵教團……」塵的聲音變得凝重，「他們果然還沒有死心。不過你放心，有我在，他們休想踏入塵城一步。你只需要專心打開城門就好。」</p>
-        <p>葉塵點了點頭，意識回到了身體中。</p>
-        <p>當他睜開眼睛時，發現城門上的符文已經全部亮起，形成了一個巨大的光陣。塵核的力量通過輪迴令傳遞到他的體內，與他的塵埃訣融為一體。</p>
-        <p>葉塵大喝一聲，輪迴令猛地向前一推，城門發出了一陣驚天動地的轟鳴聲。</p>
-        <p>隨著他的力量不斷注入，城門上的符文開始流轉起來，像是一條條金色的河流在門板上流淌。那些符文散發出的光芒越來越強烈，將整座城門都籠罩在了金光之中。</p>
-        <p>葉塵感覺自己體內的元嬰之力正在以驚人的速度消耗，但他咬牙堅持著。他知道，現在是最關鍵的時刻，任何一絲鬆懈都可能前功盡棄。</p>
-        <p>「繼續……不要停……」塵的聲音在他腦海中響起，「城門已經開始回應你了，再加把勁！」</p>
-        <p>葉塵深吸一口氣，將體內殘餘的元嬰之力全部調動起來，瘋狂地注入輪迴令中。輪迴令散發出耀眼奪目的光芒，與城門上的符文交相輝映。</p>
-        <p>沉悶的轟鳴聲越來越響，城門開始緩緩移動。雖然速度很慢，但確實是在打開。一道細微的門縫出現在城門中央，從門縫中透出了灰白色的光芒。</p>
-        <p>那股光芒中蘊含著極其古老的氣息，彷彿是從遠古時代穿越而來。葉塵感受到那股氣息，體內的塵埃訣不由自主地加速運轉，與那股氣息產生了強烈的共鳴。</p>
-        <p>塵城的大門，正在緩緩打開。</p>
-        <p>葉塵的呼吸變得急促起來。塵核的力量像是一條奔騰的大河，源源不斷地湧入他的體內，然後通過輪迴令傳遞到城門上。這種力量的流動讓他感到前所未有地充實，彷彿他與整座古城融為了一體。</p>
-        <p>他能感覺到城門的每一個符文，每一道紋路，甚至能感覺到城門背後那片古老空間的氣息。萬古塵城在他面前展現出了它的冰山一角，而僅僅是這一角，就已經讓他感到震撼。</p>
-        <p>塵城的歷史比他想像的更加悠久，城中蘊含的力量比他想像的更加浩瀚。他現在才真正理解，為什麼深淵教團會不惜一切代價想要奪取這座城。而這座城現在已經認他為主，這份責任讓他感到沉甸甸的。</p>
-        
-    </main>
-    <nav class="nav">
-        <a href="chapter-538.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-539/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-540.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第539章 · 塵城共鳴 - 萬古塵埃</title><link rel="canonical" href=""><link rel="prev" href="chapter-538.html"><link rel="next" href="chapter-540.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第539章 · 塵城共鳴</h1><main><p>「不要過去！」白淺大聲喊道，「這是塵城在認主！葉公子正在與塵城建立聯繫！」</p><p>鐵牛急得團團轉，但也只能眼睜睜地看著。</p><p>葉塵現在的感覺很奇妙。他的身體雖然無法動彈，但他的意識卻在不斷地擴散，與萬古塵城融為一體。</p><p>他「看」到了城門的結構——那不是普通的石材，而是由無數層塵埃壓縮而成，每一層塵埃中都封印著一個時代的記憶。他看到了城牆內部的符文陣列，那些符文相互連接，形成了一個龐大的陣法，維持著整座古城的運轉。</p><p>他的意識繼續深入，進入了城門內部的一片空間。</p><p>那是一片灰濛濛的空間，與靈域的虛空有些相似，但這裡的灰霧更加濃郁，帶著一種亙古不變的滄桑氣息。空間的正中央，懸浮著一團灰色的光芒，散發著柔和而溫暖的能量。</p><p>那就是萬古塵城的中樞——塵核。</p><p>葉塵的意識向塵核靠近。塵核感應到他的到來，散發出一陣愉悅的波動，然後緩緩向他飄來。</p><p>就在這時，異變突生。</p><p>一股強大的排斥力從塵核中爆發出來，將葉塵的意識狠狠地彈開。他的身體猛地一震，嘴角滲出了一絲鮮血。</p><p>「葉塵！」塵老的臉色一變，「塵核在排斥你！」</p><p>葉塵咬緊牙關，再次催動塵埃訣，將意識向塵核探去。但塵核的排斥力越來越強，根本不讓他靠近。</p><p>「為什麼……」葉塵心中充滿了疑惑，「我明明已經通過了三道考驗，為什麼塵核還會排斥我？」</p><p>就在這時，他體內的輪迴令發出了一陣急促的震動。與此同時，塵核的光芒也開始閃爍，像是在回應輪迴令的呼喚。</p><p>葉塵心中一動，將輪迴令的力量引導出來，包裹住自己的意識，再次向塵核探去。</p><p>這一次，塵核沒有排斥他。</p><p>輪迴令的力量彷彿是一把鑰匙，打開了塵核的防禦。葉塵的意識順利地進入塵核內部，感受到了一股溫暖而強大的能量。</p><p>塵核內部是一個小小的空間，空間中漂浮著無數細小的光點。那些光點像是有生命一般，在葉塵的意識周圍游動，彷彿在歡迎他的到來。</p><p>「你可以叫我……塵。」</p><p>一道蒼老而悠遠的聲音在空間中響起。</p><p>葉塵大吃一驚：「誰？誰在說話？」</p><p>「我就是萬古塵城的器靈，你可以叫我塵。」那道聲音再次響起，「孩子，我等了你好久。」</p><p>「器靈？」葉塵更加驚訝了。他聽說過一些頂級法寶會產生器靈，但沒想到萬古塵城這樣的古城也有器靈。</p><p>「你不必驚訝。」塵的聲音中帶著一絲笑意，「萬古塵城不僅是一座城市，更是一件古老的法寶。我作為器靈，已經存在了無數萬年，一直等待著有資格繼承塵城的人到來。」</p><p>「那我……」</p><p>「你通過了三道考驗，證明你有資格繼承塵城。」塵說道，「但塵核剛才排斥你，是因為你的力量還不夠強大。你現在是元嬰後期巔峰，要驅動整座塵城，至少要突破到更高的境界才行。」</p><p>葉塵心中一沉。更高的境界——他現在離那個門檻還有一段距離，但他並不氣餒。修煉之路本就漫長，他一步步走到今天，靠的就是持之以恆的努力。</p><p>「不過，你不需要完全驅動塵城。」塵繼續說道，「你只需要打開塵城的大門，進入城中，獲得塵埃訣的完整傳承和輪迴之眼的初步使用權就夠了。等你將來突破到更高的境界，再回來完全繼承塵城。」</p><p>葉塵鬆了一口氣：「那請前輩助我打開城門。」</p><p>「當然。」塵說道，「我已經等了太久太久，等的就是這一天。不過你記住，城門打開的時候，會釋放出一股強大的能量波動，可能會驚動一些不該驚動的存在。」</p><p>「我知道。深淵教團的人已經在附近了。」</p><p>「深淵教團……」塵的聲音變得凝重，「他們果然還沒有死心。不過你放心，有我在，他們休想踏入塵城一步。你只需要專心打開城門就好。」</p><p>葉塵點了點頭，意識回到了身體中。</p><p>當他睜開眼睛時，發現城門上的符文已經全部亮起，形成了一個巨大的光陣。塵核的力量通過輪迴令傳遞到他的體內，與他的塵埃訣融為一體。</p><p>葉塵大喝一聲，輪迴令猛地向前一推，城門發出了一陣驚天動地的轟鳴聲。</p><p>隨著他的力量不斷注入，城門上的符文開始流轉起來，像是一條條金色的河流在門板上流淌。那些符文散發出的光芒越來越強烈，將整座城門都籠罩在了金光之中。</p><p>葉塵感覺自己體內的元嬰之力正在以驚人的速度消耗，但他咬牙堅持著。他知道，現在是最關鍵的時刻，任何一絲鬆懈都可能前功盡棄。</p><p>「繼續……不要停……」塵的聲音在他腦海中響起，「城門已經開始回應你了，再加把勁！」</p><p>葉塵深吸一口氣，將體內殘餘的元嬰之力全部調動起來，瘋狂地注入輪迴令中。輪迴令散發出耀眼奪目的光芒，與城門上的符文交相輝映。</p><p>沉悶的轟鳴聲越來越響，城門開始緩緩移動。雖然速度很慢，但確實是在打開。一道細微的門縫出現在城門中央，從門縫中透出了灰白色的光芒。</p><p>那股光芒中蘊含著極其古老的氣息，彷彿是從遠古時代穿越而來。葉塵感受到那股氣息，體內的塵埃訣不由自主地加速運轉，與那股氣息產生了強烈的共鳴。</p><p>塵城的大門，正在緩緩打開。</p><p>葉塵的呼吸變得急促起來。塵核的力量像是一條奔騰的大河，源源不斷地湧入他的體內，然後通過輪迴令傳遞到城門上。這種力量的流動讓他感到前所未有地充實，彷彿他與整座古城融為了一體。</p><p>他能感覺到城門的每一個符文，每一道紋路，甚至能感覺到城門背後那片古老空間的氣息。萬古塵城在他面前展現出了它的冰山一角，而僅僅是這一角，就已經讓他感到震撼。</p><p>塵城的歷史比他想像的更加悠久，城中蘊含的力量比他想像的更加浩瀚。他現在才真正理解，為什麼深淵教團會不惜一切代價想要奪取這座城。而這座城現在已經認他為主，這份責任讓他感到沉甸甸的。</p></main><nav class="nav"><a href="chapter-538.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-539/" class="manga-btn">🎨 漫畫版</a><a href="chapter-540.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

@@ -1,277 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第137章 · 血煞攔路 - 萬古塵埃</title>
-    <meta name="description" content="血煞宗的弟子行動極快，眨眼間就將四人包圍了起來。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-137.html">>
-    <link rel="prev" href="chapter-136.html">
-    <link rel="next" href="chapter-138.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第137章 · 血煞攔路</h1>
-    <main>
-        <p>血煞宗的弟子行動極快，眨眼間就將四人包圍了起來。</p>
-        <p>他們手持各式兵器，刀、劍、槍、鉤，每一件兵器上都覆蓋著一層淡淡的血光，散發著令人作嘔的血腥氣息。這是血煞宗功法的特點，以鮮血祭煉兵器，不僅能增加兵器的威力，還能在戰鬥中侵蝕對手的靈力。</p>
-        <p>為首的血袍修士名叫薛屠，築基中期巔峰修為，在血煞宗內門中排名第五。他雙手各持一柄血色短刀，刀身上刻滿了詭異的符文，在靈力的催動下，散發著妖異的紅光。</p>
-        <p>「最後一次機會。」薛屠的聲音陰冷如毒蛇，「交出東西，饒你們一命。」</p>
-        <p>蕭天宇沒有回答，而是默默地拔出了巨劍，劍尖指向地面，擺出了戰鬥姿態。這個動作本身就是最好的回答。</p>
-        <p>「找死！」薛屠眼中殺機一閃，身影驟然消失在原地！</p>
-        <p>下一瞬，他出現在蕭天宇面前，雙刀齊出，一左一右劈向蕭天宇的脖子和腰側！他的速度極快，刀法狠辣，每一刀都瞄準要害，沒有任何花俏的技巧，就是純粹的殺人術！</p>
-        <p>蕭天宇眼神一凜，巨劍橫掃而出，與雙刀碰撞在一起。鏗鏘一聲巨響，火花四濺。薛屠的雙刀被巨劍擋住，但他的身體藉著反衝之力向後翻出，在空中劃出一道優美的弧線，穩穩地落在三丈之外。</p>
-        <p>「好劍法。」薛屠舔了舔嘴唇，眼中閃過一絲興奮，「你比我想像中強一些。不過——」他的目光掃過葉塵三人，「你的同伴們，能撐多久呢？」</p>
-        <p>他的話音剛落，周圍的血煞宗弟子同時發動攻擊！</p>
-        <p>七名築基期的血煞宗弟子從不同方向撲向葉塵三人，刀光劍影交織成一片密集的攻擊網，將三人籠罩在其中。這些血煞宗弟子的配合非常默契，顯然不是第一次聯手作戰了。</p>
-        <p>「結陣！」趙靈兒大喝一聲，從儲物袋中取出四面陣旗，向四個方向擲出。陣旗在空中展開，形成了一層淡金色的光幕，將三人保護在裡面。</p>
-        <p>轟轟轟！</p>
-        <p>血煞宗弟子的攻擊落在光幕上，發出沉悶的撞擊聲。光幕劇烈震盪，表面的靈光不斷閃爍，但勉強擋住了第一輪攻擊。</p>
-        <p>「快！我撐不了多久！」趙靈兒臉色蒼白，維持這個防禦陣法消耗極大。</p>
-        <p>「交給我！」韓冰的身影如同鬼魅般穿出光幕，長劍在空中劃過一道寒光，直刺一名血煞宗弟子的咽喉！</p>
-        <p>那名血煞宗弟子沒想到韓冰會主動出擊，慌忙舉刀格擋。但韓冰的劍法以快著稱，他的劍在空中變向，繞過了對手的刀，從一個刁鑽的角度刺入了對手的手臂。</p>
-        <p>嗤！</p>
-        <p>鮮血飛濺。那名血煞宗弟子慘叫一聲，捂著受傷的手臂後退。</p>
-        <p>與此同時，葉塵也從另一個方向衝出了光幕。他的目標是薛屠——擒賊先擒王，只要擊敗了薛屠，這些血煞宗弟子自然會潰散。</p>
-        <p>清風劍上凝聚著青紫色的靈力光芒，葉塵的身影在宮殿中快速穿梭，避開了兩名血煞宗弟子的阻攔，直撲薛屠！</p>
-        <p>「來得好！」薛屠眼中閃過一絲興奮，雙刀交叉，迎向葉塵的劍鋒。</p>
-        <p>鏗鏗鏗鏗！</p>
-        <p>劍刀碰撞的聲音在宮殿中密集迴盪，如同打鐵一般。葉塵的劍法越來越快，越來越凌厲，在築基中期靈力的加持下，每一劍都帶著驚人的威力。薛屠的刀法狠辣凌厲，每一刀都帶著濃郁的血煞之氣，能夠侵蝕對手的靈力。但葉塵的靈力中蘊含著紫晶傳承的力量，對血煞之氣有著天然的克制作用，兩人的交鋒竟然打得旗鼓相當。</p>
-        <p>「你的靈力……有古怪！」薛屠的臉色變了。他感覺到自己刀上的血煞之氣在接觸到葉塵的靈力時，就像冰雪遇到陽光一樣迅速消融，根本無法發揮出應有的威力。這種情況他從來沒有遇到過。</p>
-        <p>葉塵沒有回答，手中的劍勢越來越快。他將塵淵劍訣的各式劍招連貫起來，塵噬的吞噬之力、塵爆的爆發之力、塵斬的穿透之力，三式交替使用，讓薛屠應接不暇。</p>
-        <p>更讓薛屠頭疼的是，葉塵身上散發出來的氣息中夾雜著一絲讓他感到心悸的力量——那種力量深邃而古老，彷彿來自深淵的凝視。</p>
-        <p>「該死！」薛屠暗罵一聲，果斷後退。他知道再打下去，自己可能真的會栽在這個築基中期的青雲宗弟子手上。</p>
-        <p>「撤！」他大聲下令。</p>
-        <p>血煞宗的弟子們聽到命令，雖然有些不甘，但還是迅速脫離了戰鬥，向宮殿深處撤退。薛屠在撤退前回頭冷冷地看了葉塵一眼，目光中充滿了不甘和怨毒。</p>
-        <p>「追不追？」韓冰問。</p>
-        <p>「不追。」蕭天宇收起巨劍，「我們的目標不是和他們廝殺，而是安全返回宗門。走吧，趁他們還沒有糾集更多人來。」</p>
-        <p>四人迅速離開了宮殿，沿著來時的路返回。每個人都提高警惕，不敢有絲毫大意。</p>
-        <p>走出山峰後，月光灑在他們身上，清涼的夜風吹散了身上的血腥氣息。每個人都鬆了一口氣，但心中的警惕並沒有減少半分。</p>
-        <p>「血煞宗的人出現在這裡，說明這個遺跡的消息已經傳開了。」蕭天宇的語氣凝重，「我們必須盡快趕回宗門，將這裡的情況報告給長老們。」</p>
-        <p>四人加快了腳步，在夜色中快速穿行。</p>
-        <p>用了兩天半的時間，他們終於走出了蒼瀾山脈的深處區域，回到了青雲宗的勢力範圍。當看到青雲宗山門前那兩盞巨大的燈籠時，每個人的臉上都露出了如釋重負的笑容。</p>
-        <p>「終於回來了。」趙靈兒長長地舒了一口氣。</p>
-        <p>「這趟任務，真是九死一生啊。」韓冰感慨道。</p>
-        <p>葉塵回頭望向蒼瀾山脈深處的方向，目光深邃。</p>
-        <p>在那片連綿起伏的山巒中，他們發現了遠古封印陣，融合了黑色晶石，找到了黑袍修士的遺跡，和黑煞宗、血煞宗的人交手……這次任務的收穫和經歷，遠比他想像中更加豐富。更重要的是，他在實戰中學到了很多——秦昭陽的沉穩指揮、韓冰的速度配合、趙靈兒的陣法掩護，每一點都讓他對團隊作戰有了新的理解。</p>
-        <p>而更重要的是，他體內的黑色晶石力量正在慢慢穩定下來，與紫晶傳承融合，形成了一種全新的力量。他能感覺到，自己的實力正在以一種前所未有的速度提升著。那種力量的增長就像是一條奔騰的河流，不斷沖刷著他的經脈，讓他的身體和靈力都在發生著深刻的蛻變。</p>
-        <p>「葉塵，走了。」蕭天宇在前面喊道。</p>
-        <p>「來了。」葉塵收回目光，跟上了隊伍的腳步。</p>
-        <p>走進山門的那一刻，他又回頭看了一眼。</p>
-        <p>蒼瀾山脈深處的秘密，現在還只是揭開了冰山一角。但他有預感——那裡，還藏著更多等待他去發現的東西。</p>
-    </main>
-    <nav class="nav">
-        <a href="chapter-136.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-137/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-138.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第137章 · 血煞攔路 - 萬古塵埃</title><meta name="description" content="血煞宗的弟子行動極快，眨眼間就將四人包圍了起來。"><link rel="canonical" href="https://kofhk.com/chapter-137.html">><link rel="prev" href="chapter-136.html"><link rel="next" href="chapter-138.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第137章 · 血煞攔路</h1><main><p>血煞宗的弟子行動極快，眨眼間就將四人包圍了起來。</p><p>他們手持各式兵器，刀、劍、槍、鉤，每一件兵器上都覆蓋著一層淡淡的血光，散發著令人作嘔的血腥氣息。這是血煞宗功法的特點，以鮮血祭煉兵器，不僅能增加兵器的威力，還能在戰鬥中侵蝕對手的靈力。</p><p>為首的血袍修士名叫薛屠，築基中期巔峰修為，在血煞宗內門中排名第五。他雙手各持一柄血色短刀，刀身上刻滿了詭異的符文，在靈力的催動下，散發著妖異的紅光。</p><p>「最後一次機會。」薛屠的聲音陰冷如毒蛇，「交出東西，饒你們一命。」</p><p>蕭天宇沒有回答，而是默默地拔出了巨劍，劍尖指向地面，擺出了戰鬥姿態。這個動作本身就是最好的回答。</p><p>「找死！」薛屠眼中殺機一閃，身影驟然消失在原地！</p><p>下一瞬，他出現在蕭天宇面前，雙刀齊出，一左一右劈向蕭天宇的脖子和腰側！他的速度極快，刀法狠辣，每一刀都瞄準要害，沒有任何花俏的技巧，就是純粹的殺人術！</p><p>蕭天宇眼神一凜，巨劍橫掃而出，與雙刀碰撞在一起。鏗鏘一聲巨響，火花四濺。薛屠的雙刀被巨劍擋住，但他的身體藉著反衝之力向後翻出，在空中劃出一道優美的弧線，穩穩地落在三丈之外。</p><p>「好劍法。」薛屠舔了舔嘴唇，眼中閃過一絲興奮，「你比我想像中強一些。不過——」他的目光掃過葉塵三人，「你的同伴們，能撐多久呢？」</p><p>他的話音剛落，周圍的血煞宗弟子同時發動攻擊！</p><p>七名築基期的血煞宗弟子從不同方向撲向葉塵三人，刀光劍影交織成一片密集的攻擊網，將三人籠罩在其中。這些血煞宗弟子的配合非常默契，顯然不是第一次聯手作戰了。</p><p>「結陣！」趙靈兒大喝一聲，從儲物袋中取出四面陣旗，向四個方向擲出。陣旗在空中展開，形成了一層淡金色的光幕，將三人保護在裡面。</p><p>轟轟轟！</p><p>血煞宗弟子的攻擊落在光幕上，發出沉悶的撞擊聲。光幕劇烈震盪，表面的靈光不斷閃爍，但勉強擋住了第一輪攻擊。</p><p>「快！我撐不了多久！」趙靈兒臉色蒼白，維持這個防禦陣法消耗極大。</p><p>「交給我！」韓冰的身影如同鬼魅般穿出光幕，長劍在空中劃過一道寒光，直刺一名血煞宗弟子的咽喉！</p><p>那名血煞宗弟子沒想到韓冰會主動出擊，慌忙舉刀格擋。但韓冰的劍法以快著稱，他的劍在空中變向，繞過了對手的刀，從一個刁鑽的角度刺入了對手的手臂。</p><p>嗤！</p><p>鮮血飛濺。那名血煞宗弟子慘叫一聲，捂著受傷的手臂後退。</p><p>與此同時，葉塵也從另一個方向衝出了光幕。他的目標是薛屠——擒賊先擒王，只要擊敗了薛屠，這些血煞宗弟子自然會潰散。</p><p>清風劍上凝聚著青紫色的靈力光芒，葉塵的身影在宮殿中快速穿梭，避開了兩名血煞宗弟子的阻攔，直撲薛屠！</p><p>「來得好！」薛屠眼中閃過一絲興奮，雙刀交叉，迎向葉塵的劍鋒。</p><p>鏗鏗鏗鏗！</p><p>劍刀碰撞的聲音在宮殿中密集迴盪，如同打鐵一般。葉塵的劍法越來越快，越來越凌厲，在築基中期靈力的加持下，每一劍都帶著驚人的威力。薛屠的刀法狠辣凌厲，每一刀都帶著濃郁的血煞之氣，能夠侵蝕對手的靈力。但葉塵的靈力中蘊含著紫晶傳承的力量，對血煞之氣有著天然的克制作用，兩人的交鋒竟然打得旗鼓相當。</p><p>「你的靈力……有古怪！」薛屠的臉色變了。他感覺到自己刀上的血煞之氣在接觸到葉塵的靈力時，就像冰雪遇到陽光一樣迅速消融，根本無法發揮出應有的威力。這種情況他從來沒有遇到過。</p><p>葉塵沒有回答，手中的劍勢越來越快。他將塵淵劍訣的各式劍招連貫起來，塵噬的吞噬之力、塵爆的爆發之力、塵斬的穿透之力，三式交替使用，讓薛屠應接不暇。</p><p>更讓薛屠頭疼的是，葉塵身上散發出來的氣息中夾雜著一絲讓他感到心悸的力量——那種力量深邃而古老，彷彿來自深淵的凝視。</p><p>「該死！」薛屠暗罵一聲，果斷後退。他知道再打下去，自己可能真的會栽在這個築基中期的青雲宗弟子手上。</p><p>「撤！」他大聲下令。</p><p>血煞宗的弟子們聽到命令，雖然有些不甘，但還是迅速脫離了戰鬥，向宮殿深處撤退。薛屠在撤退前回頭冷冷地看了葉塵一眼，目光中充滿了不甘和怨毒。</p><p>「追不追？」韓冰問。</p><p>「不追。」蕭天宇收起巨劍，「我們的目標不是和他們廝殺，而是安全返回宗門。走吧，趁他們還沒有糾集更多人來。」</p><p>四人迅速離開了宮殿，沿著來時的路返回。每個人都提高警惕，不敢有絲毫大意。</p><p>走出山峰後，月光灑在他們身上，清涼的夜風吹散了身上的血腥氣息。每個人都鬆了一口氣，但心中的警惕並沒有減少半分。</p><p>「血煞宗的人出現在這裡，說明這個遺跡的消息已經傳開了。」蕭天宇的語氣凝重，「我們必須盡快趕回宗門，將這裡的情況報告給長老們。」</p><p>四人加快了腳步，在夜色中快速穿行。</p><p>用了兩天半的時間，他們終於走出了蒼瀾山脈的深處區域，回到了青雲宗的勢力範圍。當看到青雲宗山門前那兩盞巨大的燈籠時，每個人的臉上都露出了如釋重負的笑容。</p><p>「終於回來了。」趙靈兒長長地舒了一口氣。</p><p>「這趟任務，真是九死一生啊。」韓冰感慨道。</p><p>葉塵回頭望向蒼瀾山脈深處的方向，目光深邃。</p><p>在那片連綿起伏的山巒中，他們發現了遠古封印陣，融合了黑色晶石，找到了黑袍修士的遺跡，和黑煞宗、血煞宗的人交手……這次任務的收穫和經歷，遠比他想像中更加豐富。更重要的是，他在實戰中學到了很多——秦昭陽的沉穩指揮、韓冰的速度配合、趙靈兒的陣法掩護，每一點都讓他對團隊作戰有了新的理解。</p><p>而更重要的是，他體內的黑色晶石力量正在慢慢穩定下來，與紫晶傳承融合，形成了一種全新的力量。他能感覺到，自己的實力正在以一種前所未有的速度提升著。那種力量的增長就像是一條奔騰的河流，不斷沖刷著他的經脈，讓他的身體和靈力都在發生著深刻的蛻變。</p><p>「葉塵，走了。」蕭天宇在前面喊道。</p><p>「來了。」葉塵收回目光，跟上了隊伍的腳步。</p><p>走進山門的那一刻，他又回頭看了一眼。</p><p>蒼瀾山脈深處的秘密，現在還只是揭開了冰山一角。但他有預感——那裡，還藏著更多等待他去發現的東西。</p></main><nav class="nav"><a href="chapter-136.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-137/" class="manga-btn">🎨 漫畫版</a><a href="chapter-138.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

@@ -1,241 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第25章 · 實戰考核 - 萬古塵埃</title>
-    <meta name="description" content="當葉塵到達天梯頂端時，韓風和林雪正站在一旁調息。韓風是一個身材挺拔、面容冷峻的少年，背負一柄長劍，身上散發著一股銳利的劍意。他的修為在感氣後期巔峰，但那股劍意——葉塵判斷，一般的半步聚元恐怕都不是他的對手。林雪則是一個氣質清冷的少女，烏黑的長髮束成馬尾，身穿白色勁裝，腰間掛著一條軟鞭。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-25.html">
-    <link rel="prev" href="https://kofhk.com/chapter-24.html">
-    <link rel="next" href="https://kofhk.com/chapter-26.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第25章 · 實戰考核</h1>
-    <main>
-<p>當葉塵到達天梯頂端時，韓風和林雪正站在一旁調息。韓風是一個身材挺拔、面容冷峻的少年，背負一柄長劍，身上散發著一股銳利的劍意。他的修為在感氣後期巔峰，但那股劍意——葉塵判斷，一般的半步聚元恐怕都不是他的對手。林雪則是一個氣質清冷的少女，烏黑的長髮束成馬尾，身穿白色勁裝，腰間掛著一條軟鞭。她的修為同樣是感氣後期巔峰，但氣息沉穩內斂，顯然根基紮實。</p>
-        <p>兩人看到葉塵第三個登頂，都露出了驚訝的表情。一個「下品雙靈根。的弟子，竟然能第三個完成登天梯。「有趣。韓風淡淡地說了一句，便不再說話。林雪則多看了葉塵兩眼，眼中閃過一絲好奇。陸續地，又有十幾個人登頂。柳若汐第七個到達，趙雲鋒第十三。讓葉塵意外的是——李小凡竟然也成功登頂了。他是第二十七個到達的，幾乎是在時限截止前的最後一刻才踏上最後一級台階。</p>
-        <p>他一到頂端就直接癱倒在地上，大口大口地喘著氣，臉色白得像紙一樣。「我……我做到了……。他的聲音微弱，但語氣中充滿了難以抑制的興奮。葉塵走過去，遞給他一壺水：「做得不錯。「謝……謝謝……。李小凡接過水壺，咕咚咕咚喝了幾大口，終於緩過氣來，「葉塵大哥，你說得對……只要不放棄，就一定可以的。最終，四十二人中，成功登頂的有三十一人，十一人選擇了放棄或中途被淘汰。</p>
-        <p>玄烈長老出現在天梯頂端，目光掃過成功登頂的弟子們，微微頷首：「不錯，比我預想的要多一些人。他拂塵一揮：「第三關——實戰考核。你們需要和宗門內的機關傀儡戰鬥，檢驗實戰能力。傀儡的實力會根據你們的修為進行調整，確保公平。「實戰考核分為三個等級：合格、良好、優秀。達到合格者即可入宗，優秀者將獲得額外的獎勵。眾人被帶到一個寬敞的演武場。</p>
-        <p>場地中央，擺放著三十一具人形傀儡——這些傀儡通體由黑鐵鑄造，身高七尺，手持各種武器，關節處刻著符文，散發著一股冰冷的氣息。「按照點名順序，依次入場戰鬥。首先上場的是韓風。他走進演武場，對面的一具機關傀儡立刻激活，手持鐵劍向他攻來。韓風拔劍，出劍，收劍——整個過程一氣呵成，快如閃電。鏗。機關傀儡的鐵劍被一劍斬斷，傀儡本身也被劍氣擊中胸口，倒飛出去，撞在牆上，冒出幾縷青煙。</p>
-        <p>全場安靜了片刻，然後爆發出熱烈的掌聲。「韓風，優秀。玄烈長老點了點頭，眼中露出讚賞之色。接下來上場的弟子，大部分只能拿到「合格。或「良好。的成績。傀儡的實戰能力確實不弱，而且不知疲倦、不畏生死，一些修為雖高但缺乏實戰經驗的弟子反而打得十分吃力。輪到柳若汐時，她展現出了與溫婉外表不符的淩厲攻勢。她的水屬性元氣化作一道道柔韌的水鞭，將傀儡層層纏繞，最終一箭射穿了傀儡的能量核心。</p>
-        <p>「柳若汐，優秀。輪到張天霸時，他以蠻力硬生生將傀儡砸成了碎片。「張天霸，優秀。趙雲鋒的表現也不錯，一桿長槍舞得虎虎生風，最終以「良好。的成績通過。李小凡上場時，全場都在擔心他會被傀儡一擊秒殺。但令人意外的是，李小凡雖然修為低微，但身手相當靈活，以游鬥的方式與傀儡周旋了將近一盞茶的時間，最終雖然沒能擊敗傀儡，但也沒有被傀儡擊敗，以「合格。</p>
-        <p>的成績通過。「該我了。葉塵走進演武場。對面的機關傀儡激活，手持鐵刀，朝他猛衝過來。葉塵沒有拔劍。他等傀儡衝到面前，在鐵刀即將落下的瞬間，身體微微一側，避開刀鋒，同時一掌拍在傀儡的胸口。塵埃訣運轉。壓縮後的元氣如同一根尖針，透過他的手掌刺入傀儡體內的符文核心。咔嗒。傀儡的動作驟然停滯，眼中的紅光閃爍了幾下，然後熄滅了。</p>
-        <p>一招，擊敗傀儡。全場再次安靜。傀儡的實力相當於感氣後期巔峰，一掌拍碎……這真的是下品雙靈根能做到的嗎。「葉塵，優秀。玄烈長老意味深長地看了他一眼。葉塵退出演武場，回到人群中。他注意到，韓風和林雪都在看著他——韓風的眼神中帶著一絲戰意，而林雪則依然是一副好奇的表情。三關全部結束。最終，三十一人全部通過考核，正式成為青雲宗外門弟子。</p>
-        <p>其中獲得「優秀。評價的有四人——韓風、林雪、柳若汐、葉塵。以及額外的獎勵——每人一百塊下品元石，以及一次進入藏經閣一層挑選功法的機會。</p>
-    </main>
-    <nav class="nav">
-        <a href="https://kofhk.com/chapter-24.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-25/" class="manga-btn">🎨 漫畫版</a>
-        <a href="https://kofhk.com/chapter-26.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第25章 · 實戰考核 - 萬古塵埃</title><meta name="description" content="當葉塵到達天梯頂端時，韓風和林雪正站在一旁調息。韓風是一個身材挺拔、面容冷峻的少年，背負一柄長劍，身上散發著一股銳利的劍意。他的修為在感氣後期巔峰，但那股劍意——葉塵判斷，一般的半步聚元恐怕都不是他的對手。林雪則是一個氣質清冷的少女，烏黑的長髮束成馬尾，身穿白色勁裝，腰間掛著一條軟鞭。"><link rel="canonical" href="https://kofhk.com/chapter-25.html"><link rel="prev" href="https://kofhk.com/chapter-24.html"><link rel="next" href="https://kofhk.com/chapter-26.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第25章 · 實戰考核</h1><main><p>當葉塵到達天梯頂端時，韓風和林雪正站在一旁調息。韓風是一個身材挺拔、面容冷峻的少年，背負一柄長劍，身上散發著一股銳利的劍意。他的修為在感氣後期巔峰，但那股劍意——葉塵判斷，一般的半步聚元恐怕都不是他的對手。林雪則是一個氣質清冷的少女，烏黑的長髮束成馬尾，身穿白色勁裝，腰間掛著一條軟鞭。她的修為同樣是感氣後期巔峰，但氣息沉穩內斂，顯然根基紮實。</p><p>兩人看到葉塵第三個登頂，都露出了驚訝的表情。一個「下品雙靈根。的弟子，竟然能第三個完成登天梯。「有趣。韓風淡淡地說了一句，便不再說話。林雪則多看了葉塵兩眼，眼中閃過一絲好奇。陸續地，又有十幾個人登頂。柳若汐第七個到達，趙雲鋒第十三。讓葉塵意外的是——李小凡竟然也成功登頂了。他是第二十七個到達的，幾乎是在時限截止前的最後一刻才踏上最後一級台階。</p><p>他一到頂端就直接癱倒在地上，大口大口地喘著氣，臉色白得像紙一樣。「我……我做到了……。他的聲音微弱，但語氣中充滿了難以抑制的興奮。葉塵走過去，遞給他一壺水：「做得不錯。「謝……謝謝……。李小凡接過水壺，咕咚咕咚喝了幾大口，終於緩過氣來，「葉塵大哥，你說得對……只要不放棄，就一定可以的。最終，四十二人中，成功登頂的有三十一人，十一人選擇了放棄或中途被淘汰。</p><p>玄烈長老出現在天梯頂端，目光掃過成功登頂的弟子們，微微頷首：「不錯，比我預想的要多一些人。他拂塵一揮：「第三關——實戰考核。你們需要和宗門內的機關傀儡戰鬥，檢驗實戰能力。傀儡的實力會根據你們的修為進行調整，確保公平。「實戰考核分為三個等級：合格、良好、優秀。達到合格者即可入宗，優秀者將獲得額外的獎勵。眾人被帶到一個寬敞的演武場。</p><p>場地中央，擺放著三十一具人形傀儡——這些傀儡通體由黑鐵鑄造，身高七尺，手持各種武器，關節處刻著符文，散發著一股冰冷的氣息。「按照點名順序，依次入場戰鬥。首先上場的是韓風。他走進演武場，對面的一具機關傀儡立刻激活，手持鐵劍向他攻來。韓風拔劍，出劍，收劍——整個過程一氣呵成，快如閃電。鏗。機關傀儡的鐵劍被一劍斬斷，傀儡本身也被劍氣擊中胸口，倒飛出去，撞在牆上，冒出幾縷青煙。</p><p>全場安靜了片刻，然後爆發出熱烈的掌聲。「韓風，優秀。玄烈長老點了點頭，眼中露出讚賞之色。接下來上場的弟子，大部分只能拿到「合格。或「良好。的成績。傀儡的實戰能力確實不弱，而且不知疲倦、不畏生死，一些修為雖高但缺乏實戰經驗的弟子反而打得十分吃力。輪到柳若汐時，她展現出了與溫婉外表不符的淩厲攻勢。她的水屬性元氣化作一道道柔韌的水鞭，將傀儡層層纏繞，最終一箭射穿了傀儡的能量核心。</p><p>「柳若汐，優秀。輪到張天霸時，他以蠻力硬生生將傀儡砸成了碎片。「張天霸，優秀。趙雲鋒的表現也不錯，一桿長槍舞得虎虎生風，最終以「良好。的成績通過。李小凡上場時，全場都在擔心他會被傀儡一擊秒殺。但令人意外的是，李小凡雖然修為低微，但身手相當靈活，以游鬥的方式與傀儡周旋了將近一盞茶的時間，最終雖然沒能擊敗傀儡，但也沒有被傀儡擊敗，以「合格。</p><p>的成績通過。「該我了。葉塵走進演武場。對面的機關傀儡激活，手持鐵刀，朝他猛衝過來。葉塵沒有拔劍。他等傀儡衝到面前，在鐵刀即將落下的瞬間，身體微微一側，避開刀鋒，同時一掌拍在傀儡的胸口。塵埃訣運轉。壓縮後的元氣如同一根尖針，透過他的手掌刺入傀儡體內的符文核心。咔嗒。傀儡的動作驟然停滯，眼中的紅光閃爍了幾下，然後熄滅了。</p><p>一招，擊敗傀儡。全場再次安靜。傀儡的實力相當於感氣後期巔峰，一掌拍碎……這真的是下品雙靈根能做到的嗎。「葉塵，優秀。玄烈長老意味深長地看了他一眼。葉塵退出演武場，回到人群中。他注意到，韓風和林雪都在看著他——韓風的眼神中帶著一絲戰意，而林雪則依然是一副好奇的表情。三關全部結束。最終，三十一人全部通過考核，正式成為青雲宗外門弟子。</p><p>其中獲得「優秀。評價的有四人——韓風、林雪、柳若汐、葉塵。以及額外的獎勵——每人一百塊下品元石，以及一次進入藏經閣一層挑選功法的機會。</p></main><nav class="nav"><a href="https://kofhk.com/chapter-24.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-25/" class="manga-btn">🎨 漫畫版</a><a href="https://kofhk.com/chapter-26.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

@@ -1,283 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第148章 · 第五式劍招 - 萬古塵埃</title>
-    <meta name="description" content="接下來的日子，葉塵將所有的精力都投入到了修煉中。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-148.html">>
-    <link rel="prev" href="chapter-147.html">
-    <link rel="next" href="chapter-149.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第148章 · 第五式劍招</h1>
-    <main>
-        <p>接下來的日子，葉塵將所有的精力都投入到了修煉中。</p>
-        <p>每天清晨，他天不亮就起床，到竹林中練劍。從最基礎的刺、劈、撩、掃開始，到塵淵劍訣的五式劍招，一遍又一遍地練習。他不再刻意區分招式的名字，而是讓劍法成為身體的一部分，隨心所欲地揮灑。</p>
-        <p>這種練法剛開始的時候很不習慣。以前他總是先想「這一招該怎麼用」，然後再出劍。而現在，他讓身體先動，讓劍法自然而然地流出來。</p>
-        <p>經過幾天的適應，他發現這種練法的效果遠比之前好。</p>
-        <p>當他不再思考招式時，劍法反而變得更加流暢自然。塵噬的吞噬、塵爆的爆發、塵斬的穿透、塵幕的防禦、劍歸的凝聚，五式的精義在他的劍下融會貫通，形成了一套完整的劍法體系。</p>
-        <p>但他並不滿足。</p>
-        <p>他想要創造出真正屬於自己的第六式劍招，將黑色晶石的力量融入劍法中的新招式。</p>
-        <p>黑色晶石中蘊含的力量和紫晶傳承的力量不同，紫晶傳承的力量是光明而溫暖的，而黑色晶石的力量則是陰冷而深邃的。兩者融合後，形成了一種全新的力量，既有紫晶傳承的包容，又有黑色晶石的鋒銳。</p>
-        <p>如果能將這種力量完全發揮出來，他的劍法威力將會達到一個新的高度。</p>
-        <p>他開始嘗試將黑色晶石的力量融入劍招中。</p>
-        <p>一開始並不容易。黑色晶石的力量帶著一種桀驁不馴的氣息，就像是一頭不願被馴服的野獸，每一次引導都需要耗費大量的心神。</p>
-        <p>但他沒有放棄，一次又一次地嘗試，一次次調整。</p>
-        <p>終於，在一次練習中，他找到了感覺。</p>
-        <p>他將黑色晶石的力量凝聚在劍鋒上，施展出塵斬。原本青色的劍氣變成了深紫色，夾雜著一絲絲黑色的紋路，威力比之前強了將近一倍！</p>
-        <p>轟！</p>
-        <p>劍氣擊中了竹林中的一塊巨石，巨石應聲碎裂，碎石四濺。但奇怪的是，那些碎石的邊緣不是參差不齊的，而是光滑如鏡，就像是被什麼東西切割開來一樣。</p>
-        <p>葉塵看著那些碎石，沉默了。</p>
-        <p>這不是塵斬原本的效果。塵斬的效果是穿透和切割，但不會讓石頭的邊緣如此光滑。這種效果，更像是將石頭內部的結構都侵蝕了一遍，然後再切割開來。</p>
-        <p>「這是……塵噬和塵斬的融合？」</p>
-        <p>他仔細體會剛才那一劍的感覺。確實，他在施展塵斬的同時，將塵噬的吞噬之力也融合了進去。兩種力量相互疊加，產生了這種奇異的效果，吞噬之力在切割之前先侵蝕了石頭的內部結構，讓石頭變得脆弱，然後塵斬的穿透力再輕而易舉地將它切開。</p>
-        <p>「如果能將塵爆的爆發力也融合進去……」</p>
-        <p>他的眼中閃過一絲興奮，開始了新一輪的嘗試。</p>
-        <p>將三種力量融合在一起，比融合兩種更加困難。他嘗試了一整天，失敗了十幾次，但每次失敗都能從中學到一些東西。有時候是吞噬之力和爆發之力相互衝突，導致劍氣在離劍之前就提前炸開；有時候是三種力量的平衡無法維持，劍氣在空中就自行消散了。每一次失敗，他都會停下來仔細分析原因，調整靈力的運轉方式，然後再次嘗試。</p>
-        <p>到了第七天，他終於成功了。</p>
-        <p>他站在竹林中央，手中的清風劍上凝聚著深紫色的靈力光芒。光芒中夾雜著黑色的紋路和白色的光點，三種力量在劍身上交織流轉，形成了一種奇異而美麗的圖案。</p>
-        <p>他深吸一口氣，然後猛然揮劍！</p>
-        <p>沒有劍氣飛出，沒有爆炸聲。</p>
-        <p>但在他前方十丈範圍內的所有竹子，都在這一瞬間化為了粉末！</p>
-        <p>那些粉末是如此細小，就像真正的塵埃一樣，在風中飄散，消逝在空氣中。</p>
-        <p>葉塵看著眼前空蕩蕩的區域，愣住了。</p>
-        <p>這是什麼威力？</p>
-        <p>他只是輕輕揮了一劍，沒有刻意凝聚力量，就造成了這樣的破壞效果。如果他全力一劍，</p>
-        <p>他不敢想像那會是什麼樣的景象。</p>
-        <p>「這一劍……就叫『塵滅』吧。」他喃喃自語。</p>
-        <p>塵滅，萬物歸於塵埃，一切化為虛無。這是塵淵劍訣的最高境界，將塵噬、塵爆、塵斬、塵歸的精髓全部融合在一起，形成的最強一擊。</p>
-        <p>他收起劍，長長地吐出一口氣。</p>
-        <p>經過將近一個月的苦練，他終於創造出了第五式劍招塵滅。加上之前的四式——塵噬、塵爆、塵斬、塵歸——塵淵劍訣現在擁有了五式完整的劍招。</p>
-        <p>塵噬用於削弱對手，塵爆用於範圍攻擊，塵斬用於穿透和精準打擊，塵歸用於凝聚力量突破防禦，塵滅則是他最強的殺手鐧。</p>
-        <p>他盤膝坐下，開始調息恢復。</p>
-        <p>剛才那一劍幾乎抽乾了他體內的靈力——塵滅的消耗太大了，以他築基中期的靈力總量，也只能勉強施展一劍。如果一劍無法擊敗對手，他就會陷入靈力枯竭的危險境地。</p>
-        <p>「這一劍，只能在最關鍵的時候使用。」他在心中告誡自己。</p>
-        <p>但即便如此，多了一個殺手鐧總歸是好事。在蒼瀾秘境中面對危險時，塵滅或許能成為他逆轉局勢的關鍵。</p>
-        <p>他從儲物袋中取出一枚紫靈丹服下，開始恢復靈力。</p>
-        <p>藥力在體內化開，滋養著乾涸的經脈。他能感覺到，自己的靈力正在快速恢復，同時經脈在這種大消耗後也得到了鍛煉，變得更加堅韌和寬闊。</p>
-        <p>「難怪都說實戰是最好的修煉。」</p>
-        <p>他閉上眼睛，沉浸在恢復中。</p>
-        <p>半個時辰後，他睜開眼睛，靈力已經恢復了大半。他站起身，看著眼前那片被塵滅清空的區域，心中感慨萬千。</p>
-        <p>「距離進入蒼瀾秘境還有一個月的時間。」他計算著時間，「這一個月，我要繼續鞏固境界，完善劍法，並且準備足夠的丹藥和物資。」</p>
-        <p>他收起清風劍，轉身向住處走去。</p>
-        <p>夕陽的餘暉灑在他身上，在地上投下一道長長的影子。他的腳步穩健而有力，每一步都帶著一種自信和從容。經過這段時間的苦練，他不僅創造出了塵滅這一殺手鐧，還對塵淵劍訣有了全新的理解——每一式劍招都不是孤立的，而是可以相互融合、相互轉化的。這種理解，讓他的劍法達到了一個全新的境界。</p>
-        <p>築基中期的境界，再加上塵淵劍訣的五式劍招——他已經做好了進入蒼瀾秘境的準備。</p>
-        <p>回到住處後，他將清風劍放在床邊，然後盤膝坐下調息。體內的靈力在經脈中平穩流轉，深紫色的光芒在皮膚下隱約閃現。他閉上眼睛，開始回想今天練習塵滅的每一個細節，將成功的經驗牢牢記在心中，將失敗的教訓也一一記錄下來。他知道，只有不斷總結和反思，才能在劍道上走得更遠。</p>
-    </main>
-    <nav class="nav">
-        <a href="chapter-147.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-148/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-149.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第148章 · 第五式劍招 - 萬古塵埃</title><meta name="description" content="接下來的日子，葉塵將所有的精力都投入到了修煉中。"><link rel="canonical" href="https://kofhk.com/chapter-148.html">><link rel="prev" href="chapter-147.html"><link rel="next" href="chapter-149.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第148章 · 第五式劍招</h1><main><p>接下來的日子，葉塵將所有的精力都投入到了修煉中。</p><p>每天清晨，他天不亮就起床，到竹林中練劍。從最基礎的刺、劈、撩、掃開始，到塵淵劍訣的五式劍招，一遍又一遍地練習。他不再刻意區分招式的名字，而是讓劍法成為身體的一部分，隨心所欲地揮灑。</p><p>這種練法剛開始的時候很不習慣。以前他總是先想「這一招該怎麼用」，然後再出劍。而現在，他讓身體先動，讓劍法自然而然地流出來。</p><p>經過幾天的適應，他發現這種練法的效果遠比之前好。</p><p>當他不再思考招式時，劍法反而變得更加流暢自然。塵噬的吞噬、塵爆的爆發、塵斬的穿透、塵幕的防禦、劍歸的凝聚，五式的精義在他的劍下融會貫通，形成了一套完整的劍法體系。</p><p>但他並不滿足。</p><p>他想要創造出真正屬於自己的第六式劍招，將黑色晶石的力量融入劍法中的新招式。</p><p>黑色晶石中蘊含的力量和紫晶傳承的力量不同，紫晶傳承的力量是光明而溫暖的，而黑色晶石的力量則是陰冷而深邃的。兩者融合後，形成了一種全新的力量，既有紫晶傳承的包容，又有黑色晶石的鋒銳。</p><p>如果能將這種力量完全發揮出來，他的劍法威力將會達到一個新的高度。</p><p>他開始嘗試將黑色晶石的力量融入劍招中。</p><p>一開始並不容易。黑色晶石的力量帶著一種桀驁不馴的氣息，就像是一頭不願被馴服的野獸，每一次引導都需要耗費大量的心神。</p><p>但他沒有放棄，一次又一次地嘗試，一次次調整。</p><p>終於，在一次練習中，他找到了感覺。</p><p>他將黑色晶石的力量凝聚在劍鋒上，施展出塵斬。原本青色的劍氣變成了深紫色，夾雜著一絲絲黑色的紋路，威力比之前強了將近一倍！</p><p>轟！</p><p>劍氣擊中了竹林中的一塊巨石，巨石應聲碎裂，碎石四濺。但奇怪的是，那些碎石的邊緣不是參差不齊的，而是光滑如鏡，就像是被什麼東西切割開來一樣。</p><p>葉塵看著那些碎石，沉默了。</p><p>這不是塵斬原本的效果。塵斬的效果是穿透和切割，但不會讓石頭的邊緣如此光滑。這種效果，更像是將石頭內部的結構都侵蝕了一遍，然後再切割開來。</p><p>「這是……塵噬和塵斬的融合？」</p><p>他仔細體會剛才那一劍的感覺。確實，他在施展塵斬的同時，將塵噬的吞噬之力也融合了進去。兩種力量相互疊加，產生了這種奇異的效果，吞噬之力在切割之前先侵蝕了石頭的內部結構，讓石頭變得脆弱，然後塵斬的穿透力再輕而易舉地將它切開。</p><p>「如果能將塵爆的爆發力也融合進去……」</p><p>他的眼中閃過一絲興奮，開始了新一輪的嘗試。</p><p>將三種力量融合在一起，比融合兩種更加困難。他嘗試了一整天，失敗了十幾次，但每次失敗都能從中學到一些東西。有時候是吞噬之力和爆發之力相互衝突，導致劍氣在離劍之前就提前炸開；有時候是三種力量的平衡無法維持，劍氣在空中就自行消散了。每一次失敗，他都會停下來仔細分析原因，調整靈力的運轉方式，然後再次嘗試。</p><p>到了第七天，他終於成功了。</p><p>他站在竹林中央，手中的清風劍上凝聚著深紫色的靈力光芒。光芒中夾雜著黑色的紋路和白色的光點，三種力量在劍身上交織流轉，形成了一種奇異而美麗的圖案。</p><p>他深吸一口氣，然後猛然揮劍！</p><p>沒有劍氣飛出，沒有爆炸聲。</p><p>但在他前方十丈範圍內的所有竹子，都在這一瞬間化為了粉末！</p><p>那些粉末是如此細小，就像真正的塵埃一樣，在風中飄散，消逝在空氣中。</p><p>葉塵看著眼前空蕩蕩的區域，愣住了。</p><p>這是什麼威力？</p><p>他只是輕輕揮了一劍，沒有刻意凝聚力量，就造成了這樣的破壞效果。如果他全力一劍，</p><p>他不敢想像那會是什麼樣的景象。</p><p>「這一劍……就叫『塵滅』吧。」他喃喃自語。</p><p>塵滅，萬物歸於塵埃，一切化為虛無。這是塵淵劍訣的最高境界，將塵噬、塵爆、塵斬、塵歸的精髓全部融合在一起，形成的最強一擊。</p><p>他收起劍，長長地吐出一口氣。</p><p>經過將近一個月的苦練，他終於創造出了第五式劍招塵滅。加上之前的四式——塵噬、塵爆、塵斬、塵歸——塵淵劍訣現在擁有了五式完整的劍招。</p><p>塵噬用於削弱對手，塵爆用於範圍攻擊，塵斬用於穿透和精準打擊，塵歸用於凝聚力量突破防禦，塵滅則是他最強的殺手鐧。</p><p>他盤膝坐下，開始調息恢復。</p><p>剛才那一劍幾乎抽乾了他體內的靈力——塵滅的消耗太大了，以他築基中期的靈力總量，也只能勉強施展一劍。如果一劍無法擊敗對手，他就會陷入靈力枯竭的危險境地。</p><p>「這一劍，只能在最關鍵的時候使用。」他在心中告誡自己。</p><p>但即便如此，多了一個殺手鐧總歸是好事。在蒼瀾秘境中面對危險時，塵滅或許能成為他逆轉局勢的關鍵。</p><p>他從儲物袋中取出一枚紫靈丹服下，開始恢復靈力。</p><p>藥力在體內化開，滋養著乾涸的經脈。他能感覺到，自己的靈力正在快速恢復，同時經脈在這種大消耗後也得到了鍛煉，變得更加堅韌和寬闊。</p><p>「難怪都說實戰是最好的修煉。」</p><p>他閉上眼睛，沉浸在恢復中。</p><p>半個時辰後，他睜開眼睛，靈力已經恢復了大半。他站起身，看著眼前那片被塵滅清空的區域，心中感慨萬千。</p><p>「距離進入蒼瀾秘境還有一個月的時間。」他計算著時間，「這一個月，我要繼續鞏固境界，完善劍法，並且準備足夠的丹藥和物資。」</p><p>他收起清風劍，轉身向住處走去。</p><p>夕陽的餘暉灑在他身上，在地上投下一道長長的影子。他的腳步穩健而有力，每一步都帶著一種自信和從容。經過這段時間的苦練，他不僅創造出了塵滅這一殺手鐧，還對塵淵劍訣有了全新的理解——每一式劍招都不是孤立的，而是可以相互融合、相互轉化的。這種理解，讓他的劍法達到了一個全新的境界。</p><p>築基中期的境界，再加上塵淵劍訣的五式劍招——他已經做好了進入蒼瀾秘境的準備。</p><p>回到住處後，他將清風劍放在床邊，然後盤膝坐下調息。體內的靈力在經脈中平穩流轉，深紫色的光芒在皮膚下隱約閃現。他閉上眼睛，開始回想今天練習塵滅的每一個細節，將成功的經驗牢牢記在心中，將失敗的教訓也一一記錄下來。他知道，只有不斷總結和反思，才能在劍道上走得更遠。</p></main><nav class="nav"><a href="chapter-147.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-148/" class="manga-btn">🎨 漫畫版</a><a href="chapter-149.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

@@ -1,256 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第80章 · 結伴同行 - 萬古塵埃</title>
-    <meta name="description" content="地宮中眾人在原地稍作休整。受傷的蒼瀾宗弟子服下一顆療傷丹藥之後氣色好了不少，雖然傷勢不輕但以修士的恢復能力修養幾日就能痊癒。蘇慕白坐在地上為師弟運功療傷，靈力在他掌間流轉，催動藥力滲入傷口深處。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-80.html">>
-    <link rel="prev" href="chapter-79.html">
-    <link rel="next" href="chapter-81.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第80章 · 結伴同行</h1>
-    <main>
-        <p>地宮中眾人在原地稍作休整。受傷的蒼瀾宗弟子服下一顆療傷丹藥之後氣色好了不少，雖然傷勢不輕但以修士的恢復能力修養幾日就能痊癒。蘇慕白坐在地上為師弟運功療傷，靈力在他掌間流轉，催動藥力滲入傷口深處。</p>
-        <p>葉塵和蘇慕白圍著那張羊皮地圖仔細研究。地圖上標記的路線十分複雜，蜿蜒曲折穿越了蒼瀾遺跡的多個區域。最終的目的地在地圖的中央標記著一個古樸的傳送陣圖案，而傳送陣周圍標記了三個圖標分別對應著三種物品。其中一個圖標與葉塵剛剛得到的鐵盒一模一樣。</p>
-        <p>「另外兩個物品在哪裡？」葉塵問。</p>
-        <p>蘇慕白搖頭：「我也不知道。這張地圖是我在遺跡外圍一個隱蔽的石室中找到的，上面記錄的資訊並不完整。我只知道鐵盒的位置，其他兩個物品的下落完全沒有線索。」</p>
-        <p>葉塵沉思了一會兒。他體內的紫晶傳承對那座傳送陣產生了隱約的共鳴，這說明傳送陣的另一端很可能與他的傳承有關。如果真是這樣他無論如何都要去一趟。</p>
-        <p>「我們要不要合作？」葉塵主動提議，「既然鐵盒在我手上而你有地圖，不如我們一起尋找剩下的物品共同探索那座傳送陣。」</p>
-        <p>蘇慕白眼睛一亮但隨即又露出為難之色：「葉師弟願與我等合作自然是求之不得。只是我那位師弟受了傷需要先將他送回宗門療養。」</p>
-        <p>「我可以先送他出去。」另一名蒼瀾宗弟子開口道，他是個沉默寡言的青年但眼神很沉穩，「蘇師兄你留下來和他們一起探索，我帶鐵心師弟回去。」</p>
-        <p>蘇慕白想了想點頭同意：「也好。你自己路上小心。」</p>
-        <p>「放心。」那名弟子扶起受傷的鐵心朝著通道外走去，臨走前回頭看了葉塵一眼鄭重地說了一聲多謝。簡簡單單的兩個字卻帶著真誠的感激。</p>
-        <p>地宮中安靜下來只剩下葉塵一行四人加上蘇慕白共五人。李浩拍了拍手：「好現在我們有五個人了，接下來怎麼走？」</p>
-        <p>蘇慕白攤開地圖指著其中一條路線：「根據圖上的標記第二個物品應該在這個位置——一座被封印的地下密室。不過這條路線會經過一片妖獸巢穴，可能有築基中期級別的妖獸守在那裡。」</p>
-        <p>「築基中期？」王鐵皺起眉頭，「這是不是太危險了？」</p>
-        <p>「危險是有的但也不是完全沒有機會。」葉塵仔細看著地圖伸手指著一條較為迂迴的路線，「我們不走正面從這條側面通道繞過去。如果地圖上標記的沒錯這條通道應該能避開大部分妖獸的活動區域。」</p>
-        <p>蘇慕白看了葉塵指的路線眼睛一亮：「你怎麼知道這條通道？」</p>
-        <p>「猜的。」葉塵笑了笑，「地圖上的符文標記雖然模糊但我大概能看出一些規律。古代修士建造遺跡時通常會留下一些隱蔽的通道供內部人員使用，這條路線的走向很符合那種設計。」</p>
-        <p>蘇慕白深深看了葉塵一眼沒有多問。他看得出來面前的這個少年雖然修為不高但見識和判斷力遠超同輩。一行人收拾好行裝沿著葉塵選擇的路線出發。</p>
-        <p>這條通道比主道狹窄得多，有些地方甚至需要側身才能通過。牆壁上布滿了灰塵和蛛網顯然已經很久沒有人走過了。通道的空氣中瀰漫著一股霉味，腳下的地面濕滑踩上去吱吱作響。葉塵走在最前面手中舉著一枚螢光石照亮前路，走得很慢每一步都經過仔細觀察。</p>
-        <p>「停。」葉塵突然停下腳步。眾人立刻戒備。他蹲下身用劍尖在地面上輕輕敲了幾下，地面發出空洞的回音下方似乎是空的。他沿著牆壁摸索了一會兒找到了一塊鬆動的石磚用力按下，只聽喀噠一聲地面上的幾塊石板翻轉過來露出了下方黑漆漆的深淵。眾人倒吸一口涼氣——若不是葉塵發現得早恐怕現在已經有人掉下去了。</p>
-        <p>繞過陷阱區域繼續前進，穿過狹窄的通道前方豁然開朗。他們來到了一個巨大的地下空間，頭頂是鐘乳石形成的天然穹頂，腳下是平整的石板地面。空間的中央立著一座高大的石碑，石碑上刻滿了古老的文字。</p>
-        <p>葉塵走近石碑仔細辨認那些文字。這些文字與現代的修真界文字有所不同，更加古樸簡潔帶著一種遠古時代的氣息，但他體內的紫晶傳承卻讓他能夠隱約理解這些文字的含義。</p>
-        <p>碑文的開頭是這樣寫的：「吾乃塵淵宗第三代宗主，留此碑以告後人。蒼瀾遺跡實為我宗遠古時期的分舵所在，地宮深處藏有我宗至寶……」</p>
-        <p>葉塵的瞳孔猛然一縮。塵淵宗？這座蒼瀾遺跡竟然是塵淵宗遠古時期的分舵？</p>
-        <p>碑文的後半部分還記載了一些關於遺跡內部機關和陷阱的資訊。葉塵仔細閱讀後在心中默默記下這些重要信息。他注意到碑文中多次提到了一個名詞紫晶傳承。這讓他心頭一震因為這與他識海中的紫晶傳承完全吻合。看來這座遺跡與他的傳承之間確實存在著某種深層的聯繫。他強壓心中的激動繼續往下讀碑文的最後寫道後來者若能獲得紫晶的認可便可進入遺跡最深處獲得完整的傳承。葉塵深吸一口氣轉頭看向眾人說這座傳送陣必須啟動我有預感那裡面有對我非常重要的東西。蘇慕白聽後點了點頭表示理解既然大家目標一致那就一起前進吧。</p>
-        <p>葉塵將碑文的內容默默地記在了心中。碑文上不僅記載了塵淵宗的歷史還提到了紫晶傳承的來歷。原來在遠古時代塵淵宗的創始人就曾獲得過紫晶傳承並且憑藉這份傳承建立了塵淵宗。後來因為某種原因傳承斷絕了而蒼瀾遺跡就是當年塵淵宗的分舵所在地。這些資訊讓葉塵對自己的傳承有了更深的了解也讓他對塵淵宗有了更多的歸屬感。他暗自決心一定要找到傳承中隱藏的秘密讓塵淵宗恢復昔日的榮光。</p>
-        <p>碑文讀完後葉塵沉默了很久。他沒有想到塵淵宗竟然有如此輝煌的歷史更沒有想到自己得到的紫晶傳承與宗門有著這麼深的淵源。他感覺到自己肩上的責任更重了。他轉身看向李浩等人選擇性地告訴了他們一些信息。眾人聽後既驚訝又興奮討論了一番後決定繼續前進探索傳送陣的秘密。他們沿著碑文指示的方向繼續前行走入了更深處的通道中。</p></main>
-    <nav class="nav">
-        <a href="chapter-79.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-80/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-81.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第80章 · 結伴同行 - 萬古塵埃</title><meta name="description" content="地宮中眾人在原地稍作休整。受傷的蒼瀾宗弟子服下一顆療傷丹藥之後氣色好了不少，雖然傷勢不輕但以修士的恢復能力修養幾日就能痊癒。蘇慕白坐在地上為師弟運功療傷，靈力在他掌間流轉，催動藥力滲入傷口深處。"><link rel="canonical" href="https://kofhk.com/chapter-80.html">><link rel="prev" href="chapter-79.html"><link rel="next" href="chapter-81.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第80章 · 結伴同行</h1><main><p>地宮中眾人在原地稍作休整。受傷的蒼瀾宗弟子服下一顆療傷丹藥之後氣色好了不少，雖然傷勢不輕但以修士的恢復能力修養幾日就能痊癒。蘇慕白坐在地上為師弟運功療傷，靈力在他掌間流轉，催動藥力滲入傷口深處。</p><p>葉塵和蘇慕白圍著那張羊皮地圖仔細研究。地圖上標記的路線十分複雜，蜿蜒曲折穿越了蒼瀾遺跡的多個區域。最終的目的地在地圖的中央標記著一個古樸的傳送陣圖案，而傳送陣周圍標記了三個圖標分別對應著三種物品。其中一個圖標與葉塵剛剛得到的鐵盒一模一樣。</p><p>「另外兩個物品在哪裡？」葉塵問。</p><p>蘇慕白搖頭：「我也不知道。這張地圖是我在遺跡外圍一個隱蔽的石室中找到的，上面記錄的資訊並不完整。我只知道鐵盒的位置，其他兩個物品的下落完全沒有線索。」</p><p>葉塵沉思了一會兒。他體內的紫晶傳承對那座傳送陣產生了隱約的共鳴，這說明傳送陣的另一端很可能與他的傳承有關。如果真是這樣他無論如何都要去一趟。</p><p>「我們要不要合作？」葉塵主動提議，「既然鐵盒在我手上而你有地圖，不如我們一起尋找剩下的物品共同探索那座傳送陣。」</p><p>蘇慕白眼睛一亮但隨即又露出為難之色：「葉師弟願與我等合作自然是求之不得。只是我那位師弟受了傷需要先將他送回宗門療養。」</p><p>「我可以先送他出去。」另一名蒼瀾宗弟子開口道，他是個沉默寡言的青年但眼神很沉穩，「蘇師兄你留下來和他們一起探索，我帶鐵心師弟回去。」</p><p>蘇慕白想了想點頭同意：「也好。你自己路上小心。」</p><p>「放心。」那名弟子扶起受傷的鐵心朝著通道外走去，臨走前回頭看了葉塵一眼鄭重地說了一聲多謝。簡簡單單的兩個字卻帶著真誠的感激。</p><p>地宮中安靜下來只剩下葉塵一行四人加上蘇慕白共五人。李浩拍了拍手：「好現在我們有五個人了，接下來怎麼走？」</p><p>蘇慕白攤開地圖指著其中一條路線：「根據圖上的標記第二個物品應該在這個位置——一座被封印的地下密室。不過這條路線會經過一片妖獸巢穴，可能有築基中期級別的妖獸守在那裡。」</p><p>「築基中期？」王鐵皺起眉頭，「這是不是太危險了？」</p><p>「危險是有的但也不是完全沒有機會。」葉塵仔細看著地圖伸手指著一條較為迂迴的路線，「我們不走正面從這條側面通道繞過去。如果地圖上標記的沒錯這條通道應該能避開大部分妖獸的活動區域。」</p><p>蘇慕白看了葉塵指的路線眼睛一亮：「你怎麼知道這條通道？」</p><p>「猜的。」葉塵笑了笑，「地圖上的符文標記雖然模糊但我大概能看出一些規律。古代修士建造遺跡時通常會留下一些隱蔽的通道供內部人員使用，這條路線的走向很符合那種設計。」</p><p>蘇慕白深深看了葉塵一眼沒有多問。他看得出來面前的這個少年雖然修為不高但見識和判斷力遠超同輩。一行人收拾好行裝沿著葉塵選擇的路線出發。</p><p>這條通道比主道狹窄得多，有些地方甚至需要側身才能通過。牆壁上布滿了灰塵和蛛網顯然已經很久沒有人走過了。通道的空氣中瀰漫著一股霉味，腳下的地面濕滑踩上去吱吱作響。葉塵走在最前面手中舉著一枚螢光石照亮前路，走得很慢每一步都經過仔細觀察。</p><p>「停。」葉塵突然停下腳步。眾人立刻戒備。他蹲下身用劍尖在地面上輕輕敲了幾下，地面發出空洞的回音下方似乎是空的。他沿著牆壁摸索了一會兒找到了一塊鬆動的石磚用力按下，只聽喀噠一聲地面上的幾塊石板翻轉過來露出了下方黑漆漆的深淵。眾人倒吸一口涼氣——若不是葉塵發現得早恐怕現在已經有人掉下去了。</p><p>繞過陷阱區域繼續前進，穿過狹窄的通道前方豁然開朗。他們來到了一個巨大的地下空間，頭頂是鐘乳石形成的天然穹頂，腳下是平整的石板地面。空間的中央立著一座高大的石碑，石碑上刻滿了古老的文字。</p><p>葉塵走近石碑仔細辨認那些文字。這些文字與現代的修真界文字有所不同，更加古樸簡潔帶著一種遠古時代的氣息，但他體內的紫晶傳承卻讓他能夠隱約理解這些文字的含義。</p><p>碑文的開頭是這樣寫的：「吾乃塵淵宗第三代宗主，留此碑以告後人。蒼瀾遺跡實為我宗遠古時期的分舵所在，地宮深處藏有我宗至寶……」</p><p>葉塵的瞳孔猛然一縮。塵淵宗？這座蒼瀾遺跡竟然是塵淵宗遠古時期的分舵？</p><p>碑文的後半部分還記載了一些關於遺跡內部機關和陷阱的資訊。葉塵仔細閱讀後在心中默默記下這些重要信息。他注意到碑文中多次提到了一個名詞紫晶傳承。這讓他心頭一震因為這與他識海中的紫晶傳承完全吻合。看來這座遺跡與他的傳承之間確實存在著某種深層的聯繫。他強壓心中的激動繼續往下讀碑文的最後寫道後來者若能獲得紫晶的認可便可進入遺跡最深處獲得完整的傳承。葉塵深吸一口氣轉頭看向眾人說這座傳送陣必須啟動我有預感那裡面有對我非常重要的東西。蘇慕白聽後點了點頭表示理解既然大家目標一致那就一起前進吧。</p><p>葉塵將碑文的內容默默地記在了心中。碑文上不僅記載了塵淵宗的歷史還提到了紫晶傳承的來歷。原來在遠古時代塵淵宗的創始人就曾獲得過紫晶傳承並且憑藉這份傳承建立了塵淵宗。後來因為某種原因傳承斷絕了而蒼瀾遺跡就是當年塵淵宗的分舵所在地。這些資訊讓葉塵對自己的傳承有了更深的了解也讓他對塵淵宗有了更多的歸屬感。他暗自決心一定要找到傳承中隱藏的秘密讓塵淵宗恢復昔日的榮光。</p><p>碑文讀完後葉塵沉默了很久。他沒有想到塵淵宗竟然有如此輝煌的歷史更沒有想到自己得到的紫晶傳承與宗門有著這麼深的淵源。他感覺到自己肩上的責任更重了。他轉身看向李浩等人選擇性地告訴了他們一些信息。眾人聽後既驚訝又興奮討論了一番後決定繼續前進探索傳送陣的秘密。他們沿著碑文指示的方向繼續前行走入了更深處的通道中。</p></main><nav class="nav"><a href="chapter-79.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-80/" class="manga-btn">🎨 漫畫版</a><a href="chapter-81.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

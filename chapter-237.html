@@ -1,287 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第237章 · 元神之妙 - 萬古塵埃</title>
-    <meta name="description" content="一周後，葉塵對凝神境的基本能力已經掌握得相當熟練了。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-237.html">
-    <link rel="prev" href="https://kofhk.com/chapter-236.html">
-    <link rel="next" href="https://kofhk.com/chapter-238.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第237章 · 元神之妙</h1>
-    <main>
-        <p>一周後，葉塵對凝神境的基本能力已經掌握得相當熟練了。</p>
-        <p>這天上午，黑袍人決定教他一個更加高階的技巧,靈魂攻擊的實戰應用。</p>
-        <p>「靈魂攻擊，說白了就是用你的元神去攻擊對手的靈魂。」黑袍人盤膝坐在葉塵的意識深處，語氣平穩而嚴肅，「與元氣攻擊不同，靈魂攻擊無形無質，難以防範。一旦擊中，輕則讓對手陷入短暫的眩暈，重則直接摧毀對手的靈魂。」</p>
-        <p>「但靈魂攻擊也有風險。」黑袍人繼續說道，「如果對手的靈魂比你強大，你的靈魂攻擊不僅不會奏效，反而可能被對方反噬。所以，在實戰中使用靈魂攻擊時，一定要先判斷對手的靈魂強度。」</p>
-        <p>葉塵點了點頭：「我明白了。那要如何進行靈魂攻擊？」</p>
-        <p>「有兩種常見的方式。」黑袍人解釋道，「第一種是靈魂衝擊,將你的靈魂之力凝聚成一道衝擊波，直接轟擊對手的識海。這種方式簡單直接，威力也大，但消耗也大。」</p>
-        <p>「第二種是靈魂滲透,將你的靈魂之力化為細絲，悄悄滲入對手的識海，擾亂對方的意識。這種方式更加隱蔽，消耗也小，但威力不如靈魂衝擊。」</p>
-        <p>「你先從靈魂衝擊開始學起吧。」</p>
-        <p>黑袍人的話音落下，一股資訊湧入葉塵的腦海。</p>
-        <p>那是靈魂衝擊的具體運用法門,將元神中的靈魂之力壓縮、凝聚、然後以特定的頻率釋放出去。那股力量在脫離元神之後，會形成一道無形的衝擊波，直擊對手的靈魂。</p>
-        <p>葉塵閉上眼睛，按照那些法門開始練習。</p>
-        <p>他將元神中的靈魂之力調動起來，像壓縮元氣一樣，將那些靈魂之力在識海中壓縮成一個小球。那個小球越來越小，越來越凝實，蘊含的能量也越來越恐怖。</p>
-        <p>然後，他猛地將那個小球釋放出去！</p>
-        <p>無聲無息。</p>
-        <p>一道無形的靈魂衝擊波從他的眉心射出，轟向遠處的一棵大樹！</p>
-        <p>大樹劇烈地搖晃了一下，樹葉嘩嘩作響。但除此之外，沒有造成任何明顯的傷害。</p>
-        <p>「失敗了。」葉塵皺眉道。</p>
-        <p>「當然失敗了。」黑袍人的語氣中帶著一絲無奈，「你把靈魂之力壓縮得太散了。靈魂衝擊的關鍵在於瞬間爆發,將大量的靈魂之力在最短的時間內釋放出去，形成一個尖銳的衝擊波，而不是一團散亂的能量。」</p>
-        <p>葉塵若有所思，然後重新開始嘗試。</p>
-        <p>這一次，他不再追求壓縮的體積，而是追求壓縮的速度。他將靈魂之力在識海中快速凝聚、快速壓縮、然後在壓縮到極限的瞬間,發射！</p>
-        <p>一道更加尖銳、更加凝實的無形衝擊波從他的眉心射出！</p>
-        <p>這一次，那棵大樹被轟得向後傾斜了將近三十度！樹皮在衝擊點處碎裂，露出裡面的白色木質。</p>
-        <p>「這就對了。」黑袍人讚許地說，「保持這種感覺，繼續練習。」</p>
-        <p>葉塵精神一振，繼續練習靈魂衝擊。</p>
-        <p>一次又一次。</p>
-        <p>隨著練習的次數增加，他對靈魂衝擊的掌握越來越熟練。從最初的只能轟擊靜止的目標，到後來能夠擊中在空中飛行的落葉。從最初的需要全力凝聚，到後來只需要一個念頭就能釋放。</p>
-        <p>到中午的時候，他已經能夠在三丈的距離內，用靈魂衝擊將一塊巴掌大的石頭轟成碎片。</p>
-        <p>「不錯的進步。」黑袍人說道，「不過，靈魂衝擊在實戰中通常只是輔助手段。真正能夠決定勝負的，是靈魂攻擊的第二種形式,靈魂滲透。」</p>
-        <p>「靈魂滲透的技巧，在於將靈魂之力化作極細的絲線，滲入對手的識海之中。一旦成功，你就可以直接干擾對手的思維、感知、甚至記憶。這種攻擊方式非常隱蔽，對手往往在不知不覺中就中了招。」</p>
-        <p>黑袍人將靈魂滲透的法門傳授給了葉塵。</p>
-        <p>葉塵嘗試練習了幾次，發現這個技巧的難度遠超靈魂衝擊。靈魂衝擊只需要將力量壓縮後釋放，像射箭一樣簡單直接。但靈魂滲透需要他將靈魂之力變得極其精細、靈活，像繡花一樣小心翼翼地操作。</p>
-        <p>他嘗試將靈魂之力化為細絲，向遠處的一隻蝴蝶延伸過去。但靈魂之絲在延伸的過程中總是會斷裂,要麼是不夠靈活，要麼是不夠堅韌。</p>
-        <p>一整個下午，他都在練習靈魂滲透。</p>
-        <p>直到夕陽西下的時候，他終於成功地將一縷靈魂之絲延伸到了那隻蝴蝶的身上。在那一瞬間，他感覺自己與蝴蝶之間建立了一種微妙的聯繫,他能夠模糊地感覺到蝴蝶的感受，像是蝴蝶扇動翅膀時風的觸感、花蜜的甜味、陽光的溫暖。</p>
-        <p>雖然那種聯繫非常微弱，而且很快就斷了，但這次成功的嘗試讓葉塵大受鼓舞。</p>
-        <p>「按照這個進度，最多五天，我就能完全掌握靈魂滲透的技巧了。」葉塵信心滿滿地說。</p>
-        <p>「嗯。」黑袍人應了一聲，然後話鋒一轉，「不過，靈魂攻擊雖然強大，但在實戰中不能過度依賴。真正的高手都有自己的靈魂防禦手段，如果你的靈魂攻擊被對方擋住了，你就會陷入危險之中。」</p>
-        <p>「我明白。」葉塵點了點頭，「靈魂攻擊只是輔助，真正的核心還是劍法和修為。」</p>
-        <p>「你能這麼想就好了。」黑袍人的語氣中帶著一絲欣慰，「好了，今天的修煉就到這裡吧。你已經練習了一整天，元神需要休息。」</p>
-        <p>葉塵應了一聲，收起塵淵劍，回到了自己的住處。</p>
-        <p>洗過澡後，他躺在床上，閉上眼睛，回想今天的修煉收穫。</p>
-        <p>靈魂衝擊和靈魂滲透,這兩種靈魂攻擊方式各有優劣。靈魂衝擊威力大，但容易被察覺；靈魂滲透隱蔽，但操作難度大。在實戰中，要根據對手的實力和情況，靈活選擇使用哪種方式。</p>
-        <p>正當他思考的時候，懷中的紫色晶石突然散發出一陣溫熱。</p>
-        <p>他取出晶石，發現晶石的光芒比平時更加明亮。那些細微的紋路在晶石內部流轉，構成了一個複雜的圖案,那個圖案看起來就像是一個微縮版的識海結構。</p>
-        <p>「這塊晶石……到底有什麼秘密？」</p>
-        <p>葉塵將晶石舉到眼前，仔細觀察。晶石內部的紋路不斷變化，像是在傳遞某種資訊。他嘗試將元神的力量探入晶石之中,</p>
-        <p>一股龐大的資訊湧入他的腦海！</p>
-        <p>那是一些斷斷續續的畫面,一座宏偉的宮殿在雲端聳立，一個模糊的身影站在宮殿頂端，手中握著一把與塵淵劍極為相似的長劍。那個身影轉過頭來，看向葉塵的方向,</p>
-        <p>然後，畫面斷了。</p>
-        <p>葉塵猛地睜開眼睛，發現自己的心跳在加速。</p>
-        <p>剛才那些畫面,那座宮殿、那個身影、那把劍,到底是什麼？它們與紫色晶石有什麼關係？與他的前世又有什麼關係？</p>
-        <p>他感覺到，那塊紫色晶石中隱藏著一個巨大的秘密。</p>
-        <p>而這個秘密，或許與他的身世、與塵淵宗的傳承、甚至與萬古荒原都有著某種深刻的聯繫。</p>
-        <p>「萬古荒原……」</p>
-        <p>葉塵喃喃自語。</p>
-        <p>他必須去那裡。不僅是為了尋找機緣和提升實力，更是為了尋找這些問題的答案。</p>
-    </main>
-    <nav class="nav">
-        <a href="https://kofhk.com/chapter-236.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-237/" class="manga-btn">🎨 漫畫版</a>
-        <a href="https://kofhk.com/chapter-238.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第237章 · 元神之妙 - 萬古塵埃</title><meta name="description" content="一周後，葉塵對凝神境的基本能力已經掌握得相當熟練了。"><link rel="canonical" href="https://kofhk.com/chapter-237.html"><link rel="prev" href="https://kofhk.com/chapter-236.html"><link rel="next" href="https://kofhk.com/chapter-238.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第237章 · 元神之妙</h1><main><p>一周後，葉塵對凝神境的基本能力已經掌握得相當熟練了。</p><p>這天上午，黑袍人決定教他一個更加高階的技巧,靈魂攻擊的實戰應用。</p><p>「靈魂攻擊，說白了就是用你的元神去攻擊對手的靈魂。」黑袍人盤膝坐在葉塵的意識深處，語氣平穩而嚴肅，「與元氣攻擊不同，靈魂攻擊無形無質，難以防範。一旦擊中，輕則讓對手陷入短暫的眩暈，重則直接摧毀對手的靈魂。」</p><p>「但靈魂攻擊也有風險。」黑袍人繼續說道，「如果對手的靈魂比你強大，你的靈魂攻擊不僅不會奏效，反而可能被對方反噬。所以，在實戰中使用靈魂攻擊時，一定要先判斷對手的靈魂強度。」</p><p>葉塵點了點頭：「我明白了。那要如何進行靈魂攻擊？」</p><p>「有兩種常見的方式。」黑袍人解釋道，「第一種是靈魂衝擊,將你的靈魂之力凝聚成一道衝擊波，直接轟擊對手的識海。這種方式簡單直接，威力也大，但消耗也大。」</p><p>「第二種是靈魂滲透,將你的靈魂之力化為細絲，悄悄滲入對手的識海，擾亂對方的意識。這種方式更加隱蔽，消耗也小，但威力不如靈魂衝擊。」</p><p>「你先從靈魂衝擊開始學起吧。」</p><p>黑袍人的話音落下，一股資訊湧入葉塵的腦海。</p><p>那是靈魂衝擊的具體運用法門,將元神中的靈魂之力壓縮、凝聚、然後以特定的頻率釋放出去。那股力量在脫離元神之後，會形成一道無形的衝擊波，直擊對手的靈魂。</p><p>葉塵閉上眼睛，按照那些法門開始練習。</p><p>他將元神中的靈魂之力調動起來，像壓縮元氣一樣，將那些靈魂之力在識海中壓縮成一個小球。那個小球越來越小，越來越凝實，蘊含的能量也越來越恐怖。</p><p>然後，他猛地將那個小球釋放出去！</p><p>無聲無息。</p><p>一道無形的靈魂衝擊波從他的眉心射出，轟向遠處的一棵大樹！</p><p>大樹劇烈地搖晃了一下，樹葉嘩嘩作響。但除此之外，沒有造成任何明顯的傷害。</p><p>「失敗了。」葉塵皺眉道。</p><p>「當然失敗了。」黑袍人的語氣中帶著一絲無奈，「你把靈魂之力壓縮得太散了。靈魂衝擊的關鍵在於瞬間爆發,將大量的靈魂之力在最短的時間內釋放出去，形成一個尖銳的衝擊波，而不是一團散亂的能量。」</p><p>葉塵若有所思，然後重新開始嘗試。</p><p>這一次，他不再追求壓縮的體積，而是追求壓縮的速度。他將靈魂之力在識海中快速凝聚、快速壓縮、然後在壓縮到極限的瞬間,發射！</p><p>一道更加尖銳、更加凝實的無形衝擊波從他的眉心射出！</p><p>這一次，那棵大樹被轟得向後傾斜了將近三十度！樹皮在衝擊點處碎裂，露出裡面的白色木質。</p><p>「這就對了。」黑袍人讚許地說，「保持這種感覺，繼續練習。」</p><p>葉塵精神一振，繼續練習靈魂衝擊。</p><p>一次又一次。</p><p>隨著練習的次數增加，他對靈魂衝擊的掌握越來越熟練。從最初的只能轟擊靜止的目標，到後來能夠擊中在空中飛行的落葉。從最初的需要全力凝聚，到後來只需要一個念頭就能釋放。</p><p>到中午的時候，他已經能夠在三丈的距離內，用靈魂衝擊將一塊巴掌大的石頭轟成碎片。</p><p>「不錯的進步。」黑袍人說道，「不過，靈魂衝擊在實戰中通常只是輔助手段。真正能夠決定勝負的，是靈魂攻擊的第二種形式,靈魂滲透。」</p><p>「靈魂滲透的技巧，在於將靈魂之力化作極細的絲線，滲入對手的識海之中。一旦成功，你就可以直接干擾對手的思維、感知、甚至記憶。這種攻擊方式非常隱蔽，對手往往在不知不覺中就中了招。」</p><p>黑袍人將靈魂滲透的法門傳授給了葉塵。</p><p>葉塵嘗試練習了幾次，發現這個技巧的難度遠超靈魂衝擊。靈魂衝擊只需要將力量壓縮後釋放，像射箭一樣簡單直接。但靈魂滲透需要他將靈魂之力變得極其精細、靈活，像繡花一樣小心翼翼地操作。</p><p>他嘗試將靈魂之力化為細絲，向遠處的一隻蝴蝶延伸過去。但靈魂之絲在延伸的過程中總是會斷裂,要麼是不夠靈活，要麼是不夠堅韌。</p><p>一整個下午，他都在練習靈魂滲透。</p><p>直到夕陽西下的時候，他終於成功地將一縷靈魂之絲延伸到了那隻蝴蝶的身上。在那一瞬間，他感覺自己與蝴蝶之間建立了一種微妙的聯繫,他能夠模糊地感覺到蝴蝶的感受，像是蝴蝶扇動翅膀時風的觸感、花蜜的甜味、陽光的溫暖。</p><p>雖然那種聯繫非常微弱，而且很快就斷了，但這次成功的嘗試讓葉塵大受鼓舞。</p><p>「按照這個進度，最多五天，我就能完全掌握靈魂滲透的技巧了。」葉塵信心滿滿地說。</p><p>「嗯。」黑袍人應了一聲，然後話鋒一轉，「不過，靈魂攻擊雖然強大，但在實戰中不能過度依賴。真正的高手都有自己的靈魂防禦手段，如果你的靈魂攻擊被對方擋住了，你就會陷入危險之中。」</p><p>「我明白。」葉塵點了點頭，「靈魂攻擊只是輔助，真正的核心還是劍法和修為。」</p><p>「你能這麼想就好了。」黑袍人的語氣中帶著一絲欣慰，「好了，今天的修煉就到這裡吧。你已經練習了一整天，元神需要休息。」</p><p>葉塵應了一聲，收起塵淵劍，回到了自己的住處。</p><p>洗過澡後，他躺在床上，閉上眼睛，回想今天的修煉收穫。</p><p>靈魂衝擊和靈魂滲透,這兩種靈魂攻擊方式各有優劣。靈魂衝擊威力大，但容易被察覺；靈魂滲透隱蔽，但操作難度大。在實戰中，要根據對手的實力和情況，靈活選擇使用哪種方式。</p><p>正當他思考的時候，懷中的紫色晶石突然散發出一陣溫熱。</p><p>他取出晶石，發現晶石的光芒比平時更加明亮。那些細微的紋路在晶石內部流轉，構成了一個複雜的圖案,那個圖案看起來就像是一個微縮版的識海結構。</p><p>「這塊晶石……到底有什麼秘密？」</p><p>葉塵將晶石舉到眼前，仔細觀察。晶石內部的紋路不斷變化，像是在傳遞某種資訊。他嘗試將元神的力量探入晶石之中,</p><p>一股龐大的資訊湧入他的腦海！</p><p>那是一些斷斷續續的畫面,一座宏偉的宮殿在雲端聳立，一個模糊的身影站在宮殿頂端，手中握著一把與塵淵劍極為相似的長劍。那個身影轉過頭來，看向葉塵的方向,</p><p>然後，畫面斷了。</p><p>葉塵猛地睜開眼睛，發現自己的心跳在加速。</p><p>剛才那些畫面,那座宮殿、那個身影、那把劍,到底是什麼？它們與紫色晶石有什麼關係？與他的前世又有什麼關係？</p><p>他感覺到，那塊紫色晶石中隱藏著一個巨大的秘密。</p><p>而這個秘密，或許與他的身世、與塵淵宗的傳承、甚至與萬古荒原都有著某種深刻的聯繫。</p><p>「萬古荒原……」</p><p>葉塵喃喃自語。</p><p>他必須去那裡。不僅是為了尋找機緣和提升實力，更是為了尋找這些問題的答案。</p></main><nav class="nav"><a href="https://kofhk.com/chapter-236.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-237/" class="manga-btn">🎨 漫畫版</a><a href="https://kofhk.com/chapter-238.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

@@ -1,286 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第171章 · 路上的沉澱 - 萬古塵埃</title>
-    <meta name="description" content="葉塵沿著官道一路向北，朝著天闕城的方向前進。這一路走的並不快，他刻意放慢了速度，將這段旅程當作沉澱和調整的機會。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-171.html">
-    <link rel="prev" href="https://kofhk.com/chapter-170.html">
-    <link rel="next" href="https://kofhk.com/chapter-172.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第171章 · 路上的沉澱</h1>
-    <main>
-        <p>離開青雲宗已經三天了。</p>
-        <p>葉塵沿著官道一路向北，朝著天闕城的方向前進。這一路走的並不快，他刻意放慢了速度，將這段旅程當作沉澱和調整的機會。</p>
-        <p>清晨的陽光透過稀疏的雲層灑落，在路面上投下斑駁的光影。官道兩旁是大片的農田，金黃色的麥穗在微風中起伏，像是一片金色的海洋。遠處的村莊升起裊裊炊煙，雞鳴狗吠之聲隱約可聞。</p>
-        <p>他走在路上，一邊回憶著在遺跡中的收穫，一邊梳理著體內的變化。</p>
-        <p>塵淵劍意的傳承已經穩固地烙印在他的識海中。那一枚金色的劍形印記與輪迴之環相互輝映，像是太極圖中的陰陽魚，彼此依存、彼此增強。他能感受到這兩股力量正在以一種前所未有的方式融合，不是一方吞噬另一方，而是互相接納、互相補充。</p>
-        <p>這種融合帶來的好處是顯而易見的。他的劍法變得更加圓融，元氣的運轉更加流暢，感知能力也更加敏銳。他可以清晰地感受到方圓數十丈內的一切，路邊草叢中爬行的螞蟻、天空中掠過的飛鳥、空氣中飄浮的塵埃……世界在他眼中變得更加豐富而細膩。</p>
-        <p>但融合的過程還遠遠沒有完成。兩股力量雖然已經開始融合，但彼此之間還存在著一些微妙的排斥。就像是兩種不同的液體被倒入了同一個容器，雖然表面上已經混合在一起，但深處仍然保持著各自的特性。</p>
-        <p>「需要更多的時間……更多的感悟。」</p>
-        <p>他輕聲自語，繼續向前走去。</p>
-        <p>走到正午時分，他來到了一個小鎮。</p>
-        <p>小鎮不大，只有一條主街，兩旁零零散散地開著幾家店鋪。鎮口有一個茶攤，幾個路人正坐在攤前喝茶休息。茶攤的老闆是一個中年婦人，正在灶台前忙碌著。</p>
-        <p>葉塵在茶攤前坐下，要了一碗麵和一碗茶。</p>
-        <p>麵條很樸素，只有幾片青菜和一個荷包蛋，但熱氣騰騰，散發出誘人的香氣。他端起碗，連湯帶麵吃了個乾淨。在野外趕路的日子裡，能吃到一碗熱騰騰的麵，已經很不錯了。</p>
-        <p>吃完飯後，他沒有急著趕路，而是在鎮上轉了一圈。小鎮雖小，但五臟俱全，有鐵匠舖、藥材舖、雜貨舖，還有一家小小的坊市，專門收購和出售修士用的材料。</p>
-        <p>他走進那家坊市，想看看能不能買到什麼有用的東西。</p>
-        <p>坊市的店面不大，只有幾排貨架，上面擺放著一些丹藥、符籙和低階法器。掌櫃的是一個乾瘦的老者，正在櫃檯後面打盹。聽到腳步聲，他睜開眼睛，懶洋洋地看了葉塵一眼。</p>
-        <p>「客官需要什麼？」</p>
-        <p>「隨便看看。」葉塵說著，目光在貨架上掃過。</p>
-        <p>貨架上的東西品質一般，沒有什麼特別值得注意的。但當他的目光掃過角落裡一個不起眼的木盒時，他感覺到了體內的輪迴之力輕輕震動了一下。</p>
-        <p>他走過去，拿起那個木盒，打開一看。</p>
-        <p>木盒中放著一塊黑色的石頭，拳頭大小，表面佈滿了細密的紋路。石頭散發出一股古老而冰涼的氣息，像是從某個遠古時代流傳下來的遺物。</p>
-        <p>「這是什麼？」葉塵問掌櫃。</p>
-        <p>掌櫃湊過來看了一眼，然後撓了撓頭：「這個啊……我也不太清楚。是一個獵戶在山裡撿到的，拿來賣。我見它質地特殊，就收了下來。但放了兩年也沒人問，客官要是喜歡，算你便宜點。」</p>
-        <p>「多少錢？」</p>
-        <p>「十塊下品靈石。」</p>
-        <p>葉塵沒有討價還價，直接付了錢，將黑石收入儲物戒指。雖然他不知道這塊石頭是什麼，但既然能引起輪迴之力的反應，一定不是凡物。</p>
-        <p>走出坊市後，他繼續趕路。</p>
-        <p>傍晚時分，他在路邊的一片樹林中停下，準備過夜。他找了一棵大樹，在樹下清理出一塊空地，升起一堆篝火。火光在黑暗中跳動，驅散了周圍的寒意，也驅散了野獸。</p>
-        <p>他坐在火堆旁，從儲物戒指中取出那塊黑石，仔細端詳。</p>
-        <p>黑石在火光的映照下泛著幽幽的光澤，表面的紋路像是某種古老的符文。他將一絲元氣注入其中，黑石沒有反應。他又將一絲輪迴之力注入其中，</p>
-        <p>這一次，黑石有了反應。</p>
-        <p>它輕輕震動了一下，表面的紋路亮起淡淡的紫色光芒。然後，一股信息從黑石中傳入他的識海。</p>
-        <p>那是一種淬煉神魂的法門。</p>
-        <p>不是完整的功法，而是殘篇。但僅僅是殘篇，也讓他感到震驚，因為這種法門的層次遠超他見過的任何功法。它講述的是如何利用塵埃之力來淬煉神魂，將塵埃的細膩和包容融入到神魂之中，讓神魂變得更加凝實、更加穩定。</p>
-        <p>「這是……塵淵宗的煉魂法門？」</p>
-        <p>葉塵的心跳加速了。塵淵宗的煉魂法門，那可是比他現在能接觸到的任何功法都要高級的東西！他雖然已經獲得了塵淵劍意，但那只是劍道方面的傳承，而煉魂法門則是修煉方面的傳承。如果能掌握這種法門，他衝擊煉魂境的把握會大很多。</p>
-        <p>他將黑石緊緊握在手中，感受著那股冰涼而古老的氣息。</p>
-        <p>「這趟出來，運氣不錯。」</p>
-        <p>他將黑石小心地收好，然後閉上眼睛，開始打坐調息。</p>
-        <p>體內的元氣在經脈中緩緩流轉，帶動著塵淵劍意和輪迴之力一起運轉。他按照黑石中的殘篇記載的方法，嘗試著將一絲塵之力引導到識海之中。</p>
-        <p>塵之力進入識海的瞬間，他感覺自己的腦袋像是被針扎了一下，傳來一陣刺痛。但他沒有停下，而是繼續引導塵之力在識海中擴散。塵之力像是一層薄薄的紗幕，覆蓋在識海表面，讓他的識海變得更加穩定。</p>
-        <p>他心中的喜悅難以言表。雖然效果很微弱，但方向是對的，這意味著黑石中的法門確實可行。只要繼續修煉下去，他一定能將識海淬煉到足以衝擊煉魂境的程度。</p>
-        <p>他睜開眼睛，長長地吐出一口氣。</p>
-        <p>火堆中的木柴發出噼啪的聲響，火光映在他的臉上，讓他的表情看起來明滅不定。他抬頭看向夜空，透過樹梢的縫隙，可以看到天上的星星在閃爍。</p>
-        <p>「煉魂境……我準備好了。」</p>
-        <p>他輕聲說道，語氣中充滿了自信。</p>
-        <p>在火堆旁坐了一會兒後，他站起身，走到樹林中的一塊空地上，拔出長劍，開始練習劍法。雖然已經趕了一天的路，但他不想浪費任何一個晚上。</p>
-        <p>劍光在月光下閃爍，像是流動的銀色水銀。他的身形在空地上穿梭，腳步輕盈而穩健。每一劍都帶著劍意的加持，讓劍法變得更加凌厲、更加流暢。</p>
-        <p>一遍塵淵劍訣練完後，他收劍而立，感覺體內的元氣運轉速度又加快了一分。</p>
-        <p>「照這個速度，到達天闕城之前，就能把築基後期巔峰的境界徹底穩固了。」</p>
-        <p>他估算了一下，按照現在的進度，最多再過五天，他就能將築基後期巔峰的境界穩固下來。到時候，他就可以開始為衝擊煉魂境做準備了。</p>
-        <p>雖然煉魂境的門檻很高，但他有信心，不是盲目的自信，而是建立在實力的基礎上的自信。塵淵劍意、輪迴之力、煉魂法門殘篇，這三者將成為他衝擊煉魂境的最大底牌。</p>
-        <p>他收起長劍，回到火堆旁，在火邊躺下，閉上了眼睛。</p>
-        <p>明天還要繼續趕路。</p>
-        <p>天闕城，還在遠方等著他。</p>
-    </main>
-    <nav class="nav">
-        <a href="https://kofhk.com/chapter-170.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-171/" class="manga-btn">🎨 漫畫版</a>
-        <a href="https://kofhk.com/chapter-172.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第171章 · 路上的沉澱 - 萬古塵埃</title><meta name="description" content="葉塵沿著官道一路向北，朝著天闕城的方向前進。這一路走的並不快，他刻意放慢了速度，將這段旅程當作沉澱和調整的機會。"><link rel="canonical" href="https://kofhk.com/chapter-171.html"><link rel="prev" href="https://kofhk.com/chapter-170.html"><link rel="next" href="https://kofhk.com/chapter-172.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第171章 · 路上的沉澱</h1><main><p>離開青雲宗已經三天了。</p><p>葉塵沿著官道一路向北，朝著天闕城的方向前進。這一路走的並不快，他刻意放慢了速度，將這段旅程當作沉澱和調整的機會。</p><p>清晨的陽光透過稀疏的雲層灑落，在路面上投下斑駁的光影。官道兩旁是大片的農田，金黃色的麥穗在微風中起伏，像是一片金色的海洋。遠處的村莊升起裊裊炊煙，雞鳴狗吠之聲隱約可聞。</p><p>他走在路上，一邊回憶著在遺跡中的收穫，一邊梳理著體內的變化。</p><p>塵淵劍意的傳承已經穩固地烙印在他的識海中。那一枚金色的劍形印記與輪迴之環相互輝映，像是太極圖中的陰陽魚，彼此依存、彼此增強。他能感受到這兩股力量正在以一種前所未有的方式融合，不是一方吞噬另一方，而是互相接納、互相補充。</p><p>這種融合帶來的好處是顯而易見的。他的劍法變得更加圓融，元氣的運轉更加流暢，感知能力也更加敏銳。他可以清晰地感受到方圓數十丈內的一切，路邊草叢中爬行的螞蟻、天空中掠過的飛鳥、空氣中飄浮的塵埃……世界在他眼中變得更加豐富而細膩。</p><p>但融合的過程還遠遠沒有完成。兩股力量雖然已經開始融合，但彼此之間還存在著一些微妙的排斥。就像是兩種不同的液體被倒入了同一個容器，雖然表面上已經混合在一起，但深處仍然保持著各自的特性。</p><p>「需要更多的時間……更多的感悟。」</p><p>他輕聲自語，繼續向前走去。</p><p>走到正午時分，他來到了一個小鎮。</p><p>小鎮不大，只有一條主街，兩旁零零散散地開著幾家店鋪。鎮口有一個茶攤，幾個路人正坐在攤前喝茶休息。茶攤的老闆是一個中年婦人，正在灶台前忙碌著。</p><p>葉塵在茶攤前坐下，要了一碗麵和一碗茶。</p><p>麵條很樸素，只有幾片青菜和一個荷包蛋，但熱氣騰騰，散發出誘人的香氣。他端起碗，連湯帶麵吃了個乾淨。在野外趕路的日子裡，能吃到一碗熱騰騰的麵，已經很不錯了。</p><p>吃完飯後，他沒有急著趕路，而是在鎮上轉了一圈。小鎮雖小，但五臟俱全，有鐵匠舖、藥材舖、雜貨舖，還有一家小小的坊市，專門收購和出售修士用的材料。</p><p>他走進那家坊市，想看看能不能買到什麼有用的東西。</p><p>坊市的店面不大，只有幾排貨架，上面擺放著一些丹藥、符籙和低階法器。掌櫃的是一個乾瘦的老者，正在櫃檯後面打盹。聽到腳步聲，他睜開眼睛，懶洋洋地看了葉塵一眼。</p><p>「客官需要什麼？」</p><p>「隨便看看。」葉塵說著，目光在貨架上掃過。</p><p>貨架上的東西品質一般，沒有什麼特別值得注意的。但當他的目光掃過角落裡一個不起眼的木盒時，他感覺到了體內的輪迴之力輕輕震動了一下。</p><p>他走過去，拿起那個木盒，打開一看。</p><p>木盒中放著一塊黑色的石頭，拳頭大小，表面佈滿了細密的紋路。石頭散發出一股古老而冰涼的氣息，像是從某個遠古時代流傳下來的遺物。</p><p>「這是什麼？」葉塵問掌櫃。</p><p>掌櫃湊過來看了一眼，然後撓了撓頭：「這個啊……我也不太清楚。是一個獵戶在山裡撿到的，拿來賣。我見它質地特殊，就收了下來。但放了兩年也沒人問，客官要是喜歡，算你便宜點。」</p><p>「多少錢？」</p><p>「十塊下品靈石。」</p><p>葉塵沒有討價還價，直接付了錢，將黑石收入儲物戒指。雖然他不知道這塊石頭是什麼，但既然能引起輪迴之力的反應，一定不是凡物。</p><p>走出坊市後，他繼續趕路。</p><p>傍晚時分，他在路邊的一片樹林中停下，準備過夜。他找了一棵大樹，在樹下清理出一塊空地，升起一堆篝火。火光在黑暗中跳動，驅散了周圍的寒意，也驅散了野獸。</p><p>他坐在火堆旁，從儲物戒指中取出那塊黑石，仔細端詳。</p><p>黑石在火光的映照下泛著幽幽的光澤，表面的紋路像是某種古老的符文。他將一絲元氣注入其中，黑石沒有反應。他又將一絲輪迴之力注入其中，</p><p>這一次，黑石有了反應。</p><p>它輕輕震動了一下，表面的紋路亮起淡淡的紫色光芒。然後，一股信息從黑石中傳入他的識海。</p><p>那是一種淬煉神魂的法門。</p><p>不是完整的功法，而是殘篇。但僅僅是殘篇，也讓他感到震驚，因為這種法門的層次遠超他見過的任何功法。它講述的是如何利用塵埃之力來淬煉神魂，將塵埃的細膩和包容融入到神魂之中，讓神魂變得更加凝實、更加穩定。</p><p>「這是……塵淵宗的煉魂法門？」</p><p>葉塵的心跳加速了。塵淵宗的煉魂法門，那可是比他現在能接觸到的任何功法都要高級的東西！他雖然已經獲得了塵淵劍意，但那只是劍道方面的傳承，而煉魂法門則是修煉方面的傳承。如果能掌握這種法門，他衝擊煉魂境的把握會大很多。</p><p>他將黑石緊緊握在手中，感受著那股冰涼而古老的氣息。</p><p>「這趟出來，運氣不錯。」</p><p>他將黑石小心地收好，然後閉上眼睛，開始打坐調息。</p><p>體內的元氣在經脈中緩緩流轉，帶動著塵淵劍意和輪迴之力一起運轉。他按照黑石中的殘篇記載的方法，嘗試著將一絲塵之力引導到識海之中。</p><p>塵之力進入識海的瞬間，他感覺自己的腦袋像是被針扎了一下，傳來一陣刺痛。但他沒有停下，而是繼續引導塵之力在識海中擴散。塵之力像是一層薄薄的紗幕，覆蓋在識海表面，讓他的識海變得更加穩定。</p><p>他心中的喜悅難以言表。雖然效果很微弱，但方向是對的，這意味著黑石中的法門確實可行。只要繼續修煉下去，他一定能將識海淬煉到足以衝擊煉魂境的程度。</p><p>他睜開眼睛，長長地吐出一口氣。</p><p>火堆中的木柴發出噼啪的聲響，火光映在他的臉上，讓他的表情看起來明滅不定。他抬頭看向夜空，透過樹梢的縫隙，可以看到天上的星星在閃爍。</p><p>「煉魂境……我準備好了。」</p><p>他輕聲說道，語氣中充滿了自信。</p><p>在火堆旁坐了一會兒後，他站起身，走到樹林中的一塊空地上，拔出長劍，開始練習劍法。雖然已經趕了一天的路，但他不想浪費任何一個晚上。</p><p>劍光在月光下閃爍，像是流動的銀色水銀。他的身形在空地上穿梭，腳步輕盈而穩健。每一劍都帶著劍意的加持，讓劍法變得更加凌厲、更加流暢。</p><p>一遍塵淵劍訣練完後，他收劍而立，感覺體內的元氣運轉速度又加快了一分。</p><p>「照這個速度，到達天闕城之前，就能把築基後期巔峰的境界徹底穩固了。」</p><p>他估算了一下，按照現在的進度，最多再過五天，他就能將築基後期巔峰的境界穩固下來。到時候，他就可以開始為衝擊煉魂境做準備了。</p><p>雖然煉魂境的門檻很高，但他有信心，不是盲目的自信，而是建立在實力的基礎上的自信。塵淵劍意、輪迴之力、煉魂法門殘篇，這三者將成為他衝擊煉魂境的最大底牌。</p><p>他收起長劍，回到火堆旁，在火邊躺下，閉上了眼睛。</p><p>明天還要繼續趕路。</p><p>天闕城，還在遠方等著他。</p></main><nav class="nav"><a href="https://kofhk.com/chapter-170.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-171/" class="manga-btn">🎨 漫畫版</a><a href="https://kofhk.com/chapter-172.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

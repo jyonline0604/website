@@ -1,240 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第6章 · 野獸出沒 - 萬古塵埃</title>
-    <meta name="description" content="森林深處，光線昏暗。葉塵和鐵三已經在林間穿行了半個時辰。這半個時辰裡，葉塵先後找到了三株元氣草、兩株凝血草，還有一塊品質不錯的元石礦。鐵三從一開始的不屑，漸漸變成了驚訝，再到震驚。「這小子……怎麼像是長了天眼一樣。他忍不住嘀咕。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-6.html">
-    <link rel="prev" href="https://kofhk.com/chapter-5.html">
-    <link rel="next" href="https://kofhk.com/chapter-7.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第6章 · 野獸出沒</h1>
-    <main>
-<p>森林深處，光線昏暗。葉塵和鐵三已經在林間穿行了半個時辰。這半個時辰裡，葉塵先後找到了三株元氣草、兩株凝血草，還有一塊品質不錯的元石礦。鐵三從一開始的不屑，漸漸變成了驚訝，再到震驚。「這小子……怎麼像是長了天眼一樣。他忍不住嘀咕。那些隱藏在落葉下、石縫中、樹根旁的靈草，就連他這個經常進山的老手都不一定能發現，葉塵卻像是閒庭信步一樣，輕鬆地把它們一一找出來。</p>
-        <p>葉塵沒有解釋。他越來越確定——第一世的記憶正在逐步解鎖，而他對天地靈物的感知能力，正在以前所未有的速度覺醒。這種能力在前一世被稱為「塵埃感知。顧名思義，就像是將自己的感知化作億萬粒塵埃，散佈在天地之間。每一粒塵埃都是一個感知節點，能夠捕捉到最微弱的靈氣波動。當然，以他現在的修為，這種感知能力還非常有限。</p>
-        <p>範圍不過方圓十丈，而且不能持續太久。但在感氣期這個階段，已經足夠了。「吼——。突然，一聲低沉的獸吼從前方傳來。葉塵腳步一頓，眼神瞬間變得凝重。「是一階中品野獸，鐵背狼。鐵三立刻判斷出了來者的身份，臉色微微一變，「一階中品，實力相當於感氣中期巔峰的人類修士。交給我來處理——。「不。葉塵打斷了他。「讓我來。</p>
-        <p>「你說什麼。鐵三以為自己聽錯了，「你一個感氣前——。話沒說完，一頭體型巨大的鐵背狼已經從叢林中竄出。那狼身長近兩米，渾身覆蓋著鐵灰色的皮毛，背脊隆起，利爪如鉤，一雙血紅色的眼睛死死盯著兩人，嘴角流下腥臭的涎水。「吼。鐵背狼沒有給他們反應的時間，直接撲向葉塵。「該死。鐵三暗罵一聲，正要出手—— 卻見葉塵不退反進。</p>
-        <p>他身形微微一矮，在鐵背狼撲來的瞬間向右側滑步，險之又險地避開了那張血盆大口。與此同時，他手中那柄生銹的匕首劃出一道弧線，精準地刺向鐵背狼的腰腹。噗嗤。匕首入肉的聲音。鐵背狼發出一聲淒厲的慘叫，腰腹處被劃開了一道口子，鮮血直流。但這一擊顯然沒有傷到要害，它落地後迅速轉身，眼中的凶光更加熾烈。「可惜了。葉塵後退兩步，看了一眼手中的匕首——品質太差，如果是一把更好的武器，剛才那一刀足以重創這頭鐵背狼。</p>
-        <p>「再來。他深吸一口氣，體內的塵埃之力洶湧運轉。鐵背狼再次撲上。這一次，葉塵沒有閃避。他迎著鐵背狼的攻勢沖了上去，在與狼爪接觸的前一瞬，身體猛然旋轉，如同一片落葉般繞開了利爪的攻擊範圍。匕首反手刺出。直入鐵背狼的咽喉。「嗚……。鐵背狼的攻勢驟然停滯，血紅色的眼睛中充滿了難以置信。它踉蹌了兩步，終於轟然倒地。</p>
-        <p>葉塵站在狼屍旁邊，喘著粗氣。他的衣服被狼爪劃破了幾道口子，肩膀處有一道淺淺的傷痕，滲出了血珠。雖然贏了，但也並不輕鬆。「……。鐵三站在一旁，張大了嘴巴，半天說不出話來。他看到了什麼。一個十六歲的少年，感氣前期巔峰的修為，用一把生銹的匕首，單殺了一頭一階中品的鐵背狼。而且那戰鬥方式……那精準的判斷、果斷的出擊、對時機的把握……這怎麼可能是一個剛剛感氣成功的廢物能展現出來的。</p>
-        <p>「你……你真的是葉塵。鐵三忍不住問道。葉塵回頭看了他一眼，笑了笑：「怎麼，不認識了。「你以前……感氣都沒成功，怎麼可能……。「人總會變的。葉塵沒有多解釋，蹲下身開始處理鐵背狼的屍體。鐵背狼身上最有價值的東西是它的狼皮和狼牙。狼皮可以製作護甲，狼牙可以煉製低階法器，能賣個不錯的價錢。熟練地剝皮、取牙——這份技能也是從記憶深處浮現的。</p>
-        <p>鐵三看著葉塵熟練的動作，眼神中的輕蔑已經完全消失了。取而代之的，是一種深深的忌憚和……一絲佩服。這個少年，絕對不像表面上那麼簡單。而葉塵此刻卻沒有心思關注鐵三的想法。他在處理狼屍的時候，感受到體內的塵埃之力又壯大了一分。果然是——戰鬥才是最好的修煉方式。</p>
-    </main>
-    <nav class="nav">
-        <a href="https://kofhk.com/chapter-5.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-6/" class="manga-btn">🎨 漫畫版</a>
-        <a href="https://kofhk.com/chapter-7.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第6章 · 野獸出沒 - 萬古塵埃</title><meta name="description" content="森林深處，光線昏暗。葉塵和鐵三已經在林間穿行了半個時辰。這半個時辰裡，葉塵先後找到了三株元氣草、兩株凝血草，還有一塊品質不錯的元石礦。鐵三從一開始的不屑，漸漸變成了驚訝，再到震驚。「這小子……怎麼像是長了天眼一樣。他忍不住嘀咕。"><link rel="canonical" href="https://kofhk.com/chapter-6.html"><link rel="prev" href="https://kofhk.com/chapter-5.html"><link rel="next" href="https://kofhk.com/chapter-7.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第6章 · 野獸出沒</h1><main><p>森林深處，光線昏暗。葉塵和鐵三已經在林間穿行了半個時辰。這半個時辰裡，葉塵先後找到了三株元氣草、兩株凝血草，還有一塊品質不錯的元石礦。鐵三從一開始的不屑，漸漸變成了驚訝，再到震驚。「這小子……怎麼像是長了天眼一樣。他忍不住嘀咕。那些隱藏在落葉下、石縫中、樹根旁的靈草，就連他這個經常進山的老手都不一定能發現，葉塵卻像是閒庭信步一樣，輕鬆地把它們一一找出來。</p><p>葉塵沒有解釋。他越來越確定——第一世的記憶正在逐步解鎖，而他對天地靈物的感知能力，正在以前所未有的速度覺醒。這種能力在前一世被稱為「塵埃感知。顧名思義，就像是將自己的感知化作億萬粒塵埃，散佈在天地之間。每一粒塵埃都是一個感知節點，能夠捕捉到最微弱的靈氣波動。當然，以他現在的修為，這種感知能力還非常有限。</p><p>範圍不過方圓十丈，而且不能持續太久。但在感氣期這個階段，已經足夠了。「吼——。突然，一聲低沉的獸吼從前方傳來。葉塵腳步一頓，眼神瞬間變得凝重。「是一階中品野獸，鐵背狼。鐵三立刻判斷出了來者的身份，臉色微微一變，「一階中品，實力相當於感氣中期巔峰的人類修士。交給我來處理——。「不。葉塵打斷了他。「讓我來。</p><p>「你說什麼。鐵三以為自己聽錯了，「你一個感氣前——。話沒說完，一頭體型巨大的鐵背狼已經從叢林中竄出。那狼身長近兩米，渾身覆蓋著鐵灰色的皮毛，背脊隆起，利爪如鉤，一雙血紅色的眼睛死死盯著兩人，嘴角流下腥臭的涎水。「吼。鐵背狼沒有給他們反應的時間，直接撲向葉塵。「該死。鐵三暗罵一聲，正要出手—— 卻見葉塵不退反進。</p><p>他身形微微一矮，在鐵背狼撲來的瞬間向右側滑步，險之又險地避開了那張血盆大口。與此同時，他手中那柄生銹的匕首劃出一道弧線，精準地刺向鐵背狼的腰腹。噗嗤。匕首入肉的聲音。鐵背狼發出一聲淒厲的慘叫，腰腹處被劃開了一道口子，鮮血直流。但這一擊顯然沒有傷到要害，它落地後迅速轉身，眼中的凶光更加熾烈。「可惜了。葉塵後退兩步，看了一眼手中的匕首——品質太差，如果是一把更好的武器，剛才那一刀足以重創這頭鐵背狼。</p><p>「再來。他深吸一口氣，體內的塵埃之力洶湧運轉。鐵背狼再次撲上。這一次，葉塵沒有閃避。他迎著鐵背狼的攻勢沖了上去，在與狼爪接觸的前一瞬，身體猛然旋轉，如同一片落葉般繞開了利爪的攻擊範圍。匕首反手刺出。直入鐵背狼的咽喉。「嗚……。鐵背狼的攻勢驟然停滯，血紅色的眼睛中充滿了難以置信。它踉蹌了兩步，終於轟然倒地。</p><p>葉塵站在狼屍旁邊，喘著粗氣。他的衣服被狼爪劃破了幾道口子，肩膀處有一道淺淺的傷痕，滲出了血珠。雖然贏了，但也並不輕鬆。「……。鐵三站在一旁，張大了嘴巴，半天說不出話來。他看到了什麼。一個十六歲的少年，感氣前期巔峰的修為，用一把生銹的匕首，單殺了一頭一階中品的鐵背狼。而且那戰鬥方式……那精準的判斷、果斷的出擊、對時機的把握……這怎麼可能是一個剛剛感氣成功的廢物能展現出來的。</p><p>「你……你真的是葉塵。鐵三忍不住問道。葉塵回頭看了他一眼，笑了笑：「怎麼，不認識了。「你以前……感氣都沒成功，怎麼可能……。「人總會變的。葉塵沒有多解釋，蹲下身開始處理鐵背狼的屍體。鐵背狼身上最有價值的東西是它的狼皮和狼牙。狼皮可以製作護甲，狼牙可以煉製低階法器，能賣個不錯的價錢。熟練地剝皮、取牙——這份技能也是從記憶深處浮現的。</p><p>鐵三看著葉塵熟練的動作，眼神中的輕蔑已經完全消失了。取而代之的，是一種深深的忌憚和……一絲佩服。這個少年，絕對不像表面上那麼簡單。而葉塵此刻卻沒有心思關注鐵三的想法。他在處理狼屍的時候，感受到體內的塵埃之力又壯大了一分。果然是——戰鬥才是最好的修煉方式。</p></main><nav class="nav"><a href="https://kofhk.com/chapter-5.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-6/" class="manga-btn">🎨 漫畫版</a><a href="https://kofhk.com/chapter-7.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

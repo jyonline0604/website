@@ -1,287 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第307章 · 越級之戰 - 萬古塵埃</title>
-    <meta name="description" content="第二天清晨，葉塵站在大殿中央，塵淵劍緊握在手中。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-307.html">
-    <link rel="prev" href="https://kofhk.com/chapter-306.html">
-    <link rel="next" href="https://kofhk.com/chapter-308.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第307章 · 越級之戰</h1>
-    <main>
-        <p>第二天清晨，葉塵站在大殿中央，塵淵劍緊握在手中。</p>
-        <p>經過一夜的休息和療傷，他的傷勢已經恢復了八成，體內的元氣也基本充盈。雖然身體還有些疲憊，肌肉還有些痠痛，但鬥志已經完全點燃。經過這幾天的戰鬥，他對自己實力的信心正在不斷增強。</p>
-        <p>對面的陰影中，黑袍人緩緩走了出來。</p>
-        <p>他今天沒有穿那件寬大的黑袍，而是換了一身黑色勁裝，整個人看起來精悍了許多。黑袍下露出的面容蒼老而威嚴，滿臉皺紋溝壑縱橫，頭髮已經全白，但一雙眼睛卻如同鷹隼般銳利，閃爍著攝人的光芒。他的身材並不高大，但站在那裡卻給人一種巍峨的感覺，就像一座不可逾越的高山。</p>
-        <p>葉塵第一次真正看清了他的面容。</p>
-        <p>他的眼中閃過一絲驚訝。黑袍人的長相與他從記憶碎片中看到的輪迴之主一模一樣，只是更加蒼老、更加滄桑。那雙眼睛中蘊含著千年的智慧，彷彿能看穿一切虛妄。如果不是知道他只是輪迴之主的意志分身，葉塵幾乎要以為他就是輪迴之主本人了。</p>
-        <p>「很驚訝？」黑袍人淡淡地說道，語氣波瀾不驚，「我確實在容貌上刻意模仿了輪迴之主。畢竟作為他的意志分身，我沒有自己的樣貌。這張臉是輪迴之主年輕時的模樣。」</p>
-        <p>葉塵沉默了片刻，然後鄭重地說道：「前輩就是前輩，不需要與誰相似。晚輩感激前輩這幾日的教導。」</p>
-        <p>黑袍人的眼中閃過一絲複雜的光芒，有欣慰，也有感慨，但很快又恢復了平靜：「廢話少說。開始吧。」</p>
-        <p>話音剛落，他的身體就消失在原地。</p>
-        <p>葉塵的瞳孔驟縮。他根本沒有看清黑袍人的動作，對方的速度已經遠遠超過了他的反應極限！就像一陣風，來無影去無蹤。</p>
-        <p>但本能比意識更快。葉塵的身體向側面撲出，同時反手一劍向身後斬去！這一劍完全出自戰鬥本能，沒有經過任何思考。</p>
-        <p>鐺的一聲，劍刃與某種堅硬的物體碰撞在一起，濺起一串火花。黑袍人的身影在他身後出現，右手五指成爪，手指呈爪形，指尖閃爍著淡淡的光芒。剛才那一爪正是被他回身一劍擋下。</p>
-        <p>「反應不錯。」黑袍人淡淡地評價道，語氣中帶著一絲讚賞，「但還不夠。」</p>
-        <p>他的身體再次消失。這一次，葉塵有了準備。他展開神識，全力感應黑袍人的動向，神識如同一張無形的網，向四周擴散開來。但黑袍人的速度快到連神識都難以捕捉，他只能根據空氣中的細微波動、氣流的變化來判斷對方的攻擊方向。</p>
-        <p>左邊！葉塵側身閃避，同時塵淵劍橫掃而出，灰色的劍氣在空氣中劃過一道弧線。但黑袍人的攻擊只是虛招，在葉塵閃避的瞬間，他的身體已經轉到了葉塵的右側，一掌拍向葉塵的肋骨！</p>
-        <p>砰的一聲悶響，葉塵的身體被一掌拍飛，向後撞在牆壁上。牆壁被撞出一個人形凹陷，碎石紛紛落下，煙塵瀰漫。他的胸口一陣氣血翻湧，喉嚨中湧上一股血腥味，五臟六腑都在震動。</p>
-        <p>「你的反應雖然快，但判斷力還不夠。」黑袍人站在原地，負手而立，語氣平淡地指點道，「你過於依賴神識了。在面對速度遠超自己的對手時，神識會產生延遲，等你感應到對方的攻擊時，已經來不及了。你需要憑藉直覺來戰鬥。」</p>
-        <p>葉塵從牆壁中掙扎出來，擦去嘴角的血跡。他的胸口還在隱隱作痛，肋骨像斷了一樣。直覺？修行者的直覺來源於長期的戰鬥經驗，來源於對危險的敏感感知，來源於千百次戰鬥中積累的身體記憶。他雖然經歷過不少戰鬥，但與黑袍人這種活了幾千年的存在相比，他的經驗還差得太遠。</p>
-        <p>「再來。」葉塵說道，眼神中充滿了不服輸的光芒。</p>
-        <p>黑袍人點了點頭，再次出手。他的身影如同鬼魅一般，在大殿中閃爍不定，時而出現，時而消失，讓人完全摸不清他的動向。</p>
-        <p>這一次，葉塵沒有使用神識。他閉上了眼睛，將所有注意力集中在身體的感知上。空氣的流動、地面的震動、微弱的氣場變化、溫度的一絲差異……他把這些信息全部收集起來，在心中形成一副模糊的畫面。然後，在黑袍人出現在他面前的瞬間，他睜開了眼睛！</p>
-        <p>塵淵劍以一個刁鑽的角度刺出，直指黑袍人的咽喉！</p>
-        <p>黑袍人的眼中閃過一絲驚訝。他沒有料到葉塵能夠如此準確地判斷出他的攻擊路線。但他的反應極快，身體向後一仰，在空中劃過一道弧線，避開了劍尖。同時，他右腳踢出，直取葉塵的手腕。</p>
-        <p>葉塵手腕一翻，塵淵劍在空中劃過一道弧線，斬向黑袍人的小腿。兩人的招式在空中碰撞，發出一連串密集的撞擊聲。</p>
-        <p>鐺鐺鐺鐺鐺！</p>
-        <p>短短幾個呼吸的時間，兩人已經交手了數十招。葉塵被逼得節節後退，從大殿中央退到了牆角，但他始終沒有讓黑袍人擊中要害。他的身上多了幾道傷口，但黑袍人也被他的劍氣掃中了一次衣角。</p>
-        <p>「不錯。」黑袍人的語氣中帶著一絲明顯的讚賞，「你學得很快。短短幾天的時間就進步了這麼多。但這只是熱身而已。」</p>
-        <p>說完，他的氣息驟然暴漲！</p>
-        <p>凝神後期巔峰的修為毫無保留地釋放出來，一股強大的壓力從他身上擴散開來，猶如實質。整座大殿的空氣都變得沉重起來，灰塵在空氣中靜止。葉塵感覺自己彷彿置身於深海之中，四面八方的壓力向他的身體擠壓而來，讓他的呼吸都變得困難。</p>
-        <p>「這才是我的真正實力。」黑袍人說道，語氣平靜但充滿了威壓，「雖然只是凝神後期巔峰，但當年在輪迴之主身邊時，我跟他學了很多。雖然我只是他的意志分身，但也繼承了他一部分的戰鬥經驗和感悟。」</p>
-        <p>葉塵握緊了塵淵劍，指節發白。他知道，真正的戰鬥現在才開始。</p>
-        <p>黑袍人的身影再次消失，但這一次，即使葉塵閉上眼睛，也無法捕捉到他的動向。因為他的速度已經快到連空氣的波動都變得模糊了，快到超越了聲音，超越了視線，超越了感知。</p>
-        <p>葉塵只能憑藉本能不斷地移動、閃避。他時而向左翻滾，時而向右跳躍，時而躍起數丈高，時而俯身貼地。每一次移動都伴隨著一道鋒利的攻擊從他剛才所在的位置劃過，在地面上、牆壁上留下深深的痕跡。</p>
-        <p>地面上出現了無數道深深的劃痕，縱橫交錯，像一張雜亂的網。牆壁上也多出了幾個拳印和掌印，碎石不斷掉落。</p>
-        <p>但葉塵一直在躲避，沒有還手。因為他找不到還手的機會。黑袍人的攻擊連綿不斷，一環接著一環，像一條鎖鏈，根本不給他喘息的機會。他只能被動地防守，不斷地躲閃，直到體力耗盡。</p>
-        <p>不行，這樣下去遲早會輸。葉塵的腦海中飛速旋轉。他需要找到一個突破點，一個能夠打破這個節奏的契機。</p>
-        <p>突然，他做了一個冒險的決定。</p>
-        <p>他不再閃避了，而是站在原地，一劍刺出！這一劍完全放棄了防守，將所有力量全部集中在攻擊上，不留一絲一毫的餘地。這是以命換命的打法！</p>
-        <p>黑袍人的眼中閃過一絲驚訝。他沒有想到葉塵會用這種兩敗俱傷的打法。他的拳頭已經到了葉塵的面前，拳風吹動了葉塵的髮絲。如果繼續前進，他可以一拳打碎葉塵的腦袋。但葉塵的劍也會在同一時間刺穿他的心臟。</p>
-        <p>雖然他是意志分身，不會真正死亡，但他還是選擇了防守。他收回了拳頭，身體向後一飄，如同一片落葉，避開了葉塵的劍。</p>
-        <p>這是戰鬥開始以來，葉塵第一次逼退了黑袍人。</p>
-        <p>「你這是在賭命。」黑袍人淡淡地說道，語氣中聽不出喜怒。</p>
-        <p>「但我賭贏了。」葉塵喘著氣說道，汗水順著他的額頭流下來。他的後背已經被冷汗浸濕了。剛才那一劍，他確實是在賭，賭黑袍人不會真的殺了他。如果黑袍人是一個真正的敵人，他現在已經是一具屍體了。</p>
-        <p>「如果我真的想殺你，剛才那一劍，我會刺穿你的心臟。」黑袍人說道，語氣淡漠。</p>
-        <p>葉塵沉默了。他明白了。黑袍人在戰鬥中一直在壓制自己的實力，給他製造磨礪的機會。否則以黑袍人的經驗和實力，他可能在一開始就被秒殺了。這是一場教學戰，而不是生死戰。</p>
-        <p>「今天的戰鬥就到這裡。」黑袍人收起氣息，週身的壓力瞬間消失，「你已經學會了在劣勢中尋找機會。這很好。但還有更大的問題需要解決。」</p>
-        <p>「什麼問題？」葉塵問道。</p>
-        <p>「你的攻擊力太弱了。」黑袍人一針見血地指出，語氣犀利，「塵淵劍訣雖然強大，但你對它的理解還停留在皮毛。真正的塵淵劍訣，是可以斬斷天地法則的。而你的劍氣，連我的防禦都無法破開。」</p>
-        <p>葉塵的心中一震。他一直以為自己對塵淵劍訣的理解已經很深了，但被黑袍人這麼一說，他才發現自己確實還有很多不足。</p>
-        <p>「那我該怎麼提升？」</p>
-        <p>「塵淵劍訣的核心是塵與淵。」黑袍人緩緩說道，語氣變得深沉，「塵是萬物之末，淵是萬物之始。塵淵劍訣的本質，是從萬物之末追溯到萬物之始，然後斬斷這個過程。你現在能做到的，只是用劍氣去攻擊，沒有觸及到塵淵的本質。」</p>
-        <p>「塵與淵……」葉塵喃喃自語，若有所思。</p>
-        <p>「你慢慢領悟吧。」黑袍人轉過身，向陰影中走去，「明天我們繼續。」</p>
-        <p>說完，他的身影消失在陰影中。</p>
-        <p>葉塵站在原地，握緊了塵淵劍，低頭看著手中的劍。劍身上的兩個古字在燈光下泛著柔和的光芒。塵與淵——萬物之末，萬物之始。他閉上眼睛，讓思緒沉入劍中。劍身傳來一種古老的、滄桑的感覺，彷彿在訴說著一個遙遠的故事。他開始領悟了。</p>
-    </main>
-    <nav class="nav">
-        <a href="https://kofhk.com/chapter-306.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-307/" class="manga-btn">🎨 漫畫版</a>
-        <a href="https://kofhk.com/chapter-308.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第307章 · 越級之戰 - 萬古塵埃</title><meta name="description" content="第二天清晨，葉塵站在大殿中央，塵淵劍緊握在手中。"><link rel="canonical" href="https://kofhk.com/chapter-307.html"><link rel="prev" href="https://kofhk.com/chapter-306.html"><link rel="next" href="https://kofhk.com/chapter-308.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第307章 · 越級之戰</h1><main><p>第二天清晨，葉塵站在大殿中央，塵淵劍緊握在手中。</p><p>經過一夜的休息和療傷，他的傷勢已經恢復了八成，體內的元氣也基本充盈。雖然身體還有些疲憊，肌肉還有些痠痛，但鬥志已經完全點燃。經過這幾天的戰鬥，他對自己實力的信心正在不斷增強。</p><p>對面的陰影中，黑袍人緩緩走了出來。</p><p>他今天沒有穿那件寬大的黑袍，而是換了一身黑色勁裝，整個人看起來精悍了許多。黑袍下露出的面容蒼老而威嚴，滿臉皺紋溝壑縱橫，頭髮已經全白，但一雙眼睛卻如同鷹隼般銳利，閃爍著攝人的光芒。他的身材並不高大，但站在那裡卻給人一種巍峨的感覺，就像一座不可逾越的高山。</p><p>葉塵第一次真正看清了他的面容。</p><p>他的眼中閃過一絲驚訝。黑袍人的長相與他從記憶碎片中看到的輪迴之主一模一樣，只是更加蒼老、更加滄桑。那雙眼睛中蘊含著千年的智慧，彷彿能看穿一切虛妄。如果不是知道他只是輪迴之主的意志分身，葉塵幾乎要以為他就是輪迴之主本人了。</p><p>「很驚訝？」黑袍人淡淡地說道，語氣波瀾不驚，「我確實在容貌上刻意模仿了輪迴之主。畢竟作為他的意志分身，我沒有自己的樣貌。這張臉是輪迴之主年輕時的模樣。」</p><p>葉塵沉默了片刻，然後鄭重地說道：「前輩就是前輩，不需要與誰相似。晚輩感激前輩這幾日的教導。」</p><p>黑袍人的眼中閃過一絲複雜的光芒，有欣慰，也有感慨，但很快又恢復了平靜：「廢話少說。開始吧。」</p><p>話音剛落，他的身體就消失在原地。</p><p>葉塵的瞳孔驟縮。他根本沒有看清黑袍人的動作，對方的速度已經遠遠超過了他的反應極限！就像一陣風，來無影去無蹤。</p><p>但本能比意識更快。葉塵的身體向側面撲出，同時反手一劍向身後斬去！這一劍完全出自戰鬥本能，沒有經過任何思考。</p><p>鐺的一聲，劍刃與某種堅硬的物體碰撞在一起，濺起一串火花。黑袍人的身影在他身後出現，右手五指成爪，手指呈爪形，指尖閃爍著淡淡的光芒。剛才那一爪正是被他回身一劍擋下。</p><p>「反應不錯。」黑袍人淡淡地評價道，語氣中帶著一絲讚賞，「但還不夠。」</p><p>他的身體再次消失。這一次，葉塵有了準備。他展開神識，全力感應黑袍人的動向，神識如同一張無形的網，向四周擴散開來。但黑袍人的速度快到連神識都難以捕捉，他只能根據空氣中的細微波動、氣流的變化來判斷對方的攻擊方向。</p><p>左邊！葉塵側身閃避，同時塵淵劍橫掃而出，灰色的劍氣在空氣中劃過一道弧線。但黑袍人的攻擊只是虛招，在葉塵閃避的瞬間，他的身體已經轉到了葉塵的右側，一掌拍向葉塵的肋骨！</p><p>砰的一聲悶響，葉塵的身體被一掌拍飛，向後撞在牆壁上。牆壁被撞出一個人形凹陷，碎石紛紛落下，煙塵瀰漫。他的胸口一陣氣血翻湧，喉嚨中湧上一股血腥味，五臟六腑都在震動。</p><p>「你的反應雖然快，但判斷力還不夠。」黑袍人站在原地，負手而立，語氣平淡地指點道，「你過於依賴神識了。在面對速度遠超自己的對手時，神識會產生延遲，等你感應到對方的攻擊時，已經來不及了。你需要憑藉直覺來戰鬥。」</p><p>葉塵從牆壁中掙扎出來，擦去嘴角的血跡。他的胸口還在隱隱作痛，肋骨像斷了一樣。直覺？修行者的直覺來源於長期的戰鬥經驗，來源於對危險的敏感感知，來源於千百次戰鬥中積累的身體記憶。他雖然經歷過不少戰鬥，但與黑袍人這種活了幾千年的存在相比，他的經驗還差得太遠。</p><p>「再來。」葉塵說道，眼神中充滿了不服輸的光芒。</p><p>黑袍人點了點頭，再次出手。他的身影如同鬼魅一般，在大殿中閃爍不定，時而出現，時而消失，讓人完全摸不清他的動向。</p><p>這一次，葉塵沒有使用神識。他閉上了眼睛，將所有注意力集中在身體的感知上。空氣的流動、地面的震動、微弱的氣場變化、溫度的一絲差異……他把這些信息全部收集起來，在心中形成一副模糊的畫面。然後，在黑袍人出現在他面前的瞬間，他睜開了眼睛！</p><p>塵淵劍以一個刁鑽的角度刺出，直指黑袍人的咽喉！</p><p>黑袍人的眼中閃過一絲驚訝。他沒有料到葉塵能夠如此準確地判斷出他的攻擊路線。但他的反應極快，身體向後一仰，在空中劃過一道弧線，避開了劍尖。同時，他右腳踢出，直取葉塵的手腕。</p><p>葉塵手腕一翻，塵淵劍在空中劃過一道弧線，斬向黑袍人的小腿。兩人的招式在空中碰撞，發出一連串密集的撞擊聲。</p><p>鐺鐺鐺鐺鐺！</p><p>短短幾個呼吸的時間，兩人已經交手了數十招。葉塵被逼得節節後退，從大殿中央退到了牆角，但他始終沒有讓黑袍人擊中要害。他的身上多了幾道傷口，但黑袍人也被他的劍氣掃中了一次衣角。</p><p>「不錯。」黑袍人的語氣中帶著一絲明顯的讚賞，「你學得很快。短短幾天的時間就進步了這麼多。但這只是熱身而已。」</p><p>說完，他的氣息驟然暴漲！</p><p>凝神後期巔峰的修為毫無保留地釋放出來，一股強大的壓力從他身上擴散開來，猶如實質。整座大殿的空氣都變得沉重起來，灰塵在空氣中靜止。葉塵感覺自己彷彿置身於深海之中，四面八方的壓力向他的身體擠壓而來，讓他的呼吸都變得困難。</p><p>「這才是我的真正實力。」黑袍人說道，語氣平靜但充滿了威壓，「雖然只是凝神後期巔峰，但當年在輪迴之主身邊時，我跟他學了很多。雖然我只是他的意志分身，但也繼承了他一部分的戰鬥經驗和感悟。」</p><p>葉塵握緊了塵淵劍，指節發白。他知道，真正的戰鬥現在才開始。</p><p>黑袍人的身影再次消失，但這一次，即使葉塵閉上眼睛，也無法捕捉到他的動向。因為他的速度已經快到連空氣的波動都變得模糊了，快到超越了聲音，超越了視線，超越了感知。</p><p>葉塵只能憑藉本能不斷地移動、閃避。他時而向左翻滾，時而向右跳躍，時而躍起數丈高，時而俯身貼地。每一次移動都伴隨著一道鋒利的攻擊從他剛才所在的位置劃過，在地面上、牆壁上留下深深的痕跡。</p><p>地面上出現了無數道深深的劃痕，縱橫交錯，像一張雜亂的網。牆壁上也多出了幾個拳印和掌印，碎石不斷掉落。</p><p>但葉塵一直在躲避，沒有還手。因為他找不到還手的機會。黑袍人的攻擊連綿不斷，一環接著一環，像一條鎖鏈，根本不給他喘息的機會。他只能被動地防守，不斷地躲閃，直到體力耗盡。</p><p>不行，這樣下去遲早會輸。葉塵的腦海中飛速旋轉。他需要找到一個突破點，一個能夠打破這個節奏的契機。</p><p>突然，他做了一個冒險的決定。</p><p>他不再閃避了，而是站在原地，一劍刺出！這一劍完全放棄了防守，將所有力量全部集中在攻擊上，不留一絲一毫的餘地。這是以命換命的打法！</p><p>黑袍人的眼中閃過一絲驚訝。他沒有想到葉塵會用這種兩敗俱傷的打法。他的拳頭已經到了葉塵的面前，拳風吹動了葉塵的髮絲。如果繼續前進，他可以一拳打碎葉塵的腦袋。但葉塵的劍也會在同一時間刺穿他的心臟。</p><p>雖然他是意志分身，不會真正死亡，但他還是選擇了防守。他收回了拳頭，身體向後一飄，如同一片落葉，避開了葉塵的劍。</p><p>這是戰鬥開始以來，葉塵第一次逼退了黑袍人。</p><p>「你這是在賭命。」黑袍人淡淡地說道，語氣中聽不出喜怒。</p><p>「但我賭贏了。」葉塵喘著氣說道，汗水順著他的額頭流下來。他的後背已經被冷汗浸濕了。剛才那一劍，他確實是在賭，賭黑袍人不會真的殺了他。如果黑袍人是一個真正的敵人，他現在已經是一具屍體了。</p><p>「如果我真的想殺你，剛才那一劍，我會刺穿你的心臟。」黑袍人說道，語氣淡漠。</p><p>葉塵沉默了。他明白了。黑袍人在戰鬥中一直在壓制自己的實力，給他製造磨礪的機會。否則以黑袍人的經驗和實力，他可能在一開始就被秒殺了。這是一場教學戰，而不是生死戰。</p><p>「今天的戰鬥就到這裡。」黑袍人收起氣息，週身的壓力瞬間消失，「你已經學會了在劣勢中尋找機會。這很好。但還有更大的問題需要解決。」</p><p>「什麼問題？」葉塵問道。</p><p>「你的攻擊力太弱了。」黑袍人一針見血地指出，語氣犀利，「塵淵劍訣雖然強大，但你對它的理解還停留在皮毛。真正的塵淵劍訣，是可以斬斷天地法則的。而你的劍氣，連我的防禦都無法破開。」</p><p>葉塵的心中一震。他一直以為自己對塵淵劍訣的理解已經很深了，但被黑袍人這麼一說，他才發現自己確實還有很多不足。</p><p>「那我該怎麼提升？」</p><p>「塵淵劍訣的核心是塵與淵。」黑袍人緩緩說道，語氣變得深沉，「塵是萬物之末，淵是萬物之始。塵淵劍訣的本質，是從萬物之末追溯到萬物之始，然後斬斷這個過程。你現在能做到的，只是用劍氣去攻擊，沒有觸及到塵淵的本質。」</p><p>「塵與淵……」葉塵喃喃自語，若有所思。</p><p>「你慢慢領悟吧。」黑袍人轉過身，向陰影中走去，「明天我們繼續。」</p><p>說完，他的身影消失在陰影中。</p><p>葉塵站在原地，握緊了塵淵劍，低頭看著手中的劍。劍身上的兩個古字在燈光下泛著柔和的光芒。塵與淵——萬物之末，萬物之始。他閉上眼睛，讓思緒沉入劍中。劍身傳來一種古老的、滄桑的感覺，彷彿在訴說著一個遙遠的故事。他開始領悟了。</p></main><nav class="nav"><a href="https://kofhk.com/chapter-306.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-307/" class="manga-btn">🎨 漫畫版</a><a href="https://kofhk.com/chapter-308.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

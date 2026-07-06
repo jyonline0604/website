@@ -1,281 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第150章 · 劍道之心 - 萬古塵埃</title>
-    <meta name="description" content="葉塵和秦昭陽已經交手了上百招。兩人的劍法都達到了極高的水準，每一劍都蘊含著對劍道的深刻理解。雖然葉塵在修為上不如秦昭陽，但他憑藉塵淵劍訣的獨特威力和新領悟的「忘招」境界，竟然和秦昭陽打得有來有回。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-150.html">>
-    <link rel="prev" href="chapter-149.html">
-    <link rel="next" href="chapter-151.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第150章 · 劍道之心</h1>
-    <main>
-        <p>練武場上，兩道劍光交織閃爍。</p>
-        <p>葉塵和秦昭陽已經交手了上百招。兩人的劍法都達到了極高的水準，每一劍都蘊含著對劍道的深刻理解。雖然葉塵在修為上不如秦昭陽，但他憑藉塵淵劍訣的獨特威力和新領悟的「忘招」境界，竟然和秦昭陽打得有來有回。</p>
-        <p>汗水順著葉塵的臉頰滑落，滴落在地面上。他的呼吸有些急促，但握劍的手依然穩定。秦昭陽的劍法看似簡單，但每一劍都蘊含著精妙的變化，讓他在防守的同時也學到了很多。</p>
-        <p>但葉塵知道，秦昭陽還沒有出全力。</p>
-        <p>秦昭陽的強大，不僅僅體現在修為上，更體現在他對劍道的理解上。他的每一劍都帶著一種沉穩而從容的氣度，仿佛一切都在他的掌控之中。這種氣度，是經過無數次戰鬥和修煉才能養成的。就像是一座巍峨的高山，任憑風吹雨打，始終巋然不動。</p>
-        <p>「差不多了。」秦昭陽突然後退，收起了銀霜劍。</p>
-        <p>葉塵也跟著收劍，有些不解地看著秦昭陽。</p>
-        <p>「你的實力我已經了解了。」秦昭陽說，「以你現在的實力，在築基中期中已經屬於頂尖水準。如果對上築基後期的對手，只要不是後期巔峰，你都有機會取勝。」</p>
-        <p>「多謝秦師兄指點。」葉塵鄭重地說。</p>
-        <p>「不是我指點你，是你自己悟出來的。」秦昭陽走到練武場邊緣，從地上拿起一個酒壺，遞給葉塵，「喝一口？」</p>
-        <p>葉塵接過酒壺，喝了一口。酒液入口辛辣，但入喉後卻化作一股暖流，湧入四肢百骸，讓人感覺渾身舒暢。</p>
-        <p>「這是靈酒，對恢復靈力有好處。」秦昭陽自己也喝了一口，「坐吧，我們聊聊。」</p>
-        <p>兩人在練武場邊的台階上坐下。夕陽的餘暉灑在他們身上，在地上投下兩道長長的影子。</p>
-        <p>「蒼瀾秘境還有半個月就要開啟了。」秦昭陽說，「你準備好了嗎？」</p>
-        <p>「準備好了。」葉塵點頭。</p>
-        <p>「秘境中的情況，遠比你想像中更加複雜。」秦昭陽的語氣變得嚴肅起來，「三十六宗門中，至少有一半會派人進入秘境。而且不排除有煉魂期的老怪物隱藏身份混入其中。」</p>
-        <p>「煉魂期？」葉塵心中一凜。</p>
-        <p>「是的。」秦昭陽說，「蒼瀾秘境對修為有限制，只有築基期及以下的修士才能進入。但有些宗門會用特殊手段壓制修為，讓煉魂期的修士混入其中。雖然這種手段有很大的風險，但在巨大的利益面前，總有人願意冒險。」</p>
-        <p>「那我該怎麼辦？」</p>
-        <p>「如果遇到煉魂期的對手，不要猶豫，立刻逃。」秦昭陽說，「以你現在的實力，對上煉魂期沒有任何勝算。就算是一對一，你也撐不過十招。」</p>
-        <p>葉塵沉默了片刻，然後鄭重地點了點頭。</p>
-        <p>「記住，在秘境中最重要的不是搶到多少寶物，而是活著出來。」秦昭陽站起身，拍了拍葉塵的肩膀，「活著，才有未來。」</p>
-        <p>「我記住了。」</p>
-        <p>「好了，今天就到這裡吧。」秦昭陽轉身準備離開，但走出幾步後又停了下來，「對了，還有一件事，那個紫色晶石的傳承，你研究得怎麼樣了？」</p>
-        <p>葉塵微微一怔，然後說：「還在摸索中。這份傳承太深奧了，我只能理解其中的一小部分。」</p>
-        <p>「慢慢來。」秦昭陽說，「不要急。這種級別的傳承，不是一朝一夕能掌握的。你能在這麼短的時間內融合黑色晶石，已經非常了不起了。」</p>
-        <p>他頓了頓，又補充了一句：「如果有什麼需要幫助的，隨時來找我。」</p>
-        <p>「多謝秦師兄。」</p>
-        <p>秦昭陽點了點頭，然後大步離開了練武場。他的背影在夕陽中拖出一道長長的影子，消失在樹林的盡頭。</p>
-        <p>葉塵目送他離去，心中充滿了感激。從他進入青雲宗以來，秦昭陽雖然始終保持著大師兄的威嚴，但對他卻格外照顧。無論是指點劍法，還是分享修煉心得，都毫不藏私。這份恩情，他記在心裡。</p>
-        <p>他收回目光，獨自坐在台階上，靜靜地望著夕陽。</p>
-        <p>秦昭陽的話給了他很多啟發。特別是關於劍道的那些話，「忘記招式，讓劍自己說話」。他閉上眼睛，在腦海中回味著和秦昭陽戰鬥的感覺。</p>
-        <p>那種感覺很奇妙。當他不再思考招式，完全依靠本能戰鬥時，他的劍法反而變得更加流暢自然。就像是一條溪流，不需要刻意引導，自然地流向低處。</p>
-        <p>「劍道……原來是這樣的。」</p>
-        <p>他睜開眼睛，眼中閃爍著明悟的光芒。他低頭看著手中的清風劍，劍身在夕陽的照射下反射出溫暖的光芒。他伸手輕輕撫摸劍身，感受著劍上殘留的餘溫。這柄劍跟隨他經歷了這麼多戰鬥，從最初的陌生到現在的熟悉，已經成為了他身體的延伸。他能夠感受到劍的呼吸，能夠聽到劍的鳴叫——那不是幻覺，而是人劍合一之後產生的真實感應。</p>
-        <p>他將劍舉到眼前，仔細端詳劍身上的每一道紋路。那些紋路在夕陽下閃爍著細碎的光芒，像是記錄著他一路走來的足跡——從青陽鎮到青雲宗，從廢靈根到築基中期，每一步都走得艱辛而堅定。</p>
-        <p>「劍不是工具。」他低聲說，「劍是夥伴。」</p>
-        <p>他想起輪迴之主在傳承中留下的話語——「真正的強者，不是靠劍的鋒利，而是靠心的堅定。心中有劍，則萬物皆可為劍；心中無劍，則寶劍在手也是廢鐵。」</p>
-        <p>這柄劍從師傅送給他到現在，已經陪伴他經歷了無數場戰鬥。劍身上有幾道細微的裂紋——那是和強敵戰鬥時留下的痕跡。但正是這些裂紋，讓這柄劍有了靈魂，也讓他對劍有了更深的理解。</p>
-        <p>「劍不只是兵器。」他喃喃自語，「劍是夥伴，是老師，是自己的一部分。」</p>
-        <p>他收起劍，站起身，向住處走去。</p>
-        <p>走了幾步，他又停了下來，回頭看了一眼練武場。這個練武場上，他經歷了無數場切磋和比試，從最初的新手到現在的築基中期。每一次戰鬥都讓他變得更強，也讓他對劍道有了更深的理解。</p>
-        <p>「蒼瀾秘境……」他握緊了拳頭，「我來了。」</p>
-        <p>他轉過身，大步向前走去。夕陽的餘暉將他的影子拉得很長很長，但他的腳步卻異常堅定。</p>
-        <p>在他身後，青雲宗的建築在暮色中漸漸模糊。遠處的山巒在夕陽中勾勒出起伏的輪廓，像是沉睡中的巨獸。蒼瀾山脈的方向，一片金色的雲彩在天空中飄浮，像是指引著他前進的方向。</p>
-        <p>而在他前方，蒼瀾秘境的征程即將展開。那將是一場充滿危險和機遇的冒險，也是一場對他實力的真正考驗。</p>
-        <p>但他已經準備好了。</p>
-        <p>因為他已經明白——劍道之路，沒有捷徑。只有不斷地戰鬥、不斷地感悟、不斷地超越自己，才能踏上真正的強者之路。</p>
-        <p>而他，正在這條路上前進。</p>
-        <p>（第一百五十章 完）</p>
-    </main>
-    <nav class="nav">
-        <a href="chapter-149.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-150/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-151.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第150章 · 劍道之心 - 萬古塵埃</title><meta name="description" content="葉塵和秦昭陽已經交手了上百招。兩人的劍法都達到了極高的水準，每一劍都蘊含著對劍道的深刻理解。雖然葉塵在修為上不如秦昭陽，但他憑藉塵淵劍訣的獨特威力和新領悟的「忘招」境界，竟然和秦昭陽打得有來有回。"><link rel="canonical" href="https://kofhk.com/chapter-150.html">><link rel="prev" href="chapter-149.html"><link rel="next" href="chapter-151.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第150章 · 劍道之心</h1><main><p>練武場上，兩道劍光交織閃爍。</p><p>葉塵和秦昭陽已經交手了上百招。兩人的劍法都達到了極高的水準，每一劍都蘊含著對劍道的深刻理解。雖然葉塵在修為上不如秦昭陽，但他憑藉塵淵劍訣的獨特威力和新領悟的「忘招」境界，竟然和秦昭陽打得有來有回。</p><p>汗水順著葉塵的臉頰滑落，滴落在地面上。他的呼吸有些急促，但握劍的手依然穩定。秦昭陽的劍法看似簡單，但每一劍都蘊含著精妙的變化，讓他在防守的同時也學到了很多。</p><p>但葉塵知道，秦昭陽還沒有出全力。</p><p>秦昭陽的強大，不僅僅體現在修為上，更體現在他對劍道的理解上。他的每一劍都帶著一種沉穩而從容的氣度，仿佛一切都在他的掌控之中。這種氣度，是經過無數次戰鬥和修煉才能養成的。就像是一座巍峨的高山，任憑風吹雨打，始終巋然不動。</p><p>「差不多了。」秦昭陽突然後退，收起了銀霜劍。</p><p>葉塵也跟著收劍，有些不解地看著秦昭陽。</p><p>「你的實力我已經了解了。」秦昭陽說，「以你現在的實力，在築基中期中已經屬於頂尖水準。如果對上築基後期的對手，只要不是後期巔峰，你都有機會取勝。」</p><p>「多謝秦師兄指點。」葉塵鄭重地說。</p><p>「不是我指點你，是你自己悟出來的。」秦昭陽走到練武場邊緣，從地上拿起一個酒壺，遞給葉塵，「喝一口？」</p><p>葉塵接過酒壺，喝了一口。酒液入口辛辣，但入喉後卻化作一股暖流，湧入四肢百骸，讓人感覺渾身舒暢。</p><p>「這是靈酒，對恢復靈力有好處。」秦昭陽自己也喝了一口，「坐吧，我們聊聊。」</p><p>兩人在練武場邊的台階上坐下。夕陽的餘暉灑在他們身上，在地上投下兩道長長的影子。</p><p>「蒼瀾秘境還有半個月就要開啟了。」秦昭陽說，「你準備好了嗎？」</p><p>「準備好了。」葉塵點頭。</p><p>「秘境中的情況，遠比你想像中更加複雜。」秦昭陽的語氣變得嚴肅起來，「三十六宗門中，至少有一半會派人進入秘境。而且不排除有煉魂期的老怪物隱藏身份混入其中。」</p><p>「煉魂期？」葉塵心中一凜。</p><p>「是的。」秦昭陽說，「蒼瀾秘境對修為有限制，只有築基期及以下的修士才能進入。但有些宗門會用特殊手段壓制修為，讓煉魂期的修士混入其中。雖然這種手段有很大的風險，但在巨大的利益面前，總有人願意冒險。」</p><p>「那我該怎麼辦？」</p><p>「如果遇到煉魂期的對手，不要猶豫，立刻逃。」秦昭陽說，「以你現在的實力，對上煉魂期沒有任何勝算。就算是一對一，你也撐不過十招。」</p><p>葉塵沉默了片刻，然後鄭重地點了點頭。</p><p>「記住，在秘境中最重要的不是搶到多少寶物，而是活著出來。」秦昭陽站起身，拍了拍葉塵的肩膀，「活著，才有未來。」</p><p>「我記住了。」</p><p>「好了，今天就到這裡吧。」秦昭陽轉身準備離開，但走出幾步後又停了下來，「對了，還有一件事，那個紫色晶石的傳承，你研究得怎麼樣了？」</p><p>葉塵微微一怔，然後說：「還在摸索中。這份傳承太深奧了，我只能理解其中的一小部分。」</p><p>「慢慢來。」秦昭陽說，「不要急。這種級別的傳承，不是一朝一夕能掌握的。你能在這麼短的時間內融合黑色晶石，已經非常了不起了。」</p><p>他頓了頓，又補充了一句：「如果有什麼需要幫助的，隨時來找我。」</p><p>「多謝秦師兄。」</p><p>秦昭陽點了點頭，然後大步離開了練武場。他的背影在夕陽中拖出一道長長的影子，消失在樹林的盡頭。</p><p>葉塵目送他離去，心中充滿了感激。從他進入青雲宗以來，秦昭陽雖然始終保持著大師兄的威嚴，但對他卻格外照顧。無論是指點劍法，還是分享修煉心得，都毫不藏私。這份恩情，他記在心裡。</p><p>他收回目光，獨自坐在台階上，靜靜地望著夕陽。</p><p>秦昭陽的話給了他很多啟發。特別是關於劍道的那些話，「忘記招式，讓劍自己說話」。他閉上眼睛，在腦海中回味著和秦昭陽戰鬥的感覺。</p><p>那種感覺很奇妙。當他不再思考招式，完全依靠本能戰鬥時，他的劍法反而變得更加流暢自然。就像是一條溪流，不需要刻意引導，自然地流向低處。</p><p>「劍道……原來是這樣的。」</p><p>他睜開眼睛，眼中閃爍著明悟的光芒。他低頭看著手中的清風劍，劍身在夕陽的照射下反射出溫暖的光芒。他伸手輕輕撫摸劍身，感受著劍上殘留的餘溫。這柄劍跟隨他經歷了這麼多戰鬥，從最初的陌生到現在的熟悉，已經成為了他身體的延伸。他能夠感受到劍的呼吸，能夠聽到劍的鳴叫——那不是幻覺，而是人劍合一之後產生的真實感應。</p><p>他將劍舉到眼前，仔細端詳劍身上的每一道紋路。那些紋路在夕陽下閃爍著細碎的光芒，像是記錄著他一路走來的足跡——從青陽鎮到青雲宗，從廢靈根到築基中期，每一步都走得艱辛而堅定。</p><p>「劍不是工具。」他低聲說，「劍是夥伴。」</p><p>他想起輪迴之主在傳承中留下的話語——「真正的強者，不是靠劍的鋒利，而是靠心的堅定。心中有劍，則萬物皆可為劍；心中無劍，則寶劍在手也是廢鐵。」</p><p>這柄劍從師傅送給他到現在，已經陪伴他經歷了無數場戰鬥。劍身上有幾道細微的裂紋——那是和強敵戰鬥時留下的痕跡。但正是這些裂紋，讓這柄劍有了靈魂，也讓他對劍有了更深的理解。</p><p>「劍不只是兵器。」他喃喃自語，「劍是夥伴，是老師，是自己的一部分。」</p><p>他收起劍，站起身，向住處走去。</p><p>走了幾步，他又停了下來，回頭看了一眼練武場。這個練武場上，他經歷了無數場切磋和比試，從最初的新手到現在的築基中期。每一次戰鬥都讓他變得更強，也讓他對劍道有了更深的理解。</p><p>「蒼瀾秘境……」他握緊了拳頭，「我來了。」</p><p>他轉過身，大步向前走去。夕陽的餘暉將他的影子拉得很長很長，但他的腳步卻異常堅定。</p><p>在他身後，青雲宗的建築在暮色中漸漸模糊。遠處的山巒在夕陽中勾勒出起伏的輪廓，像是沉睡中的巨獸。蒼瀾山脈的方向，一片金色的雲彩在天空中飄浮，像是指引著他前進的方向。</p><p>而在他前方，蒼瀾秘境的征程即將展開。那將是一場充滿危險和機遇的冒險，也是一場對他實力的真正考驗。</p><p>但他已經準備好了。</p><p>因為他已經明白——劍道之路，沒有捷徑。只有不斷地戰鬥、不斷地感悟、不斷地超越自己，才能踏上真正的強者之路。</p><p>而他，正在這條路上前進。</p><p>（第一百五十章 完）</p></main><nav class="nav"><a href="chapter-149.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-150/" class="manga-btn">🎨 漫畫版</a><a href="chapter-151.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

@@ -1,274 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第618章 · 第三枚輪迴令的線索 - 萬古塵埃</title>
-    <link rel="canonical" href="">
-    <link rel="prev" href="chapter-617.html">
-    <link rel="next" href="chapter-619.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第618章 · 第三枚輪迴令的線索</h1>
-    <main>
-<p>「你們也要保重。」風長老拍了拍葉塵的肩膀，然後從懷中取出一塊令牌遞給他，「這是輪迴殿的緊急召集令。如果你遇到了無法解決的危險，可以用它來召集附近輪迴殿的成員。」</p>
-        <p>葉塵接過令牌，感激地點了點頭。</p>
-        <p>風長老又看了兩人一眼，然後轉身向東南方走去。他的身影在沙漠中漸漸變小，最終消失在地平線上。</p>
-        <p>送走了風長老後，葉塵取出風長老留下的玉簡，仔細研究深淵裂谷的地圖。</p>
-        <p>深淵裂谷位於西域深處的一片山脈中，是一道長約數百裡的巨大裂縫。裂縫的深度無法估量——據說從裂縫邊緣往下看，只能看到一片黑暗，連陽光照進去都會被吞噬。裂縫中充斥著濃郁的深淵之力，是深淵生物和深淵教團的聚集地。</p>
-        <p>在那道裂縫的最深處，有一座用黑色石材建成的祭壇——那就是深淵之主殘魂用來恢復力量的深淵祭壇。祭壇周圍有大量的守衛，包括深淵生物和深淵教團的強者。根據風長老的推測，守衛的數量至少在數百以上——而且不排除有歸真境的強者坐鎮。</p>
-        <p>葉塵的眉頭緊鎖。以他化物中期的修為，加上白淺的元嬰後期巔峰，想要闖入這麼一個戒備森嚴的地方，幾乎是不可能的任務。</p>
-        <p>但他們也不是完全沒有機會。</p>
-        <p>「你看這裡。」葉塵指著地圖上的一處標記，「這裡有一條隱蔽的通道，地圖上標注為『排廢通道』。塵之文明在建造深淵裂谷附近的設施時，修建了這條通道用於排出廢料。如果這條通道還在，我們就可以繞過正面的守衛，直接從側面潛入裂谷深處。」</p>
-        <p>白淺仔細看了看地圖，問道：「這條通道的出口在哪裡？」</p>
-        <p>葉塵的手指在地圖上移動，最終停在了一個位置。「這裡，距離祭壇大約三裡的一個隱蔽處。如果一切順利，我們可以從這個出口進入裂谷深處，然後悄悄接近祭壇。」</p>
-        <p>「但有一個問題。」葉塵的語氣變得凝重起來，「這條通道已經廢棄了上萬年，很可能已經坍塌或者被堵塞了。而且通道中可能還殘留著當年排出的有毒物質，這些都是未知的風險。」</p>
-        <p>白淺沉默了片刻，然後說道：「但這是我們唯一的機會。」</p>
-        <p>葉塵點頭。確實，這可能是他們唯一的機會。如果從正面強攻，他們必死無疑；但如果能夠從這條隱蔽通道潛入，或許能夠打深淵教團一個措手不及。</p>
-        <p>「那就這麼決定了。」葉塵收起玉簡，「我們先去深淵裂谷外圍偵察一下情況，然後再做具體的計劃。」</p>
-        <p>兩人收拾好行裝，朝著深淵裂谷的方向出發。</p>
-        <p>這一路上的氣氛明顯變得更加緊張。越靠近深淵裂谷，空氣中的靈氣就越稀薄，取而代之的是一種陰冷的氣息，那是深淵之力瀰漫的結果。地面上的植被越來越少，到最後只剩下光禿禿的岩石和沙礫。</p>
-        <p>天空中經常有大量的烏雲遮住陽光，讓整個區域顯得陰暗而壓抑。偶爾能夠看到一些黑色的鳥類在天空中盤旋，那些鳥類的眼睛閃爍著紅光，看起來是被深淵之力侵蝕的妖獸。</p>
-        <p>葉塵和白淺小心地隱藏著自己的氣息，沿著地形的陰影處前進。他們不敢使用靈力飛行，因為那樣會暴露自己的位置。只能靠雙腿步行，在岩石和沙丘之間穿行。</p>
-        <p>經過兩天的小心潛行，他們終於到達了深淵裂谷的外圍。</p>
-        <p>站在一座山丘上，葉塵看到了那道巨大的裂縫，它就像是大地上的一道傷疤，從北向南延伸，看不到盡頭。裂縫的邊緣是陡峭的懸崖，懸崖下是深不見底的黑暗。從裂縫中不斷有黑色的霧氣冒出，在風中飄散，讓周圍的空氣充滿了一種腐朽的氣息。</p>
-        <p>「就是這裡了。」葉塵低聲說道。</p>
-        <p>白淺站在他身邊，目光凝重地注視著那道裂縫。她能夠感覺到，在那片黑暗之中，潛伏著無數的危險。深淵的力量如同潮水般從裂縫中湧出，侵蝕著周圍的一切。</p>
-        <p>「排廢通道的入口在哪裡？」她低聲問道。</p>
-        <p>葉塵取出地圖對比了一下，然後指向裂縫南側的一處懸崖。「在那邊，懸崖下方大約三十丈的位置。入口被一塊巨石堵住了，但從地形來看，應該還能找到。」</p>
-        <p>兩人沿著裂縫的邊緣向南移動了大約一個時辰，到達了地圖上標注的位置。葉塵探出頭，向懸崖下方看去，在陡峭的崖壁上，確實可以看到一塊突出的巨石，巨石後面隱約有一個洞口的輪廓。</p>
-        <p>「就是那裡。」葉塵確認了目標的位置。</p>
-        <p>但問題是，懸崖峭壁非常陡峭，幾乎是垂直的，而且崖壁上覆蓋著一層光滑的苔蘚，很難攀爬。如果使用靈力飛行，又會被深淵教團的守衛發現。</p>
-        <p>「我來想辦法。」白淺說著，從儲物袋中取出了一捆繩索，那是用特殊材料製成的靈繩，堅韌而輕便。她在繩索的一端繫上了一柄匕首，然後將匕首用力擲向那塊巨石！</p>
-        <p>匕首精準地插入了巨石旁邊的一道裂縫中，牢牢地固定住了。白淺拉了拉繩索，確認了牢固程度，然後將繩索的另一端繫在懸崖邊的一塊岩石上。</p>
-        <p>「我先下去。」她說著，抓住繩索，輕盈地向懸崖下方滑去。</p>
-        <p>她的動作非常熟練，身體在空中保持著平衡，雙腳在崖壁上輕點，控製著下滑的速度。不到半盞茶的時間，她就到達了那塊巨石的位置。</p>
-        <p>葉塵緊隨其後，也沿著繩索滑了下去。</p>
-        <p>兩人站在巨石上，面前是一個約一人高的洞口。洞口的邊緣覆蓋著一層黑色的苔蘚，那些苔蘚散發出一種刺鼻的氣味，應該是當年排出的廢料殘留的沉積物。</p>
-        <p>葉塵取出一顆照明用的靈石，丟入洞中。光芒照亮了通道的內部，通道的直徑大約有兩人寬，高度足夠一個人站立。通道壁是一種暗紅色的岩石，上面覆蓋著一層黑色的沉積物。從通道深處，傳來一陣陣微風，說明通道是通風的，沒有完全堵塞。</p>
-        <p>「可以走。」葉塵鬆了一口氣。</p>
-        <p>兩人彎腰走進通道，向深處前進。通道中的空氣非常污濁，帶著一股嗆鼻的化學味。但對於擁有化物中期修為的葉塵來說，這種程度的污染還不足以影響他的身體，他可以用靈力在體表形成一層防護罩，隔絕有害物質。</p>
-        <p>通道蜿蜒曲折，時而向上、時而向下，像是一條在地下蜿蜒的巨蛇。通道壁上時不時可以看到一些暗紅色的斑點，那些是當年排放的廢料殘留，在漫長的歲月中固化在了岩石表面。</p>
-        <p>葉塵站在深淵裂谷的出口處，望著那座由黑色石材建成的宏偉祭壇，心中充滿了凝重和警覺。那衝天而起的黑色光柱散發著濃郁的深淵之力，仿佛一條連接深淵深處的通道，將無盡的黑暗和邪惡源源不斷地輸送到這個世界。他能感受到那座祭壇周圍的空間都在扭曲和顫抖，那是因為深淵之力的濃度已經達到了足以影響現實的程度。他知道，以他化物中期的修為，想要摧毀這座祭壇幾乎是不可能的任務，但他們別無選擇。如果任由深淵之主殘魂繼續恢復力量，一旦他完全復活，整個西域都將陷入萬劫不復的深淵。</p>
-        <p>他轉頭看向身邊的白淺，看到她臉上那種堅定而平靜的表情，心中感到一陣踏實和安心。無論前方有多大的危險和挑戰，只要有她在身邊，他就有了無限的勇氣和力量。他想起兩人一起經歷過的種種磨難和考驗——從最初相識時的陌生和戒備，到並肩作戰時的信任和默契，再到如今的相知相守。這一路走來，他們經歷了太多太多，而每一次考驗都讓他們之間的羈絆變得更加深厚和牢固。他暗暗發誓，無論這次行動的結果如何，他都會保護好她的安全，不讓她受到任何傷害。因為對他來說，她不僅僅是並肩作戰的夥伴，更是他生命中不可或缺的一部分。</p>
-        <p>走了大約一個時辰，前方出現了光亮，通道的出口就在不遠處！</p>
-        <p>他的手掌緊握著塵淵劍的劍柄，感受著劍身傳來的陣陣溫熱和震顫。這柄劍陪他經歷了無數次戰鬥和考驗，從最初的青雲宗到如今的深淵裂谷，每一次揮劍都是對他意志和信念的考驗和砥礪。他知道，接下來的行動將是他在西域遇到過的最危險的挑戰之一，但他沒有退縮和猶豫。因為在他的心中，有著必須守護的東西——那不僅僅是生命之令，更是整個西域的安危和命運。他深吸一口氣，將體內的元氣調整到最佳狀態，然後向白淺點了點頭，示意準備出發。</p>
-        <p>他將手中的照明靈石高高舉起，光芒照亮了前方那條狹窄而蜿蜒的通道。通道壁上的沉積物在光照下泛著暗紅色的光澤，散發出一種古老而腐朽的氣息。兩人在通道中小心翼翼地前行，每一步都踩在鬆軟的灰塵上，發出輕微的沙沙聲。葉塵的左手始終握在塵淵劍的劍柄上，隨時準備應對可能出現的危險和襲擊。他的心跳在寂靜的通道中顯得格外清晰，但他努力讓自己的呼吸保持平穩和均勻，不讓緊張影響到自己的判斷和反應。</p>
-        <p>兩人在出口前停下腳步，小心翼翼地探出頭觀察外面的情況。出口位於一處隱蔽的石縫中，外面是一片寬闊的地下空間。遠處可以看到一座由黑色石材建成的祭壇，祭壇周圍有十幾名深淵教團的守衛在巡邏。祭壇的中心散發著濃郁的深淵之力，形成了一道肉眼可見的黑色光柱，直衝上方的黑暗。這座祭壇比他們想像中更加宏偉，也更加危險。但無論前方有多大的風險，他們都不能退縮，因為生命之令的安危關係到整個西域的命運。</p>
-        
-    </main>
-    <nav class="nav">
-        <a href="chapter-617.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-618/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-619.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第618章 · 第三枚輪迴令的線索 - 萬古塵埃</title><link rel="canonical" href=""><link rel="prev" href="chapter-617.html"><link rel="next" href="chapter-619.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第618章 · 第三枚輪迴令的線索</h1><main><p>「你們也要保重。」風長老拍了拍葉塵的肩膀，然後從懷中取出一塊令牌遞給他，「這是輪迴殿的緊急召集令。如果你遇到了無法解決的危險，可以用它來召集附近輪迴殿的成員。」</p><p>葉塵接過令牌，感激地點了點頭。</p><p>風長老又看了兩人一眼，然後轉身向東南方走去。他的身影在沙漠中漸漸變小，最終消失在地平線上。</p><p>送走了風長老後，葉塵取出風長老留下的玉簡，仔細研究深淵裂谷的地圖。</p><p>深淵裂谷位於西域深處的一片山脈中，是一道長約數百裡的巨大裂縫。裂縫的深度無法估量——據說從裂縫邊緣往下看，只能看到一片黑暗，連陽光照進去都會被吞噬。裂縫中充斥著濃郁的深淵之力，是深淵生物和深淵教團的聚集地。</p><p>在那道裂縫的最深處，有一座用黑色石材建成的祭壇——那就是深淵之主殘魂用來恢復力量的深淵祭壇。祭壇周圍有大量的守衛，包括深淵生物和深淵教團的強者。根據風長老的推測，守衛的數量至少在數百以上——而且不排除有歸真境的強者坐鎮。</p><p>葉塵的眉頭緊鎖。以他化物中期的修為，加上白淺的元嬰後期巔峰，想要闖入這麼一個戒備森嚴的地方，幾乎是不可能的任務。</p><p>但他們也不是完全沒有機會。</p><p>「你看這裡。」葉塵指著地圖上的一處標記，「這裡有一條隱蔽的通道，地圖上標注為『排廢通道』。塵之文明在建造深淵裂谷附近的設施時，修建了這條通道用於排出廢料。如果這條通道還在，我們就可以繞過正面的守衛，直接從側面潛入裂谷深處。」</p><p>白淺仔細看了看地圖，問道：「這條通道的出口在哪裡？」</p><p>葉塵的手指在地圖上移動，最終停在了一個位置。「這裡，距離祭壇大約三裡的一個隱蔽處。如果一切順利，我們可以從這個出口進入裂谷深處，然後悄悄接近祭壇。」</p><p>「但有一個問題。」葉塵的語氣變得凝重起來，「這條通道已經廢棄了上萬年，很可能已經坍塌或者被堵塞了。而且通道中可能還殘留著當年排出的有毒物質，這些都是未知的風險。」</p><p>白淺沉默了片刻，然後說道：「但這是我們唯一的機會。」</p><p>葉塵點頭。確實，這可能是他們唯一的機會。如果從正面強攻，他們必死無疑；但如果能夠從這條隱蔽通道潛入，或許能夠打深淵教團一個措手不及。</p><p>「那就這麼決定了。」葉塵收起玉簡，「我們先去深淵裂谷外圍偵察一下情況，然後再做具體的計劃。」</p><p>兩人收拾好行裝，朝著深淵裂谷的方向出發。</p><p>這一路上的氣氛明顯變得更加緊張。越靠近深淵裂谷，空氣中的靈氣就越稀薄，取而代之的是一種陰冷的氣息，那是深淵之力瀰漫的結果。地面上的植被越來越少，到最後只剩下光禿禿的岩石和沙礫。</p><p>天空中經常有大量的烏雲遮住陽光，讓整個區域顯得陰暗而壓抑。偶爾能夠看到一些黑色的鳥類在天空中盤旋，那些鳥類的眼睛閃爍著紅光，看起來是被深淵之力侵蝕的妖獸。</p><p>葉塵和白淺小心地隱藏著自己的氣息，沿著地形的陰影處前進。他們不敢使用靈力飛行，因為那樣會暴露自己的位置。只能靠雙腿步行，在岩石和沙丘之間穿行。</p><p>經過兩天的小心潛行，他們終於到達了深淵裂谷的外圍。</p><p>站在一座山丘上，葉塵看到了那道巨大的裂縫，它就像是大地上的一道傷疤，從北向南延伸，看不到盡頭。裂縫的邊緣是陡峭的懸崖，懸崖下是深不見底的黑暗。從裂縫中不斷有黑色的霧氣冒出，在風中飄散，讓周圍的空氣充滿了一種腐朽的氣息。</p><p>「就是這裡了。」葉塵低聲說道。</p><p>白淺站在他身邊，目光凝重地注視著那道裂縫。她能夠感覺到，在那片黑暗之中，潛伏著無數的危險。深淵的力量如同潮水般從裂縫中湧出，侵蝕著周圍的一切。</p><p>「排廢通道的入口在哪裡？」她低聲問道。</p><p>葉塵取出地圖對比了一下，然後指向裂縫南側的一處懸崖。「在那邊，懸崖下方大約三十丈的位置。入口被一塊巨石堵住了，但從地形來看，應該還能找到。」</p><p>兩人沿著裂縫的邊緣向南移動了大約一個時辰，到達了地圖上標注的位置。葉塵探出頭，向懸崖下方看去，在陡峭的崖壁上，確實可以看到一塊突出的巨石，巨石後面隱約有一個洞口的輪廓。</p><p>「就是那裡。」葉塵確認了目標的位置。</p><p>但問題是，懸崖峭壁非常陡峭，幾乎是垂直的，而且崖壁上覆蓋著一層光滑的苔蘚，很難攀爬。如果使用靈力飛行，又會被深淵教團的守衛發現。</p><p>「我來想辦法。」白淺說著，從儲物袋中取出了一捆繩索，那是用特殊材料製成的靈繩，堅韌而輕便。她在繩索的一端繫上了一柄匕首，然後將匕首用力擲向那塊巨石！</p><p>匕首精準地插入了巨石旁邊的一道裂縫中，牢牢地固定住了。白淺拉了拉繩索，確認了牢固程度，然後將繩索的另一端繫在懸崖邊的一塊岩石上。</p><p>「我先下去。」她說著，抓住繩索，輕盈地向懸崖下方滑去。</p><p>她的動作非常熟練，身體在空中保持著平衡，雙腳在崖壁上輕點，控製著下滑的速度。不到半盞茶的時間，她就到達了那塊巨石的位置。</p><p>葉塵緊隨其後，也沿著繩索滑了下去。</p><p>兩人站在巨石上，面前是一個約一人高的洞口。洞口的邊緣覆蓋著一層黑色的苔蘚，那些苔蘚散發出一種刺鼻的氣味，應該是當年排出的廢料殘留的沉積物。</p><p>葉塵取出一顆照明用的靈石，丟入洞中。光芒照亮了通道的內部，通道的直徑大約有兩人寬，高度足夠一個人站立。通道壁是一種暗紅色的岩石，上面覆蓋著一層黑色的沉積物。從通道深處，傳來一陣陣微風，說明通道是通風的，沒有完全堵塞。</p><p>「可以走。」葉塵鬆了一口氣。</p><p>兩人彎腰走進通道，向深處前進。通道中的空氣非常污濁，帶著一股嗆鼻的化學味。但對於擁有化物中期修為的葉塵來說，這種程度的污染還不足以影響他的身體，他可以用靈力在體表形成一層防護罩，隔絕有害物質。</p><p>通道蜿蜒曲折，時而向上、時而向下，像是一條在地下蜿蜒的巨蛇。通道壁上時不時可以看到一些暗紅色的斑點，那些是當年排放的廢料殘留，在漫長的歲月中固化在了岩石表面。</p><p>葉塵站在深淵裂谷的出口處，望著那座由黑色石材建成的宏偉祭壇，心中充滿了凝重和警覺。那衝天而起的黑色光柱散發著濃郁的深淵之力，仿佛一條連接深淵深處的通道，將無盡的黑暗和邪惡源源不斷地輸送到這個世界。他能感受到那座祭壇周圍的空間都在扭曲和顫抖，那是因為深淵之力的濃度已經達到了足以影響現實的程度。他知道，以他化物中期的修為，想要摧毀這座祭壇幾乎是不可能的任務，但他們別無選擇。如果任由深淵之主殘魂繼續恢復力量，一旦他完全復活，整個西域都將陷入萬劫不復的深淵。</p><p>他轉頭看向身邊的白淺，看到她臉上那種堅定而平靜的表情，心中感到一陣踏實和安心。無論前方有多大的危險和挑戰，只要有她在身邊，他就有了無限的勇氣和力量。他想起兩人一起經歷過的種種磨難和考驗——從最初相識時的陌生和戒備，到並肩作戰時的信任和默契，再到如今的相知相守。這一路走來，他們經歷了太多太多，而每一次考驗都讓他們之間的羈絆變得更加深厚和牢固。他暗暗發誓，無論這次行動的結果如何，他都會保護好她的安全，不讓她受到任何傷害。因為對他來說，她不僅僅是並肩作戰的夥伴，更是他生命中不可或缺的一部分。</p><p>走了大約一個時辰，前方出現了光亮，通道的出口就在不遠處！</p><p>他的手掌緊握著塵淵劍的劍柄，感受著劍身傳來的陣陣溫熱和震顫。這柄劍陪他經歷了無數次戰鬥和考驗，從最初的青雲宗到如今的深淵裂谷，每一次揮劍都是對他意志和信念的考驗和砥礪。他知道，接下來的行動將是他在西域遇到過的最危險的挑戰之一，但他沒有退縮和猶豫。因為在他的心中，有著必須守護的東西——那不僅僅是生命之令，更是整個西域的安危和命運。他深吸一口氣，將體內的元氣調整到最佳狀態，然後向白淺點了點頭，示意準備出發。</p><p>他將手中的照明靈石高高舉起，光芒照亮了前方那條狹窄而蜿蜒的通道。通道壁上的沉積物在光照下泛著暗紅色的光澤，散發出一種古老而腐朽的氣息。兩人在通道中小心翼翼地前行，每一步都踩在鬆軟的灰塵上，發出輕微的沙沙聲。葉塵的左手始終握在塵淵劍的劍柄上，隨時準備應對可能出現的危險和襲擊。他的心跳在寂靜的通道中顯得格外清晰，但他努力讓自己的呼吸保持平穩和均勻，不讓緊張影響到自己的判斷和反應。</p><p>兩人在出口前停下腳步，小心翼翼地探出頭觀察外面的情況。出口位於一處隱蔽的石縫中，外面是一片寬闊的地下空間。遠處可以看到一座由黑色石材建成的祭壇，祭壇周圍有十幾名深淵教團的守衛在巡邏。祭壇的中心散發著濃郁的深淵之力，形成了一道肉眼可見的黑色光柱，直衝上方的黑暗。這座祭壇比他們想像中更加宏偉，也更加危險。但無論前方有多大的風險，他們都不能退縮，因為生命之令的安危關係到整個西域的命運。</p></main><nav class="nav"><a href="chapter-617.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-618/" class="manga-btn">🎨 漫畫版</a><a href="chapter-619.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

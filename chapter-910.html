@@ -1,265 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第910章 · 心魔 - 萬古塵埃</title>
-    <link rel="canonical" href="">
-    <link rel="prev" href="chapter-909.html">
-    <link rel="next" href="chapter-911.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第910章 · 心魔</h1>
-    <main>
-<p>然後，一個身影從虛空中浮現出來，像是從深淵中爬出的幽靈一般令人心驚膽寒。那個身影由灰色的霧氣凝聚而成，剛開始只是一個模糊的輪廓和影子，在霧氣中若隱若現，但隨著霧氣不斷旋轉和凝聚，那個身影變得越來越清晰和具體，最終形成了一個讓葉塵記憶猶新的面孔和形象。那張臉上帶著猙獰而怨毒的表情，雙眼中燃燒著仇恨的火焰，彷彿要將葉塵的靈魂都燒穿和吞噬，讓人感到一種深入骨髓的寒意和恐懼，彷彿連血液都要凝固了一般。</p>
-        <p>那是他第一次殺死的人，一個煉魂境的強盜頭目，在他剛踏入修煉之路時遇到的第一個真正的對手和考驗。當時那個強盜頭目正在襲擊一支商隊，殘忍地殺害了十幾條無辜的生命，鮮血染紅了大地，慘叫聲在曠野中迴盪。葉塵出於正義和憤怒出手阻止了他，在經過了一番激烈的戰鬥之後，最終了結了他的性命。那個強盜頭目的臉上帶著猙獰而怨毒的表情，雙眼中燃燒著仇恨的火焰，向著他撲了過來，口中發出淒厲而尖銳的嘶吼聲，彷彿要將他拖入地獄深淵。</p>
-        <p>「還我命來！」</p>
-        <p>葉塵的心神微微一顫，但他很快穩住了心緒，平靜地看著那個向他撲來的身影，沒有躲避，也沒有還手，就像是一座在風浪中巍然不動的山岳。他的目光坦然直視著那個強盜頭目的眼睛，沒有一絲心虛和畏懼，坦然地面對著自己過去的選擇和行為。他清楚地記得這個人，記得這個強盜頭目當初是如何殘忍地殺害那些無辜的商旅，如何將一個又一個家庭推入深淵和痛苦之中。正因為如此，他當初下手時沒有絲毫猶豫和手軟，現在面對這張面孔時也不會有任何愧疚和自責。</p>
-        <p>身影穿過了他的身體，消散在了虛空中，只留下一陣冰冷的觸感和淡淡的怨念，在周圍的空氣中緩緩飄散和消逝。那冰冷的感覺讓他的皮膚起了一層雞皮疙瘩，但他的內心卻出奇地平靜和坦然。</p>
-        <p>「我不怕你。」他低聲說道，聲音雖然輕柔但充滿了堅定和力量，在虛空中清晰地迴盪和傳播，「因為我殺你，是為了保護無辜的人。你襲擊商隊，殺害了十幾條人命，讓無數家庭破碎和痛苦，我殺你是替天行道，是為了讓更多人免受你的傷害和殘害。我問心無愧，不後悔當初的決定和選擇。」</p>
-        <p>虛空中響起了歸墟島主人的聲音，平靜而深邃，帶著一絲讚許和欣慰，在灰色的空間中清晰地迴盪和傳播：「心魔考驗……第一個考驗，是過去之業。你殺過的每一個人、做過的每一件虧心事，都會在這裡重現，試圖擊垮你的心志和信念。你做得很好，你能夠坦然面對自己的過去，不逃避不後悔，這份心境實屬難得和可貴。很多修士在面對過去之業時，要麼逃避否認，要麼被愧疚壓垮，而你卻能夠坦然面對，真誠懺悔，這說明你的道心已經達到了相當高的境界。但接下來的考驗會更加艱難，更加殘酷，你需要做好充分的準備。」</p>
-        <p>葉塵深吸了一口氣，目光堅定地說道：「我這一生，殺過很多人，有該殺的，也有不該殺的。但無論是哪一種，都是我自己選擇的路，我自己承擔的業。我不會逃避，也不會後悔。來吧，將所有的考驗都一起降臨吧，我會一一面對，一一擊破。」他的聲音雖然不高，但每一個字都擲地有聲，充滿了不容置疑的決心和力量，在虛空中清晰地迴盪和傳播。他知道，心魔考驗不僅僅是對他實力的測試，更是對他道心的磨礪和淬煉，是他突破到嬰變境必須跨過的最後一道門檻和障礙。</p>
-        <p>虛空中的景象開始變幻，就像是一幅巨大的畫卷在他的眼前展開，將他一生中所有的遺憾和愧疚都呈現在他的面前。</p>
-        <p>更多的面孔從虛空中浮現出來，密密麻麻地排列在他的周圍，那些面孔中有敵人、有陌生人、也有無辜的百姓，每一張臉上都帶著不同的表情和情緒。他看到煉神谷谷主臨死前的不甘和怨毒，看到那些因為戰爭而流離失所的百姓的絕望和痛苦，看到那些在他面前倒下的同伴和戰友的遺憾和悲傷。每一個人的面孔都清晰而真實，彷彿就站在他的面前，用無聲的責備和控訴注視著他，等待著他的回答和回應。</p>
-        <p>他的心在刺痛，一股酸楚和自責湧上心頭，讓他感到胸口一陣陣的絞痛和窒息，彷彿要將他的靈魂撕裂和碾碎。他想起那些因為他的決定而犧牲的人，想起那些他沒能來得及拯救的生命，想起那些在戰爭中失去家園和親人的百姓。每一個畫面都像一把鋒利的刀子，在他的心上劃下一道道傷口，讓他感受到了前所未有的痛苦和煎熬，彷彿要將他淹沒在無邊的悔恨和自責之中。</p>
-        <p>但他沒有退縮，沒有逃避。</p>
-        <p>他一個一個地直視著那些面孔，將每一張臉都牢牢地記在心中，然後向他們深深地鞠了一躬。他的動作鄭重而真誠，充滿了敬意和歉意，每一個鞠躬都代表著他對那些逝去生命的尊重和懺悔。</p>
-        <p>「對不起。」他的聲音低沉而沙啞，帶著無法掩飾的悲傷和愧疚，像是一塊沉重的石頭從他的心底被搬了出來，「我沒能救下所有人。我知道，一句對不起無法彌補你們失去的一切，無法讓那些已經逝去的生命重新回來。但我向你們保證，我一定會終結這場戰爭，讓更多的人不再經歷同樣的痛苦和悲傷。這是我對你們的承諾，也是我對自己的誓言和責任。」</p>
-        <p>話音落下，那些面孔一個接一個地消散了。有些面孔在消散前露出了理解和釋然的表情，彷彿在說他們理解他的選擇和苦衷，願意將過去的一切都放下和釋懷；有些則仍然帶著不甘和怨念，瞪大了眼睛注視著他，彷彿在質問他為什麼沒有能夠拯救他們，為什麼他們的命運會是如此悲慘和殘酷。但不管怎樣，這些面孔最終都化作了虛無，消失在灰色的空間中，只留下了一陣淡淡的回音在空間中迴盪和消散，以及一股揮之不去的悲傷和感觸。</p>
-        <p>葉塵感到心中的某種沉重負擔在這一刻減輕了許多，就像是壓在胸口多年的一塊巨石終於被移開了一樣，讓他能夠暢快地呼吸和思考。那種釋然的感覺如同春風拂過冰凍的大地，讓他的心靈重新獲得了自由和活力，所有的陰霾和沉重都在這一刻煙消雲散。他感到前所未有的輕鬆和釋然，彷彿卸下了多年來一直背負的包袱和枷鎖。他知道，那些死去的人不會原諒他，他也不奢求他們的寬恕和諒解。他只需要對得起自己的良心和信念就足夠了，他會用實際的行動來證明自己的決心和承諾，用未來的努力來彌補過去的遺憾和不足，讓那些因為戰爭而失去家園和親人的人們重新獲得安寧和幸福。</p>
-        <p>灰色的虛空開始出現了裂縫，金色的光芒從裂縫中滲透進來，將周圍的黑暗和灰色驅散。那些裂縫越來越大，金色的光芒越來越強烈，就像是黎明衝破黑夜的束縛一樣，將光明和溫暖重新帶回了這個灰色的世界。那些金色光芒灑落在他的身上，帶來了一種溫暖而柔和的力量，彷彿在讚許他通過了第一重考驗，在肯定他的選擇和堅持。那些光芒像是一雙溫柔的手，輕輕撫摸著他的心靈，將殘留在心中的最後一絲陰霾和傷痛也驅散乾淨。</p>
-        <p>緊接著，第二個考驗降臨了，沒給他太多喘息的時間和機會。</p>
-        <p>那是未來之懼，是對修行者內心深處最恐懼的未來的具象化和呈現。</p>
-        <p>他看到了一個可怕而殘酷的畫面：深淵之門完全打開，無數的深淵魔族從門中湧出，像潮水一樣淹沒了整個中州，黑色的洪流席捲了一切生機和希望，將大地變成了人間煉獄。他看到白淺倒在血泊中，身上的白衣被鮮血染成了紅色，她的眼睛仍然睜著，充滿了不甘和留戀，彷彿在生命的最後一刻仍然在呼喚著他的名字，想要再看他一眼。他看到慕容青雲被深淵魔族的利爪穿透了胸膛，蘇婉清和韓子墨在絕望中引爆了體內的靈力，化作了兩團燦爛而悲壯的光芒，那是他們在生命最後一刻綻放的光輝和意志。他看到聯盟的旗幟在火焰中化為灰燼，那些曾經代表著希望和團結的旗幟在烈火中扭曲和燃燒，最終變成了黑色的殘骸。他看到中州的城池一座接一座地陷落，城牆在深淵魔族的衝擊下崩塌，百姓在戰火中四散奔逃和哀嚎。他看到大地被鮮血和火焰覆蓋，生機勃勃的家園變成了修羅地獄和人間煉獄，滿目瘡痍，慘不忍睹。</p>
-        <p>而他本人，被深淵之主踩在腳下，無力地掙扎著，體內的靈力被一絲一絲地抽走，力量在不斷流失，卻沒有任何反抗的力量，只能眼睜睜地看著自己和身邊的人走向毀滅。他看到深淵之主的腳慢慢碾壓下來，將他的身體一點一點地碾碎，骨頭斷裂的聲音在耳邊清晰地迴盪，那種痛苦彷彿真實存在一般傳遍了他的全身……</p>
-        <p>那畫面是如此真實，如此殘酷，讓他彷彿能夠聞到空氣中鮮血的腥味和火焰的灼熱，感受到那些倒在血泊中的人們的痛苦和絕望。他的心跳驟然加速，拳頭握得咯咯作響，指甲幾乎嵌入了掌心和肉中，滲出了一絲鮮血。冷汗從他的額頭上滲出，沿著臉頰滑落，滴在虛無的地面上，在寂靜的空間中發出輕微的滴答聲，讓整個空間顯得更加寂靜和壓抑。</p>
-        <p>但他閉上了眼睛，深呼吸了幾次，讓自己的心跳平復下來，然後再次睜開。</p>
-        <p>他的目光在這一刻變得前所未有的清明和堅定。</p>
-        <p>「這是假的。」他的聲音平靜而篤定，沒有一絲動搖和恐懼，就像是一塊在風浪中屹立不倒的礁石，任憑驚濤駭浪拍打也紋絲不動，「就算這是可能發生的未來，我也不會讓它成為現實。我會變得更強，強到足以改變這個未來，強到足以保護我身邊的所有人，強到讓深淵之主的陰謀徹底破滅。我已經完成了輪迴之轉，在歸墟島上得到了嬰變九轉的傳承，我的道路已經清晰了，我知道該如何走下去。接下來的路，我會一步一步走下去，一步一個腳印，踏踏實實地向前邁進，直到徹底結束這場戰爭，直到將深淵的威脅從這個世界徹底清除和消滅，讓所有人都能夠安寧和平地生活，不再受到深淵的威脅和侵擾。」</p>
-        <p>他伸出手，向著那個畫面輕輕一揮，動作從容而果斷，沒有一絲猶豫和遲疑。</p>
-        <p>畫面就像一面鏡子一樣破碎了，化作無數細小的碎片，消散在虛空中，那些殘酷的景象如同煙雲般消散無蹤。那些碎片在消失之前，折射出各種各樣的光芒，彷彿在訴說著無數種可能的未來，每一種未來都在提醒他時間的緊迫和責任的重大，都在激勵他更加努力地修煉和成長。</p>
-        <p>金色的光芒從四面八方湧來，將灰色的虛空完全淹沒和吞噬，整個世界在這一刻重新恢復了光明和溫暖，彷彿太陽重新升起驅散了漫長的黑暗和寒冷。那些光芒如同母親溫暖的懷抱一樣將他緊緊包裹，驅散了他身上的寒冷和疲憊，帶來了一種前所未有的寧靜和安詳，就像是在風雨中漂泊的船隻終於找到了港灣和歸宿。他的心境在金色光芒的洗滌下變得更加清澈和純淨，所有的雜質和陰影都被驅散乾淨，他的靈魂在光芒中得到了洗禮和昇華，變得更加純粹和堅定。</p>
-        <p>當他再次睜開眼睛的時候，他回到了山洞中，回到了那扇金色大門之前，彷彿從一場漫長而真實的夢境中甦醒過來一樣。山洞中的一切都沒有改變，還是那樣的寧靜和安詳。山洞中依舊是那樣的寧靜和安詳，金色的光芒將整個空間照亮，彷彿剛才經歷的一切都只是一場夢境和幻覺。大門在他的感知中變得前所未有的清晰和接近，彷彿觸手可及，門縫已經擴展到了最後一線的寬度，只差最後一絲力量就能夠完全推開。他能夠透過門縫感受到門後那股浩瀚無邊的力量和奧秘，就像是無盡的宇宙在門後等待著他的探索和發掘。從門縫中湧出的金色光芒將他的整個身體都照亮了，讓他感到一種發自內心的溫暖和力量，那股力量如同母親的懷抱一樣溫暖而安心，滋養著他疲憊的心靈和身體。</p>
-        <p>心魔考驗通過了。</p>
-        <p>葉塵靜靜地站在那裡，感受著這一切，感受著體內那股更加沉穩和純粹的力量在血脈中靜靜流淌，如同一條溫暖的河流在他的身體中緩緩流動，撫平了他心中的所有創傷和傷痕。他的心境在經歷了心魔考驗之後變得更加沉穩和堅定，那些過去和未來的恐懼都無法動搖他的決心和意志，他的內心就像是一塊經過千錘百煉的鋼鐵，堅不可摧，無論遇到什麼樣的打擊和考驗都能夠從容應對和化解。他在心中默默地回想著剛才經歷的一切，那些面孔、那些畫面、那些痛苦和悲傷，都化為了他繼續前進的動力和信念，每一份痛苦都讓他的意志更加堅定，每一份悲傷都讓他的心靈更加強大，每一次考驗都讓他離真正的強者更近一步。</p>
-        <p>他在心中默默地體會著這番經歷帶給他的成長和蛻變，明白心魔考驗的真正意義不僅在於測試他的實力和心志，更在於讓他正視自己的過去和未來，接受自己的不完美和局限，然後在這種接受的基礎上找到超越自我的勇氣和力量。修行之路從來都不是一帆風順的坦途，而是充滿了坎坷和磨難的崎嶇山路，只有在磨難中不斷成長和蛻變的人，才能夠最終走向巔峰和輝煌。這種領悟讓他的心境發生了一種質的飛躍，就像是一塊經過烈火反覆鍛造的精鐵，終於被淬煉成了一把鋒利無比的寶劍，散發著冷冽而堅定的光芒，足以斬斷一切迷茫和猶豫。</p>
-        <p>他深吸了一口氣，將全身的力量凝聚到極致，準備發動最後的衝擊，將那扇大門完全推開。</p>
-        <p>他深吸了一口氣，準備發動最後的衝擊，將那扇大門完全推開。他握緊了塵淵劍，劍鋒上凝聚著耀眼的光芒。金色的光芒從門縫中不斷湧出，將整座山洞照耀得如同白晝一般明亮，照亮了他堅毅的面龐，將他的身影映照得如同遠古戰神一般莊嚴威武。他的體內靈力翻湧如潮，塵淵劍在手發出一聲輕盈而清越的劍鳴，劍鋒上凝聚著耀眼的光芒，整個人如同一張拉滿的弓弦，隨時準備釋放出最強烈的一擊。經歷了心魔考驗之後，他對自己的力量和道路有了更加清晰的認識和把握，也更加堅定了繼續前進的決心和信念，所有迷茫和猶豫都已經被拋在了身後。他握緊了塵淵劍，準備將自己最強的力量凝聚在劍鋒之上，一舉推開那扇金色的大門。</p>
-        <p>但就在這時，一股恐怖的氣息從遙遠的深淵之門方向爆發出來，如同一道毀滅性的風暴，向著他所在的山洞呼嘯而來，帶著毀滅一切的氣勢和力量，彷彿要將整個世界都吞噬和毀滅！那股氣息中帶著濃郁的深淵之力，冰冷而黑暗，彷彿來自於地獄深處的怒吼和咆哮，讓整個山洞都開始劇烈地震動起來，碎石從洞頂不斷墜落和飛濺，在地面上砸出一個個凹陷和裂紋，灰塵瀰漫在空氣中，讓視線變得模糊不清。金色的光芒在風暴的衝擊下變得搖曳不定，像是狂風中的燭火，隨時都可能熄滅和消散，整個空間都在這股恐怖的氣息下顫抖和哀鳴，彷彿末日降臨一般的景象和氛圍。葉塵的瞳孔驟然收縮，全身的肌肉在瞬間繃緊，握緊了手中的塵淵劍，劍鋒上重新凝聚起耀眼的光芒，他知道真正的戰鬥才剛剛開始，眼前的考驗只是前奏而已。更艱難的挑戰還在前面等待著他，但他已經做好了迎接一切準備的覺悟和決心。</p>
-        
-    </main>
-    <nav class="nav">
-        <a href="chapter-909.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-910/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-911.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第910章 · 心魔 - 萬古塵埃</title><link rel="canonical" href=""><link rel="prev" href="chapter-909.html"><link rel="next" href="chapter-911.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第910章 · 心魔</h1><main><p>然後，一個身影從虛空中浮現出來，像是從深淵中爬出的幽靈一般令人心驚膽寒。那個身影由灰色的霧氣凝聚而成，剛開始只是一個模糊的輪廓和影子，在霧氣中若隱若現，但隨著霧氣不斷旋轉和凝聚，那個身影變得越來越清晰和具體，最終形成了一個讓葉塵記憶猶新的面孔和形象。那張臉上帶著猙獰而怨毒的表情，雙眼中燃燒著仇恨的火焰，彷彿要將葉塵的靈魂都燒穿和吞噬，讓人感到一種深入骨髓的寒意和恐懼，彷彿連血液都要凝固了一般。</p><p>那是他第一次殺死的人，一個煉魂境的強盜頭目，在他剛踏入修煉之路時遇到的第一個真正的對手和考驗。當時那個強盜頭目正在襲擊一支商隊，殘忍地殺害了十幾條無辜的生命，鮮血染紅了大地，慘叫聲在曠野中迴盪。葉塵出於正義和憤怒出手阻止了他，在經過了一番激烈的戰鬥之後，最終了結了他的性命。那個強盜頭目的臉上帶著猙獰而怨毒的表情，雙眼中燃燒著仇恨的火焰，向著他撲了過來，口中發出淒厲而尖銳的嘶吼聲，彷彿要將他拖入地獄深淵。</p><p>「還我命來！」</p><p>葉塵的心神微微一顫，但他很快穩住了心緒，平靜地看著那個向他撲來的身影，沒有躲避，也沒有還手，就像是一座在風浪中巍然不動的山岳。他的目光坦然直視著那個強盜頭目的眼睛，沒有一絲心虛和畏懼，坦然地面對著自己過去的選擇和行為。他清楚地記得這個人，記得這個強盜頭目當初是如何殘忍地殺害那些無辜的商旅，如何將一個又一個家庭推入深淵和痛苦之中。正因為如此，他當初下手時沒有絲毫猶豫和手軟，現在面對這張面孔時也不會有任何愧疚和自責。</p><p>身影穿過了他的身體，消散在了虛空中，只留下一陣冰冷的觸感和淡淡的怨念，在周圍的空氣中緩緩飄散和消逝。那冰冷的感覺讓他的皮膚起了一層雞皮疙瘩，但他的內心卻出奇地平靜和坦然。</p><p>「我不怕你。」他低聲說道，聲音雖然輕柔但充滿了堅定和力量，在虛空中清晰地迴盪和傳播，「因為我殺你，是為了保護無辜的人。你襲擊商隊，殺害了十幾條人命，讓無數家庭破碎和痛苦，我殺你是替天行道，是為了讓更多人免受你的傷害和殘害。我問心無愧，不後悔當初的決定和選擇。」</p><p>虛空中響起了歸墟島主人的聲音，平靜而深邃，帶著一絲讚許和欣慰，在灰色的空間中清晰地迴盪和傳播：「心魔考驗……第一個考驗，是過去之業。你殺過的每一個人、做過的每一件虧心事，都會在這裡重現，試圖擊垮你的心志和信念。你做得很好，你能夠坦然面對自己的過去，不逃避不後悔，這份心境實屬難得和可貴。很多修士在面對過去之業時，要麼逃避否認，要麼被愧疚壓垮，而你卻能夠坦然面對，真誠懺悔，這說明你的道心已經達到了相當高的境界。但接下來的考驗會更加艱難，更加殘酷，你需要做好充分的準備。」</p><p>葉塵深吸了一口氣，目光堅定地說道：「我這一生，殺過很多人，有該殺的，也有不該殺的。但無論是哪一種，都是我自己選擇的路，我自己承擔的業。我不會逃避，也不會後悔。來吧，將所有的考驗都一起降臨吧，我會一一面對，一一擊破。」他的聲音雖然不高，但每一個字都擲地有聲，充滿了不容置疑的決心和力量，在虛空中清晰地迴盪和傳播。他知道，心魔考驗不僅僅是對他實力的測試，更是對他道心的磨礪和淬煉，是他突破到嬰變境必須跨過的最後一道門檻和障礙。</p><p>虛空中的景象開始變幻，就像是一幅巨大的畫卷在他的眼前展開，將他一生中所有的遺憾和愧疚都呈現在他的面前。</p><p>更多的面孔從虛空中浮現出來，密密麻麻地排列在他的周圍，那些面孔中有敵人、有陌生人、也有無辜的百姓，每一張臉上都帶著不同的表情和情緒。他看到煉神谷谷主臨死前的不甘和怨毒，看到那些因為戰爭而流離失所的百姓的絕望和痛苦，看到那些在他面前倒下的同伴和戰友的遺憾和悲傷。每一個人的面孔都清晰而真實，彷彿就站在他的面前，用無聲的責備和控訴注視著他，等待著他的回答和回應。</p><p>他的心在刺痛，一股酸楚和自責湧上心頭，讓他感到胸口一陣陣的絞痛和窒息，彷彿要將他的靈魂撕裂和碾碎。他想起那些因為他的決定而犧牲的人，想起那些他沒能來得及拯救的生命，想起那些在戰爭中失去家園和親人的百姓。每一個畫面都像一把鋒利的刀子，在他的心上劃下一道道傷口，讓他感受到了前所未有的痛苦和煎熬，彷彿要將他淹沒在無邊的悔恨和自責之中。</p><p>但他沒有退縮，沒有逃避。</p><p>他一個一個地直視著那些面孔，將每一張臉都牢牢地記在心中，然後向他們深深地鞠了一躬。他的動作鄭重而真誠，充滿了敬意和歉意，每一個鞠躬都代表著他對那些逝去生命的尊重和懺悔。</p><p>「對不起。」他的聲音低沉而沙啞，帶著無法掩飾的悲傷和愧疚，像是一塊沉重的石頭從他的心底被搬了出來，「我沒能救下所有人。我知道，一句對不起無法彌補你們失去的一切，無法讓那些已經逝去的生命重新回來。但我向你們保證，我一定會終結這場戰爭，讓更多的人不再經歷同樣的痛苦和悲傷。這是我對你們的承諾，也是我對自己的誓言和責任。」</p><p>話音落下，那些面孔一個接一個地消散了。有些面孔在消散前露出了理解和釋然的表情，彷彿在說他們理解他的選擇和苦衷，願意將過去的一切都放下和釋懷；有些則仍然帶著不甘和怨念，瞪大了眼睛注視著他，彷彿在質問他為什麼沒有能夠拯救他們，為什麼他們的命運會是如此悲慘和殘酷。但不管怎樣，這些面孔最終都化作了虛無，消失在灰色的空間中，只留下了一陣淡淡的回音在空間中迴盪和消散，以及一股揮之不去的悲傷和感觸。</p><p>葉塵感到心中的某種沉重負擔在這一刻減輕了許多，就像是壓在胸口多年的一塊巨石終於被移開了一樣，讓他能夠暢快地呼吸和思考。那種釋然的感覺如同春風拂過冰凍的大地，讓他的心靈重新獲得了自由和活力，所有的陰霾和沉重都在這一刻煙消雲散。他感到前所未有的輕鬆和釋然，彷彿卸下了多年來一直背負的包袱和枷鎖。他知道，那些死去的人不會原諒他，他也不奢求他們的寬恕和諒解。他只需要對得起自己的良心和信念就足夠了，他會用實際的行動來證明自己的決心和承諾，用未來的努力來彌補過去的遺憾和不足，讓那些因為戰爭而失去家園和親人的人們重新獲得安寧和幸福。</p><p>灰色的虛空開始出現了裂縫，金色的光芒從裂縫中滲透進來，將周圍的黑暗和灰色驅散。那些裂縫越來越大，金色的光芒越來越強烈，就像是黎明衝破黑夜的束縛一樣，將光明和溫暖重新帶回了這個灰色的世界。那些金色光芒灑落在他的身上，帶來了一種溫暖而柔和的力量，彷彿在讚許他通過了第一重考驗，在肯定他的選擇和堅持。那些光芒像是一雙溫柔的手，輕輕撫摸著他的心靈，將殘留在心中的最後一絲陰霾和傷痛也驅散乾淨。</p><p>緊接著，第二個考驗降臨了，沒給他太多喘息的時間和機會。</p><p>那是未來之懼，是對修行者內心深處最恐懼的未來的具象化和呈現。</p><p>他看到了一個可怕而殘酷的畫面：深淵之門完全打開，無數的深淵魔族從門中湧出，像潮水一樣淹沒了整個中州，黑色的洪流席捲了一切生機和希望，將大地變成了人間煉獄。他看到白淺倒在血泊中，身上的白衣被鮮血染成了紅色，她的眼睛仍然睜著，充滿了不甘和留戀，彷彿在生命的最後一刻仍然在呼喚著他的名字，想要再看他一眼。他看到慕容青雲被深淵魔族的利爪穿透了胸膛，蘇婉清和韓子墨在絕望中引爆了體內的靈力，化作了兩團燦爛而悲壯的光芒，那是他們在生命最後一刻綻放的光輝和意志。他看到聯盟的旗幟在火焰中化為灰燼，那些曾經代表著希望和團結的旗幟在烈火中扭曲和燃燒，最終變成了黑色的殘骸。他看到中州的城池一座接一座地陷落，城牆在深淵魔族的衝擊下崩塌，百姓在戰火中四散奔逃和哀嚎。他看到大地被鮮血和火焰覆蓋，生機勃勃的家園變成了修羅地獄和人間煉獄，滿目瘡痍，慘不忍睹。</p><p>而他本人，被深淵之主踩在腳下，無力地掙扎著，體內的靈力被一絲一絲地抽走，力量在不斷流失，卻沒有任何反抗的力量，只能眼睜睜地看著自己和身邊的人走向毀滅。他看到深淵之主的腳慢慢碾壓下來，將他的身體一點一點地碾碎，骨頭斷裂的聲音在耳邊清晰地迴盪，那種痛苦彷彿真實存在一般傳遍了他的全身……</p><p>那畫面是如此真實，如此殘酷，讓他彷彿能夠聞到空氣中鮮血的腥味和火焰的灼熱，感受到那些倒在血泊中的人們的痛苦和絕望。他的心跳驟然加速，拳頭握得咯咯作響，指甲幾乎嵌入了掌心和肉中，滲出了一絲鮮血。冷汗從他的額頭上滲出，沿著臉頰滑落，滴在虛無的地面上，在寂靜的空間中發出輕微的滴答聲，讓整個空間顯得更加寂靜和壓抑。</p><p>但他閉上了眼睛，深呼吸了幾次，讓自己的心跳平復下來，然後再次睜開。</p><p>他的目光在這一刻變得前所未有的清明和堅定。</p><p>「這是假的。」他的聲音平靜而篤定，沒有一絲動搖和恐懼，就像是一塊在風浪中屹立不倒的礁石，任憑驚濤駭浪拍打也紋絲不動，「就算這是可能發生的未來，我也不會讓它成為現實。我會變得更強，強到足以改變這個未來，強到足以保護我身邊的所有人，強到讓深淵之主的陰謀徹底破滅。我已經完成了輪迴之轉，在歸墟島上得到了嬰變九轉的傳承，我的道路已經清晰了，我知道該如何走下去。接下來的路，我會一步一步走下去，一步一個腳印，踏踏實實地向前邁進，直到徹底結束這場戰爭，直到將深淵的威脅從這個世界徹底清除和消滅，讓所有人都能夠安寧和平地生活，不再受到深淵的威脅和侵擾。」</p><p>他伸出手，向著那個畫面輕輕一揮，動作從容而果斷，沒有一絲猶豫和遲疑。</p><p>畫面就像一面鏡子一樣破碎了，化作無數細小的碎片，消散在虛空中，那些殘酷的景象如同煙雲般消散無蹤。那些碎片在消失之前，折射出各種各樣的光芒，彷彿在訴說著無數種可能的未來，每一種未來都在提醒他時間的緊迫和責任的重大，都在激勵他更加努力地修煉和成長。</p><p>金色的光芒從四面八方湧來，將灰色的虛空完全淹沒和吞噬，整個世界在這一刻重新恢復了光明和溫暖，彷彿太陽重新升起驅散了漫長的黑暗和寒冷。那些光芒如同母親溫暖的懷抱一樣將他緊緊包裹，驅散了他身上的寒冷和疲憊，帶來了一種前所未有的寧靜和安詳，就像是在風雨中漂泊的船隻終於找到了港灣和歸宿。他的心境在金色光芒的洗滌下變得更加清澈和純淨，所有的雜質和陰影都被驅散乾淨，他的靈魂在光芒中得到了洗禮和昇華，變得更加純粹和堅定。</p><p>當他再次睜開眼睛的時候，他回到了山洞中，回到了那扇金色大門之前，彷彿從一場漫長而真實的夢境中甦醒過來一樣。山洞中的一切都沒有改變，還是那樣的寧靜和安詳。山洞中依舊是那樣的寧靜和安詳，金色的光芒將整個空間照亮，彷彿剛才經歷的一切都只是一場夢境和幻覺。大門在他的感知中變得前所未有的清晰和接近，彷彿觸手可及，門縫已經擴展到了最後一線的寬度，只差最後一絲力量就能夠完全推開。他能夠透過門縫感受到門後那股浩瀚無邊的力量和奧秘，就像是無盡的宇宙在門後等待著他的探索和發掘。從門縫中湧出的金色光芒將他的整個身體都照亮了，讓他感到一種發自內心的溫暖和力量，那股力量如同母親的懷抱一樣溫暖而安心，滋養著他疲憊的心靈和身體。</p><p>心魔考驗通過了。</p><p>葉塵靜靜地站在那裡，感受著這一切，感受著體內那股更加沉穩和純粹的力量在血脈中靜靜流淌，如同一條溫暖的河流在他的身體中緩緩流動，撫平了他心中的所有創傷和傷痕。他的心境在經歷了心魔考驗之後變得更加沉穩和堅定，那些過去和未來的恐懼都無法動搖他的決心和意志，他的內心就像是一塊經過千錘百煉的鋼鐵，堅不可摧，無論遇到什麼樣的打擊和考驗都能夠從容應對和化解。他在心中默默地回想著剛才經歷的一切，那些面孔、那些畫面、那些痛苦和悲傷，都化為了他繼續前進的動力和信念，每一份痛苦都讓他的意志更加堅定，每一份悲傷都讓他的心靈更加強大，每一次考驗都讓他離真正的強者更近一步。</p><p>他在心中默默地體會著這番經歷帶給他的成長和蛻變，明白心魔考驗的真正意義不僅在於測試他的實力和心志，更在於讓他正視自己的過去和未來，接受自己的不完美和局限，然後在這種接受的基礎上找到超越自我的勇氣和力量。修行之路從來都不是一帆風順的坦途，而是充滿了坎坷和磨難的崎嶇山路，只有在磨難中不斷成長和蛻變的人，才能夠最終走向巔峰和輝煌。這種領悟讓他的心境發生了一種質的飛躍，就像是一塊經過烈火反覆鍛造的精鐵，終於被淬煉成了一把鋒利無比的寶劍，散發著冷冽而堅定的光芒，足以斬斷一切迷茫和猶豫。</p><p>他深吸了一口氣，將全身的力量凝聚到極致，準備發動最後的衝擊，將那扇大門完全推開。</p><p>他深吸了一口氣，準備發動最後的衝擊，將那扇大門完全推開。他握緊了塵淵劍，劍鋒上凝聚著耀眼的光芒。金色的光芒從門縫中不斷湧出，將整座山洞照耀得如同白晝一般明亮，照亮了他堅毅的面龐，將他的身影映照得如同遠古戰神一般莊嚴威武。他的體內靈力翻湧如潮，塵淵劍在手發出一聲輕盈而清越的劍鳴，劍鋒上凝聚著耀眼的光芒，整個人如同一張拉滿的弓弦，隨時準備釋放出最強烈的一擊。經歷了心魔考驗之後，他對自己的力量和道路有了更加清晰的認識和把握，也更加堅定了繼續前進的決心和信念，所有迷茫和猶豫都已經被拋在了身後。他握緊了塵淵劍，準備將自己最強的力量凝聚在劍鋒之上，一舉推開那扇金色的大門。</p><p>但就在這時，一股恐怖的氣息從遙遠的深淵之門方向爆發出來，如同一道毀滅性的風暴，向著他所在的山洞呼嘯而來，帶著毀滅一切的氣勢和力量，彷彿要將整個世界都吞噬和毀滅！那股氣息中帶著濃郁的深淵之力，冰冷而黑暗，彷彿來自於地獄深處的怒吼和咆哮，讓整個山洞都開始劇烈地震動起來，碎石從洞頂不斷墜落和飛濺，在地面上砸出一個個凹陷和裂紋，灰塵瀰漫在空氣中，讓視線變得模糊不清。金色的光芒在風暴的衝擊下變得搖曳不定，像是狂風中的燭火，隨時都可能熄滅和消散，整個空間都在這股恐怖的氣息下顫抖和哀鳴，彷彿末日降臨一般的景象和氛圍。葉塵的瞳孔驟然收縮，全身的肌肉在瞬間繃緊，握緊了手中的塵淵劍，劍鋒上重新凝聚起耀眼的光芒，他知道真正的戰鬥才剛剛開始，眼前的考驗只是前奏而已。更艱難的挑戰還在前面等待著他，但他已經做好了迎接一切準備的覺悟和決心。</p></main><nav class="nav"><a href="chapter-909.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-910/" class="manga-btn">🎨 漫畫版</a><a href="chapter-911.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

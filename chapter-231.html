@@ -1,288 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第231章 · 心魔降臨 - 萬古塵埃</title>
-    <meta name="description" content="沒有雷鳴，沒有閃電，沒有驚天動地的異象。四周的空氣只是突然變得沉重起來，像是一層無形的薄膜覆蓋了整個空間。瀑布的水聲、風吹樹葉的沙沙聲、遠處蟲鳴的聲音……所有的聲音都在這一刻消失了，天地之間陷入了一種詭異的寂靜。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-231.html">
-    <link rel="prev" href="https://kofhk.com/chapter-230.html">
-    <link rel="next" href="https://kofhk.com/chapter-232.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第231章 · 心魔降臨</h1>
-    <main>
-        <p>第三重天劫,心魔關，降臨了。</p>
-        <p>沒有雷鳴，沒有閃電，沒有驚天動地的異象。四周的空氣只是突然變得沉重起來，像是一層無形的薄膜覆蓋了整個空間。瀑布的水聲、風吹樹葉的沙沙聲、遠處蟲鳴的聲音……所有的聲音都在這一刻消失了，天地之間陷入了一種詭異的寂靜。</p>
-        <p>葉塵站在原地，警惕地觀察著周圍的變化。</p>
-        <p>他能感覺到，有一股無形的力量正在入侵他的識海。那股力量非常隱蔽，不像是天雷那樣直接轟擊，而是像水一樣滲透,從他意識中最微小的縫隙中滲入，悄悄地影響著他的感知和判斷。</p>
-        <p>「心魔……來了。」</p>
-        <p>葉塵深吸一口氣，將意識沉入識海之中。</p>
-        <p>識海中，元神的雛形正在散發著微弱的光芒。但那光芒在無形力量的壓迫下，開始搖曳不定，像是風中的燭火。</p>
-        <p>就在這時，他眼前的景象突然發生了變化。</p>
-        <p>瀑布消失了，樹林消失了，天空中的烏雲也消失了。他站在一片白茫茫的空間中，四周什麼都沒有，只有無盡的白色。</p>
-        <p>然後，一個身影從白色中走了出來。</p>
-        <p>那是一個老者，鬚髮花白，身穿黑色長袍。他的面容模糊不清，但葉塵一眼就認出了他,那是天淵門的強者，那個在青雲宗山門前被他一劍斬殺的煉魂後期老者！</p>
-        <p>「你……你怎麼會在這裡？！」</p>
-        <p>葉塵心中大驚，本能地握緊了手中的塵淵劍。</p>
-        <p>但老者沒有回答他的問題，只是靜靜地站在那裡，用一種空洞的眼神看著他。然後，他的身體開始變化,他的皮膚變得蒼白，然後腐爛，露出下面的白骨。鮮血從他的傷口中流淌出來，滴落在地上，發出令人作嘔的腥臭味。</p>
-        <p>「我死得好慘啊……」老者發出淒厲的哀嚎，「你殺了我……你殺了我……」</p>
-        <p>葉塵的心神一陣動搖。</p>
-        <p>雖然他知道這是心魔製造的幻象，但那個老者的死狀太過真實，讓他忍不住回想起那一戰。那一劍,塵歸，穿透了老者的身體，將他的生機徹底斬斷。</p>
-        <p>「不……不是我殺的你……」葉塵後退了一步，聲音有些顫抖，「是你們先來攻擊青雲宗的……我只是自衛……」</p>
-        <p>「自衛？」老者的笑聲更加淒厲了，「你這個劊子手……你殺了我……你手上沾滿了我的鮮血……」</p>
-        <p>老者的身體繼續腐爛，最終化為一灘血水，消失在了白色之中。</p>
-        <p>但新的幻象馬上出現了。</p>
-        <p>這一次，出現在葉塵面前的是陳天罡。陳天罡的胸口被一柄劍刺穿了，鮮血流淌不息。他的臉色蒼白如紙，眼睛睜得大大的，充滿了不甘和憤怒。</p>
-        <p>「葉塵……你為什麼不救我……」</p>
-        <p>陳天罡的聲音嘶啞而絕望，「我為了救你……被天淵門的人刺穿了心臟……你為什麼不救我……」</p>
-        <p>「不……不是這樣的……」葉塵的聲音顫抖得更加厲害了，「我還來得及救宗主……宗主不是還活著嗎……」</p>
-        <p>「那是假的……」陳天罡的笑容變得詭異起來，「我早就死了……你看到的那個我……只是你的幻覺……真正的我……在你面前死了……」</p>
-        <p>葉塵的頭腦一片混亂。</p>
-        <p>他知道這是心魔製造的幻象，但那些畫面太過真實，讓他無法完全否定。尤其是陳天罡受傷的那一幕,那是他親眼所見，陳天罡為了救他，被老者的劍刺穿了胸口。雖然後來他救活了陳天罡，但那一幕始終是他心中的一根刺。</p>
-        <p>「不……你走開……你不要來擾亂我……」</p>
-        <p>葉塵摀住頭，大聲嘶吼。</p>
-        <p>但幻象一個接一個地出現。</p>
-        <p>秦昭陽、林若溪、韓冰、孫長老……那些他在青雲宗認識的人，一個個出現在他的面前，用各種各樣的方式指責他、咒罵他、嘲笑他。每一句話都像是一把刀，狠狠地刺在他的心上，將他內心深處那些不為人知的恐懼和自責一一挖出。</p>
-        <p>「你不該活下來……」</p>
-        <p>「是你害了他們……」</p>
-        <p>「你這個掃把星……」</p>
-        <p>「如果你沒有來到青雲宗，一切都不會發生……」</p>
-        <p>那些聲音在他的腦海中迴盪，越來越大，越來越尖銳。它們像是一群蒼蠅，在他的意識中嗡嗡作響，讓他無法思考，無法集中精力。</p>
-        <p>葉塵跪在地上，雙手緊緊地摀住耳朵，身體在劇烈地顫抖。</p>
-        <p>他知道這是幻象。</p>
-        <p>但那種真實感太強烈了。那些話語像是有實質的力量，直接作用於他的靈魂深處，將他內心中最不願意面對的那一面赤裸裸地展現在他的面前。他從來沒有想過，在他的內心深處，竟然隱藏著如此多的自責和恐懼。</p>
-        <p>葉塵跪在地上，額頭的汗水順著臉頰滴落，在白色的地面上暈開。他雙手緊緊抓住地面，指節因用力而泛白。那些幻象雖然是假的，但它們勾起的記憶和情感卻真實得讓人心悸。他想起自己從小失去父母，獨自在世間掙扎求存；想起在青雲宗第一次握劍時那份激動與忐忑；想起每一場生死戰鬥中那些擦肩而過的死亡。</p>
-        <p>這些記憶像是潮水一般湧來，將他淹沒。他感覺自己像是置身於一片無邊無際的深海之中，四周都是冰冷的黑暗，找不到方向，找不到出口。</p>
-        <p>「你,還,不,夠,強,大,」</p>
-        <p>一個聲音突然在他腦海中炸開。</p>
-        <p>那個聲音與之前所有聲音都不一樣,它更加深沉，更加古老，帶著一股難以抗拒的威嚴。</p>
-        <p>葉塵抬起頭，看到一個黑色的身影從白色中走了出來。</p>
-        <p>那個身影高大而模糊，像是由黑暗凝聚而成。它的眼睛是兩團燃燒的黑色火焰，散發出令人心悸的光芒。它的身上散發著一股強大的氣息,那股氣息葉塵非常熟悉，因為那是他自己的氣息，但又截然不同。</p>
-        <p>「你是……誰？」</p>
-        <p>葉塵顫聲問道。</p>
-        <p>「我？我就是你啊。」那個黑色身影笑了，笑容中充滿了嘲諷，「我是你內心深處的黑暗面,你的恐懼、你的憤怒、你的欲望、你的執念,全部凝聚而成的存在。我是你，卻又不是你。我是你永遠不願意面對的那一部分。」</p>
-        <p>葉塵的心猛地一沉。</p>
-        <p>他聽說過心魔關中最可怕的存在,心魔化身。那是天劫將渡劫者內心最深處的負面情緒凝聚而成的實體，擁有與渡劫者相同的記憶、相同的思維模式、相同的戰鬥能力。要戰勝心魔化身，就等於要戰勝自己。</p>
-        <p>而最難戰勝的，永遠是自己。</p>
-        <p>他緩緩站了起來，目光直視著那個黑色的身影。周圍的白色空間在這一刻開始扭曲，那些原本環繞在他身邊的幻象一個接一個地破碎消散，取而代之的是一片虛無的黑暗。在這片黑暗中，只有他和那個心魔化身相對而立。</p>
-        <p>「你要戰勝我？」心魔化身輕笑了一聲，那笑容中帶著不屑和憐憫，「你連自己的恐懼都無法面對，又如何能夠戰勝我？你看看吧，你的手在顫抖，你的心跳在加速，你的靈魂在畏縮──你害怕了。」</p>
-        <p>葉塵低頭看著自己的雙手。確實，它們在輕輕顫抖。他無法否認，他確實害怕了。不是害怕死亡，而是害怕面對那個真實的自己。他深吸一口氣，努力讓自己的呼吸平穩下來。</p>
-        <p>「害怕不代表會退縮。」葉塵抬起頭，眼神漸漸變得堅定，「我會戰勝你，就像我戰勝之前的每一道難關一樣。」</p>
-    </main>
-    <nav class="nav">
-        <a href="https://kofhk.com/chapter-230.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-231/" class="manga-btn">🎨 漫畫版</a>
-        <a href="https://kofhk.com/chapter-232.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第231章 · 心魔降臨 - 萬古塵埃</title><meta name="description" content="沒有雷鳴，沒有閃電，沒有驚天動地的異象。四周的空氣只是突然變得沉重起來，像是一層無形的薄膜覆蓋了整個空間。瀑布的水聲、風吹樹葉的沙沙聲、遠處蟲鳴的聲音……所有的聲音都在這一刻消失了，天地之間陷入了一種詭異的寂靜。"><link rel="canonical" href="https://kofhk.com/chapter-231.html"><link rel="prev" href="https://kofhk.com/chapter-230.html"><link rel="next" href="https://kofhk.com/chapter-232.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第231章 · 心魔降臨</h1><main><p>第三重天劫,心魔關，降臨了。</p><p>沒有雷鳴，沒有閃電，沒有驚天動地的異象。四周的空氣只是突然變得沉重起來，像是一層無形的薄膜覆蓋了整個空間。瀑布的水聲、風吹樹葉的沙沙聲、遠處蟲鳴的聲音……所有的聲音都在這一刻消失了，天地之間陷入了一種詭異的寂靜。</p><p>葉塵站在原地，警惕地觀察著周圍的變化。</p><p>他能感覺到，有一股無形的力量正在入侵他的識海。那股力量非常隱蔽，不像是天雷那樣直接轟擊，而是像水一樣滲透,從他意識中最微小的縫隙中滲入，悄悄地影響著他的感知和判斷。</p><p>「心魔……來了。」</p><p>葉塵深吸一口氣，將意識沉入識海之中。</p><p>識海中，元神的雛形正在散發著微弱的光芒。但那光芒在無形力量的壓迫下，開始搖曳不定，像是風中的燭火。</p><p>就在這時，他眼前的景象突然發生了變化。</p><p>瀑布消失了，樹林消失了，天空中的烏雲也消失了。他站在一片白茫茫的空間中，四周什麼都沒有，只有無盡的白色。</p><p>然後，一個身影從白色中走了出來。</p><p>那是一個老者，鬚髮花白，身穿黑色長袍。他的面容模糊不清，但葉塵一眼就認出了他,那是天淵門的強者，那個在青雲宗山門前被他一劍斬殺的煉魂後期老者！</p><p>「你……你怎麼會在這裡？！」</p><p>葉塵心中大驚，本能地握緊了手中的塵淵劍。</p><p>但老者沒有回答他的問題，只是靜靜地站在那裡，用一種空洞的眼神看著他。然後，他的身體開始變化,他的皮膚變得蒼白，然後腐爛，露出下面的白骨。鮮血從他的傷口中流淌出來，滴落在地上，發出令人作嘔的腥臭味。</p><p>「我死得好慘啊……」老者發出淒厲的哀嚎，「你殺了我……你殺了我……」</p><p>葉塵的心神一陣動搖。</p><p>雖然他知道這是心魔製造的幻象，但那個老者的死狀太過真實，讓他忍不住回想起那一戰。那一劍,塵歸，穿透了老者的身體，將他的生機徹底斬斷。</p><p>「不……不是我殺的你……」葉塵後退了一步，聲音有些顫抖，「是你們先來攻擊青雲宗的……我只是自衛……」</p><p>「自衛？」老者的笑聲更加淒厲了，「你這個劊子手……你殺了我……你手上沾滿了我的鮮血……」</p><p>老者的身體繼續腐爛，最終化為一灘血水，消失在了白色之中。</p><p>但新的幻象馬上出現了。</p><p>這一次，出現在葉塵面前的是陳天罡。陳天罡的胸口被一柄劍刺穿了，鮮血流淌不息。他的臉色蒼白如紙，眼睛睜得大大的，充滿了不甘和憤怒。</p><p>「葉塵……你為什麼不救我……」</p><p>陳天罡的聲音嘶啞而絕望，「我為了救你……被天淵門的人刺穿了心臟……你為什麼不救我……」</p><p>「不……不是這樣的……」葉塵的聲音顫抖得更加厲害了，「我還來得及救宗主……宗主不是還活著嗎……」</p><p>「那是假的……」陳天罡的笑容變得詭異起來，「我早就死了……你看到的那個我……只是你的幻覺……真正的我……在你面前死了……」</p><p>葉塵的頭腦一片混亂。</p><p>他知道這是心魔製造的幻象，但那些畫面太過真實，讓他無法完全否定。尤其是陳天罡受傷的那一幕,那是他親眼所見，陳天罡為了救他，被老者的劍刺穿了胸口。雖然後來他救活了陳天罡，但那一幕始終是他心中的一根刺。</p><p>「不……你走開……你不要來擾亂我……」</p><p>葉塵摀住頭，大聲嘶吼。</p><p>但幻象一個接一個地出現。</p><p>秦昭陽、林若溪、韓冰、孫長老……那些他在青雲宗認識的人，一個個出現在他的面前，用各種各樣的方式指責他、咒罵他、嘲笑他。每一句話都像是一把刀，狠狠地刺在他的心上，將他內心深處那些不為人知的恐懼和自責一一挖出。</p><p>「你不該活下來……」</p><p>「是你害了他們……」</p><p>「你這個掃把星……」</p><p>「如果你沒有來到青雲宗，一切都不會發生……」</p><p>那些聲音在他的腦海中迴盪，越來越大，越來越尖銳。它們像是一群蒼蠅，在他的意識中嗡嗡作響，讓他無法思考，無法集中精力。</p><p>葉塵跪在地上，雙手緊緊地摀住耳朵，身體在劇烈地顫抖。</p><p>他知道這是幻象。</p><p>但那種真實感太強烈了。那些話語像是有實質的力量，直接作用於他的靈魂深處，將他內心中最不願意面對的那一面赤裸裸地展現在他的面前。他從來沒有想過，在他的內心深處，竟然隱藏著如此多的自責和恐懼。</p><p>葉塵跪在地上，額頭的汗水順著臉頰滴落，在白色的地面上暈開。他雙手緊緊抓住地面，指節因用力而泛白。那些幻象雖然是假的，但它們勾起的記憶和情感卻真實得讓人心悸。他想起自己從小失去父母，獨自在世間掙扎求存；想起在青雲宗第一次握劍時那份激動與忐忑；想起每一場生死戰鬥中那些擦肩而過的死亡。</p><p>這些記憶像是潮水一般湧來，將他淹沒。他感覺自己像是置身於一片無邊無際的深海之中，四周都是冰冷的黑暗，找不到方向，找不到出口。</p><p>「你,還,不,夠,強,大,」</p><p>一個聲音突然在他腦海中炸開。</p><p>那個聲音與之前所有聲音都不一樣,它更加深沉，更加古老，帶著一股難以抗拒的威嚴。</p><p>葉塵抬起頭，看到一個黑色的身影從白色中走了出來。</p><p>那個身影高大而模糊，像是由黑暗凝聚而成。它的眼睛是兩團燃燒的黑色火焰，散發出令人心悸的光芒。它的身上散發著一股強大的氣息,那股氣息葉塵非常熟悉，因為那是他自己的氣息，但又截然不同。</p><p>「你是……誰？」</p><p>葉塵顫聲問道。</p><p>「我？我就是你啊。」那個黑色身影笑了，笑容中充滿了嘲諷，「我是你內心深處的黑暗面,你的恐懼、你的憤怒、你的欲望、你的執念,全部凝聚而成的存在。我是你，卻又不是你。我是你永遠不願意面對的那一部分。」</p><p>葉塵的心猛地一沉。</p><p>他聽說過心魔關中最可怕的存在,心魔化身。那是天劫將渡劫者內心最深處的負面情緒凝聚而成的實體，擁有與渡劫者相同的記憶、相同的思維模式、相同的戰鬥能力。要戰勝心魔化身，就等於要戰勝自己。</p><p>而最難戰勝的，永遠是自己。</p><p>他緩緩站了起來，目光直視著那個黑色的身影。周圍的白色空間在這一刻開始扭曲，那些原本環繞在他身邊的幻象一個接一個地破碎消散，取而代之的是一片虛無的黑暗。在這片黑暗中，只有他和那個心魔化身相對而立。</p><p>「你要戰勝我？」心魔化身輕笑了一聲，那笑容中帶著不屑和憐憫，「你連自己的恐懼都無法面對，又如何能夠戰勝我？你看看吧，你的手在顫抖，你的心跳在加速，你的靈魂在畏縮──你害怕了。」</p><p>葉塵低頭看著自己的雙手。確實，它們在輕輕顫抖。他無法否認，他確實害怕了。不是害怕死亡，而是害怕面對那個真實的自己。他深吸一口氣，努力讓自己的呼吸平穩下來。</p><p>「害怕不代表會退縮。」葉塵抬起頭，眼神漸漸變得堅定，「我會戰勝你，就像我戰勝之前的每一道難關一樣。」</p></main><nav class="nav"><a href="https://kofhk.com/chapter-230.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-231/" class="manga-btn">🎨 漫畫版</a><a href="https://kofhk.com/chapter-232.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

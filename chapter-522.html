@@ -1,286 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第522章 · 萬古塵城 - 萬古塵埃</title>
-    <link rel="canonical" href="">
-    <link rel="prev" href="chapter-521.html">
-    <link rel="next" href="chapter-523.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第522章 · 萬古塵城</h1>
-    <main>
-<p>「風族的古籍中有所記載。」風伯山走到書架前，取下一卷泛黃的獸皮書，「這上面記錄了一些關於永恆之壁的信息，但並不詳細。」</p>
-        <p>他翻開書卷，指著其中一段文字：「永恆之壁，位於西域最西端，高入雲霄，橫亙天地之間。壁面光滑如鏡，無法攀爬，無法破壞。唯有在特定的時間，特定的地點，才能找到通過的方法。」</p>
-        <p>「特定的時間和地點？」葉塵皺眉，「跟塵門一樣？」</p>
-        <p>「類似，但更加複雜。」風伯山說道，「古籍上沒有記載具體的時間和地點，這可能需要你自己去探索。」</p>
-        <p>葉塵將這些信息記在心中。他拿出那張永恆地圖，攤開在桌上：「風長老，你能幫我看一下這張地圖嗎？」</p>
-        <p>風伯山仔細觀看地圖，手指沿著路線緩緩移動：「這條路線……從萬古塵城出發，向西北方向前進，穿過死亡沙海，然後繞過深淵裂谷，最後到達永恆之壁。」</p>
-        <p>「死亡沙海？深淵裂谷？」鐵牛打了個寒顫，「聽名字就知道不是什麼好地方。」</p>
-        <p>「確實不是好地方。」風伯山面色凝重，「死亡沙海是永恆沙漠中最危險的區域之一，那裡充滿了流沙和陷阱。深淵裂谷更不用說，那是深淵勢力的據點之一。」</p>
-        <p>「也就是說，我們要穿過深淵教團的地盤？」白淺皺眉問道。</p>
-        <p>「恐怕是的。」風伯山點頭道，「想要到達永恆之壁，這條路線是唯一的選擇。」</p>
-        <p>葉塵沉默了片刻。穿死亡沙海，繞過深淵裂谷——這兩處都是西域最危險的地方。以他現在的實力，想要安全通過，確實有一定的難度。</p>
-        <p>但為了找到父親，他願意冒這個險。</p>
-        <p>「風長老，我需要一些時間做準備。」葉塵說道，「這段時間，我想在風族借住一段時間，研究那張地圖，同時也恢復一下傷勢。」</p>
-        <p>「當然可以。」風伯山毫不猶豫地答應了，「風族永遠歡迎你。」</p>
-        <p>接下來的幾天，葉塵一直在研究那張永恆地圖。地圖上標記的內容非常詳細，不僅有路線，還有沿途的地形和需要注意的危險。葉塵將地圖上的每一個細節都記在了腦海中。</p>
-        <p>與此同時，他也藉機向風伯山請教西域的歷史和地理知識。風伯山是風族中最博學的人，對西域的了解遠超常人。</p>
-        <p>「西域的歷史，可以追溯到數萬年前。」風伯山給他講解道，「那時西域還是一片富饒的土地，到處是綠洲和森林。後來不知為何，氣候發生了劇變，綠洲變成了沙漠，森林變成了荒漠。」</p>
-        <p>「是因為地脈的變化嗎？」</p>
-        <p>「很有可能。」風伯山說道，「地脈是西域的根基，地脈一旦枯竭，整個西域都會受到影響。而永恆沙漠中的那條古老地脈，據說就是西域所有地脈的源頭。」</p>
-        <p>「那條地脈現在還在嗎？」</p>
-        <p>「應該還在，但已經非常微弱了。」風伯山嘆了口氣，「三千年前塵國覆滅時，那條地脈受到了嚴重的破壞。如果那條地脈完全枯竭，整個西域都會變成真正的死地。」</p>
-        <p>葉塵心中一凜。西域的存亡，竟然維繫在一條地脈上。而萬古塵城的開啟，也許就是為了找到恢復地脈的方法。</p>
-        <p>「風長老，萬古塵城中是否隱藏著恢復地脈的秘密？」</p>
-        <p>「很有可能。」風伯山若有所思地說道，「塵國當年既然如此強大，必然掌握著西域地脈的核心秘密。如果你能在萬古塵城中找到相關的傳承，說不定能挽救西域。」</p>
-        <p>葉塵點了點頭。前往萬古塵城的收穫，不僅僅是那張永恆地圖，還有對西域更深層次的理解。</p>
-        <p>在風族住了五天後，葉塵的傷勢完全恢復了。他開始為接下來的旅程做準備。</p>
-        <p>首先是補給。永恆沙漠中的補給非常困難，尤其是在死亡沙海和深淵裂谷附近，幾乎沒有可以補充食物和水的地方。所以必須攜帶足夠的物資。</p>
-        <p>其次是丹藥和符籙。西域的丹藥與東域不同，療效更加直接，但也更加猛烈。葉塵在風伯山的幫助下，準備了足夠的療傷丹藥和解毒丹藥。</p>
-        <p>最後是兵器。淵虹劍經過多次戰鬥，已經出現了一些磨損。風伯山親自幫他重新打磨了劍身，並在劍柄上刻上了風族的守護符文。</p>
-        <p>「這把劍很好。」風伯山將淵虹劍還給葉塵，「雖然不是什麼神兵利器，但跟隨你經歷了那麼多戰鬥，已經與你心意相通。」</p>
-        <p>「多謝風長老。」葉塵接過淵虹劍，感受到劍身傳來的一陣溫熱。</p>
-        <p>「葉塵，你真的要走了？」鐵牛有些不捨地問道。</p>
-        <p>「嗯，明天就走。」葉塵說道，「時間不等人。」</p>
-        <p>「那俺跟你一起去！」鐵牛大聲道。</p>
-        <p>「我也去。」白淺平靜地說道。</p>
-        <p>葉塵看著兩人，心中充滿了感激：「謝謝你們。」</p>
-        <p>「客氣啥！」鐵牛咧嘴一笑，「咱可是說好了的，一起走遍西域！你可不能甩下俺！」</p>
-        <p>白淺沒有說話，但眼神中透露出的堅定，已經說明了一切。</p>
-        <p>當天晚上，葉塵坐在屋頂上，望著滿天繁星。西域的星空比東域更加清晰，仿佛一伸手就能觸摸到。</p>
-        <p>「父親，我馬上就要去找你了。」他輕聲自語，「你在永恆之壁的另一邊，等著我嗎？」</p>
-        <p>星空沉默，沒有回答。</p>
-        <p>但葉塵能感覺到，輪迴令中傳來了一陣溫暖的氣息。那是父親的氣息，仿佛在說——孩子，我在等你。</p>
-        <p>他握緊了輪迴令，目光堅定地望向西邊。永恆之壁，就在那個方向。而他的旅程，才剛剛開始。</p>
-        <p>第二天清晨，葉塵三人告別了風族。</p>
-        <p>風烈、炎裂和雷震都來送行。風伯山站在風烈身邊，眼中帶著一絲不捨。經過這些日子的相處，葉塵已經成了他們最信任的朋友。</p>
-        <p>「保重。」風烈拍了拍葉塵的肩膀，「如果遇到危險，就發訊號。風族的援軍會以最快的速度趕到。」</p>
-        <p>「多謝風族長。」葉塵拱手道。</p>
-        <p>「葉塵，這是火族的信物。」炎裂遞給他一塊火紅色的令牌，「如果你在西域遇到火族的族人，出示這塊令牌，他們會聽從你的命令。」</p>
-        <p>「雷族也一樣。」雷震遞給他一塊紫色的令牌，「拿著吧，說不定能派上用場。」</p>
-        <p>葉塵接過兩塊令牌，鄭重地收好：「三位族長，多謝你們的幫助。若葉塵有機會回來，定當報答。」</p>
-        <p>「說什麼報答！」風烈哈哈大笑，「你是我們的朋友，朋友之間，不必言謝！」</p>
-        <p>葉塵微微一笑，轉身上了駱駝。</p>
-        <p>駱駝隊緩緩駛出風吼峽谷。葉塵回頭看了一眼，風族的族人站在關隘上，朝他們揮手告別。</p>
-        <p>晨光照在峽谷的崖壁上，將一切都染成了金色。新的一天開始了，新的旅程也在等待著他們。</p>
-        <p>「走吧。」葉塵轉過頭，目光堅定地望向前方。</p>
-        <p>永恆之壁，就在前方。</p>
-        
-    </main>
-    <nav class="nav">
-        <a href="chapter-521.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-522/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-523.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第522章 · 萬古塵城 - 萬古塵埃</title><link rel="canonical" href=""><link rel="prev" href="chapter-521.html"><link rel="next" href="chapter-523.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第522章 · 萬古塵城</h1><main><p>「風族的古籍中有所記載。」風伯山走到書架前，取下一卷泛黃的獸皮書，「這上面記錄了一些關於永恆之壁的信息，但並不詳細。」</p><p>他翻開書卷，指著其中一段文字：「永恆之壁，位於西域最西端，高入雲霄，橫亙天地之間。壁面光滑如鏡，無法攀爬，無法破壞。唯有在特定的時間，特定的地點，才能找到通過的方法。」</p><p>「特定的時間和地點？」葉塵皺眉，「跟塵門一樣？」</p><p>「類似，但更加複雜。」風伯山說道，「古籍上沒有記載具體的時間和地點，這可能需要你自己去探索。」</p><p>葉塵將這些信息記在心中。他拿出那張永恆地圖，攤開在桌上：「風長老，你能幫我看一下這張地圖嗎？」</p><p>風伯山仔細觀看地圖，手指沿著路線緩緩移動：「這條路線……從萬古塵城出發，向西北方向前進，穿過死亡沙海，然後繞過深淵裂谷，最後到達永恆之壁。」</p><p>「死亡沙海？深淵裂谷？」鐵牛打了個寒顫，「聽名字就知道不是什麼好地方。」</p><p>「確實不是好地方。」風伯山面色凝重，「死亡沙海是永恆沙漠中最危險的區域之一，那裡充滿了流沙和陷阱。深淵裂谷更不用說，那是深淵勢力的據點之一。」</p><p>「也就是說，我們要穿過深淵教團的地盤？」白淺皺眉問道。</p><p>「恐怕是的。」風伯山點頭道，「想要到達永恆之壁，這條路線是唯一的選擇。」</p><p>葉塵沉默了片刻。穿死亡沙海，繞過深淵裂谷——這兩處都是西域最危險的地方。以他現在的實力，想要安全通過，確實有一定的難度。</p><p>但為了找到父親，他願意冒這個險。</p><p>「風長老，我需要一些時間做準備。」葉塵說道，「這段時間，我想在風族借住一段時間，研究那張地圖，同時也恢復一下傷勢。」</p><p>「當然可以。」風伯山毫不猶豫地答應了，「風族永遠歡迎你。」</p><p>接下來的幾天，葉塵一直在研究那張永恆地圖。地圖上標記的內容非常詳細，不僅有路線，還有沿途的地形和需要注意的危險。葉塵將地圖上的每一個細節都記在了腦海中。</p><p>與此同時，他也藉機向風伯山請教西域的歷史和地理知識。風伯山是風族中最博學的人，對西域的了解遠超常人。</p><p>「西域的歷史，可以追溯到數萬年前。」風伯山給他講解道，「那時西域還是一片富饒的土地，到處是綠洲和森林。後來不知為何，氣候發生了劇變，綠洲變成了沙漠，森林變成了荒漠。」</p><p>「是因為地脈的變化嗎？」</p><p>「很有可能。」風伯山說道，「地脈是西域的根基，地脈一旦枯竭，整個西域都會受到影響。而永恆沙漠中的那條古老地脈，據說就是西域所有地脈的源頭。」</p><p>「那條地脈現在還在嗎？」</p><p>「應該還在，但已經非常微弱了。」風伯山嘆了口氣，「三千年前塵國覆滅時，那條地脈受到了嚴重的破壞。如果那條地脈完全枯竭，整個西域都會變成真正的死地。」</p><p>葉塵心中一凜。西域的存亡，竟然維繫在一條地脈上。而萬古塵城的開啟，也許就是為了找到恢復地脈的方法。</p><p>「風長老，萬古塵城中是否隱藏著恢復地脈的秘密？」</p><p>「很有可能。」風伯山若有所思地說道，「塵國當年既然如此強大，必然掌握著西域地脈的核心秘密。如果你能在萬古塵城中找到相關的傳承，說不定能挽救西域。」</p><p>葉塵點了點頭。前往萬古塵城的收穫，不僅僅是那張永恆地圖，還有對西域更深層次的理解。</p><p>在風族住了五天後，葉塵的傷勢完全恢復了。他開始為接下來的旅程做準備。</p><p>首先是補給。永恆沙漠中的補給非常困難，尤其是在死亡沙海和深淵裂谷附近，幾乎沒有可以補充食物和水的地方。所以必須攜帶足夠的物資。</p><p>其次是丹藥和符籙。西域的丹藥與東域不同，療效更加直接，但也更加猛烈。葉塵在風伯山的幫助下，準備了足夠的療傷丹藥和解毒丹藥。</p><p>最後是兵器。淵虹劍經過多次戰鬥，已經出現了一些磨損。風伯山親自幫他重新打磨了劍身，並在劍柄上刻上了風族的守護符文。</p><p>「這把劍很好。」風伯山將淵虹劍還給葉塵，「雖然不是什麼神兵利器，但跟隨你經歷了那麼多戰鬥，已經與你心意相通。」</p><p>「多謝風長老。」葉塵接過淵虹劍，感受到劍身傳來的一陣溫熱。</p><p>「葉塵，你真的要走了？」鐵牛有些不捨地問道。</p><p>「嗯，明天就走。」葉塵說道，「時間不等人。」</p><p>「那俺跟你一起去！」鐵牛大聲道。</p><p>「我也去。」白淺平靜地說道。</p><p>葉塵看著兩人，心中充滿了感激：「謝謝你們。」</p><p>「客氣啥！」鐵牛咧嘴一笑，「咱可是說好了的，一起走遍西域！你可不能甩下俺！」</p><p>白淺沒有說話，但眼神中透露出的堅定，已經說明了一切。</p><p>當天晚上，葉塵坐在屋頂上，望著滿天繁星。西域的星空比東域更加清晰，仿佛一伸手就能觸摸到。</p><p>「父親，我馬上就要去找你了。」他輕聲自語，「你在永恆之壁的另一邊，等著我嗎？」</p><p>星空沉默，沒有回答。</p><p>但葉塵能感覺到，輪迴令中傳來了一陣溫暖的氣息。那是父親的氣息，仿佛在說——孩子，我在等你。</p><p>他握緊了輪迴令，目光堅定地望向西邊。永恆之壁，就在那個方向。而他的旅程，才剛剛開始。</p><p>第二天清晨，葉塵三人告別了風族。</p><p>風烈、炎裂和雷震都來送行。風伯山站在風烈身邊，眼中帶著一絲不捨。經過這些日子的相處，葉塵已經成了他們最信任的朋友。</p><p>「保重。」風烈拍了拍葉塵的肩膀，「如果遇到危險，就發訊號。風族的援軍會以最快的速度趕到。」</p><p>「多謝風族長。」葉塵拱手道。</p><p>「葉塵，這是火族的信物。」炎裂遞給他一塊火紅色的令牌，「如果你在西域遇到火族的族人，出示這塊令牌，他們會聽從你的命令。」</p><p>「雷族也一樣。」雷震遞給他一塊紫色的令牌，「拿著吧，說不定能派上用場。」</p><p>葉塵接過兩塊令牌，鄭重地收好：「三位族長，多謝你們的幫助。若葉塵有機會回來，定當報答。」</p><p>「說什麼報答！」風烈哈哈大笑，「你是我們的朋友，朋友之間，不必言謝！」</p><p>葉塵微微一笑，轉身上了駱駝。</p><p>駱駝隊緩緩駛出風吼峽谷。葉塵回頭看了一眼，風族的族人站在關隘上，朝他們揮手告別。</p><p>晨光照在峽谷的崖壁上，將一切都染成了金色。新的一天開始了，新的旅程也在等待著他們。</p><p>「走吧。」葉塵轉過頭，目光堅定地望向前方。</p><p>永恆之壁，就在前方。</p></main><nav class="nav"><a href="chapter-521.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-522/" class="manga-btn">🎨 漫畫版</a><a href="chapter-523.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

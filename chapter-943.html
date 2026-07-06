@@ -1,252 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第943章 · 慶典 - 萬古塵埃</title>
-    <link rel="canonical" href="">
-    <link rel="prev" href="chapter-942.html">
-    <link rel="next" href="chapter-944.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第943章 · 慶典</h1>
-    <main>
-<p>他清了清嗓子，開口說道：「各位，今天我們聚集在這裡，是為了慶祝我們的勝利，也是為了紀念那些在戰爭中犧牲的英雄和烈士。他們用自己的生命和鮮血，換來了我們今天的和平與安寧。他們的名字和事蹟，將永遠銘刻在我們的心中，永遠不會被遺忘和抹去。」</p>
-        <p>臺下響起了雷鳴般的掌聲和歡呼聲，許多人流下了感動和悲傷的眼淚。那些犧牲者的家屬們，在人群中默默地流淚和哭泣，但他們的眼中也充滿了驕傲和自豪，因為他們的親人為了保護這片大陸而犧牲，他們的犧牲是有價值和意義的。</p>
-        <p>慶典持續了整整三天三夜。在這三天三夜的時間裡，人們盡情地歡呼和歌唱，飲酒和跳舞，用最熱烈的方式慶祝著這場勝利和和平的到來。街道上到處都是歡笑和歌聲，到處都是飄揚的彩旗和飄帶，整個聯盟總部都沉浸在了一片喜慶和歡樂的氣氛之中。</p>
-        <p>葉塵在這三天裡也難得地放下了所有的煩惱和憂慮，與白淺一起享受著這份來之不易的寧靜和快樂。他們一起參加了慶典的各種活動和節目，一起品嚐了各地美食和佳釀，一起在月光下漫步和聊天，度過了一段美好而難忘的時光。</p>
-        <p>但在慶典結束之後，葉塵就開始了緊張而有序的修煉和準備。</p>
-        <p>他先是花了求天的時間來鞏固嬰變境的修為和境界，讓自己的身體和靈魂完全適應嬰變境的力量和節奏。嬰變境和半步嬰變之間存在著巨大的差距和鴻溝，不僅僅是力量上的提升，更是對法則和天地的理解和感悟的質的飛躍。他需要好好地消化和吸收在戰鬥中悟得的感悟和經驗，讓它們真正成為自己的力量和積累。</p>
-        <p>在鞏固修為的過程中，他對嬰變九轉的理解也變得更加深刻和透徹。他發現，嬰變九轉的前八轉——輪迴、因果、時光、本源、虛實、生滅、陰陽、乾坤——都是為第九轉·涅槃做準備和鋪墊的。涅槃之轉才是嬰變九轉的核心和精髓，是真正讓元嬰完成質的蛻變和昇華的關鍵一步。</p>
-        <p>完成涅槃之轉後，他的元嬰不僅變得更加凝實和強大，還獲得了一個全新的能力——涅槃重生。只要他的靈魂沒有被完全消滅和抹除，他就可以通過涅槃之力重塑身體，在短時間內恢復到巔峰狀態。這個能力雖然有限製，不能無限使用，但在關鍵時刻可以成為保命的底牌和殺手鐧。</p>
-        <p>與此同時，他對歸真劍法的領悟也在嬰變境的加持下達到了一個全新的層次。歸真劍法原本分為四層——以心為劍、以意馭劍、以道合劍、歸一。在嬰變境的力量支撐下，他終於真正理解了歸一的含義——不是單純地將力量集中在一點，而是將自己的身體、靈魂、法則和天地融為一體，達到真正的人劍合一、天人合一的境界。</p>
-        <p>他嘗試將九轉之力融入歸真劍法中，創造出全新的劍招和劍式。那些新劍招不僅威力更加強大，還蘊含著九種法則的變化和奧秘，讓人防不勝防、難以抵擋。</p>
-        <p>在修煉之餘，他也開始查閱聯盟中關於斷天峽谷和深淵的典籍和資料。那些典籍中記載了許多關於遠古時期的事情和傳說，包括深淵之門的出現和關閉，深淵魔族的入侵和被打敗，以及那些遠古強者為了封印深淵而做出的犧牲和貢獻。</p>
-        <p>在那些典籍中，他不斷地看到一個名字，那就是深淵之主。</p>
-        <p>據記載，深淵之主是深淵最深處的存在，是深淵的真正主宰和統治者。它的實力深不可測，據說已經達到了超越悟天境的層次。在遠古時期，它曾經率領深淵魔族入侵過這片大陸，後來被當時的遠古強者聯手封印和打敗。但那個封印並不是永恆的，隨著時間的流逝和力量的消耗，封印正在逐漸減弱和鬆動。</p>
-        <p>深淵魔王，不過是深淵之主麾下的一個將領和先鋒而已。真正的威脅和敵人，始終是那個沉睡在深淵最深處的主宰和統治者。</p>
-        <p>葉塵闔上了手中的典籍，深吸了一口氣，眼中閃爍著凝重而堅定的光芒。他知道，他的旅程還遠遠沒有結束，真正的挑戰和考驗還沒有到來。他必須變得更加強大，才能夠應對那個即將甦醒的深淵之主。</p>
-        <p>他站起身，走到窗前，望著遠方那片廣闊而神秘的天地。在那片天地的某個角落，斷天峽穀正靜靜地等待著他的到來和探索。</p>
-        <p>「斷天峽谷，我很快就會來了。」他在心中默默地說道，目光堅定而明亮。</p>
-        <p>窗外的夜空中，繁星閃爍，銀河流轉。微風穿過窗戶，吹動了他手中的書頁，發出嘩嘩的輕微聲響。他深吸了一口氣，將那些典籍和資料收好，然後盤膝坐下，開始了今晚的修煉。嬰變之力的光芒在他的身體周圍緩緩流轉和閃爍，在黑暗中如同一盞溫暖的明燈，照亮了整個房間和走廊。</p>
-        <p>他知道，在斷天峽谷的深處，那些遠古的秘密正在等待著他的到來和探索。他已經做好了準備，無論前方有什麼在等待著他，他都會勇敢地面對和迎接。</p>
-        <p>夜色漸深，窗外的蟲鳴聲此起彼伏，與遠處傳來的更鼓聲交織在一起，構成了一首屬於夜晚的樂章。葉塵緩緩睜開眼睛，看著窗外那片被月光染成銀色的庭院，心中浮現出戰爭時的種種畫面——那些並肩作戰的夥伴，那些捨生忘死的瞬間，那些在黑暗中依然閃爍的希望之光。他重重地握緊了拳頭，感受著指尖傳來的力道。嬰變境的力量在他的體內靜靜流淌，像是一條溫暖的河流，滋潤著他身體的每一個角落。他閉上眼睛，將意識沉入丹田之中，觀察著那枚經過涅槃淬煉的元嬰。元嬰散發著柔和的光芒，靜靜地盤坐在丹田中央，每一次呼吸都帶動著周圍靈氣的流轉。那種天人合一的感覺讓他心中充滿了平靜與篤定。他不再急於追求力量的提升，而是開始學會享受修煉本身帶來的樂趣和滿足。當他再次睜開眼睛時，東方的天際已經泛起了魚肚白，新的一天即將開始。</p>
-        <p>他站起身，走到窗前推開窗戶，清晨的涼風撲面而來，帶來泥土和青草混合的清新氣息。天空中，朝霞正在慢慢渲染東方的雲層，從淡粉色漸漸變為橙紅色，像是一幅正在被畫家精心描繪的畫卷。他深深地吸了一口氣，讓清涼的空氣充滿肺部，整個人感到前所未有的清爽和振奮。他回想起昨天在典籍中看到的那些關於斷天峽谷的記載——那是一個充滿危險和機遇的地方，是遠古時期留下來的遺跡，據說裡面隱藏著通往深淵之門的秘密。他知道，想要真正了解深淵之主和深淵勢力的本質，就必須親自去斷天峽谷走一趟。但以他現在的實力，貿然前往只會白白送命。嬰變境雖然強大，但距離能夠應對深淵之主的層次還差得很遠。他在心中默默地規劃著接下來的修煉計劃——先將嬰變境的修為徹底鞏固，然後著重參悟歸真劍法的第四層歸一之境，同時繼續研究九轉之力的融合和應用。只有當他真正掌握了這些力量的時候，才有資格去面對那個沉睡在深淵最深處的存在。他關上窗戶，轉身走回蒲團前坐下，開始了新一天的修煉。</p>
-        <p>清晨的陽光照進房間，在地板上投下一塊塊金色的光斑。葉塵閉上眼睛，將意識沉入丹田之中，觀察著嬰變九轉的力量在他體內流轉的情況。經過這些天的鞏固和參悟，他對九轉之力的掌控已經達到了一個全新的層次。輪迴、因果、時光、本源、虛實、生滅、陰陽、乾坤、涅槃，這九種力量在他的體內形成了一個完美的循環，每一種力量都在互相補充和互相增強。他嘗試著將這九種力量同時釋放出來，讓它們在他的身體周圍形成一個完整的法則領域。在領域中，九種法則的力量交織在一起，形成了一個獨立的空間，那個空間中的一切都在他的掌控之中。他能夠感覺到，這個法則領域的威力遠超普通的劍域，如果用在戰鬥中，將會是一個強大的殺手鐧。他睜開眼睛，看著身體周圍緩緩消散的九色光芒，嘴角露出了一絲滿意的微笑。他的修煉正在按照計劃穩步推進，距離前往斷天峽谷的日子也越來越近了。</p>
-        
-    </main>
-    <nav class="nav">
-        <a href="chapter-942.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-943/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-944.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第943章 · 慶典 - 萬古塵埃</title><link rel="canonical" href=""><link rel="prev" href="chapter-942.html"><link rel="next" href="chapter-944.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第943章 · 慶典</h1><main><p>他清了清嗓子，開口說道：「各位，今天我們聚集在這裡，是為了慶祝我們的勝利，也是為了紀念那些在戰爭中犧牲的英雄和烈士。他們用自己的生命和鮮血，換來了我們今天的和平與安寧。他們的名字和事蹟，將永遠銘刻在我們的心中，永遠不會被遺忘和抹去。」</p><p>臺下響起了雷鳴般的掌聲和歡呼聲，許多人流下了感動和悲傷的眼淚。那些犧牲者的家屬們，在人群中默默地流淚和哭泣，但他們的眼中也充滿了驕傲和自豪，因為他們的親人為了保護這片大陸而犧牲，他們的犧牲是有價值和意義的。</p><p>慶典持續了整整三天三夜。在這三天三夜的時間裡，人們盡情地歡呼和歌唱，飲酒和跳舞，用最熱烈的方式慶祝著這場勝利和和平的到來。街道上到處都是歡笑和歌聲，到處都是飄揚的彩旗和飄帶，整個聯盟總部都沉浸在了一片喜慶和歡樂的氣氛之中。</p><p>葉塵在這三天裡也難得地放下了所有的煩惱和憂慮，與白淺一起享受著這份來之不易的寧靜和快樂。他們一起參加了慶典的各種活動和節目，一起品嚐了各地美食和佳釀，一起在月光下漫步和聊天，度過了一段美好而難忘的時光。</p><p>但在慶典結束之後，葉塵就開始了緊張而有序的修煉和準備。</p><p>他先是花了求天的時間來鞏固嬰變境的修為和境界，讓自己的身體和靈魂完全適應嬰變境的力量和節奏。嬰變境和半步嬰變之間存在著巨大的差距和鴻溝，不僅僅是力量上的提升，更是對法則和天地的理解和感悟的質的飛躍。他需要好好地消化和吸收在戰鬥中悟得的感悟和經驗，讓它們真正成為自己的力量和積累。</p><p>在鞏固修為的過程中，他對嬰變九轉的理解也變得更加深刻和透徹。他發現，嬰變九轉的前八轉——輪迴、因果、時光、本源、虛實、生滅、陰陽、乾坤——都是為第九轉·涅槃做準備和鋪墊的。涅槃之轉才是嬰變九轉的核心和精髓，是真正讓元嬰完成質的蛻變和昇華的關鍵一步。</p><p>完成涅槃之轉後，他的元嬰不僅變得更加凝實和強大，還獲得了一個全新的能力——涅槃重生。只要他的靈魂沒有被完全消滅和抹除，他就可以通過涅槃之力重塑身體，在短時間內恢復到巔峰狀態。這個能力雖然有限製，不能無限使用，但在關鍵時刻可以成為保命的底牌和殺手鐧。</p><p>與此同時，他對歸真劍法的領悟也在嬰變境的加持下達到了一個全新的層次。歸真劍法原本分為四層——以心為劍、以意馭劍、以道合劍、歸一。在嬰變境的力量支撐下，他終於真正理解了歸一的含義——不是單純地將力量集中在一點，而是將自己的身體、靈魂、法則和天地融為一體，達到真正的人劍合一、天人合一的境界。</p><p>他嘗試將九轉之力融入歸真劍法中，創造出全新的劍招和劍式。那些新劍招不僅威力更加強大，還蘊含著九種法則的變化和奧秘，讓人防不勝防、難以抵擋。</p><p>在修煉之餘，他也開始查閱聯盟中關於斷天峽谷和深淵的典籍和資料。那些典籍中記載了許多關於遠古時期的事情和傳說，包括深淵之門的出現和關閉，深淵魔族的入侵和被打敗，以及那些遠古強者為了封印深淵而做出的犧牲和貢獻。</p><p>在那些典籍中，他不斷地看到一個名字，那就是深淵之主。</p><p>據記載，深淵之主是深淵最深處的存在，是深淵的真正主宰和統治者。它的實力深不可測，據說已經達到了超越悟天境的層次。在遠古時期，它曾經率領深淵魔族入侵過這片大陸，後來被當時的遠古強者聯手封印和打敗。但那個封印並不是永恆的，隨著時間的流逝和力量的消耗，封印正在逐漸減弱和鬆動。</p><p>深淵魔王，不過是深淵之主麾下的一個將領和先鋒而已。真正的威脅和敵人，始終是那個沉睡在深淵最深處的主宰和統治者。</p><p>葉塵闔上了手中的典籍，深吸了一口氣，眼中閃爍著凝重而堅定的光芒。他知道，他的旅程還遠遠沒有結束，真正的挑戰和考驗還沒有到來。他必須變得更加強大，才能夠應對那個即將甦醒的深淵之主。</p><p>他站起身，走到窗前，望著遠方那片廣闊而神秘的天地。在那片天地的某個角落，斷天峽穀正靜靜地等待著他的到來和探索。</p><p>「斷天峽谷，我很快就會來了。」他在心中默默地說道，目光堅定而明亮。</p><p>窗外的夜空中，繁星閃爍，銀河流轉。微風穿過窗戶，吹動了他手中的書頁，發出嘩嘩的輕微聲響。他深吸了一口氣，將那些典籍和資料收好，然後盤膝坐下，開始了今晚的修煉。嬰變之力的光芒在他的身體周圍緩緩流轉和閃爍，在黑暗中如同一盞溫暖的明燈，照亮了整個房間和走廊。</p><p>他知道，在斷天峽谷的深處，那些遠古的秘密正在等待著他的到來和探索。他已經做好了準備，無論前方有什麼在等待著他，他都會勇敢地面對和迎接。</p><p>夜色漸深，窗外的蟲鳴聲此起彼伏，與遠處傳來的更鼓聲交織在一起，構成了一首屬於夜晚的樂章。葉塵緩緩睜開眼睛，看著窗外那片被月光染成銀色的庭院，心中浮現出戰爭時的種種畫面——那些並肩作戰的夥伴，那些捨生忘死的瞬間，那些在黑暗中依然閃爍的希望之光。他重重地握緊了拳頭，感受著指尖傳來的力道。嬰變境的力量在他的體內靜靜流淌，像是一條溫暖的河流，滋潤著他身體的每一個角落。他閉上眼睛，將意識沉入丹田之中，觀察著那枚經過涅槃淬煉的元嬰。元嬰散發著柔和的光芒，靜靜地盤坐在丹田中央，每一次呼吸都帶動著周圍靈氣的流轉。那種天人合一的感覺讓他心中充滿了平靜與篤定。他不再急於追求力量的提升，而是開始學會享受修煉本身帶來的樂趣和滿足。當他再次睜開眼睛時，東方的天際已經泛起了魚肚白，新的一天即將開始。</p><p>他站起身，走到窗前推開窗戶，清晨的涼風撲面而來，帶來泥土和青草混合的清新氣息。天空中，朝霞正在慢慢渲染東方的雲層，從淡粉色漸漸變為橙紅色，像是一幅正在被畫家精心描繪的畫卷。他深深地吸了一口氣，讓清涼的空氣充滿肺部，整個人感到前所未有的清爽和振奮。他回想起昨天在典籍中看到的那些關於斷天峽谷的記載——那是一個充滿危險和機遇的地方，是遠古時期留下來的遺跡，據說裡面隱藏著通往深淵之門的秘密。他知道，想要真正了解深淵之主和深淵勢力的本質，就必須親自去斷天峽谷走一趟。但以他現在的實力，貿然前往只會白白送命。嬰變境雖然強大，但距離能夠應對深淵之主的層次還差得很遠。他在心中默默地規劃著接下來的修煉計劃——先將嬰變境的修為徹底鞏固，然後著重參悟歸真劍法的第四層歸一之境，同時繼續研究九轉之力的融合和應用。只有當他真正掌握了這些力量的時候，才有資格去面對那個沉睡在深淵最深處的存在。他關上窗戶，轉身走回蒲團前坐下，開始了新一天的修煉。</p><p>清晨的陽光照進房間，在地板上投下一塊塊金色的光斑。葉塵閉上眼睛，將意識沉入丹田之中，觀察著嬰變九轉的力量在他體內流轉的情況。經過這些天的鞏固和參悟，他對九轉之力的掌控已經達到了一個全新的層次。輪迴、因果、時光、本源、虛實、生滅、陰陽、乾坤、涅槃，這九種力量在他的體內形成了一個完美的循環，每一種力量都在互相補充和互相增強。他嘗試著將這九種力量同時釋放出來，讓它們在他的身體周圍形成一個完整的法則領域。在領域中，九種法則的力量交織在一起，形成了一個獨立的空間，那個空間中的一切都在他的掌控之中。他能夠感覺到，這個法則領域的威力遠超普通的劍域，如果用在戰鬥中，將會是一個強大的殺手鐧。他睜開眼睛，看著身體周圍緩緩消散的九色光芒，嘴角露出了一絲滿意的微笑。他的修煉正在按照計劃穩步推進，距離前往斷天峽谷的日子也越來越近了。</p></main><nav class="nav"><a href="chapter-942.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-943/" class="manga-btn">🎨 漫畫版</a><a href="chapter-944.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

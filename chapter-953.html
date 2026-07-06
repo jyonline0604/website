@@ -1,259 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第953章 · 出關 - 萬古塵埃</title>
-    <link rel="canonical" href="">
-    <link rel="prev" href="chapter-952.html">
-    <link rel="next" href="chapter-954.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第953章 · 出關</h1>
-    <main>
-<p>這個能力雖然強大，但消耗也非常巨大，以他嬰變境圓滿的修為，也只能維持混沌領域短短幾息的時間。這是在最危急的關頭才能動用的底牌和殺手鐧，不能輕易使用和暴露。他需要繼續修煉和提升，讓自己在將來的戰鬥中能夠更加靈活地運用這股力量。</p>
-        <p>他仔細回憶著突破過程中的每一個細節，將那些感悟和體會深深地刻印在腦海中。每一次境界的提升都是對天地法則的一次重新認識，而嬰變境圓滿讓他看到了更加廣闊的法則世界，那些原本模糊的規則和秩序在這一刻變得清晰起來，像是迷霧被撥開後顯露出的真相。</p>
-        <p>在確定了自己的實力和能力之後，他終於決定出關了。</p>
-        <p>當他走出閉關山洞的時候，刺眼的陽光讓他不由得眯起了眼睛。在黑暗中待了將近兩年的時間，他已經有些習慣了那種黑暗而安靜的環境，重新面對光明和世界的時候，一時間有些不太適應和習慣。他抬起手遮擋了一下陽光，讓眼睛逐漸適應光線的變化。</p>
-        <p>但很快，他就適應了光線的變化，睜開了眼睛，看著眼前那片熟悉而又陌生的天地。天空依然那麼藍，雲朵依然那麼白，樹木依然那麼綠，一切都和他閉關之前沒有太大的變化。但他知道，在他的體內，一切都已經發生了翻天覆地的變化和蛻變。那股嬰變境圓滿的力量在體內靜靜流轉，如同一條奔騰的江河，充滿了生機和活力。</p>
-        <p>他深吸了一口新鮮的空氣，感受著那股清涼而舒暢的感覺在體內流淌，精神不由得一振。他伸展了一下四肢和身體，骨頭髮出了一陣噼裡啪啦的聲響，就像放鞭炮一樣清脆而連續。在洞中盤膝坐了將近兩年的時間，他的身體確實需要好好地活動和舒展一下。</p>
-        <p>在他走出山洞沒多遠的時候，就看到了遠處那個纖細而熟悉的身影。</p>
-        <p>白淺站在通往山洞的小路上，靜靜地等待著他。她穿著一身淡藍色的長裙，長髮在微風中輕輕飄揚，在陽光下形成了一道美麗而動人的剪影和畫面。看到葉塵走出來，她的臉上綻放出了燦爛而美麗的笑容，眼中閃爍著喜悅和激動的光芒。</p>
-        <p>「塵哥。」她輕聲叫了一聲，快步向他走了過來。</p>
-        <p>葉塵微微一笑，迎上前去，將她輕輕地擁入了懷中。在閉關的一年多時間裡，他雖然一直沉浸在修煉中，但每當夜深人靜的時候，他總會想起她，想起她的笑容、她的聲音、她的溫柔。現在終於見到了她，他感到了一種前所未有的溫馨和滿足。</p>
-        <p>「我回來了。」他在她的耳邊低聲說道，聲音中充滿了溫柔和深情。</p>
-        <p>白淺將頭埋在他的懷中，感受著他的溫暖和氣息，輕聲說道：「歡迎回來。這兩年我一直在這裡等你，每天都會來這條小路上看看，期待著看到你出關的身影。」</p>
-        <p>葉塵的心中湧起一股暖流，他輕輕撫摸著她的長髮，說道：「辛苦你了。」</p>
-        <p>兩人靜靜地擁抱了一會兒，然後一起沿著小路向山下走去。陽光灑在他們身上，在地面上投下了兩個相依的身影。白淺將他閉關期間發生的事情一五一十地告訴了他——聯盟的發展和變化，深淵之門舊址的異動和異常，以及慕容青雲從斷天峽谷帶回來的最新消息。葉塵靜靜地聽著，將每一個信息都記在心中。</p>
-        <p>慕容青雲的語氣中帶著一絲難以掩飾的憂慮。他在斷天峽谷守候了數月之久，親眼目睹了那遠古封印的每一絲變化和衰減，那種緩慢但持續的惡化讓他感到不安，就像是看到一道堤壩在洪水的沖刷下逐漸出現裂縫，遲早會徹底崩塌。</p>
-        <p>聽到慕容青雲從斷天峽谷帶回來的消息時，葉塵的臉色變得凝重起來。據慕容青雲的觀察和判斷，那個遠古封印的衰減速度比預想的要快得多，按照目前的衰減速度，深淵之主可能在一年內就會破封而出，比原本預估的時間提前了不少。</p>
-        <p>「一年的時間……」葉塵沉默了片刻，然後緩緩說道：「足夠了。一年的時間雖然緊迫，但足夠我做好最後的準備。」</p>
-        <p>白淺有些擔憂地看著他：「你有把握嗎？」</p>
-        <p>葉塵微微一笑，握緊了她的手：「相信我。我已經達到了嬰變境圓滿，距離悟天境只有一步之遙。在接下來的一年裡，我會繼續努力，爭取在深淵之主破封之前觸碰到悟天境的門檻。」</p>
-        <p>白淺靜靜地看著他，然後輕輕點了點頭：「我相信你。」</p>
-        <p>兩人手牽手走下了山，回到了聯盟總部。當葉塵出現在聯盟總部的時候，所有人都沸騰了。那些在一年多沒有見到他的人們，看到他平安歸來，還帶著更強大的氣息和力量，每個人的臉上都洋溢著喜悅和敬佩的笑容。</p>
-        <p>慕容青雲走上前，上下打量了葉塵一番，然後感嘆道：「嬰變境圓滿……真是了不起。我修煉了數百年，也不過剛剛觸碰到嬰變境中期的門檻。你只用了不到兩年的時間就從嬰變前期達到了圓滿，這份天賦和速度，真是讓老夫自愧不如。看來我們這些老傢伙真的是老了。」</p>
-        <p>葉塵謙虛地笑了笑：「慕容前輩過獎了。如果不是聯盟的支持和幫助，我不可能取得這樣的進步和成就。每一次的突破都離不開大家的信任和支持。」</p>
-        <p>慕容青雲拍了拍他的肩膀，正色道：「接下來你打算怎麼辦？深淵之主的威脅迫在眉睫，我們需要一個明確的計劃和方向。」</p>
-        <p>葉塵的目光變得堅定而明亮：「繼續修煉，爭取在深淵之主破封之前觸碰到悟天境。同時，我們也要做好最終決戰的準備。這不僅是我的戰鬥，也是整片大陸的戰鬥。我們需要聯合一切可以聯合的力量，共同面對即將到來的考驗。」</p>
-        <p>慕容青雲鄭重地點了點頭：「你說得對。聯盟會全力支持你。」</p>
-        <p>葉塵深深地吸了一口氣，將所有的感悟和體會都銘記在了心中。他知道，每一次戰鬥和歷練都是一次成長和蛻變的機會，他會珍惜每一個機會，不斷地提升和完善自己，為將來的終極決戰做好最充分的準備和鋪墊。他已經不再是當年那個懵懂的少年，而是一個真正的強者。</p>
-        <p>葉塵深深地吸了一口氣，將所有的感悟和體會都銘記在了心中。他知道，修行之路漫長而艱辛，但他已經做好了充分的準備和覺悟。他會繼續前行，不斷突破自己的極限和瓶頸，直到達到那個傳說中的境界和高度。他的目光堅定而明亮，充滿了對未來的期待和信心。每一步都走得踏實而堅定。</p>
-        <p>葉塵靜靜地站在星空下，讓自己的心靈沉浸在一種平靜而空靈的狀態中。他感受著體內的混沌劍元在經脈中緩緩流轉和運轉，就像一條在體內流淌的河流，不斷地滋養和強化著他的身體和靈魂。他知道，修行的道路沒有終點和盡頭，每一個境界的提升都意味著新的挑戰和考驗在等待著他。但他不會退縮和畏懼，因為他的心中有堅定的信念和目標。他想要守護這片世界和星空，守護那些他愛的人和愛他的人。為此，他願意付出一切努力和代價，不斷地提升和突破自己的極限和瓶頸。他的目光變得深邃而堅定，就像夜空中最明亮的星辰，照亮了前方的道路和方向。他回想起這些年來經歷的每一次戰鬥和磨難，每一次成長和蛻變，心中充滿了感慨和感激。那些經歷讓他變得更加強大和成熟，也讓他更加清楚地知道自己想要什麼和追求什麼。他深吸了一口氣，將心中的雜念和浮躁驅散和清除，然後繼續投入到艱苦的修煉和感悟中。在他的前方，還有更多的挑戰和冒險在等待著他，但他不再迷茫和猶豫，因為他的心中有了堅定的方向和目標。他相信自己一定能夠達到那個傳說中的境界和高度，成為真正能夠守護這片星空和世界的強者。</p>
-        
-    </main>
-    <nav class="nav">
-        <a href="chapter-952.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-953/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-954.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第953章 · 出關 - 萬古塵埃</title><link rel="canonical" href=""><link rel="prev" href="chapter-952.html"><link rel="next" href="chapter-954.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第953章 · 出關</h1><main><p>這個能力雖然強大，但消耗也非常巨大，以他嬰變境圓滿的修為，也只能維持混沌領域短短幾息的時間。這是在最危急的關頭才能動用的底牌和殺手鐧，不能輕易使用和暴露。他需要繼續修煉和提升，讓自己在將來的戰鬥中能夠更加靈活地運用這股力量。</p><p>他仔細回憶著突破過程中的每一個細節，將那些感悟和體會深深地刻印在腦海中。每一次境界的提升都是對天地法則的一次重新認識，而嬰變境圓滿讓他看到了更加廣闊的法則世界，那些原本模糊的規則和秩序在這一刻變得清晰起來，像是迷霧被撥開後顯露出的真相。</p><p>在確定了自己的實力和能力之後，他終於決定出關了。</p><p>當他走出閉關山洞的時候，刺眼的陽光讓他不由得眯起了眼睛。在黑暗中待了將近兩年的時間，他已經有些習慣了那種黑暗而安靜的環境，重新面對光明和世界的時候，一時間有些不太適應和習慣。他抬起手遮擋了一下陽光，讓眼睛逐漸適應光線的變化。</p><p>但很快，他就適應了光線的變化，睜開了眼睛，看著眼前那片熟悉而又陌生的天地。天空依然那麼藍，雲朵依然那麼白，樹木依然那麼綠，一切都和他閉關之前沒有太大的變化。但他知道，在他的體內，一切都已經發生了翻天覆地的變化和蛻變。那股嬰變境圓滿的力量在體內靜靜流轉，如同一條奔騰的江河，充滿了生機和活力。</p><p>他深吸了一口新鮮的空氣，感受著那股清涼而舒暢的感覺在體內流淌，精神不由得一振。他伸展了一下四肢和身體，骨頭髮出了一陣噼裡啪啦的聲響，就像放鞭炮一樣清脆而連續。在洞中盤膝坐了將近兩年的時間，他的身體確實需要好好地活動和舒展一下。</p><p>在他走出山洞沒多遠的時候，就看到了遠處那個纖細而熟悉的身影。</p><p>白淺站在通往山洞的小路上，靜靜地等待著他。她穿著一身淡藍色的長裙，長髮在微風中輕輕飄揚，在陽光下形成了一道美麗而動人的剪影和畫面。看到葉塵走出來，她的臉上綻放出了燦爛而美麗的笑容，眼中閃爍著喜悅和激動的光芒。</p><p>「塵哥。」她輕聲叫了一聲，快步向他走了過來。</p><p>葉塵微微一笑，迎上前去，將她輕輕地擁入了懷中。在閉關的一年多時間裡，他雖然一直沉浸在修煉中，但每當夜深人靜的時候，他總會想起她，想起她的笑容、她的聲音、她的溫柔。現在終於見到了她，他感到了一種前所未有的溫馨和滿足。</p><p>「我回來了。」他在她的耳邊低聲說道，聲音中充滿了溫柔和深情。</p><p>白淺將頭埋在他的懷中，感受著他的溫暖和氣息，輕聲說道：「歡迎回來。這兩年我一直在這裡等你，每天都會來這條小路上看看，期待著看到你出關的身影。」</p><p>葉塵的心中湧起一股暖流，他輕輕撫摸著她的長髮，說道：「辛苦你了。」</p><p>兩人靜靜地擁抱了一會兒，然後一起沿著小路向山下走去。陽光灑在他們身上，在地面上投下了兩個相依的身影。白淺將他閉關期間發生的事情一五一十地告訴了他——聯盟的發展和變化，深淵之門舊址的異動和異常，以及慕容青雲從斷天峽谷帶回來的最新消息。葉塵靜靜地聽著，將每一個信息都記在心中。</p><p>慕容青雲的語氣中帶著一絲難以掩飾的憂慮。他在斷天峽谷守候了數月之久，親眼目睹了那遠古封印的每一絲變化和衰減，那種緩慢但持續的惡化讓他感到不安，就像是看到一道堤壩在洪水的沖刷下逐漸出現裂縫，遲早會徹底崩塌。</p><p>聽到慕容青雲從斷天峽谷帶回來的消息時，葉塵的臉色變得凝重起來。據慕容青雲的觀察和判斷，那個遠古封印的衰減速度比預想的要快得多，按照目前的衰減速度，深淵之主可能在一年內就會破封而出，比原本預估的時間提前了不少。</p><p>「一年的時間……」葉塵沉默了片刻，然後緩緩說道：「足夠了。一年的時間雖然緊迫，但足夠我做好最後的準備。」</p><p>白淺有些擔憂地看著他：「你有把握嗎？」</p><p>葉塵微微一笑，握緊了她的手：「相信我。我已經達到了嬰變境圓滿，距離悟天境只有一步之遙。在接下來的一年裡，我會繼續努力，爭取在深淵之主破封之前觸碰到悟天境的門檻。」</p><p>白淺靜靜地看著他，然後輕輕點了點頭：「我相信你。」</p><p>兩人手牽手走下了山，回到了聯盟總部。當葉塵出現在聯盟總部的時候，所有人都沸騰了。那些在一年多沒有見到他的人們，看到他平安歸來，還帶著更強大的氣息和力量，每個人的臉上都洋溢著喜悅和敬佩的笑容。</p><p>慕容青雲走上前，上下打量了葉塵一番，然後感嘆道：「嬰變境圓滿……真是了不起。我修煉了數百年，也不過剛剛觸碰到嬰變境中期的門檻。你只用了不到兩年的時間就從嬰變前期達到了圓滿，這份天賦和速度，真是讓老夫自愧不如。看來我們這些老傢伙真的是老了。」</p><p>葉塵謙虛地笑了笑：「慕容前輩過獎了。如果不是聯盟的支持和幫助，我不可能取得這樣的進步和成就。每一次的突破都離不開大家的信任和支持。」</p><p>慕容青雲拍了拍他的肩膀，正色道：「接下來你打算怎麼辦？深淵之主的威脅迫在眉睫，我們需要一個明確的計劃和方向。」</p><p>葉塵的目光變得堅定而明亮：「繼續修煉，爭取在深淵之主破封之前觸碰到悟天境。同時，我們也要做好最終決戰的準備。這不僅是我的戰鬥，也是整片大陸的戰鬥。我們需要聯合一切可以聯合的力量，共同面對即將到來的考驗。」</p><p>慕容青雲鄭重地點了點頭：「你說得對。聯盟會全力支持你。」</p><p>葉塵深深地吸了一口氣，將所有的感悟和體會都銘記在了心中。他知道，每一次戰鬥和歷練都是一次成長和蛻變的機會，他會珍惜每一個機會，不斷地提升和完善自己，為將來的終極決戰做好最充分的準備和鋪墊。他已經不再是當年那個懵懂的少年，而是一個真正的強者。</p><p>葉塵深深地吸了一口氣，將所有的感悟和體會都銘記在了心中。他知道，修行之路漫長而艱辛，但他已經做好了充分的準備和覺悟。他會繼續前行，不斷突破自己的極限和瓶頸，直到達到那個傳說中的境界和高度。他的目光堅定而明亮，充滿了對未來的期待和信心。每一步都走得踏實而堅定。</p><p>葉塵靜靜地站在星空下，讓自己的心靈沉浸在一種平靜而空靈的狀態中。他感受著體內的混沌劍元在經脈中緩緩流轉和運轉，就像一條在體內流淌的河流，不斷地滋養和強化著他的身體和靈魂。他知道，修行的道路沒有終點和盡頭，每一個境界的提升都意味著新的挑戰和考驗在等待著他。但他不會退縮和畏懼，因為他的心中有堅定的信念和目標。他想要守護這片世界和星空，守護那些他愛的人和愛他的人。為此，他願意付出一切努力和代價，不斷地提升和突破自己的極限和瓶頸。他的目光變得深邃而堅定，就像夜空中最明亮的星辰，照亮了前方的道路和方向。他回想起這些年來經歷的每一次戰鬥和磨難，每一次成長和蛻變，心中充滿了感慨和感激。那些經歷讓他變得更加強大和成熟，也讓他更加清楚地知道自己想要什麼和追求什麼。他深吸了一口氣，將心中的雜念和浮躁驅散和清除，然後繼續投入到艱苦的修煉和感悟中。在他的前方，還有更多的挑戰和冒險在等待著他，但他不再迷茫和猶豫，因為他的心中有了堅定的方向和目標。他相信自己一定能夠達到那個傳說中的境界和高度，成為真正能夠守護這片星空和世界的強者。</p></main><nav class="nav"><a href="chapter-952.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-953/" class="manga-btn">🎨 漫畫版</a><a href="chapter-954.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

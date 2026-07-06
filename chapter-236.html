@@ -1,279 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第236章 · 瀑布悟道 - 萬古塵埃</title>
-    <meta name="description" content="三天後，葉塵開始了凝神前期的系統鞏固修煉。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-236.html">
-    <link rel="prev" href="https://kofhk.com/chapter-235.html">
-    <link rel="next" href="https://kofhk.com/chapter-237.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第236章 · 瀑布悟道</h1>
-    <main>
-        <p>三天後，葉塵開始了凝神前期的系統鞏固修煉。</p>
-        <p>清晨，他來到後山的瀑布邊。這裡是他平日練劍的地方，周圍的環境他已經非常熟悉了。但現在，以凝神境的感知能力再去觀察這個地方，他看到了一個全新的世界。</p>
-        <p>瀑布的水流在他眼中不再是連成一片的水簾，而是由無數細小的水珠組成。每一顆水珠都在陽光下折射出七彩的光芒，像是一顆顆晶瑩剔透的寶石。他能夠清晰地看到水珠在空中飛行的軌跡，以及它們落在地面上時濺起的漣漪。</p>
-        <p>「凝神境的視角……真的完全不同。」</p>
-        <p>葉塵感嘆了一聲，然後開始今天的修煉。</p>
-        <p>他沒有急於練習高深的功法，而是從最基本的站樁開始。這是他剛入門時學的第一個動作,雙腳分開與肩同寬，膝蓋微曲，雙手自然下垂，收腹挺胸，目視前方。這個動作看似簡單，實則是所有修煉的基礎。</p>
-        <p>以前他做這個動作的時候，只能感覺到身體表面的肌肉緊張和放鬆。但現在，他能清晰地感覺到體內的元氣流動、骨骼的受力情況、以及身體與天地元氣之間的交互。</p>
-        <p>在這種狀態下，他能夠更加精準地調整自己的身體姿態，讓元氣的運轉變得更加流暢。每一次微小的調整，都會讓他的身體與天地之間的聯繫變得更加緊密。</p>
-        <p>「很好。」黑袍人的聲音在他的腦海中響起，「你已經掌握了凝神境最基本的感知能力。現在，嘗試將你的元神與身體完全融合。」</p>
-        <p>「元神與身體融合？」葉塵有些不解。</p>
-        <p>「凝神境之前，你的靈魂和身體雖然是一體的，但靈魂並不能完全控制身體的每一個部分。比如你的心跳、你的血液流動、你的內臟運作,這些都是由身體本能控制，你的靈魂無法直接干涉。」</p>
-        <p>「但凝神境不同。凝神境的元神，可以完全控制身體的每一個部分，包括那些原本由本能控制的功能。當你將元神與身體完全融合時，你的身體就會成為元神的延伸,每一個細胞、每一根毫毛，都在你的完全控制之下。」</p>
-        <p>葉塵若有所思，然後閉上眼睛，嘗試將元神的力量擴散到全身。</p>
-        <p>識海中，元神的灰色光芒開始向外擴散。那股光芒穿透了識海的邊界，沿著經脈和神經網絡，向全身蔓延。他感覺到自己體內每一個器官、每一塊肌肉、每一根骨骼，都在元神的籠罩下變得透明起來。</p>
-        <p>他「看到」了自己的心臟在跳動,每一次收縮和舒張，都精確而有力。他「看到」了血液在血管中流動,紅色的液體攜帶著氧氣和營養，輸送到身體的各個角落。他「看到」了內臟在工作,胃在消化食物，肝在解毒，腎在過濾血液。</p>
-        <p>這一切，都在元神的注視下變得清晰可見。</p>
-        <p>而且，他能夠控制它們。</p>
-        <p>他嘗試調整心跳的速度,原本每分鐘七十次的心跳，在他的控制下加快到了每分鐘一百次。血液流動的速度隨之加快，體內的溫度開始升高，一股更強大的力量從身體深處湧現出來。</p>
-        <p>他又嘗試將心跳放慢到每分鐘四十次。身體進入了更加省能的狀態，對外界元氣的吸收效率反而提高了。</p>
-        <p>「這就是……元神與身體的融合……」</p>
-        <p>葉塵睜開眼睛，眼中充滿了震驚。</p>
-        <p>這種全身控制的感覺太神奇了。在這種狀態下，他可以在戰鬥中隨意調整身體的狀態,需要力量時加快心跳和血液流動，需要持久時放慢新陳代謝，需要恢復時集中能量修復受傷的部位。</p>
-        <p>「沒錯。」黑袍人說道，「完全掌控自己的身體，是凝神境的基本能力之一。有了這種能力，你的戰鬥力至少提升三成。」</p>
-        <p>葉塵點了點頭，然後又皺起了眉頭：「但是，要維持這種全身融合的狀態，對元神的消耗很大。如果長時間維持，元神會感到疲憊。」</p>
-        <p>「那是因為你的元神還不夠強大。」黑袍人說道，「隨著你修為的提升，元神的承受能力也會越來越強。到了凝神中期，你就可以長時間維持這種狀態而不會感到疲憊了。」</p>
-        <p>「明白了。」</p>
-        <p>葉塵結束了元神融合的嘗試，開始進行下一項修煉,元神御氣。</p>
-        <p>他伸出手，將意識集中在掌心。識海中，元神散發出一股無形的力量，通過經脈傳遞到他的掌心。那股力量在空中凝聚，形成了一個灰色的元氣漩渦。</p>
-        <p>他嘗試控制那個漩渦的形狀和大小,讓它變成球形、變成錐形、變成刀形。每一次形態的變化，都伴隨著元神力量的調整。在這個過程中，他對元神的控制力在不斷提升。</p>
-        <p>從早上到中午，他一直在練習元神御氣的基礎用法。</p>
-        <p>中午休息的時候，他盤膝坐在瀑布邊的大石上，閉目養神。識海中，元神正在自行恢復消耗的能量。陽光照射在他的身上，帶來溫熱的感覺。微風吹過，帶來草木和泥土的清香。瀑布的水聲嘩嘩作響，像是大自然的催眠曲，讓人的心境變得平靜。</p>
-        <p>他突然想到一個問題,他已經突破到凝神前期了，那塊紫色晶石現在怎麼樣了？</p>
-        <p>他從懷中取出紫色晶石。晶石在他的掌心散發著柔和的光芒，溫潤如玉。但與之前不同的是，晶石表面多了一些細微的紋路,那些紋路像是血管一般，分布在晶石的內部，隱約構成一個複雜的圖案。</p>
-        <p>那些紋路……葉塵仔細觀察了一下，發現它們的形狀與他的識海網絡非常相似！</p>
-        <p>「這是……」</p>
-        <p>「紫色晶石在與你的識海同步。」黑袍人解釋道，「你的識海在天劫中重塑之後，與紫色晶石建立了更加緊密的聯繫。現在，這塊晶石不僅能夠保護你的靈魂，還能輔助你修煉元神。」</p>
-        <p>葉塵將晶石握緊，果然感覺到一股溫熱的能量從晶石中傳出，流入他的識海，滋養著他的元神。在那股能量的幫助下，元神的恢復速度比平時快了將近一倍。</p>
-        <p>「好東西。」葉塵滿意地將晶石收好。</p>
-        <p>下午，他繼續進行元神控制的練習。</p>
-        <p>這一次，他試著將元神的力量凝聚成一條線，向遠處延伸。那條線穿過了瀑布、穿過了樹林、穿過了山丘，一直延伸到數里之外。在那條線的末端，他能模糊地感覺到那裡的情況,有一隻野兔在草叢中吃草，有一條蛇在樹枝上盤踞，有幾隻鳥在天空中飛翔。</p>
-        <p>這就是凝神境的元神探測能力。雖然還不夠精確，但用於偵查和預警已經足夠了。</p>
-        <p>「元神探測的範圍，會隨著修為的提升而擴大。」黑袍人說道，「到了凝神中期，你的元神探測範圍可以擴大到方圓十里。到了凝神後期，方圓百里也不在話下。」</p>
-        <p>葉塵心中充滿了期待。</p>
-        <p>一天的修煉結束後，葉塵感覺自己對凝神境的掌握有了質的提升。從元神與身體的融合，到元神御氣，再到元神探測,這些凝神境特有的能力，正在一步步被他掌握。</p>
-        <p>「按照這個進度，半個月後我就能完全鞏固凝神前期了。」</p>
-        <p>葉塵望著天邊的晚霞，心中充滿了信心。</p>
-        <p>但他也知道，鞏固境界只是第一步。接下來，他還要學習凝神境的戰鬥技巧,將凝神境的能力真正運用到實戰中去。</p>
-        <p>而這，才是真正的挑戰所在。</p>
-    </main>
-    <nav class="nav">
-        <a href="https://kofhk.com/chapter-235.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-236/" class="manga-btn">🎨 漫畫版</a>
-        <a href="https://kofhk.com/chapter-237.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第236章 · 瀑布悟道 - 萬古塵埃</title><meta name="description" content="三天後，葉塵開始了凝神前期的系統鞏固修煉。"><link rel="canonical" href="https://kofhk.com/chapter-236.html"><link rel="prev" href="https://kofhk.com/chapter-235.html"><link rel="next" href="https://kofhk.com/chapter-237.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第236章 · 瀑布悟道</h1><main><p>三天後，葉塵開始了凝神前期的系統鞏固修煉。</p><p>清晨，他來到後山的瀑布邊。這裡是他平日練劍的地方，周圍的環境他已經非常熟悉了。但現在，以凝神境的感知能力再去觀察這個地方，他看到了一個全新的世界。</p><p>瀑布的水流在他眼中不再是連成一片的水簾，而是由無數細小的水珠組成。每一顆水珠都在陽光下折射出七彩的光芒，像是一顆顆晶瑩剔透的寶石。他能夠清晰地看到水珠在空中飛行的軌跡，以及它們落在地面上時濺起的漣漪。</p><p>「凝神境的視角……真的完全不同。」</p><p>葉塵感嘆了一聲，然後開始今天的修煉。</p><p>他沒有急於練習高深的功法，而是從最基本的站樁開始。這是他剛入門時學的第一個動作,雙腳分開與肩同寬，膝蓋微曲，雙手自然下垂，收腹挺胸，目視前方。這個動作看似簡單，實則是所有修煉的基礎。</p><p>以前他做這個動作的時候，只能感覺到身體表面的肌肉緊張和放鬆。但現在，他能清晰地感覺到體內的元氣流動、骨骼的受力情況、以及身體與天地元氣之間的交互。</p><p>在這種狀態下，他能夠更加精準地調整自己的身體姿態，讓元氣的運轉變得更加流暢。每一次微小的調整，都會讓他的身體與天地之間的聯繫變得更加緊密。</p><p>「很好。」黑袍人的聲音在他的腦海中響起，「你已經掌握了凝神境最基本的感知能力。現在，嘗試將你的元神與身體完全融合。」</p><p>「元神與身體融合？」葉塵有些不解。</p><p>「凝神境之前，你的靈魂和身體雖然是一體的，但靈魂並不能完全控制身體的每一個部分。比如你的心跳、你的血液流動、你的內臟運作,這些都是由身體本能控制，你的靈魂無法直接干涉。」</p><p>「但凝神境不同。凝神境的元神，可以完全控制身體的每一個部分，包括那些原本由本能控制的功能。當你將元神與身體完全融合時，你的身體就會成為元神的延伸,每一個細胞、每一根毫毛，都在你的完全控制之下。」</p><p>葉塵若有所思，然後閉上眼睛，嘗試將元神的力量擴散到全身。</p><p>識海中，元神的灰色光芒開始向外擴散。那股光芒穿透了識海的邊界，沿著經脈和神經網絡，向全身蔓延。他感覺到自己體內每一個器官、每一塊肌肉、每一根骨骼，都在元神的籠罩下變得透明起來。</p><p>他「看到」了自己的心臟在跳動,每一次收縮和舒張，都精確而有力。他「看到」了血液在血管中流動,紅色的液體攜帶著氧氣和營養，輸送到身體的各個角落。他「看到」了內臟在工作,胃在消化食物，肝在解毒，腎在過濾血液。</p><p>這一切，都在元神的注視下變得清晰可見。</p><p>而且，他能夠控制它們。</p><p>他嘗試調整心跳的速度,原本每分鐘七十次的心跳，在他的控制下加快到了每分鐘一百次。血液流動的速度隨之加快，體內的溫度開始升高，一股更強大的力量從身體深處湧現出來。</p><p>他又嘗試將心跳放慢到每分鐘四十次。身體進入了更加省能的狀態，對外界元氣的吸收效率反而提高了。</p><p>「這就是……元神與身體的融合……」</p><p>葉塵睜開眼睛，眼中充滿了震驚。</p><p>這種全身控制的感覺太神奇了。在這種狀態下，他可以在戰鬥中隨意調整身體的狀態,需要力量時加快心跳和血液流動，需要持久時放慢新陳代謝，需要恢復時集中能量修復受傷的部位。</p><p>「沒錯。」黑袍人說道，「完全掌控自己的身體，是凝神境的基本能力之一。有了這種能力，你的戰鬥力至少提升三成。」</p><p>葉塵點了點頭，然後又皺起了眉頭：「但是，要維持這種全身融合的狀態，對元神的消耗很大。如果長時間維持，元神會感到疲憊。」</p><p>「那是因為你的元神還不夠強大。」黑袍人說道，「隨著你修為的提升，元神的承受能力也會越來越強。到了凝神中期，你就可以長時間維持這種狀態而不會感到疲憊了。」</p><p>「明白了。」</p><p>葉塵結束了元神融合的嘗試，開始進行下一項修煉,元神御氣。</p><p>他伸出手，將意識集中在掌心。識海中，元神散發出一股無形的力量，通過經脈傳遞到他的掌心。那股力量在空中凝聚，形成了一個灰色的元氣漩渦。</p><p>他嘗試控制那個漩渦的形狀和大小,讓它變成球形、變成錐形、變成刀形。每一次形態的變化，都伴隨著元神力量的調整。在這個過程中，他對元神的控制力在不斷提升。</p><p>從早上到中午，他一直在練習元神御氣的基礎用法。</p><p>中午休息的時候，他盤膝坐在瀑布邊的大石上，閉目養神。識海中，元神正在自行恢復消耗的能量。陽光照射在他的身上，帶來溫熱的感覺。微風吹過，帶來草木和泥土的清香。瀑布的水聲嘩嘩作響，像是大自然的催眠曲，讓人的心境變得平靜。</p><p>他突然想到一個問題,他已經突破到凝神前期了，那塊紫色晶石現在怎麼樣了？</p><p>他從懷中取出紫色晶石。晶石在他的掌心散發著柔和的光芒，溫潤如玉。但與之前不同的是，晶石表面多了一些細微的紋路,那些紋路像是血管一般，分布在晶石的內部，隱約構成一個複雜的圖案。</p><p>那些紋路……葉塵仔細觀察了一下，發現它們的形狀與他的識海網絡非常相似！</p><p>「這是……」</p><p>「紫色晶石在與你的識海同步。」黑袍人解釋道，「你的識海在天劫中重塑之後，與紫色晶石建立了更加緊密的聯繫。現在，這塊晶石不僅能夠保護你的靈魂，還能輔助你修煉元神。」</p><p>葉塵將晶石握緊，果然感覺到一股溫熱的能量從晶石中傳出，流入他的識海，滋養著他的元神。在那股能量的幫助下，元神的恢復速度比平時快了將近一倍。</p><p>「好東西。」葉塵滿意地將晶石收好。</p><p>下午，他繼續進行元神控制的練習。</p><p>這一次，他試著將元神的力量凝聚成一條線，向遠處延伸。那條線穿過了瀑布、穿過了樹林、穿過了山丘，一直延伸到數里之外。在那條線的末端，他能模糊地感覺到那裡的情況,有一隻野兔在草叢中吃草，有一條蛇在樹枝上盤踞，有幾隻鳥在天空中飛翔。</p><p>這就是凝神境的元神探測能力。雖然還不夠精確，但用於偵查和預警已經足夠了。</p><p>「元神探測的範圍，會隨著修為的提升而擴大。」黑袍人說道，「到了凝神中期，你的元神探測範圍可以擴大到方圓十里。到了凝神後期，方圓百里也不在話下。」</p><p>葉塵心中充滿了期待。</p><p>一天的修煉結束後，葉塵感覺自己對凝神境的掌握有了質的提升。從元神與身體的融合，到元神御氣，再到元神探測,這些凝神境特有的能力，正在一步步被他掌握。</p><p>「按照這個進度，半個月後我就能完全鞏固凝神前期了。」</p><p>葉塵望著天邊的晚霞，心中充滿了信心。</p><p>但他也知道，鞏固境界只是第一步。接下來，他還要學習凝神境的戰鬥技巧,將凝神境的能力真正運用到實戰中去。</p><p>而這，才是真正的挑戰所在。</p></main><nav class="nav"><a href="https://kofhk.com/chapter-235.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-236/" class="manga-btn">🎨 漫畫版</a><a href="https://kofhk.com/chapter-237.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

@@ -1,287 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第118章 · 鞏固中期 - 萬古塵埃</title>
-    <meta name="description" content="突破到築基中期後，葉塵沒有急著繼續提升修為，而是花了整整十天的時間來鞏固境界。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-118.html">>
-    <link rel="prev" href="chapter-117.html">
-    <link rel="next" href="chapter-119.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第118章 · 鞏固中期</h1>
-    <main>
-        <p>突破到築基中期後，葉塵沒有急著繼續提升修為，而是花了整整十天的時間來鞏固境界。</p>
-        <p>他很清楚，築基中期的力量雖然強大，但如果不能完全掌握，反而會成為阻礙。就像一個小孩突然拿到了大人的武器，雖然武器的威力很大，但如果使用不當，反而會傷到自己。</p>
-        <p>這十天裡，他沒有修煉新的功法，也沒有練習新的劍招，而是全身心地投入到對築基中期力量的熟悉和掌握中。</p>
-        <p>每天清晨，他會在山頂打坐，感受著築基中期和築基前期之間的差異。他發現築基中期的元氣流轉速度比前期快了將近一倍，而且元氣的品質也有了明顯的提升。丹田中的築基晶雖然變小了，但釋放出的能量卻更加精純、更加強大。</p>
-        <p>他嘗試將這些變化記錄下來，形成自己的修煉心得。</p>
-        <p>上午，他會練習最基礎的劍招——刺、劈、掃、撩、斬。這些基礎劍招他已經練習了無數遍，但在築基中期的力量加持下，每一招都有了全新的感覺。他需要重新適應這種力量，讓自己的身體記憶和新的力量同步。</p>
-        <p>下午，他會參悟塵淵真人的傳承。塵淵真人留下的劍道傳承博大精深，即使他已經參悟了很多遍，每次重讀都能有新的收穫。特別是築基中期之後，他對傳承中一些原本看不懂的內容，忽然有了新的理解。</p>
-        <p>晚上，他會靜靜地打坐，將一天的收穫沉澱下來。</p>
-        <p>這樣的修煉雖然單調，但效果顯著。十天後，他已經完全掌握了築基中期的力量，能夠隨心所欲地運用這股力量施展各種劍招。</p>
-        <p>這天，秦昭陽來找他切磋。</p>
-        <p>兩人在後山的空地上相對而立。秦昭陽打量了葉塵一番，眼中閃過一絲讚賞：「築基中期了，不錯。」</p>
-        <p>「多謝師兄。」葉塵微微一笑。</p>
-        <p>「讓我看看你現在的水準。」秦昭陽拔出長劍，「用全力。」</p>
-        <p>葉塵深吸了一口氣，沒有客氣，率先出手！</p>
-        <p>他的身形一晃，整個人像是化作了一道流光，眨眼間就到了秦昭陽的面前！手中的長劍帶著金色的劍氣，朝著秦昭陽當胸刺去！這一劍的速度比築基前期時快了將近一倍，劍鋒劃破空氣，發出尖銳的嘯音！</p>
-        <p>秦昭陽的眼神微微一凝，側身避開了這一劍。同時他手中的長劍斜撩，朝著葉塵的手腕削去。劍勢凌厲而精準，沒有絲毫多餘的動作。</p>
-        <p>葉塵沒有退縮，手腕一轉，長劍在空中劃過一道弧線，和秦昭陽的長劍碰撞在一起！</p>
-        <p>叮！</p>
-        <p>兩劍相交，發出一聲清脆的金屬撞擊聲。</p>
-        <p>葉塵感覺一股力量從劍身上傳來，但他沒有像以前一樣被震退，而是穩穩地站在原地。雖然秦昭陽的力量仍然比他強，但差距已經不像築基前期時那麼大了。</p>
-        <p>「力量不錯。」秦昭陽評價道，「但還不夠。」</p>
-        <p>說著，他的攻勢忽然變得淩厲起來！</p>
-        <p>秦昭陽的長劍如同狂風暴雨般攻來，每一劍都帶著驚人的力量和速度。劍光在空中交織成一片密集的劍網，從各個角度朝葉塵覆蓋而去！</p>
-        <p>葉塵咬緊牙關，全力應對。</p>
-        <p>他施展出塵淵劍訣，金色的劍氣在身前形成了一道堅固的防禦。但秦昭陽的攻勢太強了，他的防禦在對方的猛攻下不斷後退，腳下的地面被他踩出了一道道裂紋。</p>
-        <p>「不能只是防守。」</p>
-        <p>他心中迅速做出了判斷。</p>
-        <p>在又一次擋住秦昭陽的攻擊後，他忽然變招，使出了塵歸一劍！</p>
-        <p>他的劍勢忽然變得飄忽不定，所有的力量都凝聚在了劍尖的一點上。他的長劍像是化成了一根繡花針，穿過了秦昭陽密集的劍網，直刺他的心口！</p>
-        <p>秦昭陽的眼中閃過一絲驚訝，但他反應極快，長劍回收，用劍身擋住了葉塵的攻擊！</p>
-        <p>叮！</p>
-        <p>又是一聲清脆的撞擊聲。</p>
-        <p>但這一次，秦昭陽的身體微微晃動了一下。</p>
-        <p>雖然只是極其細微的晃動，但葉塵捕獲到了。</p>
-        <p>「有破綻！」</p>
-        <p>他趁著秦昭陽身體晃動的瞬間，再次發動了攻擊！長劍如同毒蛇般探出，朝著秦昭陽的腰間刺去！</p>
-        <p>秦昭陽的身形一轉，避開了這一劍，同時長劍橫掃，逼退了葉塵。</p>
-        <p>兩人拉開距離，相對而立。</p>
-        <p>秦昭陽看著葉塵，眼中閃爍著光芒：「你剛才那一劍……是塵歸一劍？」</p>
-        <p>「是的。」葉塵點頭。</p>
-        <p>「比之前強了很多。」秦昭陽說，「如果是在三個月前，你這那一劍絕對無法撼動我的防禦。但現在，你已經能讓我產生動搖了。」</p>
-        <p>葉塵心中一陣喜悅，但他沒有表現出來，而是謙虛地說：「是師兄讓著我。」</p>
-        <p>「我沒有讓你。」秦昭陽認真地說，「你的進步確實很快。按照這個速度，兩個月後的聯合試煉，你應該能進入前二十。」</p>
-        <p>「前二十？」葉塵有些失望，「才前二十嗎？」</p>
-        <p>秦昭陽微微一笑：「你以為三十六宗門的天才是吃素的嗎？各宗門都有築基後期的弟子，有些宗門甚至有築基後期巔峰的弟子。你能在十九歲達到築基中期，已經是頂尖的天賦了。但天賦不代表一切，實戰經驗、劍法造詣、心態意志，這些都會影響最終的排名。」</p>
-        <p>葉塵鄭重地點了點頭：「我明白了。」</p>
-        <p>「不過你也不用妄自菲薄。」秦昭陽繼續說，「你的塵淵劍訣很特殊，如果運用得當，可以發揮出超過境界的威力。特別是你剛才那一劍塵歸一劍，已經有了威脅到築基後期修士的潛力。」</p>
-        <p>葉塵心中一動：「師兄的意思是……」</p>
-        <p>「繼續完善塵歸一劍。」秦昭陽說，「將你所有的精力都投入到這一劍上。不要貪多，不要雜學。一招鮮，吃遍天。當你將塵歸一劍練到極致的時候，就算是築基後期的修士，也不敢小覷你。」</p>
-        <p>葉塵鄭重地點了點頭：「多謝師兄指點。」</p>
-        <p>秦昭陽收劍入鞘：「今天就到這裡吧。你剛剛突破築基中期，還需要時間繼續鞏固。不要急著追求更高的修為，先把基礎打牢。」</p>
-        <p>說完，他轉身離去。</p>
-        <p>葉塵站在原地，看著秦昭陽的背影，心中充滿了感激。秦昭陽雖然話不多，但每次給他的指點都切中要害，讓他在修煉的道路上少走了很多彎路。</p>
-        <p>他收起長劍，深吸了一口氣。夕陽的餘暉灑在空地上，將他的影子拉得很長。他望著天邊的晚霞，心中充滿了對未來的期待。兩個月後的聯合試煉，將是他踏上更大舞台的第一步。</p>
-        <p>「塵歸一劍……我會讓它成為我的最強之劍。」</p>
-        <p>他轉身向住處走去，腳步沉穩而有力。他知道，築基中期只是一個新的起點，前方還有築基後期、築基後期巔峰，還有煉魂期、凝神期，還有更廣闊的天地在等待著他。他需要一步一步地走下去，不急不躁，穩紮穩打，將每一個境界都修煉到極致，這樣才能在未來面對更強大的敵人時立於不敗之地。</p>
-    </main>
-    <nav class="nav">
-        <a href="chapter-117.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-118/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-119.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第118章 · 鞏固中期 - 萬古塵埃</title><meta name="description" content="突破到築基中期後，葉塵沒有急著繼續提升修為，而是花了整整十天的時間來鞏固境界。"><link rel="canonical" href="https://kofhk.com/chapter-118.html">><link rel="prev" href="chapter-117.html"><link rel="next" href="chapter-119.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第118章 · 鞏固中期</h1><main><p>突破到築基中期後，葉塵沒有急著繼續提升修為，而是花了整整十天的時間來鞏固境界。</p><p>他很清楚，築基中期的力量雖然強大，但如果不能完全掌握，反而會成為阻礙。就像一個小孩突然拿到了大人的武器，雖然武器的威力很大，但如果使用不當，反而會傷到自己。</p><p>這十天裡，他沒有修煉新的功法，也沒有練習新的劍招，而是全身心地投入到對築基中期力量的熟悉和掌握中。</p><p>每天清晨，他會在山頂打坐，感受著築基中期和築基前期之間的差異。他發現築基中期的元氣流轉速度比前期快了將近一倍，而且元氣的品質也有了明顯的提升。丹田中的築基晶雖然變小了，但釋放出的能量卻更加精純、更加強大。</p><p>他嘗試將這些變化記錄下來，形成自己的修煉心得。</p><p>上午，他會練習最基礎的劍招——刺、劈、掃、撩、斬。這些基礎劍招他已經練習了無數遍，但在築基中期的力量加持下，每一招都有了全新的感覺。他需要重新適應這種力量，讓自己的身體記憶和新的力量同步。</p><p>下午，他會參悟塵淵真人的傳承。塵淵真人留下的劍道傳承博大精深，即使他已經參悟了很多遍，每次重讀都能有新的收穫。特別是築基中期之後，他對傳承中一些原本看不懂的內容，忽然有了新的理解。</p><p>晚上，他會靜靜地打坐，將一天的收穫沉澱下來。</p><p>這樣的修煉雖然單調，但效果顯著。十天後，他已經完全掌握了築基中期的力量，能夠隨心所欲地運用這股力量施展各種劍招。</p><p>這天，秦昭陽來找他切磋。</p><p>兩人在後山的空地上相對而立。秦昭陽打量了葉塵一番，眼中閃過一絲讚賞：「築基中期了，不錯。」</p><p>「多謝師兄。」葉塵微微一笑。</p><p>「讓我看看你現在的水準。」秦昭陽拔出長劍，「用全力。」</p><p>葉塵深吸了一口氣，沒有客氣，率先出手！</p><p>他的身形一晃，整個人像是化作了一道流光，眨眼間就到了秦昭陽的面前！手中的長劍帶著金色的劍氣，朝著秦昭陽當胸刺去！這一劍的速度比築基前期時快了將近一倍，劍鋒劃破空氣，發出尖銳的嘯音！</p><p>秦昭陽的眼神微微一凝，側身避開了這一劍。同時他手中的長劍斜撩，朝著葉塵的手腕削去。劍勢凌厲而精準，沒有絲毫多餘的動作。</p><p>葉塵沒有退縮，手腕一轉，長劍在空中劃過一道弧線，和秦昭陽的長劍碰撞在一起！</p><p>叮！</p><p>兩劍相交，發出一聲清脆的金屬撞擊聲。</p><p>葉塵感覺一股力量從劍身上傳來，但他沒有像以前一樣被震退，而是穩穩地站在原地。雖然秦昭陽的力量仍然比他強，但差距已經不像築基前期時那麼大了。</p><p>「力量不錯。」秦昭陽評價道，「但還不夠。」</p><p>說著，他的攻勢忽然變得淩厲起來！</p><p>秦昭陽的長劍如同狂風暴雨般攻來，每一劍都帶著驚人的力量和速度。劍光在空中交織成一片密集的劍網，從各個角度朝葉塵覆蓋而去！</p><p>葉塵咬緊牙關，全力應對。</p><p>他施展出塵淵劍訣，金色的劍氣在身前形成了一道堅固的防禦。但秦昭陽的攻勢太強了，他的防禦在對方的猛攻下不斷後退，腳下的地面被他踩出了一道道裂紋。</p><p>「不能只是防守。」</p><p>他心中迅速做出了判斷。</p><p>在又一次擋住秦昭陽的攻擊後，他忽然變招，使出了塵歸一劍！</p><p>他的劍勢忽然變得飄忽不定，所有的力量都凝聚在了劍尖的一點上。他的長劍像是化成了一根繡花針，穿過了秦昭陽密集的劍網，直刺他的心口！</p><p>秦昭陽的眼中閃過一絲驚訝，但他反應極快，長劍回收，用劍身擋住了葉塵的攻擊！</p><p>叮！</p><p>又是一聲清脆的撞擊聲。</p><p>但這一次，秦昭陽的身體微微晃動了一下。</p><p>雖然只是極其細微的晃動，但葉塵捕獲到了。</p><p>「有破綻！」</p><p>他趁著秦昭陽身體晃動的瞬間，再次發動了攻擊！長劍如同毒蛇般探出，朝著秦昭陽的腰間刺去！</p><p>秦昭陽的身形一轉，避開了這一劍，同時長劍橫掃，逼退了葉塵。</p><p>兩人拉開距離，相對而立。</p><p>秦昭陽看著葉塵，眼中閃爍著光芒：「你剛才那一劍……是塵歸一劍？」</p><p>「是的。」葉塵點頭。</p><p>「比之前強了很多。」秦昭陽說，「如果是在三個月前，你這那一劍絕對無法撼動我的防禦。但現在，你已經能讓我產生動搖了。」</p><p>葉塵心中一陣喜悅，但他沒有表現出來，而是謙虛地說：「是師兄讓著我。」</p><p>「我沒有讓你。」秦昭陽認真地說，「你的進步確實很快。按照這個速度，兩個月後的聯合試煉，你應該能進入前二十。」</p><p>「前二十？」葉塵有些失望，「才前二十嗎？」</p><p>秦昭陽微微一笑：「你以為三十六宗門的天才是吃素的嗎？各宗門都有築基後期的弟子，有些宗門甚至有築基後期巔峰的弟子。你能在十九歲達到築基中期，已經是頂尖的天賦了。但天賦不代表一切，實戰經驗、劍法造詣、心態意志，這些都會影響最終的排名。」</p><p>葉塵鄭重地點了點頭：「我明白了。」</p><p>「不過你也不用妄自菲薄。」秦昭陽繼續說，「你的塵淵劍訣很特殊，如果運用得當，可以發揮出超過境界的威力。特別是你剛才那一劍塵歸一劍，已經有了威脅到築基後期修士的潛力。」</p><p>葉塵心中一動：「師兄的意思是……」</p><p>「繼續完善塵歸一劍。」秦昭陽說，「將你所有的精力都投入到這一劍上。不要貪多，不要雜學。一招鮮，吃遍天。當你將塵歸一劍練到極致的時候，就算是築基後期的修士，也不敢小覷你。」</p><p>葉塵鄭重地點了點頭：「多謝師兄指點。」</p><p>秦昭陽收劍入鞘：「今天就到這裡吧。你剛剛突破築基中期，還需要時間繼續鞏固。不要急著追求更高的修為，先把基礎打牢。」</p><p>說完，他轉身離去。</p><p>葉塵站在原地，看著秦昭陽的背影，心中充滿了感激。秦昭陽雖然話不多，但每次給他的指點都切中要害，讓他在修煉的道路上少走了很多彎路。</p><p>他收起長劍，深吸了一口氣。夕陽的餘暉灑在空地上，將他的影子拉得很長。他望著天邊的晚霞，心中充滿了對未來的期待。兩個月後的聯合試煉，將是他踏上更大舞台的第一步。</p><p>「塵歸一劍……我會讓它成為我的最強之劍。」</p><p>他轉身向住處走去，腳步沉穩而有力。他知道，築基中期只是一個新的起點，前方還有築基後期、築基後期巔峰，還有煉魂期、凝神期，還有更廣闊的天地在等待著他。他需要一步一步地走下去，不急不躁，穩紮穩打，將每一個境界都修煉到極致，這樣才能在未來面對更強大的敵人時立於不敗之地。</p></main><nav class="nav"><a href="chapter-117.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-118/" class="manga-btn">🎨 漫畫版</a><a href="chapter-119.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

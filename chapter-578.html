@@ -1,281 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第578章 · 化物遺痕 - 萬古塵埃</title>
-    <link rel="canonical" href="">
-    <link rel="prev" href="chapter-577.html">
-    <link rel="next" href="chapter-579.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第578章 · 化物遺痕</h1>
-    <main>
-<p>「上古時期的西域，靈氣充沛，資源豐富，能夠孕育出一個輝煌的文明也不奇怪。」葉塵說道，他的目光掃過周圍的廢墟，試圖從中找到一些有用的線索。「只可惜，一切都毀在了深淵入侵之中。」</p>
-        <p>他蹲下身，撿起一塊瓦礫，仔細觀察。瓦礫的表面覆蓋著一層黑色的物質，散發出淡淡的深淵氣息。那是在城市毀滅時，深淵之力侵蝕了整座城市，讓這些建築永遠留下了被汙染的痕跡。</p>
-        <p>「深淵之力……果然可怕。」葉塵將瓦礫扔掉，拍了拍手上的灰塵。「就連建築材料都被侵蝕了，更何況是血肉之軀。那些遠古強者們，能夠在這種環境中堅持戰鬥，真是了不起。」</p>
-        <p>兩人繼續前行，走了大約半個時辰後，來到了一座相對完整的建築前。</p>
-        <p>這是一座巨大的宮殿式建築，雖然屋頂已經坍塌了大半，但牆壁和柱子仍然保存得相對完好。建築的正門上方雕刻著一個巨大的符號，散發著微弱的光芒，顯然是某種保護陣法的殘留。</p>
-        <p>「這座建築的陣法還在運行？」白淺驚訝地問道。她能夠感受到那微弱的光芒中蘊含的力量，雖然已經經過了數萬年的消耗，但仍然保持著一定的運轉能力。</p>
-        <p>「應該是最後的殘留了。」葉塵走近建築，伸手觸摸牆壁上的符文。他的指尖觸碰到符文的瞬間，那些符文微微發光，像是有生命一般在回應他的觸碰。那些符文在他的觸碰下微微發光，傳遞出一股溫暖而古老的氣息。「這個陣法是用來保護建築內部不受外力破壞的。可惜經過了這麼多年，陣法的力量已經消耗殆盡，隨時都可能消失。」</p>
-        <p>他繞著建築走了一圈，找到了一個相對完整的入口，然後走了進去。</p>
-        <p>建築內部比外面看起來更加寬敞。大廳的高度超過十丈，支撐屋頂的石柱上雕刻著精美的花紋和文字。大廳中央擺放著一個巨大的石臺，石臺上刻滿了複雜的符文，散發出淡淡的靈力波動。</p>
-        <p>「這是……一個傳送陣？」白淺走到石臺前，仔細觀察上面的符文。</p>
-        <p>「不完全是。」葉塵也走到石臺前，伸手感受著符文散發出的靈力波動。「這是一個資訊儲存裝置——類似於玉簡，但比玉簡更加高級。它能夠儲存大量的資訊，而且能夠自動吸收天地靈氣來維持運轉。」</p>
-        <p>他閉上眼睛，將意識沉入石臺之中。</p>
-        <p>下一刻，大量的資訊如同潮水般湧入他的腦海！</p>
-        <p>那些資訊包含了這個文明的歷史、文化、修煉體系、科技成就等各個方面的內容。雖然大部分資訊都已經在時間的長河中流失了，但仍然保留了不少有價值的內容。</p>
-        <p>葉塵的意識在資訊的海洋中穿梭，尋找有用的線索。</p>
-        <p>他看到了一個畫面——一群修士正在一座巨大的建築中修煉，他們的頭頂懸浮著一團耀眼的光芒，散發出强大的靈力波動。那些修士的修為各不相同，有元嬰境的，有化物境的，甚至還有歸真境的。</p>
-        <p>他看到了一個畫面——一座巨大的高塔矗立在城市中央，高塔的頂端懸浮著一顆巨大的水晶，水晶中蘊含著難以想像的龐大能量。那是整個城市的力量來源，也是這個文明的核心。</p>
-        <p>他還看到了一個畫面——一位白髮蒼蒼的老者站在高塔頂端，手中握著一枚令牌。那枚令牌的樣子，竟然和葉塵體內的輪迴令一模一樣！</p>
-        <p>「輪迴令！」葉塵心中一震。</p>
-        <p>他急忙想要捕捉更多關於輪迴令的資訊，但那些畫面如同霧氣般消散了。無論他如何努力，都無法再找到任何有關輪迴令的內容。</p>
-        <p>「可惡。」葉塵睜開眼睛，有些惱火地說道。</p>
-        <p>「怎麼了？」白淺問道。</p>
-        <p>「我看到了輪迴令。」葉塵皺眉道。「這個文明的頂端，曾經有一枚輪迴令——和我體內的那枚一模一樣。但資訊到這裡就斷了，我無法看到更多。」</p>
-        <p>白淺也露出了驚訝的表情。「你的意思是，輪迴令可能不只一枚？」</p>
-        <p>「很有可能。」葉塵點頭。「我之前就猜測過，輪迴令可能不只一枚。現在看來，這個猜測很可能是正確的。每一枚輪迴令都可能對應著一個文明或者一個時代，而這些輪迴令之間存在著某種聯繫。」</p>
-        <p>他沉吟了片刻，繼續說道：「如果能夠找到更多的輪迴令，或許就能夠解開輪迴令的真正秘密。」</p>
-        <p>「那這個文明的其他地方，會不會還有關於輪迴令的線索？」白淺問道。</p>
-        <p>「有可能。」葉塵環顧四周。「我們在這座建築中仔細搜尋一下，看看能不能找到更多資訊。」</p>
-        <p>兩人在建築中分頭搜尋。大廳的面積很大，除了中央的石臺之外，周圍還有許多房間和通道。那些房間中堆滿了灰塵和碎石，顯然已經很久沒有人來過了。</p>
-        <p>葉塵走進一個相對完整的房間，房間的牆壁上掛著一些壁畫，描繪的是這個文明日常生活的場景。他看到人們在田間耕作，在市場上交易，在廣場上集會，一切都顯得和平而繁榮。</p>
-        <p>但在最後一幅壁畫中，畫面變得陰暗起來。天空中出現了一道裂縫，黑色的氣息從裂縫中湧出，吞噬了一切。人們驚慌失措地四處奔逃，強者們奮不顧身地衝向裂縫，試圖阻止災難的降臨。</p>
-        <p>壁畫的結尾，是一位手持輪迴令的強者站在裂縫前方，渾身散發出耀眼的光芒。他似乎正在用輪迴令的力量封印那道裂縫，但畫面的最後部分已經模糊不清，無法看清結果。</p>
-        <p>「那道裂縫……就是深淵之門嗎？」葉塵喃喃道。</p>
-        <p>他伸手撫摸著壁畫，試圖從中感受到更多的資訊。但壁畫已經經歷了數萬年的風化，一觸碰就開始剝落。他連忙收回手，不敢再碰。</p>
-        <p>「找到什麼了嗎？」白淺的聲音從門口傳來。</p>
-        <p>「一些壁畫。」葉塵指著牆上的畫面對白淺說道。「記錄了這個文明的滅亡過程。最後，一個手持輪迴令的強者試圖封印深淵之門，但結局如何，已經看不清了。」</p>
-        <p>白淺走到壁畫前，仔細看了看，然後搖頭。「確實太模糊了。不過，從這個畫面來看，輪迴令似乎能夠對抗深淵之力？」</p>
-        <p>「嗯。」葉塵點頭。「這和我之前的猜測一致。輪迴令的力量應該能夠克製深淵之力，所以才會成為深淵教團追殺我的目標。」</p>
-        <p>他頓了頓，語氣變得嚴肅起來。「這也說明，深淵教團的目標不僅僅是殺我，更可能是搶奪我體內的輪迴令。他們想利用輪迴令的力量，來達成某些不可告人的目的。」</p>
-        <p>「那我們更要小心了。」白淺說道。</p>
-        <p>葉塵點頭，然後轉身離開了房間。</p>
-        <p>兩人在建築中繼續搜尋了大約一個時辰，找到了不少有價值的文物和資訊。但關於輪迴令的線索仍然有限，無法拼湊出完整的面貌。</p>
-        <p>「差不多了。」葉塵站在建築門口，看向遠方。「我們該繼續深入了。前面還有更多的地方等待著我們探索。」</p>
-        <p>他邁步走出建築，陽光灑在他的臉上，讓他的輪廓顯得格外分明。</p>
-        <p>白淺跟在他身後，兩人的身影在陽光下拉出了長長的影子。</p>
-        <p>遠處，戰場的深處傳來一陣沉悶的轟鳴聲，彷彿有什麼東西在那裡沉睡。空氣中彌漫著一股緊張而危險的氣息，讓人心生警惕。</p>
-        <p>但葉塵的步伐沒有猶豫。他堅定地向著轟鳴聲傳來的方向走去，因為他感覺到，在那裡，有更加重要的秘密等待著他。</p>
-        <p>白淺緊跟在他身邊，手中的劍始終保持著隨時可以出鞘的姿勢。</p>
-        <p>兩人在荒涼的戰場上繼續前行，他們的身影在廣闊的大地上顯得格外渺小，但他們的腳步卻充滿了力量。</p>
-        <p>因為他們知道，每一步前進，都是向著真相靠近。</p>
-        <p>而那些沉睡在塵埃中的秘密，也終將被他們一一揭開。</p>
-        
-    </main>
-    <nav class="nav">
-        <a href="chapter-577.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-578/" class="manga-btn">🎨 漫畫版</a>
-        <a href="chapter-579.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第578章 · 化物遺痕 - 萬古塵埃</title><link rel="canonical" href=""><link rel="prev" href="chapter-577.html"><link rel="next" href="chapter-579.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第578章 · 化物遺痕</h1><main><p>「上古時期的西域，靈氣充沛，資源豐富，能夠孕育出一個輝煌的文明也不奇怪。」葉塵說道，他的目光掃過周圍的廢墟，試圖從中找到一些有用的線索。「只可惜，一切都毀在了深淵入侵之中。」</p><p>他蹲下身，撿起一塊瓦礫，仔細觀察。瓦礫的表面覆蓋著一層黑色的物質，散發出淡淡的深淵氣息。那是在城市毀滅時，深淵之力侵蝕了整座城市，讓這些建築永遠留下了被汙染的痕跡。</p><p>「深淵之力……果然可怕。」葉塵將瓦礫扔掉，拍了拍手上的灰塵。「就連建築材料都被侵蝕了，更何況是血肉之軀。那些遠古強者們，能夠在這種環境中堅持戰鬥，真是了不起。」</p><p>兩人繼續前行，走了大約半個時辰後，來到了一座相對完整的建築前。</p><p>這是一座巨大的宮殿式建築，雖然屋頂已經坍塌了大半，但牆壁和柱子仍然保存得相對完好。建築的正門上方雕刻著一個巨大的符號，散發著微弱的光芒，顯然是某種保護陣法的殘留。</p><p>「這座建築的陣法還在運行？」白淺驚訝地問道。她能夠感受到那微弱的光芒中蘊含的力量，雖然已經經過了數萬年的消耗，但仍然保持著一定的運轉能力。</p><p>「應該是最後的殘留了。」葉塵走近建築，伸手觸摸牆壁上的符文。他的指尖觸碰到符文的瞬間，那些符文微微發光，像是有生命一般在回應他的觸碰。那些符文在他的觸碰下微微發光，傳遞出一股溫暖而古老的氣息。「這個陣法是用來保護建築內部不受外力破壞的。可惜經過了這麼多年，陣法的力量已經消耗殆盡，隨時都可能消失。」</p><p>他繞著建築走了一圈，找到了一個相對完整的入口，然後走了進去。</p><p>建築內部比外面看起來更加寬敞。大廳的高度超過十丈，支撐屋頂的石柱上雕刻著精美的花紋和文字。大廳中央擺放著一個巨大的石臺，石臺上刻滿了複雜的符文，散發出淡淡的靈力波動。</p><p>「這是……一個傳送陣？」白淺走到石臺前，仔細觀察上面的符文。</p><p>「不完全是。」葉塵也走到石臺前，伸手感受著符文散發出的靈力波動。「這是一個資訊儲存裝置——類似於玉簡，但比玉簡更加高級。它能夠儲存大量的資訊，而且能夠自動吸收天地靈氣來維持運轉。」</p><p>他閉上眼睛，將意識沉入石臺之中。</p><p>下一刻，大量的資訊如同潮水般湧入他的腦海！</p><p>那些資訊包含了這個文明的歷史、文化、修煉體系、科技成就等各個方面的內容。雖然大部分資訊都已經在時間的長河中流失了，但仍然保留了不少有價值的內容。</p><p>葉塵的意識在資訊的海洋中穿梭，尋找有用的線索。</p><p>他看到了一個畫面——一群修士正在一座巨大的建築中修煉，他們的頭頂懸浮著一團耀眼的光芒，散發出强大的靈力波動。那些修士的修為各不相同，有元嬰境的，有化物境的，甚至還有歸真境的。</p><p>他看到了一個畫面——一座巨大的高塔矗立在城市中央，高塔的頂端懸浮著一顆巨大的水晶，水晶中蘊含著難以想像的龐大能量。那是整個城市的力量來源，也是這個文明的核心。</p><p>他還看到了一個畫面——一位白髮蒼蒼的老者站在高塔頂端，手中握著一枚令牌。那枚令牌的樣子，竟然和葉塵體內的輪迴令一模一樣！</p><p>「輪迴令！」葉塵心中一震。</p><p>他急忙想要捕捉更多關於輪迴令的資訊，但那些畫面如同霧氣般消散了。無論他如何努力，都無法再找到任何有關輪迴令的內容。</p><p>「可惡。」葉塵睜開眼睛，有些惱火地說道。</p><p>「怎麼了？」白淺問道。</p><p>「我看到了輪迴令。」葉塵皺眉道。「這個文明的頂端，曾經有一枚輪迴令——和我體內的那枚一模一樣。但資訊到這裡就斷了，我無法看到更多。」</p><p>白淺也露出了驚訝的表情。「你的意思是，輪迴令可能不只一枚？」</p><p>「很有可能。」葉塵點頭。「我之前就猜測過，輪迴令可能不只一枚。現在看來，這個猜測很可能是正確的。每一枚輪迴令都可能對應著一個文明或者一個時代，而這些輪迴令之間存在著某種聯繫。」</p><p>他沉吟了片刻，繼續說道：「如果能夠找到更多的輪迴令，或許就能夠解開輪迴令的真正秘密。」</p><p>「那這個文明的其他地方，會不會還有關於輪迴令的線索？」白淺問道。</p><p>「有可能。」葉塵環顧四周。「我們在這座建築中仔細搜尋一下，看看能不能找到更多資訊。」</p><p>兩人在建築中分頭搜尋。大廳的面積很大，除了中央的石臺之外，周圍還有許多房間和通道。那些房間中堆滿了灰塵和碎石，顯然已經很久沒有人來過了。</p><p>葉塵走進一個相對完整的房間，房間的牆壁上掛著一些壁畫，描繪的是這個文明日常生活的場景。他看到人們在田間耕作，在市場上交易，在廣場上集會，一切都顯得和平而繁榮。</p><p>但在最後一幅壁畫中，畫面變得陰暗起來。天空中出現了一道裂縫，黑色的氣息從裂縫中湧出，吞噬了一切。人們驚慌失措地四處奔逃，強者們奮不顧身地衝向裂縫，試圖阻止災難的降臨。</p><p>壁畫的結尾，是一位手持輪迴令的強者站在裂縫前方，渾身散發出耀眼的光芒。他似乎正在用輪迴令的力量封印那道裂縫，但畫面的最後部分已經模糊不清，無法看清結果。</p><p>「那道裂縫……就是深淵之門嗎？」葉塵喃喃道。</p><p>他伸手撫摸著壁畫，試圖從中感受到更多的資訊。但壁畫已經經歷了數萬年的風化，一觸碰就開始剝落。他連忙收回手，不敢再碰。</p><p>「找到什麼了嗎？」白淺的聲音從門口傳來。</p><p>「一些壁畫。」葉塵指著牆上的畫面對白淺說道。「記錄了這個文明的滅亡過程。最後，一個手持輪迴令的強者試圖封印深淵之門，但結局如何，已經看不清了。」</p><p>白淺走到壁畫前，仔細看了看，然後搖頭。「確實太模糊了。不過，從這個畫面來看，輪迴令似乎能夠對抗深淵之力？」</p><p>「嗯。」葉塵點頭。「這和我之前的猜測一致。輪迴令的力量應該能夠克製深淵之力，所以才會成為深淵教團追殺我的目標。」</p><p>他頓了頓，語氣變得嚴肅起來。「這也說明，深淵教團的目標不僅僅是殺我，更可能是搶奪我體內的輪迴令。他們想利用輪迴令的力量，來達成某些不可告人的目的。」</p><p>「那我們更要小心了。」白淺說道。</p><p>葉塵點頭，然後轉身離開了房間。</p><p>兩人在建築中繼續搜尋了大約一個時辰，找到了不少有價值的文物和資訊。但關於輪迴令的線索仍然有限，無法拼湊出完整的面貌。</p><p>「差不多了。」葉塵站在建築門口，看向遠方。「我們該繼續深入了。前面還有更多的地方等待著我們探索。」</p><p>他邁步走出建築，陽光灑在他的臉上，讓他的輪廓顯得格外分明。</p><p>白淺跟在他身後，兩人的身影在陽光下拉出了長長的影子。</p><p>遠處，戰場的深處傳來一陣沉悶的轟鳴聲，彷彿有什麼東西在那裡沉睡。空氣中彌漫著一股緊張而危險的氣息，讓人心生警惕。</p><p>但葉塵的步伐沒有猶豫。他堅定地向著轟鳴聲傳來的方向走去，因為他感覺到，在那裡，有更加重要的秘密等待著他。</p><p>白淺緊跟在他身邊，手中的劍始終保持著隨時可以出鞘的姿勢。</p><p>兩人在荒涼的戰場上繼續前行，他們的身影在廣闊的大地上顯得格外渺小，但他們的腳步卻充滿了力量。</p><p>因為他們知道，每一步前進，都是向著真相靠近。</p><p>而那些沉睡在塵埃中的秘密，也終將被他們一一揭開。</p></main><nav class="nav"><a href="chapter-577.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-578/" class="manga-btn">🎨 漫畫版</a><a href="chapter-579.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

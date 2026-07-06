@@ -1,238 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第29章 · 紫霧遺跡 - 萬古塵埃</title>
-    <meta name="description" content="葉塵的手已經按在了星塵劍的劍柄上。那黑袍人站在不遠處，血紅色的眼睛靜靜地看著他，既沒有攻擊，也沒有說話。兩人就這樣對峙了將近十息。然後，黑袍人開口了。「你……很特別。聲音沙啞低沉，像是砂紙摩擦的聲音。「你是誰。葉塵沉聲問道。「一個……不該存在的人。黑袍人發出一聲低沉的苦笑，「我沒有惡意。">
-
-    <link rel="canonical" href="https://kofhk.com/chapter-29.html">
-    <link rel="prev" href="https://kofhk.com/chapter-28.html">
-    <link rel="next" href="https://kofhk.com/chapter-30.html">
-    <style>
-        :root {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --accent: #6366F1;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-            --font-size: 18px;
-            --line-height: 1.8;
-        }
-        [data-theme="light"] {
-            --bg: #FAFBFC;
-            --text: #1F2937;
-            --border: #E5E7EB;
-            --panel-bg: #FFFFFF;
-        }
-        [data-theme="sepia"] {
-            --bg: #F4ECD8;
-            --text: #5C4B37;
-            --border: #D4C4A8;
-            --panel-bg: #EDE4D0;
-        }
-        [data-theme="sky"] {
-            --bg: #E8F4FC;
-            --text: #2C5282;
-            --border: #BEE3F8;
-            --panel-bg: #E8F4FC;
-        }
-        [data-theme="green"] {
-            --bg: #E8F5E9;
-            --text: #2E5A3A;
-            --border: #A5D6A7;
-            --panel-bg: #E8F5E9;
-        }
-        [data-theme="dark"] {
-            --bg: #1A1F26;
-            --text: #E5E7EB;
-            --border: #374151;
-            --panel-bg: #242B35;
-        }
-        [data-theme="navy"] {
-            --bg: #1A202C;
-            --text: #E2E8F0;
-            --border: #4A5568;
-            --panel-bg: #2D3748;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: var(--line-height);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 20px 60px 20px;
-            transition: background 0.3s, color 0.3s;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid var(--accent);
-            margin-bottom: 30px;
-            margin-top: 60px;
-        }
-        p {
-            text-indent: 2em;
-            margin: 1em 0;
-            font-size: var(--font-size);
-        }
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            transition: background 0.3s;
-        }
-        .top-bar a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .controls select, .controls button {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .controls select:hover, .controls button:hover {
-            border-color: var(--accent);
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .nav a {
-            color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-        }
-        .nav a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-to-top.visible {
-            display: flex;
-        }
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 1.5em; margin-top: 70px; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav a { text-align: center; }
-            .top-bar { flex-wrap: wrap; gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="top-bar">
-        <a href="chapters.html">← 返回目錄</a>
-        <div class="controls">
-            <select id="themeSelect">
-                <option value="light">☀️</option>
-                <option value="sepia">📜</option>
-                <option value="sky">🌤️</option>
-                <option value="green">🌿</option>
-                <option value="dark">🌙</option>
-                <option value="navy">🌌</option>
-            </select>
-            <select id="fontSize">
-                <option value="14px">A</option>
-                <option value="18px" selected>A</option>
-                <option value="22px">A</option>
-            </select>
-        </div>
-    </div>
-    <h1>第29章 · 紫霧遺跡</h1>
-    <main>
-<p>葉塵的手已經按在了星塵劍的劍柄上。那黑袍人站在不遠處，血紅色的眼睛靜靜地看著他，既沒有攻擊，也沒有說話。兩人就這樣對峙了將近十息。然後，黑袍人開口了。「你……很特別。聲音沙啞低沉，像是砂紙摩擦的聲音。「你是誰。葉塵沉聲問道。「一個……不該存在的人。黑袍人發出一聲低沉的苦笑，「我沒有惡意。我只是……在你身上感覺到了一些熟悉的東西。</p>
-        <p>熟悉的東西。葉塵心中一動。他體內的輪迴之力，難道這個人能感應到。「你是魔修。「魔修……正道……對你們來說有區別嗎。黑袍人搖了搖頭，「這些標籤，都是強者給弱者貼上的。當你足夠強的時候，你就是規則本身。他的話中充滿了滄桑和諷刺，仿佛經歷過無數歲月的沉澱。葉塵沉默了片刻：「你為什麼在這裡。「因為這座遺跡。黑袍人轉頭看向盆地中的紫霧，「這座遺跡的來歷，比你想像的要古老得多。</p>
-        <p>它不屬於這個時代——它是上一個紀元的遺物。「上一個紀元。「世界不是永恆不變的。每一個紀元末期，都會發生一次大滅絕。上一個紀元的一切——文明、強者、歷史——都被埋葬在時間的塵埃中。黑袍人的聲音變得深沉：「而這座遺跡，就是上一個紀元留下來的殘片。裡面藏著那個時代的秘密……也藏著那個時代的危險。葉塵的心跳加速。</p>
-        <p>他想到了九世輪迴，想到了那個最終的秘密——難道和這些紀元更替有關。「你為什麼要告訴我這些。「因為……。黑袍人轉頭看向他，「你遲早會知道。我能感覺到，你體內的某種力量……和這座遺跡是同源的。同源。葉塵體內的輪迴之力，和上一個紀元的遺跡是同源的。這意味著什麼。黑袍人沒有再多說，轉身向紫霧走去。他的身影在紫霧中漸漸模糊，只留下一句話飄蕩在空氣中—— 「如果你想進去，記住一句話——不要相信你在裡面看到的任何東西。</p>
-        <p>葉塵站在盆地邊緣，沉思了很久。最終，他做出了決定。他將星塵劍握在手中，深吸一口氣，踏入了紫霧之中。穿過紫霧的瞬間，周圍的景象發生了翻天覆地的變化。原本的盆地和森林消失不見了，取而代之的是一座巨大的地下宮殿。宮殿由一種黑色的石材建成，牆壁上刻滿了詭異的符文，散發著幽幽的紫色螢光。頭頂看不到天空，只有一片黑暗。</p>
-        <p>腳下的地面光滑如鏡，倒映著牆壁上的螢光，營造出一種奇幻而詭異的氛圍。「這就是……上一個紀元的遺跡。葉塵警惕地打量著四周。他的塵影在這裡受到了極大的壓制——擴散範圍從原來的三十丈縮小到只有三丈，而且感知到的資訊變得模糊不清，像是隔了一層霧。他緩緩向前走去，穿過一條長長的走廊，來到了一個寬敞的大廳。大廳中央，豎立著一座巨大的石碑。</p>
-        <p>碑上刻著密密麻麻的文字——不是這個時代的文字，而是一種更加古老的符文。葉塵一個字都不認識，但奇怪的是，當他凝視那些文字時，它們的意義竟然自動浮現在他的腦海中。「塵埃紀……三千六百五十萬年……終末……。「最終之戰……九界破碎……輪迴之路……。斷斷續續的資訊湧入他的腦海。但當他看到最後一行字時，他的瞳孔驟然收縮—— 「輪迴之主……隕落於此。</p>
-    </main>
-    <nav class="nav">
-        <a href="https://kofhk.com/chapter-28.html" id="prevLink">← 上一章</a>
-        <a href="chapters.html">📖 返回目錄</a>
-        <a href="https://kofhk.com/manga/chapter-29/" class="manga-btn">🎨 漫畫版</a>
-        <a href="https://kofhk.com/chapter-30.html" id="nextLink">下一章 →</a>
-    </nav>
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-    <script>
-        document.getElementById('themeSelect').addEventListener('change', function() {
-            document.body.dataset.theme = this.value;
-            localStorage.setItem('novelTheme', this.value);
-        });
-        var savedTheme = localStorage.getItem('novelTheme');
-        if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
-            document.getElementById('themeSelect').value = savedTheme;
-        }
-        document.getElementById('fontSize').addEventListener('change', function() {
-            document.body.style.setProperty('--font-size', this.value);
-            localStorage.setItem('novelFont', this.value);
-        });
-        var savedFont = localStorage.getItem('novelFont');
-        if (savedFont) {
-            document.body.style.setProperty('--font-size', savedFont);
-            document.getElementById('fontSize').value = savedFont;
-        }
-        window.addEventListener('scroll', function() {
-            var btn = document.getElementById('backToTop');
-            btn.classList.toggle('visible', window.pageYOffset > 300);
-        });
-        var prevLink = document.getElementById('prevLink');
-        if (!prevLink.href || prevLink.href.includes('#')) {
-            prevLink.style.opacity = '0.5';
-            prevLink.style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第29章 · 紫霧遺跡 - 萬古塵埃</title><meta name="description" content="葉塵的手已經按在了星塵劍的劍柄上。那黑袍人站在不遠處，血紅色的眼睛靜靜地看著他，既沒有攻擊，也沒有說話。兩人就這樣對峙了將近十息。然後，黑袍人開口了。「你……很特別。聲音沙啞低沉，像是砂紙摩擦的聲音。「你是誰。葉塵沉聲問道。「一個……不該存在的人。黑袍人發出一聲低沉的苦笑，「我沒有惡意。"><link rel="canonical" href="https://kofhk.com/chapter-29.html"><link rel="prev" href="https://kofhk.com/chapter-28.html"><link rel="next" href="https://kofhk.com/chapter-30.html">
+<style>:root{--bg:#FAFBFC;--text:#1F2937;--accent:#6366F1;--border:#E5E7EB;--panel-bg:#FFFFFF;--font-size:18px;--line-height:1.8}[data-theme="light"]{--bg:#FAFBFC;--text:#1F2937;--border:#E5E7EB;--panel-bg:#FFFFFF}[data-theme="sepia"]{--bg:#F4ECD8;--text:#5C4B37;--border:#D4C4A8;--panel-bg:#EDE4D0}[data-theme="sky"]{--bg:#E8F4FC;--text:#2C5282;--border:#BEE3F8;--panel-bg:#E8F4FC}[data-theme="green"]{--bg:#E8F5E9;--text:#2E5A3A;--border:#A5D6A7;--panel-bg:#E8F5E9}[data-theme="dark"]{--bg:#1A1F26;--text:#E5E7EB;--border:#374151;--panel-bg:#242B35}[data-theme="navy"]{--bg:#1A202C;--text:#E2E8F0;--border:#4A5568;--panel-bg:#2D3748}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Serif TC',serif;background:var(--bg);color:var(--text);line-height:var(--line-height);max-width:800px;margin:0 auto;padding:16px 20px 60px 20px;transition:background 0.3s,color 0.3s;transition:background 0.3s,color 0.3s}h1{font-size:1.8em;text-align:center;padding:30px 0;border-bottom:2px solid var(--accent);margin-bottom:30px;margin-top:60px}p{text-indent:2em;margin:1em 0;font-size:var(--font-size)}.top-bar{position:fixed;top:0;left:0;right:0;background:var(--panel-bg);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;z-index:100;transition:background 0.3s}.top-bar a{color:var(--accent);text-decoration:none;font-size:14px}.top-bar a:hover{text-decoration:underline}.controls{display:flex;gap:10px;align-items:center}.controls select,.controls button{background:var(--panel-bg);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px}.controls select:hover,.controls button:hover{border-color:var(--accent)}.nav{display:flex;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:40px}.nav a{color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid var(--accent);border-radius:5px}.nav a:hover{background:var(--accent);color:white}.back-to-top{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:var(--accent);color:white;border:none;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center}.back-to-top.visible{display:flex}@media (max-width:600px){body{padding:15px}h1{font-size:1.5em;margin-top:70px}.nav{flex-direction:column;gap:10px}.nav a{text-align:center}.top-bar{flex-wrap:wrap;gap:8px}}</style>
+</head><body><div class="top-bar"><a href="chapters.html">← 返回目錄</a><div class="controls"><select id="themeSelect"><option value="light">☀️</option><option value="sepia">📜</option><option value="sky">🌤️</option><option value="green">🌿</option><option value="dark">🌙</option><option value="navy">🌌</option></select><select id="fontSize"><option value="14px">A</option><option value="18px" selected>A</option><option value="22px">A</option></select></div></div><h1>第29章 · 紫霧遺跡</h1><main><p>葉塵的手已經按在了星塵劍的劍柄上。那黑袍人站在不遠處，血紅色的眼睛靜靜地看著他，既沒有攻擊，也沒有說話。兩人就這樣對峙了將近十息。然後，黑袍人開口了。「你……很特別。聲音沙啞低沉，像是砂紙摩擦的聲音。「你是誰。葉塵沉聲問道。「一個……不該存在的人。黑袍人發出一聲低沉的苦笑，「我沒有惡意。我只是……在你身上感覺到了一些熟悉的東西。</p><p>熟悉的東西。葉塵心中一動。他體內的輪迴之力，難道這個人能感應到。「你是魔修。「魔修……正道……對你們來說有區別嗎。黑袍人搖了搖頭，「這些標籤，都是強者給弱者貼上的。當你足夠強的時候，你就是規則本身。他的話中充滿了滄桑和諷刺，仿佛經歷過無數歲月的沉澱。葉塵沉默了片刻：「你為什麼在這裡。「因為這座遺跡。黑袍人轉頭看向盆地中的紫霧，「這座遺跡的來歷，比你想像的要古老得多。</p><p>它不屬於這個時代——它是上一個紀元的遺物。「上一個紀元。「世界不是永恆不變的。每一個紀元末期，都會發生一次大滅絕。上一個紀元的一切——文明、強者、歷史——都被埋葬在時間的塵埃中。黑袍人的聲音變得深沉：「而這座遺跡，就是上一個紀元留下來的殘片。裡面藏著那個時代的秘密……也藏著那個時代的危險。葉塵的心跳加速。</p><p>他想到了九世輪迴，想到了那個最終的秘密——難道和這些紀元更替有關。「你為什麼要告訴我這些。「因為……。黑袍人轉頭看向他，「你遲早會知道。我能感覺到，你體內的某種力量……和這座遺跡是同源的。同源。葉塵體內的輪迴之力，和上一個紀元的遺跡是同源的。這意味著什麼。黑袍人沒有再多說，轉身向紫霧走去。他的身影在紫霧中漸漸模糊，只留下一句話飄蕩在空氣中—— 「如果你想進去，記住一句話——不要相信你在裡面看到的任何東西。</p><p>葉塵站在盆地邊緣，沉思了很久。最終，他做出了決定。他將星塵劍握在手中，深吸一口氣，踏入了紫霧之中。穿過紫霧的瞬間，周圍的景象發生了翻天覆地的變化。原本的盆地和森林消失不見了，取而代之的是一座巨大的地下宮殿。宮殿由一種黑色的石材建成，牆壁上刻滿了詭異的符文，散發著幽幽的紫色螢光。頭頂看不到天空，只有一片黑暗。</p><p>腳下的地面光滑如鏡，倒映著牆壁上的螢光，營造出一種奇幻而詭異的氛圍。「這就是……上一個紀元的遺跡。葉塵警惕地打量著四周。他的塵影在這裡受到了極大的壓制——擴散範圍從原來的三十丈縮小到只有三丈，而且感知到的資訊變得模糊不清，像是隔了一層霧。他緩緩向前走去，穿過一條長長的走廊，來到了一個寬敞的大廳。大廳中央，豎立著一座巨大的石碑。</p><p>碑上刻著密密麻麻的文字——不是這個時代的文字，而是一種更加古老的符文。葉塵一個字都不認識，但奇怪的是，當他凝視那些文字時，它們的意義竟然自動浮現在他的腦海中。「塵埃紀……三千六百五十萬年……終末……。「最終之戰……九界破碎……輪迴之路……。斷斷續續的資訊湧入他的腦海。但當他看到最後一行字時，他的瞳孔驟然收縮—— 「輪迴之主……隕落於此。</p></main><nav class="nav"><a href="https://kofhk.com/chapter-28.html" id="prevLink">← 上一章</a><a href="chapters.html">📖 返回目錄</a><a href="https://kofhk.com/manga/chapter-29/" class="manga-btn">🎨 漫畫版</a><a href="https://kofhk.com/chapter-30.html" id="nextLink">下一章 →</a></nav><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>document.getElementById('themeSelect').addEventListener('change', function() {
+document.body.dataset.theme = this.value;
+localStorage.setItem('novelTheme', this.value);
+});
+var savedTheme = localStorage.getItem('novelTheme');
+if (savedTheme) {
+document.body.dataset.theme = savedTheme;
+document.getElementById('themeSelect').value = savedTheme;
+}
+document.getElementById('fontSize').addEventListener('change', function() {
+document.body.style.setProperty('--font-size', this.value);
+localStorage.setItem('novelFont', this.value);
+});
+var savedFont = localStorage.getItem('novelFont');
+if (savedFont) {
+document.body.style.setProperty('--font-size', savedFont);
+document.getElementById('fontSize').value = savedFont;
+}
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('backToTop');
+btn.classList.toggle('visible', window.pageYOffset > 300);
+});
+var prevLink = document.getElementById('prevLink');
+if (!prevLink.href || prevLink.href.includes('#')) {
+prevLink.style.opacity = '0.5';
+prevLink.style.pointerEvents = 'none';
+}</script>
+</body></html>

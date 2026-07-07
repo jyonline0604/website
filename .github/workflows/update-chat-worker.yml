@@ -44,14 +44,11 @@ jobs:
         with:
           node-version: '20'
 
-      - name: 安裝 Wrangler
-        if: steps.check_changes.outputs.changed == 'true'
-        run: npm install -g wrangler
-
-      - name: 部署 Worker
+      - name: 安裝相依套件並部署 Worker
         if: steps.check_changes.outputs.changed == 'true'
         run: |
           cd workers/chat-worker
+          npm install
           npx wrangler deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}

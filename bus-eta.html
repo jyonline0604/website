@@ -85,6 +85,7 @@ throw e;
 }
 async function selectCo(co) {
 stopTimer();
+if (_etaAborter) try { _etaAborter.abort(); } catch(_){ }
 S.co = co;
 S.routes = [];
 S.selectedRoute = null;
@@ -662,8 +663,9 @@ async function fetchAndUpdateETA() {
       }
       return {stopId: s.stopId, etas: []};
     } catch(e) {
-      if (attempt <= 0) return {stopId: s.stopId, etas: []};
+      if (attempt <= 0 || aborter.signal.aborted) return {stopId: s.stopId, etas: []};
       await new Promise(r => setTimeout(r, 500));
+      if (aborter.signal.aborted) return {stopId: s.stopId, etas: []};
       return fetchStopEta(s, attempt - 1);
     }
   }

@@ -399,10 +399,30 @@ function addSecurityHeaders(headers) {
   headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), interest-cohort=()');
 }
 
+// Force no-cache on a Response (applies to ALL response types: API + pass-through)
+function withNoCache(response) {
+  const headers = new Headers(response.headers);
+  headers.set('Cache-Control', 'private, no-store, no-cache, max-age=0');
+  headers.set('CDN-Cache-Control', 'no-store');
+  headers.set('Pragma', 'no-cache');
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 // ── Main Handler ────────────────────────────────────────────
 
 export default {
   async fetch(request, env, ctx) {
+    const res = await doFetch(request, env, ctx);
+    return withNoCache(res);
+  },
+};
+
+// Separate inner handler so all responses pass through a single withNoCache wrapper
+async function doFetch(request, env, ctx) {
     const url = new URL(request.url);
 
     // CORS preflight (API only)
@@ -489,8 +509,7 @@ export default {
       console.error(`Origin fetch error: ${e.message}`);
       return new Response('Origin unreachable', { status: 502 });
     }
-  },
-};
+}
 
 // ── Helpers ─────────────────────────────────────────────────
 

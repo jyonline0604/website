@@ -4,6 +4,7 @@ const API = '/api/chat';
 const MAX_HISTORY = 30;
 // ── Styles ──
 const css = `
+.kofhk-chat-panel,.kofhk-chat-panel *{box-sizing:border-box}
 :root {
 --kofhk-chat-bg: #111118;
 --kofhk-chat-card: #1a1a24;
@@ -102,7 +103,7 @@ animation: kofhkDotBounce 1.4s infinite ease-in-out both;
 40% { transform: scale(1); }
 }
 .kofhk-chat-input-wrap {
-padding: 12px; border-top: 1px solid var(--kofhk-chat-border);
+padding: 12px 16px 12px 12px; border-top: 1px solid var(--kofhk-chat-border);
 display: flex; gap: 8px; background: var(--kofhk-chat-card);
 }
 .kofhk-chat-input-wrap textarea {

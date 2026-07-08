@@ -636,32 +636,48 @@ try {
 const etaMap = {};
 const stopList = S.stopList;
 const route = S.selectedRoute;
-const batches = [];
-for (let i=0; i<stopList.length; i+=8) batches.push(stopList.slice(i, i+8));
-for (const batch of batches) {
-if (aborter.signal.aborted) break;
-const results = await Promise.all(batch.map(async s => {
-try {
-let d;
-if (S.co === 'KMB') {
-d = await api(CFG.KMB.base+CFG.KMB.etaEp(s.stopId, route, '1'));
-return {stopId: s.stopId, etas: d.data||[]};
-} else if (S.co === 'CTB') {
-d = await api(CFG.CTB.base+CFG.CTB.etaEp(s.stopId, route));
-return {stopId: s.stopId, etas: d.data||[]};
-} else if (S.co === 'LRT') {
-return {stopId: s.stopId, etas: []};
-} else if (S.co === 'GMB') {
-const rd = S.selectedRouteData;
-d = await api(CFG.GMB.base+CFG.GMB.etaEp(rd.routeId, s.stopId));
-const results = (d.data || []);
-const etas = [];
-results.forEach(r => {
-if (r.stop_seq === s.seq && r.route_seq === rd.routeSeq) {
-(r.eta||[]).forEach(e => {
-etas.push({eta: e.timestamp, rmk_tc: e.remarks_tc||'', diff: e.diff});
-});
-}
+    // Fetch ETAs one stop at a time with a short delay between requests.
+    // KMB's API drops most connections when hit with many concurrent
+    // requests, which left every stop showing no ETA. Serialising the
+    // calls (with a retry on transient failure) fixes that.
+    async function fetchStopEta(s, attempt) {
+      try {
+        let d;
+        if (S.co === 'KMB') {
+          d = await api(CFG.KMB.base+CFG.KMB.etaEp(s.stopId, route, '1'), 12000);
+          return {stopId: s.stopId, etas: d.data||[]};
+        } else if (S.co === 'CTB') {
+          d = await api(CFG.CTB.base+CFG.CTB.etaEp(s.stopId, route), 12000);
+          return {stopId: s.stopId, etas: d.data||[]};
+        } else if (S.co === 'LRT') {
+          return {stopId: s.stopId, etas: []};
+        } else if (S.co === 'GMB') {
+          const rd = S.selectedRouteData;
+          d = await api(CFG.GMB.base+CFG.GMB.etaEp(rd.routeId, s.stopId), 12000);
+          const gmbResults = (d.data || []);
+          const etas = [];
+          gmbResults.forEach(r => {
+            if (r.stop_seq === s.seq && r.route_seq === rd.routeSeq) {
+              (r.eta||[]).forEach(e => {
+                etas.push({eta: e.timestamp, rmk_tc: e.remarks_tc||'', diff: e.diff});
+              });
+            }
+          });
+          return {stopId: s.stopId, etas: etas};
+        }
+        return {stopId: s.stopId, etas: []};
+      } catch(e) {
+        if (attempt <= 0) return {stopId: s.stopId, etas: []};
+        await new Promise(r => setTimeout(r, 500));
+        return fetchStopEta(s, attempt - 1);
+      }
+    }
+    for (const s of stopList) {
+      if (aborter.signal.aborted) break;
+      const r = await fetchStopEta(s, 2);
+      etaMap[r.stopId] = r.etas;
+      await new Promise(res => setTimeout(res, 150));
+    }
 });
 return {stopId: s.stopId, etas: etas};
 }

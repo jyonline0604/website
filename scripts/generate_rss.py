@@ -91,6 +91,7 @@ def main():
     build_date = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S +0800")
     rss = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<?xml-stylesheet type="text/xsl" href="assets/rss.xsl"?>\n'
         '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
         '  <channel>\n'
         '    <title>%s</title>\n' % xml_escape(SITE_TITLE) +

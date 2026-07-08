@@ -5,6 +5,8 @@ on:
     paths:
       - 'chapter-*.html'
   schedule:
+    # UTC 03:05 = 香港時間 11:05
+    - cron: '5 3 * * *'
     # UTC 06:05 = 香港時間 14:05
     - cron: '5 6 * * *'
   workflow_dispatch:

@@ -144,6 +144,12 @@ white-space: nowrap; font-family: sans-serif;
 background: rgba(0,212,255,0.12); border-color: var(--kofhk-chat-accent);
 color: var(--kofhk-chat-accent);
 }
+.kofhk-chat-feedback { display: flex; gap: 6px; margin-top: 4px; opacity: 0; transition: opacity .2s; }
+.kofhk-chat-msg:hover .kofhk-chat-feedback { opacity: 1; }
+.kofhk-chat-feedback-btn { width: 24px; height: 24px; border-radius: 50%; border: none; background: rgba(255,255,255,0.06); color: var(--kofhk-chat-text2); cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+.kofhk-chat-feedback-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.kofhk-chat-feedback-btn.kofhk-chat-liked { background: rgba(0,200,100,0.2); color: #4ade80; }
+.kofhk-chat-feedback-btn.kofhk-chat-disliked { background: rgba(255,100,100,0.2); color: #f87171; }
 .kofhk-chat-messages::-webkit-scrollbar { width: 4px; }
 .kofhk-chat-messages::-webkit-scrollbar-track { background: transparent; }
 .kofhk-chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 4px; }
@@ -254,9 +260,17 @@ emptyEl.style.display = 'none';
 const div = document.createElement('div');
 div.className = `kofhk-chat-msg kofhk-chat-${role}`;
 if (role === 'ai') {
-div.innerHTML = `<div class="kofhk-chat-avatar-mini">🐱</div><div class="kofhk-chat-bubble">${escapeHtml(text)}</div>`;
+const msgId = 'msg-' + Date.now() + '-' + Math.random().toString(36).slice(2,6);
+div.innerHTML = `<div class=\"kofhk-chat-avatar-mini\">🐱</div><div><div class=\"kofhk-chat-bubble\">${escapeHtml(text)}</div><div class=\"kofhk-chat-feedback\"><button class=\"kofhk-chat-feedback-btn\" data-action=\"like\" data-msg=\"${msgId}\" title=\"有幫助\">👍</button><button class=\"kofhk-chat-feedback-btn\" data-action=\"dislike\" data-msg=\"${msgId}\" title=\"沒幫助\">👎</button></div></div>`;
+try {
+const fb = JSON.parse(localStorage.getItem('kofhk-chat-feedback') || '{}');
+if (fb[msgId]) {
+const btn = div.querySelector('.kofhk-chat-feedback-btn[data-action=\"' + fb[msgId] + '\"]');
+if (btn) btn.classList.add('kofhk-chat-' + (fb[msgId] === 'like' ? 'liked' : 'disliked'));
+}
+} catch(e){}
 } else {
-div.innerHTML = `<div class="kofhk-chat-bubble">${escapeHtml(text)}</div>`;
+div.innerHTML = `<div class=\"kofhk-chat-bubble\">${escapeHtml(text)}</div>`;
 }
 messagesEl.appendChild(div);
 scrollBottom();
@@ -327,6 +341,20 @@ this.style.height = Math.min(this.scrollHeight, 100) + 'px';
 });
 // Quick reply suggestion buttons
 messagesEl.addEventListener('click', function (e) {
+const fbBtn = e.target.closest('.kofhk-chat-feedback-btn');
+if (fbBtn) {
+const action = fbBtn.dataset.action;
+const msgId = fbBtn.dataset.msg;
+const container = fbBtn.parentElement;
+container.querySelectorAll('.kofhk-chat-feedback-btn').forEach(b => b.classList.remove('kofhk-chat-liked', 'kofhk-chat-disliked'));
+fbBtn.classList.add('kofhk-chat-' + (action === 'like' ? 'liked' : 'disliked'));
+try {
+const fb = JSON.parse(localStorage.getItem('kofhk-chat-feedback') || '{}');
+fb[msgId] = action;
+localStorage.setItem('kofhk-chat-feedback', JSON.stringify(fb));
+} catch(e){}
+return;
+}
 const btn = e.target.closest('.kofhk-chat-suggestion');
 if (!btn) return;
 const query = btn.dataset.query;

@@ -20,8 +20,20 @@ window.addEventListener('scroll', function() {
 var btn = document.getElementById('backToTop');
 btn.classList.toggle('visible', window.pageYOffset > 300);
 });
+(function(){
+var main = document.querySelector('main');
+if (main) {
+var chars = main.textContent.replace(/\s/g, '').length;
+var minutes = Math.max(1, Math.round(chars / 400));
+var span = document.createElement('span');
+span.style.cssText = 'display:block;text-align:center;color:var(--text);opacity:0.6;font-size:0.85em;margin-top:-20px;margin-bottom:20px';
+span.textContent = '預計閱讀：' + minutes + ' 分鐘（約 ' + chars + ' 字）';
+var h1 = document.querySelector('h1');
+if (h1) h1.insertAdjacentElement('afterend', span);
+}
+})();
 var prevLink = document.getElementById('prevLink');
-if (!prevLink.href || prevLink.href.includes('#')) {
+if (prevLink && (!prevLink.href || prevLink.href.includes('#'))) {
 prevLink.style.opacity = '0.5';
 prevLink.style.pointerEvents = 'none';
 }

@@ -37,3 +37,19 @@ if (prevLink && (!prevLink.href || prevLink.href.includes('#'))) {
 prevLink.style.opacity = '0.5';
 prevLink.style.pointerEvents = 'none';
 }
+
+
+// 閱讀進度：記錄最後閱讀章節 (localStorage)
+(function () {
+  try {
+    var m = location.pathname.match(/chapter-(\d+)\.html$/);
+    if (!m) return;
+    var num = parseInt(m[1], 10);
+    if (!num) return;
+    var titleEl = document.querySelector('h1');
+    var title = titleEl ? titleEl.textContent.trim() : ('第' + num + '章');
+    localStorage.setItem('lastChapter', String(num));
+    localStorage.setItem('lastChapterTitle', title);
+    localStorage.setItem('lastChapterTime', new Date().toISOString());
+  } catch (e) {}
+})();

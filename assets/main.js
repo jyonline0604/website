@@ -8,6 +8,7 @@ initFilterButtons();
 initChapterNavigation();
 // Calculator forms (finance.html)
 initCalculators();
+	initContinueReading();
 });
 function initFilterButtons() {
 const filterBtns = document.querySelectorAll('.filter-btn');
@@ -78,5 +79,20 @@ inThrottle = true;
 setTimeout(() => inThrottle = false, limit);
 }
 };
+}
+
+function initContinueReading() {
+  try {
+    var wrap = document.getElementById('continueReadingWrap');
+    if (!wrap) return;
+    var num = localStorage.getItem('lastChapter');
+    var title = localStorage.getItem('lastChapterTitle');
+    if (!num) { wrap.style.display = 'none'; return; }
+    num = parseInt(num, 10);
+    if (!num || num < 1) { wrap.style.display = 'none'; return; }
+    title = title || ('第' + num + '章');
+    wrap.innerHTML = '<a href="chapter-' + num + '.html" class="btn btn-secondary">↺ 繼續閱讀 · ' + title + '</a>';
+    wrap.style.display = '';
+  } catch (e) {}
 }
 console.log('Main JavaScript loaded successfully');

@@ -19,10 +19,10 @@ const RATE_LIMIT_WINDOW_MS = 60_000;  // 60 seconds
 const RATE_LIMIT_CHAT = 10;           // max chat requests per window per IP
 const RATE_LIMIT_STATUS = 30;         // max status requests per window per IP
 
-// Durable Object for cross-edge consistent rate limiting
+// Durable Object (SQLite) for cross-edge consistent rate limiting
 export class RateLimiter {
-  constructor(state, env) {
-    this.state = state;
+  constructor(ctx, env) {
+    this.ctx = ctx;
     this.env = env;
   }
 
@@ -32,33 +32,43 @@ export class RateLimiter {
     const limit = parseInt(url.searchParams.get('limit')) || 10;
     const windowMs = parseInt(url.searchParams.get('window')) || 60_000;
 
+    // Ensure table exists
+    await this.ctx.storage.sql.exec(
+      'CREATE TABLE IF NOT EXISTS counters (ip TEXT PRIMARY KEY, count INTEGER NOT NULL DEFAULT 0, window_id INTEGER NOT NULL DEFAULT 0)'
+    );
+
     const now = Date.now();
     const windowId = Math.floor(now / windowMs);
-    const storageKey = `rl:${ip}`;
 
-    let data = await this.state.storage.get(storageKey);
-    if (!data || data.windowId !== windowId) {
-      data = { count: 0, windowId };
+    // Read current counter for this IP
+    const cursor = this.ctx.storage.sql.exec(
+      'SELECT count, window_id FROM counters WHERE ip = ?', ip
+    );
+    const rows = cursor.toArray();
+    let count = 0;
+    if (rows.length > 0 && rows[0].window_id === windowId) {
+      count = rows[0].count;
+    }
+    // Window changed → count resets to 0 (natural)
+
+    count++;
+
+    // Upsert
+    await this.ctx.storage.sql.exec(
+      'INSERT OR REPLACE INTO counters (ip, count, window_id) VALUES (?, ?, ?)',
+      ip, count, windowId
+    );
+
+    // Cleanup old entries periodically (every 100 writes)
+    if (count % 100 === 0) {
+      await this.ctx.storage.sql.exec(
+        'DELETE FROM counters WHERE window_id < ?', windowId - 1
+      );
     }
 
-    data.count++;
-    await this.state.storage.put(storageKey, data);
-
-    // Cleanup old entries (every 100 writes)
-    if (data.count % 100 === 0) {
-      const all = await this.state.storage.list();
-      const toDelete = [];
-      for (const [k, v] of all) {
-        if (v.windowId < windowId - 1) toDelete.push(k);
-      }
-      if (toDelete.length > 0) {
-        await this.state.storage.delete(toDelete);
-      }
-    }
-
-    const remaining = Math.max(0, limit - data.count);
+    const remaining = Math.max(0, limit - count);
     const reset = (windowId + 1) * windowMs;
-    const allowed = data.count <= limit;
+    const allowed = count <= limit;
 
     return new Response(JSON.stringify({ allowed, remaining, limit, reset }), {
       headers: { 'Content-Type': 'application/json' },

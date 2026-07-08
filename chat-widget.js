@@ -107,7 +107,7 @@ padding: 12px 16px 12px 12px; border-top: 1px solid var(--kofhk-chat-border);
 display: flex; gap: 8px; background: var(--kofhk-chat-card);
 }
 .kofhk-chat-input-wrap textarea {
-flex: 1; padding: 10px 14px;
+flex: 1; min-width: 0; padding: 10px 14px;
 background: rgba(255,255,255,0.04);
 border: 1px solid var(--kofhk-chat-border); border-radius: 12px;
 color: #e0e0e0; font-size: .88rem; resize: none;
@@ -117,9 +117,9 @@ max-height: 100px; line-height: 1.4;
 .kofhk-chat-input-wrap textarea:focus { border-color: var(--kofhk-chat-accent); }
 .kofhk-chat-input-wrap textarea::placeholder { color: var(--kofhk-chat-text2); }
 .kofhk-chat-send-btn {
-width: 42px; height: 42px; border-radius: 50%;
+width: 38px; height: 38px; border-radius: 50%;
 border: none; background: var(--kofhk-chat-accent);
-color: #000; font-size: 18px; cursor: pointer;
+color: #000; font-size: 16px; cursor: pointer;
 flex-shrink: 0; align-self: flex-end; transition: opacity .2s;
 }
 .kofhk-chat-send-btn:disabled { opacity: .4; cursor: not-allowed; }

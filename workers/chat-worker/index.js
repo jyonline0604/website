@@ -14,6 +14,68 @@ const SITE_URL = 'https://kofhk.com';
 const MAX_RAG_CHAPTERS = 3;   // max chapters to fetch for context
 const MAX_CHAPTER_CHARS = 3000; // max chars to extract per chapter
 
+// ── Rate Limiting ──────────────────────────────────────────
+const RATE_LIMIT_WINDOW = 60_000;  // 60 seconds
+const RATE_LIMIT_CHAT = 10;        // max chat requests per window per IP
+const RATE_LIMIT_STATUS = 30;      // max status requests per window per IP
+const RATE_LIMIT_MAX_ENTRIES = 5000; // max tracked IPs before cleanup
+
+const rateStore = new Map(); // IP → { timestamps: number[] }
+
+function checkRateLimit(ip, limit) {
+  const now = Date.now();
+  let entry = rateStore.get(ip);
+  if (!entry) {
+    entry = { timestamps: [] };
+    rateStore.set(ip, entry);
+  }
+  // Slide window: discard old timestamps
+  const cutoff = now - RATE_LIMIT_WINDOW;
+  entry.timestamps = entry.timestamps.filter(t => t > cutoff);
+  if (entry.timestamps.length >= limit) {
+    return false; // rate limited
+  }
+  entry.timestamps.push(now);
+  // Periodic cleanup: if store grows too large, evict stale entries
+  if (rateStore.size > RATE_LIMIT_MAX_ENTRIES) {
+    for (const [k, v] of rateStore) {
+      v.timestamps = v.timestamps.filter(t => t > cutoff);
+      if (v.timestamps.length === 0) rateStore.delete(k);
+    }
+  }
+  return true;
+}
+
+// ── Input Validation ───────────────────────────────────────
+const MAX_MESSAGES = 20;
+const MAX_CONTENT_LENGTH = 4000;
+const MAX_BODY_SIZE = 100_000; // ~100KB
+
+function validateMessages(messages) {
+  if (!Array.isArray(messages) || messages.length === 0) {
+    return 'Missing or empty messages array';
+  }
+  if (messages.length > MAX_MESSAGES) {
+    return `Too many messages (max ${MAX_MESSAGES})`;
+  }
+  for (let i = 0; i < messages.length; i++) {
+    const m = messages[i];
+    if (!m || typeof m !== 'object') return `Invalid message at index ${i}`;
+    if (!m.role || typeof m.role !== 'string') return `Missing role at index ${i}`;
+    if (typeof m.content !== 'string') return `Missing content at index ${i}`;
+    if (m.content.length > MAX_CONTENT_LENGTH) {
+      return `Message content too long at index ${i} (max ${MAX_CONTENT_LENGTH})`;
+    }
+  }
+  return null;
+}
+
+// Allowed CORS origins
+const ALLOWED_ORIGINS = [
+  'https://kofhk.com',
+  'https://www.kofhk.com',
+];
+
 // In-memory cache for chapter content (LRU-ish, max 50 entries)
 const chapterCache = new Map();
 const CACHE_MAX = 50;
@@ -209,15 +271,22 @@ async function buildRagContext(query) {
 // ── Request Handler ─────────────────────────────────────────
 
 async function handleChat(request, env) {
-  const body = await request.json();
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return jsonResponse(400, { error: 'Invalid JSON' }, request);
+  }
+
   const messages = body.messages || [];
-  if (!messages.length) {
-    return jsonResponse(400, { error: 'Missing messages' });
+  const validationError = validateMessages(messages);
+  if (validationError) {
+    return jsonResponse(400, { error: validationError }, request);
   }
 
   const apiKey = env.OPENROUTER_API_KEY;
   if (!apiKey) {
-    return jsonResponse(500, { error: 'OPENROUTER_API_KEY not configured' });
+    return jsonResponse(500, { error: 'OPENROUTER_API_KEY not configured' }, request);
   }
 
   // Build RAG context from user's last message
@@ -259,13 +328,13 @@ async function handleChat(request, env) {
   if (!resp.ok) {
     const errText = await resp.text().catch(() => '');
     console.error(`OpenRouter error ${resp.status}: ${errText}`);
-    return jsonResponse(502, { error: `AI API error: ${resp.status}` });
+    return jsonResponse(502, { error: `AI API error: ${resp.status}` }, request);
   }
 
   const result = await resp.json();
   const reply = result.choices?.[0]?.message?.content || '';
 
-  return jsonResponse(200, { reply });
+  return jsonResponse(200, { reply }, request);
 }
 
 // ── Main Handler ────────────────────────────────────────────
@@ -278,50 +347,68 @@ export default {
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         status: 204,
-        headers: corsHeaders(),
+        headers: corsHeaders(request),
       });
     }
 
     // GET /api/status
     if (request.method === 'GET' && url.pathname === '/api/status') {
+      const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+      if (!checkRateLimit(ip, RATE_LIMIT_STATUS)) {
+        return jsonResponse(429, { error: 'Too many requests' }, request);
+      }
       return jsonResponse(200, {
         ok: true,
         chapters: chapterIndex.total,
         model: MODEL,
-      });
+      }, request);
     }
 
     // POST /api/chat
     if (request.method === 'POST' && url.pathname === '/api/chat') {
+      const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+      if (!checkRateLimit(ip, RATE_LIMIT_CHAT)) {
+        return jsonResponse(429, { error: '請求過於頻繁，請稍後再試。Too many requests, please try again later.' }, request);
+      }
+
+      // Reject oversized bodies early
+      const contentLength = parseInt(request.headers.get('Content-Length') || '0', 10);
+      if (contentLength > MAX_BODY_SIZE) {
+        return jsonResponse(413, { error: 'Request body too large' }, request);
+      }
+
       try {
         return await handleChat(request, env);
       } catch (e) {
         console.error(`Chat error: ${e.message}`);
-        return jsonResponse(500, { error: e.message });
+        return jsonResponse(500, { error: e.message }, request);
       }
     }
 
-    return jsonResponse(404, { error: 'Not found' });
+    return jsonResponse(404, { error: 'Not found' }, request);
   },
 };
 
 // ── Helpers ─────────────────────────────────────────────────
 
-function corsHeaders() {
+function corsHeaders(request) {
+  const origin = request?.headers?.get?.('Origin') || '';
+  const allowedOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
   return {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': allowedOrigin,
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     'Access-Control-Max-Age': '86400',
+    'Vary': 'Origin',
   };
 }
 
-function jsonResponse(status, data) {
+function jsonResponse(status, data, request) {
   return new Response(JSON.stringify(data), {
     status,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
-      ...corsHeaders(),
+      ...corsHeaders(request),
     },
   });
 }

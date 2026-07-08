@@ -15,35 +15,59 @@ const MAX_RAG_CHAPTERS = 3;   // max chapters to fetch for context
 const MAX_CHAPTER_CHARS = 3000; // max chars to extract per chapter
 
 // ── Rate Limiting ──────────────────────────────────────────
-const RATE_LIMIT_WINDOW = 60_000;  // 60 seconds
-const RATE_LIMIT_CHAT = 10;        // max chat requests per window per IP
-const RATE_LIMIT_STATUS = 30;      // max status requests per window per IP
-const RATE_LIMIT_MAX_ENTRIES = 5000; // max tracked IPs before cleanup
+const RATE_LIMIT_WINDOW_MS = 60_000;  // 60 seconds
+const RATE_LIMIT_CHAT = 10;           // max chat requests per window per IP
+const RATE_LIMIT_STATUS = 30;         // max status requests per window per IP
+const RATE_LIMIT_CLEANUP = 1000;      // cleanup old entries after this many tracked IPs
 
-const rateStore = new Map(); // IP → { timestamps: number[] }
+const rateStore = new Map(); // IP → { count: number, windowId: number }
+
+function getWindowId(now) {
+  return Math.floor(now / RATE_LIMIT_WINDOW_MS);
+}
 
 function checkRateLimit(ip, limit) {
   const now = Date.now();
-  let entry = rateStore.get(ip);
-  if (!entry) {
-    entry = { timestamps: [] };
-    rateStore.set(ip, entry);
+  const windowId = getWindowId(now);
+  const entry = rateStore.get(ip);
+
+  // Reset counter if window has advanced
+  if (!entry || entry.windowId !== windowId) {
+    rateStore.set(ip, { count: 1, windowId });
+    return {
+      allowed: true,
+      remaining: limit - 1,
+      limit,
+      reset: (windowId + 1) * RATE_LIMIT_WINDOW_MS,
+    };
   }
-  // Slide window: discard old timestamps
-  const cutoff = now - RATE_LIMIT_WINDOW;
-  entry.timestamps = entry.timestamps.filter(t => t > cutoff);
-  if (entry.timestamps.length >= limit) {
-    return false; // rate limited
-  }
-  entry.timestamps.push(now);
-  // Periodic cleanup: if store grows too large, evict stale entries
-  if (rateStore.size > RATE_LIMIT_MAX_ENTRIES) {
+
+  entry.count++;
+
+  // Periodic cleanup: evict entries from old windows
+  if (rateStore.size > RATE_LIMIT_CLEANUP) {
     for (const [k, v] of rateStore) {
-      v.timestamps = v.timestamps.filter(t => t > cutoff);
-      if (v.timestamps.length === 0) rateStore.delete(k);
+      if (v.windowId < windowId) rateStore.delete(k);
     }
   }
-  return true;
+
+  const allowed = entry.count <= limit;
+  const remaining = Math.max(0, limit - entry.count);
+  return {
+    allowed,
+    remaining,
+    limit,
+    reset: (windowId + 1) * RATE_LIMIT_WINDOW_MS,
+  };
+}
+
+function setRateLimitHeaders(headers, result) {
+  headers.set('X-RateLimit-Limit', String(result.limit));
+  headers.set('X-RateLimit-Remaining', String(result.remaining));
+  headers.set('X-RateLimit-Reset', String(Math.floor(result.reset / 1000)));
+  if (!result.allowed) {
+    headers.set('Retry-After', String(Math.ceil((result.reset - Date.now()) / 1000)));
+  }
 }
 
 // ── Input Validation ───────────────────────────────────────
@@ -363,21 +387,36 @@ export default {
     // GET /api/status
     if (request.method === 'GET' && url.pathname === '/api/status') {
       const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-      if (!checkRateLimit(ip, RATE_LIMIT_STATUS)) {
-        return jsonResponse(429, { error: 'Too many requests' }, request);
+      const rl = checkRateLimit(ip, RATE_LIMIT_STATUS);
+      if (!rl.allowed) {
+        const headers = new Headers();
+        setRateLimitHeaders(headers, rl);
+        return new Response(JSON.stringify({ error: 'Too many requests' }), {
+          status: 429,
+          headers,
+        });
       }
-      return jsonResponse(200, {
+      const resp = jsonResponse(200, {
         ok: true,
         chapters: chapterIndex.total,
         model: MODEL,
       }, request);
+      setRateLimitHeaders(resp.headers, rl);
+      return resp;
     }
 
     // POST /api/chat
     if (request.method === 'POST' && url.pathname === '/api/chat') {
       const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-      if (!checkRateLimit(ip, RATE_LIMIT_CHAT)) {
-        return jsonResponse(429, { error: '請求過於頻繁，請稍後再試。Too many requests, please try again later.' }, request);
+      const rl = checkRateLimit(ip, RATE_LIMIT_CHAT);
+      if (!rl.allowed) {
+        const headers = new Headers();
+        setRateLimitHeaders(headers, rl);
+        headers.set('Content-Type', 'application/json; charset=utf-8');
+        return new Response(JSON.stringify({ error: '請求過於頻繁，請稍後再試。Too many requests, please try again later.' }), {
+          status: 429,
+          headers,
+        });
       }
 
       // Reject oversized bodies early
@@ -387,7 +426,9 @@ export default {
       }
 
       try {
-        return await handleChat(request, env);
+        const resp = await handleChat(request, env);
+        setRateLimitHeaders(resp.headers, rl);
+        return resp;
       } catch (e) {
         console.error(`Chat error: ${e.message}`);
         return jsonResponse(500, { error: e.message }, request);
@@ -400,6 +441,13 @@ export default {
       const originResp = await fetch(request);
       const newHeaders = new Headers(originResp.headers);
       addSecurityHeaders(newHeaders);
+      // Inject CSP header for pages that lack it (chapter pages)
+      // Does not override existing CSP meta tag — browser enforces both
+      const ct = newHeaders.get('Content-Type') || '';
+      if (ct.includes('text/html') || url.pathname.endsWith('.html') || !url.pathname.includes('.')) {
+        newHeaders.set('Content-Security-Policy',
+          "default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://datagovhk.blob.core.windows.net https://data.weather.gov.hk https://resource.data.one.gov.hk https://itv.kofhk.com https://rt.data.gov.hk https://portal.csdi.gov.hk https://api.allorigins.win https://corsproxy.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
+      }
       return new Response(originResp.body, {
         status: originResp.status,
         statusText: originResp.statusText,
@@ -423,6 +471,8 @@ function corsHeaders(request) {
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     'Access-Control-Max-Age': '86400',
     'Vary': 'Origin',
+    'Cache-Control': 'no-store, no-cache, must-revalidate, private',
+    'Pragma': 'no-cache',
   };
 }
 

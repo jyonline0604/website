@@ -3,9 +3,11 @@ main = "index.js"
 compatibility_date = "2025-01-01"
 account_id = "2145058745a338fb743534c2d3528cf8"
 
-# Route: kofhk.com/api/chat and kofhk.com/api/status
+# Route: all kofhk.com requests
+# /api/* → handled by worker (chat, rate limiting)
+# /* (static) → pass-through proxy with security headers injected
 routes = [
-  { pattern = "kofhk.com/api/*", zone_name = "kofhk.com" }
+  { pattern = "kofhk.com/*", zone_name = "kofhk.com" }
 ]
 
 # Environment variables (set secret with: wrangler secret put OPENROUTER_API_KEY)

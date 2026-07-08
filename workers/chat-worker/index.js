@@ -337,14 +337,23 @@ async function handleChat(request, env) {
   return jsonResponse(200, { reply }, request);
 }
 
+// ── Security Headers ──────────────────────────────────────
+function addSecurityHeaders(headers) {
+  headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+  headers.set('X-Frame-Options', 'DENY');
+  headers.set('X-Content-Type-Options', 'nosniff');
+  headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), interest-cohort=()');
+}
+
 // ── Main Handler ────────────────────────────────────────────
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    // CORS preflight
-    if (request.method === 'OPTIONS') {
+    // CORS preflight (API only)
+    if (request.method === 'OPTIONS' && url.pathname.startsWith('/api/')) {
       return new Response(null, {
         status: 204,
         headers: corsHeaders(request),
@@ -385,7 +394,21 @@ export default {
       }
     }
 
-    return jsonResponse(404, { error: 'Not found' }, request);
+    // All other paths: pass-through proxy to origin with security headers
+    // (Cloudflare fetches go directly to origin, bypassing Worker — no loop)
+    try {
+      const originResp = await fetch(request);
+      const newHeaders = new Headers(originResp.headers);
+      addSecurityHeaders(newHeaders);
+      return new Response(originResp.body, {
+        status: originResp.status,
+        statusText: originResp.statusText,
+        headers: newHeaders,
+      });
+    } catch (e) {
+      console.error(`Origin fetch error: ${e.message}`);
+      return new Response('Origin unreachable', { status: 502 });
+    }
   },
 };
 
@@ -404,11 +427,10 @@ function corsHeaders(request) {
 }
 
 function jsonResponse(status, data, request) {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-      ...corsHeaders(request),
-    },
+  const headers = new Headers({
+    'Content-Type': 'application/json; charset=utf-8',
+    ...corsHeaders(request),
   });
+  addSecurityHeaders(headers);
+  return new Response(JSON.stringify(data), { status, headers });
 }

@@ -10,7 +10,15 @@ routes = [
   { pattern = "kofhk.com/*", zone_name = "kofhk.com" }
 ]
 
+# Durable Object for cross-edge rate limiting
+[[durable_objects.bindings]]
+name = "RATE_LIMITER"
+class_name = "RateLimiter"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["RateLimiter"]
+
 # Environment variables (set secret with: wrangler secret put OPENROUTER_API_KEY)
 # [vars]
 # No public vars needed — API key is a secret
-

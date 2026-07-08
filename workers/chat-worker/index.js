@@ -14,51 +14,70 @@ const SITE_URL = 'https://kofhk.com';
 const MAX_RAG_CHAPTERS = 3;   // max chapters to fetch for context
 const MAX_CHAPTER_CHARS = 3000; // max chars to extract per chapter
 
-// ── Rate Limiting ──────────────────────────────────────────
+// ── Rate Limiting (Durable Object) ──────────────────────────
 const RATE_LIMIT_WINDOW_MS = 60_000;  // 60 seconds
 const RATE_LIMIT_CHAT = 10;           // max chat requests per window per IP
 const RATE_LIMIT_STATUS = 30;         // max status requests per window per IP
-const RATE_LIMIT_CLEANUP = 1000;      // cleanup old entries after this many tracked IPs
 
-const rateStore = new Map(); // IP → { count: number, windowId: number }
+// Durable Object for cross-edge consistent rate limiting
+export class RateLimiter {
+  constructor(state, env) {
+    this.state = state;
+    this.env = env;
+  }
 
-function getWindowId(now) {
-  return Math.floor(now / RATE_LIMIT_WINDOW_MS);
+  async fetch(request) {
+    const url = new URL(request.url);
+    const ip = url.searchParams.get('ip') || 'unknown';
+    const limit = parseInt(url.searchParams.get('limit')) || 10;
+    const windowMs = parseInt(url.searchParams.get('window')) || 60_000;
+
+    const now = Date.now();
+    const windowId = Math.floor(now / windowMs);
+    const storageKey = `rl:${ip}`;
+
+    let data = await this.state.storage.get(storageKey);
+    if (!data || data.windowId !== windowId) {
+      data = { count: 0, windowId };
+    }
+
+    data.count++;
+    await this.state.storage.put(storageKey, data);
+
+    // Cleanup old entries (every 100 writes)
+    if (data.count % 100 === 0) {
+      const all = await this.state.storage.list();
+      const toDelete = [];
+      for (const [k, v] of all) {
+        if (v.windowId < windowId - 1) toDelete.push(k);
+      }
+      if (toDelete.length > 0) {
+        await this.state.storage.delete(toDelete);
+      }
+    }
+
+    const remaining = Math.max(0, limit - data.count);
+    const reset = (windowId + 1) * windowMs;
+    const allowed = data.count <= limit;
+
+    return new Response(JSON.stringify({ allowed, remaining, limit, reset }), {
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
 }
 
-function checkRateLimit(ip, limit) {
-  const now = Date.now();
-  const windowId = getWindowId(now);
-  const entry = rateStore.get(ip);
-
-  // Reset counter if window has advanced
-  if (!entry || entry.windowId !== windowId) {
-    rateStore.set(ip, { count: 1, windowId });
-    return {
-      allowed: true,
-      remaining: limit - 1,
-      limit,
-      reset: (windowId + 1) * RATE_LIMIT_WINDOW_MS,
-    };
+async function checkRateLimitDO(env, ip, limit) {
+  const id = env.RATE_LIMITER.idFromName('global');
+  const stub = env.RATE_LIMITER.get(id);
+  const resp = await stub.fetch(
+    `https://rate-limiter-do/check?ip=${encodeURIComponent(ip)}&limit=${limit}&window=${RATE_LIMIT_WINDOW_MS}`
+  );
+  if (!resp.ok) {
+    // Fallback: allow on DO error
+    console.error(`RateLimiter DO error: ${resp.status}`);
+    return { allowed: true, remaining: 0, limit, reset: Date.now() + RATE_LIMIT_WINDOW_MS };
   }
-
-  entry.count++;
-
-  // Periodic cleanup: evict entries from old windows
-  if (rateStore.size > RATE_LIMIT_CLEANUP) {
-    for (const [k, v] of rateStore) {
-      if (v.windowId < windowId) rateStore.delete(k);
-    }
-  }
-
-  const allowed = entry.count <= limit;
-  const remaining = Math.max(0, limit - entry.count);
-  return {
-    allowed,
-    remaining,
-    limit,
-    reset: (windowId + 1) * RATE_LIMIT_WINDOW_MS,
-  };
+  return await resp.json();
 }
 
 function setRateLimitHeaders(headers, result) {
@@ -387,10 +406,12 @@ export default {
     // GET /api/status
     if (request.method === 'GET' && url.pathname === '/api/status') {
       const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-      const rl = checkRateLimit(ip, RATE_LIMIT_STATUS);
+      const rl = await checkRateLimitDO(env, ip, RATE_LIMIT_STATUS);
       if (!rl.allowed) {
         const headers = new Headers();
         setRateLimitHeaders(headers, rl);
+        addSecurityHeaders(headers);
+        headers.set('Content-Type', 'application/json; charset=utf-8');
         return new Response(JSON.stringify({ error: 'Too many requests' }), {
           status: 429,
           headers,
@@ -408,10 +429,11 @@ export default {
     // POST /api/chat
     if (request.method === 'POST' && url.pathname === '/api/chat') {
       const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-      const rl = checkRateLimit(ip, RATE_LIMIT_CHAT);
+      const rl = await checkRateLimitDO(env, ip, RATE_LIMIT_CHAT);
       if (!rl.allowed) {
         const headers = new Headers();
         setRateLimitHeaders(headers, rl);
+        addSecurityHeaders(headers);
         headers.set('Content-Type', 'application/json; charset=utf-8');
         return new Response(JSON.stringify({ error: '請求過於頻繁，請稍後再試。Too many requests, please try again later.' }), {
           status: 429,
@@ -471,7 +493,9 @@ function corsHeaders(request) {
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     'Access-Control-Max-Age': '86400',
     'Vary': 'Origin',
-    'Cache-Control': 'no-store, no-cache, must-revalidate, private',
+    'Cache-Control': 'private, no-store, no-cache, max-age=0, must-revalidate',
+    'CDN-Cache-Control': 'no-store',
+    'Cloudflare-CDN-Cache-Control': 'no-store',
     'Pragma': 'no-cache',
   };
 }

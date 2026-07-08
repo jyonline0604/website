@@ -632,75 +632,75 @@ async function fetchAndUpdateETA() {
   _etaAborter = aborter;
   const icon = document.getElementById('refreshIcon');
   if (icon) icon.classList.add('spinning');
-  try {
-    const etaMap = {};
-    const stopList = S.stopList;
-    const route = S.selectedRoute;
-    // Fetch ETAs one stop at a time. KMB's API drops most connections
-    // when hit with many concurrent requests, which left every stop
-    // showing no ETA. Serialising with a small delay + retry fixes it.
-    async function fetchStopEta(s, attempt) {
-      try {
-        let d;
-        if (S.co === 'KMB') {
-          d = await api(CFG.KMB.base+CFG.KMB.etaEp(s.stopId, route, '1'), 12000);
-          return {stopId: s.stopId, etas: d.data||[]};
-        } else if (S.co === 'CTB') {
-          d = await api(CFG.CTB.base+CFG.CTB.etaEp(s.stopId, route), 12000);
-          return {stopId: s.stopId, etas: d.data||[]};
-        } else if (S.co === 'LRT') {
-          return {stopId: s.stopId, etas: []};
-        } else if (S.co === 'GMB') {
-          const rd = S.selectedRouteData;
-          d = await api(CFG.GMB.base+CFG.GMB.etaEp(rd.routeId, s.stopId), 12000);
-          const gmbResults = (d.data || []);
-          const etas = [];
-          gmbResults.forEach(r => {
-            if (r.stop_seq === s.seq && r.route_seq === rd.routeSeq) {
-              (r.eta||[]).forEach(e => {
-                etas.push({eta: e.timestamp, rmk_tc: e.remarks_tc||'', diff: e.diff});
-              });
-            }
-          });
-          return {stopId: s.stopId, etas: etas};
-        }
-        return {stopId: s.stopId, etas: []};
-      } catch(e) {
-        window.__lastEtaErr = (window.__lastEtaErr||'') + '['+s.stopId+':'+(e&&e.message?e.message:e.name)+'] ';
-        if (attempt <= 0) return {stopId: s.stopId, etas: []};
-        await new Promise(r => setTimeout(r, 500));
-        return fetchStopEta(s, attempt - 1);
+  const stopList = S.stopList;
+  const route = S.selectedRoute;
+  const co = S.co;
+
+  // Fetch one stop's ETA with retry
+  async function fetchStopEta(s, attempt) {
+    try {
+      let d;
+      if (co === 'KMB') {
+        d = await api(CFG.KMB.base+CFG.KMB.etaEp(s.stopId, route, '1'), 12000);
+        return {stopId: s.stopId, etas: d.data||[]};
+      } else if (co === 'CTB') {
+        d = await api(CFG.CTB.base+CFG.CTB.etaEp(s.stopId, route), 12000);
+        return {stopId: s.stopId, etas: d.data||[]};
+      } else if (co === 'GMB') {
+        const rd = S.selectedRouteData;
+        d = await api(CFG.GMB.base+CFG.GMB.etaEp(rd.routeId, s.stopId), 12000);
+        const raw = (d.data || []);
+        const etas = [];
+        raw.forEach(r => {
+          if (r.stop_seq === s.seq && r.route_seq === rd.routeSeq) {
+            (r.eta||[]).forEach(e => {
+              etas.push({eta: e.timestamp, rmk_tc: e.remarks_tc||'', diff: e.diff});
+            });
+          }
+        });
+        return {stopId: s.stopId, etas: etas};
       }
+      return {stopId: s.stopId, etas: []};
+    } catch(e) {
+      if (attempt <= 0) return {stopId: s.stopId, etas: []};
+      await new Promise(r => setTimeout(r, 500));
+      return fetchStopEta(s, attempt - 1);
     }
+  }
+
+  // Filter ETAs for the current route+direction
+  function filterEtas(etas) {
+    return etas.filter(e => {
+      if (co === 'KMB') return e.route === route && e.dir === S.selectedBound;
+      if (co === 'CTB') {
+        return e.route === route && e.dir === (S.selectedBound==='outbound'?'O':'I');
+      }
+      return true;
+    });
+  }
+
+  // Render a single stop's ETA immediately
+  function renderOneStop(stopId, etas) {
+    const el = document.getElementById('eta-'+stopId);
+    if (!el) return;
+    if (etas.length) {
+      el.innerHTML = '';
+      etas.slice(0,3).forEach(e => el.appendChild(createEtaBadge(e.eta, e.rmk_tc)));
+    } else {
+      el.innerHTML = '<span class="eta-none">—</span>';
+    }
+  }
+
+  // Fetch + render each stop serially — KMB drops concurrent connections
+  try {
     for (const s of stopList) {
       if (aborter.signal.aborted) break;
       const r = await fetchStopEta(s, 2);
-      etaMap[r.stopId] = r.etas;
-      await new Promise(res => setTimeout(res, 150));
+      const filtered = filterEtas(r.etas);
+      renderOneStop(r.stopId, filtered);
+      setUpdateTime();
+      await new Promise(res => setTimeout(res, 30));
     }
-    if (aborter.signal.aborted) { if (icon) icon.classList.remove('spinning'); return; }
-    Object.keys(etaMap).forEach(id => {
-      etaMap[id] = etaMap[id].filter(e => {
-        if (S.co === 'KMB') return e.route === route && e.dir === S.selectedBound;
-        if (S.co === 'CTB') {
-          const dirMap = {outbound:'O', inbound:'I'};
-          return e.route === route && e.dir === dirMap[S.selectedBound];
-        }
-        return true;
-      });
-    });
-    stopList.forEach(s => {
-      const el = document.getElementById('eta-'+s.stopId);
-      if (!el) return;
-      const etas = etaMap[s.stopId] || [];
-      if (etas.length) {
-        el.innerHTML = '';
-        etas.slice(0,3).forEach(e => el.appendChild(createEtaBadge(e.eta, e.rmk_tc)));
-      } else {
-        el.innerHTML = '<span class="eta-none">—</span>';
-      }
-    });
-    setUpdateTime();
   } catch(e) {
   } finally {
     if (_etaAborter === aborter) _etaAborter = null;

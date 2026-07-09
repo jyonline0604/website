@@ -12,6 +12,7 @@ permissions:
 jobs:
   update-data:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: 檢出代碼
         uses: actions/checkout@v4
@@ -25,8 +26,19 @@ jobs:
         run: |
           pip install yfinance
 
-      - name: 執行更新腳本
-        run: python update_data.py
+      - name: 執行更新腳本（含自動重試）
+        run: |
+          max_retries=3
+          for i in $(seq 1 $max_retries); do
+            echo "🔄 第 $i 次執行..."
+            python update_data.py && break
+            if [ $i -eq $max_retries ]; then
+              echo "❌ 所有 $max_retries 次重試均失敗"
+              exit 1
+            fi
+            echo "⚠️ 第 $i 次失敗，10 秒後重試..."
+            sleep 10
+          done
 
       - name: 檢查是否有變更
         id: check_changes

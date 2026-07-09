@@ -12,6 +12,21 @@ import urllib.error
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
 
+
+def retry_on_failure(func, max_retries=3, delay=5, backoff=2):
+    """通用 API 重試裝飾器/包裝器 — 處理網路波動和 API 瞬斷"""
+    for attempt in range(1, max_retries + 1):
+        try:
+            return func()
+        except Exception as e:
+            is_last = attempt == max_retries
+            print(f"    ⚠️ 第 {attempt} 次失敗: {e}{'，放棄' if is_last else f'，{delay}秒後重試...'}")
+            if is_last:
+                raise
+            time.sleep(delay)
+            delay *= backoff
+    return None
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # ── AI 新聞 RSS 來源 ──
@@ -48,9 +63,11 @@ FINANCE_RSS_SOURCES = [
 
 
 def fetch_rss(url, max_items=12):
-    """從 RSS 獲取新聞條目"""
+    """從 RSS 獲取新聞條目（含自動重試）"""
     news_list = []
-    try:
+
+    def _do_fetch():
+        items = []
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
             'Accept': 'application/rss+xml, application/xml, text/xml, */*'
@@ -60,28 +77,26 @@ def fetch_rss(url, max_items=12):
             content = resp.read().decode('utf-8', errors='ignore')
 
         root = ET.fromstring(content)
-        # 兼容 RSS 2.0 和 Atom
         channel = root.find('channel')
         items = channel.findall('item') if channel is not None else root.findall('.//item')
         if not items:
             items = root.findall('.//{http://www.w3.org/2005/Atom}entry')
+        return items
 
-        for item in items[:max_items]:
-            title = _get_text(item, 'title')
-            link = _get_link(item)
-            if not title or not link:
-                continue
-
-            desc = _get_text(item, 'description') or _get_text(item, 'summary') or ''
-            pub_date = _parse_date(_get_text(item, 'pubDate'))
-            news_list.append({
-                "title": title.strip()[:200],
-                "link": link,
-                "summary": desc.strip()[:300] if desc else "",
-                "pubDate": pub_date,
-            })
-    except Exception as e:
-        print(f"  ⚠️ RSS 錯誤: {e}")
+    items = retry_on_failure(_do_fetch, max_retries=2, delay=3) or []
+    for item in items[:max_items]:
+        title = _get_text(item, 'title')
+        link = _get_link(item)
+        if not title or not link:
+            continue
+        desc = _get_text(item, 'description') or _get_text(item, 'summary') or ''
+        pub_date = _parse_date(_get_text(item, 'pubDate'))
+        news_list.append({
+            "title": title.strip()[:200],
+            "link": link,
+            "summary": desc.strip()[:300] if desc else "",
+            "pubDate": pub_date,
+        })
 
     return news_list
 
@@ -135,22 +150,22 @@ def _parse_date(date_str):
 
 
 def fetch_coin_gecko():
-    """從 CoinGecko 獲取加密貨幣價格（免費，無需 API key）"""
+    """從 CoinGecko 獲取加密貨幣價格（免費，無需 API key，含自動重試）"""
     url = ("https://api.coingecko.com/api/v3/simple/price?"
            "ids=bitcoin,ethereum,solana,ripple,cardano"
            "&vs_currencies=usd"
            "&include_24hr_change=true"
            "&include_market_cap=true"
            "&include_24hr_vol=true")
-    headers = {
-        'User-Agent': 'kofhk-finance/1.0',
-        'Accept': 'application/json'
-    }
-    try:
+
+    def _do_fetch():
+        headers = {'User-Agent': 'kofhk-finance/1.0', 'Accept': 'application/json'}
         req = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(req, timeout=15) as resp:
-            data = json.loads(resp.read().decode())
+            return json.loads(resp.read().decode())
 
+    try:
+        data = retry_on_failure(_do_fetch, max_retries=3, delay=5, backoff=2)
         return {
             "bitcoin": {
                 "name": "Bitcoin", "symbol": "BTC",
@@ -312,8 +327,9 @@ def _load_old_finance_data(section=None):
 
 
 def _fetch_yfinance_quote(ticker_symbol):
-    """通用 yfinance 報價擷取"""
-    try:
+    """通用 yfinance 報價擷取（含自動重試）"""
+
+    def _do_fetch():
         import yfinance as yf
         ticker = yf.Ticker(ticker_symbol)
         info = ticker.info
@@ -333,6 +349,9 @@ def _fetch_yfinance_quote(ticker_symbol):
             'high': info.get('regularMarketDayHigh', 0) or info.get('dayHigh', 0) or 0,
             'low': info.get('regularMarketDayLow', 0) or info.get('dayLow', 0) or 0,
         }
+
+    try:
+        return retry_on_failure(_do_fetch, max_retries=2, delay=3)
     except Exception as e:
         print(f"    ⚠️ yfinance 錯誤 ({ticker_symbol}): {e}")
         return None
@@ -443,14 +462,20 @@ def fetch_bond_data():
 
 
 def fetch_forex_data():
-    """從 Frankfurter API 擷取即時匯率"""
+    """從 Frankfurter API 擷取即時匯率（含自動重試）"""
     print("  💱 擷取外匯數據...")
     url = "https://api.frankfurter.dev/v1/latest?from=USD"
-    headers = {'User-Agent': 'kofhk-finance/1.0', 'Accept': 'application/json'}
-    try:
+
+    def _do_fetch():
+        headers = {'User-Agent': 'kofhk-finance/1.0', 'Accept': 'application/json'}
         req = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(req, timeout=15) as resp:
-            data = json.loads(resp.read().decode())
+            return json.loads(resp.read().decode())
+
+    try:
+        data = retry_on_failure(_do_fetch, max_retries=2, delay=3)
+        if not data:
+            raise Exception("No data returned")
 
         rates = data.get('rates', {})
 
@@ -472,13 +497,19 @@ def fetch_forex_data():
 
 
 def fetch_fear_greed_index():
-    """從 Alternative.me 擷取恐懼與貪婪指數"""
+    """從 Alternative.me 擷取恐懼與貪婪指數（含自動重試）"""
     print("  🎭 擷取市場情緒...")
     url = "https://api.alternative.me/fng/?limit=1"
-    try:
+
+    def _do_fetch():
         req = urllib.request.Request(url, headers={'User-Agent': 'kofhk-finance/1.0'})
         with urllib.request.urlopen(req, timeout=10) as resp:
-            data = json.loads(resp.read().decode())
+            return json.loads(resp.read().decode())
+
+    try:
+        data = retry_on_failure(_do_fetch, max_retries=2, delay=3)
+        if not data:
+            raise Exception("No data returned")
 
         items = data.get('data', [])
         if items:

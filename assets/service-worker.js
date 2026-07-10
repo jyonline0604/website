@@ -1,8 +1,8 @@
 // 萬古塵埃 - Optimized Service Worker
-// 版本: 2.1.0 (static cache key, removed dead refs)
-// 日期: 2026-05-26
+// 版本: 2.2.0 (fix HTML stale cache: cacheFirst → staleWhileRevalidate)
+// 日期: 2026-07-10
 
-const CACHE_VERSION = 'v2.1.0';
+const CACHE_VERSION = 'v2.2.0';
 const CACHE_NAME = 'tech-cultivation-' + CACHE_VERSION;
 const STATIC_CACHE = 'static-assets-' + CACHE_VERSION;
 const DYNAMIC_CACHE = 'dynamic-data-' + CACHE_VERSION;
@@ -87,9 +87,9 @@ self.addEventListener('fetch', event => {
     return;
   }
   
-  // 策略 3: HTML/主要頁面 - Cache First with Network Fallback
+  // 策略 3: HTML/主要頁面 - Stale While Revalidate（先給快取，背景更新）
   if (request.headers.get('accept') && request.headers.get('accept').includes('text/html')) {
-    event.respondWith(cacheFirst(request, STATIC_CACHE));
+    event.respondWith(staleWhileRevalidate(request, STATIC_CACHE));
     return;
   }
   

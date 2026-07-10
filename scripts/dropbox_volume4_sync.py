@@ -581,6 +581,24 @@ def process_batch():
     state = load_state()
     existing = get_existing_chapters()
     max_existing = max(existing) if existing else 0
+    
+    # 狀態一致性檢測：修復 state 與實際檔案分歧
+    state_max = max(state.get('synced_to_site', []) or [0])
+    if existing and state_max < max_existing:
+        missing = [c for c in existing if c > state_max and c <= max_existing]
+        log(f"⚠️ 檢測到 state 分歧: state={state_max}, 實際={max_existing}, 遺失{len(missing)}個")
+        state['synced_to_site'] = sorted(set(state.get('synced_to_site', []) + existing))
+        state['last_batch'] = {
+            'ch_start': max_existing - len(missing) + 1,
+            'ch_end': max_existing,
+            'count': len(missing),
+            'time': datetime.now().isoformat(),
+            'note': 'auto-reconciled'
+        }
+        save_state(state)
+        log(f"✅ 狀態已自動修復，state 更新至 CH{max_existing}")
+        # 重新載入修復後的狀態
+        state = load_state()
     log(f"📊 當前網站已有章節: {max_existing}")
     
     # 檢查是否已有最新章節
@@ -719,9 +737,7 @@ print(f"✅ chapters-data.json: {len(chapters)}章")
         
         log(f"  ✅ 總章節數已更新")
         
-        # Git 推送
-        git_commit_and_push(ch_start, ch_end)
-        
+        # ⚡ 立即保存狀態（先於 git 操作，避免 crash 導致 state 遺失）
         state['synced_to_site'].extend(generated_files)
         state['last_batch'] = {
             'ch_start': ch_start,
@@ -731,6 +747,9 @@ print(f"✅ chapters-data.json: {len(chapters)}章")
         }
         state['batch_count'] = state.get('batch_count', 0) + 1
         save_state(state)
+        
+        # Git 推送
+        git_commit_and_push(ch_start, ch_end)
     
     log(f"\n{'=' * 50}")
     log(f"✅ 批次完成: {success_count}/{len(batch)} 章成功")

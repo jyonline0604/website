@@ -84,49 +84,49 @@ def calculate_date(chapter_num, latest_num, today):
     
     return f"2026年{month}月{day}日"
 
-def update_home_html():
-    """更新簡化版首頁"""
-    home_path = os.path.join(NOVEL_DIR, "home.html")
-    
+def update_html_file(html_path):
+    """更新首頁HTML檔案的章節卡片"""
+    file_path = os.path.join(NOVEL_DIR, html_path)
+
     # 讀取首頁模板
-    with open(home_path, 'r', encoding='utf-8') as f:
+    with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
-    
+
     # 獲取所有章節
     chapters = get_all_chapters()
-    
+
     # 過濾掉模板（chapter-0或非數字）
     valid_chapters = [c for c in chapters if c["num"] > 0]
-    
+
     if not valid_chapters:
-        print("❌ 沒有找到有效章節")
+        print(f"❌ 沒有找到有效章節 ({html_path})")
         return False
-    
+
     print(f"找到 {len(valid_chapters)} 個章節")
-    
+
     # 取最新6章
     latest_chapters = valid_chapters[-6:]  # 顯示6個最新章節
     latest_num = latest_chapters[-1]["num"]  # 最新章節號
-    
+
     # 今天日期
     today = datetime.now()
     print(f"今天: {today.strftime('%Y-%m-%d')}")
     print(f"最新章節: 第{latest_num}章")
-    
+
     # 生成章節卡片HTML
     chapter_cards_html = ""
     for chap in reversed(latest_chapters):  # 從最新到最舊
         excerpt = get_chapter_excerpt(chap["filename"])
-        
+
         # 提取章節標題（去掉"第X章："部分）
         full_title = chap["title"]
         if "：" in full_title:
             chapter_name = full_title.split("：", 1)[1]
         else:
             chapter_name = full_title
-        
+
         chapter_date = calculate_date(chap["num"], latest_num, today)
-        
+
         chapter_cards_html += f'''
             <a href="{chap['filename']}" class="chapter-card">
                 <div class="chapter-number">第{chap['num']}章</div>
@@ -137,13 +137,13 @@ def update_home_html():
                     <span class="chapter-read">閱讀全文 →</span>
                 </div>
             </a>'''
-    
+
     # 找到並替換章節網格部分
     grid_start = content.find('<div class="chapter-grid">')
     if grid_start == -1:
-        print("❌ 找不到章節網格區域")
+        print(f"❌ 找不到章節網格區域 ({html_path})")
         return False
-    
+
     # 使用棧來正確追蹤嵌套的 HTML 標籤
     def find_matching_close_tag(html, start_pos):
         """找到與開始標籤匹配的關閉標籤位置"""
@@ -152,10 +152,10 @@ def update_home_html():
         while open_count > 0 and pos < len(html):
             next_open = html.find('<div', pos)
             next_close = html.find('</div>', pos)
-            
+
             if next_close == -1:
                 return -1
-            
+
             if next_open != -1 and next_open < next_close:
                 open_count += 1
                 pos = next_open + 1
@@ -164,30 +164,39 @@ def update_home_html():
                 if open_count == 0:
                     return next_close + 6
                 pos = next_close + 1
-        
+
         return -1
-    
+
     grid_content_start = grid_start + len('<div class="chapter-grid">')
     grid_end = find_matching_close_tag(content, grid_content_start)
-    
+
     if grid_end == -1:
-        print("❌ 找不到章節網格結束標籤")
+        print(f"❌ 找不到章節網格結束標籤 ({html_path})")
         return False
-    
+
     # 構建新的網格內容
     new_grid = f'''<div class="chapter-grid">
 {chapter_cards_html}
         </div>'''
-    
+
     # 替換內容
     new_content = content[:grid_start] + new_grid + content[grid_end:]
-    
+
     # 寫回文件
-    with open(home_path, 'w', encoding='utf-8') as f:
+    with open(file_path, 'w', encoding='utf-8') as f:
         f.write(new_content)
-    
-    print(f"✅ 已更新首頁，包含 {len(latest_chapters)} 個最新章節")
+
+    print(f"✅ 已更新 {html_path}，包含 {len(latest_chapters)} 個最新章節")
     return True
+
+
+def update_home_html():
+    """更新首頁 (home.html + index.html)"""
+    success = True
+    for html_file in ["home.html", "index.html"]:
+        if not update_html_file(html_file):
+            success = False
+    return success
 
 def main():
     print("=== 更新簡化版首頁 ===")

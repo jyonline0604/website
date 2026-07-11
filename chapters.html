@@ -176,11 +176,15 @@ body{font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;back
   "isPartOf": {"@type": "WebSite","name": "萬古塵埃","url": "https://kofhk.com"}
 }
 </script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://datagovhk.blob.core.windows.net https://data.weather.gov.hk https://resource.data.one.gov.hk https://itv.kofhk.com https://rt.data.gov.hk https://portal.csdi.gov.hk https://api.allorigins.win https://corsproxy.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"><!-- Preload critical resources --><noscript></noscript><link rel="stylesheet" href="assets/fonts/master.css">
 </head>
 <body>
-<header class="header">
-  <a href="/" class="logo">萬古塵埃</a>
-  <nav class="nav" id="navMenu">
+<!-- Skip Navigation Link -->
+<a href="#main-content" class="skip-navigation" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-1;">跳到主要內容</a>
+<!-- 導航列 -->
+<header role="banner" class="header">
+  <a href="/" class="logo">📖 萬古塵埃</a>
+  <nav aria-label="主要導航" class="nav" id="navMenu">
         <a href="home.html">首頁</a>
         <a href="chapters.html" class="active">章節</a>
         <a href="news.html">AI 新聞</a>
@@ -191,9 +195,10 @@ body{font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;back
         <a href="author.html">作者</a>
     </nav>
   <div class="header-actions">
-    <a href="/" class="btn btn-primary">開始閱讀</a>
+    <a href="chapter-1.html" class="btn btn-primary">開始閱讀</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="選單" aria-expanded="false">☰</button>
+  <div class="header-actions" id="continueReadingWrap" style="display:none"></div>
+  <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">☰</button>
 </header>
 
 <section class="hero">
@@ -221,7 +226,7 @@ body{font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;back
   </div>
 </section>
 
-<main class="container">
+<main class="container" id="main-content">
   <!-- Toolbar -->
   <div class="toolbar">
     <div class="toolbar-left">

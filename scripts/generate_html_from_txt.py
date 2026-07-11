@@ -100,7 +100,6 @@ def generate_html(chapter_num, title, content):
     # 替換標題（title和h1）
     full_title = f'第{chapter_num}章 · {title} - 萬古塵埃'
     template = template.replace('{title}', full_title)
-    # 也替換 h1 和漫畫版链接中的章節號
     template = template.replace('<h1>{chapter_title}</h1>', f'<h1>第{chapter_num}章 · {title}</h1>')
     template = template.replace('{CHAPTER_NUM}', str(chapter_num))
     

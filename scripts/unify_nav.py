@@ -10,8 +10,8 @@ UNIFIED_NAV = '''        <a href="home.html"{home_active}>首頁</a>
         <a href="finance.html"{finance_active}>財經</a>
         <a href="https://itv.kofhk.com/" rel="noopener noreferrer"{itv_active}>ITV</a>
         <a href="dashboard.html"{dashboard_active}>城市儀表板</a>
-        <a href="author.html"{author_active}>作者</a>
-        <a href="bus-eta.html"{bus_active}>巴士報站</a>'''
+        <a href="bus-eta.html"{bus_active}>巴士報站</a>
+        <a href="author.html"{author_active}>作者</a>'''
 
 # Which pages to update and their active link
 PAGES = {

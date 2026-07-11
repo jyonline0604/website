@@ -16,6 +16,7 @@ UNIFIED_NAV = '''        <a href="home.html"{home_active}>首頁</a>
 # Which pages to update and their active link
 PAGES = {
     "home.html": "home",
+    "index.html": "home",
     "chapters.html": "chapters",
     "chapters-v2-preview.html": "chapters",
     "chapters-v3-preview.html": "chapters",

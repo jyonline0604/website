@@ -73,24 +73,37 @@ def update_index_html(count):
     replacement = f'免費閱讀{count}+章節'
     new_content = re.sub(pattern, replacement, content)
     
-    # 更新 stat-number span（排除「每日」）
-    # 只更新包含數字的 stat-number
-    pattern = r'(<span class="stat-number">)(\d+)(\+</span>)'
-    replacement = rf'\g<1>{count}\3'
+    # 更新 numberOfPages（JSON-LD）
+    pattern = r'"numberOfPages": \d+,'
+    replacement = f'"numberOfPages": {count},'
     new_content = re.sub(pattern, replacement, new_content)
-    
+
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(new_content)
     print(f"✅ index.html: 更新為 {count} 章")
 
+def update_chapters_html(count):
+    """更新 chapters.html"""
+    filepath = "/home/openclaw/.openclaw/workspace/chapters.html"
+    with open(filepath, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    # 更新 meta description / og:description / twitter:description
+    content = re.sub(r'完整收錄\d+章', f'完整收錄{count}章', content)
+
+    with open(filepath, 'w', encoding='utf-8') as f:
+        f.write(content)
+    print(f"✅ chapters.html: 更新為 {count} 章")
+
 def main():
     count = count_chapters()
     print(f"📊 計算到的章節數量：{count}")
-    
+
     update_author_html(count)
     update_home_html(count)
     update_index_html(count)
-    
+    update_chapters_html(count)
+
     print(f"\n✅ 章節數量更新完成！")
 
 if __name__ == "__main__":

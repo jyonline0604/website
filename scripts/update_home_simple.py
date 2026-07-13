@@ -174,8 +174,8 @@ def update_html_file(html_path):
         print(f"❌ 找不到章節網格結束標籤 ({html_path})")
         return False
 
-    # 構建新的網格內容
-    new_grid = f'''<div class="chapter-grid">
+    # 構建新的網格內容（保留 id="chapterGrid" 以兼容 JS 動態渲染）
+    new_grid = f'''<div class="chapter-grid" id="chapterGrid">
 {chapter_cards_html}
         </div>'''
 

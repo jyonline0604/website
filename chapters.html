@@ -282,7 +282,7 @@ body{font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;back
 <script>
 (function(){
 'use strict';
-const DATA_URL = 'assets/chapters-data.json?v=20260711v2';
+const DATA_URL = 'assets/chapters-data.json?v=' + new Date().toISOString().slice(0,10).replace(/-/g,'');
 const PER_PAGE = 10;
 const LS_READ = 'readChapters';
 const LS_BOOKMARKS = 'bookmarks';

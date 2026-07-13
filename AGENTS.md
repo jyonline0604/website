@@ -244,6 +244,21 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 
 ---
 
+## 🚨 修復後自動化清單（每次修復後立即執行，不等用戶提醒！）
+
+**任何修復、變更、bug fix 完成後，必須自動依序執行以下 4 步：**
+
+```
+1. 📝 MEMORY.md — 記錄修復內容、根因、教訓
+2. 📚 SKILL.md — 版本號 +0.0.1，附加更新記錄
+3. 🔍 任務影響檢查 — 逐一檢查所有 cron job 是否受影響
+4. 🔄 同步備份 — Second-brain + Max-backup git push
+```
+
+**⚠️ 這是強制性自動行為。如果大肥喵要開口提醒「保存記錄、更新SKILLS」，你已失職。**
+
+---
+
 ## 🔔 強制性 Skill 更新規則
 
 **每次執行以下操作後，必須立即（不等待用戶提醒）更新 Skill：**

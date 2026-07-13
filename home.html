@@ -195,31 +195,20 @@ Use tools like html-minifier-terser or gulp-htmlmin.
     var lastUpdateEl = document.getElementById('last-update');
     if (lastUpdateEl && latest.length > 0) {
       var d0 = new Date(now);
-      d0.setDate(d0.getDate() - (latest.length - 1));
       var updateStr = d0.getFullYear() + '-' +
         String(d0.getMonth() + 1).padStart(2, '0') + '-' +
         String(d0.getDate()).padStart(2, '0');
       lastUpdateEl.textContent = updateStr;
     }
 
-    // Update relative time display directly
-    var updateTimeText = document.getElementById('updateTimeText');
+    // Update relative time display
+    // Note: relative time is handled by the standalone script below;
+    // we only set the tooltip exact date here.
     var updateTimeEl = document.getElementById('updateTime');
-    if (updateTimeText && latest.length > 0) {
+    if (updateTimeEl && latest.length > 0) {
       var newestDate = new Date(now);
-      newestDate.setDate(newestDate.getDate() - (latest.length - 1));
       var exactStr = newestDate.getFullYear() + '年' + (newestDate.getMonth() + 1) + '月' + newestDate.getDate() + '日';
-      if (updateTimeEl) updateTimeEl.setAttribute('title', '最後更新：' + exactStr);
-      var diffMs = now - newestDate;
-      var days = Math.floor(diffMs / 86400000);
-      var hours = Math.floor(diffMs / 3600000);
-      var mins = Math.floor(diffMs / 60000);
-      var text = '';
-      if (mins < 60) { text = '🕐 ' + mins + ' 分鐘前更新'; }
-      else if (hours < 24) { text = '🕐 ' + hours + ' 小時前更新'; }
-      else if (days < 30) { text = '🕐 ' + days + ' 天前更新'; }
-      else { text = '🕐 ' + exactStr + ' 更新'; }
-      updateTimeText.textContent = text;
+      updateTimeEl.setAttribute('title', '最後更新：' + exactStr);
     }
   }
   searchBox.addEventListener('input', function() {
@@ -475,7 +464,9 @@ Use tools like html-minifier-terser or gulp-htmlmin.
   function updateRelativeTime() {
     var latest = getLatestDate();
     if (!latest) {
-      if (updateTimeText) updateTimeText.textContent = '無法取得更新時間';
+      // Chapter cards haven't loaded yet; retry after 1s (XHR may still be in flight)
+      if (updateTimeText) updateTimeText.textContent = '載入中...';
+      setTimeout(updateRelativeTime, 1000);
       return;
     }
 
@@ -495,15 +486,15 @@ Use tools like html-minifier-terser or gulp-htmlmin.
 
     var text = '';
     if (seconds < 60) {
-      text = '🕐 剛剛更新';
+      text = '剛剛更新';
     } else if (minutes < 60) {
-      text = '🕐 ' + minutes + ' 分鐘前更新';
+      text = minutes + ' 分鐘前更新';
     } else if (hours < 24) {
-      text = '🕐 ' + hours + ' 小時前更新';
+      text = hours + ' 小時前更新';
     } else if (days < 30) {
-      text = '🕐 ' + days + ' 天前更新';
+      text = days + ' 天前更新';
     } else {
-      text = '🕐 ' + exactStr + ' 更新';
+      text = exactStr + ' 更新';
     }
 
     if (updateTimeText) updateTimeText.textContent = text;

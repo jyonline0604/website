@@ -498,7 +498,7 @@ async function doFetch(request, env, ctx) {
       const ct = newHeaders.get('Content-Type') || '';
       if (ct.includes('text/html') || url.pathname.endsWith('.html') || !url.pathname.includes('.')) {
         newHeaders.set('Content-Security-Policy',
-          "default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://datagovhk.blob.core.windows.net https://data.weather.gov.hk https://resource.data.one.gov.hk https://itv.kofhk.com https://rt.data.gov.hk https://data.etabus.gov.hk https://portal.csdi.gov.hk https://api.allorigins.win https://corsproxy.io https://proxy.cors.sh; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
+          "default-src 'self'; media-src 'self' https://audio.kofhk.com; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://audio.kofhk.com https://datagovhk.blob.core.windows.net https://data.weather.gov.hk https://resource.data.one.gov.hk https://itv.kofhk.com https://rt.data.gov.hk https://data.etabus.gov.hk https://portal.csdi.gov.hk https://api.allorigins.win https://corsproxy.io https://proxy.cors.sh; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
       }
       return new Response(originResp.body, {
         status: originResp.status,

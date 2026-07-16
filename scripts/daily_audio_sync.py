@@ -7,6 +7,10 @@ Flow: Chapter HTML → 提取文字 → Mosi TTS → MP3 → R2 upload → Playe
 import json, os, sys, subprocess, re, glob, urllib.request, urllib.error, time
 from datetime import datetime
 
+# Dropbox paths for fallback
+DROPBOX_TOKEN_FILE = os.path.join(WORKSPACE, '.token-store', 'dropbox-token.txt')
+DROPBOX_CREDS_FILE = os.path.join(WORKSPACE, '.token-store', 'dropbox-app-creds.txt')
+
 WORKSPACE = '/home/openclaw/.openclaw/workspace'
 STATE_FILE = os.path.join(WORKSPACE, '.dropbox-sync', 'audio_state.json')
 MOSI_KEY_FILE = os.path.join(WORKSPACE, '.token-store', 'mosi-api-key.txt')
@@ -144,6 +148,57 @@ def generate_tts(text, chapter_num):
         log(f'❌ Mosi API error: HTTP {e.code}: {e.read().decode()[:200]}')
         return None
 
+def download_from_dropbox_fallback(chapter_num):
+    """Fallback: Download pre-generated WAV from Dropbox, convert to MP3"""
+    log(f'🔍 Checking Dropbox for EP{chapter_num:02d}.wav...')
+    
+    # Refresh token
+    if not os.path.exists(DROPBOX_CREDS_FILE):
+        log('  No Dropbox creds')
+        return None
+    
+    with open(DROPBOX_CREDS_FILE) as f:
+        creds = {}
+        for line in f:
+            if '=' in line:
+                k, v = line.strip().split('=', 1)
+                creds[k] = v
+    
+    body = 'grant_type=refresh_token&refresh_token=' + creds['REFRESH_TOKEN'] + '&client_id=' + creds['APP_KEY'] + '&client_secret=' + creds['APP_SECRET']
+    req = urllib.request.Request('https://api.dropboxapi.com/oauth2/token', data=body.encode(), method='POST')
+    try:
+        token = json.loads(urllib.request.urlopen(req).read())['access_token']
+    except:
+        log('  ❌ Token refresh failed')
+        return None
+    
+    # Download
+    filename = f'EP{chapter_num:02d}.wav'
+    path = f'/萬古塵埃/{filename}'
+    url = 'https://content.dropboxapi.com/2/files/download'
+    req = urllib.request.Request(url, method='POST')
+    req.add_header('Authorization', 'Bearer ' + token)
+    req.add_header('Dropbox-API-Arg', json.dumps({"path": path}))
+    
+    try:
+        resp = urllib.request.urlopen(req, timeout=120)
+        wav_data = resp.read()
+        wav_path = os.path.join(TMP_DIR, filename)
+        os.makedirs(TMP_DIR, exist_ok=True)
+        with open(wav_path, 'wb') as f:
+            f.write(wav_data)
+        log(f'  ✅ Downloaded {filename} ({len(wav_data)/1048576:.1f} MB)')
+        
+        # Convert to MP3
+        mp3_path = os.path.join(TMP_DIR, f'chapter-{chapter_num}.mp3')
+        subprocess.run(['ffmpeg', '-y', '-i', wav_path, '-codec:a', 'libmp3lame', '-b:a', '128k', mp3_path], capture_output=True)
+        mp3_size = os.path.getsize(mp3_path)
+        log(f'  ✅ Converted to MP3 ({mp3_size/1048576:.1f} MB)')
+        return mp3_path
+    except urllib.error.HTTPError as e:
+        log(f'  ❌ {filename} not found (HTTP {e.code})')
+        return None
+
 def upload_to_r2(mp3_path):
     """Upload MP3 to R2"""
     script = os.path.join(WORKSPACE, 'scripts', 'upload_audio_r2.py')
@@ -191,11 +246,14 @@ def main():
         log(f'❌ Cannot extract Chapter {ch}')
         return 1
     
-    # Generate TTS
+    # Try Mosi TTS first
     mp3 = generate_tts(text, ch)
     if not mp3:
-        log(f'❌ TTS generation failed')
-        return 1
+        log(f'⚠️  Mosi TTS failed (可能quota用完), 嘗試 Dropbox fallback...')
+        mp3 = download_from_dropbox_fallback(ch)
+        if not mp3:
+            log(f'❌ Both Mosi and Dropbox failed — skipping today')
+            return 0  # Don't error, just skip
     
     # Upload
     if not upload_to_r2(mp3):

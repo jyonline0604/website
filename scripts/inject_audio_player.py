@@ -77,7 +77,7 @@ def inject_player(num, dry_run=False):
     audio_html = AUDIO_PLAYER_HTML.format(audio_url=get_audio_url(num))
     
     # Find the end of top-bar div and insert before <h1>
-    pattern = r'(</div>\s*\n\s*)<h1>'
+    pattern = r'(</div>)\s*<h1>'
     result = re.subn(pattern, r'\1' + audio_html + '\n    <h1>', content, count=1)
     
     if result[1] == 0:

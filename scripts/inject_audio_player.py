@@ -23,7 +23,7 @@ AUDIO_PLAYER_HTML = """\
     <!-- 🎧 Audio Player -->
     <div class="audio-player-wrap">
       <span class="audio-icon">🎧</span>
-      <audio controls preload="none">
+      <audio controls preload="metadata">
         <source src="{audio_url}" type="audio/mpeg">
         您的瀏覽器不支援音頻播放。
       </audio>

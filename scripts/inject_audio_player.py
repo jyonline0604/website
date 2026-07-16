@@ -16,7 +16,7 @@ import sys
 import json
 
 WORKSPACE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-AUDIO_BASE_URL = "https://pub-841f93bf05ae4e9099ef54389ecdec24.r2.dev/audio"
+AUDIO_BASE_URL = "https://audio.kofhk.com/audio"
 CRED_FILE = os.path.join(WORKSPACE, ".r2-credentials.json")
 
 AUDIO_PLAYER_HTML = """\

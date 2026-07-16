@@ -1,0 +1,78 @@
+/* assets/audio-player.css — 小說音頻播放器樣式 */
+/* 注入到章節頁面 chapter.css */
+
+.audio-player-wrap {
+  max-width: 680px;
+  margin: 0 auto 1.5rem auto;
+  padding: 0.75rem 1rem;
+  background: var(--audio-bg, #f0f4f8);
+  border-radius: 12px;
+  border: 1px solid var(--audio-border, #dde4ed);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.audio-player-wrap .audio-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.audio-player-wrap audio {
+  flex: 1;
+  height: 36px;
+  min-width: 0;
+}
+
+.audio-player-wrap .audio-label {
+  font-size: 0.8rem;
+  color: var(--audio-label, #666);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Theme-specific overrides */
+.theme-dark .audio-player-wrap,
+body.navy .audio-player-wrap {
+  --audio-bg: #1e2430;
+  --audio-border: #2d3548;
+  --audio-label: #8899aa;
+}
+
+.theme-sepia .audio-player-wrap {
+  --audio-bg: #f5ecd7;
+  --audio-border: #d4c5a0;
+  --audio-label: #8b7355;
+}
+
+.theme-green .audio-player-wrap {
+  --audio-bg: #e8f0e3;
+  --audio-border: #b8ccaa;
+  --audio-label: #5a7a4a;
+}
+
+.theme-sky .audio-player-wrap {
+  --audio-bg: #e3edf5;
+  --audio-border: #b8cfe0;
+  --audio-label: #5a7a9a;
+}
+
+.no-audio .audio-player-wrap {
+  display: none;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .audio-player-wrap {
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+  }
+  .audio-player-wrap .audio-icon {
+    font-size: 1.5rem;
+  }
+  .audio-player-wrap .audio-label {
+    display: none;
+  }
+}

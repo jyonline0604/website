@@ -7,11 +7,11 @@ Flow: Chapter HTML → 提取文字 → Mosi TTS → MP3 → R2 upload → Playe
 import json, os, sys, subprocess, re, glob, urllib.request, urllib.error, time
 from datetime import datetime
 
+WORKSPACE = '/home/openclaw/.openclaw/workspace'
+
 # Dropbox paths for fallback
 DROPBOX_TOKEN_FILE = os.path.join(WORKSPACE, '.token-store', 'dropbox-token.txt')
 DROPBOX_CREDS_FILE = os.path.join(WORKSPACE, '.token-store', 'dropbox-app-creds.txt')
-
-WORKSPACE = '/home/openclaw/.openclaw/workspace'
 STATE_FILE = os.path.join(WORKSPACE, '.dropbox-sync', 'audio_state.json')
 MOSI_KEY_FILE = os.path.join(WORKSPACE, '.token-store', 'mosi-api-key.txt')
 TMP_DIR = '/tmp/novel-audio-work'

@@ -130,6 +130,15 @@ def generate_tts(text, chapter_num):
                         
                         final_size = os.path.getsize(final_path)
                         log(f'✅ Compressed to 128kbps: {final_size/1048576:.1f} MB')
+                        
+                        # 🐛 Fix: rename final->正確名 (避免 R2 upload basename mismatch)
+                        correct_path = os.path.join(TMP_DIR, f'chapter-{chapter_num}.mp3')
+                        if os.path.exists(final_path):
+                            if os.path.exists(correct_path):
+                                os.remove(correct_path)
+                            os.rename(final_path, correct_path)
+                            log(f'✅ Renamed: chapter-{chapter_num}-final.mp3 → chapter-{chapter_num}.mp3')
+                            return correct_path
                         return final_path
                     break
                 elif status == 'FAILED':

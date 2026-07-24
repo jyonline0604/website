@@ -298,13 +298,23 @@ class FinanceDataFetcher:
             return self._get_fallback_bond_data()
     
     def fetch_market_sentiment(self) -> Dict[str, Any]:
-        """獲取市場情緒數據"""
+        """獲取市場情緒數據 - 從真實API"""
         print("  😊 獲取市場情緒數據...")
         
         try:
-            # 恐懼與貪婪指數 (模擬)
-            import random
-            fear_greed = random.randint(0, 100)
+            import requests
+            # 使用 alternative.me 免費 Fear & Greed Index API
+            url = "https://api.alternative.me/fng/"
+            r = requests.get(url, timeout=10)
+            if r.status_code == 200:
+                data = r.json()
+                if data and 'data' in data and len(data['data']) > 0:
+                    fear_greed = int(data['data'][0].get('value', 50))
+                else:
+                    fear_greed = 50
+            else:
+                print(f"  ⚠️ Fear & Greed API HTTP {r.status_code}")
+                fear_greed = 50
             
             sentiment = {
                 'fear_greed_index': fear_greed,
@@ -317,12 +327,37 @@ class FinanceDataFetcher:
             return sentiment
             
         except Exception as e:
-            print(f"  ⚠️ 市場情緒數據獲取失敗: {e}")
+            print(f"  ⚠️ 市場情緒API獲取失敗: {e}")
+            # Fallback: 嘗試從 Yahoo Finance 嘅 VIX 推斷市場情緒
+            try:
+                vix_url = "https://query1.finance.yahoo.com/v8/finance/chart/%5EVIX"
+                headers = {'User-Agent': 'Mozilla/5.0'}
+                r = requests.get(vix_url, headers=headers, timeout=10)
+                if r.status_code == 200:
+                    vix_data = r.json()
+                    vix_price = vix_data['chart']['result'][0]['meta']['regularMarketPrice']
+                    # VIX < 15 = 貪婪, VIX > 30 = 恐懼
+                    if vix_price < 15:
+                        fear_greed = 75
+                    elif vix_price < 20:
+                        fear_greed = 60
+                    elif vix_price < 25:
+                        fear_greed = 50
+                    elif vix_price < 30:
+                        fear_greed = 35
+                    else:
+                        fear_greed = 20
+                else:
+                    fear_greed = 50
+            except Exception as vix_err:
+                print(f"  ⚠️ VIX fallback 也失敗: {vix_err}")
+                fear_greed = 50
+            
             return {
-                'fear_greed_index': 50,
-                'sentiment': '中性',
-                'description': '市場情緒數據暫時不可用',
-                'color': '#666666',
+                'fear_greed_index': fear_greed,
+                'sentiment': self._get_sentiment_label(fear_greed),
+                'description': self._get_sentiment_description(fear_greed),
+                'color': self._get_sentiment_color(fear_greed),
                 'timestamp': datetime.now().isoformat()
             }
     

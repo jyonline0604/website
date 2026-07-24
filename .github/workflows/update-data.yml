@@ -43,12 +43,15 @@ jobs:
       - name: 檢查是否有變更
         id: check_changes
         run: |
-          if git diff --quiet -- '*.json'; then
+          # 同步重新生成 sitemap.xml 與 feed.xml（跟隨章節數據）
+          python scripts/generate_sitemap.py
+          python scripts/generate_rss.py
+          if git diff --quiet -- '*.json' 'sitemap.xml' 'feed.xml'; then
             echo "changed=false" >> $GITHUB_OUTPUT
-            echo "📭 無需更新，JSON 文件未變化"
+            echo "📭 無需更新，數據文件未變化"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
-            echo "📦 JSON 文件有變更"
+            echo "📦 數據文件有變更"
           fi
 
       - name: 提交更新
@@ -56,6 +59,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add news-data.json finance-news.json finance-data.json
-          git commit -m "📅 每日自動更新新聞和市場數據 ($(date -u '+%Y-%m-%d %H:%M UTC'))"
+          git add news-data.json finance-news.json finance-data.json sitemap.xml feed.xml
+          git commit -m "📅 每日自動更新新聞、市場數據、sitemap 與 RSS ($(date -u '+%Y-%m-%d %H:%M UTC'))"
           git push

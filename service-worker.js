@@ -1,8 +1,8 @@
 // 萬古塵埃 - Optimized Service Worker
-// 版本: 2.2.0 (fix HTML stale cache: cacheFirst → staleWhileRevalidate)
-// 日期: 2026-07-10
+// 版本: 2.3.0 (移至根目錄修正 scope；修正舊快取清理邏輯；移除無用 Google Fonts 預快取)
+// 日期: 2026-07-24
 
-const CACHE_VERSION = 'v2.2.0';
+const CACHE_VERSION = 'v2.3.0';
 const CACHE_NAME = 'tech-cultivation-' + CACHE_VERSION;
 const STATIC_CACHE = 'static-assets-' + CACHE_VERSION;
 const DYNAMIC_CACHE = 'dynamic-data-' + CACHE_VERSION;
@@ -29,9 +29,7 @@ const staticUrls = [
   '/assets/site.webmanifest',
   '/assets/main.js',
   '/assets/chapters-data.json',
-  
-  // 字體
-  'https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap'
+  '/assets/fonts/master.css'
 ];
 
 // 安裝 - 預載靜態資源
@@ -50,12 +48,13 @@ self.addEventListener('install', event => {
 
 // 激活 - 清理舊緩存
 self.addEventListener('activate', event => {
+  const KEEP_CACHES = [CACHE_NAME, STATIC_CACHE, DYNAMIC_CACHE, IMAGE_CACHE];
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(name => {
-          // 刪除所有舊版本緩存
-          if (name.startsWith('tech-cultivation-') && name !== CACHE_NAME) {
+          // 刪除所有非當前版本的緩存（避免舊版本無限累積）
+          if (!KEEP_CACHES.includes(name)) {
             return caches.delete(name);
           }
         })

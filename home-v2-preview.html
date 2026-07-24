@@ -572,7 +572,7 @@ lazyLoad();
 <!-- PWA Service Worker 註冊 -->
 <script>if ('serviceWorker' in navigator) {
 window.addEventListener('load', function() {
-navigator.serviceWorker.register('/assets/service-worker.js')
+navigator.serviceWorker.register('/service-worker.js')
 .then(function(registration) {
 console.log('Service Worker 註冊成功:', registration.scope);
 registration.addEventListener('updatefound', function() {

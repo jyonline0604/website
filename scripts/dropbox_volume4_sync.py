@@ -418,9 +418,15 @@ def generate_chapter_html(ch_num, title, paragraphs_html, prev_url, next_url):
     # 構建完整標題
     full_title = f"第{ch_num}章 · {title} - 萬古塵埃"
     
+    # 從首段生成 meta description（SEO）
+    first_para = re.sub(r'<[^>]+>', '', paragraphs_html.split('</p>')[0]) if '</p>' in paragraphs_html else ''
+    first_para = re.sub(r'\s+', ' ', first_para).strip()
+    description = first_para[:150].replace('"', '&quot;')
+    
     replacements = {
         '{title}': full_title,
-        '{canonical}': '',
+        '{canonical}': f'https://kofhk.com/chapter-{ch_num}.html',
+        '{description}': description,
         '{prev_url}': prev_url,
         '{next_url}': next_url,
         '{chapter_title}': f'第{ch_num}章 · {title}',
@@ -434,6 +440,22 @@ def generate_chapter_html(ch_num, title, paragraphs_html, prev_url, next_url):
     return template
 
 # ==================== 驗證 ====================
+
+def fix_latest_chapter_next(novel_dir):
+    """最後一章的「下一章」改為返回目錄，避免指向不存在的頁面（404）"""
+    chapters = [f for f in os.listdir(novel_dir) if re.match(r'chapter-\d+\.html$', f)]
+    if not chapters:
+        return
+    latest = max(int(re.search(r'\d+', f).group()) for f in chapters)
+    path = os.path.join(novel_dir, f'chapter-{latest}.html')
+    with open(path, 'r', encoding='utf-8') as f:
+        html = f.read()
+    new_html = html.replace(f'href="chapter-{latest + 1}.html"', 'href="chapters.html"')
+    if new_html != html:
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write(new_html)
+        log(f"  🔗 已將第 {latest} 章的下一章連結改為返回目錄")
+
 
 def validate_html(html_path, ch_num, title):
     """驗證生成的 HTML 結構"""
@@ -688,6 +710,9 @@ def process_batch():
     # 7. 網站更新
     if success_count > 0:
         log(f"\n🔄 更新網站...")
+        
+        # 修正最後一章的「下一章」連結（避免 404）
+        fix_latest_chapter_next(NOVEL_DIR)
         
         # 更新 chapters.html + home.html
         if run_update_scripts():

@@ -1,12 +1,11 @@
-"""Generate sitemap.xml for kofhk.com with all chapters."""
+﻿"""Generate sitemap.xml for kofhk.com with all chapters."""
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 
 BASE = "https://kofhk.com"
 SITE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Load chapter index
 chapter_index_path = os.path.join(SITE_DIR, "workers", "chat-worker", "chapter-titles.json")
 with open(chapter_index_path, "r", encoding="utf-8") as f:
     chapter_index = json.load(f)
@@ -16,7 +15,8 @@ total = chapter_index.get("total", len(chapters))
 
 print(f"Total chapters in index: {total}")
 
-# Static pages with priorities
+today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
 static_pages = [
     ("/", "daily", "1.0"),
     ("/chapters.html", "daily", "1.0"),
@@ -32,19 +32,25 @@ lines = [
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
 ]
 
-# Static pages
 for path, freq, priority in static_pages:
     lines.append("  <url>")
     lines.append(f"    <loc>{BASE}{path}</loc>")
+    lines.append(f"    <lastmod>{today}</lastmod>")
     lines.append(f"    <changefreq>{freq}</changefreq>")
     lines.append(f"    <priority>{priority}</priority>")
     lines.append("  </url>")
 
-# Chapter pages
 for ch in chapters:
     ch_num = ch.get("n", 0)
+    ch_file = os.path.join(SITE_DIR, f"chapter-{ch_num}.html")
+    if os.path.exists(ch_file):
+        mtime = datetime.fromtimestamp(os.path.getmtime(ch_file), tz=timezone.utc)
+        lastmod = mtime.strftime("%Y-%m-%d")
+    else:
+        lastmod = today
     lines.append("  <url>")
     lines.append(f"    <loc>{BASE}/chapter-{ch_num}.html</loc>")
+    lines.append(f"    <lastmod>{lastmod}</lastmod>")
     lines.append("    <changefreq>weekly</changefreq>")
     lines.append("    <priority>0.6</priority>")
     lines.append("  </url>")

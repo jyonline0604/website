@@ -590,6 +590,34 @@ def update_market_data():
     print("  ✅ 市場數據已更新")
 
 
+def update_aqhi():
+    """更新空氣質素健康指數(AQHI)靜態JSON"""
+    print("\n🌬️ 更新 AQHI...")
+    try:
+        url = 'https://www.aqhi.gov.hk/epd/ddata/html/out/aqhirss_Eng.xml'
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+        req = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            text = resp.read().decode('utf-8')
+
+        import re as _re
+        m = _re.search(r'General Stations: (\d+)(?: to (\d+))?\s*\(Health Risk: ([^)]+)\)', text)
+        m2 = _re.search(r'Roadside Stations: (\d+)(?:\s*to\s*(\d+))?\s*\(Health Risk: ([^)]+)\)', text)
+
+        data = {'lastUpdate': datetime.now(timezone.utc).isoformat()}
+        if m:
+            data['general'] = {'value': int(m.group(2) or m.group(1)), 'risk': m.group(3)}
+        if m2:
+            data['roadside'] = {'value': int(m2.group(2) or m2.group(1)), 'risk': m2.group(3)}
+
+        path = os.path.join(BASE_DIR, 'assets', 'aqhi-data.json')
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        print(f"  ✅ AQHI 已更新: 一般={data.get('general',{}).get('value','?')} 路邊={data.get('roadside',{}).get('value','?')}")
+    except Exception as e:
+        print(f"  ⚠️ AQHI 錯誤: {e}")
+
 def main():
     print("=" * 50)
     print(f"🚀 開始自動更新數據 — {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
@@ -598,6 +626,7 @@ def main():
     update_ai_news()
     update_finance_news()
     update_market_data()
+    update_aqhi()
 
     print("\n" + "=" * 50)
     print("✅ 所有數據更新完成")

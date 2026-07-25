@@ -48,8 +48,8 @@ Use tools like html-minifier-terser or gulp-htmlmin.
 <script>document.getElementById('updateTime').textContent = `最後更新：${new Date().toLocaleString('zh-TW')}`;
 async function loadAQHI() {
 try {
-const r = await fetch('https://corsproxy.io/?' + encodeURIComponent('https://www.aqhi.gov.hk/epd/ddata/html/out/aqhirss_Eng.xml'));
-const text = await r.text();
+const r = await fetch('assets/aqhi-data.json?v=' + new Date().toISOString().slice(0,10).replace(/-/g,''));
+const data = await r.json();
 const m = text.match(/General Stations: (\d+)(?: to (\d+))?\s*\(Health Risk: ([^)]+)\)/);
 const m2 = text.match(/Roadside Stations: (\d+)(?:\s*to\s*(\d+))?\s*\(Health Risk: ([^)]+)\)/);
 let html = '';
@@ -166,7 +166,7 @@ const destMap = {
 async function loadJourney() {
 try {
 const r = await fetch('https://resource.data.one.gov.hk/td/jss/Journeytimev2.xml');
-const text = await r.text();
+const data = await r.json();
 const parser = new DOMParser();
 const xml = parser.parseFromString(text, 'text/xml');
 let cleanXml = text.replace(/xmlns="[^"]+"/g, '');

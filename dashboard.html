@@ -48,7 +48,7 @@ Use tools like html-minifier-terser or gulp-htmlmin.
 <script>document.getElementById('updateTime').textContent = `最後更新：${new Date().toLocaleString('zh-TW')}`;
 async function loadAQHI() {
 try {
-const r = await fetch('https://www.aqhi.gov.hk/epd/ddata/html/out/aqhirss_Eng.xml');
+const r = await fetch('https://corsproxy.io/?' + encodeURIComponent('https://www.aqhi.gov.hk/epd/ddata/html/out/aqhirss_Eng.xml'));
 const text = await r.text();
 const m = text.match(/General Stations: (\d+)(?: to (\d+))?\s*\(Health Risk: ([^)]+)\)/);
 const m2 = text.match(/Roadside Stations: (\d+)(?:\s*to\s*(\d+))?\s*\(Health Risk: ([^)]+)\)/);

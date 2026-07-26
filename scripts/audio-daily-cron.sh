@@ -29,7 +29,9 @@ notify() {
 # [1] 在 Dropbox 找音頻
 echo "[1] Searching Dropbox for ch$NEXT_CH audio..." >> "$LOG_FILE"
 AUDIO_FOUND=""
-for DPATH in "/萬古塵埃/第二卷/audio/chapter-$NEXT_CH.mp3" "/audio/chapter-$NEXT_CH.mp3"; do
+# 正確路徑：大肥喵上載到 /萬古塵埃/chapter-{N}.mp3
+# 2026-07-26 fix: 之前用錯路徑導致 script 假陰性
+for DPATH in "/萬古塵埃/chapter-$NEXT_CH.mp3" "/萬古塵埃/第二卷/audio/chapter-$NEXT_CH.mp3" "/audio/chapter-$NEXT_CH.mp3"; do
   R=$(curl -s -X POST "https://api.dropboxapi.com/2/files/get_metadata" \
     -H "Authorization: Bearer $DROPBOX_TOKEN" -H "Content-Type: application/json" \
     -d "{\"path\":\"$DPATH\"}" 2>&1)

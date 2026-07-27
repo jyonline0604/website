@@ -10,7 +10,59 @@ WORKSPACE="/home/openclaw/.openclaw/workspace"
 LOG_FILE="$WORKSPACE/.dropbox-sync/audio-cron.log"
 STATE_FILE="$WORKSPACE/.dropbox-sync/audio_state.json"
 BOT_TOKEN_FILE="$WORKSPACE/.token-store/telegram-bot-token.txt"
-DROPBOX_TOKEN=$(cat "$WORKSPACE/.token-store/dropbox-token.txt" 2>/dev/null || echo "")
+# 讀取 Dropbox token，過期則自動 refresh
+refresh_dropbox_token() {
+  local token_file="$WORKSPACE/.token-store/dropbox-token.txt"
+  local creds_file="$WORKSPACE/.token-store/dropbox-app-creds.txt"
+  local token
+  token=$(cat "$token_file" 2>/dev/null || echo "")
+  if [ -z "$token" ]; then
+    echo "  ⚠️ Token file empty, can't verify" >> "$LOG_FILE"
+    echo "$token"
+    return
+  fi
+  # Test if token is valid (quick metadata check on /.dropbox_never_upload)
+  local test_r
+  test_r=$(curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.dropboxapi.com/2/files/get_metadata" \
+    -H "Authorization: Bearer $token" \
+    -H "Content-Type: application/json" \
+    -d '{"path":"/"}' 2>/dev/null || echo "000")
+  if [ "$test_r" = "200" ]; then
+    # Token still valid
+    echo "$token"
+    return
+  fi
+  echo "  🔄 Token 過期，嘗試 refresh..." >> "$LOG_FILE"
+  # Read app credentials for refresh
+  if [ ! -f "$creds_file" ]; then
+    echo "  ⚠️ No dropbox-app-creds.txt, can't refresh" >> "$LOG_FILE"
+    echo "$token"
+    return
+  fi
+  local app_key refresh_token
+  app_key=$(grep '^APP_KEY=' "$creds_file" | cut -d= -f2-)
+  refresh_token=$(grep '^REFRESH_TOKEN=' "$creds_file" | cut -d= -f2-)
+  if [ -z "$refresh_token" ] || [ -z "$app_key" ]; then
+    echo "  ⚠️ Missing APP_KEY or REFRESH_TOKEN in creds" >> "$LOG_FILE"
+    echo "$token"
+    return
+  fi
+  local new_token
+  new_token=$(curl -s -X POST "https://api.dropboxapi.com/oauth2/token" \
+    -d "grant_type=refresh_token" \
+    -d "refresh_token=$refresh_token" \
+    -d "client_id=$app_key" 2>/dev/null | python3 -c "import sys,json; print(json.load(sys.stdin).get('access_token',''))" 2>/dev/null || echo "")
+  if [ -n "$new_token" ]; then
+    echo "$new_token" > "$token_file"
+    chmod 600 "$token_file"
+    echo "  ✅ Token 已刷新" >> "$LOG_FILE"
+    echo "$new_token"
+  else
+    echo "  ❌ Token refresh 失敗" >> "$LOG_FILE"
+    echo "$token"
+  fi
+}
+DROPBOX_TOKEN=$(refresh_dropbox_token || true)
 CHAT_ID="5344443732"
 echo "===== $(date '+%Y-%m-%d %H:%M:%S') =====" >> "$LOG_FILE"
 cd "$WORKSPACE"

@@ -34,7 +34,7 @@ LOCAL_DOWNLOAD_DIR = "/home/openclaw/.openclaw/workspace/.dropbox-sync/downloade
 TEMPLATE_PATH = os.path.join(WORKSPACE, "chapter-template.html")
 SCRIPT_DIR = os.path.join(WORKSPACE, "scripts")
 NOVEL_DIR = WORKSPACE
-CHAPTERS_PER_BATCH = 1  # 大肥喵指定每日 1 章
+CHAPTERS_PER_BATCH = 6
 
 # 簡體→繁體完整轉換表（漢字層級）
 S2T_MAP = {

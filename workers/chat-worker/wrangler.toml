@@ -1,7 +1,8 @@
 name = "kofhk-chat"
 main = "index.js"
 compatibility_date = "2025-01-01"
-account_id = "2145058745a338fb743534c2d3528cf8"
+# account_id 已遷移到 GitHub Actions secrets (CF_ACCOUNT_ID)
+# wrangler deploy 會自動讀取 CLOUDFLARE_ACCOUNT_ID 環境變數
 
 # Route: all kofhk.com requests
 # /api/* → handled by worker (chat, rate limiting)

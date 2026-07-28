@@ -34,7 +34,7 @@ LOCAL_DOWNLOAD_DIR = "/home/openclaw/.openclaw/workspace/.dropbox-sync/downloade
 TEMPLATE_PATH = os.path.join(WORKSPACE, "chapter-template.html")
 SCRIPT_DIR = os.path.join(WORKSPACE, "scripts")
 NOVEL_DIR = WORKSPACE
-CHAPTERS_PER_BATCH = 6
+CHAPTERS_PER_BATCH = 1  # 大肥喵指定每日 1 章
 
 # 簡體→繁體完整轉換表（漢字層級）
 S2T_MAP = {
@@ -609,7 +609,7 @@ def process_batch():
     if existing and state_max < max_existing:
         missing = [c for c in existing if c > state_max and c <= max_existing]
         log(f"⚠️ 檢測到 state 分歧: state={state_max}, 實際={max_existing}, 遺失{len(missing)}個")
-        state['synced_to_site'] = sorted(set(state.get('synced_to_site', []) + existing))
+        state['synced_to_site'] = sorted(set(state.get('synced_to_site', []) + list(existing)))
         state['last_batch'] = {
             'ch_start': max_existing - len(missing) + 1,
             'ch_end': max_existing,

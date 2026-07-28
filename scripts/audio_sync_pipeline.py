@@ -26,6 +26,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 # ==== CONFIG ====
+DAILY_LIMIT = 1  # 每日只處理 1 章（大肥喵指定）
 WORKSPACE = "/home/openclaw/.openclaw/workspace"
 TOKEN_FILE = f"{WORKSPACE}/.token-store/dropbox-token.txt"
 CREDS_FILE = f"{WORKSPACE}/.token-store/dropbox-app-creds.txt"
@@ -410,7 +411,11 @@ def main():
         log("✅ All Dropbox audio files already on R2")
         return 0
 
-    log(f"\n📋 Pending: {len(pending_chs)} chapters to process")
+    # 每日限額：只處理 DAILY_LIMIT 章
+    daily_limit = DAILY_LIMIT
+    pending_chs = dict(list(pending_chs.items())[:daily_limit])
+
+    log(f"\n📋 Pending: {len(pending_chs)} chapters to process (daily limit={daily_limit})")
     for ch in sorted(pending_chs.keys()):
         f = pending_chs[ch]
         log(f"  CH{ch:>3}: {f['name']} ({f['size']//1024} KB)")

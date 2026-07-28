@@ -537,4 +537,3 @@ function jsonResponse(status, data, request) {
   addSecurityHeaders(headers);
   return new Response(JSON.stringify(data), { status, headers });
 }
-// trigger verification deploy

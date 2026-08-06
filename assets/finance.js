@@ -84,10 +84,11 @@ createCryptoCard(crypto) {
 const changeClass = crypto.change_24h > 0 ? 'change-positive' : crypto.change_24h < 0 ? 'change-negative' : 'change-neutral';
 const changeIcon = crypto.change_24h > 0 ? '↗' : crypto.change_24h < 0 ? '↘' : '→';
 const changeSign = crypto.change_24h > 0 ? '+' : '';
+const fallbackBadge = crypto.is_fallback ? '<span class="fallback-badge" title="API暫時不可用，此為模擬數據">⚠️ 模擬</span>' : '';
 return `
 <div class="market-data-item">
 <div class="market-data-header">
-<div class="market-data-name">${crypto.name}</div>
+<div class="market-data-name">${crypto.name} ${fallbackBadge}</div>
 <div class="market-data-symbol">${crypto.symbol}</div>
 </div>
 <div class="market-data-price">$${this.formatNumber(crypto.price, 2)}</div>
@@ -131,23 +132,25 @@ html += this.createStockCard(stock);
 container.innerHTML = html;
 }
 createStockCard(stock) {
-const changeClass = stock.change > 0 ? 'change-positive' : stock.change < 0 ? 'change-negative' : 'change-neutral';
-const changeIcon = stock.change > 0 ? '↗' : stock.change < 0 ? '↘' : '→';
-const changeSign = stock.change > 0 ? '+' : '';
+const changeVal = stock.change_pct !== undefined ? stock.change_pct : stock.change;
+const changeClass = changeVal > 0 ? 'change-positive' : changeVal < 0 ? 'change-negative' : 'change-neutral';
+const changeIcon = changeVal > 0 ? '↗' : changeVal < 0 ? '↘' : '→';
+const changeSign = changeVal > 0 ? '+' : '';
+const fallbackBadge = stock.is_fallback ? '<span class="fallback-badge" title="API暫時不可用，此為模擬數據">⚠️ 模擬</span>' : '';
 return `
 <div class="market-data-item">
 <div class="market-data-header">
-<div class="market-data-name">${stock.name}</div>
+<div class="market-data-name">${stock.name} ${fallbackBadge}</div>
 <div class="market-data-symbol">${stock.symbol}</div>
 </div>
 <div class="market-data-price">${this.formatNumber(stock.price, 2)}</div>
 <div class="market-data-change ${changeClass}">
-${changeIcon} ${changeSign}${stock.change.toFixed(2)}
+${changeIcon} ${changeSign}${changeVal.toFixed(2)}%
 </div>
 <div class="market-data-details">
 <div class="market-data-detail">
 <span class="detail-label">變化</span>
-<span class="detail-value">${changeSign}${stock.change.toFixed(2)}</span>
+<span class="detail-value">${changeSign}${changeVal.toFixed(2)}%</span>
 </div>
 <div class="market-data-detail">
 <span class="detail-label">成交量</span>
@@ -181,23 +184,25 @@ html += this.createCommodityCard(commodity);
 container.innerHTML = html;
 }
 createCommodityCard(commodity) {
-const changeClass = commodity.change > 0 ? 'change-positive' : commodity.change < 0 ? 'change-negative' : 'change-neutral';
-const changeIcon = commodity.change > 0 ? '↗' : commodity.change < 0 ? '↘' : '→';
-const changeSign = commodity.change > 0 ? '+' : '';
+const changeVal = commodity.change_pct !== undefined ? commodity.change_pct : commodity.change;
+const changeClass = changeVal > 0 ? 'change-positive' : changeVal < 0 ? 'change-negative' : 'change-neutral';
+const changeIcon = changeVal > 0 ? '↗' : changeVal < 0 ? '↘' : '→';
+const changeSign = changeVal > 0 ? '+' : '';
+const fallbackBadge = commodity.is_fallback ? '<span class="fallback-badge" title="API暫時不可用，此為模擬數據">⚠️ 模擬</span>' : '';
 return `
 <div class="market-data-item">
 <div class="market-data-header">
-<div class="market-data-name">${commodity.name}</div>
+<div class="market-data-name">${commodity.name} ${fallbackBadge}</div>
 <div class="market-data-symbol">${commodity.symbol}</div>
 </div>
 <div class="market-data-price">$${this.formatNumber(commodity.price, 2)}</div>
 <div class="market-data-change ${changeClass}">
-${changeIcon} ${changeSign}${commodity.change.toFixed(2)}
+${changeIcon} ${changeSign}${changeVal.toFixed(2)}%
 </div>
 <div class="market-data-details">
 <div class="market-data-detail">
 <span class="detail-label">變化</span>
-<span class="detail-value">${changeSign}${commodity.change.toFixed(2)}</span>
+<span class="detail-value">${changeSign}${changeVal.toFixed(2)}%</span>
 </div>
 <div class="market-data-detail">
 <span class="detail-label">單位</span>

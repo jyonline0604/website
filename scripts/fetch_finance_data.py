@@ -78,7 +78,37 @@ class FinanceDataFetcher:
             
         except Exception as e:
             print(f"  ⚠️ 加密貨幣數據獲取失敗: {e}")
-            # 返回模擬數據作為備用
+            # 二級 API: CryptoCompare 免費公開 API
+            try:
+                import requests as _r
+                url2 = "https://min-api.cryptocompare.com/data/pricemultifull"
+                params2 = {'fsyms': 'BTC,ETH,SOL,ADA,XRP', 'tsyms': 'USD'}
+                r2 = _r.get(url2, params=params2, timeout=10)
+                r2.raise_for_status()
+                raw = r2.json().get('RAW', {})
+                formatted = {}
+                id_map = {'BTC': 'bitcoin', 'ETH': 'ethereum', 'SOL': 'solana', 'ADA': 'cardano', 'XRP': 'ripple'}
+                name_map = {'bitcoin': '比特幣', 'ethereum': '以太坊', 'solana': 'Solana', 'cardano': 'Cardano', 'ripple': 'XRP'}
+                for sym, cid in id_map.items():
+                    if sym in raw and 'USD' in raw[sym]:
+                        d = raw[sym]['USD']
+                        formatted[cid] = {
+                            'name': name_map[cid],
+                            'symbol': sym,
+                            'price': d.get('PRICE', 0),
+                            'change_24h': d.get('CHANGEPCT24HOUR', 0),
+                            'market_cap': d.get('MKTCAP', 0),
+                            'volume': d.get('TOTALVOLUME24HTO', 0),
+                            'high_24h': d.get('HIGH24HOUR', 0),
+                            'low_24h': d.get('LOW24HOUR', 0)
+                        }
+                if formatted:
+                    print("  ✅ CryptoCompare 二級 API 獲取成功")
+                    return formatted
+            except Exception as e2:
+                print(f"  ⚠️ CryptoCompare 也失敗: {e2}")
+            # 最終備用：標記模擬數據，避免誤導
+            print("  ⚠️ 所有 API 均失敗，返回標記為模擬嘅備用數據")
             return self._get_fallback_crypto_data()
     def fetch_stock_data(self) -> Dict[str, Any]:
         """獲取股票數據 (Yahoo Finance)"""
@@ -107,7 +137,9 @@ class FinanceDataFetcher:
                     meta = result['meta']
                     
                     price = meta.get('regularMarketPrice', 0)
-                    change = meta.get('regularMarketChangePercent') or meta.get('regularMarketChange', 0)
+                    prev_close = meta.get('chartPreviousClose') or meta.get('previousClose') or price
+                    change = round(price - prev_close, 2) if prev_close else 0
+                    change_pct = round((price - prev_close) / prev_close * 100, 2) if prev_close else 0
                     high = meta.get('regularMarketDayHigh', 0)
                     low = meta.get('regularMarketDayLow', 0)
                     volume = meta.get('regularMarketVolume', 0)
@@ -117,6 +149,7 @@ class FinanceDataFetcher:
                         'symbol': info['symbol'],
                         'price': price,
                         'change': change,
+                        'change_pct': change_pct,
                         'volume': volume,
                         'high': high,
                         'low': low
@@ -166,13 +199,16 @@ class FinanceDataFetcher:
                     meta = result['meta']
                     
                     price = meta.get('regularMarketPrice', 0)
-                    change = meta.get('regularMarketChangePercent') or meta.get('regularMarketChange', 0)
+                    prev_close = meta.get('chartPreviousClose') or meta.get('previousClose') or price
+                    change = round(price - prev_close, 2) if prev_close else 0
+                    change_pct = round((price - prev_close) / prev_close * 100, 2) if prev_close else 0
                     
                     commodity_data[key] = {
                         'name': info['name'],
                         'symbol': info['symbol'],
                         'price': price,
                         'change': change,
+                        'change_pct': change_pct,
                         'unit': 'USD/oz' if 'gold' in key or 'silver' in key else 'USD/barrel'
                     }
                 except Exception as e:
@@ -219,14 +255,17 @@ class FinanceDataFetcher:
                     meta = result['meta']
                     
                     price = meta.get('regularMarketPrice', 0)
-                    change = meta.get('regularMarketChangePercent') or meta.get('regularMarketChange', 0)
+                    prev_close = meta.get('chartPreviousClose') or meta.get('previousClose') or price
+                    change = round(price - prev_close, 4) if prev_close else 0
+                    change_pct = round((price - prev_close) / prev_close * 100, 2) if prev_close else 0
                     
                     forex_data[key] = {
                         'name': info['name'],
                         'from_currency': key[:3],
                         'to_currency': key[3:] if len(key) > 3 else key[-3:],
                         'rate': price,
-                        'change': change
+                        'change': change,
+                        'change_pct': change_pct
                     }
                 except Exception as e:
                     print(f"  ⚠️ {info['name']} 獲取失敗: {e}")
@@ -272,7 +311,9 @@ class FinanceDataFetcher:
                     price = meta.get('regularMarketPrice', 0)
                     # Yahoo Finance的國債收益率直接是百分比數值
                     bond_yield = price
-                    change = meta.get('regularMarketChangePercent') or meta.get('regularMarketChange', 0)
+                    prev_close = meta.get('chartPreviousClose') or meta.get('previousClose') or price
+                    # 債券顯示收益率變化百分點（bp級別）
+                    change = round(price - prev_close, 2) if prev_close else 0
                     
                     bond_data[key] = {
                         'name': info['name'],
@@ -395,7 +436,7 @@ class FinanceDataFetcher:
     
     # 備用數據生成方法
     def _get_fallback_crypto_data(self) -> Dict[str, Any]:
-        """獲取備用加密貨幣數據"""
+        """獲取備用加密貨幣數據（模擬，已標記）"""
         return {
             'bitcoin': {
                 'name': '比特幣',
@@ -405,7 +446,8 @@ class FinanceDataFetcher:
                 'market_cap': 1280000000000,
                 'volume': 32500000000,
                 'high_24h': 65800.00,
-                'low_24h': 64800.00
+                'low_24h': 64800.00,
+                'is_fallback': True
             },
             'ethereum': {
                 'name': '以太坊',
@@ -415,68 +457,81 @@ class FinanceDataFetcher:
                 'market_cap': 415000000000,
                 'volume': 18500000000,
                 'high_24h': 3480.00,
-                'low_24h': 3420.00
+                'low_24h': 3420.00,
+                'is_fallback': True
             }
         }
     
     def _get_fallback_stock_data(self) -> Dict[str, Any]:
-        """獲取備用股票數據"""
+        """獲取備用股票數據（模擬，已標記）"""
         return {
             'NASDAQ': {
                 'name': '納斯達克指數',
                 'symbol': '^IXIC',
                 'price': 16543.21,
                 'change': 125.42,
+                'change_pct': 0.76,
                 'volume': 4500000000,
                 'high': 16580.00,
-                'low': 16480.00
+                'low': 16480.00,
+                'is_fallback': True
             },
             'DJI': {
                 'name': '道瓊斯指數',
                 'symbol': '^DJI',
                 'price': 38765.43,
                 'change': 234.56,
+                'change_pct': 0.61,
                 'volume': 3200000000,
                 'high': 38800.00,
-                'low': 38650.00
+                'low': 38650.00,
+                'is_fallback': True
             }
         }
     
     def _get_fallback_commodity_data(self) -> Dict[str, Any]:
-        """獲取備用商品數據"""
+        """獲取備用商品數據（模擬，已標記）"""
         return {
             'gold': {
                 'name': '黃金',
                 'symbol': 'XAUUSD',
                 'price': 2187.50,
                 'change': 12.34,
-                'unit': 'USD/oz'
+                'change_pct': 0.57,
+                'unit': 'USD/oz',
+                'is_fallback': True
             },
             'oil_wti': {
                 'name': 'WTI原油',
                 'symbol': 'CL',
                 'price': 78.90,
                 'change': -0.56,
-                'unit': 'USD'
+                'change_pct': -0.70,
+                'unit': 'USD',
+                'is_fallback': True
             }
         }
     
     def _get_fallback_forex_data(self) -> Dict[str, Any]:
-        """獲取備用外匯數據"""
+        """獲取備用外匯數據（模擬，已標記）"""
         return {
             'USDHKD': {
                 'name': '美元/港幣',
                 'from_currency': 'USD',
                 'to_currency': 'HKD',
                 'rate': 7.8123,
-                'change': 0.0012
+                'change': 0.0012,
+                'change_pct': 0.02,
+                'is_fallback': True
             },
             'USDCNY': {
                 'name': '美元/人民幣',
                 'from_currency': 'USD',
                 'to_currency': 'CNY',
                 'rate': 7.1987,
-                'change': -0.0034
+                'change': -0.0034,
+                'change_pct': -0.05,
+                'is_fallback': True
             }
         }
     

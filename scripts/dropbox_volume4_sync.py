@@ -609,7 +609,7 @@ def process_batch():
     if existing and state_max < max_existing:
         missing = [c for c in existing if c > state_max and c <= max_existing]
         log(f"⚠️ 檢測到 state 分歧: state={state_max}, 實際={max_existing}, 遺失{len(missing)}個")
-        state['synced_to_site'] = sorted(set(state.get('synced_to_site', []) + existing))
+        state['synced_to_site'] = sorted(set(state.get('synced_to_site', [])) | existing)
         state['last_batch'] = {
             'ch_start': max_existing - len(missing) + 1,
             'ch_end': max_existing,

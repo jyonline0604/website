@@ -78,35 +78,35 @@ class FinanceDataFetcher:
             
         except Exception as e:
             print(f"  ⚠️ 加密貨幣數據獲取失敗: {e}")
-            # 二級 API: CryptoCompare 免費公開 API
+            # 二級 API: CoinCap 免費公開 API（無需 API key，2026-08-11 取代已失效嘅 CryptoCompare）
             try:
                 import requests as _r
-                url2 = "https://min-api.cryptocompare.com/data/pricemultifull"
-                params2 = {'fsyms': 'BTC,ETH,SOL,ADA,XRP', 'tsyms': 'USD'}
+                url2 = "https://api.coincap.io/v2/assets"
+                params2 = {'ids': 'bitcoin,ethereum,solana,cardano,ripple'}
                 r2 = _r.get(url2, params=params2, timeout=10)
                 r2.raise_for_status()
-                raw = r2.json().get('RAW', {})
-                formatted = {}
-                id_map = {'BTC': 'bitcoin', 'ETH': 'ethereum', 'SOL': 'solana', 'ADA': 'cardano', 'XRP': 'ripple'}
+                raw = r2.json().get('data', [])
                 name_map = {'bitcoin': '比特幣', 'ethereum': '以太坊', 'solana': 'Solana', 'cardano': 'Cardano', 'ripple': 'XRP'}
-                for sym, cid in id_map.items():
-                    if sym in raw and 'USD' in raw[sym]:
-                        d = raw[sym]['USD']
+                sym_map = {'bitcoin': 'BTC', 'ethereum': 'ETH', 'solana': 'SOL', 'cardano': 'ADA', 'ripple': 'XRP'}
+                formatted = {}
+                for d in raw:
+                    cid = d.get('id')
+                    if cid in name_map:
                         formatted[cid] = {
                             'name': name_map[cid],
-                            'symbol': sym,
-                            'price': d.get('PRICE', 0),
-                            'change_24h': d.get('CHANGEPCT24HOUR', 0),
-                            'market_cap': d.get('MKTCAP', 0),
-                            'volume': d.get('TOTALVOLUME24HTO', 0),
-                            'high_24h': d.get('HIGH24HOUR', 0),
-                            'low_24h': d.get('LOW24HOUR', 0)
+                            'symbol': sym_map[cid],
+                            'price': float(d.get('priceUsd') or 0),
+                            'change_24h': float(d.get('changePercent24Hr') or 0),
+                            'market_cap': float(d.get('marketCapUsd') or 0),
+                            'volume': float(d.get('volumeUsd24Hr') or 0),
+                            'high_24h': 0,
+                            'low_24h': 0
                         }
                 if formatted:
-                    print("  ✅ CryptoCompare 二級 API 獲取成功")
+                    print("  ✅ CoinCap 二級 API 獲取成功")
                     return formatted
             except Exception as e2:
-                print(f"  ⚠️ CryptoCompare 也失敗: {e2}")
+                print(f"  ⚠️ CoinCap 也失敗: {e2}")
             # 最終備用：標記模擬數據，避免誤導
             print("  ⚠️ 所有 API 均失敗，返回標記為模擬嘅備用數據")
             return self._get_fallback_crypto_data()

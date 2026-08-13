@@ -101,6 +101,19 @@ def main():
         "stations": stations,
     }
 
+    # 🛡️ 防護：RSS 空數據時保留舊數據，唔好覆蓋成 null
+    # (2026-08-13 09:00 曾發生：天文台 RSS 短暫回傳空內容 → 線上 dashboard 顯示 null)
+    if len(stations) == 0 and output_path.exists():
+        try:
+            old = json.loads(output_path.read_text(encoding="utf-8"))
+            old_stations = old.get("stations", [])
+        except Exception:
+            old_stations = []
+        if old_stations:
+            print("⚠️ RSS 返回 0 個監測站，保留舊數據避免 null 上線", file=sys.stderr)
+            print(f"   保留 {len(old_stations)} 個舊站點（舊時間戳: {old.get('timestamp', '?')}）", file=sys.stderr)
+            sys.exit(2)
+
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
         f.write("\n")

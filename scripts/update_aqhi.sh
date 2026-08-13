@@ -5,7 +5,10 @@ export HOME="/home/openclaw"
 WORKSPACE="/home/openclaw/.openclaw/workspace"
 cd "$WORKSPACE"
 echo "[AQHI] $(date): Running fetch_aqhi_rss.py..."
-python3 scripts/fetch_aqhi_rss.py 2>&1 || echo "fetch_aqhi_rss.py failed"
+if ! python3 scripts/fetch_aqhi_rss.py 2>&1; then
+  echo "[AQHI] fetch failed (exit $?) — 保留舊數據，唔 commit 空數據"
+  exit 0
+fi
 git add aqhi-stations.json
 git diff --cached --quiet || {
   git commit -m "docs: update aqhi data $(date +%Y-%m-%d)"

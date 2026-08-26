@@ -52,9 +52,33 @@ def log(msg, also_stdout=True):
         print(line)
 
 
+def _ensure_bot_token():
+    """Self-healing: token file 唔見/空時，自動從 OpenClaw config 提取重建"""
+    if os.path.exists(BOT_TOKEN_FILE):
+        with open(BOT_TOKEN_FILE) as f:
+            if f.read().strip():
+                return True
+    try:
+        cfg_path = "/home/openclaw/.openclaw/openclaw.json"
+        with open(cfg_path) as f:
+            cfg = json.load(f)
+        token = cfg.get("channels", {}).get("telegram", {}).get("botToken", "")
+        if not token:
+            log("  ⚠️ openclaw.json 冇 botToken", also_stdout=False)
+            return False
+        with open(BOT_TOKEN_FILE, "w") as f:
+            f.write(token.strip() + "\n")
+        os.chmod(BOT_TOKEN_FILE, 0o600)
+        log("  🔧 Bot token 已從 openclaw.json 自動重建", also_stdout=False)
+        return True
+    except Exception as e:
+        log(f"  ⚠️ Bot token rebuild failed: {e}", also_stdout=False)
+        return False
+
+
 def notify(msg):
     """Send Telegram notification to user"""
-    if not os.path.exists(BOT_TOKEN_FILE):
+    if not _ensure_bot_token():
         log(f"  ⚠️ No bot token file, can't notify", also_stdout=False)
         return
     with open(BOT_TOKEN_FILE) as f:

@@ -74,6 +74,23 @@ notify() {
   local msg="$1"
   local token
   token=$(cat "$BOT_TOKEN_FILE" 2>/dev/null || echo "")
+  if [ -z "$token" ]; then
+    # Self-healing: token file 唔見/空時，自動從 openclaw.json 重建
+    token=$(python3 -c "
+import json
+path = '/home/openclaw/.openclaw/openclaw.json'
+try:
+    cfg = json.load(open(path))
+    print(cfg.get('channels', {}).get('telegram', {}).get('botToken', ''))
+except Exception:
+    print('')
+" 2>/dev/null)
+    if [ -n "$token" ]; then
+      echo "$token" > "$BOT_TOKEN_FILE"
+      chmod 600 "$BOT_TOKEN_FILE"
+      echo "[$(date '+%Y-%m-%dT%H:%M:%SZ')] 🔧 Bot token 已從 openclaw.json 自動重建" >> "$LOG_FILE"
+    fi
+  fi
   [ -n "$token" ] && curl -s -X POST "https://api.telegram.org/bot${token}/sendMessage" \
     -d "chat_id=$CHAT_ID" -d "text=$msg" -d "parse_mode=HTML" >/dev/null 2>&1 || true
 }

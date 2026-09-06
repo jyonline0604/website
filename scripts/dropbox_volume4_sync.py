@@ -510,15 +510,11 @@ def run_update_scripts():
         log(f"  ❌ update_chapters_simple.py 失敗: {r1.stderr[:200]}")
         return False
     
-    log("  📝 更新 home.html...")
-    r2 = subprocess.run(
-        ['python3', os.path.join(SCRIPT_DIR, 'update_home_simple.py')],
-        capture_output=True, text=True, timeout=60
-    )
-    if r2.returncode != 0:
-        log(f"  ❌ update_home_simple.py 失敗: {r2.stderr[:200]}")
-        return False
-    
+    # home.html 自 2026-09 起為 JS 動態載入 chapters-data.json，無需靜態網格更新。
+    # update_home_simple.py 已棄用（呼叫必定失敗，2026-09-06 實測）；真實數據由
+    # update_chapters_simple.py + update_chapter_counts.py 覆蓋。
+    log("  ℹ️ home.html 為動態渲染，跳過靜態更新（update_home_simple.py 已棄用）")
+
     return True
 
 def run_link_check():

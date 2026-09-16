@@ -232,63 +232,98 @@ class FinanceDataFetcher:
             return self._get_fallback_stock_data()
     
     def fetch_commodity_data(self) -> Dict[str, Any]:
-        """獲取商品數據 (黃金、原油) - Yahoo Finance"""
+        """獲取商品數據 (黃金、白銀、原油) — Yahoo Finance Tier 1 + Stooq Tier 2 fallback"""
         print("  🛢️ 獲取商品數據...")
-        
+
+        commodities = {
+            'gold':       {'name': '黃金',       'symbol': 'GC=F', 'stooq': 'gc.f', 'unit': 'USD/oz'},
+            'silver':     {'name': '白銀',       'symbol': 'SI=F', 'stooq': 'si.f', 'unit': 'USD/oz'},
+            'oil_wti':    {'name': 'WTI原油',    'symbol': 'CL=F', 'stooq': 'cl.f', 'unit': 'USD/barrel'},
+            'oil_brent':  {'name': '布倫特原油', 'symbol': 'BZ=F', 'stooq': 'b.f',  'unit': 'USD/barrel'},
+        }
+
+        # Tier 1: Yahoo Finance
+        commodity_data = {}
         try:
-            import requests
-            
-            # Yahoo Finance 商品 symbols
-            commodities = {
-                'gold': {'name': '黃金', 'symbol': 'GC=F'},
-                'silver': {'name': '白銀', 'symbol': 'SI=F'},
-                'oil_wti': {'name': 'WTI原油', 'symbol': 'CL=F'},
-                'oil_brent': {'name': '布倫特原油', 'symbol': 'BZ=F'}
-            }
-            
-            commodity_data = {}
+            import requests as _r
             headers = {'User-Agent': 'Mozilla/5.0'}
-            
             for key, info in commodities.items():
                 url = f'https://query1.finance.yahoo.com/v8/finance/chart/{info["symbol"]}'
                 try:
-                    r = requests.get(url, headers=headers, timeout=10)
-                    data = r.json()
-                    result = data['chart']['result'][0]
-                    meta = result['meta']
-                    
+                    r = _r.get(url, headers=headers, timeout=10)
+                    r.raise_for_status()
+                    meta = r.json()['chart']['result'][0]['meta']
                     price = meta.get('regularMarketPrice', 0)
                     prev_close = meta.get('chartPreviousClose') or meta.get('previousClose') or price
                     change = round(price - prev_close, 2) if prev_close else 0
                     change_pct = round((price - prev_close) / prev_close * 100, 2) if prev_close else 0
-                    
                     commodity_data[key] = {
                         'name': info['name'],
                         'symbol': info['symbol'],
                         'price': price,
                         'change': change,
                         'change_pct': change_pct,
-                        'unit': 'USD/oz' if 'gold' in key or 'silver' in key else 'USD/barrel'
-                    ,
-                        'is_fallback': True
+                        'unit': info['unit'],
+                        'source': 'yahoo',
                     }
                 except Exception as e:
-                    print(f"  ⚠️ {info['name']} 獲取失敗: {e}")
+                    print(f"  ⚠️ Yahoo {info['name']}: {type(e).__name__}")
+                    commodity_data[key] = None  # mark for Tier 2
+            if all(v is not None for v in commodity_data.values()):
+                print("  ✅ Yahoo Finance Tier 1 OK")
+                return commodity_data
+            print("  ⚠️ Yahoo 部分失敗，轉 Stooq Tier 2...")
+        except Exception as e:
+            print(f"  ⚠️ Yahoo 整體失敗: {type(e).__name__}: {str(e)[:80]}")
+
+        # Tier 2: Stooq (stooq.com — 免費無 API key, CSV 即時報價)
+        try:
+            import requests as _r2
+            symbols = '+'.join(info['stooq'] for info in commodities.values())
+            url = f'https://stooq.com/q/l/?s={symbols}&f=sd2t2ohlcv&h&e=csv'
+            r = self._request_with_retry('GET', url, max_retries=2, timeout=15)
+            lines = r.text.strip().split('\n')
+            if len(lines) < 2:
+                raise ValueError(f'Stooq response 只有 {len(lines)} 行，無 data')
+            stooq_to_key = {info['stooq']: key for key, info in commodities.items()}
+            filled = 0
+            for line in lines[1:]:
+                parts = line.split(',')
+                if len(parts) < 7:
+                    continue
+                sym_lower = parts[0].lower().strip()
+                if sym_lower not in stooq_to_key:
+                    continue
+                key = stooq_to_key[sym_lower]
+                if commodity_data.get(key) is not None:
+                    continue  # Yahoo 已經 OK，唔覆蓋
+                try:
+                    open_p = float(parts[3])
+                    close = float(parts[6])
+                    change = round(close - open_p, 2)
+                    change_pct = round((close - open_p) / open_p * 100, 2) if open_p else 0
+                    info = commodities[key]
                     commodity_data[key] = {
                         'name': info['name'],
                         'symbol': info['symbol'],
-                        'price': 0,
-                        'change': 0,
-                        'change_pct': 0,
-                        'is_fallback': True
+                        'price': close,
+                        'change': change,
+                        'change_pct': change_pct,
+                        'unit': info['unit'],
+                        'source': 'stooq',
+                        'is_fallback': True,  # Tier 2 = fallback (Yahoo fail 咗)
                     }
-            
+                    filled += 1
+                except (ValueError, IndexError) as e:
+                    print(f"  ⚠️ Stooq parse {sym_lower}: {e}")
+            print(f"  ✅ Stooq Tier 2: {filled} 個填補 (total {sum(1 for v in commodity_data.values() if v)}/4)")
             return commodity_data
-            
         except Exception as e:
-            print(f"  ⚠️ 商品數據獲取失敗: {e}")
-            return self._get_fallback_commodity_data()
-    
+            print(f"  ⚠️ Stooq Tier 2 失敗: {type(e).__name__}: {str(e)[:100]}")
+
+        # Tier 3: hardcoded mock fallback (with is_fallback: True)
+        print("  ⚠️ Yahoo + Stooq 都失敗，用 hardcoded mock fallback")
+        return self._get_fallback_commodity_data()
     def fetch_forex_data(self) -> Dict[str, Any]:
         """獲取外匯數據 - Yahoo Finance"""
         print("  💱 獲取外匯數據...")

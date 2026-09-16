@@ -18,7 +18,37 @@ class FinanceDataFetcher:
     def __init__(self):
         self.cache_file = '/home/openclaw/.openclaw/workspace/finance-data.json'
         self.cache_duration = 300  # 5分鐘緩存
-        
+
+    def _request_with_retry(self, method: str, url: str, max_retries: int = 3,
+                            initial_backoff: float = 1.0, timeout: int = 10, **kwargs) -> Any:
+        """HTTP 請求加 retry + exponential backoff（避免 09-16 21:00 嗰種 CoinGecko 偶發 timeout 直接 fallback 嘅慘劇）"""
+        last_err = None
+        for attempt in range(max_retries):
+            try:
+                resp = requests.request(method, url, timeout=timeout, **kwargs)
+                resp.raise_for_status()
+                if attempt > 0:
+                    print(f"    ✅ 第 {attempt+1} 次 retry 成功")
+                return resp
+            except (requests.exceptions.Timeout, requests.exceptions.ConnectionError,
+                    requests.exceptions.HTTPError) as e:
+                last_err = e
+                if attempt < max_retries - 1:
+                    wait = initial_backoff * (2 ** attempt)  # 1, 2, 4, 8s
+                    print(f"    ⏳ {type(e).__name__}，第 {attempt+1}/{max_retries} 次 retry，{wait:.0f}s 後重試...")
+                    time.sleep(wait)
+                else:
+                    print(f"    ❌ 最終 retry 都失敗: {type(e).__name__}: {str(e)[:100]}")
+        raise last_err  # 全部 retry 失敗 raise 俾 caller 處理
+
+    def _mark_fallback(self, data: Dict[str, Any]) -> Dict[str, Any]:
+        """統一標記 fallback 數據（透明度 — 2026-09-16 教訓：舊版 stocks/commodities 漏咗呢個 flag 令人誤以為係真實）"""
+        if isinstance(data, dict):
+            for k, v in data.items():
+                if isinstance(v, dict) and 'name' in v:
+                    v['is_fallback'] = True
+        return data
+
     def fetch_all_data(self) -> Dict[str, Any]:
         """獲取所有財經數據"""
         print("📊 開始獲取財經數據...")
@@ -39,11 +69,11 @@ class FinanceDataFetcher:
         return data
     
     def fetch_crypto_data(self) -> Dict[str, Any]:
-        """獲取加密貨幣數據 (CoinGecko API)"""
+        """獲取加密貨幣數據 (CoinGecko + CoinCap + CoinPaprika 三 tier fallback)"""
         print("  🪙 獲取加密貨幣數據...")
-        
+
+        # Tier 1: CoinGecko (primary，免 API key) — 帶 retry+backoff
         try:
-            # CoinGecko API (免費，無需API key)
             url = "https://api.coingecko.com/api/v3/coins/markets"
             params = {
                 'vs_currency': 'usd',
@@ -53,17 +83,11 @@ class FinanceDataFetcher:
                 'page': 1,
                 'sparkline': False
             }
-            
-            response = requests.get(url, params=params, timeout=10)
-            response.raise_for_status()
-            
+            response = self._request_with_retry('GET', url, max_retries=3, timeout=10, params=params)
             crypto_data = response.json()
-            
-            # 格式化數據
             formatted = {}
             for coin in crypto_data:
-                coin_id = coin['id']
-                formatted[coin_id] = {
+                formatted[coin['id']] = {
                     'name': coin['name'],
                     'symbol': coin['symbol'].upper(),
                     'price': coin['current_price'],
@@ -73,43 +97,76 @@ class FinanceDataFetcher:
                     'high_24h': coin['high_24h'],
                     'low_24h': coin['low_24h']
                 }
-            
+            print("  ✅ CoinGecko primary OK")
             return formatted
-            
         except Exception as e:
-            print(f"  ⚠️ 加密貨幣數據獲取失敗: {e}")
-            # 二級 API: CoinCap 免費公開 API（無需 API key，2026-08-11 取代已失效嘅 CryptoCompare）
-            try:
-                import requests as _r
-                url2 = "https://api.coincap.io/v2/assets"
-                params2 = {'ids': 'bitcoin,ethereum,solana,cardano,ripple'}
-                r2 = _r.get(url2, params=params2, timeout=10)
-                r2.raise_for_status()
-                raw = r2.json().get('data', [])
-                name_map = {'bitcoin': '比特幣', 'ethereum': '以太坊', 'solana': 'Solana', 'cardano': 'Cardano', 'ripple': 'XRP'}
-                sym_map = {'bitcoin': 'BTC', 'ethereum': 'ETH', 'solana': 'SOL', 'cardano': 'ADA', 'ripple': 'XRP'}
-                formatted = {}
-                for d in raw:
-                    cid = d.get('id')
-                    if cid in name_map:
-                        formatted[cid] = {
-                            'name': name_map[cid],
-                            'symbol': sym_map[cid],
-                            'price': float(d.get('priceUsd') or 0),
-                            'change_24h': float(d.get('changePercent24Hr') or 0),
-                            'market_cap': float(d.get('marketCapUsd') or 0),
-                            'volume': float(d.get('volumeUsd24Hr') or 0),
-                            'high_24h': 0,
-                            'low_24h': 0
-                        }
-                if formatted:
-                    print("  ✅ CoinCap 二級 API 獲取成功")
-                    return formatted
-            except Exception as e2:
-                print(f"  ⚠️ CoinCap 也失敗: {e2}")
-            # 最終備用：標記模擬數據，避免誤導
-            print("  ⚠️ 所有 API 均失敗，返回標記為模擬嘅備用數據")
-            return self._get_fallback_crypto_data()
+            print(f"  ⚠️ CoinGecko 失敗: {type(e).__name__}: {str(e)[:100]}")
+
+        # Tier 2: CoinCap (免費，但 api.coincap.io 2026-09 起 DNS 唔穩)
+        try:
+            url2 = "https://api.coincap.io/v2/assets"
+            params2 = {'ids': 'bitcoin,ethereum,solana,cardano,ripple'}
+            r2 = self._request_with_retry('GET', url2, max_retries=2, timeout=10, params=params2)
+            raw = r2.json().get('data', [])
+            name_map = {'bitcoin': '比特幣', 'ethereum': '以太坊', 'solana': 'Solana', 'cardano': 'Cardano', 'ripple': 'XRP'}
+            sym_map = {'bitcoin': 'BTC', 'ethereum': 'ETH', 'solana': 'SOL', 'cardano': 'ADA', 'ripple': 'XRP'}
+            formatted = {}
+            for d in raw:
+                cid = d.get('id')
+                if cid in name_map:
+                    formatted[cid] = {
+                        'name': name_map[cid],
+                        'symbol': sym_map[cid],
+                        'price': float(d.get('priceUsd') or 0),
+                        'change_24h': float(d.get('changePercent24Hr') or 0),
+                        'market_cap': float(d.get('marketCapUsd') or 0),
+                        'volume': float(d.get('volumeUsd24Hr') or 0),
+                        'high_24h': 0,
+                        'low_24h': 0
+                    }
+            if formatted:
+                print("  ✅ CoinCap Tier 2 OK")
+                return formatted
+        except Exception as e2:
+            print(f"  ⚠️ CoinCap 都失敗: {type(e2).__name__}: {str(e2)[:100]}")
+
+        # Tier 3: CoinPaprika (新加，2026-09-16 教訓：CoinCap 死咗要有多個 fallback)
+        # 免費，無需 API key，即時 ticker data
+        try:
+            slug_map = {
+                'bitcoin': 'btc-bitcoin',
+                'ethereum': 'eth-ethereum',
+                'solana': 'sol-solana',
+                'cardano': 'ada-cardano',
+                'ripple': 'xrp-ripple',
+            }
+            name_map = {'bitcoin': '比特幣', 'ethereum': '以太坊', 'solana': 'Solana', 'cardano': 'Cardano', 'ripple': 'XRP'}
+            sym_map = {'bitcoin': 'BTC', 'ethereum': 'ETH', 'solana': 'SOL', 'cardano': 'ADA', 'ripple': 'XRP'}
+            formatted = {}
+            for cid, slug in slug_map.items():
+                url3 = f"https://api.coinpaprika.com/v1/tickers/{slug}"
+                r3 = self._request_with_retry('GET', url3, max_retries=2, timeout=10)
+                usd = r3.json().get('quotes', {}).get('USD', {})
+                if usd.get('price'):
+                    formatted[cid] = {
+                        'name': name_map[cid],
+                        'symbol': sym_map[cid],
+                        'price': float(usd.get('price') or 0),
+                        'change_24h': float(usd.get('percent_change_24h') or 0),
+                        'market_cap': float(usd.get('market_cap') or 0),
+                        'volume': float(usd.get('volume_24h') or 0),
+                        'high_24h': 0,
+                        'low_24h': 0
+                    }
+            if formatted:
+                print(f"  ✅ CoinPaprika Tier 3 OK ({len(formatted)}/5 個 coin)")
+                return formatted
+        except Exception as e3:
+            print(f"  ⚠️ CoinPaprika 都失敗: {type(e3).__name__}: {str(e3)[:100]}")
+
+        # Tier 4: 最終硬編碼 fallback（is_fallback=True 標記）
+        print("  ⚠️ 所有 3 個 API 都失敗，用 hardcoded fallback（已標 is_fallback=True）")
+        return self._get_fallback_crypto_data()
     def fetch_stock_data(self) -> Dict[str, Any]:
         """獲取股票數據 (Yahoo Finance)"""
         print("  📈 獲取股票數據...")
@@ -161,9 +218,11 @@ class FinanceDataFetcher:
                         'symbol': info['symbol'],
                         'price': 0,
                         'change': 0,
+                        'change_pct': 0,
                         'volume': 0,
                         'high': 0,
-                        'low': 0
+                        'low': 0,
+                        'is_fallback': True
                     }
             
             return stock_data
@@ -210,6 +269,8 @@ class FinanceDataFetcher:
                         'change': change,
                         'change_pct': change_pct,
                         'unit': 'USD/oz' if 'gold' in key or 'silver' in key else 'USD/barrel'
+                    ,
+                        'is_fallback': True
                     }
                 except Exception as e:
                     print(f"  ⚠️ {info['name']} 獲取失敗: {e}")
@@ -218,7 +279,8 @@ class FinanceDataFetcher:
                         'symbol': info['symbol'],
                         'price': 0,
                         'change': 0,
-                        'unit': 'USD/oz' if 'gold' in key or 'silver' in key else 'USD/barrel'
+                        'change_pct': 0,
+                        'is_fallback': True
                     }
             
             return commodity_data
@@ -274,7 +336,9 @@ class FinanceDataFetcher:
                         'from_currency': key[:3],
                         'to_currency': key[3:] if len(key) > 3 else key[-3:],
                         'rate': 0,
-                        'change': 0
+                        'change': 0,
+                        'change_pct': 0,
+                        'is_fallback': True
                     }
             
             return forex_data
@@ -329,7 +393,8 @@ class FinanceDataFetcher:
                         'country': 'US',
                         'maturity': '10Y' if '10' in key else ('2Y' if '2' in key else '30Y'),
                         'yield': 0,
-                        'change': 0
+                        'change': 0,
+                        'is_fallback': True
                     }
             
             return bond_data
@@ -393,13 +458,14 @@ class FinanceDataFetcher:
             except Exception as vix_err:
                 print(f"  ⚠️ VIX fallback 也失敗: {vix_err}")
                 fear_greed = 50
-            
+
             return {
                 'fear_greed_index': fear_greed,
                 'sentiment': self._get_sentiment_label(fear_greed),
                 'description': self._get_sentiment_description(fear_greed),
                 'color': self._get_sentiment_color(fear_greed),
-                'timestamp': datetime.now().isoformat()
+                'timestamp': datetime.now().isoformat(),
+                'is_fallback': True
             }
     
     def save_data(self, data: Dict[str, Any]) -> None:

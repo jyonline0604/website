@@ -12,6 +12,12 @@ on:
     - cron: '5 6 * * *'
   workflow_dispatch:
 
+# 防止並發 run 撞 push（2026-09-17 run 35176518128 因 race condition git push 失敗）：
+# V6 sync 每日 push 6 章 → 觸發 6 個 workflow run → 後者 push 搶先 → 前者 push 失敗
+concurrency:
+  group: update-chat-worker-${{ github.ref }}
+  cancel-in-progress: false  # 唔取消進行中嘅 run，等佢做完，後面嘅 run 自動 cancel
+
 permissions:
   contents: write
 
@@ -21,6 +27,8 @@ jobs:
     steps:
       - name: 檢出代碼
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 需要完整 history 俾 git pull --rebase 同 git diff HEAD~1 用
 
       - name: 設置 Python
         uses: actions/setup-python@v5
@@ -72,10 +80,16 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Pull rebase 先：避免與並行 push 撞（即使有 concurrency group 仍可能漏網）
+          # 設 GIT_PULL_OPTIONS 容忍不相關 history（rebase 失敗時 fallback merge）
+          git pull --rebase --autostash origin main || {
+            echo "⚠️ rebase 衝突，fallback 用 merge"
+            git pull --no-rebase --autostash origin main
+          }
           if ! git diff --quiet -- workers/chat-worker/chapter-titles.json; then
             git add workers/chat-worker/chapter-titles.json
             git commit -m "📚 自動更新章節索引 ($(date -u '+%Y-%m-%d %H:%M UTC'))"  || true
             git push
           else
-            echo "索引無變更，跳過提交"
+            echo "索引無變更（rebase 後已被覆蓋），跳過提交"
           fi

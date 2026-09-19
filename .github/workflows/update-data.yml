@@ -44,14 +44,17 @@ jobs:
         id: check_changes
         run: |
           # 同步重新生成 sitemap.xml 與 feed.xml（跟隨章節數據）
+          set +e  # 容許 python script 個別失敗而唔 abort 成個 step
           python scripts/generate_sitemap.py
           python scripts/generate_rss.py
-          if git diff --quiet -- '*.json' 'sitemap.xml' 'feed.xml'; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-            echo "📭 無需更新，數據文件未變化"
-          else
-            echo "changed=true" >> $GITHUB_OUTPUT
+          # 用 git status --porcelain 取代 git diff --quiet — handles fresh untracked files (新 generate 嘅 sitemap.xml/feed.xml 唔會被 diff 偵測到)
+          # git diff 只睇已 tracked 嘅 file → fresh generate 後 first run 會 miss
+          if git status --porcelain -- '*.json' 'sitemap.xml' 'feed.xml' | grep -q .; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "📦 數據文件有變更"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "📭 無需更新，數據文件未變化"
           fi
 
       - name: 提交更新

@@ -1,7 +1,8 @@
 #!/bin/bash
 # 發送簡報腳本
 
-export PATH="/home/openclaw/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+# 2026-09-20: gateway 已改用 nvm node24 安裝（2026.9.5，schema 17）；舊 ~/.npm-global CLI（2026.9.2，schema 15）讀唔到新數據庫，唔可以再用
+export PATH="/home/openclaw/.nvm/versions/node/v24.21.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 WORKSPACE="/home/openclaw/.openclaw/workspace"
 LOG_FILE="$WORKSPACE/logs/briefing-send.log"

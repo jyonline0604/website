@@ -2,7 +2,8 @@
 # OpenClaw 版本檢查腳本
 # 用途：檢查 OpenClaw 是否有新版本，如有則通知 Telegram
 
-export PATH="/home/openclaw/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+# 2026-09-20: gateway 已改用 nvm node24 安裝（2026.9.5）；舊 ~/.npm-global 係孤兒（2026.9.2），唔可以排先，否則誤報有更新
+export PATH="/home/openclaw/.nvm/versions/node/v24.21.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 cd /home/openclaw/.openclaw/workspace
 

@@ -12,8 +12,16 @@ fi
 git add aqhi-stations.json
 git diff --cached --quiet || {
   git commit -m "docs: update aqhi data $(date +%Y-%m-%d)"
-  # 併發 push 競爭防護：先 rebase 遠端最新再推（2026-09-13；2026-09-20 加 --autostash 處理 DREAMS.md 髒工作區擋住 rebase 嘅問題）
-  git pull --rebase --autostash origin main 2>&1 || true
-  git push origin main 2>&1 || true
+  # 併發 push 競爭防護（2026-09-20 autostash；2026-09-22 改重試循環：16:00 財經 job 同分鐘寫 finance-news.json，
+  # 單次 autostash 剛 stash 完又見新改動 → abort。3 次重試 + 10s 等待大機率避開競賽窗口）
+  PUSH_OK=0
+  for ATTEMPT in 1 2 3; do
+    if git pull --rebase --autostash origin main >/dev/null 2>&1; then
+      if git push origin main >/dev/null 2>&1; then PUSH_OK=1; break; fi
+    fi
+    echo "[AQHI] push attempt $ATTEMPT failed，10s 後重試..."
+    sleep 10
+  done
+  [ "$PUSH_OK" = "1" ] || echo "[AQHI] ⚠️ push 三次重試仍失敗，留待下一輪自動恢復"
 }
 echo "[AQHI] Done"

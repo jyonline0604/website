@@ -12,8 +12,8 @@ fi
 git add aqhi-stations.json
 git diff --cached --quiet || {
   git commit -m "docs: update aqhi data $(date +%Y-%m-%d)"
-  # 併發 push 競爭防護：先 rebase 遠端最新再推（2026-09-13，之前連續 fetch first 被拒）
-  git pull --rebase origin main 2>&1 || true
+  # 併發 push 競爭防護：先 rebase 遠端最新再推（2026-09-13；2026-09-20 加 --autostash 處理 DREAMS.md 髒工作區擋住 rebase 嘅問題）
+  git pull --rebase --autostash origin main 2>&1 || true
   git push origin main 2>&1 || true
 }
 echo "[AQHI] Done"

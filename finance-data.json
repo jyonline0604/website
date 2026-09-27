@@ -1,55 +1,55 @@
 {
-  "timestamp": "2026-09-27T06:04:43.614504+00:00",
+  "timestamp": "2026-09-27T16:00:01.553595",
   "crypto": {
     "bitcoin": {
       "name": "Bitcoin",
       "symbol": "BTC",
-      "price": 84478,
-      "change_24h": 0.6995753498345839,
-      "market_cap": 1697154230078.8774,
-      "volume": 17480984891.11744,
-      "high_24h": 84529.69,
-      "low_24h": 84245.75
+      "price": 84728,
+      "change_24h": 0.73752,
+      "market_cap": 1702215186685,
+      "volume": 18149968491,
+      "high_24h": 84605,
+      "low_24h": 83835
     },
     "ethereum": {
       "name": "Ethereum",
       "symbol": "ETH",
-      "price": 2705.84,
-      "change_24h": 0.8056489104645403,
-      "market_cap": 330320199748.07086,
-      "volume": 6345282197.996585,
-      "high_24h": 2705.7078,
-      "low_24h": 2689.5962
-    },
-    "solana": {
-      "name": "Solana",
-      "symbol": "SOL",
-      "price": 121.17,
-      "change_24h": 0.7122930060211687,
-      "market_cap": 71211459302.3853,
-      "volume": 2840764219.663585,
-      "high_24h": 121.57378,
-      "low_24h": 120.1642
+      "price": 2716.0,
+      "change_24h": 0.94074,
+      "market_cap": 331607743068,
+      "volume": 6625168667,
+      "high_24h": 2710.11,
+      "low_24h": 2666.72
     },
     "ripple": {
       "name": "XRP",
       "symbol": "XRP",
-      "price": 1.52,
-      "change_24h": -1.9304149623754647,
-      "market_cap": 95515644039.44926,
-      "volume": 2361659039.2807193,
-      "high_24h": 1.5280769,
-      "low_24h": 1.50711
+      "price": 1.54,
+      "change_24h": -1.02229,
+      "market_cap": 96615924871,
+      "volume": 2793708223,
+      "high_24h": 1.56,
+      "low_24h": 1.5
+    },
+    "solana": {
+      "name": "Solana",
+      "symbol": "SOL",
+      "price": 123.99,
+      "change_24h": 2.64381,
+      "market_cap": 72868518394,
+      "volume": 2830881109,
+      "high_24h": 121.96,
+      "low_24h": 119.89
     },
     "cardano": {
       "name": "Cardano",
       "symbol": "ADA",
-      "price": 0.253276,
-      "change_24h": -0.40007207960240515,
-      "market_cap": 9506769067.50656,
-      "volume": 403459400.07873327,
-      "high_24h": 0.25430354,
-      "low_24h": 0.25048777
+      "price": 0.257855,
+      "change_24h": 0.78133,
+      "market_cap": 9680066887,
+      "volume": 441977737,
+      "high_24h": 0.260642,
+      "low_24h": 0.248192
     }
   },
   "stocks": {
@@ -58,6 +58,7 @@
       "symbol": "^IXIC",
       "price": 27068.717,
       "change": 129.34,
+      "change_pct": 0.48,
       "volume": 6299972000,
       "high": 27122.764,
       "low": 26876.271
@@ -67,6 +68,7 @@
       "symbol": "^DJI",
       "price": 51828.62,
       "change": 478.62,
+      "change_pct": 0.93,
       "volume": 390601297,
       "high": 51874.94,
       "low": 51339.24
@@ -76,6 +78,7 @@
       "symbol": "^GSPC",
       "price": 7743.41,
       "change": 39.28,
+      "change_pct": 0.51,
       "volume": 2644756000,
       "high": 7752.07,
       "low": 7693.08
@@ -85,6 +88,7 @@
       "symbol": "AAPL",
       "price": 341.07,
       "change": 5.15,
+      "change_pct": 1.53,
       "volume": 29649787,
       "high": 341.67,
       "low": 334.53
@@ -94,6 +98,7 @@
       "symbol": "TSLA",
       "price": 372.11,
       "change": -5.83,
+      "change_pct": -1.54,
       "volume": 44753533,
       "high": 386.83,
       "low": 367.67
@@ -105,28 +110,36 @@
       "symbol": "GC=F",
       "price": 4321.2,
       "change": 23.2,
-      "unit": "USD/oz"
+      "change_pct": 0.54,
+      "unit": "USD/oz",
+      "source": "yahoo"
     },
     "silver": {
       "name": "白銀",
       "symbol": "SI=F",
       "price": 64.801,
       "change": 0.8,
-      "unit": "USD/oz"
+      "change_pct": 1.25,
+      "unit": "USD/oz",
+      "source": "yahoo"
     },
     "oil_wti": {
       "name": "WTI原油",
       "symbol": "CL=F",
       "price": 92.41,
       "change": -2.2,
-      "unit": "USD/barrel"
+      "change_pct": -2.33,
+      "unit": "USD/barrel",
+      "source": "yahoo"
     },
     "oil_brent": {
       "name": "布倫特原油",
       "symbol": "BZ=F",
       "price": 97.44,
       "change": -2.78,
-      "unit": "USD/barrel"
+      "change_pct": -2.77,
+      "unit": "USD/barrel",
+      "source": "yahoo"
     }
   },
   "forex": {
@@ -134,36 +147,41 @@
       "name": "美元/港幣",
       "from_currency": "USD",
       "to_currency": "HKD",
-      "rate": 7.844,
-      "change": 0
+      "rate": 7.8434,
+      "change": 0.0011,
+      "change_pct": 0.01
     },
     "USDCNY": {
       "name": "美元/人民幣",
       "from_currency": "USD",
       "to_currency": "CNY",
-      "rate": 6.7132,
-      "change": 0
+      "rate": 6.7125,
+      "change": 0.0088,
+      "change_pct": 0.13
     },
     "EURUSD": {
       "name": "歐元/美元",
       "from_currency": "EUR",
       "to_currency": "USD",
-      "rate": 1.1403,
-      "change": 0
+      "rate": 1.1401,
+      "change": 0.0021,
+      "change_pct": 0.18
     },
     "GBPUSD": {
       "name": "英鎊/美元",
       "from_currency": "GBP",
       "to_currency": "USD",
-      "rate": 1.3252,
-      "change": 0
+      "rate": 1.3253,
+      "change": 0.0036,
+      "change_pct": 0.27
     },
     "USDJPY": {
       "name": "美元/日元",
       "from_currency": "USD",
       "to_currency": "JPY",
-      "rate": 157.59,
-      "change": 0
+      "rate": 157.185,
+      "change": -1.589,
+      "change_pct": -1.0
     }
   },
   "bonds": {
@@ -174,26 +192,26 @@
       "yield": 5.184,
       "change": 0.02
     },
+    "us2y": {
+      "name": "美國2年期國債",
+      "country": "US",
+      "maturity": "2Y",
+      "yield": 5.184,
+      "change": 0.02
+    },
     "us30y": {
       "name": "美國30年期國債",
       "country": "US",
       "maturity": "30Y",
       "yield": 5.504,
       "change": 0.04
-    },
-    "us2y": {
-      "name": "美國2年期國債",
-      "country": "US",
-      "maturity": "2Y",
-      "yield": 4.5,
-      "change": 0.03
     }
   },
   "market_sentiment": {
     "fear_greed_index": 70,
     "sentiment": "貪婪",
-    "description": "市場情緒偏樂觀，投資者積極入市",
-    "color": "#FF8800",
-    "timestamp": "2026-09-27T06:04:43.614480+00:00"
+    "description": "市場情緒樂觀，投資者信心充足",
+    "color": "#FF9966",
+    "timestamp": "2026-09-27T16:00:27.904769"
   }
 }

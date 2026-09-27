@@ -198,12 +198,6 @@ EOF
                 --message "請執行 /home/openclaw/.openclaw/workspace/scripts/check-openclaw-version.sh 並報告結果" \
                 2>>"$LOG" && log "✅ Version Check 已重建" || log "❌ Version Check 重建失敗"
             ;;
-        "Dropbox Volume4 6章同步")
-            openclaw cron add --name "Dropbox Volume4 6章同步" --cron "0 10 * * *" --tz "Asia/Hong_Kong" \
-                --session isolated --timeout-seconds 300 --tools "read,exec" \
-                --message "Run dropbox volume4 sync: exec \`cd /home/openclaw/.openclaw/workspace && python3 scripts/dropbox_volume4_sync.py\` and report results." \
-                2>>"$LOG" && log "✅ Volume4 已重建" || log "❌ Volume4 重建失敗"
-            ;;
         *)
             log "未知 job 名稱: $name"
             ;;
@@ -212,7 +206,7 @@ EOF
 
 # 關鍵 jobs 清單
 FIXED=0
-for JOB in "早上簡報 08:15" "中午簡報 12:55" "傍晚簡報 17:55 — 日結" "每日健康報告 22:00" "每日 Audio Sync 10:00" "OpenClaw Version Check" "Dropbox Volume4 6章同步"; do
+for JOB in "早上簡報 08:15" "中午簡報 12:55" "傍晚簡報 17:55 — 日結" "每日健康報告 22:00" "每日 Audio Sync 10:00" "OpenClaw Version Check"; do
     STATUS=$(check_job "$JOB")
     if [ "$STATUS" = "OK" ]; then
         log "✅ 存在: $JOB"

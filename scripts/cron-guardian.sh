@@ -10,7 +10,8 @@
 # 執行方式：由 system crontab 每日 09:30 / 21:30 執行
 # ============================================================
 
-export PATH="/home/openclaw/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+# 2026-10-01: gateway 已改用 nvm node24 安裝；舊 ~/.npm-global CLI（schema15）讀唔到 schema17 數據庫，唔可以排先
+export PATH="/home/openclaw/.nvm/versions/node/v24.21.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export LC_ALL=C.UTF-8
 
 WORKSPACE="/home/openclaw/.openclaw/workspace"
@@ -185,7 +186,7 @@ EOF
         "每日 Audio Sync 10:00")
             openclaw cron add --name "每日 Audio Sync 10:00" --cron "0 10 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --timeout-seconds 300 --tools "read,exec" \
+                --model "zai/glm-5.3-flash" --fallbacks "zai/glm-5.3" --timeout-seconds 600 --tools "read,exec" \
                 --message "Run daily audio sync: exec \`cd /home/openclaw/.openclaw/workspace && python3 scripts/audio_sync_pipeline.py\` and report results." \
                 2>>"$LOG" && log "✅ Audio Sync 已重建" || log "❌ Audio Sync 重建失敗"
             ;;
@@ -224,7 +225,7 @@ CRONTAB=$(crontab -l 2>/dev/null)
 SYSTEM_TASKS=(
     "backup-memory.sh"
     "send-briefing.sh"
-    "dropbox-volume5-daily-sync.sh"
+    # "dropbox-volume5-daily-sync.sh"  # 2026-10-01: Vol5 已於 9/16 完成（CH1460），Vol6 接手，勿補回
     "dropbox-volume6-daily-sync.sh"
     "update_finance.sh"
     "update_finance_news.sh"

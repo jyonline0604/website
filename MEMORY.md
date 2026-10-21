@@ -145,3 +145,9 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 巡檢 5 項全綠：網站 200、/ 15%、Mem 可用 2.9Gi、8 個 OpenClaw job errs=0 + system crontab 14 條全在位、三倉 git clean 無未推送。<!-- project: github.com/jyonline0604/website -->
 - 自動修復：刪除無引用嘅 `scripts/audio-daily-cron.sh.bak`；保留 `.token-store/dropbox-token.txt.bak`（renew_dropbox_token.py 自動生成嘅安全副本，每次續期重建）。<!-- project: github.com/jyonline0604/website -->
 - 教訓：Code Mode exec 要用全域 `exec({command})`，寫 `tools.exec` 會炸 `ReferenceError: tools is not defined`（exec bridge 會隨機喺 code-mode / shell-mode 之間跳）。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-10-21 22:00 每日健康報告 — 根目錄 30 個殘留備份檔清理
+- 巡檢 5 項全綠：網站 200（chapters.html / av 頁 404 屬預期，舊小說有聲畫資源已於 1fe190926 刪除）、/ 15%、Mem 可用 2.8Gi、8 個 OpenClaw job errs=0、system crontab 14 條全在位、三倉 git clean。<!-- project: github.com/jyonline0604/website -->
+- 自動修復：清理根目錄 30 個 gitignore 殘留檔（`*.html.backup*`、`*.html.backup.YYYYMMDD_HHMMSS`、`*.new-design.backup`、`chapters.html.backup_test`、`audio_sync_output.log`），全部 April 2026 舊檔、零引用、live 對應檔（chapters.html / news.html / news-data.json）完好；用 `gio trash` 可復原。<!-- project: github.com/jyonline0604/website -->
+- **保留唔好刪**：`.backup-pass`（記憶備份 openssl 加密密碼，scripts/backup-memory.sh + daily_backup.py 依賴）、`.token-store/dropbox-token.txt.bak`（renew_dropbox_token.py 自動生成嘅安全副本）、`av-novels.html.broken.20260420_142301`（git 已追蹤）。<!-- project: github.com/jyonline0604/website -->
+- 教訓：清理前一定要 grep 引用 + `git ls-files --error-unmatch` 判斷係 tracked 與否；`.backup-pass` 睇落似 marker file 但係功能性密碼檔，亂刪會令記憶備份全廢。<!-- project: github.com/jyonline0604/website -->

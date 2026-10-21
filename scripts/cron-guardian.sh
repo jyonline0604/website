@@ -67,8 +67,8 @@ rebuild_job() {
         "早上簡報 08:15")
             openclaw cron add --name "早上簡報 08:15" --cron "15 8 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --model "minimax/MiniMax-M3" \
-                --fallbacks "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free,openrouter/nvidia/nemotron-3.5-lightning:free" \
+                --model "minimax/MiniMax-M3.1-Flash" \
+                --fallbacks "deepseek/deepseek-v4-flash,openrouter/nvidia/nemotron-3-super-120b-a12b:free,openrouter/qwen/qwen3-coder:free" \ \
                 --timeout-seconds 300 \
                 --message "$(cat <<'EOF'
 【早上簡報 08:15】
@@ -100,8 +100,8 @@ EOF
         "中午簡報 12:55")
             openclaw cron add --name "中午簡報 12:55" --cron "55 12 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --model "minimax/MiniMax-M3" \
-                --fallbacks "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free,openrouter/nvidia/nemotron-3.5-lightning:free" \
+                --model "minimax/MiniMax-M3.1-Flash" \
+                --fallbacks "deepseek/deepseek-v4-flash,openrouter/nvidia/nemotron-3-super-120b-a12b:free,openrouter/qwen/qwen3-coder:free" \ \
                 --timeout-seconds 300 \
                 --message "$(cat <<'EOF'
 【中午簡報 12:55】
@@ -126,8 +126,8 @@ EOF
         "傍晚簡報 17:55 — 日結")
             openclaw cron add --name "傍晚簡報 17:55 — 日結" --cron "55 17 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --model "minimax/MiniMax-M3" \
-                --fallbacks "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free,openrouter/nvidia/nemotron-3.5-lightning:free" \
+                --model "minimax/MiniMax-M3.1-Flash" \
+                --fallbacks "deepseek/deepseek-v4-flash,openrouter/nvidia/nemotron-3-super-120b-a12b:free,openrouter/qwen/qwen3-coder:free" \ \
                 --timeout-seconds 300 \
                 --message "$(cat <<'EOF'
 【傍晚簡報 17:55 — 日結】
@@ -157,8 +157,8 @@ EOF
         "每日健康報告 22:00")
             openclaw cron add --name "每日健康報告 22:00" --cron "0 22 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --model "minimax/MiniMax-M3" \
-                --fallbacks "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free,openrouter/nvidia/nemotron-3.5-lightning:free" \
+                --model "minimax/MiniMax-M3.1-Flash" \
+                --fallbacks "deepseek/deepseek-v4-flash,openrouter/nvidia/nemotron-3-super-120b-a12b:free,openrouter/qwen/qwen3-coder:free" \ \
                 --timeout-seconds 300 \
                 --message "$(cat <<'EOF'
 【每日健康報告 22:00】
@@ -186,15 +186,15 @@ EOF
         "每日 Audio Sync 10:00")
             openclaw cron add --name "每日 Audio Sync 10:00" --cron "0 10 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --model "zai/glm-5.3-flash" --fallbacks "zai/glm-5.3" --timeout-seconds 600 --tools "read,exec" \
+                --model "minimax/MiniMax-M3.1-Flash" --fallbacks "deepseek/deepseek-v4-flash,openrouter/nvidia/nemotron-3-super-120b-a12b:free" --timeout-seconds 600 --tools "read,exec" \
                 --message "Run daily audio sync: exec \`cd /home/openclaw/.openclaw/workspace && python3 scripts/audio_sync_pipeline.py\` and report results." \
                 2>>"$LOG" && log "✅ Audio Sync 已重建" || log "❌ Audio Sync 重建失敗"
             ;;
         "OpenClaw Version Check")
             openclaw cron add --name "OpenClaw Version Check" --cron "0 11 * * *" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --model "minimax/MiniMax-M3" \
-                --fallbacks "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free,openrouter/nvidia/nemotron-3.5-lightning:free" \
+                --model "minimax/MiniMax-M3.1-Flash" \
+                --fallbacks "deepseek/deepseek-v4-flash,openrouter/nvidia/nemotron-3-super-120b-a12b:free,openrouter/qwen/qwen3-coder:free" \ \
                 --timeout-seconds 300 \
                 --message "請執行 /home/openclaw/.openclaw/workspace/scripts/check-openclaw-version.sh 並報告結果" \
                 2>>"$LOG" && log "✅ Version Check 已重建" || log "❌ Version Check 重建失敗"
@@ -221,6 +221,23 @@ done
 # ------------------------------------------------------------
 # Part 2: 檢查 system crontab 關鍵任務
 # ------------------------------------------------------------
+# ------------------------------------------------------------
+# Part 1b: model override policy guard (2026-10-21)
+# Root cause: old guardian only checked "job exists + enabled", never the
+# payload.model override. Jobs that overrode a model outside
+# agents.*.modelPolicy.allow failed every single run while the guardian
+# logged "all OK". This block validates each job model/fallbacks against
+# the policy allow list and auto-repairs violations.
+# ------------------------------------------------------------
+if [ -f "$WORKSPACE/scripts/cron_model_guard.py" ]; then
+    GUARD_OUT=$(python3 "$WORKSPACE/scripts/cron_model_guard.py" --fix 2>&1)
+    while IFS= read -r gline; do log "$gline"; done <<< "$GUARD_OUT"
+    GUARD_FIXED=$(printf "%s
+" "$GUARD_OUT" | grep -c "^FIXED:" || true)
+    if [ "${GUARD_FIXED:-0}" -gt 0 ]; then
+        FIXED=$((FIXED + GUARD_FIXED))
+    fi
+fi
 CRONTAB=$(crontab -l 2>/dev/null)
 SYSTEM_TASKS=(
     "backup-memory.sh"

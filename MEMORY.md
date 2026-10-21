@@ -140,3 +140,8 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 「傍晚簡報 17:55 — 日結」(f8b447b6) 連續 5 次 timeout：prompt 分太多工具呼叫，撞 20 分鐘 scheduler 硬頂。已 `openclaw cron edit --timeout-seconds 0` + 精簡 prompt（單一 exec 批次）。<!-- project: github.com/jyonline0604/website -->
 - 教訓：isolated cron job 要限工具呼叫次數；`openclaw cron edit` 支援 --message/--timeout-seconds/--model（`cron update` 唔存在）。<!-- project: github.com/jyonline0604/website -->
 - 「每日健康報告 22:00」舊錯誤係 model override `minimax/MiniMax-M3` 不在 modelPolicy allow list；2026-10-21 改為 `minimax/MiniMax-M3.1-Flash`。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-10-21 21:05 每日健康報告 — 全綠 + code-mode exec 教訓
+- 巡檢 5 項全綠：網站 200、/ 15%、Mem 可用 2.9Gi、8 個 OpenClaw job errs=0 + system crontab 14 條全在位、三倉 git clean 無未推送。<!-- project: github.com/jyonline0604/website -->
+- 自動修復：刪除無引用嘅 `scripts/audio-daily-cron.sh.bak`；保留 `.token-store/dropbox-token.txt.bak`（renew_dropbox_token.py 自動生成嘅安全副本，每次續期重建）。<!-- project: github.com/jyonline0604/website -->
+- 教訓：Code Mode exec 要用全域 `exec({command})`，寫 `tools.exec` 會炸 `ReferenceError: tools is not defined`（exec bridge 會隨機喺 code-mode / shell-mode 之間跳）。<!-- project: github.com/jyonline0604/website -->

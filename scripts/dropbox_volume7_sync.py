@@ -615,7 +615,11 @@ def git_commit_and_push(ch_start, ch_end):
     if r.returncode != 0 and 'nothing to commit' not in r.stdout:
         log(f"  ⚠️ Commit 提醒: {r.stdout.strip()[:200]}")
     
-    # Push
+    # Push（先 pull --rebase：其他排程如新聞/財務會同時 push 同一 repo，避免 fetch first 衝突）
+    subprocess.run(
+        ['git', 'pull', '--rebase', 'origin', 'main'],
+        cwd=WORKSPACE, capture_output=True, text=True, timeout=60
+    )
     r = subprocess.run(
         ['git', 'push', 'origin', 'main'],
         cwd=WORKSPACE, capture_output=True, text=True, timeout=60

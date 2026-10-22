@@ -157,3 +157,10 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 根因：四個寫 token 嘅位置（dropbox_volume4/5/6_sync.py + renew_dropbox_token.py）用 `open(TOKEN_FILE,'w')` **非原子**寫入，truncate→write 窗口期被另一進程讀到空字串；三個 job 同時 push 同一個 site repo / backup repo。<!-- project: github.com/jyonline0604/website -->
 - 修復：token 改 tmp + fsync + `os.replace()` 原子寫入 + `read_token()` 重試 helper；新增 `scripts/dropbox-volume4-daily-sync.sh` wrapper，三個 wrapper 全部 `flock -w 900 /tmp/dropbox-sync.lock` 序列化；`backup-memory.sh` 加 `flock -w 300 /tmp/memory-backup.lock` + push 前 `git pull --rebase` 重試 3 次；crontab Volume 4 改用 wrapper。<!-- project: github.com/jyonline0604/website -->
 - 教訓：多進程共用憑證檔一定要原子寫入；共用 git repo 的並發 job 要 flock + rebase；crontab 一律叫 wrapper script，唔好直接 `python3 scripts/x.py`，否則加鎖邏輯會漏。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-10-22 13:15 中午簡報（重試）— Vol4 復原驗證 + 12:55 job 超時修復
+- 上午回顧：早上簡報 08:15 ✅ 雙重確認 — OpenClaw cron 27d54b55 於 08:15:00 執行成功（329s、errs=0）+ system cron send-briefing.sh 08:15:01→08:15:45 發送成功（Message ID 23263）。<!-- project: github.com/jyonline0604/website -->
+- Vol4 11:00 失敗（token 競態）已於 13:18 手動補跑驗證：原子寫入 + read_token 重試 + flock 序列化全部生效 → state 分歧自動修復至 CH1740、265 章全處理完、exit 0。<!-- project: github.com/jyonline0604/website -->
+- 12:55 job 自身 12:55 首次執行撞 20 分鐘 scheduler 硬頂（lastRunStatus=error、timeout、consecutiveErrors=1）→ openclaw cron edit 66957fcc --timeout-seconds 1800 + prompt 加「只做 1-2 次 exec」效率規則（對齊 17:55 日結 job 做法）。<!-- project: github.com/jyonline0604/website -->
+- logrotate.service failed 仍未能自動修：/etc/logrotate.d/cloud-init 同 cloud-init-base 內容重複輪轉 /var/log/cloud-init*.log，兩檔皆 root:root 644 + 無 sudo → 需人手 sudo rm /etc/logrotate.d/cloud-init-base（另 10/20 起 ConditionACPower=true 亦會 skip）。<!-- project: github.com/jyonline0604/website -->
+- 教訓：修 timeout 唔淨係加大秒數 — isolated cron job 必須限制工具呼叫次數（單一 exec 批次收集），否則加幾多時間都會撞頂。<!-- project: github.com/jyonline0604/website -->

@@ -12,6 +12,11 @@ echo "[$(date)] === 開始記憶備份 ===" >> "$LOG_FILE"
 
 cd "$WORKSPACE" || exit 1
 
+# 2026-10-22 修：11:00 多個 Dropbox 同步 job 會同時觸發本腳本，序列化避免 git push 撞車
+MEM_LOCK="/tmp/memory-backup.lock"
+exec 9>"$MEM_LOCK"
+flock -w 300 9 || { echo "[$(date)] ❌ 記憶備份鎖等待超時，本次跳過" >> "$LOG_FILE"; exit 1; }
+
 # 確保日誌目錄存在
 mkdir -p "$WORKSPACE/logs"
 
@@ -38,22 +43,42 @@ openssl enc -aes-256-cbc -salt -in "/tmp/${BACKUP_NAME}.tar.gz" -out "/tmp/${BAC
 
 # 複製到 Second-brain 並推送
 if [ -d "/home/openclaw/Second-brain" ]; then
+    DIR_NAME="Second-brain"
     cd "/home/openclaw/Second-brain"
     cp "/tmp/${BACKUP_NAME}.tar.gz.enc" "./memory-backup-${BACKUP_NAME}.tar.gz.enc"
     git add "memory-backup-${BACKUP_NAME}.tar.gz.enc" 2>/dev/null
     git commit -m "memory: auto backup $(date +%Y-%m-%d\ %H:%M)" 2>/dev/null || true
     # 推送到 Second-brain (origin) - main 分支
-    git push origin main 2>> "$LOG_FILE" || true
+    # 2026-10-22 修：並發 push 會出現 "cannot lock ref" 被拒，先 rebase 再重試
+    for attempt in 1 2 3; do
+        git pull --rebase origin main >> "$LOG_FILE" 2>&1 || true
+        if git push origin main 2>> "$LOG_FILE"; then
+            echo "[$(date)] ✅ $DIR_NAME push 成功 (attempt $attempt)" >> "$LOG_FILE"
+            break
+        fi
+        echo "[$(date)] ⚠️ $DIR_NAME push 失敗 (attempt $attempt)，重試中" >> "$LOG_FILE"
+        sleep 5
+    done
 fi
 
 # 複製到 Max-backup 並推送
 if [ -d "/home/openclaw/Max-backup" ]; then
+    DIR_NAME="Max-backup"
     cd "/home/openclaw/Max-backup"
     cp "/tmp/${BACKUP_NAME}.tar.gz.enc" "./memory-backup-${BACKUP_NAME}.tar.gz.enc"
     git add "memory-backup-${BACKUP_NAME}.tar.gz.enc" 2>/dev/null
     git commit -m "memory: auto backup $(date +%Y-%m-%d\ %H:%M)" 2>/dev/null || true
     # 推送到 Max-backup - main 分支
-    git push origin main 2>> "$LOG_FILE" || true
+    # 2026-10-22 修：並發 push 會出現 "cannot lock ref" 被拒，先 rebase 再重試
+    for attempt in 1 2 3; do
+        git pull --rebase origin main >> "$LOG_FILE" 2>&1 || true
+        if git push origin main 2>> "$LOG_FILE"; then
+            echo "[$(date)] ✅ $DIR_NAME push 成功 (attempt $attempt)" >> "$LOG_FILE"
+            break
+        fi
+        echo "[$(date)] ⚠️ $DIR_NAME push 失敗 (attempt $attempt)，重試中" >> "$LOG_FILE"
+        sleep 5
+    done
 fi
 
 # 清理

@@ -92,8 +92,10 @@ def save_token(new_token: str) -> None:
     if TOKEN_FILE.exists():
         backup = TOKEN_FILE.with_suffix('.txt.bak')
         backup.write_text(TOKEN_FILE.read_text())
-    TOKEN_FILE.write_text(new_token)
-    os.chmod(TOKEN_FILE, 0o600)
+    tmp = TOKEN_FILE.with_name(TOKEN_FILE.name + f'.tmp.{os.getpid()}')
+    tmp.write_text(new_token)
+    os.chmod(tmp, 0o600)
+    os.replace(tmp, TOKEN_FILE)
     log(f'  ✅ token saved → {TOKEN_FILE} (mode 600, {len(new_token)} bytes)')
 
 

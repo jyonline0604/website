@@ -212,10 +212,14 @@ def refresh_access_token():
             return False
         new_token = data['access_token']
         
-        # 保存新 token
-        with open(TOKEN_FILE, 'w') as f:
+        # 保存新 token（2026-10-22 修：原子寫入 tmp + os.replace，避免並發 truncate 令其他進程讀到空檔）
+        tmp_token = TOKEN_FILE + f'.tmp.{os.getpid()}'
+        with open(tmp_token, 'w') as f:
             f.write(new_token)
-        os.chmod(TOKEN_FILE, 0o600)
+            f.flush()
+            os.fsync(f.fileno())
+        os.chmod(tmp_token, 0o600)
+        os.replace(tmp_token, TOKEN_FILE)
         
         log(f"  ✅ Token 已刷新 (新 token: {new_token[:15]}...)")
         return True
@@ -223,8 +227,22 @@ def refresh_access_token():
         log(f"  ❌ Refresh 異常: {e}")
         return False
 
+def read_token(max_retries=5, delay=0.4):
+    """安全讀取 Dropbox token（2026-10-22 修：並發刷新時檔案可能被 truncate 而讀到空字串，重試避免誤判）"""
+    for attempt in range(max_retries):
+        try:
+            if os.path.exists(TOKEN_FILE):
+                tok = open(TOKEN_FILE).read().strip()
+                if tok:
+                    return tok
+        except Exception:
+            pass
+        if attempt < max_retries - 1:
+            time.sleep(delay)
+    return ''
+
 def get_dropbox_client():
-    token = open(TOKEN_FILE).read().strip()
+    token = read_token()
     dbx = dropbox.Dropbox(token)
     
     # 測試 token 是否有效
@@ -234,7 +252,7 @@ def get_dropbox_client():
         # Token 過期，嘗試刷新
         if refresh_access_token():
             # 重新讀取新 token
-            token = open(TOKEN_FILE).read().strip()
+            token = read_token()
             dbx = dropbox.Dropbox(token)
         else:
             log("  ❌ Token 刷新失敗！請檢查 refresh token 配置")
@@ -592,7 +610,7 @@ def process_batch():
     if not refresh_access_token():
         log("❌ Token 刷新失敗，中止執行")
         raise RuntimeError("Dropbox token refresh failed")
-    elif not os.path.exists(TOKEN_FILE) or not open(TOKEN_FILE).read().strip():
+    elif not read_token():
         log("❌ Token 檔案異常，中止執行")
         raise RuntimeError("Dropbox token file is empty or missing")
     

@@ -1,0 +1,24 @@
+#!/bin/bash
+# Dropbox Volume 4 每日自動化更新腳本
+# 每天從 Dropbox 第四卷自動下載 6 章並更新網站
+
+export PATH="/home/openclaw/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+WORKSPACE="/home/openclaw/.openclaw/workspace"
+
+cd "$WORKSPACE"
+
+# 2026-10-22 修：序列化 Dropbox 同步（3 個 job 同時跑會同時刷新 token / 同時 push 同一 repo）
+LOCK_FILE="/tmp/dropbox-sync.lock"
+exec 9>"$LOCK_FILE"
+flock -w 900 9 || { echo "[$(date '+%Y-%m-%d %H:%M:%S')] ❌ 取得 Dropbox 同步鎖超時，本次跳過"; exit 1; }
+
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] 🚀 開始每日 Dropbox Volume 4 同步..."
+
+# 執行同步腳本
+python3 scripts/dropbox_volume4_sync.py 2>&1
+
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✅ Dropbox Volume 4 同步完成"
+
+# 備份記憶（成功時才備份）
+source /home/openclaw/.openclaw/workspace/scripts/backup-memory.sh 2>/dev/null || true

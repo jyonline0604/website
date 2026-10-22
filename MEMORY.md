@@ -164,3 +164,4 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 12:55 job 自身 12:55 首次執行撞 20 分鐘 scheduler 硬頂（lastRunStatus=error、timeout、consecutiveErrors=1）→ openclaw cron edit 66957fcc --timeout-seconds 1800 + prompt 加「只做 1-2 次 exec」效率規則（對齊 17:55 日結 job 做法）。<!-- project: github.com/jyonline0604/website -->
 - logrotate.service failed 仍未能自動修：/etc/logrotate.d/cloud-init 同 cloud-init-base 內容重複輪轉 /var/log/cloud-init*.log，兩檔皆 root:root 644 + 無 sudo → 需人手 sudo rm /etc/logrotate.d/cloud-init-base（另 10/20 起 ConditionACPower=true 亦會 skip）。<!-- project: github.com/jyonline0604/website -->
 - 教訓：修 timeout 唔淨係加大秒數 — isolated cron job 必須限制工具呼叫次數（單一 exec 批次收集），否則加幾多時間都會撞頂。<!-- project: github.com/jyonline0604/website -->
+- 教訓（SKILL.md 同步）：workspace 本地 SKILL.md 同 backup 倉版本可能已分叉（本地缺 v2.9.90 Dropbox 競態段）。同步前要 diff 過，唔好直接 cp 覆蓋，否則會靜靜哋刪走 backup 有而本地冇嘅更新記錄；發現分叉要合併（重新編號）再推。<!-- project: github.com/jyonline0604/website -->

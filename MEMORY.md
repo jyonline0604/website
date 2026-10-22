@@ -151,3 +151,9 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 自動修復：清理根目錄 30 個 gitignore 殘留檔（`*.html.backup*`、`*.html.backup.YYYYMMDD_HHMMSS`、`*.new-design.backup`、`chapters.html.backup_test`、`audio_sync_output.log`），全部 April 2026 舊檔、零引用、live 對應檔（chapters.html / news.html / news-data.json）完好；用 `gio trash` 可復原。<!-- project: github.com/jyonline0604/website -->
 - **保留唔好刪**：`.backup-pass`（記憶備份 openssl 加密密碼，scripts/backup-memory.sh + daily_backup.py 依賴）、`.token-store/dropbox-token.txt.bak`（renew_dropbox_token.py 自動生成嘅安全副本）、`av-novels.html.broken.20260420_142301`（git 已追蹤）。<!-- project: github.com/jyonline0604/website -->
 - 教訓：清理前一定要 grep 引用 + `git ls-files --error-unmatch` 判斷係 tracked 與否；`.backup-pass` 睇落似 marker file 但係功能性密碼檔，亂刪會令記憶備份全廢。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-10-22 12:55 中午簡報 — Dropbox 三卷同步 token 競態 + 記憶備份 push 撞車（已自動修復）
+- 症狀：11:00 三個 Dropbox job 同時跑，Volume 4 報 `Dropbox token file is empty or missing`、Volume 6 報 `BadInputException: OAuth2 access token ... must be set`（中斷，積壓 57 章）、Volume 5 成功；`logs/memory-backup.log` 同時出現 `remote rejected main -> main (cannot lock ref 'refs/heads/main')`。<!-- project: github.com/jyonline0604/website -->
+- 根因：四個寫 token 嘅位置（dropbox_volume4/5/6_sync.py + renew_dropbox_token.py）用 `open(TOKEN_FILE,'w')` **非原子**寫入，truncate→write 窗口期被另一進程讀到空字串；三個 job 同時 push 同一個 site repo / backup repo。<!-- project: github.com/jyonline0604/website -->
+- 修復：token 改 tmp + fsync + `os.replace()` 原子寫入 + `read_token()` 重試 helper；新增 `scripts/dropbox-volume4-daily-sync.sh` wrapper，三個 wrapper 全部 `flock -w 900 /tmp/dropbox-sync.lock` 序列化；`backup-memory.sh` 加 `flock -w 300 /tmp/memory-backup.lock` + push 前 `git pull --rebase` 重試 3 次；crontab Volume 4 改用 wrapper。<!-- project: github.com/jyonline0604/website -->
+- 教訓：多進程共用憑證檔一定要原子寫入；共用 git repo 的並發 job 要 flock + rebase；crontab 一律叫 wrapper script，唔好直接 `python3 scripts/x.py`，否則加鎖邏輯會漏。<!-- project: github.com/jyonline0604/website -->

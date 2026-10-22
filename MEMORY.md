@@ -165,3 +165,9 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - logrotate.service failed 仍未能自動修：/etc/logrotate.d/cloud-init 同 cloud-init-base 內容重複輪轉 /var/log/cloud-init*.log，兩檔皆 root:root 644 + 無 sudo → 需人手 sudo rm /etc/logrotate.d/cloud-init-base（另 10/20 起 ConditionACPower=true 亦會 skip）。<!-- project: github.com/jyonline0604/website -->
 - 教訓：修 timeout 唔淨係加大秒數 — isolated cron job 必須限制工具呼叫次數（單一 exec 批次收集），否則加幾多時間都會撞頂。<!-- project: github.com/jyonline0604/website -->
 - 教訓（SKILL.md 同步）：workspace 本地 SKILL.md 同 backup 倉版本可能已分叉（本地缺 v2.9.90 Dropbox 競態段）。同步前要 diff 過，唔好直接 cp 覆蓋，否則會靜靜哋刪走 backup 有而本地冇嘅更新記錄；發現分叉要合併（重新編號）再推。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-10-22 18:00 傍晚簡報日結 — 全綠 + Cloudflare 邊舊快取陷阱
+- 巡檢全綠：kofhk.com 200、Dropbox 三卷 state 與 assets/chapters-data.json **無分歧**（V7=1746 = 站點 1746）、8 個 OpenClaw job errs=0、system crontab 齊全、三倉 git clean、/ 15%、Mem 可用 2.7Gi。<!-- project: github.com/jyonline0604/website -->
+- **陷阱**：直接 curl `/assets/chapters-data.json` 見到 1740（舊值），加 `?cb=<timestamp>` 就係 1746 → 係 Cloudflare 邊部署前嘅舊快取，唔係真實落後；線上驗證新章節一律加 cache-buster + 睇 chapter-N.html 狀態碼。<!-- project: github.com/jyonline0604/website -->
+- Vol4 11:00 失敗係退役前最後一次執行（13:20 已按 2026-10-02 指令移除 system crontab 條目，13:18 手動補跑已修復 state 至 CH1740）。<!-- project: github.com/jyonline0604/website -->
+- V7 每日 6 章上限今日已用盡；新 cron 11:30 首次實跑係明日，logs/dropbox-volume7-sync.log 今日未建立屬正常。<!-- project: github.com/jyonline0604/website -->

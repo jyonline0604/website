@@ -242,17 +242,33 @@ CRONTAB=$(crontab -l 2>/dev/null)
 SYSTEM_TASKS=(
     "backup-memory.sh"
     "send-briefing.sh"
-    # "dropbox-volume5-daily-sync.sh"  # 2026-10-01: Vol5 已於 9/16 完成（CH1460），Vol6 接手，勿補回
+    "dropbox-volume5-daily-sync.sh"
     "dropbox-volume6-daily-sync.sh"
+    "dropbox-volume7-daily-sync.sh"
     "update_finance.sh"
     "update_finance_news.sh"
     "update_aqhi.sh"
     "auto-daily-memory-log.sh"
     "check_openclaw_update.py"
 )
+# 2026-10-23: system cron 條目會喺 crontab 改寫時意外被註釋（2026-10-21 Vol5 已中招一次）。
+# 呢度保留完整 cron 行，偵測到「被註釋 = 缺失」就自動加返（append，唔會洗掉其他條目）。
+# ⚠️ dropbox-volume4-daily-sync.sh **唔喺守護名單**：Volume 4 已按用戶 2026-10-02 指令退役
+#    （SKILL.md v2.9.92），crontab 註釋咗係正確狀態，唔好自動加返。
+declare -A DROPBOX_CRON=(
+    ["dropbox-volume5-daily-sync.sh"]="0 11 * * * cd /home/openclaw/.openclaw/workspace && bash scripts/dropbox-volume5-daily-sync.sh >> /home/openclaw/.openclaw/workspace/logs/dropbox-volume5-sync.log 2>&1"
+    ["dropbox-volume6-daily-sync.sh"]="0 11 * * * cd /home/openclaw/.openclaw/workspace && bash scripts/dropbox-volume6-daily-sync.sh >> /home/openclaw/.openclaw/workspace/logs/dropbox-volume6-sync.log 2>&1"
+    ["dropbox-volume7-daily-sync.sh"]="30 11 * * * cd /home/openclaw/.openclaw/workspace && bash scripts/dropbox-volume7-daily-sync.sh >> /home/openclaw/.openclaw/workspace/logs/dropbox-volume7-sync.log 2>&1"
+)
 for TASK in "${SYSTEM_TASKS[@]}"; do
-    if echo "$CRONTAB" | grep -q "$TASK"; then
+    # 只睇未註釋嘅行（grep -v '^[[:space:]]*#'），註釋咗嘅等於缺失
+    if echo "$CRONTAB" | grep -v '^[[:space:]]*#' | grep -q "$TASK"; then
         log "✅ system cron 存在: $TASK"
+    elif [ -n "${DROPBOX_CRON[$TASK]:-}" ]; then
+        log "❌ system cron 缺失（自動加回）: $TASK"
+        ( crontab -l 2>/dev/null; echo "# 2026-10-23 cron-guardian 自動還原"; echo "${DROPBOX_CRON[$TASK]}" ) | crontab -
+        CRONTAB=$(crontab -l 2>/dev/null)
+        FIXED=$((FIXED+1))
     else
         log "❌ system cron 缺失: $TASK"
         FIXED=$((FIXED+1))

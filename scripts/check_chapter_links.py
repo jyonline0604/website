@@ -30,6 +30,44 @@ def get_all_chapter_files():
     chapters.sort(key=lambda x: x["num"])
     return chapters
 
+def normalize_link(href):
+    """把絕對 URL / ./ 路徑正規化為檔名，方便同 chapter-N.html 比較"""
+    if not href:
+        return None
+    h = href.strip()
+    if h.startswith('#'):
+        return h
+    h = re.sub(r'^[a-zA-Z][a-zA-Z0-9+.\-]*://[^/]+/?', '', h)
+    h = h.split('#')[0].split('?')[0]
+    h = h.lstrip('/')
+    if h.startswith('./'):
+        h = h[2:]
+    if not h:
+        return None
+    return os.path.basename(h)
+
+
+def extract_nav_link(content, link_id, keyword):
+    """抽出導航連結 href：優先用 id（prevLink/nextLink），fallback 用單一 <a> 文字匹配
+
+    2026-10-23 修正：舊 regex `<a[^>]*href="([^"]+)"[^>]*>.*上一章.*</a>` 嘅 .* 會跨過
+    </a> 邊界，令到檢查器攞錯 href（例如第1章攞到 chapters.html），再加上未處理絕對 URL，
+    每日同步都報假錯誤（V5/V6/V7 各報 2354 個「鏈接問題」）。
+    """
+    if link_id:
+        m = re.search(r'<a\b[^>]*\bid="' + re.escape(link_id) + r'"[^>]*>', content)
+        if m:
+            h = re.search(r'\bhref="([^"]*)"', m.group(0))
+            if h:
+                return h.group(1)
+    m = re.search(r'<a\b([^>]*)>([^<]*' + re.escape(keyword) + r'[^<]*)</a>', content)
+    if m:
+        h = re.search(r'\bhref="([^"]*)"', m.group(1))
+        if h:
+            return h.group(1)
+    return None
+
+
 def check_chapter_links(chapters):
     """檢查章節鏈接"""
     print("=== 章節鏈接檢測報告 ===\n")
@@ -54,17 +92,19 @@ def check_chapter_links(chapters):
             with open(filepath, 'r', encoding='utf-8') as f:
                 content = f.read()
             
-            # 檢查「上一章」鏈接
-            prev_match = re.search(r'<a[^>]*href="([^"]+)"[^>]*>.*上一章.*</a>', content)
-            prev_link = prev_match.group(1) if prev_match else None
+            # 檢查「上一章」鏈接（2026-10-23 修正 regex 跨 <a> 邊界 + 絕對 URL 問題）
+            prev_link = extract_nav_link(content, "prevLink", "上一章")
             
             # 檢查「下一章」鏈接
-            next_match = re.search(r'<a[^>]*href="([^"]+)"[^>]*>.*下一章.*</a>', content)
-            next_link = next_match.group(1) if next_match else None
+            next_link = extract_nav_link(content, "nextLink", "下一章")
             
             # 檢查「返回目錄」鏈接
-            toc_match = re.search(r'<a[^>]*href="([^"]+)"[^>]*>.*返回目錄.*</a>', content)
-            toc_link = toc_match.group(1) if toc_match else None
+            toc_link = extract_nav_link(content, None, "返回目錄")
+            
+            # 正規化 href（絕對 URL / ./ → 檔名）
+            prev_norm = normalize_link(prev_link)
+            next_norm = normalize_link(next_link)
+            toc_norm = normalize_link(toc_link)
             
             # 預期鏈接
             expected_prev = f"chapter-{chap['num']-1}.html" if chap['num'] > 1 else None
@@ -75,30 +115,30 @@ def check_chapter_links(chapters):
             
             # 檢查上一章
             if chap['num'] == 1:
-                # 第1章不應該有上一章
-                if prev_link:
+                # 第1章唔應該有上一章（href="#" 或 返回目錄 都係正常設計）
+                if prev_norm and prev_norm not in ("#", "chapters.html"):
                     chapter_issues.append(f"❌ 第1章不應該有「上一章」鏈接，但找到: {prev_link}")
             else:
-                if not prev_link:
+                if not prev_norm:
                     chapter_issues.append(f"❌ 缺少「上一章」鏈接")
-                elif prev_link != expected_prev:
+                elif prev_norm != expected_prev:
                     chapter_issues.append(f"❌ 「上一章」鏈接錯誤: {prev_link} (應為: {expected_prev})")
             
             # 檢查下一章
             if chap['num'] == max_chapter:
-                # 最新章節不應該有下一章
-                if next_link:
+                # 最新章節唔應該有下一章（href="#" 或 返回目錄 都係正常設計）
+                if next_norm and next_norm not in ("#", "chapters.html"):
                     chapter_issues.append(f"❌ 第{chap['num']}章是最新章節，不應該有「下一章」鏈接，但找到: {next_link}")
             else:
-                if not next_link:
+                if not next_norm:
                     chapter_issues.append(f"❌ 缺少「下一章」鏈接")
-                elif next_link != expected_next:
+                elif next_norm != expected_next:
                     chapter_issues.append(f"❌ 「下一章」鏈接錯誤: {next_link} (應為: {expected_next})")
             
             # 檢查返回目錄
-            if not toc_link:
+            if not toc_norm:
                 chapter_issues.append(f"❌ 缺少「返回目錄」鏈接")
-            elif toc_link != "chapters.html":
+            elif toc_norm != "chapters.html":
                 chapter_issues.append(f"❌ 「返回目錄」鏈接錯誤: {toc_link} (應為: chapters.html)")
             
             if chapter_issues:

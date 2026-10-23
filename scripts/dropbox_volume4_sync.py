@@ -460,11 +460,12 @@ def generate_chapter_html(ch_num, title, paragraphs_html, prev_url, next_url):
 # ==================== 驗證 ====================
 
 def fix_latest_chapter_next(novel_dir):
-    """最後一章的「下一章」改為返回目錄，避免指向不存在的頁面（404）"""
+    """最新一章嘅「下一章」→ 返回目錄；並修復之前批次尾章被誤改成返回目錄嘅連結（2026-10-23）"""
     chapters = [f for f in os.listdir(novel_dir) if re.match(r'chapter-\d+\.html$', f)]
     if not chapters:
         return
-    latest = max(int(re.search(r'\d+', f).group()) for f in chapters)
+    nums = sorted(int(re.search(r'\d+', f).group()) for f in chapters)
+    latest = nums[-1]
     path = os.path.join(novel_dir, f'chapter-{latest}.html')
     with open(path, 'r', encoding='utf-8') as f:
         html = f.read()
@@ -473,6 +474,38 @@ def fix_latest_chapter_next(novel_dir):
         with open(path, 'w', encoding='utf-8') as f:
             f.write(new_html)
         log(f"  🔗 已將第 {latest} 章的下一章連結改為返回目錄")
+
+    # 2026-10-23 修復：舊流程只改最新一章 → 之前批次尾章嘅「下一章」永遠停喺「返回目錄」
+    fixed = 0
+    existing = set(nums)
+    for n in nums[:-1]:
+        if (n + 1) not in existing:
+            continue
+        p = os.path.join(novel_dir, f'chapter-{n}.html')
+        try:
+            with open(p, 'r', encoding='utf-8') as f:
+                content = f.read()
+        except OSError:
+            continue
+        m = re.search(r'<a\b[^>]*\bid="nextLink"[^>]*>', content)
+        if not m:
+            continue
+        tag = m.group(0)
+        h = re.search(r'\bhref="([^"]*)"', tag)
+        if not h:
+            continue
+        href = h.group(1)
+        base = os.path.basename(href.split('#')[0].split('?')[0])
+        if base in ('chapters.html', '#') or base == '':
+            expected = f'chapter-{n + 1}.html'
+            new_tag = tag[:h.start(1)] + expected + tag[h.end(1):]
+            content = content[:m.start()] + new_tag + content[m.end():]
+            with open(p, 'w', encoding='utf-8') as f:
+                f.write(content)
+            fixed += 1
+    if fixed:
+        log(f"  🔧 已修復 {fixed} 個章節嘅「下一章」連結（原本錯誤指向返回目錄）")
+
 
 
 def validate_html(html_path, ch_num, title):

@@ -187,3 +187,13 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - **真修復 — .token-store/dropbox-token.txt.bak 權限**：renew_dropbox_token.py 寫備份用 `backup.write_text()`，權限實測 664（其他 token 都係 600），憑證副本變權限漏洞兼長期遺留檔；已加 `os.chmod(backup, 0o600)` + 刪走舊 .bak；已實跑 renew-dropbox-token.sh 驗證 → 新 token 600、備份 600、API ping 有效。<!-- project: github.com/jyonline0604/website -->
 - 教訓：憑證備份檔要跟主檔 600 權限，唔好靠 write_text 預設 mode（受 umask 影響，實測 664）。<!-- project: github.com/jyonline0604/website -->
 - 觀察（非故障）：V5/V6/V7 log 報「2354 個鏈接問題」係 link-checker 太嚴 — 線上實測 chapter-1/2 上一章/下一章 link 正確（prev→chapters.html 係目錄設計，next→chapter-N.html），絕對 URL 被當「應為相對路徑」誤報，唔使改 1752 個 HTML。<!-- project: github.com/jyonline0604/website -->
+
+### 2026-10-23 22:10 加場：章節「下一章」連結真實缺陷修復（101 頁）
+- **真缺陷（線上可見）**：每批 6 章同步後，舊流程只會把「最新一章」嘅下一章改成返回目錄，之前批次尾章（例如第1746章）嘅下一章永遠停喺 `chapters.html` → 讀者撳「下一章」會彈返目錄。全站共 **101 頁**受影響（180、1165、1171…每 6 章一個），線上實測 chapter-1746.html 確認仍有問題。
+- **根因**：`dropbox_volume(4, 5, 6, 7)_sync.py` 嘅 `fix_latest_chapter_next()` 只改最新一章；舊尾章嘅 `href="chapter-N+1.html"` 從未被還原。
+- **修復**：
+  1. `fix_latest_chapter_next()` 擴充為「最新一章→返回目錄」+「順帶修復所有非最新章節嘅 nextLink（原本指向 chapters.html/# → chapter-N+1.html）」，V4/V5/V6/V7 四個同步腳本同步改。
+  2. 新增 `scripts/fix_broken_next_links.py` 一鍵修復工具（已修 101 頁）。
+  3. `scripts/check_chapter_links.py` 檢查器 regex 修正：舊 regex 嘅 `.*` 會跨 `</a>` 邊界攞錯 href（第1章攞到 chapters.html），加上未處理絕對 URL → 每日同步報 **2354 個假錯誤**。改用 `id="prevLink"/"nextLink"` 精準抽取 + URL 正規化 + 邊界章容許 `#`/`chapters.html`，真實錯誤由 2354 收窄到 101（全部係上面嘅真缺陷）。
+- 修復後重跑檢查器：**1752 章、0 個鏈接問題**（「所有鏈接正確無誤！」）。<!-- project: github.com/jyonline0604/website -->
+- 教訓：**檢查器本身都會講大話** — 報 2354 個錯唔等於有 2354 個錯；要先抽 link 邏輯同線上實測對照，先分得出真缺陷同工具 bug。<!-- project: github.com/jyonline0604/website -->

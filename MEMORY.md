@@ -179,3 +179,11 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - **一度誤判並已回滾**：見到 V4 條目被註釋，一度以為同 2026-10-21 Vol5 遺失同類而加返條目；讀 SKILL.md v2.9.92 先發現係**用戶 2026-10-02 指令退役** → 立即還原 crontab 原狀，並喺 guardian 明確排除 V4 + 加註解釋。<!-- project: github.com/jyonline0604/website -->
 - Vol4 手動補跑驗證 token 原子寫入修復有效（state 1740→1746、未處理 0、exit 0）；V7 今日 11:30 首次 cron 執行（log 仍未建立屬正常）。<!-- project: github.com/jyonline0604/website -->
 - 教訓：**自動修復前必須先 grep SKILL.md 確認係「意外遺失」定「刻意退役」**，否則會違背用戶指令；cron 唔會自動回補被重啟中斷嘅 job，要人手/agent 補跑。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-10-23 22:00 每日健康報告 — 全綠 + Dropbox token 備份檔權限加固
+- 巡檢全綠：kofhk.com 200（0.85s）／磁碟 15%（65G/468G）／Mem 可用 3.1Gi／load 0.46／uptime 12:48／8 個 OpenClaw job 全 enabled 且 consecutiveErrors=0／system crontab 關鍵條目齊全（cron-guardian 09:56 同 21:30 兩次都報「全部正常，無需修復」）。<!-- project: github.com/jyonline0604/website -->
+- Dropbox：V5/V6 11:00、V7 11:30 今日全部 6/6 章成功並已推 GitHub；Vol4 state 09:53 auto-reconciled 至 CH1746（2026-10-02 指令退役，crontab 條目只係註釋，唔係「消失」）。<!-- project: github.com/jyonline0604/website -->
+- Git：三個主倉（workspace/Second-brain/Max-backup）clean、零未推送；Documents/.openclaw_0831 舊快照顯示 2 個「未推送」commit，核對後兩個 hash 已喺活躍倉 history（merge-base --is-ancestor = true），唔使再推。<!-- project: github.com/jyonline0604/website -->
+- **真修復 — .token-store/dropbox-token.txt.bak 權限**：renew_dropbox_token.py 寫備份用 `backup.write_text()`，權限實測 664（其他 token 都係 600），憑證副本變權限漏洞兼長期遺留檔；已加 `os.chmod(backup, 0o600)` + 刪走舊 .bak；已實跑 renew-dropbox-token.sh 驗證 → 新 token 600、備份 600、API ping 有效。<!-- project: github.com/jyonline0604/website -->
+- 教訓：憑證備份檔要跟主檔 600 權限，唔好靠 write_text 預設 mode（受 umask 影響，實測 664）。<!-- project: github.com/jyonline0604/website -->
+- 觀察（非故障）：V5/V6/V7 log 報「2354 個鏈接問題」係 link-checker 太嚴 — 線上實測 chapter-1/2 上一章/下一章 link 正確（prev→chapters.html 係目錄設計，next→chapter-N.html），絕對 URL 被當「應為相對路徑」誤報，唔使改 1752 個 HTML。<!-- project: github.com/jyonline0604/website -->

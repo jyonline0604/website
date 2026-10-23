@@ -171,3 +171,11 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - **陷阱**：直接 curl `/assets/chapters-data.json` 見到 1740（舊值），加 `?cb=<timestamp>` 就係 1746 → 係 Cloudflare 邊部署前嘅舊快取，唔係真實落後；線上驗證新章節一律加 cache-buster + 睇 chapter-N.html 狀態碼。<!-- project: github.com/jyonline0604/website -->
 - Vol4 11:00 失敗係退役前最後一次執行（13:20 已按 2026-10-02 指令移除 system crontab 條目，13:18 手動補跑已修復 state 至 CH1740）。<!-- project: github.com/jyonline0604/website -->
 - V7 每日 6 章上限今日已用盡；新 cron 11:30 首次實跑係明日，logs/dropbox-volume7-sync.log 今日未建立屬正常。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-10-23 09:50 早上簡報（08:15 補跑）— 部機 08:15 重啟中斷 + cron-guardian 自癒強化
+- 巡檢：kofhk.com 200（0.84s）／磁碟 15%（65G/468G）／Mem 可用 3.48Gi／uptime 37 分鐘／8 個 OpenClaw job 全部 enabled（只有 08:15 job errs=1）／system cron 齊全。<!-- project: github.com/jyonline0604/website -->
+- **08:15 兩邊簡報一齊中斷**：`journalctl --list-boots` 顯示 boot -1 終止於 08:15:21（乾淨關機）、boot 0 起於 09:12:41，冇任何 cron/timer 觸發（人手／外部重啟）；system cron `send-briefing.sh` 停喺「發送到 Telegram…」無 ✅ 行，OpenClaw job 27d54b55 記 `cron: job interrupted by gateway restart`（跑咗 3691 秒）→ 09:50 補跑送出。<!-- project: github.com/jyonline0604/website -->
+- **真修復 — cron-guardian.sh**：舊邏輯 `grep -q "$TASK"` 會把**註釋行當成「條目存在」**（V4 條目被註釋咗都話 OK）→ 改用 `grep -v '^[[:space:]]*#'`；新增 `declare -A DROPBOX_CRON` 令 V5/V6/V7 條目缺失時自動 append 加返（唔會洗掉其他條目）。<!-- project: github.com/jyonline0604/website -->
+- **一度誤判並已回滾**：見到 V4 條目被註釋，一度以為同 2026-10-21 Vol5 遺失同類而加返條目；讀 SKILL.md v2.9.92 先發現係**用戶 2026-10-02 指令退役** → 立即還原 crontab 原狀，並喺 guardian 明確排除 V4 + 加註解釋。<!-- project: github.com/jyonline0604/website -->
+- Vol4 手動補跑驗證 token 原子寫入修復有效（state 1740→1746、未處理 0、exit 0）；V7 今日 11:30 首次 cron 執行（log 仍未建立屬正常）。<!-- project: github.com/jyonline0604/website -->
+- 教訓：**自動修復前必須先 grep SKILL.md 確認係「意外遺失」定「刻意退役」**，否則會違背用戶指令；cron 唔會自動回補被重啟中斷嘅 job，要人手/agent 補跑。<!-- project: github.com/jyonline0604/website -->

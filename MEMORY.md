@@ -197,3 +197,10 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
   3. `scripts/check_chapter_links.py` 檢查器 regex 修正：舊 regex 嘅 `.*` 會跨 `</a>` 邊界攞錯 href（第1章攞到 chapters.html），加上未處理絕對 URL → 每日同步報 **2354 個假錯誤**。改用 `id="prevLink"/"nextLink"` 精準抽取 + URL 正規化 + 邊界章容許 `#`/`chapters.html`，真實錯誤由 2354 收窄到 101（全部係上面嘅真缺陷）。
 - 修復後重跑檢查器：**1752 章、0 個鏈接問題**（「所有鏈接正確無誤！」）。<!-- project: github.com/jyonline0604/website -->
 - 教訓：**檢查器本身都會講大話** — 報 2354 個錯唔等於有 2354 個錯；要先抽 link 邏輯同線上實測對照，先分得出真缺陷同工具 bug。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-10-24 08:15 早上簡報 — 全綠 + 自動修復 git 分歧（DREAMS.md / CI 推送）
+- 巡檢 5 項全綠：網站 200（/、chapters.html、home.html、chapter-1751/1752 全部 200）、1752 章 0 缺口 0 鏈接錯誤、/ 15%、Mem 可用 3.2Gi、8 個 OpenClaw job errs=0 + system crontab 14 條全在位。<!-- project: github.com/jyonline0604/website -->
+- 自動修復 1（**git 分歧**）：website repo 本地落後 origin/main 1 commit（GitHub Actions `github-actions[bot]` 2026-10-23 17:39 UTC 推嘅新聞/財務/RSS 更新），本地 push 被拒。`git pull --rebase origin main` → 成功 → push（0/0）。<!-- project: github.com/jyonline0604/website -->
+- 自動修復 2：**DREAMS.md 未提交**（Memory Dreaming Promotion 03:00 寫入但冇 commit），已 commit + push。<!-- project: github.com/jyonline0604/website -->
+- 診斷：今日 06:29:55 poweroff / 07:58:23 開機，journal 顯示係 GNOME 桌面 session（uid 1000 gnome-shell）觸發 → 人手操作，非 cron 自動重啟，issue #10 續觀察。<!-- project: github.com/jyonline0604/website -->
+- 教訓：**推送前必須 `git pull --rebase origin main`** — CI 會直接推同一 repo；同步腳本已內置 pull --rebase，11:00/11:30 同步唔受影響。<!-- project: github.com/jyonline0604/website -->

@@ -4,7 +4,7 @@
 set -e
 
 # 設置環境變量
-export PATH="/home/openclaw/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/home/openclaw/.nvm/versions/node/v24.21.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # 日誌文件
 LOG_FILE="/home/openclaw/.openclaw/workspace/logs/openclaw-update.log"
@@ -66,8 +66,8 @@ main() {
     log_message "🔄 發現新版本，開始更新..."
     
     # 執行更新
-    log_message "📦 執行: npm update -g openclaw"
-    if npm update -g openclaw 2>&1 | tee -a "$LOG_FILE"; then
+    log_message "📦 執行: openclaw update"
+    if openclaw update 2>&1 | tee -a "$LOG_FILE"; then
         # 檢查更新後的版本
         NEW_VERSION=$(get_current_version)
         log_message "🎉 更新成功！新版本: $NEW_VERSION"

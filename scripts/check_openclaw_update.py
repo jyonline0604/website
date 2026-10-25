@@ -12,7 +12,8 @@ from datetime import datetime
 import re
 
 # 設置環境變量
-os.environ['PATH'] = '/home/openclaw/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+# 2026-10-25 修正：舊 ~/.npm-global/bin 係孤兒安裝（2026.9.5），令版本偵測報錯版本；改用 gateway 實際使用嘅 nvm node24 安裝
+os.environ['PATH'] = '/home/openclaw/.nvm/versions/node/v24.21.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 
 # 日誌文件路徑
 LOG_FILE = "/home/openclaw/.openclaw/workspace/logs/openclaw-update.log"
@@ -207,7 +208,7 @@ def main():
     if update_available:
         print(f"   ⚠️  發現新版本: {latest_version}")
         print(f"   📅 當前版本: {current_version}")
-        print(f"   🔄 建議更新: npm update -g openclaw")
+        print(f"   🔄 建議更新: openclaw update（唔好用裸 npm i -g openclaw，會靜靜裝舊版）")
         
         # 記錄警告日誌
         log_message(f"警告: OpenClaw有新版本可用 - 當前: {current_version}, 最新: {latest_version}")

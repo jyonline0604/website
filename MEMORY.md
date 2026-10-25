@@ -204,3 +204,11 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 自動修復 2：**DREAMS.md 未提交**（Memory Dreaming Promotion 03:00 寫入但冇 commit），已 commit + push。<!-- project: github.com/jyonline0604/website -->
 - 診斷：今日 06:29:55 poweroff / 07:58:23 開機，journal 顯示係 GNOME 桌面 session（uid 1000 gnome-shell）觸發 → 人手操作，非 cron 自動重啟，issue #10 續觀察。<!-- project: github.com/jyonline0604/website -->
 - 教訓：**推送前必須 `git pull --rebase origin main`** — CI 會直接推同一 repo；同步腳本已內置 pull --rebase，11:00/11:30 同步唔受影響。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-10-25 09:39 早上簡報（08:15 catch-up）— 部機 06:48 關機／09:35 開機，3 個 system cron 漏跑已補
+- 巡檢：kofhk.com 200（0.70s）／磁碟 15%（64G/468G）／Mem 可用 3.8Gi／load 2.94（開機得 4 分鐘）／線上 chapters-data.json 1758 章 = 本地 1759 檔 = V7 state 1758（零分歧）／8 個 OpenClaw job errs=0／system crontab 14 條全在位（V4 條目維持註釋退役，符合 2026-10-02 指令）。<!-- project: github.com/jyonline0604/website -->
+- **事故**：`journalctl --list-boots` → boot -1 終止 2026-10-25 06:48:58（`gnome-session-shutdown.target` → `systemd-poweroff`，GNOME 桌面人手關機，同 issue #10 一致）、boot 0 起 09:35:18；停機窗口內 **08:00 記憶備份、08:15 system cron 簡報、09:00 Dropbox token 續期全部漏跑** — cron 唔會回補，OpenClaw scheduler 會 catch-up（08:15 job 於 09:39 補跑 = 本次簡報）。<!-- project: github.com/jyonline0604/website -->
+- 自動修復 1（漏跑補做）：`bash scripts/renew-dropbox-token.sh`（09:42，token 有效、檔案同 .bak 都係 600）+ `bash scripts/backup-memory.sh`（09:42，exit 0，Second-brain 973708a / Max-backup 4fc6409）；**冇補跑 send-briefing.sh**，避免同 OpenClaw catch-up 重覆發送兩次。<!-- project: github.com/jyonline0604/website -->
+- 自動修復 2（git 分歧）：workspace 本地落後 origin/main 2 個 CI commit（新聞/財務/RSS）+ DREAMS.md 未提交（03:00 dreaming 寫入）→ commit + `git pull --rebase origin main` + push 成功，三倉全部 0/0。<!-- project: github.com/jyonline0604/website -->
+- SKILL.md v2.9.100 → v2.9.101：新增「開機後巡檢 + 漏跑 job 手動補跑」流程；本地／Second-brain／Max-backup 三份 SKILL.md diff 一致。<!-- project: github.com/jyonline0604/website -->
+- 教訓：開機後第一個 agent 回合就要對齊 boot 時間同漏跑窗口；system cron 唔 catch-up、OpenClaw cron 會 catch-up，兩邊要分開處理；補跑前先睇有冇 OpenClaw 已經代勞。<!-- project: github.com/jyonline0604/website -->

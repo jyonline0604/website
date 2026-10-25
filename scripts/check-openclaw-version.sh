@@ -24,21 +24,25 @@ if [ -n "$CURRENT_VERSION" ] && [ "$CURRENT_VERSION" != "$LATEST_VERSION" ]; the
     echo "🎉 有新版本！"
     
     # 發送 Telegram 通知
-    MESSAGE="🔔 *OpenClaw 版本通知*
+    MESSAGE="🔔 【OpenClaw 版本通知】
 
 📌 當前版本：$CURRENT_VERSION_FULL
 🆕 最新版本：$LATEST_VERSION
 ⏰ 檢查時間：$(date '+%Y-%m-%d %H:%M')
 
 ，建議更新！"
-
-    # 使用 curl 發送到 Telegram
-    if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+    # 2026-10-25 修復：cron 環境無 TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID -> 舊 curl 路徑由安裝以來從來冇發出過（版本通知一直要人手轉發）。
+    # 改用 openclaw CLI（與 send-briefing.sh 一致，憑證由 OpenClaw config 處理），curl 保留作後備。
+    if openclaw message send --channel telegram --target 5344443732 --message "$MESSAGE" > /dev/null 2>&1; then
+        echo "已發送 Telegram 通知（openclaw CLI）"
+    elif [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
         curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
             -d "chat_id=$TELEGRAM_CHAT_ID" \
             -d "text=$MESSAGE" \
             -d "parse_mode=Markdown" > /dev/null 2>&1
-        echo "已發送 Telegram 通知"
+        echo "已發送 Telegram 通知（curl 後備）"
+    else
+        echo "⚠️ Telegram 通知未送出（CLI 與 env 兩條路都失敗）"
     fi
 else
     echo "✅ 版本已是最新"

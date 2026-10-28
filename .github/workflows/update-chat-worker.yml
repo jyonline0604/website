@@ -5,6 +5,7 @@ on:
     paths:
       - 'chapter-*.html'
       - 'workers/chat-worker/**'
+      - '.github/workflows/update-chat-worker.yml'
   schedule:
     # UTC 03:05 = 香港時間 11:05
     - cron: '5 3 * * *'
@@ -12,8 +13,7 @@ on:
     - cron: '5 6 * * *'
   workflow_dispatch:
 
-# 防止並發 run 撞 push（2026-09-17 run 35176518128 因 race condition git push 失敗）：
-# V6 sync 每日 push 6 章 → 觸發 6 個 workflow run → 後者 push 搶先 → 前者 push 失敗
+# 防止並發 run 撞 push（2026-09-17 run 35176518128 因 race condition git push 失敗）
 concurrency:
   group: update-chat-worker-${{ github.ref }}
   cancel-in-progress: false  # 唔取消進行中嘅 run，等佢做完，後面嘅 run 自動 cancel
@@ -28,7 +28,7 @@ jobs:
       - name: 檢出代碼
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 需要完整 history 俾 git pull --rebase 同 git diff HEAD~1 用
+          fetch-depth: 0  # 需要完整 history 俾 git pull --rebase 用
 
       - name: 設置 Python
         uses: actions/setup-python@v5
@@ -38,58 +38,104 @@ jobs:
       - name: 重建章節索引
         run: python build_chapter_index.py
 
-      - name: 檢查是否有變更需要部署
-        id: check_changes
-        run: |
-          INDEX_CHANGED=false
-          WORKER_CHANGED=false
-          if ! git diff --quiet -- workers/chat-worker/chapter-titles.json; then
-            INDEX_CHANGED=true
-            echo "章節索引有變更"
-          fi
-          if ! git diff --quiet HEAD~1 -- workers/chat-worker/index.js workers/chat-worker/wrangler.toml; then
-            WORKER_CHANGED=true
-            echo "Worker 程式碼有變更"
-          fi
-          if [ "$INDEX_CHANGED" = "true" ] || [ "$WORKER_CHANGED" = "true" ]; then
-            echo "changed=true" >> $GITHUB_OUTPUT
-            echo "準備部署 Worker"
-          else
-            echo "changed=false" >> $GITHUB_OUTPUT
-            echo "無變更，跳過部署"
-          fi
-
       - name: 設置 Node.js
-        if: steps.check_changes.outputs.changed == 'true'
+        id: setup_node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: 安裝相依套件並部署 Worker
-        if: steps.check_changes.outputs.changed == 'true'
+      - name: 安裝相依套件
+        working-directory: workers/chat-worker
         run: |
-          cd workers/chat-worker
-          npm install
-          npx wrangler deploy
+          npm ci --no-audit --no-fund
+          npx wrangler --version
+
+      - name: 計算索引校驗碼
+        id: index_hash
+        run: |
+          HASH=$(sha256sum workers/chat-worker/chapter-titles.json | cut -d' ' -f1)
+          MARKER=''
+          if [ -f workers/chat-worker/.deployed-index-hash ]; then
+            MARKER=$(tr -d '[:space:]' < workers/chat-worker/.deployed-index-hash)
+          fi
+          echo "hash=$HASH" >> "$GITHUB_OUTPUT"
+          echo "marker=$MARKER" >> "$GITHUB_OUTPUT"
+          echo "索引校驗碼: $HASH（上次部署: ${MARKER:-無}）"
+
+      - name: 檢查是否有變更需要部署
+        id: check_changes
+        run: |
+          # 用『上次成功部署嘅索引校驗碼』做比較（唔係 git diff）
+          # 2026-10-28 修復：原本用 git diff 判斷，部署失敗 + 索引照提交之後，
+          # 下次 run 就會睇唔到變更 → 永遠唔會再部署，worker 索引永久失同步
+          if [ '${{ steps.index_hash.outputs.hash }}' != '${{ steps.index_hash.outputs.marker }}' ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "索引同上次部署版本唔同，需要部署"
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "索引同上次部署版本一致，無需部署"
+          fi
+
+      - name: 部署 Chat Worker（失敗自動重試 3 次）
+        id: deploy
+        if: steps.check_changes.outputs.changed == 'true'
+        continue-on-error: true  # 部署失敗唔會令後面嘅『提交索引』被 skip
+        working-directory: workers/chat-worker
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: |
+          set -uo pipefail
+          for i in 1 2 3; do
+            echo "🚀 部署嘗試 $i/3"
+            if npx wrangler deploy 2>&1 | tee "deploy-$i.log"; then
+              echo "ok=true" >> "$GITHUB_OUTPUT"
+              echo "✅ 部署成功（第 $i 次）"
+              exit 0
+            fi
+            echo "❌ 第 $i 次部署失敗"
+            [ "$i" -lt 3 ] && sleep 30
+          done
+          echo "ok=false" >> "$GITHUB_OUTPUT"
+          echo "===== 最後一次部署日誌 ====="
+          cat deploy-3.log 2>/dev/null || true
+          exit 1
 
-      - name: 提交更新的索引
-        if: steps.check_changes.outputs.changed == 'true'
+      - name: 記錄部署結果 + 提交索引
+        # 2026-10-28 修復：原本呢步 if: changed=='true'，而部署步驟失敗時
+        # GitHub 會自動 skip 後續步驟 → 索引永遠卡喺舊版（10-28 實測：站點 1782 章，索引停喺 1776）
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # Pull rebase 先：避免與並行 push 撞（即使有 concurrency group 仍可能漏網）
-          # 設 GIT_PULL_OPTIONS 容忍不相關 history（rebase 失敗時 fallback merge）
           git pull --rebase --autostash origin main || {
             echo "⚠️ rebase 衝突，fallback 用 merge"
             git pull --no-rebase --autostash origin main
           }
+          if [ '${{ steps.deploy.outputs.ok }}' = 'true' ]; then
+            echo '${{ steps.index_hash.outputs.hash }}' > workers/chat-worker/.deployed-index-hash
+            git add workers/chat-worker/.deployed-index-hash
+            echo "✅ 已記錄部署校驗碼（下次用嚟判斷需唔需要再部署）"
+          else
+            echo "⚠️ 部署未成功，唔更新校驗碼 → 下次 run 會自動重試部署"
+          fi
           if ! git diff --quiet -- workers/chat-worker/chapter-titles.json; then
             git add workers/chat-worker/chapter-titles.json
-            git commit -m "📚 自動更新章節索引 ($(date -u '+%Y-%m-%d %H:%M UTC'))"  || true
-            git push
+            git commit -m "📚 自動更新章節索引 ($(date -u '+%Y-%m-%d %H:%M UTC'))" || true
           else
             echo "索引無變更（rebase 後已被覆蓋），跳過提交"
           fi
+          git push || echo "⚠️ push 失敗（下次 run 會重試）"
+
+      - name: 部署結果匯報
+        if: always()
+        run: |
+          if [ '${{ steps.deploy.outcome }}' = 'skipped' ]; then
+            echo "ℹ️ 索引無變更，今次無需部署"
+            exit 0
+          fi
+          if [ '${{ steps.deploy.outputs.ok }}' != 'true' ]; then
+            echo "::error::Chat Worker 部署失敗（章節索引已提交，下次 push 會自動重試）"
+            exit 1
+          fi
+          echo "✅ Chat Worker 部署成功"

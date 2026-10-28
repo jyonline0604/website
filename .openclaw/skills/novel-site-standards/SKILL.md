@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.95
+version: 2.9.107
 ---
 
 ---
@@ -5347,3 +5347,204 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 同一個檔案本地/遠端行數唔同唔一定係「未推送」：今日 local HEAD == origin/main（8c626a883）、三倉 clean，只有 Cloudflare 邊舊快取
 - **SKILL.md 三處版本可能分叉**（local 2.9.93 vs backup 2.9.94）：同步前一定要 diff，用較新嘅 backup 版做 base 合併再寫回三處，唔可以直接 cp local 覆蓋 backup（會靜靜刪走 backup 有而 local 冇嘅 v2.9.92/v2.9.94 兩節）
 - 記憶檔 memory/ 已被 .gitignore，但已被 track 嘅 memory/YYYY-MM-DD.md 仍然可以 git add（要 -f 先會加新檔案，唔好亂加）
+
+### 補記（18:00 Skill 更新檢查補課）
+- SKILL.md 截斷事故：本地檔被其他 session 覆寫，10-21 區段（v2.9.83-2.9.88）消失 → 由 Second-brain HEAD~1 還原完整版（5307 行）再併入當日新條目
+- cp 陷阱：cp src DIR/ 會保留原檔名（造成 skills/.../skill_merged.md 殘留檔而 SKILL.md 冇覆蓋）→ 一律用 cp src DST_FILE；同步後必核對三處行數一致
+- 用戶重啟部機撞正排程時段 → 該 cron job 會記「interrupted by gateway restart」（errs+1）；處理：確認係人為重啟（無 stability crash bundle）後補跑該 job 即可，cron 不會自動回補
+
+---
+
+## [2026-10-23] 更新 (v2.9.96) - cron-guardian「註釋 = 缺失」自癒 + 退役卷唔好自動加返
+
+### 事件（早上簡報 08:15 補跑巡檢）
+- **08:15 部機重啟**：journal 顯示 boot -1 終止於 08:15:21（乾淨關機），boot 0 起於 09:12:41；冇任何 cron/timer 觸發。system cron `send-briefing.sh` 停喺「發送到 Telegram…」無成功行，OpenClaw job 27d54b55 記 `cron: job interrupted by gateway restart`（跑咗 3691 秒）→ 兩邊 08:15 簡報一齊中斷，09:50 補跑送出
+- **V4 log 停喺 2026-10-22 11:00**：嗰次係已知 token 競態（「Token 檔案異常，中止執行」）；2026-10-22 12:59 已改用 tmp + `os.replace()` 原子寫入 + 重試讀取，手動補跑 09:53 驗證通過（state 1740→1746，未處理 0）
+
+### 真正修復：scripts/cron-guardian.sh
+1. **「被註釋 = 缺失」**：舊邏輯 `echo "$CRONTAB" | grep -q "$TASK"` 會將註釋行當成「條目存在」→ 改用 `grep -v '^[[:space:]]*#'` 先過濾註釋
+2. **Dropbox 卷條目自癒**：`declare -A DROPBOX_CRON` 保留 V5/V6/V7 完整 cron 行，偵測到缺失就 append 加返（唔會洗掉其他條目）
+3. **V4 明確排除**：Volume 4 已按用戶 2026-10-02 指令退役（見 v2.9.92），註釋咗嘅條目係**正確狀態**，唔可以自動加返 → 排除並加註解釋
+
+### 教訓（重要）
+- **自動修復前必須先讀 SKILL.md 確認條目係「意外遺失」定「刻意退役」**：今次見到 V4 條目被註釋，一度當成 2026-10-21 Vol5 同類事故加返條目，讀到 v2.9.92 先發現係按指令退役，即刻回滾 crontab 原狀。冇讀 Skill 就自動修復 = 可能違背用戶指令
+- **部機重啟會同時打斷 system cron + OpenClaw cron 兩套機制**：gateway 用 `systemctl --user openclaw-gateway.service`（enabled）自動起返，但 cron 唔會自動回補中斷嘅 job，要人手/agent 補跑
+- `journalctl --list-boots` 係查「幾點重啟過、係咪意外」最快嘅指令
+
+### 檢查清單（新增）
+- [ ] 發現 system cron 條目唔見／被註釋 → **先 grep SKILL.md 確認係退役定係遺失**先至修
+- [ ] 自動加回 crontab 一律用 append（讀現有 → 檢查重複 → 加行 → `crontab -`），唔好覆蓋式寫入
+- [ ] 改完 crontab 要再 `crontab -l` 核對一次（改動同驗證分開兩步）
+
+---
+
+## [2026-10-23] 更新 (v2.9.97) - V4 crontab 退役文件化 + 判斷教訓（承 v2.9.96 原子寫入修復）
+
+### 內容
+- Dropbox Volume 4 crontab 條目：已按 2026-10-02 退役指令保持「註釋行」狀態（唔排程，附原因註解，guardian 已明確排除 V4）
+- 11:00 併發寫 token 嘅真因修復 = token 檔 tmp + os.replace() 原子寫入（v2.9.96 已驗證有效，V4 10-22 失敗 → 10-23 09:53 補跑 state 1746 exit 0 ✅）
+
+### 教訓（重要）
+- 移除/修改任何排程條目前，必須先 grep SKILL.md + memory/ 確認係「意外遺失」定「刻意退役」，再動手；今次差啲把刻意退役嘅 V4 當成「條目復活」而誤刪
+
+---
+
+## [2026-10-23] 更新 (v2.9.98) - Dropbox token 備份檔權限加固（.bak 664 → 600）
+
+### 問題描述
+- `scripts/renew_dropbox_token.py` 寫舊 token 備份 `.token-store/dropbox-token.txt.bak` 用 `backup.write_text()`，權限受 umask 影響實測 **664**（group/other 可讀）；主 token `dropbox-token.txt` 係 600 → 憑證備份檔變成權限漏洞兼長期遺留檔
+- 每日健康報告 22:00 巡檢時發現並清理
+
+### 根本原因
+- `Path.write_text()` 唔會 chmod，新檔預設 644，被 umask 002 變 664；`save_token()` 只有 tmp 嗰行有 `os.chmod(tmp, 0o600)`，backup 嗰行漏咗
+
+### 解決方法
+1. `save_token()` 加 `os.chmod(backup, 0o600)`（已 patch，已通過 py_compile）
+2. 刪走舊嘅 `.token-store/dropbox-token.txt.bak`（遺留憑證副本）
+3. 實跑 `scripts/renew-dropbox-token.sh` 驗證：新 token 600、備份檔 600、Dropbox API ping 有效、exit 0
+
+### 檢查清單（token / 憑證類檔案）
+- [ ] `ls -la .token-store/` 全部檔案權限 = 600
+- [ ] 冇憑證副本殘留（*.bak / *.old / *.tmp）
+- [ ] 改完要實跑一次 renewal 驗證，唔好只靠 compile
+- [ ] 同步 SKILL.md 落 Second-brain + Max-backup 前先 diff（避免靜靜哋覆蓋 backup 有嘅更新記錄）
+
+---
+
+## [2026-10-23] 更新 (v2.9.99) - 章節「下一章」連結真缺陷修復 + 檢查器 regex 修正
+
+### 問題描述
+1. **真缺陷（線上 101 頁）**：每批 6 章同步後，舊尾章嘅「下一章」連結永遠停喺 `chapters.html`（讀者撳「下一章」彈返目錄）。線上實測 chapter-1746.html 確認。
+2. **工具 bug**：`check_chapter_links.py` 舊 regex `<a[^>]*href="([^"]+)"[^>]*>.*上一章.*</a>` 嘅 `.*` 會跨 `</a>` 邊界攞錯 href，加上未處理絕對 URL → 每日同步報 2354 個假錯誤，真正錯誤只有 101 個。
+
+### 根本原因
+- `fix_latest_chapter_next()` 只處理「最新一章」，舊尾章嘅 nextLink 從未被還原
+- 檢查器 regex 太寬鬆（跨標籤貪婪匹配）同埋只接受相對路徑
+
+### 解決方法
+1. `fix_latest_chapter_next()` 擴充：最新一章→返回目錄 + 修復所有非最新章節嘅 nextLink（`chapters.html`/`#` → `chapter-N+1.html`）；V4/V5/V6/V7 四份同步腳本同步改
+2. 新增 `scripts/fix_broken_next_links.py`（一鍵修復工具），已修 101 頁
+3. `check_chapter_links.py`：改用 `id="prevLink"/"nextLink"` 精準抽 href + `normalize_link()` 正規化絕對 URL + 邊界章容許 `#`/`chapters.html`
+
+### 驗證
+- 修復後重跑檢查器：1752 章、**0 個鏈接問題**
+- 單元測試：temp dir 內 chapter-1 嘅 nextLink 由 `chapters.html` 還原做 `chapter-2.html`
+
+### 檢查清單（章節導航）
+- [ ] 同步後 `python3 scripts/check_chapter_links.py` → 0 個 ❌
+- [ ] 抽查上一批尾章嘅「下一章」係指向 chapter-N+1.html（唔係返回目錄）
+- [ ] 線上抽查用 `?cb=` cache-buster（Cloudflare 舊快取會誤導）
+- [ ] 檢查器報錯時，先分「真缺陷」同「工具 bug」再改站點
+
+---
+
+## [2026-10-24] 更新 — git 分歧（CI 直接 push 同一 repo）
+- **症狀**：本地 `git push` 被拒「tip of your current branch is behind its remote counterpart」；origin/main 多咗 `github-actions[bot]` 嘅新聞/財務/RSS 自動更新 commit
+- **根本原因**：GitHub Actions 同本地 workspace 用同一個 repo（github.com/jyonline0604/website），CI 推咗之後本地唔會自動 fetch；人手 push 前無 pull
+- **解決方法**：
+  1. **推送前必須 `git pull --rebase origin main`**（同步腳本 `git_commit_and_push()` 已內置，V5/V6/V7 都冇事）
+  2. rebase 衝突時 DREAMS.md 一般唔會撞（CI 唔會改 DREAMS.md）
+  3. 檢查完記得 `git rev-list --left-right --count HEAD...origin/main` → 應該 0 0
+- **配套**：Memory Dreaming Promotion（03:00）寫 DREAMS.md 但唔 commit → repo 唔 clean；簡報巡檢要 `git status --porcelain` 順手 commit + push
+- **檢查清單（git）**：
+  - [ ] 每日簡報：`git status --porcelain` 三倉皆空（唔空就 commit + push）
+  - [ ] 推送前先 `git pull --rebase origin main`
+  - [ ] `git rev-list --left-right --count HEAD...origin/main` → 0 0
+
+---
+
+## [2026-10-25] 更新 (v2.9.101) — 部機重啟令 system cron 漏跑（需人手補跑）
+- **症狀**：機於 **06:48:58** 關機、**09:35:18** 先開機（journal `gnome-session-shutdown.target` → `systemd-poweroff`，同 issue #10 一樣係 GNOME 桌面人手操作，唔係 cron/timer 觸發）；開機後 08:00 記憶備份、08:15 system cron 簡報、09:00 Dropbox token 續期全部漏跑
+- **根本原因**：**cron 唔會自動回補**停機期間錯過嘅 job；OpenClaw scheduler 有 missed-run catch-up（08:15 job 於 09:39 補跑），但 system crontab 冇
+- **解決方法**（開機後第一個 agent 回合要即刻做）：
+  1. `journalctl --list-boots` 睇 boot 0 / boot -1 時間 → 對齊漏跑窗口
+  2. 漏咗嘅 system cron 逐個手動補跑（記憶備份 `bash scripts/backup-memory.sh`、token 續期 `bash scripts/renew-dropbox-token.sh`）
+  3. **唔好補跑 send-briefing.sh**：OpenClaw cron 簡報 job 會自己 catch-up 補送，補跑 system cron 會重覆發送兩次
+  4. 補跑前先 `flock` 睇有冇另一個實例行緊（backup-memory.sh / renew-dropbox-token.sh 本身已有 flock）
+- **檢查清單（開機後巡檢）**：
+  - [ ] `who -b` / `journalctl --list-boots` → 確認最後一次開機時間同而家相差幾多
+  - [ ] `systemctl --failed` → 重啟後 failed unit 通常清零（apport/logrotate 只喺 AC 供電時 fail）
+  - [ ] 逐一核對漏跑窗口內嘅 system cron（08:00 備份 / 09:00 token / 10:00 財經 / 11:00 同步）
+  - [ ] 補跑 token 續期：確認 `.token-store/dropbox-token.txt` 權限仍然 600
+  - [ ] 三倉 `git rev-list --left-right --count origin/main...HEAD` → 0 0
+
+---
+## [2026-10-25] 更新 - 版本檢查 Telegram 通知路徑修復（cron 環境冇 env token）
+
+### 修復內容
+- check-openclaw-version.sh 嘅 Telegram 通知改用 openclaw message send CLI（同 send-briefing.sh 一致，憑證由 OpenClaw config 處理），curl + env token 保留作後備
+- 根因：cron 環境從來冇 TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID → 舊 curl 路徑由安裝以來一次都冇成功發出過，版本通知一直要靠人手轉發
+- 實測：修復後 2026.10.6 -> 2026.10.7 通知成功送出 Telegram
+
+### 教訓
+- cron / system 環境跑嘅腳本唔可以假設有互動式 shell 嘅 env 變數；要用 openclaw CLI 或明確由檔案讀 token
+
+
+---
+## [2026-10-25] 更新 - 版本檢查 .py 報錯版本 + 升級建議修正
+
+### 修復內容
+- check_openclaw_update.py 嘅 PATH 由舊 ~/.npm-global/bin 改為 nvm node24：之前讀到孤兒安裝（2026.9.5），每日 11:00 系統 cron 記錄嘅「當前版本」係錯的（實際 2026.10.5）
+- 升級建議由「npm update -g openclaw」改為「openclaw update（唔好用裸 npm i -g openclaw，會靜靜裝舊版）」；update_openclaw.sh 同步修正（未被 crontab 使用，但保留作人手更新用）
+
+### 教訓
+- 同一類「孤兒 ~/.npm-global PATH」問題已出現 5 次（check-openclaw-version.sh v2.9.78、send-briefing.sh v2.9.79、cron-guardian.sh v2.9.82、check_openclaw_update.py v2.9.102、update_openclaw.sh v2.9.102）→ 升級/搬遷後要全局 grep 一次舊路徑
+- 版本檢查腳本要報「gateway 實際運行」嘅版本，唔係 PATH 撞到嘅第一個 openclaw
+
+
+---
+
+## [2026-10-25] 更新 (v2.9.104) - skill 版本號 bump 教訓（附帶修正）
+
+### 事項
+- 我用「逐段 +1」做版本 bump，令 2.9.101 錯變 3.10.102（兩倉同步後即察覺並改正為 2.9.102）
+- 正確做法：只 bump 最後一段（patch），major/minor 保持不變
+
+### 教訓
+- 版本號必須逐段核對再寫入，唔好用程式逐段 +1（2.9.101 -> 3.10.102 破壞語意化版本）；寫入後要核對本地 + 兩備份倉三處版本一致
+
+---
+
+## [2026-10-26] 更新 (v2.9.105) - 開機後 git 分歧自癒 + chapter state「假分歧」判定法
+
+### 事項
+- **開機後 git 分歧**：部機重啟（07:53 起機）後 workspace 落後 origin/main 2 個 commit（GitHub Actions CI 推嘅新聞/財務更新），同時 DREAMS.md 有 Memory Dreaming Promotion (03:00) 未提交改動 → `git pull --rebase` 因 unstaged changes 被拒
+- **修復**：先 `git add DREAMS.md && git commit`，再 `git pull --rebase origin main`，最後 `git push` → 三倉（workspace / Second-brain / Max-backup）全部 0/0
+
+### 教訓
+- **`git pull --rebase` 一定要先 commit 或 stash**：有 unstaged changes 會直接報 `cannot pull with rebase`，唔會自動幫你處理
+- **chapter state「假分歧」**：站上 1764 章，但 V3/V6 state 嘅 `processed` 缺少 790-795 / 1467-1468 / 1499-1503（13 章）。呢啲章係**手動加落站**（git log 見 `feat: Add chapters 1467-1472 from Dropbox Volume 6`），state 冇記錄，但同步腳本有 `f['ch_num'] not in existing` 防護（existing = 本地 chapter-*.html 檔名）→ **唔會重複下載、唔會覆蓋** → 唔需要修
+- **判定 state 分歧嘅正確方法**：唔好淨係比對 processed 數量，要比對 **(a) site 線上 chapters-data.json 章號集合** vs **(b) 各卷 state 章號集合**，再睇 **本地 chapter-*.html 實際存在嘅檔案**。同步腳本 guard 係睇本地檔案，唔係睇 state
+- **Cloudflare 快取唔會令站點壞**：`?v=YYYYMMDD` 參數令 chapters-data.json 每次都係 fresh（cf-cache-status HIT 但 age=0）；裸路徑 `/assets/chapters-data.json` 可能係舊快取（age=327759s），但頁面 JS 一律帶 `?v=` → 唔影響用戶
+- **service-worker.js 對 JSON 用 Cache First**：`/assets/chapters-data.json` 喺 staticUrls 內，舊 SW cache 會持有舊 JSON；頁面用 `?v=` 參數令 URL 不同 → SW match 唔中 → 自動取新，無實害
+
+---
+
+---
+
+## [2026-10-28] 更新 - 卡住 rebase + Detached HEAD 自動修復
+
+### 修復內容
+- 症狀：本地 finance-data commit（16:00 HKT）撞 GitHub Actions 同日更新（12:55 UTC）→ rebase 衝突 UU finance-data.json + Detached HEAD
+- 修復：git rebase --abort → git reset --hard origin/main（遠端更新更晚，丟棄過時本地 commit 無資料損失）→ scripts/git-health-check.sh --fix
+- 驗證：git 狀態健康、工作區乾淨、未推送 0
+
+### 教訓
+- 同一個自動生成資料檔（finance-data.json）被本地 cron 同 GitHub Actions 同時改 → 必然衝突；衝突時以較新嘅遠端為準 reset --hard
+- 心跳 09:00 Git 健康檢查係呢類卡死嘅第一道防線（發現即自動修復 + 通知）
+
+---
+
+## [2026-10-28] 更新 (v2.9.107) - 三份 SKILL.md 版本分叉自癒 + 早報 git 分歧自癒
+
+### 修復內容
+- **三份 SKILL.md 版本分叉**：local v2.9.95（5349 行）vs Second-brain / Max-backup v2.9.106（5534 行，兩份一致）→ local 缺失 v2.9.96-2.9.106 共 185 行（cron-guardian 自癒、Volume 7 建立、開機後巡檢等條目全部唔喺 local）→ 以 backup 版（較新且係 local 超集）覆寫 local → bump 至 v2.9.107 → 三份 5534 行 + 逐行 diff 一致
+- **website repo git 分歧**：本地落後 origin/main 1 個 CI commit（2026-10-27 18:30 UTC 新聞/財務/RSS 更新）+ DREAMS.md 未提交（03:00 Memory Dreaming Promotion 寫入）→ 先 commit DREAMS.md → `git pull --rebase origin main` → push 成功（c1f29671e..5c54ea5e8），三倉 0/0
+- **backup 倉明文 MEMORY.md 過期**：Second-brain / Max-backup 嘅 MEMORY.md 停留 2026-10-22，本地已於 10-26 重寫為精簡版（31KB）→ 用 live 本地版覆寫兩份明文副本 + 補齊 memory/ 日誌檔，舊版由 backup 倉 git history 保留
+
+### 教訓
+- **三份 SKILL.md 同步前一定要 diff + 對行數**：單向 cp 會靜靜丟走另一方嘅更新區段（呢次 local 就係少咗 185 行）；覆寫方向固定係「較新嗰份 → 較舊嗰份」，因為較新嗰份係超集
+- **backup 倉明文 MEMORY.md 唔會跟 daily backup script 更新**：`backup-memory.sh` 只做加密 tarball（MEMORY.md + memory/*.md 打包再 encrypt，08:00 / 20:00 兩次），明文副本只喺人手 cp 時更新 → 明文副本會靜靜過期，但唔代表備份失效，唔好因此重跑或重建 tarball
+- **git pull --rebase 前一定先 commit / stash**：有 unstaged changes 會被直接拒絕（2026-10-24、10-26、10-28 連續三次驗證同一件事）
+- **判定線上章節數一定要加 cache-buster**：裸路徑 `/assets/chapters-data.json` 有 Cloudflare 舊快取，加 `?cb=<ts>` 先係真實值（今日線上 1776 = 本地 chapters-data.json 1776 = 本地 chapter-*.html 1776 檔 + template）
+- **volume state 合計數 ≠ 線上章節數係正常**：今日 V2-V7 state 合計 1263 章，線上 1776 章，差額係 CH1-500 早期章 + 手動加落站嘅章節（同步腳本 guard 以本地 chapter-*.html 檔名為準，唔會重複下載），唔好當成 state 分歧去修

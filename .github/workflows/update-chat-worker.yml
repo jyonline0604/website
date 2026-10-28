@@ -121,9 +121,15 @@ jobs:
           fi
           if ! git diff --quiet -- workers/chat-worker/chapter-titles.json; then
             git add workers/chat-worker/chapter-titles.json
-            git commit -m "📚 自動更新章節索引 ($(date -u '+%Y-%m-%d %H:%M UTC'))" || true
+            echo "📚 章節索引有變更，一併提交"
+          fi
+          # 2026-10-28 二次修復：原本 commit 只喺「索引有變更」時先做，
+          # 令 .deployed-index-hash 永遠 add 咗但 commit 唔到 → marker 遺失
+          # → 下次 run 又會當作「需要部署」而無謂重複部署。
+          if ! git diff --cached --quiet; then
+            git commit -m "📚 更新部署校驗碼 + 章節索引 ($(date -u '+%Y-%m-%d %H:%M UTC'))" || true
           else
-            echo "索引無變更（rebase 後已被覆蓋），跳過提交"
+            echo "索引及校驗碼均無變更，跳過提交"
           fi
           git push || echo "⚠️ push 失敗（下次 run 會重試）"
 

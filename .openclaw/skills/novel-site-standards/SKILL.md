@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.107
+version: 2.9.108
 ---
 
 ---
@@ -5548,3 +5548,31 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **git pull --rebase 前一定先 commit / stash**：有 unstaged changes 會被直接拒絕（2026-10-24、10-26、10-28 連續三次驗證同一件事）
 - **判定線上章節數一定要加 cache-buster**：裸路徑 `/assets/chapters-data.json` 有 Cloudflare 舊快取，加 `?cb=<ts>` 先係真實值（今日線上 1776 = 本地 chapters-data.json 1776 = 本地 chapter-*.html 1776 檔 + template）
 - **volume state 合計數 ≠ 線上章節數係正常**：今日 V2-V7 state 合計 1263 章，線上 1776 章，差額係 CH1-500 早期章 + 手動加落站嘅章節（同步腳本 guard 以本地 chapter-*.html 檔名為準，唔會重複下載），唔好當成 state 分歧去修
+## [2026-10-28] 更新 - chat-worker 依賴目錄入 .gitignore + chapter-titles 章數修正
+
+### 修復內容（隔離 session 執行，小肥喵補記 skill 日誌）
+- .gitignore 補 node_modules/（原本缺失，150M 未追蹤依賴目錄）；補交 package-lock.json
+- chat-worker assets/chapter-titles.json 由 1776 章修正至 1782 章（對齊 assets/chapters-data.json 零分歧）
+- commit 399645001 已 push（origin/main、Second-brain、Max-backup 均 0 未推送）
+
+### 教訓
+- Node 依賴目錄必須入 .gitignore，否則未追蹤依賴會令 push/clone 體積失控
+- 章節標題索引（chapter-titles.json）同主索引（chapters-data.json）要同批更新，否則網站前端會少 6 章
+
+---
+## [2026-10-28] 更新 (v2.9.108) - chat-worker CI 結構性 bug 修復 + OpenRouter free 模型退役
+
+### 修復內容
+- **chat-worker 索引永久凍結（結構性根因）**：原本 `部署 Chat Worker` 一旦失敗，GitHub 自動 skip 後面「提交索引」步驟 → worker 索引停喺 CH1776，而站點已 CH1782，兩者永久失同步；而且原本用 `git diff` 判斷「需唔需要部署」，索引一提交就永遠回 false，**即使部署失敗都唔會再部署**。改用 SHA-256 hash 對比 `.deployed-index-hash` marker 檔（部署成功先更新 marker），失敗就下次 run 自動重試。
+- **deploy 步驤加韌性**：`continue-on-error: true` ＋ 3 次重試（每次間隔 30 秒）＋ 提交索引步驤加 `if: always()`；Cloudflare 端回 `10500 internal server error` 屬暫時性錯誤，重試即成功。
+- **marker 二次 bug（自己引入）**：`git add .deployed-index-hash` 後，commit 只喺「索引有變更」時先做 → marker 永遠 commit 唔到 → 下次 run 又當作需要部署而無謂重複部署。修正為「有任何 staged 改動就 commit」。
+- **實測驗證**：run #447 / #448 全綠（16 個 step 全部 success）；線上 `GET /api/status` → `{"ok":true,"chapters":1782}`，chat API 正常答出 CH1781「若曦之道」／CH1782「並肩而行」；marker hash 與 index hash 一致。
+- **OpenRouter free 模型退役**：fallback 鏈第一棒 `openrouter/minimax/minimax-m3.1-flash:free` 已於 2026-10-22 結束 free 試用期並被 OpenRouter 移除（API 回 404）→ 成條 fallback 鏈第一棒係死鏈。實測 16 隻現存 `:free` 模型後改用：`nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free` → `cohere/north-mini-code:free` → `nvidia/nemotron-3-ultra-550b-a55b:free` → `poolside/laguna-s-2.1:free` → `recursive/flint-v1.0:free`。config（defaults + entries.main modelPolicy.allow）、6 個 cron job 嘅 fallback override、cron-guardian.sh 全部同步更換，`cron_model_guard.py` 驗證通過。
+
+### 教訓
+- **「提交索引」步驟一定要 `if: always()`**：部署一死，後續步驟會被 GitHub 自動 skip，令「部署失敗」變成「索引凍結」嘅隱性永久故障。
+- **自己 commit 落 git 嘅部署產物唔可以用 `git diff` 做變更偵測**：用 hash marker（部署成功先更新），否則提交一次之後永遠唔會再部署。
+- **marker 檔本身都要有 commit 路徑**：`git add` 完唔 commit 等於冇 add；commit 條件要睇「有冇 staged 改動」而唔係「某個特定檔案有冇變」。
+- **fallback 鏈嘅第一棒會靜靜死掉**：OpenRouter free 試用期會結束（2026-10-22 minimax-m3.1-flash 就係），`/api/v1/models` catalog 要定期核對，唔好淨係信舊 config。
+- **實測模型可用性要用真 chat/completions 實測**，唔好淨係睇 catalog 存在：`/api/v1/models` 有唔代表 call 到（`liquid/lfm-2.5-2.6b:free` 429、`thinkingmachines/inkling:free` 403 只准 agentic harness）。
+- **2026-10-26 pages 部署失敗係 GitHub 側暫時性 OIDC 問題**（`Failed to get ID Token: Request timeout`），之後連續 20+ 次 pages run 全綠 → 唔使改 workflow。

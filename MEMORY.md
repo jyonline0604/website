@@ -16,12 +16,17 @@
 
 ## 🤖 模型策略（2026-10-21 三次遷移 → MiniMax-M3.1-Flash）
 - Primary：**minimax/MiniMax-M3.1-Flash**（2026-10-21；舊 id `MiniMax-M3` 已改名，job 覆寫舊 id 會被 `modelPolicy.allow` 直接拒絕成個 job）<!-- project: github.com/jyonline0604/website -->
-- Fallback chain（4 個 OpenRouter free，10-21 實測 catalog refresh 通）：`openrouter/nvidia/nemotron-3-super-120b-a12b:free` → `openrouter/deepseek/deepseek-v4-flash:free` → `openrouter/qwen/qwen3-coder:free` → `openrouter/minimax/minimax-m2.5:free`<!-- project: github.com/jyonline0604/website -->
+- Fallback chain（2026-10-28 重整，5 個 OpenRouter `:free`，全部實測 chat/completions 通）：`openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free` → `openrouter/cohere/north-mini-code:free` → `openrouter/nvidia/nemotron-3-ultra-550b-a55b:free` → `openrouter/poolside/laguna-s-2.1:free` → `openrouter/recursive/flint-v1.0:free`<!-- project: github.com/jyonline0604/website -->
+- ⚠️ 2026-10-28：`openrouter/minimax/minimax-m3.1-flash:free` 已於 **2026-10-22 結束 free 試用期並被 OpenRouter 移除**（API 回 404）→ 舊 fallback 鏈第一棒係死鏈；已連同 6 個 cron job override + `cron-guardian.sh` 一齊換新<!-- project: github.com/jyonline0604/website -->
+- ⚠️ 2026-10-28：`:free` 唔等於一定 call 得到 — `liquid/lfm-2.5-2.6b:free`/`poolside/laguna-xs-2.1:free`/`xingchen-agi/xing4.0-29b-a4b:free` 429、`thinkingmachines/inkling:free` 403（只准 agentic harness）；fallback 鏈要定期用真 chat/completions 實測，唔好淨係睇 `/api/v1/models` catalog<!-- project: github.com/jyonline0604/website -->
 - ❌ zai/glm-5.3-flash：配額爆 + 10-14 起 429 餘額空；10-21 大肥喵確認**暫時唔會再充值** → 唔可以做 fallback
 - ❌ deepseek：billing 空；10-21 大肥喵確認**暫時唔會再充值** → 唔可以做 fallback
 - ❌ google/gemini：geo-block（400 User location not supported），呢部機永久不可用 → 已由 fallback 鏈移除
 - 🔑 2026-10-21 已把 zai + deepseek 從 `agents.*.modelPolicy.allow` 同全部 job fallback 鏈**完全移除**（留低只會拖慢 + 撞 429/401）
 - ✅ 2026-10-21 新增 `scripts/cron_model_guard.py`：自動比對每個 job payload.model vs `modelPolicy.allow`，違規就自動改返 primary（舊 guardian 只查 exists+enabled，所以 4 連敗都睇唔出）<!-- project: github.com/jyonline0604/website -->
+- ⚠️ 2026-10-28 chat-worker 索引凍結根因：GitHub Actions 部署步驟一失敗，後面「提交索引」會被**自動 skip**（要 `if: always()`），而原本用 `git diff` 判斷需唔需要部署 → 索引一提交就永遠唔再部署，worker 索引停喺 CH1776；已改用 SHA-256 marker 檔（部署成功先更新）+ deploy 3 次重試 + `continue-on-error`<!-- project: github.com/jyonline0604/website -->
+- ⚠️ 2026-10-28 GitHub API 認證：同一 token 用 Bearer → 401，用 basic auth（`curl -u "x-access-token:TOKEN"`）→ 200；job log 必須 basic auth 先攞到<!-- project: github.com/jyonline0604/website -->
+- ⚠️ 2026-10-26 pages 部署失敗係 GitHub 側暫時性 OIDC `Failed to get ID Token: Request timeout`，之後 20+ 次 pages run 全綠 → 唔使改 workflow<!-- project: github.com/jyonline0604/website -->
 - ⚠️ 2026-10-21 教訓：job timeoutSeconds 600 對「多 exec + 長報告」job 唔夠（跑足 600s 撞 model-call-started timeout）→ 簡報類已放寬 1200s、Audio Sync 1800s<!-- project: github.com/jyonline0604/website -->
 - OpenRouter ✅ 09-06 晚已換新 key（env=sk-or-…54d01850，profiles=…19d56957 不同步）；日後用 `scripts/update-openrouter-key.sh` 輪換
 - `scripts/ai_multimodel.py`：call_zai() → call_zai_glm 仍保留作 ZAI 探針；fallback 鏈已加 minimax-M3 entry

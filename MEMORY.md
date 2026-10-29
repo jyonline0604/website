@@ -236,3 +236,11 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 自動修復 2（SKILL.md 三份分叉）：local v2.9.95（5349 行）vs Second-brain / Max-backup v2.9.106（5534 行，兩份一致）→ local 缺失 v2.9.96-2.9.106 共 185 行 → 以 backup 版（較新且為 local 超集）覆寫 local → bump v2.9.107 + 今日新條目 → 三份 5550 行逐行一致。<!-- project: github.com/jyonline0604/website -->
 - 自動修復 3（backup 明文 MEMORY.md 過期）：backup 倉 MEMORY.md 停留 2026-10-22，本地已於 10-26 重寫為精簡版 → 用 live 本地版覆寫兩份明文副本 + 補齊 memory/ 日誌檔（舊版保留喺 backup 倉 git history）。<!-- project: github.com/jyonline0604/website -->
 - 教訓：三份 SKILL.md 同步前一定要 diff + 對行數，覆寫方向固定「較新 → 較舊」；backup-memory.sh 只做加密 tarball，明文 MEMORY.md 唔會自動更新，過期唔代表備份失效；git pull --rebase 前一定先 commit。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-10-29 08:15 早上簡報 — 全綠（1 項非嚴重：logrotate.service 又 failed）+ 自動修復 DREAMS.md 未提交
+- 巡檢 5 項全綠：kofhk.com 200（0.47s，HTTP/2 + Cloudflare；/、/chapters.html、/home.html、/service-worker.js 全部 200）／磁碟 / 15%（65G/468G，380G 可用，inode 3%）／Mem 4.4Gi used / 7.0Gi、available 2.6Gi、swap 415Mi／uptime 3 天 22 分鐘、load 0.41。<!-- project: github.com/jyonline0604/website -->
+- 線上一致性：線上 /assets/chapters-data.json（加 cache-buster）1782 章 = 本地 chapter-*.html 數字檔 1782（chapter-template.html 唔計）= V7 state max CH1782 → 零分歧。<!-- project: github.com/jyonline0604/website -->
+- Dropbox：Volume 4 仍按 2026-10-02 指令退役（crontab 註釋 + cron-guardian 明文排除），最後實跑 2026-10-22 11:00 因 token 競態「Token file is empty or missing」中止，之後無排程 → 唔算故障，只作記錄；V5/V6 於 2026-10-28 11:00 未處理 0，V7 於 11:30 加載 CH1777-1782 共 6/6 成功。<!-- project: github.com/jyonline0604/website -->
+- 自動修復：DREAMS.md 未提交（03:00 Memory Dreaming Promotion 寫入）→ commit → git pull --rebase origin main → push（27bd59787..3e6ffea49），分歧 0/0、工作區乾淨。<!-- project: github.com/jyonline0604/website -->
+- 非嚴重：logrotate.service 又 failed（2026-10-29 00:04 真係啟動咗 → duplicate log entry /var/log/cloud-init.log）→ issue #7 續開；unattended session 冇 sudo 密碼（sudo -n 被拒），無法自動修。<!-- project: github.com/jyonline0604/website -->
+- 教訓：logrotate 有 ConditionACPower=true，只喺接 AC 電時先真係行 → 平時見到「skipped, unmet condition」唔代表健康；duplicate log entry 一定要 root 移走 /etc/logrotate.d/cloud-init-base。<!-- project: github.com/jyonline0604/website -->

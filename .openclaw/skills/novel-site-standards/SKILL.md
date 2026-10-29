@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.108
+version: 2.9.109
 ---
 
 ---
@@ -5576,3 +5576,15 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **fallback 鏈嘅第一棒會靜靜死掉**：OpenRouter free 試用期會結束（2026-10-22 minimax-m3.1-flash 就係），`/api/v1/models` catalog 要定期核對，唔好淨係信舊 config。
 - **實測模型可用性要用真 chat/completions 實測**，唔好淨係睇 catalog 存在：`/api/v1/models` 有唔代表 call 到（`liquid/lfm-2.5-2.6b:free` 429、`thinkingmachines/inkling:free` 403 只准 agentic harness）。
 - **2026-10-26 pages 部署失敗係 GitHub 側暫時性 OIDC 問題**（`Failed to get ID Token: Request timeout`），之後連續 20+ 次 pages run 全綠 → 唔使改 workflow。
+
+---
+## [2026-10-29] 更新 (v2.9.109) - logrotate duplicate log entry 復發 + 每日 state 零分歧基線
+
+### 修復內容
+- **logrotate.service 復發 failed（issue #7）**：`/etc/logrotate.d/cloud-init` 同 `/etc/logrotate.d/cloud-init-base` 內容一模一樣（各 144 bytes），logrotate 見到 `duplicate log entry for /var/log/cloud-init.log` 就 skip 個檔 exit 1。2026-10-29 00:04 機器接上 AC 電 → ConditionACPower=true 終於滿足 → logrotate 真係啟動 → 又 fail（2026-10-25～10-28 每日 journal 都係「skipped, unmet condition」所以睇落似正常）。unattended cron session 冇 sudo 密碼（`sudo -n true` 被拒：interactive authentication is required），無法自動修復 → 只能記錄 + 俾大肥喵人手指令。
+
+### 教訓
+- **ConditionACPower=true = 間歇性失敗嘅源頭**：logrotate 只喺桌面接 AC 電時先會行，journal 顯示「skipped, unmet condition」唔代表健康 → 巡檢 logrotate 要睇 `systemctl --failed`，唔係睇 journal 有冇 skip。
+- **duplicate log entry 唯一修法**：root 移走重複檔（`sudo mv /etc/logrotate.d/cloud-init-base /etc/logrotate.d/cloud-init-base.disabled`）→ `sudo logrotate -d /etc/logrotate.conf | grep -i error` 驗證 → `sudo systemctl reset-failed logrotate.service` 清 failed 標記。
+- **每日簡報 state 零分歧基線（2026-10-29 實測）**：線上 `/assets/chapters-data.json`（加 `?v=YYYYMMDD` cache-buster）1782 章 = 本地 `chapter-*.html` **數字檔** 1782 = V7 state max CH1782。計本地檔時要用 `ls chapter-*.html | grep -cE '^chapter-[0-9]+\.html$'`——`chapter-template.html` 唔匹配數字檔名，唔好計入（否則會差 1 誤報分歧）。
+- **Volume 4 唔算故障**：按 2026-10-02 指令退役（crontab 註釋 + cron-guardian 明文排除），最後實跑 2026-10-22 11:00 因 token 競態中止 → 簡報只作記錄，**唔好自動加返條目**（見 issue #8 教訓）。

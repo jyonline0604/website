@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.110
+version: 2.9.112
 ---
 
 ---
@@ -5596,3 +5596,25 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 自動修復（git 分歧第 4 次同型）：DREAMS.md 未提交 + CI commit 同時撞埋 → 必須先 commit DREAMS.md，再 `git pull --rebase origin main`，最後 push；巡檢時用 `git fetch` + `log HEAD..origin/main` 睇分歧。
 - 線上一致性判定加硬規則：Cloudflare 裸路徑 `/assets/chapters-data.json` 會有舊快取（age 過日），必須加 `?v=YYYYMMDD`（或隨機 query）再 curl，否則會誤報「線上少章」嘅假分歧（issues #14）。
 - Volume 4 維持退役（2026-10-02 指令）：crontab 註釋 + cron-guardian 明文排除；2026-10-22 最後一次實跑因 token 競態中止，唔算故障，只作記錄。
+
+---
+
+## 2026-10-30 更新 - 章節索引 cache-buster 每小時 key（Hourly Cache-Buster）（assets/chapters-data.json）用戶端最長 24 小時見唔到新章（今日線上索引只列到 CH1788，線上源已到 CH1794）
+- 根本原因：chapters.html / index.html / home.html 用 `?v=YYYYMMDD` 日級 cache-buster，Cloudflare edge 同 Service Worker（cache-first）各自快取同一個 key，要等 UTC 換日先失效
+- 解決方法：cache-buster 改為每小時一個 key（`?v=YYYYMMDDHH`，slice(0,13).replace(/[-:T]/g,'')），滯後由 ~24h 降至 ≤1h；已 commit + push
+- 檢查重點：裸路徑 /assets/chapters-data.json 可能係 Cloudflare 舊快取（假分歧），要同時驗 `?v=<當前小時key>`；/api/status 反映線上源真實章節數
+
+---
+
+---
+
+## 2026-10-30 更新 - 健康檢查診斷法修正（空 redirect log ≠ 腳本冇行）+ logrotate 重複條目
+- 修復內容：更正 10-29 / 10-30 健康報告中「system cron send-briefing.sh（08:15/17:55）+ check_openclaw_update.py（11:00）實際冇執行過」嘅誤判；同時定位 logrotate.service 持續 failed 嘅根因
+- 根本原因（診斷法錯咗）：判定 system cron 有冇行，**唔可以只睇 crontab redirect 目標 log**。send-briefing.sh 內部用自己嘅 `LOG_FILE=logs/briefing-send.log`、check_openclaw_update.py 用 `logs/openclaw-update.log`，stdout 冇輸出 → `logs/briefing-morning.log` / `briefing-evening.log` / `openclaw-check.log` 永遠 0 bytes，但腳本其實每次都有跑（syslog 有 CRON 行、送達有 Msg ID）
+  - 正確判定三路對照：① `grep CRON /var/log/syslog`（有冇 spawn）② 腳本內部 LOG_FILE（跑成唔成）③ 實際送達紀錄（Msg ID / ✅ 行）
+  - 今日實測：10-30 08:15:01 / 11:00:01 / 17:55:01 三條 CRON 行齊全；17:55 簡報生成 1031 字符、送達成功（Msg 23362）；11:00 版本檢查寫入 openclaw-update.log（偵測到 2026.10.9 可更新）
+- 解決方法：已寫入 MEMORY.md 教訓清單 #31；health 檢查以後必查 syslog CRON 行，唔再單靠 redirect log 空檔判斷
+- 附帶根因（logrotate.service failed）：`/etc/logrotate.d/cloud-init-base` 同 `/etc/logrotate.d/cloud-init` 內容完全重複（都係 `/var/log/cloud-init*.log`，Jul 24 cloud-init 升級多出）→ logrotate "duplicate log entry" exit 1 → systemd failed
+  - 修復需 root：`sudo rm /etc/logrotate.d/cloud-init-base && sudo systemctl reset-failed logrotate`（兩檔 root 擁有，無人值守 session 嘅 sudo 需要互動密碼 → 留待大肥喵手動執行）
+  - 影響輕微：只影響 /var/log 系統日誌輪轉；workspace logs（44M）唔受影響
+- 檢查重點：Dropbox Volume 4 同步已退役（大肥喵 2026-10-02 指令，synced_to_site=1746、batch 44），crontab 註釋明寫「勿啟用，勿由 guardian 加返」→ 任何自動修復都**唔可以**加返 V4 條目

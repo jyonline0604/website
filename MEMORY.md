@@ -109,6 +109,8 @@
 28. 🚨 自動化腳本會 `git reset --hard origin/main` — workspace 修改要即時 commit+push，否則被回滾（cron-guardian.sh 09-06 實例）
 29. Gateway restart 有 drain 期（最長 300s）— 驗證 env 載入要等 drain 完成後先準
 30. 含 Authorization/Bearer 構造嘅代碼：用 write 寫檔案再執行，唔好 inline（sanitizer 破壞 header → Missing Authentication header 假象）
+31. 判定 system cron 有冇行要三路對照：① syslog CRON 行 ② 腳本內部 LOG_FILE ③ 實際送達紀錄（Msg ID）；redirect 目標 log 0 bytes **唔代表腳本冇行**（腳本自己寫 LOG_FILE，stdout 空）
+32. logrotate duplicate log entry = /etc/logrotate.d 同一 glob 定義咗兩次（cloud-init 升級多出 cloud-init-base）→ exit 1 + systemd failed；要 root rm 重複檔；只影響 /var/log 輪轉
 
 - 任務前必讀相關 SKILL.md；完成後驗證先發佈；修復後自動執行四步：MEMORY記錄 → SKILL更新(+0.0.1) → 影響檢查 → 同步備份（AGENTS.md 強制）
 
@@ -254,3 +256,11 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 觀察（非故障，第二次確認）：Cloudflare 裸路徑 `/assets/chapters-data.json` 舊快取 age=157016s（~43.6h）回 1782 章，但頁面 JS 一律帶 `?v=YYYYMMDD` → 實測 1788 章、age=0；**判定線上一致性一定要加 cache-buster query**，否則會誤報「線上少 6 章」嘅假分歧（issues #14）。
 
 - **章節索引快取滯後**：Cloudflare edge + Service Worker（cache-first）對 `assets/chapters-data.json?v=YYYYMMDD` 日級 key 做快取，令新章落後最多 ~24h（今日線上索引 1788 vs 線上源 1794，裸路徑更舊 1782）。已改為每小時 key `?v=YYYYMMDDHH`（chapters.html / index.html / home.html），滯後降至 ≤1h。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-10-30 22:00 每日健康報告 — 全綠 + 更正昨日「system cron 冇執行過」誤判
+- 網站 200（0.11s，三頁全 200，線上 chapters.html 同本地一致）；磁碟 15%、記憶體 available 3.3Gi、uptime 4 日 14 小時
+- Dropbox V4 已退役（state 1746，**勿加返**）；V5/V6 11:00、V7 11:30 今日全部成功
+- OpenClaw cron 8 個 job 全 ok（err=0）；system cron 條目全在位
+- Git：workspace 落後 origin/main 1 commit → 已 ff-only pull；三倉 0 未推送、工作區乾淨
+- 🔧 更正：10-29 / 10-30 報告「send-briefing.sh / check_openclaw_update.py 三條 system cron 冇執行過」係**誤判** → syslog 證實三條每日都有跑（10-30 08:15:01 / 11:00:01 / 17:55:01），17:55 簡報成功送達（Msg 23362）→ 教訓 #31
+- ⚠️ logrotate.service failed 根因：/etc/logrotate.d/cloud-init-base 同 cloud-init 重複條目 → 需 root `sudo rm /etc/logrotate.d/cloud-init-base && sudo systemctl reset-failed logrotate`（無人值守 sudo 要密碼，留待大肥喵手動做）

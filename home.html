@@ -45,7 +45,7 @@ var highlightIndex = -1;
 var currentResults = [];
 function loadChaptersData() {
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'assets/chapters-data.json?v=' + new Date().toISOString().slice(0,10).replace(/-/g,''), true);
+xhr.open('GET', 'assets/chapters-data.json?v=' + new Date().toISOString().slice(0,13).replace(/[-:T]/g,''), true);
 xhr.onload = function() {
 if (xhr.status === 200) {
 try {

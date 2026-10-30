@@ -252,3 +252,5 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 自動修復：DREAMS.md 未提交 + 落後 origin/main 1 個 CI commit → commit → pull --rebase → push，分歧 0/0。
 - 非嚴重：logrotate.service 又 failed（issue #7 續開）→ 無 sudo 密碼，無法自動修。
 - 觀察（非故障，第二次確認）：Cloudflare 裸路徑 `/assets/chapters-data.json` 舊快取 age=157016s（~43.6h）回 1782 章，但頁面 JS 一律帶 `?v=YYYYMMDD` → 實測 1788 章、age=0；**判定線上一致性一定要加 cache-buster query**，否則會誤報「線上少 6 章」嘅假分歧（issues #14）。
+
+- **章節索引快取滯後**：Cloudflare edge + Service Worker（cache-first）對 `assets/chapters-data.json?v=YYYYMMDD` 日級 key 做快取，令新章落後最多 ~24h（今日線上索引 1788 vs 線上源 1794，裸路徑更舊 1782）。已改為每小時 key `?v=YYYYMMDDHH`（chapters.html / index.html / home.html），滯後降至 ≤1h。<!-- project: github.com/jyonline0604/website -->

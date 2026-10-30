@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.112
+version: 2.9.113
 ---
 
 ---
@@ -5618,3 +5618,16 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
   - 修復需 root：`sudo rm /etc/logrotate.d/cloud-init-base && sudo systemctl reset-failed logrotate`（兩檔 root 擁有，無人值守 session 嘅 sudo 需要互動密碼 → 留待大肥喵手動執行）
   - 影響輕微：只影響 /var/log 系統日誌輪轉；workspace logs（44M）唔受影響
 - 檢查重點：Dropbox Volume 4 同步已退役（大肥喵 2026-10-02 指令，synced_to_site=1746、batch 44），crontab 註釋明寫「勿啟用，勿由 guardian 加返」→ 任何自動修復都**唔可以**加返 V4 條目
+
+---
+## [2026-10-30] 更新 - cron 條目判定陷阱（redirect log 空 ≠ 未執行）
+
+### 教訓（三路對照，缺一不可）
+- 判定 system cron 條目有冇執行，必須三路對照：(1) syslog CRON 行（含 /var/log/syslog.1，rotation 會令早段行唔喺當前檔）(2) 腳本內部 LOG_FILE 嘅發送記錄 (3) openclaw cron list + crontab -l
+- **redirect 目標 log 空 ≠ 腳本冇行**：send-briefing.sh / check_openclaw_update.py 自己寫 LOG_FILE，crontab 的 >> 重定向檔自然空 —— 我 10-30 13:10 因此誤判「三條條目死咗、冇後備」，仲差啲叫大肥喵移除重建
+- **雙軌並存 = 每日兩份簡報**：system crontab 腳本版（每日兩次「發送任務完成」）+ OpenClaw cron agent 版（較詳細）—— 報告一份嘅講法只係針對其中一軌
+- 判斷要睇「實際投遞幾多次」，唔係睇 log 有幾多行
+
+### 處理
+- A/B 選項（重建 vs 移除 crontab 條目）作廢：後備機制正常，唔好動 crontab
+

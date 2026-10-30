@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.109
+version: 2.9.110
 ---
 
 ---
@@ -5588,3 +5588,11 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **duplicate log entry 唯一修法**：root 移走重複檔（`sudo mv /etc/logrotate.d/cloud-init-base /etc/logrotate.d/cloud-init-base.disabled`）→ `sudo logrotate -d /etc/logrotate.conf | grep -i error` 驗證 → `sudo systemctl reset-failed logrotate.service` 清 failed 標記。
 - **每日簡報 state 零分歧基線（2026-10-29 實測）**：線上 `/assets/chapters-data.json`（加 `?v=YYYYMMDD` cache-buster）1782 章 = 本地 `chapter-*.html` **數字檔** 1782 = V7 state max CH1782。計本地檔時要用 `ls chapter-*.html | grep -cE '^chapter-[0-9]+\.html$'`——`chapter-template.html` 唔匹配數字檔名，唔好計入（否則會差 1 誤報分歧）。
 - **Volume 4 唔算故障**：按 2026-10-02 指令退役（crontab 註釋 + cron-guardian 明文排除），最後實跑 2026-10-22 11:00 因 token 競態中止 → 簡報只作記錄，**唔好自動加返條目**（見 issue #8 教訓）。
+
+
+---
+
+## 2026-10-30 更新
+- 自動修復（git 分歧第 4 次同型）：DREAMS.md 未提交 + CI commit 同時撞埋 → 必須先 commit DREAMS.md，再 `git pull --rebase origin main`，最後 push；巡檢時用 `git fetch` + `log HEAD..origin/main` 睇分歧。
+- 線上一致性判定加硬規則：Cloudflare 裸路徑 `/assets/chapters-data.json` 會有舊快取（age 過日），必須加 `?v=YYYYMMDD`（或隨機 query）再 curl，否則會誤報「線上少章」嘅假分歧（issues #14）。
+- Volume 4 維持退役（2026-10-02 指令）：crontab 註釋 + cron-guardian 明文排除；2026-10-22 最後一次實跑因 token 競態中止，唔算故障，只作記錄。

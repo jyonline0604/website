@@ -244,3 +244,11 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 自動修復：DREAMS.md 未提交（03:00 Memory Dreaming Promotion 寫入）→ commit → git pull --rebase origin main → push（27bd59787..3e6ffea49），分歧 0/0、工作區乾淨。<!-- project: github.com/jyonline0604/website -->
 - 非嚴重：logrotate.service 又 failed（2026-10-29 00:04 真係啟動咗 → duplicate log entry /var/log/cloud-init.log）→ issue #7 續開；unattended session 冇 sudo 密碼（sudo -n 被拒），無法自動修。<!-- project: github.com/jyonline0604/website -->
 - 教訓：logrotate 有 ConditionACPower=true，只喺接 AC 電時先真係行 → 平時見到「skipped, unmet condition」唔代表健康；duplicate log entry 一定要 root 移走 /etc/logrotate.d/cloud-init-base。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-10-30 08:15 早上簡報 — 全綠（1 項非嚴重：logrotate.service failed）+ 自動修復 DREAMS.md 未提交 + 線上舊快取假分歧排除
+- 巡檢 5 項全綠：kofhk.com 200（0.11s，HTTP/2 + Cloudflare）／磁碟 / 15%（66G/468G，378G 可用）／Mem 3.6Gi used / 7.0Gi、available 3.4Gi、swap 225Mi／uptime 4 天 22 分鐘、load 2.13／8 個 OpenClaw job 全部 enabled + lastStatus=ok + consecutiveErrors=0 + delivered／system crontab 14 條全在位。
+- 線上一致性：本地 1788 章（1-1788 零缺口）= origin/main 1788 = 線上 `?v=20261030` 1788；chapter-1783~1788.html 全部 200。
+- Dropbox：Volume 4 仍按 2026-10-02 指令退役（crontab 註釋 + cron-guardian 明文排除，guardian 唔會加返）；最後實跑 2026-10-22 11:00 因 token 競態中止，之後無排程 → 非故障。V5/V6 2026-10-29 11:00 未處理 0；V7 11:30 加載 CH1783-1788 6/6 成功。
+- 自動修復：DREAMS.md 未提交 + 落後 origin/main 1 個 CI commit → commit → pull --rebase → push，分歧 0/0。
+- 非嚴重：logrotate.service 又 failed（issue #7 續開）→ 無 sudo 密碼，無法自動修。
+- 觀察（非故障，第二次確認）：Cloudflare 裸路徑 `/assets/chapters-data.json` 舊快取 age=157016s（~43.6h）回 1782 章，但頁面 JS 一律帶 `?v=YYYYMMDD` → 實測 1788 章、age=0；**判定線上一致性一定要加 cache-buster query**，否則會誤報「線上少 6 章」嘅假分歧（issues #14）。

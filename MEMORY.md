@@ -37,6 +37,8 @@
 - ⚠️ 2026-09-16 Volume 5 ✅ 完成（270 章 CH1191-1460），Volume 6 已 start（6/280 章 CH1461-1466，2026-09-16 首批 sync 完），預計 ~46 日
 - ⚠️ 2026-09-16 Dropbox token auto-renew（commit `4f30c6241`）：`scripts/renew-dropbox-token.sh` + `renew_dropbox_token.py`（3次 retry+backoff，4hr→3hr cron buffer）；system cron `0 */3 * * *` 已加，09-11 過期慘劇唔會重演
 - ⚠️ 2026-09-19 OpenClaw 升級 2026.9.2 → 2026.9.5（需要 Node ≥24.16）：Node v22.23.2 唔得，nvm install Node 24.21.0 + `nvm use --delete-prefix`；刪 `/home/openclaw/.openclaw/tmp/agent-cli/openclaw`（self-contained binary 搶 PATH priority）；heartbeat-main framework bug（agent-runner-failure 67 errors）應該已 fix，下次 cron run 確認
+- ⚠️ 2026-10-31 OpenClaw 升級 2026.10.5 → 2026.10.9 (8b18b55)：升級裝到新 nvm node 目錄（v24.22.2），**舊 install（v24.21.0 = 2026.10.5）唔會自動移除** → 硬編碼 nvm node 路徑嘅腳本會讀到舊 CLI，版本檢查報假「有新版」。已把 5 個腳本（版本檢查/更新/簡報/guardian）改成動態解析（`sort -V -r` 揀有 `bin/openclaw` 嘅最新 node 目錄）<!-- project: github.com/jyonline0604/website -->
+- ⚠️ 2026-10-31 教訓：升級後唔好淨係睇 `/status`，要三方對照（gateway 進程實際 node + systemd ExecStart/PATH + 腳本硬編碼路徑）；nvm 唔會自動清舊 install 目錄，腳本唔好硬編碼 node 版本號<!-- project: github.com/jyonline0604/website -->
 
 ## 📚 《萬古塵埃》（主小說，3000章/10卷）
 | 卷 | 章節 | 境界 | 狀態 |

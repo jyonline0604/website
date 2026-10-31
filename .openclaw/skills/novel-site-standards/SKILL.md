@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.113
+version: 2.9.115
 ---
 
 ---
@@ -5631,3 +5631,38 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 ### 處理
 - A/B 選項（重建 vs 移除 crontab 條目）作廢：後備機制正常，唔好動 crontab
 
+---
+
+## [2026-10-31] 更新 - 重啟後復原巡檢 + 每日雙軌簡報確認（已知設計，待大肥喵決定）
+
+### 檢查內容
+- 主機 2026-10-31 07:55:37 重啟（uptime 由 4 日 14 小時 → 20 分鐘）後第一次簡報巡檢：cron.service 07:55:37 啟動 → 08:00 記憶備份、08:15 system cron 簡報（Msg 23365）都有 syslog 執行記錄；OpenClaw cron 8 個 job 全部 enabled + lastStatus=ok + consecutiveErrors=0
+
+### 發現（已知設計，唔算 bug）
+- 每日簡報雙軌並存：system cron send-briefing.sh（08:15 / 17:55）同 OpenClaw cron agent job（早上簡報 08:15 / 傍晚簡報 17:55）都會送達 → 大肥喵每日收 2 份（今日 08:15：Msg 23365 + agent 版）
+  - 唔可以用 shell dedup 解決：system cron 08:15:07 先送，agent 報告約 08:19 先到（去重方向相反）
+  - 真正去重必須揀一套：保留 system cron 做後備（移除 OpenClaw 簡報 job）或者只留 OpenClaw cron（移除 crontab 兩條）— 屬大肥喵決定，guardian 唔會自動改
+
+### 附帶確認
+- Dropbox 零分歧：本地 chapters-data.json 1794 章 = V7 state synced_to_site max 1794；V4 仍退役（state 1746 / batch 44，唔加返）
+- logrotate 重複條目仍在（/etc/logrotate.d/cloud-init-base vs cloud-init）：重啟後 systemctl --failed 只剩 apport-autoreport.service（無關），但下次輪轉仍會 duplicate log entry fail → 需 root：sudo rm /etc/logrotate.d/cloud-init-base && sudo systemctl reset-failed logrotate（unattended session 冇 sudo 密碼）
+
+### 教訓
+- 開機 / 重啟後第一次巡檢要加驗三路：cron.service 啟動時間 + syslog CRON 行（記憶備份 08:00、簡報 08:15）+ OpenClaw cron job 狀態
+- 每日簡報雙軌係「已知設計」，報告時要講明兩軌都正常，唔好誤判成重複 bug 自己亂改 crontab
+
+---
+## [2026-10-31] 更新 (v2.9.115) - 升級後殘留舊 nvm install 令版本檢查報錯版本
+
+### 修復內容
+- **症狀**：2026-10-31 大肥喵 12:40 已 `/update` 升級到 OpenClaw 2026.10.9 (8b18b55)，但 11:00 版本檢查 Telegram 通知同中午簡報仍然報「當前版本 2026.10.5 → 最新 2026.10.9，有更新」→ 假警報。
+- **根因**：升級會安裝到**新嘅 nvm node 目錄**（v24.22.2 = OpenClaw 2026.10.9），但**舊 install 唔會自動移除**（v24.21.0 = OpenClaw 2026.10.5 仍然喺磁碟）。5 個 workspace 腳本硬編碼 `export PATH="/home/openclaw/.nvm/versions/node/v24.21.0/bin:..."` → 讀到嘅永遠係舊 CLI。gateway 自己（systemd ExecStart + tmp/agent-cli wrapper）已經用新版本，所以只有「腳本報版本」會錯，實際運作冇問題。
+- **修復**：5 個腳本（`check-openclaw-version.sh`、`check_openclaw_update.py`、`update_openclaw.sh`、`send-briefing.sh`、`cron-guardian.sh`）改成**動態解析** —— 列出 `~/.nvm/versions/node/v*//` 用 `sort -V -r` 由新到舊，揀第一個有 `bin/openclaw` 嘅目錄，fallback v24.22.2。以後升級唔使再改腳本。
+- **驗證**：`env -i bash scripts/check-openclaw-version.sh`（清空環境變數）→ 報 `OpenClaw 2026.10.9 (8b18b55)` + `✅ 版本已是最新`；commit `482c05db4` 已 push。
+- **順帶確認**：`agents.defaults.models` 已乾淨（無退役 `:free` 模型殘留、5 隻新 free 模型齊全）、fallback 鏈 5 隻全部實測 chat/completions 可用；systemd unit 嘅 `.reconcile-*.bak` 備份檔內 v24.21.0 引用只係備份檔，唔生效。
+
+### 教訓
+- **升級後唔好淨係睇 `/status`**：要三方對照 —— (1) gateway 實際進程用邊個 node（`ps -eo pid,args | grep openclaw`）、(2) systemd unit 嘅 ExecStart / PATH、(3) workspace 腳本有冇硬編碼舊 nvm 路徑。三者唔一致就會出現「gateway 已更新但腳本報舊版」。
+- **nvm 裝多版本 = 孤兒 install 會留低**：`nvm install` 唔會自動清舊版本，目錄仲喺度就仲行到舊 CLI。所有腳本引用 nvm node 路徑都應該動態解析，唔好硬編碼版本號。
+- **`sort -V -r` 揀 node 目錄一定要加存在性檢查**（`-x bin/openclaw`），因為可能有更新嘅 node 目錄但未裝 openclaw。
+- **報「有新版」之前要核對 gateway 進程版本**，唔好照抄腳本輸出 —— 假版本警報會消耗大肥喵對自動通知嘅信任。

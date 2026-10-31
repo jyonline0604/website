@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.115
+version: 2.9.116
 ---
 
 ---
@@ -5666,3 +5666,22 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **nvm 裝多版本 = 孤兒 install 會留低**：`nvm install` 唔會自動清舊版本，目錄仲喺度就仲行到舊 CLI。所有腳本引用 nvm node 路徑都應該動態解析，唔好硬編碼版本號。
 - **`sort -V -r` 揀 node 目錄一定要加存在性檢查**（`-x bin/openclaw`），因為可能有更新嘅 node 目錄但未裝 openclaw。
 - **報「有新版」之前要核對 gateway 進程版本**，唔好照抄腳本輸出 —— 假版本警報會消耗大肥喵對自動通知嘅信任。
+
+---
+
+## [2026-10-31] 更新 (v2.9.116) - logrotate 長期失敗修復（duplicate entry + ConditionACPower）
+
+### 修復內容
+- **症狀**：`systemctl --failed` 長期有 failed unit；journal 顯示 logrotate 每日失敗或被 skip。
+- **根因 1（duplicate entry）**：`/etc/logrotate.d/cloud-init` 同 `cloud-init-base` 兩個檔案內容完全相同（都係 `/var/log/cloud-init*.log`），但係由**兩個唔同 dpkg 套件**擁有（`cloud-init` 同 `cloud-init-base`，26.1-0ubuntu3~26.04.1）→ logrotate 報 `duplicate log entry for /var/log/cloud-init.log`，整個 config 讀取中斷 → **其它所有 log 都唔輪轉**。
+- **根因 2（ConditionACPower）**：Ubuntu 預設 `logrotate.service` 有 `ConditionACPower=true`，部機以電池供電（ADP1 online=0）→ 每日 timer 觸發都被 skip（journal 大量 "skipped, unmet condition check"）。
+- **修復 1（duplicate）**：**唔可以直接 `rm`**（兩個檔案都係 dpkg 擁有，rm 會令 dpkg 檔案清單不一致 + 套件更新時復原）。正確做法係 `dpkg-divert --local --rename --add --divert /root/cloud-init-base.logrotate.disabled /etc/logrotate.d/cloud-init-base` → 檔案移出 include 目錄，dpkg 記錄 diversion，`dpkg -V` 乾淨、套件更新唔會復原。**注意**：單純 `dpkg-divert --rename` 改名做 `.distrib` 唔夠 —— logrotate 只 skip 副檔名以 `~` 開頭/結尾嘅，`.distrib` 照樣會被讀取 → duplicate 仍在，必須 divert 去 include 目錄外。
+- **修復 2（ACPower）**：建立 drop-in `/etc/systemd/system/logrotate.service.d/override.conf` 寫 `[Unit] ConditionACPower=`（空值 = 取消條件），原 unit 檔案完全不動（可逆、唔會被套件更新覆蓋），跟 `systemctl daemon-reload`。
+- **驗證**：`/usr/sbin/logrotate -d /etc/logrotate.conf` exit=0（之前 exit=1）；`systemctl start logrotate.service` → `status=0/SUCCESS`（之前 skipped/failed）；`systemctl --failed` = 0。
+
+### 教訓
+- **logrotate 工具唔喺預設 PATH**：`logrotate` 實際路徑係 `/usr/sbin/logrotate`，exec 環境冇 `/usr/sbin` 會出現 "command not found" → 之前用 `logrotate -d` 驗證時錯誤被 grep 食咗，睇落好似「冇 duplicate」。驗證 logrotate 一定要用 `/usr/sbin/logrotate` 或 `sudo`。
+- **duplicate log entry 會令成個 config 讀取中斷**，唔止影響嗰個檔案 —— 一個重複條目就令所有 log 唔輪轉，要當 P1 睇。
+- **dpkg 擁有嘅設定檔唔好用 rm**：用 `dpkg-divert --local --rename --add --divert <目錄外位置>` 保持 dpkg 一致性，並用 `dpkg -V <pkg>` 驗證。
+- **systemd Condition 可以用 drop-in 清空**：`[Unit] ConditionXxx=` 空值即取消，比直接改 `/usr/lib/systemd/system` 嘅 unit 檔安全（唔會被更新覆蓋、隨時刪 drop-in 復原）。
+- **24x7 服務機唔應該因為「插電定放電」而唔做日誌輪轉**。

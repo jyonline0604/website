@@ -39,6 +39,8 @@
 - ⚠️ 2026-09-19 OpenClaw 升級 2026.9.2 → 2026.9.5（需要 Node ≥24.16）：Node v22.23.2 唔得，nvm install Node 24.21.0 + `nvm use --delete-prefix`；刪 `/home/openclaw/.openclaw/tmp/agent-cli/openclaw`（self-contained binary 搶 PATH priority）；heartbeat-main framework bug（agent-runner-failure 67 errors）應該已 fix，下次 cron run 確認
 - ⚠️ 2026-10-31 OpenClaw 升級 2026.10.5 → 2026.10.9 (8b18b55)：升級裝到新 nvm node 目錄（v24.22.2），**舊 install（v24.21.0 = 2026.10.5）唔會自動移除** → 硬編碼 nvm node 路徑嘅腳本會讀到舊 CLI，版本檢查報假「有新版」。已把 5 個腳本（版本檢查/更新/簡報/guardian）改成動態解析（`sort -V -r` 揀有 `bin/openclaw` 嘅最新 node 目錄）<!-- project: github.com/jyonline0604/website -->
 - ⚠️ 2026-10-31 教訓：升級後唔好淨係睇 `/status`，要三方對照（gateway 進程實際 node + systemd ExecStart/PATH + 腳本硬編碼路徑）；nvm 唔會自動清舊 install 目錄，腳本唔好硬編碼 node 版本號<!-- project: github.com/jyonline0604/website -->
+- ⚠️ 2026-10-31 logrotate 長期失敗兩層根因：(1) `/etc/logrotate.d/cloud-init` + `cloud-init-base` 內容相同（兩個 dpkg 套件各擁一個）→ `duplicate log entry` 令**成個 config 讀取中斷**、所有 log 唔輪轉 → 用 `dpkg-divert --local --rename --add --divert <目錄外>` 修（唔好 rm）；(2) Ubuntu 預設 `logrotate.service` 有 `ConditionACPower=true`，部機電池供電（ADP1 online=0）→ 每日 timer 都 skip → drop-in `/etc/systemd/system/logrotate.service.d/override.conf` 寫 `[Unit] ConditionACPower=` 取消<!-- project: github.com/jyonline0604/website -->
+- ⚠️ 2026-10-31 教訓：`logrotate` 實際路徑係 `/usr/sbin/logrotate`（exec 環境冇 `/usr/sbin` → command not found 被 grep 食咗，睇落好似冇 duplicate）<!-- project: github.com/jyonline0604/website -->
 
 ## 📚 《萬古塵埃》（主小說，3000章/10卷）
 | 卷 | 章節 | 境界 | 狀態 |

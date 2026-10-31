@@ -264,3 +264,11 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - Git：workspace 落後 origin/main 1 commit → 已 ff-only pull；三倉 0 未推送、工作區乾淨
 - 🔧 更正：10-29 / 10-30 報告「send-briefing.sh / check_openclaw_update.py 三條 system cron 冇執行過」係**誤判** → syslog 證實三條每日都有跑（10-30 08:15:01 / 11:00:01 / 17:55:01），17:55 簡報成功送達（Msg 23362）→ 教訓 #31
 - ⚠️ logrotate.service failed 根因：/etc/logrotate.d/cloud-init-base 同 cloud-init 重複條目 → 需 root `sudo rm /etc/logrotate.d/cloud-init-base && sudo systemctl reset-failed logrotate`（無人值守 sudo 要密碼，留待大肥喵手動做）
+
+## 2026-10-31 08:15 早上簡報 — 全綠 + 主機重啟後復原確認 + 雙軌簡報確認為已知設計
+- 網站 kofhk.com 200（0.75s）；/、/chapters.html、/home.html 全部 200；磁碟 / 15%（66G/468G，378G 可用）；Mem 3.7Gi used / 7.0Gi、available 3.3Gi、swap 0；uptime 20 分鐘（主機 07:55:37 重啟，開機事件第 5 次）。<!-- project: github.com/jyonline0604/website -->
+- 復原確認：重啟後 cron.service 07:55:37 啟動 → 08:00 記憶備份、08:15 system cron 簡報（Msg 23365）均有 syslog 執行記錄；OpenClaw cron 8 jobs 全部 enabled + lastStatus=ok + consecutiveErrors=0 + delivered。<!-- project: github.com/jyonline0604/website -->
+- Dropbox 零分歧：chapters-data.json = 1794 章 = V7 state synced_to_site max 1794；V4 仍退役（state 1746 / batch 44，唔加返）；V5/V6 synced_to_site 1788。<!-- project: github.com/jyonline0604/website -->
+- 自動修復：DREAMS.md（03:00 Memory Dreaming Promotion 產出）未提交 → commit 2efae88a4 + push origin/main；三倉 0 未推送、工作區乾淨。<!-- project: github.com/jyonline0604/website -->
+- 已知問題（待大肥喵決定）：每日兩份簡報 — system cron send-briefing.sh（08:15/17:55）+ OpenClaw cron agent（08:15/17:55）雙軌並存，今日 08:15 兩軌都送達；去重唔可以靠改 shell 腳本（system cron 先送、agent 版遲約 4 分鐘），要消除重複必須揀一套。<!-- project: github.com/jyonline0604/website -->
+- 非嚴重：logrotate 重複條目仍在（/etc/logrotate.d/cloud-init-base vs cloud-init）→ 重啟後 logrotate.service 顯示 inactive（唔再 failed），但下次輪轉會再 duplicate log entry fail；仍需 root 一行修復（unattended 冇 sudo 密碼）。<!-- project: github.com/jyonline0604/website -->

@@ -2,7 +2,13 @@
 # 發送簡報腳本
 
 # 2026-09-20: gateway 已改用 nvm node24 安裝（2026.9.5，schema 17）；舊 ~/.npm-global CLI（2026.9.2，schema 15）讀唔到新數據庫，唔可以再用
-export PATH="/home/openclaw/.nvm/versions/node/v24.21.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+# 2026-10-31: 唔好硬編碼 nvm node 路徑（升級後舊 install 會殘留，令版本檢查報錯版本）
+# 動態搵「有 openclaw 安裝」嘅最新 node 目錄
+_OC_NODE_BIN=""
+for _d in $(ls -d /home/openclaw/.nvm/versions/node/v*/ 2>/dev/null | sort -V -r); do
+  if [ -x "${_d}bin/openclaw" ]; then _OC_NODE_BIN="${_d}bin"; break; fi
+done
+export PATH="${_OC_NODE_BIN:-/home/openclaw/.nvm/versions/node/v24.22.2/bin}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 WORKSPACE="/home/openclaw/.openclaw/workspace"
 LOG_FILE="$WORKSPACE/logs/briefing-send.log"

@@ -13,7 +13,15 @@ import re
 
 # 設置環境變量
 # 2026-10-25 修正：舊 ~/.npm-global/bin 係孤兒安裝（2026.9.5），令版本偵測報錯版本；改用 gateway 實際使用嘅 nvm node24 安裝
-os.environ['PATH'] = '/home/openclaw/.nvm/versions/node/v24.21.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+# 2026-10-31: 唔好硬編碼 nvm node 路徑（升級後舊 install 會殘留，令版本檢查報錯版本）
+# 動態搵「有 openclaw 安裝」嘅最新 node 目錄
+import glob, os
+_oc_bin = ""
+for _d in sorted(glob.glob("/home/openclaw/.nvm/versions/node/v*/"), reverse=True):
+    if os.access(os.path.join(_d, "bin", "openclaw"), os.X_OK):
+        _oc_bin = os.path.join(_d, "bin")
+        break
+os.environ["PATH"] = (_oc_bin or "/home/openclaw/.nvm/versions/node/v24.22.2/bin") + ":/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # 日誌文件路徑
 LOG_FILE = "/home/openclaw/.openclaw/workspace/logs/openclaw-update.log"

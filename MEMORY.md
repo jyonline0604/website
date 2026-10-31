@@ -276,3 +276,10 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 自動修復：DREAMS.md（03:00 Memory Dreaming Promotion 產出）未提交 → commit 2efae88a4 + push origin/main；三倉 0 未推送、工作區乾淨。<!-- project: github.com/jyonline0604/website -->
 - 已知問題（待大肥喵決定）：每日兩份簡報 — system cron send-briefing.sh（08:15/17:55）+ OpenClaw cron agent（08:15/17:55）雙軌並存，今日 08:15 兩軌都送達；去重唔可以靠改 shell 腳本（system cron 先送、agent 版遲約 4 分鐘），要消除重複必須揀一套。<!-- project: github.com/jyonline0604/website -->
 - 非嚴重：logrotate 重複條目仍在（/etc/logrotate.d/cloud-init-base vs cloud-init）→ 重啟後 logrotate.service 顯示 inactive（唔再 failed），但下次輪轉會再 duplicate log entry fail；仍需 root 一行修復（unattended 冇 sudo 密碼）。<!-- project: github.com/jyonline0604/website -->
+## 2026-11-01 07:44 每日健康報告 — 主機重啟補跑 + rm -rf 誤刪 tracked 媒體檔教訓
+- 網站 kofhk.com 200（0.12s），/ /chapters.html /home.html /assets/chapters-data.json 全部 200；磁碟 / 16%（68G/468G）、Mem available 3.8Gi、uptime 5 分鐘（主機 07:40:32 重啟）<!-- project: github.com/jyonline0604/website -->
+- Dropbox 零分歧：本地 chapters-data.json 1800 章 = V7 synced_to_site 1800；V5/V6 10-31 11:00 未處理 0；V7 11:30 CH1795-1800 6/6；V4 按 2026-10-02 指令退役（勿加返）<!-- project: github.com/jyonline0604/website -->
+- Cron：OpenClaw 8 job 全部 enabled/ok/err=0；system crontab 條目全在位；cron-guardian 10-31 09:30 實跑正常<!-- project: github.com/jyonline0604/website -->
+- 自動修復：① 10-31 20:00 記憶備份因停機錯過 → 補跑成功（Max-backup 96d6d86）② workspace 落後 origin/main 1 commit → pull --ff-only 已同步 ③ 清走 19 個 >7 日 media/inbound staging 殘留（2.1M→220K）<!-- project: github.com/jyonline0604/website -->
+- 🔧 新教訓：rm -rf media/inbound/openclaw-staged-* 會刪走已被 git 追蹤嘅 4 張網站圖片（git status 出現 D）→ 清 ignored 殘留只可以用 git clean -fdX（只清 ignored，tracked 唔會郁）；今次即時 git checkout 還原，4 個 tracked 檔全部在 disk、工作區乾淨<!-- project: github.com/jyonline0604/website -->
+- 觀察：主機近兩日都重啟（10-31 07:55:37、11-01 07:40:32），停機期間嘅 system cron 會靜靜漏跑（記憶備份 20:00、自動記憶 23:00、guardian 21:30、健康報告 22:00）→ 開機後要主動補跑<!-- project: github.com/jyonline0604/website -->

@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.116
+version: 2.9.117
 ---
 
 ---
@@ -5685,3 +5685,22 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **dpkg 擁有嘅設定檔唔好用 rm**：用 `dpkg-divert --local --rename --add --divert <目錄外位置>` 保持 dpkg 一致性，並用 `dpkg -V <pkg>` 驗證。
 - **systemd Condition 可以用 drop-in 清空**：`[Unit] ConditionXxx=` 空值即取消，比直接改 `/usr/lib/systemd/system` 嘅 unit 檔安全（唔會被更新覆蓋、隨時刪 drop-in 復原）。
 - **24x7 服務機唔應該因為「插電定放電」而唔做日誌輪轉**。
+
+---
+
+## [2026-11-01] 更新 (v2.9.117) - 清理 ignored 殘留必須用 git clean -fdX（唔可以用 rm -rf）
+
+### 修復內容
+- **症狀**：每日健康報告清理 media/inbound 嘅 openclaw-staged-* 殘留時，用 find -mtime +7 -exec rm -rf {} +，結果 git status 出現 4 個 D（deleted）—— 呢 4 張 jpg 其實已被 git 追蹤（網站圖片），唔係純 ignored 殘留。
+- **根因**：media/inbound/openclaw-staged-*/ 入面每個目錄都有自己嘅 .gitignore（忽略目錄內容），但已經被 commit 過嘅圖片檔本身係 tracked；用 rm -rf 唔會理會 tracked / ignored 之分 → 直接刪走 tracked 檔。
+- **解決方法**：
+  1. 即時 git checkout -- media/inbound/ 還原 4 個 tracked 檔（驗證：git status 乾淨 + git ls-files media/inbound 全部存在於 disk）。
+  2. 之後改用 git clean -fdX <path> 清理 —— -X = 只刪 ignored 檔案，tracked 檔案永遠唔會郁。
+  3. 清理前先用 git clean -ndX <path> dry-run 睇清楚會刪咩。
+- **驗證**：清理後 media/inbound 由 2.1M 降到 220K，4 個 tracked 圖片全部在 disk，git status --porcelain 空、git status -sb = main...origin/main。
+
+### 教訓
+- **「gitignore 咗」≠「可以 rm」**：一個目錄入面嘅檔案可能一部分 ignored、一部分 tracked，清理前必須分清。
+- **清理前先 dry-run**：git clean -ndX <path> 唔會真刪，但會列出所有會被移除嘅檔案 —— 見到有 tracked 內容就停手。
+- **tracked 檔被誤刪唔好 commit 落去**：即刻 git checkout -- <path> 還原，確認 git status 乾淨先繼續。
+- **主機重啟後要主動補跑漏咗嘅 system cron**：停機期間嘅記憶備份 20:00、自動記憶 23:00、cron-guardian 21:30、健康報告 22:00 會靜靜漏跑，開機後要人手/健康報告補做（記憶備份可手動跑 scripts/backup-memory.sh）。

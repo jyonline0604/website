@@ -70,7 +70,11 @@
 | 每3hr | Dropbox token auto-renew（`scripts/renew-dropbox-token.sh`，防 token 過期） |
 | ~~10:00~~ | Audio Sync **已暫停**（09-06 大肥喵指示，重啟等佢話事） |
 
-- System cron（crontab）有：記憶備份、send-briefing.sh（08:15/17:55）、財經/AQHI、news-backup、cron-guardian、Volume5、自動記憶 — 呢啲唔會出現喺 OpenClaw cron list，**唔係消失**
+- System cron（crontab）有：記憶備份、財經/AQHI、news-backup、cron-guardian、Volume5/6/7、token 續期、自動記憶 —— 呢啲唔會出現喺 OpenClaw cron list，**唔係消失**<!-- project: github.com/jyonline0604/website -->
+- ✅ 2026-11-01 大肥喵指令退休：**system cron 簡報軌（`send-briefing.sh` 08:15/17:55）已退役**，每日只保留 OpenClaw cron agent 簡報（08:15/12:55/17:55），每個時段得一條訊息。天氣/交通 digest（`generate-briefing-full-v5.py`，約 978 字 6 秒）已併入 agent 版早上/傍晚簡報（1 次 exec 跑腳本，stdout 貼報告最前）<!-- project: github.com/jyonline0604/website -->
+- ⚠️ 2026-11-01 教訓：退休 system cron 條目要改**三個地方** —— crontab（註釋）、guardian `SYSTEM_TASKS`（移除，否則自動加返）、guardian rebuild heredoc（同步，否則重建時回退舊 prompt）；漏第二項 = 條目復活<!-- project: github.com/jyonline0604/website -->
+- ⚠️ 2026-11-01 教訓：「雙軌」唔一定係重複 —— 退休前一定要先比對兩軌實際內容，否則會漏咗其中一軌嘅獨有內容（system cron 版嘅天氣 digest 就係 agent 版冇嘅）<!-- project: github.com/jyonline0604/website -->
+、news-backup、cron-guardian、Volume5、自動記憶 — 呢啲唔會出現喺 OpenClaw cron list，**唔係消失**
 
 ## ⚠️ 已知狀態
 - Twitter automation：暫停（browser profile 問題）

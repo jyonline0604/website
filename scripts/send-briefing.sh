@@ -1,4 +1,6 @@
 #!/bin/bash
+# 2026-11-01 已退役（system cron 簡報軌）：crontab 條目已註釋、guardian 守護名單已移除。
+# 天氣/交通 digest 已併入 OpenClaw cron agent 簡報（早上 08:15 / 傍晚 17:55）。此腳本保留作還原用，唔好再排程。
 # 發送簡報腳本
 
 # 2026-09-20: gateway 已改用 nvm node24 安裝（2026.9.5，schema 17）；舊 ~/.npm-global CLI（2026.9.2，schema 15）讀唔到新數據庫，唔可以再用

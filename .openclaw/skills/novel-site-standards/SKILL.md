@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.117
+version: 2.9.119
 ---
 
 ---
@@ -5704,3 +5704,34 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **清理前先 dry-run**：git clean -ndX <path> 唔會真刪，但會列出所有會被移除嘅檔案 —— 見到有 tracked 內容就停手。
 - **tracked 檔被誤刪唔好 commit 落去**：即刻 git checkout -- <path> 還原，確認 git status 乾淨先繼續。
 - **主機重啟後要主動補跑漏咗嘅 system cron**：停機期間嘅記憶備份 20:00、自動記憶 23:00、cron-guardian 21:30、健康報告 22:00 會靜靜漏跑，開機後要人手/健康報告補做（記憶備份可手動跑 scripts/backup-memory.sh）。
+
+---
+
+## [2026-11-01] 更新 — v2.9.118
+- 修復內容：website repo push non-fast-forward 導致簡報/健康 job 推送失敗
+- 根本原因：同一個 website repo 由多個 cron job（bus ETA 數據、財經、AQHI、簡報記憶）同時寫入，本機未 fetch 就 push 會被 remote 進度擋住
+- 解決方法：push 前必須 git fetch origin，再檢查 git log HEAD..origin/main，有 behind 就 git pull --rebase origin main，然後再 push
+- 附加教訓：workspace memory/ 目錄被 .gitignore 忽略，記憶備份要靠 scripts/backup-memory.sh（Second-brain + Max-backup）或手動 cp，唔會自動進 website repo
+
+---
+
+## [2026-11-01] 更新 (v2.9.119) - 退休 system cron 簡報軌（雙軌簡報 → 單軌）
+
+### 修復內容
+- **問題**：每日早上/傍晚各送兩次簡報 —— system cron（`scripts/send-briefing.sh` 08:15/17:55，用 `openclaw message send` 直接送 Telegram）同 OpenClaw cron agent 版（08:15/12:55/17:55，agent 產出報告）。
+- **關鍵發現（唔係重複而係互補）**：system cron 版送嘅係「📰 香港簡報」digest（天氣/天氣警告/預報/展望/特別交通消息/港鐵列車到站/娛樂/科技/財經，實測 978 字、6 秒），agent 版送嘅係系統狀態報告（網站/Dropbox/cron/git/自動修復）。**兩者內容唔重疊**，所以唔可以直接刪 system cron 而唔補內容。
+- **修復（退休 system cron 軌 + digest 併入 agent 版）**：
+  1. `crontab`：`send-briefing.sh` 兩條（08:15 / 17:55）**註釋**（保留原行 + 「勿啟用、勿由 guardian 加返」註記，照 Volume 4 退役做法）
+  2. `scripts/cron-guardian.sh` `SYSTEM_TASKS` **移除** `send-briefing.sh` —— 唔移除會被 guardian 自動加返（Volume 4 就係咁中招）
+  3. 4 個 OpenClaw cron job message 更新（早上 08:15 / 中午 12:55 / 傍晚 17:55 — 日結 / 每日健康報告 22:00）：早上同傍晚加入 digest 步驟（1 次 exec 跑 `generate-briefing-full-v5.py`，stdout 原樣貼報告最前；超 3600 字就只留 5 段），4 個都移除「簡報 08:15/17:55 係 system cron」嘅 system cron 清單描述 + 加「已退休，唔好再報告雙軌簡報問題」註記
+  4. guardian 嘅 4 個 heredoc 同步換成同一份 message（避免 guardian 重建 job 時回退舊 prompt）
+  5. `scripts/send-briefing.sh` 保留但標記退役（可還原）
+- **驗證**：手動實跑 `cron-guardian.sh` → **冇加返** `send-briefing.sh`（crontab active 行 = 0）；4 個 job message 確認 digest 步驟在位、反引號無多餘反斜杠、已退役註記在位。
+- **效果**：每個時段得一條訊息，內容 = 天氣 digest + 系統狀態報告（合共）。
+
+### 教訓
+- **「雙軌」唔一定係重複**：退休前一定要先比對兩軌實際內容（用 `cron list --json` 抽 `payload.message` + 實跑生成器睇輸出），否則會漏咗其中一軌嘅獨有內容。呢次 system cron 版嘅天氣 digest 就係 agent 版冇嘅。
+- **退役一個 system cron 條目要改三個地方**：crontab（註釋）、guardian `SYSTEM_TASKS`（移除，否則自動加返）、guardian 嘅 rebuild heredoc（同步，否則重建時回退）。漏咗第二項 = 條目復活；漏咗第三項 = prompt 內容回退。
+- **改 cron job message 要用 `openclaw cron edit <id> --message "$(cat file)"`**，同時要同步 guardian heredoc（兩份 source of truth）。
+- **退休嘅任務唔好由 agent 繼續當成「已知問題」報告**：要喺新 message 內加一句「已退役，唔好再報告」，否則簡報會每日繼續叫人做同一個決定。
+- **Python heredoc 寫入含反引號嘅字串要小心 escape**：用 `\`` 會喺輸出留低反斜杠（SyntaxWarning: invalid escape sequence），寫入檔案後要 grep 一次 `cat -A` 核對。

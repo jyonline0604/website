@@ -79,6 +79,12 @@ rebuild_job() {
                 --message "$(cat <<'EOF'
 【早上簡報 08:15】
 
+📰 天氣/交通 digest（必須包含）：先用 1 次 exec 執行
+`python3 /home/openclaw/.openclaw/workspace/scripts/generate-briefing-full-v5.py\`
+（約 6 秒，stdout 就係完整「📰 香港簡報」digest），將輸出原樣貼喺報告**最前面**
+（【天氣】【天氣警告】【預報】【展望】【特別交通消息】【港鐵列車到站】【娛樂】【科技】【財經】）。
+若加埋下面內容會超過 3600 字，digest 只保留【天氣】【天氣警告】【預報】【特別交通消息】【港鐵列車到站】五段。
+
 按以下順序執行並報告：
 
 1. 網站狀態：檢查 https://kofhk.com 是否正常回傳 200
@@ -90,10 +96,11 @@ rebuild_job() {
 ⚠️ 自動修復：檢測到 state 分歧、cron 異常、缺失檔案等問題時，直接修復，不需等人類指示。
 
 ⚠️ 重要規則（防止誤判失敗）：
-- 檢查其他 cron job 狀態時，只可使用「openclaw cron list」確認 lastRunStatus 欄位
+- 檢查 cron 狀態必須用 exec 執行「openclaw cron list --json」或「crontab -l」，**唔好用 cron tool**（isolated session 有 scoping，只顯示自己，會誤判其他 jobs 消失）
+- 記憶備份 08:00/20:00、Volume 5 Dropbox 11:00、財經 09/15/21 都係 **system cron（crontab -l）**，唔會出現喺 OpenClaw cron list——見到佢哋喺 crontab 就係正常
+- 2026-11-01 起 system cron 簡報（send-briefing.sh）已退休，天氣 digest 併入本簡報；**唔好再報告「雙軌簡報」問題**
 - 若其他 cron 顯示 error，只須在報告中列出，**絕不可因此令本簡報標記為失敗**
 - 本簡報無論如何都必須完整輸出報告並完成送達
-- 唔好檢查系統 crontab（crontab -l）嘅任務狀態，只檢查 OpenClaw cron jobs
 
 📊 報告末尾強制輸出評估：
 [LOOP_STATUS: OK|WARN|FAIL]
@@ -112,20 +119,27 @@ EOF
                 --message "$(cat <<'EOF'
 【中午簡報 12:55】
 
-按以下順序執行並報告：
+⚠️ 執行效率規則（因 2026-10-22 12:55 曾超時 20 分鐘）：全程**只做 1-2 次 exec**（用一條 bash 指令一次過收集所有資料），之後最多只准再讀 1-2 個細節。唔准逐項分開 call 工具。所有外部指令加 timeout 20 保護。
 
-1. 網站狀態：https://kofhk.com 是否 200
-2. 上午回顧：使用 cron list 檢查「早上簡報 08:15」的最後執行狀態（name: 早上簡報 08:15），確認有無成功執行
-3. Dropbox 檢查：Volume 4 同步狀態
-4. 系統狀態：df -h /, 異常進程
-5. 下午排程提醒
+📋 執行步驟：
+1. 一次 exec 收集：
+   - curl -s -o /dev/null -w "%{http_code}" -m 15 https://kofhk.com
+   - openclaw cron list --json（用 --timeout 15000 或直接解析 state）
+   - crontab -l
+   - tail 各同步 log（dropbox-volume5-sync.log、dropbox-volume6-sync.log、dropbox-volume7-daily-sync.log）
+   - df -h /; free -h; uptime; ps -eo pid,pcpu,pmem,etime,comm --sort=-pmem | head -8
+2. 從上面輸出整理報告（唔需要再讀檔案）。
+3. 檢查 Dropbox state：.dropbox-sync/volume5_state.json、volume6_state.json、volume7_state.json vs assets/chapters-data.json 章節數。分歧 → 自動修復並 git commit。
+4. 有 consecutiveErrors>0 → 報告根因；可用 openclaw cron edit 調整（timeout-seconds 或精簡 message）。
+5. git 未推送 commit → 自動 git push。
 
-⚠️ 自動修復：檢測到 state 分歧、cron 異常、缺失檔案等問題時，直接修復，不需等人類指示。
+⚠️ 檢查 cron job 時請使用正確的名字「早上簡報 08:15」，不要使用 08:00！
+⚠️ 檢查 cron 狀態必須用 exec 執行「openclaw cron list --json」或「crontab -l」，**絕對唔好用 cron tool**（isolated session 有 scoping，只顯示自己 agent 嘅 job，會誤判其他 jobs 消失！）
+⚠️ 以下任務係 **system cron（crontab -l）**，唔會出現喺 OpenClaw cron list：記憶備份 08:00/20:00、Volume 4/5/6 Dropbox 11:00、財經 10:00/16:00、AQHI 10:00/16:00、新聞備份 10:10/16:10、cron-guardian 09:30/21:30、Dropbox token 續期每 3 小時、OpenClaw 版本檢查 11:00、自動記憶 23:00 —— 見到佢哋喺 crontab 就係正常，**唔係消失**！
+- 2026-11-01 起 system cron 簡報（send-briefing.sh）已退休，天氣 digest 併入早上/傍晚簡報；**唔好再報告「雙軌簡報」問題**
 
 📊 報告末尾強制輸出評估：
 [LOOP_STATUS: OK|WARN|FAIL]
-
-⚠️ 注意：檢查 cron job 時請使用正確的名字「早上簡報 08:15」，不要使用 08:00！
 EOF
 )" 2>>"$LOG" && log "✅ 中午簡報已重建" || log "❌ 中午簡報重建失敗"
             ;;
@@ -138,23 +152,31 @@ EOF
                 --message "$(cat <<'EOF'
 【傍晚簡報 17:55 — 日結】
 
-按以下順序執行並產生完整日結報告：
+⚠️ 執行效率規則（因之前 5 次超時）：全程**只做 2 次 exec**（1 次跑天氣 digest 腳本 + 1 次用一個 bash 指令一次過收集所有系統資料），之後最多只准再讀 1-2 個細節。唔准逐項分開 call 工具。所有外部指令加 timeout 20 保護。
 
-📋 今日執行摘要：
-1. 網站狀態：https://kofhk.com 是否 200
-2. 今日 cron 執行回顧：
-   - 檢查早上簡報、中午簡報最後執行時間和狀態
-   - 檢查 Dropbox Volume 4 今日同步：成功幾章、有無錯誤
-3. 系統狀態：df -h /, 記憶體, 持續運行時間
-4. 明日排程預覽
+📰 天氣/交通 digest（必須包含）：先用 1 次 exec 執行
+`python3 /home/openclaw/.openclaw/workspace/scripts/generate-briefing-full-v5.py\`
+（約 6 秒，stdout 就係完整「📰 香港簡報」digest），將輸出原樣貼喺報告**最前面**
+（【天氣】【天氣警告】【預報】【展望】【特別交通消息】【港鐵列車到站】【娛樂】【科技】【財經】）。
+若加埋下面內容會超過 3600 字，digest 只保留【天氣】【天氣警告】【預報】【特別交通消息】【港鐵列車到站】五段。
 
-⚠️ 自動修復規則：
-偵測到以下問題時，必須自動修復而不再等待人類指示：
-- Dropbox state.json 與實際檔案數量分歧 → 自動修復並 commit
-- 異常 cron 狀態（consecutiveErrors>0）→ 自動重啟或報告
-- 遺漏的 HTML/JSON 更新 → 自動補執行
+📋 執行步驟：
+1. 一次 exec 收集：
+   - curl -s -o /dev/null -w "%{http_code}" -m 15 https://kofhk.com
+   - openclaw cron list --json（用 --timeout 15000 或直接解析 state）
+   - crontab -l
+   - tail 各同步 log（dropbox-volume5-sync.log、dropbox-volume6-sync.log、dropbox-volume7-daily-sync.log）
+   - df -h /; free -h; uptime
+2. 從上面輸出整理報告（唔需要再讀檔案）。
+3. 檢查 Dropbox state：.dropbox-sync/volume5_state.json、volume6_state.json、volume7_state.json vs assets/chapters-data.json 章節數。分歧 → 自動修復並 git commit。
+4. 有 consecutiveErrors>0 → 報告根因；可用 openclaw cron edit 調整（timeout-seconds 0 或精簡 message）。
+5. git 未推送 commit → 自動 git push。
 
-📊 結尾必須輸出：
+⚠️ 檢查 cron 狀態必須用 exec 執行「openclaw cron list --json」或「crontab -l」，**絕對唔好用 cron tool**（isolated session 有 scoping）。
+⚠️ 以下係 system cron（crontab -l），唔會出現喺 openclaw cron list：記憶備份 08:00/20:00、Volume 5/6 Dropbox 11:00、Volume 7 11:30、財經 10/16、AQHI 10/16、token 續期、新聞備份 10:10/16:10、guardian 09:30/21:30、版本檢查 11:00、自動記憶 23:00 —— 見到即正常，唔係消失。
+- 2026-11-01 起 system cron 簡報（send-briefing.sh）已退休，天氣 digest 併入本簡報；**唔好再報告「雙軌簡報」問題**
+
+📊 結尾輸出：
 [LOOP_STATUS: OK|WARN|FAIL]
 [LOOP_DAILY: 簡報✅/⚠️, Dropbox✅/⚠️, 網站✅/⚠️, 系統✅/⚠️]
 EOF
@@ -174,7 +196,11 @@ EOF
 1. 🌐 網站狀態：curl -sI https://kofhk.com
 2. 📦 Dropbox Vol4 同步：.dropbox-sync/volume4_state.json
 3. 💾 系統資源：df -h /, free -h, uptime
-4. 🔄 Cron 健康：所有 cron job consecutiveErrors
+4. 🔄 Cron 健康：用 exec 執行 openclaw cron list --json + crontab -l 檢查所有 cron job
+⚠️ 檢查 cron 狀態必須用 exec 執行「openclaw cron list --json」或「crontab -l」，**絕對唔好用 cron tool**（isolated session 有 scoping，只顯示自己 agent 嘅 job，會誤判其他 jobs 消失！）
+⚠️ 以下任務係 **system cron（crontab -l）**，唔會出現喺 OpenClaw cron list：記憶備份 08:00/20:00、Volume 5 Dropbox 11:00、財經 09/15/21、AQHI 09/15/21、自動記憶 23:00 —— 見到佢哋喺 crontab 就係正常，**唔係消失**！
+- 2026-11-01 起 system cron 簡報（send-briefing.sh）已退休，天氣 digest 併入早上/傍晚簡報；**唔好再報告「雙軌簡報」問題**
+
 5. 📝 Git 狀態：untracked 檔案、未推送 commit
 
 🔧 自動修復規則（強制執行，唔准只報告）：
@@ -247,7 +273,9 @@ fi
 CRONTAB=$(crontab -l 2>/dev/null)
 SYSTEM_TASKS=(
     "backup-memory.sh"
-    "send-briefing.sh"
+    # 2026-11-01 大肥喵指令退休：send-briefing.sh（system cron 簡報）唔喺守護名單 —
+    # 天氣 digest 已併入 OpenClaw cron agent 簡報（早上 08:15 / 傍晚 17:55），
+    # crontab 已註釋，guardian 唔會加返（照 Volume 4 退役做法）。
     "dropbox-volume5-daily-sync.sh"
     "dropbox-volume6-daily-sync.sh"
     "dropbox-volume7-daily-sync.sh"

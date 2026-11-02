@@ -287,3 +287,14 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 自動修復：① 10-31 20:00 記憶備份因停機錯過 → 補跑成功（Max-backup 96d6d86）② workspace 落後 origin/main 1 commit → pull --ff-only 已同步 ③ 清走 19 個 >7 日 media/inbound staging 殘留（2.1M→220K）<!-- project: github.com/jyonline0604/website -->
 - 🔧 新教訓：rm -rf media/inbound/openclaw-staged-* 會刪走已被 git 追蹤嘅 4 張網站圖片（git status 出現 D）→ 清 ignored 殘留只可以用 git clean -fdX（只清 ignored，tracked 唔會郁）；今次即時 git checkout 還原，4 個 tracked 檔全部在 disk、工作區乾淨<!-- project: github.com/jyonline0604/website -->
 - 觀察：主機近兩日都重啟（10-31 07:55:37、11-01 07:40:32），停機期間嘅 system cron 會靜靜漏跑（記憶備份 20:00、自動記憶 23:00、guardian 21:30、健康報告 22:00）→ 開機後要主動補跑<!-- project: github.com/jyonline0604/website -->
+
+
+## 2026-11-02 08:15 早上簡報 — 全綠（0 failed unit，issue #7 根因已消失）+ 自動修復 DREAMS.md 未提交
+- 巡檢 5 項全綠：kofhk.com 200（0.08s）；/ /chapters.html /home.html /chapter-1806.html 全部 200；磁碟 / 16%（67G/468G，377G 可用，inode 4%）；Mem 4.1Gi used / 7.0Gi、available 2.9Gi、swap 0；uptime 1 日 34 分鐘、load 0.55。<!-- project: github.com/jyonline0604/website -->
+- 線上一致性：線上 assets/chapters-data.json?v=20261102 = 1806 章 = 本地 1806 = V7 state max CH1806 → 零分歧。<!-- project: github.com/jyonline0604/website -->
+- Dropbox：Volume 4 按 2026-10-02 指令退役（crontab 註釋 + guardian 明文排除），最後實跑 2026-10-22 11:00 因 token 競態「Token file is empty or missing」中止 → 非故障；V5/V6 2026-11-01 11:00 未處理 0，V7 11:30 加載 CH1801-1806 6/6 成功。<!-- project: github.com/jyonline0604/website -->
+- Cron：OpenClaw 8 個 job 全部 enabled + lastStatus=ok + consecutiveErrors=0 + delivered；system crontab 條目全在位（記憶備份 08:00/20:00、V5/V6 11:00、V7 11:30、guardian 09:30/21:30、token 續期每 3h）。<!-- project: github.com/jyonline0604/website -->
+- 記憶備份 2026-11-02 08:00：Second-brain + Max-backup 兩份 push 成功（attempt 1），三倉 0 未推送、工作區乾淨。<!-- project: github.com/jyonline0604/website -->
+- 自動修復：DREAMS.md（03:00 Memory Dreaming Promotion 產出 14 行）未提交 → commit + git pull --rebase origin main + push origin/main。<!-- project: github.com/jyonline0604/website -->
+- ✅ issue #7 結案：根因檔 /etc/logrotate.d/cloud-init-base 已被移除 + systemctl --failed = 0 failed units（連續多日 failed 已清零）→ 唔使再人手處理。<!-- project: github.com/jyonline0604/website -->
+- 教訓：logrotate 問題要「systemctl --failed + 根因檔案」一齊查，duplicate 檔案消失 = 真修好（唔係 ConditionACPower 未滿足嘅假象）。<!-- project: github.com/jyonline0604/website -->

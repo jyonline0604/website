@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.119
+version: 2.9.120
 ---
 
 ---
@@ -5735,3 +5735,22 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **改 cron job message 要用 `openclaw cron edit <id> --message "$(cat file)"`**，同時要同步 guardian heredoc（兩份 source of truth）。
 - **退休嘅任務唔好由 agent 繼續當成「已知問題」報告**：要喺新 message 內加一句「已退役，唔好再報告」，否則簡報會每日繼續叫人做同一個決定。
 - **Python heredoc 寫入含反引號嘅字串要小心 escape**：用 `\`` 會喺輸出留低反斜杠（SyntaxWarning: invalid escape sequence），寫入檔案後要 grep 一次 `cat -A` 核對。
+
+---
+
+## [2026-11-02] 更新 (v2.9.120) - 早上簡報全綠 + issue #7（logrotate duplicate）結案
+
+### 修復內容
+- **DREAMS.md 未提交**：03:00 Memory Dreaming Promotion 每日寫入 DREAMS.md，但網站 repo 一直留低 1 個 unstaged 檔案 → 每日早上簡報 commit + `git pull --rebase origin main` + push origin/main，三倉 0/0。
+- **issue #7 結案**：`/etc/logrotate.d/cloud-init-base`（duplicate log entry 根因檔）已經唔存在，`systemctl --failed` = 0 failed units → 之前連續多日「logrotate failed」係真·已修好，唔使再等大肥喵人手做 `sudo mv`。
+- **SKILL.md 同步**：local + website repo（force-add）+ Second-brain + Max-backup 四份 v2.9.120 md5 一致。
+
+### 巡檢要點（2026-11-02 驗證有效）
+- **線上一致性一定要加 cache-buster**：`assets/chapters-data.json?v=YYYYMMDD` 先至係用戶見到嘅版本；裸路徑係 Cloudflare 舊快取（issue #14）。
+- **Dropbox V4 保持退役**（勿加返）：V5/V6/V7 三條 11:00/11:00/11:30 就夠；V7 已接棒到 CH1806，線上 = 本地 = state = 1806 零分歧。
+- **早簡報 digest 併入 agent 版**（2026-11-01 起）：單一 exec 跑 `generate-briefing-full-v5.py` 攞 stdout 就夠，唔使再跑已退休嘅 `send-briefing.sh`，亦唔好再報「雙軌簡報」。
+- **system cron 檢查用 `crontab -l` + `openclaw cron list --json`（exec 執行）**，唔好用 cron tool（isolated session scoping 會令其他 job 唔見）。
+
+### 教訓
+- **每日 03:00 dreaming 產出要納入早上簡報嘅自動修復流程**：唔好等到 human 發現，先 commit（+ rebase + push）就係最平成本的修法。
+- **睇 systemctl --failed 之後要再睇根因檔案**：logrotate 有 ConditionACPower=true，「skipped」唔等於健康；duplicate 檔真係唔存在，先可以結案。

@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.121
+version: 2.9.122
 ---
 
 ---
@@ -5773,3 +5773,19 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **SKILL.md 同步前一定要 md5 + 行數雙驗**（issue #12/#14 教訓）：今日三份一致（5756 行 / md5 f40d8f673959），確認無分叉先改
 - **同一天多個 session 唔好用同一個標題 append**（issue #14 教訓）：今日標題用「(v2.9.121) - 早上簡報巡檢：git 分歧第 4 次復發」以便辨識
 - **線上一致性一定要加 cache-buster**（issue #14）：?v=20261104 先至係用戶見到嘅版本
+
+---
+## [2026-11-04] 更新 - skill 副本漂移：已安裝副本可能落後於備份倉
+
+### 問題
+- 18:00 Skill更新檢查發現：已安裝 skill ( ~/.openclaw/skills/novel-site-standards/SKILL.md ) 停留喺 v2.9.120，而 workspace 副本 + Second-brain + Max-backup 都已係 v2.9.121
+- 即係當日新寫嘅條目（cache-buster 修復、logrotate 結案、git 分歧自癒、cron 退休等）並未載入 runtime 實際讀取嘅 skill
+
+### 修復
+- 以備份倉最新版本覆蓋已安裝副本，並將四處副本（已安裝 / workspace 副本 / Second-brain / Max-backup）重新對齊同一版本
+- 新增本條 + 版本號 bump 同步四處
+
+### 教訓
+- skill 有四個副本（已安裝目錄、workspace 內 .openclaw/skills 副本、Second-brain、Max-backup）；任何一處更新後都要 md5 + 版本號四處核對，否則 runtime 讀嘅可能係舊版本
+- 更新後務必核對：md5sum 四處 + grep version 四處，唔好只睇 git push 成功
+

@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.120
+version: 2.9.121
 ---
 
 ---
@@ -5754,3 +5754,22 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 ### 教訓
 - **每日 03:00 dreaming 產出要納入早上簡報嘅自動修復流程**：唔好等到 human 發現，先 commit（+ rebase + push）就係最平成本的修法。
 - **睇 systemctl --failed 之後要再睇根因檔案**：logrotate 有 ConditionACPower=true，「skipped」唔等於健康；duplicate 檔真係唔存在，先可以結案。
+
+---
+
+## [2026-11-04] 更新 (v2.9.121) - 早上簡報巡檢：git 分歧第 4 次復發（自動修復）+ 三份 SKILL.md 一致性驗證
+
+### 事件（2026-11-04 08:15 早上簡報）
+- **症狀**：website repo（= workspace，jyonline0604/website）git fetch 後本地落後 origin/main 1 個 CI commit（b62c22eba..ab1073884，GitHub Actions 新聞/財務/RSS 自動更新），同時 git status 有未提交嘅 M DREAMS.md（03:00 Memory Dreaming Promotion 產出 14 行）
+- **修復**：先 commit DREAMS.md → git pull --rebase origin main（rebase 成功，CI 冇碰 DREAMS.md）→ git push origin main（ab1073884..124039b5e）→ 分歧 0/0、工作區乾淨
+- **巡檢全部綠**：kofhk.com 200（0.75s）；線上 assets/chapters-data.json?v=20261104 = 1818 章 = 本地 chapters-data.json 1818 = V7 state max CH1818 → 零分歧；systemctl --failed = 0（issue #7 根因檔真係已移除，連續 3 日清零）；磁碟 / 16%（68G/468G、377G 可用）；Mem available 3.0Gi / 7.0Gi、swap 0；uptime 1 日 10 小時、load 0.69
+- **Dropbox**：V5 270 章 / V6 273 章（max CH1740）/ V7 78 章（max CH1818）2026-11-03 全部「未處理 0」；V7 11:30 加載 CH1813-CH1818 6/6 成功；V4 維持退役（state 265 章 CH926-1190 全處理，勿加返）
+- **Cron**：OpenClaw 8 個 job 全部 enabled + lastStatus=ok + consecutiveErrors=0 + delivered；system cron（crontab -l）條目全在位；cron-guardian 2026-11-03 21:30 實跑「全部正常，無需修復」
+- **SKILL.md 同步**：local + Second-brain + Max-backup 三份 v2.9.120 md5 一致（f40d8f673959，5756 行）→ 改為 v2.9.121 後再同步三份
+
+### 教訓
+- **「記憶備份 08:00 已成功」唔等於「網站 repo 已同步」**：08:00 記憶備份只打包 MEMORY.md + memory/*.md，網站 repo 嘅 CI commit 係另一條線 → 早上簡報一定要自己做 git fetch + git status --porcelain 雙查
+- **git 分歧係第 4 次復發（#11 / #13 / 10-31 / 今日）**：根治方向係 03:00 dreaming 直接 commit + push，或者加一個 05:00 嘅 git pull --rebase && git push system cron；目前靠簡報巡檢兜底
+- **SKILL.md 同步前一定要 md5 + 行數雙驗**（issue #12/#14 教訓）：今日三份一致（5756 行 / md5 f40d8f673959），確認無分叉先改
+- **同一天多個 session 唔好用同一個標題 append**（issue #14 教訓）：今日標題用「(v2.9.121) - 早上簡報巡檢：git 分歧第 4 次復發」以便辨識
+- **線上一致性一定要加 cache-buster**（issue #14）：?v=20261104 先至係用戶見到嘅版本

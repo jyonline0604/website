@@ -306,3 +306,8 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - Cron：OpenClaw 8 個 job 全部 enabled/ok/err=0/delivered；system crontab 條目全在位；記憶備份 08:00 兩倉 push 成功。<!-- project: github.com/jyonline0604/website -->
 - 自動修復：workspace（= website repo）落後 origin/main 1 個 CI commit + DREAMS.md 未提交 → commit + pull --rebase + push（ab1073884..124039b5e）→ 三倉 0/0、工作區乾淨。<!-- project: github.com/jyonline0604/website -->
 - 教訓：記憶備份成功 ≠ repo 同步；早上簡報要自己 git fetch + git status 雙查（git 分歧已係第 4 次復發）。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-11-04 22:00 健康報告 — 全綠，git add exit 1 陷阱已記入 skill
+- 網站 kofhk.com HTTP/2 200；磁碟 16%、Mem available 3.3Gi、swap 0、uptime 12:39、load 0.73；OpenClaw cron 8 job 全 ok/err=0；system crontab 齊全。<!-- project: github.com/jyonline0604/website -->
+- 自動修復：workspace（= website repo）有 2 個已追蹤但未 commit 嘅改動（skill v2.9.122 + memory/2026-11-04.md）→ commit 9d3b75b84 + push origin/main，push 後 fetch + status -sb 驗證三倉 0 未推送、工作區乾淨。<!-- project: github.com/jyonline0604/website -->
+- 教訓：`git add` 對 tracked-but-gitignored 檔案會 exit 1 但其實已 stage，令 && 鏈跳過 git commit → 已寫入 skill v2.9.123，之後唔好將 add 同 commit 用 && 串埋。<!-- project: github.com/jyonline0604/website -->

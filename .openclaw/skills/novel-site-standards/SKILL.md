@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.122
+version: 2.9.123
 ---
 
 ---
@@ -5789,3 +5789,21 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - skill 有四個副本（已安裝目錄、workspace 內 .openclaw/skills 副本、Second-brain、Max-backup）；任何一處更新後都要 md5 + 版本號四處核對，否則 runtime 讀嘅可能係舊版本
 - 更新後務必核對：md5sum 四處 + grep version 四處，唔好只睇 git push 成功
 
+
+---
+
+## [2026-11-04] 更新 - git add 對「已被 .gitignore 忽略但仍被追蹤」檔案會 exit 1，&& 鏈會斷
+
+### 問題
+- workspace 嘅 .gitignore 忽略 `.openclaw/` 同 `memory/`，但 `memory/2026-11-04.md` 同 `.openclaw/skills/novel-site-standards/SKILL.md` 其實係**已被追蹤**（tracked）嘅檔案
+- 執行 `git add -A memory/2026-11-04.md .openclaw/skills/.../SKILL.md && git commit ...` 時，git 印出 "The following paths are ignored by one of your .gitignore files" 並 **exit code = 1**
+- 但實際上檔案**已經 stage 成功**（`git status --porcelain` 顯示 `M ` 而唔係 ` M`）—— 因為 exit 1，&& 鏈令 git commit **被完全跳過**，令人誤以為 add 失敗
+
+### 修復
+- 將 `git add` 同 `git commit` 拆開做，先睇 `git status --porcelain` 確認已 staged（`M ` = staged，` M` = 只係工作區改動）
+- 需要的話用 `git add -f` 強制加入被 ignore 但已追蹤嘅路徑
+
+### 教訓
+- **`git add` exit code 唔等於「有冇 stage 到」**：對 tracked-but-ignored 檔案，git 會 warn + exit 1，但 staging 其實成功
+- 唔好將 `git add` 用 `&&` 直接串去 `git commit`；改為分開執行 + 用 `git status --porcelain` 實測 staged 狀態
+- push 之後照舊用 `git fetch origin` + `git status -sb` 判斷真實狀態（已記錄於 2026-11-04 早上簡報教訓）

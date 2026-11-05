@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.123
+version: 2.9.124
 ---
 
 ---
@@ -5807,3 +5807,25 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **`git add` exit code 唔等於「有冇 stage 到」**：對 tracked-but-ignored 檔案，git 會 warn + exit 1，但 staging 其實成功
 - 唔好將 `git add` 用 `&&` 直接串去 `git commit`；改為分開執行 + 用 `git status --porcelain` 實測 staged 狀態
 - push 之後照舊用 `git fetch origin` + `git status -sb` 判斷真實狀態（已記錄於 2026-11-04 早上簡報教訓）
+
+---
+
+## [2026-11-05] 更新 - 開機後巡檢：先睇 boot 時間線，再判斷 system cron 有冇漏跑
+
+### 問題
+- 08:15 早上簡報喺 **08:44** 先跑（排程時間係 08:15），開機後只見「uptime 4 分鐘」先察覺原來部機喺 **08:07:00** 被人手關機（GNOME 桌面 → `gnome-session-shutdown.target` → `systemd-poweroff`），**08:41:06** 先起返機、gateway 08:41:12 自動起
+- 停機 34 分鐘 → 08:15 呢個 OpenClaw cron 排程撞正停機，miss 咗
+- 但 `logs/memory-backup.log` 顯示 08:00:12 記憶備份成功 → 睇落好正常，其實係**關機前**寫落嘅，唔係起機後補跑
+- `systemctl --failed` = 0、git 倉有 1 個 CI commit 未 pull + DREAMS.md 未提交 → 開機後仲有嘢要做
+
+### 巡檢流程（開機後必做）
+1. `journalctl --list-boots --no-pager | tail -4` → 睇 boot -1 幾時終止、boot 0 幾時開始
+2. `journalctl -b -1 --no-pager | grep -Ei 'gnome-session-shutdown|systemd-poweroff'` → 確認係人手關機定 cron/timer 觸發
+3. `systemctl --user status openclaw-gateway.service` → 確認 enabled + 起機自動拉起
+4. 對齊時間線：排程時間（08:00 / 08:15）喺 boot -1 死機之後定之前？→ 決定要唔要補跑
+5. 開機後照常跑：git fetch + status -sb（#11 分歧高頻復發）、Dropbox state 對 chapters-data.json、token 有效性
+
+### 教訓
+- **唔好假設「08:00 記憶備份跑咗 = 而家部機仲開住」**；log 有時間戳但要同 boot 時間線一齊睇，先知係關機前定起機後寫
+- **OpenClaw cron 會自動 catch-up**（起機後補跑 missed 排程，本次 08:15 → 08:44 補跑送達），**system cron（記憶備份 08/20、token 續期每 3h）唔會 catch-up** → 停機期間嘅 system cron 要自己核對／補跑
+- 無漏跑嘅判定要寫「時間線 + log 兩者一致」，唔可以只睇 log 有 ✅ 就當無問題

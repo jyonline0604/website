@@ -311,3 +311,12 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 網站 kofhk.com HTTP/2 200；磁碟 16%、Mem available 3.3Gi、swap 0、uptime 12:39、load 0.73；OpenClaw cron 8 job 全 ok/err=0；system crontab 齊全。<!-- project: github.com/jyonline0604/website -->
 - 自動修復：workspace（= website repo）有 2 個已追蹤但未 commit 嘅改動（skill v2.9.122 + memory/2026-11-04.md）→ commit 9d3b75b84 + push origin/main，push 後 fetch + status -sb 驗證三倉 0 未推送、工作區乾淨。<!-- project: github.com/jyonline0604/website -->
 - 教訓：`git add` 對 tracked-but-gitignored 檔案會 exit 1 但其實已 stage，令 && 鏈跳過 git commit → 已寫入 skill v2.9.123，之後唔好將 add 同 commit 用 && 串埋。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-11-05 08:15 早上簡報 — 全綠（0 failed unit）+ 第 5 次人為重啟 + git 分歧第 5 次復發自動修復
+- 網站 kofhk.com 200（0.68s）；線上 assets/chapters-data.json?v=20261105 = 1824 章 = 本地 1824 = V7 state CH1824 → 零分歧。<!-- project: github.com/jyonline0604/website -->
+- 系統：磁碟 / 16%（67G/468G、377G 可用）、Mem 2.8Gi used / 7.0Gi、available 4.2Gi、swap 0、uptime 4 分鐘（啱啱重啟）、load 0.90；systemctl --failed = 0。<!-- project: github.com/jyonline0604/website -->
+- 重啟：boot -1 終止於 08:07:00（GNOME 人手關機）、boot 0 起於 08:41:06、gateway 08:41:12 自動起返；停機 34 分鐘令 08:15 簡報漏跑 → OpenClaw scheduler 自動 catch-up，08:44 補跑送達；08:00 記憶備份喺關機前已完成 ✅。<!-- project: github.com/jyonline0604/website -->
+- Dropbox：V4 已按 2026-10-02 指令退役（state CH1746 全處理完，唔算故障）；V5/V6 max 1818、V7 max 1824，2026-11-04 全部「未處理 0」；token 06:00 續期成功。<!-- project: github.com/jyonline0604/website -->
+- Cron：OpenClaw 8 個 job 全部 enabled/ok/err=0/delivered；system crontab 條目全在位（send-briefing.sh 已退役，正常）。<!-- project: github.com/jyonline0604/website -->
+- 自動修復：workspace（= website repo）落後 origin/main 1 個 CI commit + DREAMS.md、memory/2026-11-04.md 未提交 → commit → pull --rebase → push（1e5b906cd..d02130c42）→ 三倉 0/0、工作區乾淨。<!-- project: github.com/jyonline0604/website -->
+- 教訓：開機後巡檢要先睇 journal --list-boots（boot -1 幾時死）再睇 08:00 log 係關機前定關機後；OpenClaw cron 會 catch-up，system cron 唔會。<!-- project: github.com/jyonline0604/website -->

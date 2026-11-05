@@ -5809,23 +5809,15 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - push 之後照舊用 `git fetch origin` + `git status -sb` 判斷真實狀態（已記錄於 2026-11-04 早上簡報教訓）
 
 ---
+## [2026-11-05] 更新 - 版本檢查收單軌（退役 system crontab 軌）
 
-## [2026-11-05] 更新 - 開機後巡檢：先睇 boot 時間線，再判斷 system cron 有冇漏跑
+### 修復內容
+- 移除 system crontab 的「OpenClaw版本檢查 每天11:00」條目（check_openclaw_update.py），保留 OpenClaw cron job「OpenClaw Version Check」作唯一軌
+- 解決：同一個腳本兩軌各行一次 → 大肥喵每日收兩次完全相同嘅版本 Telegram 通知（11:00:09 + 11:03:22）
+- 與簡報軌一致（11-01 已退役 system cron 簡報軌、保留 OpenClaw cron 軌）→ 全面單軌
 
-### 問題
-- 08:15 早上簡報喺 **08:44** 先跑（排程時間係 08:15），開機後只見「uptime 4 分鐘」先察覺原來部機喺 **08:07:00** 被人手關機（GNOME 桌面 → `gnome-session-shutdown.target` → `systemd-poweroff`），**08:41:06** 先起返機、gateway 08:41:12 自動起
-- 停機 34 分鐘 → 08:15 呢個 OpenClaw cron 排程撞正停機，miss 咗
-- 但 `logs/memory-backup.log` 顯示 08:00:12 記憶備份成功 → 睇落好正常，其實係**關機前**寫落嘅，唔係起機後補跑
-- `systemctl --failed` = 0、git 倉有 1 個 CI commit 未 pull + DREAMS.md 未提交 → 開機後仲有嘢要做
+### 保留軌的好處
+- OpenClaw cron job 照跑同一個腳本 → Telegram 通知照發（大肥喵一樣收到）
+- 額外多一份好處：執行結果會入 agent 對話（可做交接/審計），system crontab 軌唔會
+- 若將來想回復雙軌，只要把 crontab 條目加返即可（已安裝腳本不變）
 
-### 巡檢流程（開機後必做）
-1. `journalctl --list-boots --no-pager | tail -4` → 睇 boot -1 幾時終止、boot 0 幾時開始
-2. `journalctl -b -1 --no-pager | grep -Ei 'gnome-session-shutdown|systemd-poweroff'` → 確認係人手關機定 cron/timer 觸發
-3. `systemctl --user status openclaw-gateway.service` → 確認 enabled + 起機自動拉起
-4. 對齊時間線：排程時間（08:00 / 08:15）喺 boot -1 死機之後定之前？→ 決定要唔要補跑
-5. 開機後照常跑：git fetch + status -sb（#11 分歧高頻復發）、Dropbox state 對 chapters-data.json、token 有效性
-
-### 教訓
-- **唔好假設「08:00 記憶備份跑咗 = 而家部機仲開住」**；log 有時間戳但要同 boot 時間線一齊睇，先知係關機前定起機後寫
-- **OpenClaw cron 會自動 catch-up**（起機後補跑 missed 排程，本次 08:15 → 08:44 補跑送達），**system cron（記憶備份 08/20、token 續期每 3h）唔會 catch-up** → 停機期間嘅 system cron 要自己核對／補跑
-- 無漏跑嘅判定要寫「時間線 + log 兩者一致」，唔可以只睇 log 有 ✅ 就當無問題

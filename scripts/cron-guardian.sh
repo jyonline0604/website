@@ -283,7 +283,9 @@ SYSTEM_TASKS=(
     "update_finance_news.sh"
     "update_aqhi.sh"
     "auto-daily-memory-log.sh"
-    "check_openclaw_update.py"
+    # 2026-11-05 大肥喵指令：版本檢查收單軌（保留 OpenClaw cron job「OpenClaw Version Check」，
+    # 退役 system cron 軌）— 同一腳本兩軌各行一次會令大肥喵每日收兩次同樣 Telegram 通知。
+    # check_openclaw_update.py **唔喺守護名單**：crontab 冇佢係正確狀態，唔好自動加返。
 )
 # 2026-10-23: system cron 條目會喺 crontab 改寫時意外被註釋（2026-10-21 Vol5 已中招一次）。
 # 呢度保留完整 cron 行，偵測到「被註釋 = 缺失」就自動加返（append，唔會洗掉其他條目）。

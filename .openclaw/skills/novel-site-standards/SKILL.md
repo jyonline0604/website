@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.124
+version: 2.9.125
 ---
 
 ---
@@ -5821,3 +5821,23 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 額外多一份好處：執行結果會入 agent 對話（可做交接/審計），system crontab 軌唔會
 - 若將來想回復雙軌，只要把 crontab 條目加返即可（已安裝腳本不變）
 
+---
+
+## [2026-11-05 13:15 更新] 簡報送達驗證 + 連環重啟處理
+
+### 修復內容
+- 更正 memory/2026-11-05.md 嘅錯誤記述：08:44 嘅 catch-up 補跑其實喺 08:49 被 gateway restart 打斷、**未送達**（真係送達係 13:15 重試）
+- memory/issues.md #10 補上今日第 6、7 次重啟嘅復發記錄（boot -2 08:07:00 → boot -1 08:41:06→08:49:29 → boot 0 08:50:21）
+
+### 根本原因
+- 機房連環人手關機（GNOME 桌面），起機後 OpenClaw scheduler 自動 catch-up，但 catch-up 排程會撞正下一次重啟 → 被 gateway restart 中斷
+
+### 解決方法
+- 簡報送達狀態一律以 automations runs 嘅 delivered / deliveryStatus 為準，唔用 memory 筆記做準
+- catch-up 被斬斷時由 scheduler 自動重試，唔需人手補跑；重試成功後更正 memory 紀錄
+
+### 步驟
+1. 睇 journalctl --list-boots 對齊每次重啟時間窗
+2. 睇 automations runs 確認 job 係 delivered 定 interrupted
+3. 修正 memory/2026-11-05.md + issues.md #10
+4. 同步 SKILL.md 四份副本（local / website repo / Second-brain / Max-backup），版本 +0.0.1

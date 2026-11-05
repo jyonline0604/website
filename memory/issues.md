@@ -120,3 +120,10 @@
 - **症狀**：workspace（= website repo）落後 origin/main 1 個 GitHub Actions commit（b62c22eba..ab1073884，新聞/財務/RSS 自動更新）+ DREAMS.md 未提交（03:00 Memory Dreaming Promotion 產出）
 - **修復**：commit DREAMS.md → git pull --rebase origin main → git push origin main（ab1073884..124039b5e）→ 分歧 0/0、工作區乾淨
 - **復發次數**：#11（10-24）、#13（10-28）、10-31、今日 = 第 4 次 → 屬高頻問題，根治方向係 03:00 dreaming 直接 commit+push，或加 05:00 拉取推送 system cron<!-- project: github.com/jyonline0604/website -->
+
+### ⚠️ #10 復發記錄 — 2026-11-05 13:15 補跑被重啟斬斷（今日第 6、7 次重啟）
+- **症狀**：08:15 簡報 job 連續兩次撞正機房重啟。第一次 08:07:00 關機（boot -2 終止）→ 08:15 排程漏跑；scheduler 08:44 catch-up 起跑，但 08:49:29 boot -1 再被關、08:50:21 boot 0 先起返 → catch-up 被 gateway restart 打斷，記 cron: job interrupted by gateway restart，deliveryStatus=unknown、**未送達**（consecutiveErrors=1）；13:15 scheduler 重試先成功送達。
+- **根因**：連環人手關機（journal：gnome-session-shutdown.target → systemd-poweroff），加上 catch-up 排程會喺起機後立刻跑 → 重啟窗口重疊。
+- **影響**：11-05 早上簡報只有 13:15 呢一份送達；08:00 記憶備份（08:00:12 關機前完成 ✅）、09:30 guardian、10:00 財務/AQHI/音訊同步、11:00 V5/V6、11:30 V7、12:00 token 續期全部正常。
+- **處理**：無需人手補跑；已更正 memory/2026-11-05.md 原本「08:44 補跑送達」嘅錯誤記述。
+- **教訓**：核對簡報是否送達，要睇 automations runs 嘅 delivered / deliveryStatus 欄位，唔可以只信 memory 筆記。<!-- project: github.com/jyonline0604/website -->

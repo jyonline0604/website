@@ -78,16 +78,9 @@ if check_pages_deploying; then
     done
 fi
 
-# ── Step 3: 同步 remote ──
-echo "  🔄 同步 remote..."
-git pull --rebase -X theirs origin main 2>/dev/null || {
-    git rebase --abort 2>/dev/null || true
-    echo "  ⚠️ Rebase 失敗，使用 fetch + reset"
-    git fetch origin main
-    git reset --hard origin/main 2>/dev/null || true
-}
-
-# ── Step 4: 檢查是否有任何變更，合併為單一 commit ──
+# ── Step 3: 檢查是否有任何變更，合併為單一 commit（先 commit，後 rebase）──
+# 2026-11-05 修正：原本係「先 pull 後 commit」——有本地改動時 rebase 必然失敗，
+# fallback 嘅 `git reset --hard origin/main` 會靜靜抹走未提交改動（今晚 22:00 實測中招）
 if [[ -z $(git status --porcelain) ]]; then
     echo "  📭 無變更需要推送"
     flock -u 200 2>/dev/null || true
@@ -105,6 +98,22 @@ fi
 echo "  📝 提交變更: $COMMIT_MSG"
 git add -A
 git commit -m "$COMMIT_MSG" || true
+
+# ── Step 4: 同步 remote ──
+echo "  🔄 同步 remote..."
+git pull --rebase -X theirs origin main 2>/dev/null || {
+    git rebase --abort 2>/dev/null || true
+    echo "  ⚠️ Rebase 失敗，改用 stash 安全同步（唔會再 reset --hard 抹走改動）"
+    STASH_REF=""
+    if [[ -n $(git status --porcelain) ]]; then
+        git stash push -u -m "auto-stash $(date +%Y%m%d-%H%M%S)" >/dev/null 2>&1 && STASH_REF="stash@{0}"
+    fi
+    git fetch origin main
+    git reset --hard origin/main 2>/dev/null || true
+    if [[ -n "$STASH_REF" ]]; then
+        git stash pop "$STASH_REF" >/dev/null 2>&1 || echo "  ⚠️ stash pop 有衝突，改動保留喺 stash（git stash list）"
+    fi
+}
 
 # ── Step 5: 推送 ──
 echo "  🚀 推送中..."

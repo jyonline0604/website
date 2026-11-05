@@ -20,15 +20,10 @@ fi
 
 echo "  🔒 已獲取 Git Push 鎖"
 
-# 同步 remote（避免 non-fast-forward）
-git pull --rebase -X theirs origin main 2>/dev/null || {
-    git rebase --abort 2>/dev/null || true
-    echo "  ⚠️ Git 同步出錯，嘗試 force 同步..."
-    git fetch origin main
-    git reset --hard origin/main 2>/dev/null || true
-}
-
-# 檢查是否有變更
+# 先提交本地改動，再 rebase 同步
+# 2026-11-05 修正：原本順序係「先 pull 後 commit」——有本地改動時 rebase 必然失敗，
+# 然後 fallback 嘅 `git reset --hard origin/main` 會靜靜抹走未提交改動（今晚 22:00 實測中招：
+# SKILL.md v2.9.126 + memory 紀錄被 reset --hard 刪咗）
 if [[ -n $(git status --porcelain) ]]; then
     # 如果有傳入 commit message，使用它；否則用預設
     if [[ -n "${1:-}" ]]; then
@@ -36,6 +31,21 @@ if [[ -n $(git status --porcelain) ]]; then
         git commit -m "$1" || true
     fi
 fi
+
+# 同步 remote（避免 non-fast-forward）
+git pull --rebase -X theirs origin main 2>/dev/null || {
+    git rebase --abort 2>/dev/null || true
+    echo "  ⚠️ Git 同步出錯，改用 stash 安全同步（唔會再 reset --hard 抹走改動）..."
+    STASH_REF=""
+    if [[ -n $(git status --porcelain) ]]; then
+        git stash push -u -m "auto-stash $(date +%Y%m%d-%H%M%S)" >/dev/null 2>&1 && STASH_REF="stash@{0}"
+    fi
+    git fetch origin main
+    git reset --hard origin/main 2>/dev/null || true
+    if [[ -n "$STASH_REF" ]]; then
+        git stash pop "$STASH_REF" >/dev/null 2>&1 || echo "  ⚠️ stash pop 有衝突，改動保留喺 stash（git stash list）"
+    fi
+}
 
 # 推送到 GitHub（自動重試3次）
 for attempt in 1 2 3; do

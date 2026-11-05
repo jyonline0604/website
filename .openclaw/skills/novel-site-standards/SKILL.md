@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.125
+version: 2.9.127
 ---
 
 ---
@@ -5841,3 +5841,40 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 2. 睇 automations runs 確認 job 係 delivered 定 interrupted
 3. 修正 memory/2026-11-05.md + issues.md #10
 4. 同步 SKILL.md 四份副本（local / website repo / Second-brain / Max-backup），版本 +0.0.1
+
+---
+## [2026-11-05] 更新 - 收單軌只係刪 crontab 唔夠：cron-guardian 會加返
+
+### 問題
+- 11:45 移除 system crontab 版本檢查條目（收單軌），但 cron-guardian.sh 嘅 SYSTEM_TASKS 仍列住 check_openclaw_update.py
+- guardian 每 30 分鐘巡檢一次「缺失 = 加返」→ 今晚 21:30 就會把條目加返，雙軌重現
+- 教訓同 send-briefing.sh 退役（11-01）完全一樣：守護機制會同「退役」對抗
+
+### 修復
+- cron-guardian.sh：把 check_openclaw_update.py 從 SYSTEM_TASKS 移除（照 send-briefing.sh / Vol4 退役做法加註說明：crontab 冇佢係正確狀態，唔好加返）
+- 清理 crontab 殘留註釋行
+- 實跑 guardian 驗證：冇加返，單軌維持 ✅（crontab 11 條）
+
+### 教訓
+- 「退役某個 system cron 條目」係三步：(1) 刪 crontab 行 (2) 從 cron-guardian SYSTEM_TASKS 移除 (3) 實跑 guardian 驗證唔會加返 — 淨做 (1) 一定會喺下一輪巡檢復發
+
+
+---
+
+## [2026-11-05 22:00] 更新 - push 腳本嘅 reset --hard 會靜靜抹走未提交改動
+
+### 問題（今晚 22:00 健康報告實測中招）
+- `scripts/git-push-with-lock.sh` / `scripts/batch-push.sh` 順序係「先 `git pull --rebase` → 後 commit」
+- 一有本地未提交改動，rebase 必然報 "cannot pull with rebase: You have unstaged changes" → fallback 行 `git reset --hard origin/main`
+- 後果：未提交改動被靜靜刪走（今晚 SKILL.md v2.9.126 + memory/2026-11-05.md 紀錄就係咁消失，仲要靠 Second-brain 副本先搶返）
+- 同一個 bug 今日 10:11 新聞後備 log 已經出現過一次「rebase/push 失敗」，當時只當作普通失敗，冇追根因為 destructive fallback
+
+### 修復
+- 兩個腳本都改成「先 commit → 後 pull --rebase → 最後 push」
+- fallback 改用 stash 安全同步：`git stash push -u` → fetch/reset → `git stash pop`，唔再無條件 `reset --hard`
+- 同步四份 SKILL.md 副本（local ~/.openclaw/skills / website repo / Second-brain / Max-backup）
+
+### 教訓
+- 任何腳本入面嘅 `git reset --hard` fallback 都係「最後手段」級危險：同步失敗時佢唔會報錯，只會靜靜刪資料
+- 「rebase/push 失敗」呢類 log 唔可以當雜訊，要追落 fallback 邏輯先算修好
+- 推前必須先 commit，rebase 嘅前提就係乾淨工作區

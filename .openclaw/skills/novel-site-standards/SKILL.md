@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.130
+version: 2.9.131
 ---
 
 ---
@@ -5936,3 +5936,26 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 升級後綁 model@profile 係必須，但要同步睇 cron_model_guard.py 同 modelPolicy.allow，否則守衛會靜靜還原
 - 任何「自動修復」型守衛腳本，都要檢查佢嘅白名單／比對邏輯會唔會抵銷我哋啱啱做嘅修復
 
+
+---
+
+## [2026-11-06] 更新 (v2.9.131) - 主機關機遺漏 cron 補跑 + 網站 SW 預載入舊 chapters-data.json
+
+### 問題 1：主機關機令 20:00 記憶備份被完全跳過
+- **症狀**：主機 19:15 systemd-poweroff → 20:51 先重開機；今日記憶備份只跑咗 08:00 / 11:00 / 11:30，20:00 嗰輪冇任何記錄
+- **影響**：MEMORY.md / memory/*.md 有 1.5 個鐘冇備份（11:30 → 22:00 之間嘅更新未入 Second-brain / Max-backup）
+- **修法**：即時手動補跑 `bash scripts/backup-memory.sh` → Second-brain `d087032`、Max-backup `5b5518f` push 成功
+- **教訓**：巡檢時如果 `uptime` 明顯短過一個 cron 週期（例如開機 < 2h 但 crontab 有 20:00 條目），要主動比對 `logs/memory-backup.log` 嘅時間戳，補跑漏咗嗰輪；唔可以只睇「條目仲喺 crontab」就算正常
+
+### 問題 2：Cloudflare 快取令 SW 預載入過期 chapters-data.json
+- **症狀**：裸路徑 `https://kofhk.com/assets/chapters-data.json` 回 `cf-cache-status: HIT`、`age: 86369`（約 24h）、`last-modified: 11-05` → 只有 1830 章；而本地 / git / 帶 `?v=<YYYYMMDDHH>` cache-buster 請求係 1836 章
+- **根因**：`service-worker.js` 嘅 `staticUrls` 預載入 `/assets/chapters-data.json`（冇 query），而 SW 對非 HTML 資源用 `cacheFirst` → 一旦預載入咗舊版本，用戶端就長期鎖死舊索引，即使站點已部署新章
+- **修法**：`CACHE_VERSION` v2.3.0 → v2.3.1，逼 SW 重新 install + 清舊 cache（`KEEP_CACHES` 機制會自動刪舊版本 cache）
+- **教訓**：Cloudflare 快取按完整 URL（含 query）分層；裸路徑 同 帶 cache-buster query 係兩個獨立 cache entry。健康檢查一定要兩者都測：
+  - `curl -sI https://kofhk.com/assets/chapters-data.json` → 睇 `cf-cache-status` / `age` / `last-modified`
+  - `curl -s "https://kofhk.com/assets/chapters-data.json?cb=$(date +%s%N)"` → 睇真實 origin 版本
+  兩者章節數唔一致 = SW 預載入會鎖死舊版，必須 bump CACHE_VERSION
+
+### 巡檢準則補充
+- Dropbox 核實唔好只睇 state 檔：用 dropbox SDK 直接 `files_list_folder` 唯讀比對章節數（V4 = 265 個 .txt = state 265 → 待處理 0），先可以確認「退役」係正常定故障
+- OpenClaw code mode session 入面 `tools` 係 undefined，要用直接全域名（`exec`、`read`、`write`、`catalog`、`API`…）呼叫工具

@@ -2,7 +2,7 @@
 // 版本: 2.3.0 (移至根目錄修正 scope；修正舊快取清理邏輯；移除無用 Google Fonts 預快取)
 // 日期: 2026-07-24
 
-const CACHE_VERSION = 'v2.3.0';
+const CACHE_VERSION = 'v2.3.1';
 const CACHE_NAME = 'tech-cultivation-' + CACHE_VERSION;
 const STATIC_CACHE = 'static-assets-' + CACHE_VERSION;
 const DYNAMIC_CACHE = 'dynamic-data-' + CACHE_VERSION;

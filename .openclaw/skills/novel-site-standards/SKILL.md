@@ -5948,10 +5948,10 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **教訓**：巡檢時如果 `uptime` 明顯短過一個 cron 週期（例如開機 < 2h 但 crontab 有 20:00 條目），要主動比對 `logs/memory-backup.log` 嘅時間戳，補跑漏咗嗰輪；唔可以只睇「條目仲喺 crontab」就算正常
 
 ### 問題 2：Cloudflare 快取令 SW 預載入過期 chapters-data.json
-- **症狀**：裸路徑 `https://kofhk.com/assets/chapters-data.json` 回 `cf-cache-status: HIT`、`age: 86369`（約 24h）、`last-modified: 11-05` → 只有 1830 章；而本地 / git / 帶 `?v=<YYYYMMDDHH>` cache-buster 請求係 1836 章
-- **根因**：`service-worker.js` 嘅 `staticUrls` 預載入 `/assets/chapters-data.json`（冇 query），而 SW 對非 HTML 資源用 `cacheFirst` → 一旦預載入咗舊版本，用戶端就長期鎖死舊索引，即使站點已部署新章
+- **症狀**：裸路徑 `https://kofhk.com/assets/chapters-data.json` 回 `cf-cache-status: HIT`、`age: 86369`（約 24h）、`last-modified: 11-05` → 只有 1830 章；而本地 / git / 帶 `?v=<YYYYMMDDHH>` cache-buster 請求係 1836 章（**用戶實際顯示正常**，頁面用 `?v=` → SW cache key 唔同 → 一定走 network）
+- **根因（潛在）**：`service-worker.js` 嘅 `staticUrls` 預載入 `/assets/chapters-data.json`（冇 query）→ SW 會將 Cloudflare 嗰份 24h 舊快取存落本地 STATIC_CACHE。頁面請求帶 `?v=` 所以唔會命中，但一旦有 code path 用裸路徑就會鎖死舊索引
 - **修法**：`CACHE_VERSION` v2.3.0 → v2.3.1，逼 SW 重新 install + 清舊 cache（`KEEP_CACHES` 機制會自動刪舊版本 cache）
-- **教訓**：Cloudflare 快取按完整 URL（含 query）分層；裸路徑 同 帶 cache-buster query 係兩個獨立 cache entry。健康檢查一定要兩者都測：
+- **教訓**：Cloudflare 快取按完整 URL（含 query）分層；裸路徑 同 帶 cache-buster query 係兩個獨立 cache entry。健康檢查一定要兩者都測，**並且要分清「裸路徑舊版」同「用戶實際見到舊版」兩件事**（睇 SW cache key 對唔對得）：
   - `curl -sI https://kofhk.com/assets/chapters-data.json` → 睇 `cf-cache-status` / `age` / `last-modified`
   - `curl -s "https://kofhk.com/assets/chapters-data.json?cb=$(date +%s%N)"` → 睇真實 origin 版本
   兩者章節數唔一致 = SW 預載入會鎖死舊版，必須 bump CACHE_VERSION

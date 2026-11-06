@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.127
+version: 2.9.128
 ---
 
 ---
@@ -5878,3 +5878,25 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 任何腳本入面嘅 `git reset --hard` fallback 都係「最後手段」級危險：同步失敗時佢唔會報錯，只會靜靜刪資料
 - 「rebase/push 失敗」呢類 log 唔可以當雜訊，要追落 fallback 邏輯先算修好
 - 推前必須先 commit，rebase 嘅前提就係乾淨工作區
+
+---
+
+## [2026-11-06] 更新 (v2.9.128) - 早上簡報巡檢：git 分歧第 6 次復發自動修復 + 線上一致性三來源核對法
+
+### 事件（2026-11-06 08:15 早上簡報）
+- 巡檢全綠：kofhk.com 200（0.68s）／磁碟 16%（68G/468G、377G 可用）／Mem available 2.8Gi／uptime 23h25m（boot 0 自 11-05 08:50:21，今日無重啟）／systemctl --failed = 0
+- 線上一致性：assets/chapters-data.json?v=20261106 = 1830 章 = 本地 chapter-N.html 1830 檔（1-1830 零缺口）= V7 state max CH1830 → 零分歧
+- Dropbox：V4 依 2026-10-02 指令退役（勿加返）；V5/V6/V7 2026-11-05 全部正常（V5/V6「未處理 0」、V7 6/6 成功）
+- 自動修復：workspace 落後 origin/main 1 個 CI commit + DREAMS.md、memory/2026-11-05.md 未提交 → commit → pull --rebase → push → 三倉 0/0
+
+### 新增：線上一致性三來源核對法
+- 三個來源必須對齊先算「零分歧」：
+  1. 線上索引：https://kofhk.com/assets/chapters-data.json?v=YYYYMMDD（必須帶 cache-buster；裸路徑 /chapters-data.json 係 404，裸 /assets/… 可能有舊快取）
+  2. 本地實際檔：ls chapter-*.html | grep -E 'chapter-[0-9]+\.html' | wc -l（要扣 chapter-template.html / chapters.html），再檢 1..N 無缺口
+  3. 各卷 state max：.dropbox-sync/volume7_state.json（最前卷）嘅 ch_num 最大值
+- 三者數字相等 → 零分歧；唔等就要逐個來源查邊個係舊值
+- 裸路徑 /chapters-data.json 回 404 係正常（網站只有 assets/ 版本），唔好誤報成「索引遺失」
+
+### 教訓
+- git 分歧已連續 6 次復發（10-24、10-28、10-31、11-04、11-05、11-06），成因係 GitHub Actions 直接推同一 repo → 根治方向仍然係「每日簡報巡檢固定 fetch + status 雙查並自動 rebase push」
+- 判定線上一致性唔可以只 curl 一條 URL，要三來源對照（線上 JSON / 本地檔 / state）

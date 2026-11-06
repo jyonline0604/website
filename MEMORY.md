@@ -320,3 +320,12 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - Cron：OpenClaw 8 個 job 全部 enabled/ok/err=0/delivered；system crontab 條目全在位（send-briefing.sh 已退役，正常）。<!-- project: github.com/jyonline0604/website -->
 - 自動修復：workspace（= website repo）落後 origin/main 1 個 CI commit + DREAMS.md、memory/2026-11-04.md 未提交 → commit → pull --rebase → push（1e5b906cd..d02130c42）→ 三倉 0/0、工作區乾淨。<!-- project: github.com/jyonline0604/website -->
 - 教訓：開機後巡檢要先睇 journal --list-boots（boot -1 幾時死）再睇 08:00 log 係關機前定關機後；OpenClaw cron 會 catch-up，system cron 唔會。<!-- project: github.com/jyonline0604/website -->
+
+
+## 2026-11-06 08:15 早上簡報 — 全綠（0 failed unit）+ git 分歧第 6 次復發自動修復 + 線上一致性三來源核對法
+- 網站 kofhk.com 200（0.68s）；線上 assets/chapters-data.json?v=20261106 = 1830 章 = 本地 1830 檔（1-1830 零缺口）= V7 state CH1830 → 零分歧；sitemap 1837 URL。<!-- project: github.com/jyonline0604/website -->
+- 系統：磁碟 / 16%（68G/468G、377G 可用）、Mem 4.2Gi used / 7.0Gi、available 2.8Gi、swap 632Ki、uptime 23h25m（boot 0 自 11-05 08:50:21，今日無重啟）、load 1.20/0.39/0.24、systemctl --failed = 0（連續 4 日）。<!-- project: github.com/jyonline0604/website -->
+- Dropbox：V4 依 2026-10-02 指令退役（state 265 章 CH926-1190 全處理完，勿加返）；V5 270 / V6 273 / V7 90 章，2026-11-05 V5/V6「未處理 0」、V7 11:30 加載 CH1825-1830 6/6。<!-- project: github.com/jyonline0604/website -->
+- Cron：OpenClaw 8 個 job 全部 enabled/ok/err=0/delivered；system crontab 條目全在位；記憶備份 08:00:12 Max-backup push 成功。<!-- project: github.com/jyonline0604/website -->
+- 自動修復：workspace 落後 origin/main 1 個 CI commit + DREAMS.md、memory/2026-11-05.md 未提交 → commit → pull --rebase → push → 三倉 0/0。<!-- project: github.com/jyonline0604/website -->
+- 教訓：線上一致性要三來源對照（線上 ?v= JSON / 本地 chapter-N.html / 各卷 state max）；裸路徑 /chapters-data.json 係 404，唔係索引遺失。<!-- project: github.com/jyonline0604/website -->

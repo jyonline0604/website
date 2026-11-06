@@ -127,3 +127,9 @@
 - **影響**：11-05 早上簡報只有 13:15 呢一份送達；08:00 記憶備份（08:00:12 關機前完成 ✅）、09:30 guardian、10:00 財務/AQHI/音訊同步、11:00 V5/V6、11:30 V7、12:00 token 續期全部正常。
 - **處理**：無需人手補跑；已更正 memory/2026-11-05.md 原本「08:44 補跑送達」嘅錯誤記述。
 - **教訓**：核對簡報是否送達，要睇 automations runs 嘅 delivered / deliveryStatus 欄位，唔可以只信 memory 筆記。<!-- project: github.com/jyonline0604/website -->
+
+### ℹ️ #11 復發記錄 — website repo git 分歧第 6 次（2026-11-06 早上簡報發現並修復）
+- **症狀**：workspace（= website repo）落後 origin/main 1 個 GitHub Actions commit（新聞/財務/RSS 自動更新）+ DREAMS.md（03:00 Memory Dreaming Promotion 產出）同 memory/2026-11-05.md 未提交
+- **修復**：先 commit 全部改動 → git pull --rebase origin main → git push origin main → 三倉 0/0、工作區乾淨
+- **復發次數**：#11（10-24）、#13（10-28）、10-31、11-04、11-05、今日 = 第 6 次 → 高頻問題，根治方向係 03:00 dreaming 直接 commit+push，或加 05:00 拉取推送 system cron<!-- project: github.com/jyonline0604/website -->
+- **同時新增「線上一致性三來源核對法」**：線上 assets/chapters-data.json?v=YYYYMMDD（裸路徑 /chapters-data.json 係 404）+ 本地 chapter-N.html 實際檔計數 + 各卷 state max；三者相等先算零分歧<!-- project: github.com/jyonline0604/website -->

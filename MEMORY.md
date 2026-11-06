@@ -337,3 +337,9 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 修法：`openclaw cron edit <jobId> --model "minimax/MiniMax-M3.1-Flash@minimax:cn"`，6 個 agentTurn job（早上簡報 08:15 / 中午簡報 12:55 / 傍晚簡報 17:55 / 健康報告 22:00 / Audio Sync 10:00 / 版本檢查 11:00）全部重綁
 - 教訓：**每次升級 OpenClaw（尤其 minor 版）之後一定要批量重綁 cron job 嘅 model@profile**；巡檢用 `openclaw cron list --json` 睇 `payload.model` 有冇 `@profile`，`state.consecutiveErrors>0` 再睇 `state.lastError` 會直接寫明根因
 - 狀態：11-06 12:55 失敗（err=1），14:25 重試正常；早上簡報 08:15、傍晚簡報 17:55 全部 ok、delivered
+
+## 2026-11-06 22:00 每日健康報告 — 主機關機遺漏 20:00 記憶備份（已補跑）+ Cloudflare 快取令 SW 鎖死舊章節索引（已修）
+- 症狀一：主機 19:15 systemd-poweroff → 20:51 重開機 → 20:00 記憶備份 cron 完全冇跑（今日只有 08:00 / 11:00 / 11:30）。已手動補跑 `scripts/backup-memory.sh` → Second-brain `d087032`、Max-backup `5b5518f` push 成功。教訓：巡檢要對 `logs/memory-backup.log` 時間戳逐輪點名，唔可以只睇 crontab 條目仲在。<!-- project: github.com/jyonline0604/website -->
+- 症狀二：裸路徑 `assets/chapters-data.json` 被 Cloudflare 快取 24h（age 86369s、last-modified 11-05）只回 1830 章，而 git/帶 `?v=` cache-buster 係 1836 章 → SW `staticUrls` 預載入舊版會令用戶長期鎖死舊索引。已 bump `CACHE_VERSION` v2.3.0 → v2.3.1 逼 SW 重載。教訓：CF 按完整 URL（含 query）分層快取，裸路徑 vs cache-buster 係兩個 entry，檢查必須兩者都測。<!-- project: github.com/jyonline0604/website -->
+- 全綠項：網站 HTTP 200（chapter-1831~1836 全部 200、sitemap 1843 一致）；系統 / 16%、Mem 3.7Gi/7.0Gi、systemctl --failed=0；OpenClaw 8 個 cron job 全部 ok/err=0/delivered，system crontab 11 條齊全；Dropbox V4 直查 265 txt = state 265（退役正常）、V5 270 / V6 273 / V7 96、本地 chapter-1~1836 零缺口；三倉 push 完畢、0 ahead。<!-- project: github.com/jyonline0604/website -->
+- 教訓：OpenClaw code mode session 入面 `tools` 全域係 undefined，要用直接全域名（`exec` / `read` / `write` / `catalog` / `API`）呼叫工具。<!-- project: github.com/jyonline0604/website -->

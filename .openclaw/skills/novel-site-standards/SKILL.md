@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.129
+version: 2.9.130
 ---
 
 ---
@@ -5918,4 +5918,21 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **每次升級 OpenClaw（尤其 minor 版）之後，一定要批量重綁 cron job 嘅 model@profile** —— 舊 job 冇 recorded inference account 就會全線報錯，唔止一個 job
 - 檢查方法：openclaw cron list --json 睇 payload.model 有冇 @profile；errs>0 睇 state.lastError（會直接寫明根因）
 - 症狀同 2026-10-21 升級炸 cron（模型改名）同類，但今次係 account 綁定機制改變
+
+
+---
+## [2026-11-06] 更新（補） - cron_model_guard 會把 @profile 綁定改返落去
+
+### 第二個陷阱
+- 綁完 model@profile 之後，scripts/cron_model_guard.py 會判定 payload.model「唔喺 modelPolicy.allow 白名單」→ 自動 --fix 改返無 profile 嘅 primary model
+- 即係話：綁 profile 修好 automation 之后，guard 會喺下一輪把綁定還原 → 17:55 / 22:00 又會報 "no recorded inference account" 爆
+
+### 修復
+- cron_model_guard.py：比較時用 base model（剝走 @profile）對白名單；fallbacks 同樣處理；--fix 時保留原本嘅 @profile suffix（唔會還原走）
+- openclaw.json 嘅 modelPolicy.allow（defaults + entries.main）加入 minimax/MiniMax-M3.1-Flash@minimax:cn
+- 實跑驗證：OK: every job model override is within policy allow list ✅
+
+### 教訓
+- 升級後綁 model@profile 係必須，但要同步睇 cron_model_guard.py 同 modelPolicy.allow，否則守衛會靜靜還原
+- 任何「自動修復」型守衛腳本，都要檢查佢嘅白名單／比對邏輯會唔會抵銷我哋啱啱做嘅修復
 

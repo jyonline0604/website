@@ -62,16 +62,19 @@ def main():
         payload = j.get("payload") or {}
         model = payload.get("model")
         fbs = payload.get("fallbacks") or []
-        if model and model not in allow:
+        base = model.split("@", 1)[0] if model else model
+        if model and model not in allow and base not in allow:
             print("WARN: %s model override %r not in policy allow list" % (name, model))
             if FIX and primary:
-                r = run(CLI + " cron edit %s --model %s" % (jid, primary))
+                # 保留原本嘅 @profile 綁定（2026.11 起舊 job 冇 recorded inference account 就會報錯）
+                suffix = ("@" + model.split("@", 1)[1]) if model and "@" in model else ""
+                r = run(CLI + " cron edit %s --model %s" % (jid, primary + suffix))
                 if r.returncode == 0:
                     print("FIXED: %s model -> %s" % (name, primary))
                     fixed += 1
                 else:
                     print("WARN: model fix failed for %s: %s" % (name, r.stderr.strip()[:200]))
-        bad = [f for f in fbs if f not in allow]
+        bad = [f for f in fbs if f not in allow and f.split("@", 1)[0] not in allow]
         if bad:
             print("WARN: %s fallbacks not allowed: %s" % (name, ",".join(bad)))
             if FIX:

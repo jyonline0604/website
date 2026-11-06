@@ -329,3 +329,11 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - Cron：OpenClaw 8 個 job 全部 enabled/ok/err=0/delivered；system crontab 條目全在位；記憶備份 08:00:12 Max-backup push 成功。<!-- project: github.com/jyonline0604/website -->
 - 自動修復：workspace 落後 origin/main 1 個 CI commit + DREAMS.md、memory/2026-11-05.md 未提交 → commit → pull --rebase → push → 三倉 0/0。<!-- project: github.com/jyonline0604/website -->
 - 教訓：線上一致性要三來源對照（線上 ?v= JSON / 本地 chapter-N.html / 各卷 state max）；裸路徑 /chapters-data.json 係 404，唔係索引遺失。<!-- project: github.com/jyonline0604/website -->
+
+
+## [2026-11-06] OpenClaw 2026.11.1 升級 → cron job inference account 綁定修復 <!-- project: github.com/jyonline0604/website -->
+- 症狀：中午簡報 12:55 報 `Automation has no recorded inference account. Explicitly select its account with a model@profile update before running it`，deliveryStatus unknown，嗰次簡報完全冇送出
+- 根因：升級後舊 cron job 冇 recorded inference account，必須用 `model@profile` 明確指定推論帳號（profileId = openclaw.json `auth.profiles` 嘅 key）
+- 修法：`openclaw cron edit <jobId> --model "minimax/MiniMax-M3.1-Flash@minimax:cn"`，6 個 agentTurn job（早上簡報 08:15 / 中午簡報 12:55 / 傍晚簡報 17:55 / 健康報告 22:00 / Audio Sync 10:00 / 版本檢查 11:00）全部重綁
+- 教訓：**每次升級 OpenClaw（尤其 minor 版）之後一定要批量重綁 cron job 嘅 model@profile**；巡檢用 `openclaw cron list --json` 睇 `payload.model` 有冇 `@profile`，`state.consecutiveErrors>0` 再睇 `state.lastError` 會直接寫明根因
+- 狀態：11-06 12:55 失敗（err=1），14:25 重試正常；早上簡報 08:15、傍晚簡報 17:55 全部 ok、delivered

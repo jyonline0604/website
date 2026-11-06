@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.128
+version: 2.9.129
 ---
 
 ---
@@ -5900,3 +5900,22 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 ### 教訓
 - git 分歧已連續 6 次復發（10-24、10-28、10-31、11-04、11-05、11-06），成因係 GitHub Actions 直接推同一 repo → 根治方向仍然係「每日簡報巡檢固定 fetch + status 雙查並自動 rebase push」
 - 判定線上一致性唔可以只 curl 一條 URL，要三來源對照（線上 JSON / 本地檔 / state）
+
+---
+## [2026-11-06] 更新 - 2026.11 升級後舊 cron job 失去 inference account（全部報錯）
+
+### 症狀
+- 部機升到 OpenClaw 2026.11.1 後，中午簡報 12:55 報錯：Automation has no recorded inference account. Explicitly select its account with a model@profile update before running it
+- 後果：該次簡報完全冇送出（deliveryStatus unknown），而其餘 agentTurn job（傍晚簡報 17:55、健康報告 22:00、Audio Sync、版本檢查、早上簡報）隨時會同樣爆 — 等於整個 automation 停擺
+- 注意：升級前最後一次成功係 11:00 版本檢查（報 2026.10.9），即係升級喺 11:00-12:55 之間發生
+
+### 修法（官方 docs：docs/automation/cron-jobs/troubleshooting.md）
+- openclaw cron edit <jobId> --model "<provider/model>@<profileId>"
+- profileId = openclaw.json auth.profiles 嘅 key（例如 minimax:cn、openrouter:default、zai:default）
+- 已對 6 個 agentTurn job 全部綁定 minimax/MiniMax-M3.1-Flash@minimax:cn
+
+### 教訓
+- **每次升級 OpenClaw（尤其 minor 版）之後，一定要批量重綁 cron job 嘅 model@profile** —— 舊 job 冇 recorded inference account 就會全線報錯，唔止一個 job
+- 檢查方法：openclaw cron list --json 睇 payload.model 有冇 @profile；errs>0 睇 state.lastError（會直接寫明根因）
+- 症狀同 2026-10-21 升級炸 cron（模型改名）同類，但今次係 account 綁定機制改變
+

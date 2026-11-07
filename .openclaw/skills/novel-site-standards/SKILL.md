@@ -5938,24 +5938,19 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 
 
 ---
+## [2026-11-07] 更新 - 自動生成數據檔 push 衝突（finance-data / finance-news）
 
-## [2026-11-06] 更新 (v2.9.131) - 主機關機遺漏 cron 補跑 + 網站 SW 預載入舊 chapters-data.json
+### 症狀
+- 09:15 推送驗證發現有未推送 commit，執行 git pull --rebase 時卡住：both modified: finance-news.json
+- 繼續 rebase 再撞：finance-data.json（同一批 16:00 數據）
+- 根因：本地 system cron（update_finance_news.sh / update_finance.sh，10/16 時段）同 GitHub Actions 喺同一個時間窗各自寫同一份自動生成 JSON → 兩邊都改同一檔 → rebase 必然衝突
 
-### 問題 1：主機關機令 20:00 記憶備份被完全跳過
-- **症狀**：主機 19:15 systemd-poweroff → 20:51 先重開機；今日記憶備份只跑咗 08:00 / 11:00 / 11:30，20:00 嗰輪冇任何記錄
-- **影響**：MEMORY.md / memory/*.md 有 1.5 個鐘冇備份（11:30 → 22:00 之間嘅更新未入 Second-brain / Max-backup）
-- **修法**：即時手動補跑 `bash scripts/backup-memory.sh` → Second-brain `d087032`、Max-backup `5b5518f` push 成功
-- **教訓**：巡檢時如果 `uptime` 明顯短過一個 cron 週期（例如開機 < 2h 但 crontab 有 20:00 條目），要主動比對 `logs/memory-backup.log` 嘅時間戳，補跑漏咗嗰輪；唔可以只睇「條目仲喺 crontab」就算正常
+### 處理
+- 逐個解決衝突：git checkout --theirs（rebase 中 = 正在重放嘅 commit 版本）→ git add → 驗證 JSON 有效 → GIT_EDITOR=true git rebase --continue，迴圈至 rebase 完成 → git push
+- 結果：rebase 完成、push 成功（d2c71fbc4..78c06367c）、0 未推送 / 0 髒檔、線上 finance-data.json 正常
 
-### 問題 2：Cloudflare 快取令 SW 預載入過期 chapters-data.json
-- **症狀**：裸路徑 `https://kofhk.com/assets/chapters-data.json` 回 `cf-cache-status: HIT`、`age: 86369`（約 24h）、`last-modified: 11-05` → 只有 1830 章；而本地 / git / 帶 `?v=<YYYYMMDDHH>` cache-buster 請求係 1836 章（**用戶實際顯示正常**，頁面用 `?v=` → SW cache key 唔同 → 一定走 network）
-- **根因（潛在）**：`service-worker.js` 嘅 `staticUrls` 預載入 `/assets/chapters-data.json`（冇 query）→ SW 會將 Cloudflare 嗰份 24h 舊快取存落本地 STATIC_CACHE。頁面請求帶 `?v=` 所以唔會命中，但一旦有 code path 用裸路徑就會鎖死舊索引
-- **修法**：`CACHE_VERSION` v2.3.0 → v2.3.1，逼 SW 重新 install + 清舊 cache（`KEEP_CACHES` 機制會自動刪舊版本 cache）
-- **教訓**：Cloudflare 快取按完整 URL（含 query）分層；裸路徑 同 帶 cache-buster query 係兩個獨立 cache entry。健康檢查一定要兩者都測，**並且要分清「裸路徑舊版」同「用戶實際見到舊版」兩件事**（睇 SW cache key 對唔對得）：
-  - `curl -sI https://kofhk.com/assets/chapters-data.json` → 睇 `cf-cache-status` / `age` / `last-modified`
-  - `curl -s "https://kofhk.com/assets/chapters-data.json?cb=$(date +%s%N)"` → 睇真實 origin 版本
-  兩者章節數唔一致 = SW 預載入會鎖死舊版，必須 bump CACHE_VERSION
+### 教訓
+- 自動生成數據檔（finance-data.json / finance-news.json / aqhi-data.json）每日必然出現 rebase 衝突，唔係故障
+- 處理流程固定：checkout --theirs → add → 驗 JSON → rebase --continue（迴圈）→ push
+- 唔好因為衝突就 git reset --hard 或 abort（會丟失當日已生成數據）
 
-### 巡檢準則補充
-- Dropbox 核實唔好只睇 state 檔：用 dropbox SDK 直接 `files_list_folder` 唯讀比對章節數（V4 = 265 個 .txt = state 265 → 待處理 0），先可以確認「退役」係正常定故障
-- OpenClaw code mode session 入面 `tools` 係 undefined，要用直接全域名（`exec`、`read`、`write`、`catalog`、`API`…）呼叫工具

@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.133
+version: 2.9.134
 ---
 
 ---
@@ -5981,4 +5981,18 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 ### 修復
 - 以三處一致嘅 v2.9.132 覆蓋已安裝副本，再 bump 到 v2.9.133 並四處同步
 - 教訓重申：更新 skill 必須四處同步（已安裝 / workspace 副本 / Second-brain / Max-backup）；每日檢查要核對「四處 md5 唯一值 == 1」，唔係只睇 git push 成功
+
+
+---
+## [2026-11-07] 更新（補） - skill 副本漂移根治：新增 nightly 自動對齊 cron
+
+### 為乜要做
+- 副本漂移今日第二次復發（已安裝 v2.9.131 vs 其餘三處 v2.9.132）→ runtime 讀緊舊指引
+- 18:00 檢查可以捉到並手動修，但「22:00 健康報告出新版本」呢類事發生喺檢查之後 → 只能等第二日
+- 根治：新增 scripts/sync_skill_copies.sh + system crontab 23:20 自動對齊四處（以版本號最高嗰份為準）並 commit/push
+
+### 用法
+- scripts/sync_skill_copies.sh：四處（已安裝 / workspace 副本 / Second-brain / Max-backup）對齊 standards + av-generator，備份倉有變更就自動 commit + push
+- crontab：20 23 * * *（記憶備份 23:00、自動記憶日誌之後）
+- 每日檢查仍要核對「四處 md5 唯一值 == 1」做雙保險
 

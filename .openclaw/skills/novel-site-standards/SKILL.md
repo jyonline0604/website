@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.131
+version: 2.9.132
 ---
 
 ---
@@ -5954,3 +5954,18 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 處理流程固定：checkout --theirs → add → 驗 JSON → rebase --continue（迴圈）→ push
 - 唔好因為衝突就 git reset --hard 或 abort（會丟失當日已生成數據）
 
+
+---
+## [2026-11-07] 更新 - 22:00 健康報告巡檢（CI commit 落後同步 + 全綠確認）
+
+### 症狀
+- `git fetch` 發現 origin/main 多 1 個 commit（b60a56985 CI 每日自動更新新聞/市場數據/sitemap/RSS，13:41 UTC），本地 behind 1、ahead 0、工作區乾淨 → 唔係故障，係 CI 正常推播
+
+### 處理
+- `git pull --rebase origin main` → 零衝突（因為本地冇改同一批自動生成 JSON）→ 分歧即刻歸 0/0
+- 追加 22:00 健康報告記憶 → commit + push（b60a56985..a85e76fd4）→ 0 未推送 / 0 髒檔
+
+### 教訓
+- 每日健康報告出現 behind 1（CI 自動生成數據 commit）時，先 fetch + `pull --rebase`；只要本地冇同一批數據改動就零衝突，唔需要 `checkout --theirs` 迴圈
+- 真正需要迴圈解決嘅情況：本地 system cron（財經/財經新聞/AQHI 10,16）同 CI 寫同一批 JSON（見 2026-11-07 09:15 條目）
+- `.token-store/dropbox-token.txt.bak` 係 renew_dropbox_token.py 每次續期自動重建嘅回滾副本（權限 600），唔係遺留檔，唔好刪

@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.132
+version: 2.9.133
 ---
 
 ---
@@ -5969,3 +5969,16 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 每日健康報告出現 behind 1（CI 自動生成數據 commit）時，先 fetch + `pull --rebase`；只要本地冇同一批數據改動就零衝突，唔需要 `checkout --theirs` 迴圈
 - 真正需要迴圈解決嘅情況：本地 system cron（財經/財經新聞/AQHI 10,16）同 CI 寫同一批 JSON（見 2026-11-07 09:15 條目）
 - `.token-store/dropbox-token.txt.bak` 係 renew_dropbox_token.py 每次續期自動重建嘅回滾副本（權限 600），唔係遺留檔，唔好刪
+
+---
+## [2026-11-07] 更新 - skill 副本漂移復發（已安裝副本落後一個版本）
+
+### 症狀
+- 22:00 健康報告出新條目（v2.9.132）並 push 到 Second-brain / Max-backup / workspace 副本
+- 但**已安裝**副本（~/.openclaw/skills/novel-site-standards/SKILL.md，runtime 真正讀嗰份）停留喺 v2.9.131 → 今日新教訓未入 runtime 指引
+- 18:00 Skill更新檢查靠「四處 md5 唯一值 = 1」捉到（唯一值 = 2 即漂移）
+
+### 修復
+- 以三處一致嘅 v2.9.132 覆蓋已安裝副本，再 bump 到 v2.9.133 並四處同步
+- 教訓重申：更新 skill 必須四處同步（已安裝 / workspace 副本 / Second-brain / Max-backup）；每日檢查要核對「四處 md5 唯一值 == 1」，唔係只睇 git push 成功
+

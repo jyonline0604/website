@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.138
+version: 2.9.139
 ---
 
 ---
@@ -6102,3 +6102,19 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - job execution timed out (last phase: model-call-started) = 模型端停擺，唔係工作腳本壞；睇 runs 記錄就分得出（model-call-started vs 其他 phase）
 - 互動回合被 Request timed out 截斷時，先查 agents.defaults.timeoutSeconds 而唔係亂加 exec timeout
 
+---
+## [2026-11-08] 更新 - 跨 provider fallback 必須各自綁 account（否則切換即硬失敗）
+
+### 症狀
+- 每日 Audio Sync 10:00 job 報錯：Automation candidate is incompatible with its recorded inference account and route.
+- 2026.11.1 邏輯（dist/run-executor）：binding 存在時，若 candidate provider != binding.provider 就 throw，唔會靜默切換
+- 即係：job 綁咗 minimax:cn（11-06 升級後修 inference account 時綁定），但 fallback 係 openrouter/* 冇綁 account → 一旦 MiniMax timeout 要切 fallback 就硬失敗
+- 只係 Audio Sync 中招：今日 10:00 撞正 MiniMax 停擺；其他 job 撞正就一樣爆
+
+### 修復
+- 6 個 agentTurn job 嘅 5 條 fallback 全部改為 model@openrouter:default（每個 fallback 帶自己嘅 stored account）
+- Audio Sync 補跑 11:34 → status=ok、delivered=True、errs 歸零
+
+### 教訓
+- 2026.11 起：job 嘅 inference account 一旦綁定，跨 provider fallback 必須各自綁 account，否則 fallback 唔會被採用（會直接硬失敗）
+- 升級或改 model@profile 時，fallbacks 要一併檢查同樣式，唔可以只睇 primary

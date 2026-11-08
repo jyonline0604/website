@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.140
+version: 2.9.141
 ---
 
 ---
@@ -6134,3 +6134,9 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - rebase 解決衝突時，ours/theirs 喺 rebase 語意相反：ours = 上游（遠端），theirs = 正在重放嘅本地 commit；本地更新嘅話要取 theirs
 - 任何寫入自動生成資料檔嘅 commit，push 前必須驗 JSON 有效性 + 衝突標記數（grep -c "<<<<<<<"），唔好靠肉眼
 - 解完衝突要即刻驗檔案內容，唔好等到下一次巡檢先發現
+---
+
+## 2026-11-08 更新
+- 傍晚簡報 cron (f8b447b6) 連續 5 次於 model-call-started 階段超時
+- 根因：timeoutSeconds=1800 太短，模型首輪呼叫耗盡預算
+- 解決：openclaw cron edit 將 timeoutSeconds 調高至 3600

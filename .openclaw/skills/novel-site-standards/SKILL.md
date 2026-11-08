@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.134
+version: 2.9.135
 ---
 
 ---
@@ -5996,3 +5996,25 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - crontab：20 23 * * *（記憶備份 23:00、自動記憶日誌之後）
 - 每日檢查仍要核對「四處 md5 唯一值 == 1」做雙保險
 
+
+---
+## [2026-11-08] 更新 - openclaw-version.json 狀態檔停更 → 每日簡報錯報「有更新可用」
+
+### 症狀
+- 早上簡報 digest 長期顯示「⚠️ OpenClaw：有更新可用（v2026.10.10）」
+- 但實際 `openclaw --version` = 2026.11.1、`npm view openclaw version` = 2026.11.1 → 根本冇更新
+
+### 根本原因
+- `scripts/generate-briefing-full-v5.py` 讀 `workspace/openclaw-version.json` 顯示版本狀態
+- 該檔只由 `scripts/check_openclaw_update.py` 更新
+- 但 OpenClaw cron「OpenClaw Version Check」行嘅係 `scripts/check-openclaw-version.sh`（純 shell，**唔寫** version.json）
+- 結果 version.json 停留喺 2026-10-05（current 2026.10.9 / latest 2026.10.10 / update_available=true）→ 每日簡報都係報假版本
+
+### 修復
+- `scripts/check-openclaw-version.sh` 尾端加：跑 `check_openclaw_update.py` 同步刷新 version.json（冇更新時唔會誤發 Telegram）
+- 即時補跑一次 → version.json 更新為 current=2026.11.1 / latest=2026.11.1 / update_available=false
+- 驗證：重跑 digest → 顯示「✅ OpenClaw：v2026.11.1（最新）」✅
+
+### 教訓
+- 簡報顯示嘅狀態要同「實際執行嘅那個腳本」對齊：cron 行 shell 版、狀態檔由 python 版寫 → 兩者必須串埋
+- 巡檢見到「有更新可用」要即場核對 `openclaw --version` vs `npm view openclaw version`，唔可以只信狀態檔

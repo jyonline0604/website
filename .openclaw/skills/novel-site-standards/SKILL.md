@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.136
+version: 2.9.137
 ---
 
 ---
@@ -6040,3 +6040,25 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 簡報類 job timeoutSeconds 要按「實際工作負載 × 單步 model call 成本」估，唔好淨係跟其他 job 一律 1200s
 - 同一輪做「巡檢 + 修復 + SKILL 同步 + 三倉 push」時，總時長好易超標 → 要么放寬 timeout，要么將 git push / SKILL 同步拆去獨立 job
 - 睇 job 有冇送達要睇 `lastDeliveryStatus` + `automations runs` 嘅 delivered/error 欄位，唔可以只睇 job 存在（教訓 #10 同款）
+
+---
+
+## [2026-11-08 08:56] 更新 - `cron edit --timeout-seconds` 只對下一次 run 生效；補跑輪自我犧牲
+
+### 症狀
+- 08:15 輪跑足 1203.771s 撞 1200s 上限 -> `cron: job execution timed out (last phase: model-call-started)`、deliveryStatus=unknown -> 未送達
+- 08:35 scheduler 補跑輪：同一輪內完成 `openclaw cron edit ... --timeout-seconds 1800` + SKILL v2.9.136 + 三倉 push，但**同一個 run** 仍用開跑時嘅 1200s -> 再被閘死（dur=1200.4s）-> consecutiveErrors=2
+- 結果：08:15 + 08:35 兩輪都冇到 Telegram；08:56 輪（1800s 上限）先交付
+
+### 根本原因
+- `openclaw cron edit` 改 payload 只由**下一次 run** 生效；正在跑嘅 run 沿用啟動時嘅 config revision -> 補跑輪改咗都救唔到自己
+- 補跑輪把「修復 + SKILL 同步 + 三倉 push」塞入同一輪 -> 工作量必然長過 1200s -> 再次自我犧牲
+
+### 修復
+- timeoutSeconds 1200 -> 1800（`openclaw cron list --json` -> payload.timeoutSeconds=1800，已驗證）
+- 08:56 輪以 1800s 上限完成巡檢 + 報告，經 message tool 直接送達
+
+### 教訓
+- 補跑/重試輪係「最低成本交付」嘅最後機會：只做巡檢 + 報告，唔做維修；SKILL 同步 / 三倉 push 留俾 22:00 健康報告
+- timeout edit 後要即刻 `openclaw cron list --json` 睇 payload 確認新值，並確認新 run 已用新 revision
+- 核對簡報有冇送達要睇 deliveryStatus + delivered 欄位（教訓 #10 同款），唔可以只信 memory 筆記

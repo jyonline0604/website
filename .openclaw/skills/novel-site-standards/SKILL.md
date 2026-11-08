@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.135
+version: 2.9.136
 ---
 
 ---
@@ -6018,3 +6018,25 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 ### 教訓
 - 簡報顯示嘅狀態要同「實際執行嘅那個腳本」對齊：cron 行 shell 版、狀態檔由 python 版寫 → 兩者必須串埋
 - 巡檢見到「有更新可用」要即場核對 `openclaw --version` vs `npm view openclaw version`，唔可以只信狀態檔
+
+---
+
+## [2026-11-08] 更新 - 早上簡報 08:15 job 撞 1200s timeout → 該輪報告未送達
+
+### 症狀
+- 08:15 該輪 job 跑足 1203.771s（> timeoutSeconds 1200）→ `cron: job execution timed out (last phase: model-call-started)`
+- lastRunStatus=error、consecutiveErrors=1、lastDeliveryStatus=unknown → **Telegram 冇收到早上簡報**（報告已寫好但announce 送達前先被閘）
+- scheduler 08:35 自動補跑本輪
+
+### 根本原因
+- 該輪同時做咗「修 openclaw-version.json + SKILL.md 四份同步 + 三倉 git push + 記憶寫入」
+- 每一步都係獨立 model call，累積耗時撞 1200s 上限 → job 被閘死，announce 無機會送達
+
+### 修復
+- `openclaw cron edit 27d54b55-3523-4475-8ad5-b07445cc4378 --timeout-seconds 1800`（1200 → 1800）
+- 驗證：`openclaw cron list --json` → payload.timeoutSeconds = 1800
+
+### 教訓
+- 簡報類 job timeoutSeconds 要按「實際工作負載 × 單步 model call 成本」估，唔好淨係跟其他 job 一律 1200s
+- 同一輪做「巡檢 + 修復 + SKILL 同步 + 三倉 push」時，總時長好易超標 → 要么放寬 timeout，要么將 git push / SKILL 同步拆去獨立 job
+- 睇 job 有冇送達要睇 `lastDeliveryStatus` + `automations runs` 嘅 delivered/error 欄位，唔可以只睇 job 存在（教訓 #10 同款）

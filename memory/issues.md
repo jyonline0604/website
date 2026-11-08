@@ -140,3 +140,9 @@
 - **修復**：`check-openclaw-version.sh` 尾端加跑 `check_openclaw_update.py` 同步刷新 version.json；即時補跑 → current/latest 2026.11.1、update_available=false；重跑 digest 確認顯示「✅ OpenClaw：v2026.11.1（最新）」
 - **教訓**：簡報顯示嘅狀態要同「cron 真正執行嗰個腳本」對齊；巡檢見到「有更新可用」要即場核對 `openclaw --version` vs `npm view openclaw version`，唔可以只信狀態檔
 <!-- project: github.com/jyonline0604/website -->
+
+### ✅ #16 - 早上簡報 08:15 job 撞 1200s timeout → 該輪未送達（2026-11-08 08:35 補跑修復）
+- **症狀**：08:15 那一輪 job 跑足 1203.771s（> timeoutSeconds 1200）→ `cron: job execution timed out (last phase: model-call-started)`，lastRunStatus=error、consecutiveErrors=1、lastDeliveryStatus=unknown → **Telegram 冇收到早上簡報**；scheduler 08:35 自動補跑（即本輪）
+- **根因**：08:15 該輪做咗大量額外工作（修 openclaw-version.json + SKILL.md 四份同步 + 三倉 git push + 記憶寫入），每步都係獨立 model call，累積撞 1200s 上限 → 報告寫好但 announce 送達前先被閘
+- **修復**：`openclaw cron edit 27d54b55-3523-4475-8ad5-b07445cc4378 --timeout-seconds 1800`（1200 → 1800，已驗證 payload.timeoutSeconds=1800）
+- **教訓**：簡報類 job 若要做「修復 + SKILL 同步 + 三倉 push」，timeoutSeconds 要預留多 exec + git push 嘅餘裕（1200s 唔夠）；job 內容越多越要早估時，唔好靠運氣<!-- project: github.com/jyonline0604/website -->

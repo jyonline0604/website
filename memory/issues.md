@@ -146,3 +146,9 @@
 - **根因**：08:15 該輪做咗大量額外工作（修 openclaw-version.json + SKILL.md 四份同步 + 三倉 git push + 記憶寫入），每步都係獨立 model call，累積撞 1200s 上限 → 報告寫好但 announce 送達前先被閘
 - **修復**：`openclaw cron edit 27d54b55-3523-4475-8ad5-b07445cc4378 --timeout-seconds 1800`（1200 → 1800，已驗證 payload.timeoutSeconds=1800）
 - **教訓**：簡報類 job 若要做「修復 + SKILL 同步 + 三倉 push」，timeoutSeconds 要預留多 exec + git push 嘅餘裕（1200s 唔夠）；job 內容越多越要早估時，唔好靠運氣<!-- project: github.com/jyonline0604/website -->
+
+### ℹ️ #16 復發記錄 — 補跑輪自我犧牲：cron edit timeout 只對下一次 run 生效（2026-11-08 08:56 早上簡報發現）
+- 症狀：08:15 輪撞 1200s timeout → error、deliveryStatus=unknown、未送達；08:35 補跑輪內完成 `cron edit --timeout-seconds 1800` + SKILL v2.9.136 + 三倉 push，但同一個 run 仍用開跑時嘅 1200s → 再被閘死（dur=1200.4s）→ consecutiveErrors=2 → **兩輪皆未送達**，Telegram 由 08:15 到 08:56 都冇收到早上簡報。<!-- project: github.com/jyonline0604/website -->
+- 根因：`openclaw cron edit` 改 payload 由**下一次 run** 生效；補跑輪把「修復 + SKILL 同步 + 三倉 push」塞入同一輪 → 工作量必然長過 1200s → 救唔到自己。<!-- project: github.com/jyonline0604/website -->
+- 修復：timeoutSeconds 1200 → 1800 已落地（`openclaw cron list --json` → payload.timeoutSeconds=1800）；08:56 輪以 1800s 上限完成巡檢 + 報告，經 message tool 直接送達。<!-- project: github.com/jyonline0604/website -->
+- 教訓：補跑/重試輪係「最低成本交付」嘅最後機會，只做巡檢 + 報告；維修類工作（SKILL 同步 / 三倉 push）留俾 22:00 健康報告。timeout edit 後即刻 `openclaw cron list --json` 睇 payload 確認。<!-- project: github.com/jyonline0604/website -->

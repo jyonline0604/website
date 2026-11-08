@@ -360,3 +360,9 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - Cron：OpenClaw 8 個 job 全部 enabled/ok/err=0/delivered；system crontab 條目全在位；記憶備份 08:00:06 Second-brain + 08:00:11 Max-backup push 成功；三倉 git 0/0 乾淨。<!-- project: github.com/jyonline0604/website -->
 - 🔧 自動修復：`check-openclaw-version.sh`（OpenClaw cron 11:00 實際執行嘅係 shell 版）唔寫 `openclaw-version.json`，但簡報腳本靠該檔顯示版本 → 檔停喺 2026-10-05（latest 2026.10.10）令每日簡報錯報「有更新可用」。已在 shell 腳本尾端串埋 `check_openclaw_update.py` 刷新 → 現為 current/latest 2026.11.1、update_available=false，digest 顯示「✅ v2026.11.1（最新）」。SKILL.md v2.9.135 四處 md5 一致。<!-- project: github.com/jyonline0604/website -->
 - 教訓：簡報顯示嘅狀態要同「cron 真正執行嗰個腳本」對齊；見到「有更新可用」要即場核對 `openclaw --version` vs `npm view openclaw version`，唔可以只信狀態檔。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-11-08 08:56 早上簡報補跑（第三次）— cron edit timeout 只對下一次 run 生效，08:15 + 08:35 兩輪皆未送達
+- 症狀：08:15 輪跑足 1203.771s 撞 1200s 上限（error、deliveryStatus=unknown、未送達）；08:35 scheduler 補跑輪同一輪內做齊「cron edit timeout 1200→1800 + SKILL v2.9.136 + 三倉 push」，但 run 本身仍用開跑時嘅 1200s → 再被閘死 → consecutiveErrors=2 → **08:15 同 08:35 兩輪都冇送到 Telegram**。<!-- project: github.com/jyonline0604/website -->
+- 根因：`openclaw cron edit` 改 payload 只會由**下一次 run** 生效；正在跑嘅 run 沿用啟動時嘅 config revision → 補跑輪救唔到自己。<!-- project: github.com/jyonline0604/website -->
+- 修復：timeoutSeconds 已係 1800（`openclaw cron list --json` 驗證 payload.timeoutSeconds=1800）；08:56 輪（1800s 上限）跑完完整巡檢 + 報告，經 message tool 直接送達 target 5344443732。<!-- project: github.com/jyonline0604/website -->
+- 教訓：補跑/重試輪只做「巡檢 + 交付」，唔好同時做修復 + SKILL 同步 + 三倉 push（會再次自我犧牲）；timeout edit 後要即場用 `openclaw cron list --json` 睇 payload 驗證；核對送達要睇 deliveryStatus/delivered，唔可以只信 memory 筆記。<!-- project: github.com/jyonline0604/website -->

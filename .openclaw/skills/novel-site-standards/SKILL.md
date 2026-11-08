@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.139
+version: 2.9.140
 ---
 
 ---
@@ -6118,3 +6118,19 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 ### 教訓
 - 2026.11 起：job 嘅 inference account 一旦綁定，跨 provider fallback 必須各自綁 account，否則 fallback 唔會被採用（會直接硬失敗）
 - 升級或改 model@profile 時，fallbacks 要一併檢查同樣式，唔可以只睇 primary
+---
+## [2026-11-08] 更新 - 自動生成資料檔 rebase 衝突：殘留衝突標記曾被推上線
+
+### 症狀
+- 16:0x 拉遠端更新時 git pull --rebase 撞 finance-news.json / finance-data.json 衝突（本地 16:00 新資料 vs 遠端 CI 14:53 舊資料）
+- 解決衝突時用錯方向：finance-news.json 取到遠端版 + 帶住衝突標記版本，被 git add 後隨 rebase 一起 commit 並 push（b5cde377b）
+- 驗證階段先發現：finance-news.json INVALID JSON、含 2 個衝突標記 → 線上新聞資料檔一度無效
+
+### 修復
+- 重取乾淨版本：git show 37566baae:finance-news.json（本地 16:00 有效版本）→ 覆寫 → commit 70d55ddae → push
+- 驗證：本地 / origin/main / 線上 https://kofhk.com/finance-news.json 全部 valid JSON、0 衝突標記
+
+### 教訓
+- rebase 解決衝突時，ours/theirs 喺 rebase 語意相反：ours = 上游（遠端），theirs = 正在重放嘅本地 commit；本地更新嘅話要取 theirs
+- 任何寫入自動生成資料檔嘅 commit，push 前必須驗 JSON 有效性 + 衝突標記數（grep -c "<<<<<<<"），唔好靠肉眼
+- 解完衝突要即刻驗檔案內容，唔好等到下一次巡檢先發現

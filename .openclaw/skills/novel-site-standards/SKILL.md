@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.137
+version: 2.9.138
 ---
 
 ---
@@ -6085,3 +6085,20 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 ### 附帶發現
 - cron run 手動觸發時，若主 session lane 仍忙，會回 already-running（唔係 job 壞）
   → 診斷時要分清「job 失敗」同「lane 排隊」，唔好誤判為 job 壞
+
+---
+## [2026-11-08] 更新 - MiniMax 推理停擺 + agent 回合 timeout 太短
+
+### 症狀
+- 早上簡報 08:15 job 連續三輪失敗（08:15 / 08:35 / 08:55）：cron: job execution timed out (last phase: model-call-started) → 模型端唔回應，唔係腳本問題
+- 09:04 第 4 輪成功交付（errs 清零、delivered=True）→ scheduler catch-up 自癒成功，簡報無漏
+- 同一日 agent 互動回合亦被 120s 逾時切斷（報 Request timed out before a response was generated）
+
+### 修復
+- agents.defaults.timeoutSeconds 120 -> 600（主 agent 回合上限太短，重工具巡檢回合易被腰斬）
+- job 本身 timeoutSeconds=1800 維持不變（cron 專用），fallbacks 5 條（openrouter free 模型）保持
+
+### 教訓
+- job execution timed out (last phase: model-call-started) = 模型端停擺，唔係工作腳本壞；睇 runs 記錄就分得出（model-call-started vs 其他 phase）
+- 互動回合被 Request timed out 截斷時，先查 agents.defaults.timeoutSeconds 而唔係亂加 exec timeout
+

@@ -351,3 +351,11 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 🔧 自動修復：fetch 後發現 origin/main 多 1 個 CI commit（b60a56985 每日自動更新新聞/市場數據/sitemap/RSS，13:41 UTC）→ `git pull --rebase` 零衝突 → 追加 22:00 健康報告記憶 → commit + push（b60a56985..a85e76fd4）→ 三倉 0/0、工作區乾淨。<!-- project: github.com/jyonline0604/website -->
 - 教訓：behind 1 且係 CI 自動生成數據 commit 時（本地冇改同一批 JSON），直接 `pull --rebase` 就零衝突，唔使 `checkout --theirs` 迴圈；迴圈解決只適用於本地 system cron 同 CI 寫同一批數據嘅情況。<!-- project: github.com/jyonline0604/website -->
 - 遺留檔掃描：無 *_output.txt / *.tmp / cron_output.txt / nohup.out；唯一 `.token-store/dropbox-token.txt.bak` 係 renew_dropbox_token.py 每次續期自動重建嘅回滾副本（權限 600），唔係遺留檔，唔好刪。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-11-08 08:15 早上簡報 — 全綠 + 自動修復：openclaw-version.json 停更 → 簡報錯報「有更新可用」
+- 巡檢 5 項全綠：kofhk.com HTTP 200（0.38s）；磁碟 / 16%（69G/468G、375G 可用）；Mem 4.4Gi used / 7.0Gi、available 2.6Gi、swap 628Ki；uptime 1d11h23m；load 0.33/0.11/0.10；systemctl --failed = 0。<!-- project: github.com/jyonline0604/website -->
+- 線上一致性：線上 assets/chapters-data.json?v=20261108 = 1842 章 = 本地 chapter-1~1842 零缺口 = V7 state max CH1842 → 三方零分歧；sitemap 1849 URL / feed 1842 items。<!-- project: github.com/jyonline0604/website -->
+- Dropbox：V4 按 2026-10-02 大肥喵指令退役（state 265 章 CH926-1190、synced_to_site 1-1746、最後批次 1741-1746 auto-reconciled 2026-10-23）；2026-10-22 11:00 最後實跑因 token 競態中止（非故障，token 檔現 1309 bytes、06:00 續期成功）。V5 270（CH1191-1460）、V6 273（CH1461-1740）、V7 102（max CH1842）。<!-- project: github.com/jyonline0604/website -->
+- Cron：OpenClaw 8 個 job 全部 enabled/ok/err=0/delivered；system crontab 條目全在位；記憶備份 08:00:06 Second-brain + 08:00:11 Max-backup push 成功；三倉 git 0/0 乾淨。<!-- project: github.com/jyonline0604/website -->
+- 🔧 自動修復：`check-openclaw-version.sh`（OpenClaw cron 11:00 實際執行嘅係 shell 版）唔寫 `openclaw-version.json`，但簡報腳本靠該檔顯示版本 → 檔停喺 2026-10-05（latest 2026.10.10）令每日簡報錯報「有更新可用」。已在 shell 腳本尾端串埋 `check_openclaw_update.py` 刷新 → 現為 current/latest 2026.11.1、update_available=false，digest 顯示「✅ v2026.11.1（最新）」。SKILL.md v2.9.135 四處 md5 一致。<!-- project: github.com/jyonline0604/website -->
+- 教訓：簡報顯示嘅狀態要同「cron 真正執行嗰個腳本」對齊；見到「有更新可用」要即場核對 `openclaw --version` vs `npm view openclaw version`，唔可以只信狀態檔。<!-- project: github.com/jyonline0604/website -->

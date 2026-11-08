@@ -133,3 +133,10 @@
 - **修復**：先 commit 全部改動 → git pull --rebase origin main → git push origin main → 三倉 0/0、工作區乾淨
 - **復發次數**：#11（10-24）、#13（10-28）、10-31、11-04、11-05、今日 = 第 6 次 → 高頻問題，根治方向係 03:00 dreaming 直接 commit+push，或加 05:00 拉取推送 system cron<!-- project: github.com/jyonline0604/website -->
 - **同時新增「線上一致性三來源核對法」**：線上 assets/chapters-data.json?v=YYYYMMDD（裸路徑 /chapters-data.json 係 404）+ 本地 chapter-N.html 實際檔計數 + 各卷 state max；三者相等先算零分歧<!-- project: github.com/jyonline0604/website -->
+
+### ✅ #15 - openclaw-version.json 停更 → 每日簡報錯報「有更新可用」（2026-11-08 早上簡報發現並修復）
+- **症狀**：簡報 digest 長期顯示「⚠️ OpenClaw：有更新可用（v2026.10.10）」，但實際 `openclaw --version` = `npm view openclaw version` = 2026.11.1 → 假警報持續近一個月
+- **根因**：`scripts/generate-briefing-full-v5.py` 讀 `workspace/openclaw-version.json` 顯示版本狀態；該檔只由 `scripts/check_openclaw_update.py` 寫入，但 OpenClaw cron「OpenClaw Version Check」行嘅係純 shell 版 `scripts/check-openclaw-version.sh`（唔寫 version.json）→ 檔停喺 2026-10-05
+- **修復**：`check-openclaw-version.sh` 尾端加跑 `check_openclaw_update.py` 同步刷新 version.json；即時補跑 → current/latest 2026.11.1、update_available=false；重跑 digest 確認顯示「✅ OpenClaw：v2026.11.1（最新）」
+- **教訓**：簡報顯示嘅狀態要同「cron 真正執行嗰個腳本」對齊；巡檢見到「有更新可用」要即場核對 `openclaw --version` vs `npm view openclaw version`，唔可以只信狀態檔
+<!-- project: github.com/jyonline0604/website -->

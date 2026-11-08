@@ -55,3 +55,8 @@ else
 fi
 
 echo "=== 檢查完成 ==="
+
+# 2026-11-08 修正：同步刷新 openclaw-version.json（簡報腳本靠呢個檔顯示版本狀態）
+# 之前淨係跑 check_openclaw_update.py 會更新，但 OpenClaw Version Check cron 行嘅係本 shell 腳本
+# → 檔案停留喺舊版本狀態（2026-10-05 寫入 2026.10.9 / latest 2026.10.10），令每日簡報錯報「有更新可用」
+python3 /home/openclaw/.openclaw/workspace/scripts/check_openclaw_update.py >/dev/null 2>&1 || true

@@ -28,7 +28,7 @@
 - ⚠️ 2026-10-28 GitHub API 認證：同一 token 用 Bearer → 401，用 basic auth（`curl -u "x-access-token:TOKEN"`）→ 200；job log 必須 basic auth 先攞到<!-- project: github.com/jyonline0604/website -->
 - ⚠️ 2026-10-26 pages 部署失敗係 GitHub 側暫時性 OIDC `Failed to get ID Token: Request timeout`，之後 20+ 次 pages run 全綠 → 唔使改 workflow<!-- project: github.com/jyonline0604/website -->
 - ⚠️ 2026-10-21 教訓：job timeoutSeconds 600 對「多 exec + 長報告」job 唔夠（跑足 600s 撞 model-call-started timeout）→ 簡報類已放寬 1200s、Audio Sync 1800s
-- ⚠️ 2026-11-08 教訓：早上簡報 08:15 job timeoutSeconds 1200s 唔夠（08:15 輪跑足 1203.771s 撞 model-call-started timeout → 報告寫好但 announce 未送達，08:35 scheduler 補跑）；已放寬至 1800s<!-- project: github.com/jyonline0604/website --><!-- project: github.com/jyonline0604/website -->
+- ⚠️ 2026-11-08 教訓：早上簡報 08:15 job timeoutSeconds 1200s 唔夠（08:15 輪跑足 1203.771s 撞 model-call-started timeout → 報告寫好但 announce 未送達，08:35 scheduler 補跑）；已放寬至 1800s<!-- project: github.com/jyonline0604/website -->
 - OpenRouter ✅ 09-06 晚已換新 key（env=sk-or-…54d01850，profiles=…19d56957 不同步）；日後用 `scripts/update-openrouter-key.sh` 輪換
 - `scripts/ai_multimodel.py`：call_zai() → call_zai_glm 仍保留作 ZAI 探針；fallback 鏈已加 minimax-M3 entry
 - 心跳/大 session 要防 context 脹爆（agent:main:main 曾脹到 445k/200k 即死，定期 reset）

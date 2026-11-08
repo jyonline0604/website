@@ -6062,3 +6062,26 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 補跑/重試輪係「最低成本交付」嘅最後機會：只做巡檢 + 報告，唔做維修；SKILL 同步 / 三倉 push 留俾 22:00 健康報告
 - timeout edit 後要即刻 `openclaw cron list --json` 睇 payload 確認新值，並確認新 run 已用新 revision
 - 核對簡報有冇送達要睇 deliveryStatus + delivered 欄位（教訓 #10 同款），唔可以只信 memory 筆記
+---
+## [2026-11-08] 更新 - provider 掛死令排程失送 + provider 級 timeout 快速失敗
+
+### 症狀（2026-11-08 早上）
+- 早上簡報 08:15 job errs=2、status=error、delivered=None → 大肥喵完全收唔到早上簡報
+- lastError: cron: job execution timed out (last phase: model-call-started)，每次都係 20 分鐘（1200 秒）
+- gateway log: provider=minimax api=anthropic-messages 連續 60 秒級 error 之後 TimeoutError
+- 補跑（08:35 / 08:55）同樣掛死 → 證明唔係單次偶發
+
+### 根因
+- minimax anthropic-messages 路由今朝極慢/無回應，isolated cron lane 喺 model-call 階段無限等
+- job payload timeoutSeconds=1800 保護唔到（lane 20 分鐘先被剪），所以成個 job 靜靜死咗，
+  大肥喵收到唔到簡報而通知亦冇送出去
+
+### 修復
+- openclaw.json: models.providers.minimax.timeoutSeconds = 120（原本冇設定）
+  → provider 請求 120 秒內無回應就快速失敗，scheduler 即刻切換 fallback（openrouter 5 個 free model）
+  → 由「掛死 20 分鐘全線失送」變成「2 分鐘內 fallback 接手」
+- 教訓：provider 級 timeout 一定要設；只靠 job timeoutSeconds 唔夠，因為失送發生喺 lane 剪斷之前
+
+### 附帶發現
+- cron run 手動觸發時，若主 session lane 仍忙，會回 already-running（唔係 job 壞）
+  → 診斷時要分清「job 失敗」同「lane 排隊」，唔好誤判為 job 壞

@@ -6140,3 +6140,11 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 傍晚簡報 cron (f8b447b6) 連續 5 次於 model-call-started 階段超時
 - 根因：timeoutSeconds=1800 太短，模型首輪呼叫耗盡預算
 - 解決：openclaw cron edit 將 timeoutSeconds 調高至 3600
+
+---
+
+## 2026-11-10 更新
+- 修復內容：5 個 OpenClaw cron job（早上簡報 08:15、中午簡報 12:55、每日 Audio Sync 10:00、每日健康報告 22:00、傍晚簡報 17:55）全部因 model override 帶 `@minimax:cn` account suffix 而被 preflight 拒絕，consecutiveErrors 累積。
+- 根本原因：`minimax/MiniMax-M3.1-Flash@minimax:cn` 嘅 account/route suffix 同 gateway 實際 routing 唔匹配，錯誤訊息 = "Automation candidate is incompatible with its recorded inference account and route."
+- 解決方法：`openclaw cron edit <jobId> --model minimax/MiniMax-M3.1-Flash`（用 agent 預設 route，唔加 account suffix）。
+- 教訓：排查 cron consecutiveErrors 時，先睇 `openclaw cron list --json` 嘅 payload.model 同 state.lastError；唔好淨係改 timeout 或 message。

@@ -8,6 +8,7 @@ if ! flock -w 180 200; then
   echo "  ❌ 拿不到 git 鎖（等待超時）"
   exit 1
 fi
+bash "$WORKSPACE/scripts/git-clean-conflicts.sh"
 FILE="$1"
 MSG="$2"
 git add "$FILE" || exit 1

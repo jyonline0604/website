@@ -26,6 +26,7 @@ if ! flock -w $TIMEOUT 200; then
     exit 1
 fi
 echo "  🔒 已獲取 Git Push 鎖"
+bash "$WORKSPACE/scripts/git-clean-conflicts.sh"
 
 # ── Step 2: 檢查是否有進行中的 Pages 部署 ──
 check_pages_deploying() {

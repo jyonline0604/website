@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.146
+version: 2.9.147
 ---
 
 ---
@@ -6179,3 +6179,16 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 修復內容：OpenClaw cron job 連續報 Automation candidate is incompatible with its recorded inference account and route.
 - 根本原因：automation 記錄嘅 inference account / route 綁定過期，需用 openclaw cron edit 重綁 model + fallbacks + delivery（announce / telegram / to）
 - 解決方法：openclaw cron edit <id> --model minimax/MiniMax-M3.1-Flash@minimax:cn --fallbacks <openrouter 清單> --timeout-seconds 3600 --announce --channel telegram --to <chatId>；用 openclaw cron list --json 檢查 consecutiveErrors / lastDeliveryError
+---
+## [2026-11-10] 更新 - code mode 入面要用 exec(...) 直接呼叫，唔可以用 tools.exec(...)
+
+### 症狀
+- isolated cron session（健康報告 22:00 嗰輪）code-mode 直接爆 `ReferenceError: tools is not defined`（stack 落喺 openclaw-code-mode/user.js:2）
+- 主 session 相同情況亦出現過（`tools` 未定義），改用 exec(...) 直接呼叫就正常
+
+### 根因
+- code mode sandbox 只有直接注入嘅全域（exec / ls / read / write / process 等），`tools` 呢個 wrapper 全域並唔存在；寫 tools.exec(...) 一定 ReferenceError
+
+### 做法
+- code mode 內一律用 `exec({command: ...})` 直接呼叫，唔好包 tools.exec
+- shell 腳本用 write() 寫成檔再 exec 跑，唔好喺 code 內砌長 heredoc（引號會撞，寫多次都會出現 SyntaxError）

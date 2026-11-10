@@ -161,42 +161,68 @@ def log_github_push(files, commit_hash, commit_message):
         tags=["github", "push", "code"]
     )
 
-# 測試功能
+# 每日自動記錄（2026-11-10 修正）
+# 舊 __main__ 係 demo 測試碼：每日 23:00 由 system cron 執行時，把硬編碼假記錄
+# （新增功能 / abc123 / scripts/test1.py）寫入當日 memory 檔 → 216 個記憶檔、252 處污染。
+# 而家改為每日寫一條真實提交摘要（hash 去重；無新提交就唔寫）。
+
+import subprocess
+
+
+def _today_commits():
+    """列出今日真實 git 提交（hash / subject / author / 檔案清單）。"""
+    try:
+        out = subprocess.run(
+            ["git", "log", "--since=midnight", "--pretty=format:%H%x09%s%x09%an", "--name-only"],
+            cwd=WORKSPACE, capture_output=True, text=True, timeout=60)
+        if out.returncode != 0:
+            return []
+    except Exception as e:
+        print("WARN: git log 失敗: %s" % e)
+        return []
+    commits, cur = [], None
+    for line in out.stdout.splitlines():
+        parts = line.split("\t")
+        if len(parts) == 3 and len(parts[0]) == 40:
+            cur = {"hash": parts[0], "subject": parts[1], "author": parts[2], "files": []}
+            commits.append(cur)
+        elif cur is not None and line.strip():
+            cur["files"].append(line.strip())
+    return commits
+
+
+def _already_logged(memory_file, marker):
+    try:
+        with open(memory_file, encoding="utf-8") as f:
+            return marker in f.read()
+    except Exception:
+        return False
+
+
+def main_auto():
+    ensure_memory_dir()
+    memory_file = get_today_memory_file()
+    commits = _today_commits()
+    if not commits:
+        print("今日無新 commit，唔寫記憶")
+        return 0
+    marker = "## 每日 git 提交摘要 (auto-memory-logger)"
+    if _already_logged(memory_file, marker):
+        print("今日摘要已存在，唔重複寫")
+        return 0
+    lines = [marker, ""]
+    for c in commits:
+        files = ", ".join(c["files"][:6]) if c["files"] else "(無檔案變更)"
+        lines.append("- `%s` %s — %s" % (c["hash"][:10], c["subject"][:90], files))
+    log_to_memory(
+        category="GitHub推送",
+        title="每日提交摘要（真實 git 記錄）",
+        content=lines,
+        tags=["github", "push", "auto"],
+    )
+    print("已記錄今日真實提交 %d 個（單一摘要條目）" % len(commits))
+    return 0
+
+
 if __name__ == "__main__":
-    print("=== 自動記憶記錄器測試 ===")
-    print(f"當前時間: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    
-    # 測試各種記錄
-    test_files = ["scripts/test1.py", "scripts/test2.py"]
-    
-    # 1. 記錄系統修改
-    log_system_modification(
-        modification_type="新增功能",
-        description="添加自動記憶記錄系統",
-        files_modified=test_files,
-        github_commit="abc123"
-    )
-    
-    # 2. 記錄問題修復
-    log_problem_fix(
-        problem="忘記自動記憶記錄",
-        solution="創建自動記憶記錄器",
-        result="現在所有修改都會自動記錄"
-    )
-    
-    # 3. 記錄學習教訓
-    log_lesson_learned(
-        lesson="永遠記住自動記憶記錄原則",
-        context="修改真實財經新聞系統後忘記記錄",
-        action="創建自動記錄機制避免再次忘記"
-    )
-    
-    # 4. 記錄GitHub推送
-    log_github_push(
-        files=test_files,
-        commit_hash="17e089b",
-        commit_message="feat: 添加真實財經新聞系統"
-    )
-    
-    print("\n✅ 測試完成！")
-    print(f"記憶文件: {get_today_memory_file()}")
+    sys.exit(main_auto())

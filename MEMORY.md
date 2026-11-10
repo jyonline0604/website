@@ -377,3 +377,11 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 教訓：「push 失敗」log 唔一定代表 push 過；睇清楚係 pull 失敗定 push 失敗。同一分鐘多 script 寫同一 repo → git 操作全部經 `.git-push.lock` flock 序列化。<!-- project: github.com/jyonline0604/website -->
 - 巡檢：網站 HTTP 200（線上/本地 aqhi-stations.json md5 一致 4aca9993e07b50a72874fc3a53ed8c82）；系統 / 16%（69G/468G）、Mem 4.6Gi/7.0Gi used、available 2.4Gi、swap 219Mi、uptime 4d1h、load 0.15；Dropbox V4 按 2026-10-02 指令退役（state 265 章，正常）、V5 270 / V6 273 / V7 120（最新 CH1860，11:30 批次成功）；system crontab 條目齊全（記憶備份 08/20、自動記憶 23:00、財經+新聞+AQHI 10,16、guardian 9:30/21:30、V5/V6 11:00、V7 11:30、token 每 3h）；無遺留 *_output.txt / *.tmp / cron_output.txt（.token-store/dropbox-token.txt.bak 係 renew_dropbox_token.py 自動生成嘅回滾副本，唔好刪）。<!-- project: github.com/jyonline0604/website -->
 - skill v2.9.148（跨 provider fallback + AQHI push 迴圈兩個章節），四處 md5 一致。<!-- project: github.com/jyonline0604/website -->
+
+
+## 2026-11-10 23:05 自動記憶 logger 每日寫入 demo 假記錄（污染 216 檔） <!-- project: github.com/jyonline0604/website -->
+- 症狀：每日 23:00（system cron `0 23 * * * scripts/auto-daily-memory-log.sh`）之後，當日 memory 檔必然多出 4 條一模一樣嘅假記錄（系統修改 abc123 / 問題修復 / 學習教訓 / GitHub推送 17e089b）；`scripts/test1.py`、`scripts/test2.py` 根本唔存在。<!-- project: github.com/jyonline0604/website -->
+- 根因：`scripts/auto-memory-logger.py` 的 `if __name__ == "__main__":` 段落係硬編碼 demo 測試示範碼，但 system cron 每日直接 python3 執行佢 → 每日自動寫入模板假資料。<!-- project: github.com/jyonline0604/website -->
+- 修復：`__main__` 改為 `main_auto()`（`git log --since=midnight` 攞真實提交 → 寫單一「每日提交摘要」條目，hash 去重，無新提交就唔寫）；清理 workspace 216 檔（864 區塊）+ Second-brain / Max-backup 記憶副本各 213 檔（各 852 區塊）；demo 條目以外內容一字無改。<!-- project: github.com/jyonline0604/website -->
+- 教訓：每日 cron 會跑嘅 python script，`__main__` 絕對唔可以係 demo/test 碼（demo 要用 flag 隔離）；記憶檔出現「時間戳靚但內容一樣」嘅條目就係有 cron 寫模板假資料；記憶備份倉會同步污染，清理要三倉一齊清。<!-- project: github.com/jyonline0604/website -->
+- skill：novel-site-standards v2.9.149、novel-av-generator v2.2.37。<!-- project: github.com/jyonline0604/website -->

@@ -23,8 +23,7 @@ fi
 # 如果有Git變更
 if [[ -n $(git status --porcelain finance-news.json) ]]; then
     echo "📝 檢測到財經新聞更新"
-    git add finance-news.json
-    git commit -m "docs: update finance news $(date '+%Y-%m-%d %H:%M')" || true
+    bash scripts/git-commit-locked.sh finance-news.json "docs: update finance news $(date '+%Y-%m-%d %H:%M')"
     
     if [ "$SHOULD_PUSH" = "1" ]; then
         echo "  🕐 偶數整點，執行批次推送"

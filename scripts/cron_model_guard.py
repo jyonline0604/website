@@ -38,6 +38,16 @@ def allowed_models(cfg):
     return allow
 
 
+def profile_variant(base, allow):
+    """搵 allow list 入面 "<base>@<profile>" 變體（2026.11 起每個 candidate 都要綁 account）。"""
+    if not base:
+        return None
+    for a in sorted(allow):
+        if a.startswith(base + "@"):
+            return a
+    return None
+
+
 def main():
     cfg = load_cfg()
     allow = allowed_models(cfg)
@@ -68,22 +78,46 @@ def main():
             if FIX and primary:
                 # 保留原本嘅 @profile 綁定（2026.11 起舊 job 冇 recorded inference account 就會報錯）
                 suffix = ("@" + model.split("@", 1)[1]) if model and "@" in model else ""
-                r = run(CLI + " cron edit %s --model %s" % (jid, primary + suffix))
+                cand = profile_variant(primary, allow) or (primary + suffix)
+                r = run(CLI + " cron edit %s --model %s" % (jid, cand))
                 if r.returncode == 0:
                     print("FIXED: %s model -> %s" % (name, primary))
                     fixed += 1
                 else:
                     print("WARN: model fix failed for %s: %s" % (name, r.stderr.strip()[:200]))
+        if model and "@" not in model and primary:
+            pv = profile_variant(primary, allow)
+            if pv:
+                print("WARN: %s model override 冇 @profile（2026.11 起需要 recorded inference account）" % name)
+                if FIX:
+                    r = run(CLI + " cron edit %s --model %s" % (jid, pv))
+                    if r.returncode == 0:
+                        print("FIXED: %s model -> %s" % (name, pv))
+                        fixed += 1
         bad = [f for f in fbs if f not in allow and f.split("@", 1)[0] not in allow]
         if bad:
             print("WARN: %s fallbacks not allowed: %s" % (name, ",".join(bad)))
             if FIX:
-                good = [f for f in fbs if f in allow] or ([primary] if primary else [])
+                good = []
+                for f in fbs:
+                    if f in allow:
+                        good.append(f)
+                        continue
+                    pv = profile_variant(f.split("@", 1)[0], allow)
+                    if pv:
+                        good.append(pv)
+                if not good:
+                    pv = profile_variant(primary, allow) if primary else None
+                    good = [pv] if pv else []
                 if good:
                     r = run(CLI + " cron edit %s --fallbacks %s" % (jid, ",".join(good)))
                     if r.returncode == 0:
                         print("FIXED: %s fallbacks -> %s" % (name, ",".join(good)))
                         fixed += 1
+                        # fallback 編輯會改動 job 記錄嘅 inference account → 即刻重綁 primary
+                        cand = profile_variant(primary, allow) if primary else None
+                        if cand:
+                            run(CLI + " cron edit %s --model %s" % (jid, cand))
                     else:
                         print("WARN: fallback fix failed for %s" % name)
         state = j.get("state") or {}

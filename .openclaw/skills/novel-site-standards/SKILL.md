@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.143
+version: 2.9.144
 ---
 
 ---
@@ -6143,27 +6143,31 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 
 ---
 
-## 2026-11-10 更新
-- 修復內容：5 個 OpenClaw cron job（早上簡報 08:15、中午簡報 12:55、每日 Audio Sync 10:00、每日健康報告 22:00、傍晚簡報 17:55）全部因 model override 帶 `@minimax:cn` account suffix 而被 preflight 拒絕，consecutiveErrors 累積。
-- 根本原因：`minimax/MiniMax-M3.1-Flash@minimax:cn` 嘅 account/route suffix 同 gateway 實際 routing 唔匹配，錯誤訊息 = "Automation candidate is incompatible with its recorded inference account and route."
-- 解決方法：`openclaw cron edit <jobId> --model minimax/MiniMax-M3.1-Flash`（用 agent 預設 route，唔加 account suffix）。
-- 教訓：排查 cron consecutiveErrors 時，先睇 `openclaw cron list --json` 嘅 payload.model 同 state.lastError；唔好淨係改 timeout 或 message。
 ---
-## [2026-11-10] 更新 - 兩重大事故（cron 全線爆一日 + git rebase 衝突）
 
-### 事故一：6 個 agentTurn cron job 由 11-09 起全線爆（ Automation candidate is incompatible with its recorded inference account and route.）
-- 症狀：11-09 傍晚簡報起，傍晚簡報 / 健康報告 / 早上簡報 / Audio Sync / 版本檢查 / 中午簡報 全部 error，一日冇簡報送到
-- 真因：2026.11.1 規則下 job 記錄住一個 inference account + route；candidate provider ≠ 記錄 account 就直接 throw，唔會靜默切換
-- 觸發：我 11-08 為咗救 Audio Sync 幫 6 個 job 嘅 fallback 綁咗 @openrouter:default —— 呢個令 job 記錄 account 變咗 openrouter，之後 primary（minimax）候選就同記錄 account 唔相容
-- 修復順序（關鍵，已實測）：每條 fallback 各自帶 @profile（例：openrouter/xxx@openrouter:default，切換時先可被採用），並且「最後」才綁 primary model@profile（minimax/MiniMax-M3.1-Flash@minimax:cn）—— 最後一次 account 選擇決定 job 記錄嘅 inference account，順序錯（例如先改 fallback 再改 primary）就會令 primary 候選與記錄 account 不相容→ 2026-11-10 6 個 agentTurn job 全部 error 近一日；重綁後早上簡報 17:15、Audio Sync 17:27、版本檢查 17:08 全部 ok + delivered
+## 2026-11-10 更新 (根因已由 openclaw runtime 原始碼確認)
+- 症狀：5 個 agentTurn cron (早上簡報 08:15、中午簡報 12:55、每日 Audio Sync 10:00、每日健康報告 22:00、傍晚簡報 17:55) 連續 error，統一訊息 "Automation candidate is incompatible with its recorded inference account and route."
+- 真正根因 (run-executor.runtime 原始碼)：job 用 model@profile 會記錄 inference binding (provider=minimax)；minimax primary 本身常被 rate_limit，一 cut 去跨 provider 嘅 openrouter fallback 就觸發 providerOverride != binding.provider 而 hard error，唔會靜靜哋降級。
+- 已作廢嘅誤診：唔係 "@minimax:cn suffix 唔喺 modelPolicy.allow"；allow list 一直有 minimax/MiniMax-M3.1-Flash@minimax:cn。
+- 正確修法 (error-playbook 1b)：每條 fallback 都要綁同 provider 配對嘅 account，即 openrouter/<model>:free@openrouter:default；primary 明確寫 minimax/MiniMax-M3.1-Flash@minimax:cn；allow list 補 @openrouter:default 變體。
+- 驗證方法：每個 job fb=N/N (全部 fallback 帶 @)，再 cron run 補跑，consecutiveErrors 歸零兼 lastRunStatus=ok、lastDelivered=true。
+- 同步：scripts/cron-guardian.sh 重建模板嘅 --model / --fallbacks 一樣要帶 @profile，否則下次重建會還原壞狀態。
 
-### 事故二：git 卡喺 rebase 衝突（finance-news.json / finance-data.json）
-- 根因：update_finance.sh / update_finance_news.sh / update_aqhi.sh / news-backup-cron.sh 同一分鐘（10,16 點）各自 git add + commit + pull --rebase，撞同一批 JSON
-- 修復：新增 scripts/git-commit-locked.sh（add+commit 統一用 .git-push.lock）；news-backup-cron.sh 同 update_aqhi.sh 直接加 flock；財經兩個 script 改用 helper
-- 處理手法：git rebase --abort → 逐個 conflict 取「正在套用嘅 commit」版本（stage 3 / theirs）→ git add → GIT_EDITOR=true git rebase --continue
+---
+## [2026-11-10] 更新 - cron 全線爆一日嘅真正根因（guardian 重建順序）+ 防復發加固
+
+### 真正根因（runtime 原始碼 captureCronInferenceBinding + 實測時間線）
+- job 記錄嘅 inference account = 「最後一次 account 選擇」嗰個 provider；`cron edit --model X@P` 或 `--fallbacks ...@Q` 都會改寫佢
+- 11-08 21:30 cron-guardian.sh 重建 6 個 job，模板寫住 `--model minimax/...@minimax:cn` 先、`--fallbacks openrouter/...@openrouter:default` 後 → 記錄 account 變成 openrouter → 之後每輪 primary（minimax）候選都 `providerOverride != binding.provider` → hard error（11-09 08:15 起全線爆，一日冇簡報）
+- 修法：模板必須 `--fallbacks` 先、`--model` 後；`cron_model_guard.py` 改完 fallbacks 也要即刻重綁 primary
+
+### 已加固
+- scripts/cron-guardian.sh：5 個 job 嘅 `cron add` 參數順序改成 --fallbacks 先、--model 後（語法已驗）
+- scripts/cron_model_guard.py：新增 profile_variant()；model 修復用 known-good `<primary>@<profile>` 變體；fallback 修復唔再退回無 @profile 嘅 primary；改完 fallbacks 即刻重綁 primary；新增「model override 冇 @profile」檢查
+- 4 個重型簡報 job timeoutSeconds 1800 → 3600（model-call-started 慢回時唔會中途被斬）
 
 ### 教訓
-- 改 job 嘅 fallback 唔可以隨便加 @profile：會改到 job 記錄嘅 inference account，令 primary 候選反過來不相容
-- 修 account 要「先清 fallback 綁定、最後綁 primary@profile」，順序錯會越修越壞
-- 多個 cron script 同一分鐘做 git 一定會撞：所有 commit + pull --rebase 都要同一把 flock
-- 判斷 job 係咪真死，要睇 state.lastError 全文（Automation candidate is incompatible…）而唔係淨係睇 errs 數字
+- 「最後一次 account 選擇決定 job 記錄 account」：任何 `cron edit --model/--fallbacks` 都要諗清楚最後一個參數係邊個 provider；重建 job 嘅 script 更加要留意參數順序
+- 重建 / 修復 automation 後一定要 `cron list` 睇 payload 實值（model + fallbacks 嘅 @profile），再 `cron run` 補跑到 delivered=true 為止；唔可以只睇 job 存在同 enabled
+- 有 recorded account 嘅 job 唔能夠採用跨 provider fallback（a switch cannot adopt a different account）→ fallback 綁自己 account 只係避免 policy 駁回，唔會令跨 provider 切換合法；minimax 慢回時要靠 timeout + catch-up，唔係靠 fallback
+- 修完要逐個 force run 驗證（errs 歸零 + lastRunStatus=ok + delivered=true）

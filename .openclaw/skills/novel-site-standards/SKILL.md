@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.145
+version: 2.9.146
 ---
 
 ---
@@ -6173,3 +6173,9 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 重建 / 修復 automation 後一定要 `cron list` 睇 payload 實值（model + fallbacks 嘅 @profile），再 `cron run` 補跑到 delivered=true 為止；唔可以只睇 job 存在同 enabled
 - 有 recorded account 嘅 job 唔能夠採用跨 provider fallback（a switch cannot adopt a different account）→ fallback 綁自己 account 只係避免 policy 駁回，唔會令跨 provider 切換合法；minimax 慢回時要靠 timeout + catch-up，唔係靠 fallback
 - 修完要逐個 force run 驗證（errs 歸零 + lastRunStatus=ok + delivered=true）
+---
+
+## [2026-11-10] 更新
+- 修復內容：OpenClaw cron job 連續報 Automation candidate is incompatible with its recorded inference account and route.
+- 根本原因：automation 記錄嘅 inference account / route 綁定過期，需用 openclaw cron edit 重綁 model + fallbacks + delivery（announce / telegram / to）
+- 解決方法：openclaw cron edit <id> --model minimax/MiniMax-M3.1-Flash@minimax:cn --fallbacks <openrouter 清單> --timeout-seconds 3600 --announce --channel telegram --to <chatId>；用 openclaw cron list --json 檢查 consecutiveErrors / lastDeliveryError

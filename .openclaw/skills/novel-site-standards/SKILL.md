@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.141
+version: 2.9.142
 ---
 
 ---
@@ -6148,3 +6148,22 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 根本原因：`minimax/MiniMax-M3.1-Flash@minimax:cn` 嘅 account/route suffix 同 gateway 實際 routing 唔匹配，錯誤訊息 = "Automation candidate is incompatible with its recorded inference account and route."
 - 解決方法：`openclaw cron edit <jobId> --model minimax/MiniMax-M3.1-Flash`（用 agent 預設 route，唔加 account suffix）。
 - 教訓：排查 cron consecutiveErrors 時，先睇 `openclaw cron list --json` 嘅 payload.model 同 state.lastError；唔好淨係改 timeout 或 message。
+---
+## [2026-11-10] 更新 - 兩重大事故（cron 全線爆一日 + git rebase 衝突）
+
+### 事故一：6 個 agentTurn cron job 由 11-09 起全線爆（ Automation candidate is incompatible with its recorded inference account and route.）
+- 症狀：11-09 傍晚簡報起，傍晚簡報 / 健康報告 / 早上簡報 / Audio Sync / 版本檢查 / 中午簡報 全部 error，一日冇簡報送到
+- 真因：2026.11.1 規則下 job 記錄住一個 inference account + route；candidate provider ≠ 記錄 account 就直接 throw，唔會靜默切換
+- 觸發：我 11-08 為咗救 Audio Sync 幫 6 個 job 嘅 fallback 綁咗 @openrouter:default —— 呢個令 job 記錄 account 變咗 openrouter，之後 primary（minimax）候選就同記錄 account 唔相容
+- 修復順序（關鍵）：先剝走 fallback 上嘅 @profile（唔好再改到 job 記錄 account），最後先綁 primary model@profile（重新 capture 授權）→ 6 個 job 全部回復
+
+### 事故二：git 卡喺 rebase 衝突（finance-news.json / finance-data.json）
+- 根因：update_finance.sh / update_finance_news.sh / update_aqhi.sh / news-backup-cron.sh 同一分鐘（10,16 點）各自 git add + commit + pull --rebase，撞同一批 JSON
+- 修復：新增 scripts/git-commit-locked.sh（add+commit 統一用 .git-push.lock）；news-backup-cron.sh 同 update_aqhi.sh 直接加 flock；財經兩個 script 改用 helper
+- 處理手法：git rebase --abort → 逐個 conflict 取「正在套用嘅 commit」版本（stage 3 / theirs）→ git add → GIT_EDITOR=true git rebase --continue
+
+### 教訓
+- 改 job 嘅 fallback 唔可以隨便加 @profile：會改到 job 記錄嘅 inference account，令 primary 候選反過來不相容
+- 修 account 要「先清 fallback 綁定、最後綁 primary@profile」，順序錯會越修越壞
+- 多個 cron script 同一分鐘做 git 一定會撞：所有 commit + pull --rebase 都要同一把 flock
+- 判斷 job 係咪真死，要睇 state.lastError 全文（Automation candidate is incompatible…）而唔係淨係睇 errs 數字

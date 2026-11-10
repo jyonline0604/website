@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.142
+version: 2.9.143
 ---
 
 ---
@@ -6155,7 +6155,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 症狀：11-09 傍晚簡報起，傍晚簡報 / 健康報告 / 早上簡報 / Audio Sync / 版本檢查 / 中午簡報 全部 error，一日冇簡報送到
 - 真因：2026.11.1 規則下 job 記錄住一個 inference account + route；candidate provider ≠ 記錄 account 就直接 throw，唔會靜默切換
 - 觸發：我 11-08 為咗救 Audio Sync 幫 6 個 job 嘅 fallback 綁咗 @openrouter:default —— 呢個令 job 記錄 account 變咗 openrouter，之後 primary（minimax）候選就同記錄 account 唔相容
-- 修復順序（關鍵）：先剝走 fallback 上嘅 @profile（唔好再改到 job 記錄 account），最後先綁 primary model@profile（重新 capture 授權）→ 6 個 job 全部回復
+- 修復順序（關鍵，已實測）：每條 fallback 各自帶 @profile（例：openrouter/xxx@openrouter:default，切換時先可被採用），並且「最後」才綁 primary model@profile（minimax/MiniMax-M3.1-Flash@minimax:cn）—— 最後一次 account 選擇決定 job 記錄嘅 inference account，順序錯（例如先改 fallback 再改 primary）就會令 primary 候選與記錄 account 不相容→ 2026-11-10 6 個 agentTurn job 全部 error 近一日；重綁後早上簡報 17:15、Audio Sync 17:27、版本檢查 17:08 全部 ok + delivered
 
 ### 事故二：git 卡喺 rebase 衝突（finance-news.json / finance-data.json）
 - 根因：update_finance.sh / update_finance_news.sh / update_aqhi.sh / news-backup-cron.sh 同一分鐘（10,16 點）各自 git add + commit + pull --rebase，撞同一批 JSON

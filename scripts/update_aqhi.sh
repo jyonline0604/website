@@ -9,6 +9,8 @@ if ! python3 scripts/fetch_aqhi_rss.py 2>&1; then
   echo "[AQHI] fetch failed (exit $?) — 保留舊數據，唔 commit 空數據"
   exit 0
 fi
+exec 200>>"$WORKSPACE/.git-push.lock"
+flock -w 180 200 || { echo "[AQHI] 拿不到 git 鎖，跳過本次"; exit 0; }
 git add aqhi-stations.json
 git diff --cached --quiet || {
   git commit -m "docs: update aqhi data $(date +%Y-%m-%d)"

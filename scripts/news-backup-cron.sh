@@ -64,6 +64,9 @@ if git diff --quiet -- 'news-data.json' 'finance-news.json' 'finance-data.json' 
 fi
 
 # 5. 提交 + 推送（先 rebase 避免 remote 有新 commit）
+# 併發保護：同 batch-push.sh / update_finance*.sh 共用 .git-push.lock，避免同一分鐘搶住改同一批 JSON 撞 rebase 衝突
+exec 200>>"/home/openclaw/.openclaw/workspace/.git-push.lock"
+flock -w 180 200 || { log "⚠️ 拿不到 git 鎖，本次跳過（避免競賽）"; exit 0; }
 git add news-data.json finance-news.json finance-data.json sitemap.xml feed.xml
 git commit -m "📅 本地後備：每日自動更新新聞、市場數據、sitemap 與 RSS ($(TZ=Asia/Hong_Kong date '+%Y-%m-%d %H:%M HKT'))" >> "$LOG" 2>&1
 

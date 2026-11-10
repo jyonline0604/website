@@ -218,9 +218,18 @@ EOF
         "每日 Audio Sync 10:00")
             openclaw cron add --name "每日 Audio Sync 10:00" --cron "0 10 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --fallbacks "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default,openrouter/cohere/north-mini-code:free@openrouter:default,openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/poolside/laguna-s-2.1:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default" \ \
                 --fallbacks "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default,openrouter/cohere/north-mini-code:free@openrouter:default,openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/poolside/laguna-s-2.1:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default" \
-                --timeout-seconds 3600 \
+                --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
+                --timeout-seconds 1800 \
+                --message "Run daily audio sync: exec \`cd /home/openclaw/.openclaw/workspace && python3 scripts/audio_sync_pipeline.py\` and report results." \
+                2>>"$LOG" && log "✅ Audio Sync 已重建" || log "❌ Audio Sync 重建失敗"
+            ;;
+        "OpenClaw Version Check")
+            openclaw cron add --name "OpenClaw Version Check" --cron "0 11 * * *" \
+                --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
+                --fallbacks "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default,openrouter/cohere/north-mini-code:free@openrouter:default,openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/poolside/laguna-s-2.1:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default" \ \
+                --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
+                --timeout-seconds 600 \
                 --message "請執行 /home/openclaw/.openclaw/workspace/scripts/check-openclaw-version.sh 並報告結果" \
                 2>>"$LOG" && log "✅ Version Check 已重建" || log "❌ Version Check 重建失敗"
             ;;

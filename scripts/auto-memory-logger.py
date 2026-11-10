@@ -213,11 +213,11 @@ def main_auto():
     lines = [marker, ""]
     for c in commits:
         files = ", ".join(c["files"][:6]) if c["files"] else "(無檔案變更)"
-        lines.append("- `%s` %s — %s" % (c["hash"][:10], c["subject"][:90], files))
+        lines.append("`%s` %s — %s" % (c["hash"][:10], c["subject"][:90], files))
     log_to_memory(
         category="GitHub推送",
         title="每日提交摘要（真實 git 記錄）",
-        content=lines,
+        content=chr(10).join(lines),
         tags=["github", "push", "auto"],
     )
     print("已記錄今日真實提交 %d 個（單一摘要條目）" % len(commits))

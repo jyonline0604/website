@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.149
+version: 2.9.150
 ---
 
 ---
@@ -6258,4 +6258,22 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **任何每日 cron 跑嘅 python script，`__main__` 唔可以係 demo/test 碼**：demo 段落應該用 `if __name__ == "__main__":` 隔離 + 明確 flag 先行，唔好每日自動寫入記憶檔。
 - 記憶檔出現「時間戳好靚但內容一模一樣」嘅條目 = 有 cron 喺度寫模板假資料，要即刻查 `grep -c` 同源碼 `__main__`。
 - 記憶備份（Second-brain / Max-backup 嘅 memory/ 副本）會同步污染，清理時要三倉一齊清，唔好只清 workspace。
+
+---
+
+## [2026-11-11] 更新 (v2.9.150) - 記憶 logger 摘要格式修正（雙重 `- ` 前綴）
+
+### 問題
+- v2.9.149 修好 demo 假記錄後，新版 logger 寫出嘅摘要條目每行都係 `- - ...`（`- ## 每日 git 提交摘要` / `- `b21882aabb` ...`）。
+
+### 根因
+- `log_to_memory()` 對 list 型 content 會逐行加 `- ` 前綴；我原本將摘要行本身寫成 `- `xxx``，再經 list 傳入 → 前綴疊加。
+
+### 修復
+1. 摘要行本身唔再加 `- `。
+2. `content` 由 list 改成單一 string（`chr(10).join(lines)`）傳入 → `log_to_memory` 唔會再逐行加前綴。
+3. 已移除寫歪咗嘅舊摘要條目並重跑驗證：輸出為 `## 每日 git 提交摘要 (auto-memory-logger)` + 每行 `` `hash` subject — files ``，格式正確。
+
+### 教訓
+- `log_to_memory()` content 傳 list 會自動加 `- `；要保留原格式（Markdown 標題／code 行）就傳單一 string。
 

@@ -73,7 +73,7 @@ rebuild_job() {
         "早上簡報 08:15")
             openclaw cron add --name "早上簡報 08:15" --cron "15 8 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --fallbacks "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default,openrouter/cohere/north-mini-code:free@openrouter:default,openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/poolside/laguna-s-2.1:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default" \ \
+                --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \ \
                 --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --timeout-seconds 3600 \
                 --message "$(cat <<'EOF'
@@ -113,7 +113,7 @@ EOF
         "中午簡報 12:55")
             openclaw cron add --name "中午簡報 12:55" --cron "55 12 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --fallbacks "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default,openrouter/cohere/north-mini-code:free@openrouter:default,openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/poolside/laguna-s-2.1:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default" \ \
+                --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \ \
                 --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --timeout-seconds 3600 \
                 --message "$(cat <<'EOF'
@@ -146,7 +146,7 @@ EOF
         "傍晚簡報 17:55 — 日結")
             openclaw cron add --name "傍晚簡報 17:55 — 日結" --cron "55 17 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --fallbacks "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default,openrouter/cohere/north-mini-code:free@openrouter:default,openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/poolside/laguna-s-2.1:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default" \ \
+                --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \ \
                 --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --timeout-seconds 3600 \
                 --message "$(cat <<'EOF'
@@ -185,7 +185,7 @@ EOF
         "每日健康報告 22:00")
             openclaw cron add --name "每日健康報告 22:00" --cron "0 22 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --fallbacks "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default,openrouter/cohere/north-mini-code:free@openrouter:default,openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/poolside/laguna-s-2.1:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default" \ \
+                --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \ \
                 --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --timeout-seconds 3600 \
                 --message "$(cat <<'EOF'
@@ -218,7 +218,7 @@ EOF
         "每日 Audio Sync 10:00")
             openclaw cron add --name "每日 Audio Sync 10:00" --cron "0 10 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --fallbacks "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default,openrouter/cohere/north-mini-code:free@openrouter:default,openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/poolside/laguna-s-2.1:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default" \
+                --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --timeout-seconds 1800 \
                 --message "Run daily audio sync: exec \`cd /home/openclaw/.openclaw/workspace && python3 scripts/audio_sync_pipeline.py\` and report results." \
@@ -227,7 +227,7 @@ EOF
         "OpenClaw Version Check")
             openclaw cron add --name "OpenClaw Version Check" --cron "0 11 * * *" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --fallbacks "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default,openrouter/cohere/north-mini-code:free@openrouter:default,openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/poolside/laguna-s-2.1:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default" \ \
+                --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \ \
                 --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --timeout-seconds 600 \
                 --message "請執行 /home/openclaw/.openclaw/workspace/scripts/check-openclaw-version.sh 並報告結果" \

@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.147
+version: 2.9.148
 ---
 
 ---
@@ -6192,3 +6192,46 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 ### 做法
 - code mode 內一律用 `exec({command: ...})` 直接呼叫，唔好包 tools.exec
 - shell 腳本用 write() 寫成檔再 exec 跑，唔好喺 code 內砌長 heredoc（引號會撞，寫多次都會出現 SyntaxError）
+
+---
+
+## [2026-11-10] 更新 (v2.9.148) - 移除跨 provider fallback（Automation candidate is incompatible with its recorded inference account and route）
+
+### 症狀
+- 6 個 agentTurn cron job（早上簡報 08:15 / 中午簡報 12:55 / 傍晚簡報 17:55 / 每日健康報告 22:00 / 每日 Audio Sync 10:00 / OpenClaw Version Check）喺 minimax 短暫抖動時全部 hard-fail：lastDeliveryStatus=unknown、delivery=not-started，run transcript 出現 `run-failed-before-reply` → 「Automation candidate is incompatible with its recorded inference account and route.」。
+- session transcript 顯示候選鏈由 `openrouter/poolside/laguna-s-2.1:free` → `openrouter/recursive/flint-v1.0:free`（跨 provider 切換）之後先爆。
+- 連續 3 晚（11-08 / 11-09 / 11-10）每日健康報告連續 error，delivery 完全冇送達。
+
+### 根本原因
+- 2026.11 起 agentTurn job 用 `model@profile` 記錄 inference binding（provider=minimax / profileId=minimax:cn）。fallback 鏈一旦切去另一個 provider（openrouter），runtime 拒絕採用另一個 account → hard-fail。**跨 provider fallback 唔係真正後備，係 fatal 陷阱**。
+- minimax provider 只提供 1 個可用模型（MiniMax-M3.1-Flash），冇第二個同 provider 模型砌真正 fallback 鏈；但 runtime 本身有 transient same-model retry（8 次），足以頂 minimax 短暫 model-fetch timeout（實測 119s timeout 後自動 retry 1/8）。
+
+### 修復
+- 6 個 job 全部改成 `--model minimax/MiniMax-M3.1-Flash@minimax:cn` + `--fallbacks minimax/MiniMax-M3.1-Flash@minimax:cn`（同 account、同 provider），用 `openclaw cron edit` **先 fallbacks 後 model** 重綁。
+- `scripts/cron-guardian.sh` 6 個重建 block 嘅 fallback 串同步改成同 provider（唔改重建模板 → guardian 下次重建會把跨 provider fallback 帶返嚟）。
+- 驗證：`openclaw cron list --json` 逐個確認 `payload.fallbacks`；sqlite `cron_jobs` 逐個確認 `inferenceBinding.provider=minimax` / `profileId=minimax:cn`。
+
+### 教訓
+- fallback 一定要同 recorded binding 同一個 provider/profile；跨 provider fallback 只會令原本可以 retry 嘅抖動變成 hard-fail。
+- 修 payload 唔止要改 job，仲要改重建模板（guardian），否則復發。
+- `openclaw cron edit` 只由**下一次 run** 生效；正在跑嘅 run 沿用啟動時嘅 config revision。
+
+---
+
+## [2026-11-10] 更新 - update_aqhi.sh push 迴圈：報「三次重試失敗」但其實從來冇 push 過
+
+### 症狀
+- 10:00 / 16:00 兩輪 AQHI 都報「[AQHI] push 三次重試仍失敗，留待下一輪自動恢復」，但同一分鐘 finance / finance-news 亦在改同一批 JSON。
+
+### 根本原因
+- `scripts/update_aqhi.sh` 把 `git push` 寫死喺 `git pull --rebase` **成功分支**入面。同一分鐘有其他 script 未提交改動時，pull 必然 fail（cannot pull with rebase: You have unstaged changes）→ push 一次都冇試過 → 但 log 仍然印「push attempt N failed」。commit 滯留本地，線上 AQHI 停喺上一個鐘。
+
+### 修復
+- push 改為獨立嘗試，唔再 gate 喺 pull 成功上面。
+- pull 用 `-X theirs` 自動解衝突；pull 失敗就 `rebase --abort` 清理 + stash 未提交改動再試。
+- 絕不 `reset --hard` 掉本地 commit（batch-push.sh 嘅舊 fallback 做法會抹走改動）。
+
+### 教訓
+- 「push 失敗」嘅 log 未必代表 push 過；睇清楚係 pull 失敗定 push 失敗，先唔會查錯方向。
+- 同一分鐘多 script 寫同一個 repo → 全部 git 操作都必須經 flock（`.git-push.lock`）序列化，push 唔可以依賴 pull 成功。
+

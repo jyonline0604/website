@@ -26,13 +26,31 @@ git diff --cached --quiet || {
   fi
   # 併發 push 競爭防護（2026-09-20 autostash；2026-09-22 改重試循環；
   # 2026-11-10 加強：每次失敗後清理衝突狀態，唔好留低 U 狀態連累其他 script）
+  # 2026-11-10 22:xx 再修（真正根因）：舊版將 push 放喺「pull 成功」分支入面，
+  #   同一分鐘 finance / finance-news 有未提交改動時 pull --rebase 一定 fail
+  #   （cannot pull with rebase: You have unstaged changes）→ push 一次都冇試過
+  #   → 報「三次重試仍失敗」，commit 滯留本地，線上 AQHI 停留喺上一個鐘。
+  #   修法：① push 獨立嘗試，唔再 gate 喺 pull 上面；② pull 用 -X theirs 自動解衝突；
+  #         ③ pull 失敗就 abort 清理 + stash 未提交改動再試；④ 絕不 reset --hard 掉本地 commit。
   PUSH_OK=0
   for ATTEMPT in 1 2 3; do
-    if git pull --rebase --autostash origin main >/dev/null 2>&1; then
-      if git push origin main >/dev/null 2>&1; then PUSH_OK=1; break; fi
-    fi
-    echo "[AQHI] push attempt $ATTEMPT failed，10s 後重試..."
     bash "$WORKSPACE/scripts/git-clean-conflicts.sh"
+    if git pull --rebase -X theirs origin main >/dev/null 2>&1; then
+      git push origin main >/dev/null 2>&1 && PUSH_OK=1
+    else
+      git rebase --abort >/dev/null 2>&1 || true
+      if [ -n "$(git status --porcelain)" ]; then
+        git stash push -u -m "aqhi-autostash $(date +%Y%m%d-%H%M%S)" >/dev/null 2>&1 || true
+        if git pull --rebase -X theirs origin main >/dev/null 2>&1; then
+          git push origin main >/dev/null 2>&1 && PUSH_OK=1
+        fi
+        git stash pop >/dev/null 2>&1 || echo "[AQHI] ⚠️ stash pop 有衝突，改動保留喺 stash"
+      else
+        git push origin main >/dev/null 2>&1 && PUSH_OK=1
+      fi
+    fi
+    if [ "$PUSH_OK" = "1" ]; then break; fi
+    echo "[AQHI] push attempt $ATTEMPT failed，10s 後重試..."
     sleep 10
   done
   if [ "$PUSH_OK" = "1" ]; then

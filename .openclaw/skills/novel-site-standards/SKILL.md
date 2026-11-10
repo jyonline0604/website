@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.148
+version: 2.9.149
 ---
 
 ---
@@ -6234,4 +6234,28 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 ### 教訓
 - 「push 失敗」嘅 log 未必代表 push 過；睇清楚係 pull 失敗定 push 失敗，先唔會查錯方向。
 - 同一分鐘多 script 寫同一個 repo → 全部 git 操作都必須經 flock（`.git-push.lock`）序列化，push 唔可以依賴 pull 成功。
+
+---
+
+## [2026-11-10] 更新 (v2.9.149) - 自動記憶 logger 每日寫入硬編碼 demo 假記錄（污染 216 個記憶檔）
+
+### 症狀
+- 每日 23:00（system cron `0 23 * * * scripts/auto-daily-memory-log.sh`）之後，當日 memory 檔必然多出 4 條假記錄：
+  `### 系統修改: 新增功能`（GitHub提交: abc123、修改文件: scripts/test1.py + scripts/test2.py）
+  `### 問題修復`（忘記自動記憶記錄）、`### 學習教訓`（永遠記住自動記憶記錄原則）、`### GitHub推送`（17e089b / feat: 添加真實財經新聞系統）。
+- `scripts/test1.py` / `scripts/test2.py` 根本唔存在；`abc123` 唔係真 commit。
+- 污染範圍：workspace memory/ 216 個檔案、252 處 demo 條目；Second-brain + Max-backup 記憶副本各 213 檔、852 區塊。
+
+### 根因
+- `scripts/auto-memory-logger.py` 個 `if __name__ == "__main__":` 段落係**測試示範碼**（硬編碼 test_files / abc123 / 17e089b），但 system cron 每日直接 `python3 auto-memory-logger.py` 執行 → 每日都寫入假記錄。
+
+### 修復
+1. `scripts/auto-memory-logger.py` 的 `__main__` 改成 `main_auto()`：`git log --since=midnight` 攞真實提交 → 寫**單一**「每日提交摘要」條目（hash 去重；無新提交就唔寫）。舊 demo 段落整段移除。
+2. 清理 216 個 workspace 記憶檔 + 兩個備份倉各 213 個記憶副本嘅 demo 區塊（864 + 852 + 852 區塊）；demo 條目以外嘅內容一字無改。
+3. 記憶 dreaming promotion 嘅 `- Candidate:` metadata（引用過 demo 文字嘅索引）唔當污染，保留原狀。
+
+### 教訓
+- **任何每日 cron 跑嘅 python script，`__main__` 唔可以係 demo/test 碼**：demo 段落應該用 `if __name__ == "__main__":` 隔離 + 明確 flag 先行，唔好每日自動寫入記憶檔。
+- 記憶檔出現「時間戳好靚但內容一模一樣」嘅條目 = 有 cron 喺度寫模板假資料，要即刻查 `grep -c` 同源碼 `__main__`。
+- 記憶備份（Second-brain / Max-backup 嘅 memory/ 副本）會同步污染，清理時要三倉一齊清，唔好只清 workspace。
 

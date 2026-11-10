@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.144
+version: 2.9.145
 ---
 
 ---
@@ -6157,14 +6157,16 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 ## [2026-11-10] 更新 - cron 全線爆一日嘅真正根因（guardian 重建順序）+ 防復發加固
 
 ### 真正根因（runtime 原始碼 captureCronInferenceBinding + 實測時間線）
-- job 記錄嘅 inference account = 「最後一次 account 選擇」嗰個 provider；`cron edit --model X@P` 或 `--fallbacks ...@Q` 都會改寫佢
-- 11-08 21:30 cron-guardian.sh 重建 6 個 job，模板寫住 `--model minimax/...@minimax:cn` 先、`--fallbacks openrouter/...@openrouter:default` 後 → 記錄 account 變成 openrouter → 之後每輪 primary（minimax）候選都 `providerOverride != binding.provider` → hard error（11-09 08:15 起全線爆，一日冇簡報）
-- 修法：模板必須 `--fallbacks` 先、`--model` 後；`cron_model_guard.py` 改完 fallbacks 也要即刻重綁 primary
+- 根因（runtime 原始碼 captureCronInferenceBinding + run-executor 保護網核實）：job 嘅 inference binding 由 **primary** model reference（`model@profile`）capture → binding.provider = minimax、account = minimax:cn；run 時候選 provider ≠ binding.provider 就直接 throw `Automation candidate is incompatible with its recorded inference account and route`（唔會靜靜哋降級）
+- 即係：minimax primary 一 rate_limit／slow，scheduler 切去 openrouter fallback 就必然 hard-fail → 11-09 08:15 起 6 個 agentTurn job 全線爆、一日冇簡報（2026.11 規則：a switch cannot adopt a different account）
+- 已驗證可行嘅設定：primary `minimax/MiniMax-M3.1-Flash@minimax:cn` + 每條 fallback 各自綁自己 account（`openrouter/…:free@openrouter:default`），並且改完 fallback 之後即刻重綁一次 primary（令 job 重新 capture 授權）→ 2026-11-10 17:15 早上簡報、17:26 版本檢查、17:27 Audio Sync 全部 ok + delivered
+- 殘餘風險（要知）：呢個設定下 fallback 仍係跨 provider，一旦 minimax 再 rate-limit，openrouter fallback 切換一樣會 hard-fail；要完全冇呢個風險就要整條候選鏈同 provider（例如全部 openrouter）
+- cron-guardian.sh 模板：每個 block 單一 `--fallbacks`（各自 @openrouter:default）→ 單一 `--model`（@minimax:cn）→ 單一 `--timeout-seconds`，順序同上面一致，確保重建唔會還原壞狀態
 
 ### 已加固
-- scripts/cron-guardian.sh：5 個 job 嘅 `cron add` 參數順序改成 --fallbacks 先、--model 後（語法已驗）
+- scripts/cron-guardian.sh：6 個 job block 全部正規化成單一 --fallbacks → 單一 --model → 單一 --timeout-seconds（3600 簡報 / 1800 Audio Sync / 600 版本檢查），語法已驗
 - scripts/cron_model_guard.py：新增 profile_variant()；model 修復用 known-good `<primary>@<profile>` 變體；fallback 修復唔再退回無 @profile 嘅 primary；改完 fallbacks 即刻重綁 primary；新增「model override 冇 @profile」檢查
-- 4 個重型簡報 job timeoutSeconds 1800 → 3600（model-call-started 慢回時唔會中途被斬）
+- 4 個重型簡報 job timeoutSeconds 1800 → 3600（model-call-started 慢回時唔會中途被斬；11-10 中午簡報正正係 1800s 內 model 未回而被斬）
 
 ### 教訓
 - 「最後一次 account 選擇決定 job 記錄 account」：任何 `cron edit --model/--fallbacks` 都要諗清楚最後一個參數係邊個 provider；重建 job 嘅 script 更加要留意參數順序

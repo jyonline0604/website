@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.152
+version: 2.9.153
 ---
 
 >
@@ -3052,4 +3052,22 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **同一類提示要覆蓋所有同類 job**，唔可以只改出事嗰個。
 - 症狀對照：`LLM request timed out.` + final reply 空 + deliveryStatus=unknown → 唔係模型掛，係 agent turn 內部 ReferenceError 空轉到 idle timeout；查 session transcript 睇佢寫咗 `tools.exec` 未。
 - cron `deliveryStatus=unknown` 唔代表一定冇送達（09:33 有 outbound send ok），要同時睇 transcript 嘅 final reply 有冇內容。
+
+---
+
+## [2026-11-11] 更新 (v2.9.153) - minimax 單一 account：provider 靜默 = 全線 agentTurn job 冇退路
+
+### 症狀
+- 2026-11-11 10:03 Audio Sync 報 `LLM request timed out.`（dur 238299ms）；同日早上簡報補跑亦係 `LLM request timed out.`。
+- 實際業務工作正常（直接跑 `scripts/audio_sync_pipeline.py` exit 0，R2 10/10 已在）。
+
+### 根因（runtime 原文 + 本機配置）
+- journal：`Profile minimax:cn idle timeout (model silent). No further authorized account for this provider; create a backup auth profile and add its id to auth.order to enable failover.`
+- `openclaw.json` → `auth.profiles` 只有 `minimax:cn` 一個 minimax profile（另有 deepseek/openrouter/google/zai，但係**另一個 provider**）。
+- 2026-11-10 已確認：有 recorded inference binding 嘅 job **唔可以**用跨 provider fallback（runtime `assertCandidate` 直接 throw）。→ minimax 靜默時冇任何自動退路。
+
+### 教訓
+- **同 provider 第二條 account** 先係真後備（runtime 支援 `auth.order` 輪換同 provider profile）；跨 provider fallback 係 fatal 陷阱，兩樣唔可以當成一樣。
+- 症狀對照：`LLM request timed out.` + 業務腳本手動跑正常 → 係 provider/account 層面問題，唔係 job 內容問題；先手動驗證業務，唔好亂改 job payload。
+- 每日 08:00 起檢查 minimax 429 / idle timeout 數量：>5 次即代表 provider 唔穩，要準備補跑。
 

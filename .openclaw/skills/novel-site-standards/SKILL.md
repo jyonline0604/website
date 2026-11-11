@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.156
+version: 2.9.157
 ---
 
 >
@@ -3128,4 +3128,26 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 ### 驗證 fallback 真係可用嘅方法
 - 唔好淨係睇「有冇填落個欄」→ **睇 `openclaw models list` 嘅 `Auth` 欄**（`yes` 先算真係有憑證）。
 - 已用 `Auth: yes` 嘅 5 個 openrouter free 模型做跨 provider 安全網。
+
+---
+
+## [2026-11-11] 更新 (v2.9.157) - 兩個「待辦決策」其實唔存在問題，結案（避免重複問用戶 / 重複報告）
+
+### ① 「簡報雙軌 dedup」→ 已於 2026-11-01 退役，唔係待決事項
+- crontab 第 7 / 11 行明確註記：**2026-11-01 大肥喵指令退休：system cron 簡報（`send-briefing.sh` 08:15 / 17:55）已退役**，天氣/交通 digest 已併入 OpenClaw cron agent 簡報（08:15 / 12:55 / 17:55），每個時段得一條訊息。**勿啟用，勿由 guardian 加返。**
+- 兩條條目都已 `#` 註釋；`scripts/send-briefing.sh` 檔案仍留喺度（mtime Nov 1 18:13）但**唔會被執行**。
+- MEMORY.md 已有呢條退休記錄。**唔好再報告「雙軌簡報」問題、唔好再問用戶揀方案。**
+
+### ② 「Audio Sync / legacy mp3 處理」→ 實測無 legacy 檔，唔使處理
+- `scripts/audio_sync_pipeline.py` 嘅匹配正則係 `chapter-\d+\.mp3`（掃 Dropbox `/萬古塵埃/`）。
+- 實測 Dropbox 根層：`mp3 總數 10`（chapter-71 ~ chapter-76 等）、**script 會 match 10 個、會被跳過 0 個** → 冇命名唔合規嘅檔。
+- 根層其餘 12 項係卷資料夾（第一卷 ~ 第十一卷）同 `韓立sound.WAV`（唔屬章節 mp3，唔應該處理）。
+- R2 線上實測 `https://audio.kofhk.com/audio/chapter-71..76.mp3` 全部 **HTTP/2 200**。
+- 本機 repo 內 `*.mp3` 數量 = 0（mp3 住喺 Dropbox + R2，唔入 git，正常）。
+- Audio Sync cron job `23533480`（每日 10:00）最近一次 11-11 10:07 `status=ok / delivered / errs=0`。
+- 註：MEMORY.md 第 16 條「Pipeline filename convention 要一致（`-final.mp3` 教訓）」係指**生成時**命名要一致，唔係指現存 legacy 檔待清。
+
+### 教訓
+- **待辦清單嘅「要用戶決定」唔一定真係要決定**：先查 crontab / 實測現況，確認係「已退役」「唔存在」定「真係要揀」，先好去問用戶。浪費用戶注意力同時間。
+- **診斷查現況時，判斷式要同被診斷嘅 script 一致**：我第一次用 `name[:-4].isdigit()` 當「標準命名」，但 script 用嘅係 `re.match(r'chapter-\d+\.mp3')` → 10 個全部被誤報為「非標準」，差啲寫錯結論落 MEMORY.md。
 

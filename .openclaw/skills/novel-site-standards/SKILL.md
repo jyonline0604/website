@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.162
+version: 2.9.163
 ---
 
 >
@@ -3246,3 +3246,21 @@ fallbacks = [
 - 修復內容：線上章節數驗證改為加 cache-buster（?v=timestamp）
 - 根本原因：CDN edge 持續 serve 舊版 assets/chapters-data.json，普通 fetch 落後 6 章（1860 vs 1866）會被誤判為同步分歧
 - 解決方法：cron-guardian.sh 嘅線上章節數檢查加入 cache-buster（?v=$(date +%s)）；驗證線上資源一律帶 cache-buster，唔好淨係睇普通 fetch 結果
+
+---
+
+## [2026-11-11] 更新 (2.9.163) - Skill 副本「漂移」陷阱：bump 完唔跑 sync，四處 md5 就會唔一致
+
+### 症狀（2026-11-11 18:33 巡檢實際遇到）
+- 另一個 session 喺 17:57–18:04 將 `novel-site-standards` 由 v2.9.160 bump 到 v2.9.162，並已同步 **Second-brain + Max-backup**。
+- 但 **workspace repo 內嘅 `.openclaw/skills/novel-site-standards/SKILL.md` 仍停留 v2.9.160** → 四處 md5 唯一數 = **2**（唔一致）。
+- 單靠「版本號一致」會漏；md5 檢查就捉到。
+
+### 修復
+- 跑 `scripts/sync_skill_copies.sh` → 四處全部對齊、md5 唯一數 = 1 ✅
+
+### 教訓
+- **Bump skill 之後必須即跑 `sync_skill_copies.sh`**：檢查要睇 **md5 唯一數 == 1**（四處：主 skill、workspace `.openclaw/skills/`、Second-brain、Max-backup），唔係淨睇版本號。
+- **HEARTBEAT.md 18:00「Skill更新檢查」要同時查版本 + md5**：版本一致但 md5 唔一致 = 有副本漏同步（本次就係咁）。
+- 多 session 併發改 skill 時，bump 前先讀主檔當前版本（唔好假設係自己上次嗰個），避免版本號撞車。
+

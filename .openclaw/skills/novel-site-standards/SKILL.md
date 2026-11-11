@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.167
+version: 2.9.168
 ---
 
 >
@@ -3354,4 +3354,34 @@ fallbacks = [
   3. 或者喺副本上改，唔好 source 原檔。
 - **測試前一定要問：呢個 script 嘅頂層會唔會改系統狀態？**（cron job 建立/刪除、檔案寫入、訊息發送）
 - **巡檢要偵測「同名重複 job」**：單靠 job id 睇唔到重複，要用 `Counter(name)` —— `cron list` 出現兩個同名「中午簡報 12:55」就要即刻 `rm` 走一個。
+
+---
+
+## [2026-11-12] 更新 (v2.9.168) - mock PATH 攔截唔到 `openclaw`（gateway 嘅 `OPENCLAW_PREPEND_PATH` 排前面）→ 要用 shell function 遮蔽
+
+### 我又撞一次（第二次自揭事故）
+- 上條 v2.9.167 講「測試要用 mock PATH」—— **錯一半**。
+- 我建咗 `/tmp/gtest5/bin/openclaw` 假執行檔 + `export PATH=/tmp/gtest5/bin:$PATH`，以為會攔截到。
+- 實際上 gateway 嘅 shell 預先 `export PATH="${OPENCLAW_PREPEND_PATH}${PATH}"`，**真 `openclaw` 排喺我 mock 前面** → mock 完全冇被呼叫，真 `openclaw cron add` 照跑 → **01:14:50 又造出重複 job `c5e4f531`「中午簡報 12:55」**。
+- 已 `openclaw cron rm c5e4f531-...` 刪走，驗證 8 job / 零重複 / errs=0。
+
+### ✅ 正解：shell function 遮蔽（優先過 PATH 執行檔）
+```bash
+# 三重保護：① 複製 script 去 /tmp（原檔唔郁）② function 遮蔽 openclaw ③ 抽走頂層主流程
+cp scripts/cron-guardian.sh /tmp/gsafe3/guardian.sh
+openclaw() { echo "CALL: $*" >> /tmp/gsafe3/calls.log; return 0; }   # ★ function 優先過 PATH
+eval "$(sed -n '1,42p' /tmp/gsafe3/guardian.sh)"    # vars + log/send_telegram 定義
+eval "$(sed -n '73,256p' /tmp/gsafe3/guardian.sh)"  # rebuild_job 函式（唔含頂層主流程）
+rebuild_job "中午簡報 12:55"
+```
+實測結果（mock 成功攔截，零真實 job 建立）：
+- `--fallbacks` = 5 層 openrouter（全部 `Auth: yes`、唔含 primary）✅
+- `--model` = `minimax/MiniMax-M3.1-Flash@minimax:cn` ✅
+- `--timeout-seconds` = 3600 ✅
+
+### 教訓
+- **bash 嘅 command lookup 順序：function > alias > PATH 執行檔**。要攔截某個 binary，**用 function 遮蔽最可靠**，改 PATH 唔保證（尤其係有 `OPENCLAW_PREPEND_PATH` / `PREPEND` 嘅環境）。
+- **測試前先確認「邊個 executable 會被執行」**：`type -a openclaw` / `command -v openclaw` 睇實際解析順序。
+- **抽函式測試要同時抽走頂層主流程**：`sed -n '1,42p'` + `sed -n '73,256p'` 分兩段抽，先至唔會觸發副作用。
+- 每次搞掂後都用 `Counter(job name)` 核實**零重複 job** —— 呢個檢查今日已經救咗兩次命。
 

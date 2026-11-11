@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.157
+version: 2.9.158
 ---
 
 >
@@ -3150,4 +3150,30 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 ### 教訓
 - **待辦清單嘅「要用戶決定」唔一定真係要決定**：先查 crontab / 實測現況，確認係「已退役」「唔存在」定「真係要揀」，先好去問用戶。浪費用戶注意力同時間。
 - **診斷查現況時，判斷式要同被診斷嘅 script 一致**：我第一次用 `name[:-4].isdigit()` 當「標準命名」，但 script 用嘅係 `re.match(r'chapter-\d+\.mp3')` → 10 個全部被誤報為「非標準」，差啲寫錯結論落 MEMORY.md。
+
+---
+
+## [2026-11-11] 更新 (v2.9.158) - fallback 鏈**次序**同樣重要：openrouter 必須排喺 deepseek/zai 前面
+
+### 補 v2.9.156 / v2.9.157 未覆蓋嘅一環
+- v2.9.156 補咗「邊啲 fallback 真係可用」，v2.9.157 結案咗兩個待決項 —— 但**兩者都冇處理 fallback 鏈嘅次序**。
+- 原次序係 `[deepseek/deepseek-v4-flash, zai/glm-5.3, openrouter×5]`（deepseek/zai 在前）。既然實測 **deepseek 認證被拒絕、zai 目錄 stale**，呢兩個排頭就等于「每次回退先撞兩堵死牆」→ 可能未輪到 openrouter 就已經耗盡重試。
+
+### 最終正確次序
+```
+fallbacks = [
+  openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,   # 實測 Auth: yes
+  openrouter/cohere/north-mini-code:free,                            # 實測 Auth: yes
+  openrouter/nvidia/nemotron-3-ultra-550b-a55b:free,                 # 實測 Auth: yes
+  openrouter/poolside/laguna-s-2.1:free,                             # 實測 Auth: yes
+  openrouter/recursive/flint-v1.0:free,                              # 實測 Auth: yes
+  deepseek/deepseek-v4-flash,   # 保留但排後（認證被拒，機會用唔到）
+  zai/glm-5.3,                   # 保留但排後（目錄 stale）
+]
+```
+- 7 個 agent job 全部：**首個 fallback = openrouter**、`model` 不在 fallback 內、零重複、timeout 全部原值。
+
+### 教訓
+- **fallback 鏈唔止要睇「有冇填」，仲要睇「次序」** —— 死路排喺前面，等於喺背後擺好嘅安全網被自己擋住。
+- **`openclaw cron edit` 係逐個 job 一次過 patch**：7 個 job 逐個跑需要時間，exec timeout 唔夠時會**只改咗一部分** → 一定要喺 edit 後**逐個 job 再 list 一次核實首個 fallback**，唔好假設全部改齊（本次就係咁：第一次只改好 4 個，補做先齊）。
 

@@ -279,7 +279,7 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 復原確認：重啟後 cron.service 07:55:37 啟動 → 08:00 記憶備份、08:15 system cron 簡報（Msg 23365）均有 syslog 執行記錄；OpenClaw cron 8 jobs 全部 enabled + lastStatus=ok + consecutiveErrors=0 + delivered。<!-- project: github.com/jyonline0604/website -->
 - Dropbox 零分歧：chapters-data.json = 1794 章 = V7 state synced_to_site max 1794；V4 仍退役（state 1746 / batch 44，唔加返）；V5/V6 synced_to_site 1788。<!-- project: github.com/jyonline0604/website -->
 - 自動修復：DREAMS.md（03:00 Memory Dreaming Promotion 產出）未提交 → commit 2efae88a4 + push origin/main；三倉 0 未推送、工作區乾淨。<!-- project: github.com/jyonline0604/website -->
-- 已知問題（待大肥喵決定）：每日兩份簡報 — system cron send-briefing.sh（08:15/17:55）+ OpenClaw cron agent（08:15/17:55）雙軌並存，今日 08:15 兩軌都送達；去重唔可以靠改 shell 腳本（system cron 先送、agent 版遲約 4 分鐘），要消除重複必須揀一套。<!-- project: github.com/jyonline0604/website -->
+- ✅ 已解決（2026-11-01 退休）：每日兩份簡報雙軌並存 → system cron send-briefing.sh（08:15/17:55）已退役，天氣/交通 digest 已併入 OpenClaw cron agent 簡報（08:15 / 12:55 / 17:55），每時段得一條訊息。<!-- project: github.com/jyonline0604/website -->
 - 非嚴重：logrotate 重複條目仍在（/etc/logrotate.d/cloud-init-base vs cloud-init）→ 重啟後 logrotate.service 顯示 inactive（唔再 failed），但下次輪轉會再 duplicate log entry fail；仍需 root 一行修復（unattended 冇 sudo 密碼）。<!-- project: github.com/jyonline0604/website -->
 ## 2026-11-01 07:44 每日健康報告 — 主機重啟補跑 + rm -rf 誤刪 tracked 媒體檔教訓
 - 網站 kofhk.com 200（0.12s），/ /chapters.html /home.html /assets/chapters-data.json 全部 200；磁碟 / 16%（68G/468G）、Mem available 3.8Gi、uptime 5 分鐘（主機 07:40:32 重啟）<!-- project: github.com/jyonline0604/website -->

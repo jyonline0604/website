@@ -435,3 +435,6 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 
 - **2026-11-11 補：fallback 鏈嘅「次序」同樣係根因一部分** —— 原本 7 層次序係 `[deepseek/deepseek-v4-flash, zai/glm-5.3, openrouter×5]`，但實測 deepseek 認證被拒、zai 目錄 stale → 兩個「死路」排喺最前，每次回退先撞兩堵牆。已重排為 **openrouter×5 排前、deepseek/zai 排後**，7 個 agent job 全部首個 fallback = openrouter、`model` 不在 fallback 內、零重複、timeout 原值不變。<!-- project: github.com/jyonline0604/website -->
 - **教訓**：`openclaw cron edit` 逐 job patch，7 個 job 一次過跑會撞 exec timeout → **只改咗一部分**（首次 4/7）；edit 後必須逐 job 再 `cron list` 核實，唔可以假設全部改齊。<!-- project: github.com/jyonline0604/website -->
+
+- **2026-11-11 16:20 修 `batch-push.sh` 早退 bug**：佢 Step 3 只睇 working tree（`git status --porcelain` 乾淨就 `exit 0`），但 `update_finance.sh` / `update_finance_news.sh` 係**先用 `git-commit-locked.sh` commit 咗**先叫 batch-push → 到腳本行到嗰陣樹已經乾淨 → 誤判「無變更」→ **commit 永遠留喺本地唔 push**。實測 16:00 嘅 `953c4d66c`（docs: update finance data）就係咁留咗 17 分鐘，要靠 16:17 心跳巡檢手動 push 先上到 GitHub。已改為 working tree + `git rev-list --count origin/main..HEAD` 雙重判斷，樹乾淨但有未推送 commit 就繼續推。<!-- project: github.com/jyonline0604/website -->
+- **教訓**：「工作樹乾淨」≠「冇嘢要推」（已 commit 未 push 係另一個狀態）；凡「先 commit、後叫 push 腳本」嘅流程，push 腳本必須查未推送 commit；巡檢要同時睇 `git log origin/main..HEAD` 同 `git status --short`。<!-- project: github.com/jyonline0604/website -->

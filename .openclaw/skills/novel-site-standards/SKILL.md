@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.163
+version: 2.9.164
 ---
 
 >
@@ -3263,4 +3263,23 @@ fallbacks = [
 - **Bump skill 之後必須即跑 `sync_skill_copies.sh`**：檢查要睇 **md5 唯一數 == 1**（四處：主 skill、workspace `.openclaw/skills/`、Second-brain、Max-backup），唔係淨睇版本號。
 - **HEARTBEAT.md 18:00「Skill更新檢查」要同時查版本 + md5**：版本一致但 md5 唔一致 = 有副本漏同步（本次就係咁）。
 - 多 session 併發改 skill 時，bump 前先讀主檔當前版本（唔好假設係自己上次嗰個），避免版本號撞車。
+
+---
+
+## [2026-11-11] 更新 (v2.9.164) - Code Mode 訊息工具 schema bug：`conversations_list` / `conversations_send` 現時用唔到
+
+### 症狀
+- `conversations_list({limit:10})` → 拋 `Tool "conversations_list" returned details that do not match its declared outputSchema ... <root>: must not have additional properties: "gated"`（工具實際有回資料，但 outputSchema 冇 `gated` 欄 → 驗證失敗）。
+- 因此攞唔到 `conversationRef`，`conversations_send`（要 `^conv_[a-f0-9]{32}$`）也就用唔到 → **主動發 Telegram 訊息嘅路徑暫時斷咗**。
+- 同一類問題：早前 `automations` 工具嘅 `get` / `update` / `list` 全部同樣 outputSchema 驗證失敗（要求 `id`/`name`/`enabled`/`createdAtMs`… 但回傳格式唔啱）；當時改用 `openclaw cron list --json` / `cron get` / `cron edit` CLI 路徑。
+
+### 現時可用嘅替代路徑
+- 讀 cron 狀態：`openclaw cron list --json`（CLI，經 exec）；改 cron：`openclaw cron edit <id> --fallbacks <csv> --timeout-seconds <n>`。
+- 睇 job / session 實戰結果：`sessions_history` / `sessions_list`（本次用佢確認 17:55 傍晚簡報、22:00 健康報告有冇送達）。
+- 查線上資源：`web_fetch`（記得加 cache-buster，見 CDN 快取陷阱嗰條）。
+- 一定要改用 CLI 嘅原因：Code Mode 工具回傳格式同 outputSchema 對唔上，**副作用唔會發生**，所以每次都要喺 CLI 層再核實一次。
+
+### 教訓
+- **工具報 schema 唔等於工具冇執行**：`automations.update` 報錯嗰次，實際上完全冇生效（fallbacks 冇變）→ 一定要先核實現況再決定重唔重試。
+- **Code Mode 入面 `tools.xxx` 唔存在**，只有直接注入嘅全域（`exec`、`read`、`sessions_history`…）；`catalog.search()` 只回 catalog 內嘅 callable，唔保證全域存在。
 

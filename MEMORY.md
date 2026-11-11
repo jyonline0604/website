@@ -432,3 +432,6 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 
 - **2026-11-11 結案：之前標為「要用戶決定」嘅兩項，其實都唔需要用戶決定** — ①「簡報雙軌 dedup」：system cron `send-briefing.sh`（08:15/17:55）**已於 2026-11-01 按大肥喵指令退役**，天氣/交通 digest 已併入 OpenClaw cron agent 簡報（08:15 / 12:55 / 17:55），每時段得一條；crontab 兩條已註釋，**唔好再報告雙軌問題、唔好再問用戶揀方案**。②「Audio Sync / legacy mp3」：實測 Dropbox `/萬古塵埃/` 根層 mp3 共 10 個，script 正則 `chapter-\d+\.mp3` **全部 match、0 個被跳過**，無 legacy 檔待清；R2 `audio.kofhk.com/audio/chapter-71..76.mp3` 全部 HTTP/2 200；Audio Sync job `23533480` 11-11 10:07 `ok / delivered / errs=0` → **唔使處理**。<!-- project: github.com/jyonline0604/website -->
 - **診斷陷阱**：查「命名合唔合規」時判斷式要同被診斷 script 一致 —— 頭先用 `name[:-4].isdigit()` 對 `chapter-71.mp3` 必然 false，令 10 個正常檔全部誤報「非標準」，差啲寫錯結論落 MEMORY.md；應直接重用 script 嘅 `re.match(r'chapter-\d+\.mp3')`。<!-- project: github.com/jyonline0604/website -->
+
+- **2026-11-11 補：fallback 鏈嘅「次序」同樣係根因一部分** —— 原本 7 層次序係 `[deepseek/deepseek-v4-flash, zai/glm-5.3, openrouter×5]`，但實測 deepseek 認證被拒、zai 目錄 stale → 兩個「死路」排喺最前，每次回退先撞兩堵牆。已重排為 **openrouter×5 排前、deepseek/zai 排後**，7 個 agent job 全部首個 fallback = openrouter、`model` 不在 fallback 內、零重複、timeout 原值不變。<!-- project: github.com/jyonline0604/website -->
+- **教訓**：`openclaw cron edit` 逐 job patch，7 個 job 一次過跑會撞 exec timeout → **只改咗一部分**（首次 4/7）；edit 後必須逐 job 再 `cron list` 核實，唔可以假設全部改齊。<!-- project: github.com/jyonline0604/website -->

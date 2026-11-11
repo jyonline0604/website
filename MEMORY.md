@@ -444,3 +444,6 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 ## 🌐 網站驗證教訓：CDN 快取（2026-11-11）
 - kofhk.com 由 Cloudflare 代理，普通 fetch 可能拿到舊版 assets/chapters-data.json（實測落後 6 章：1860 vs 真實 1866），即使 GitHub Pages 部署已 success。
 - 任何線上資源驗證都要加 cache-buster（?v=timestamp 或 Cache-Control: no-cache），否則會誤判為同步分歧並做無謂修復。<!-- project: github.com/jyonline0604/website -->
+
+- **2026-11-11 18:35 新 fallback 鏈第一次實戰通過**：17:55 傍晚簡報 job `f8b447b6` 以新鏈（openrouter×5 排頭）執行 → `lastRunStatus=ok` / `lastDeliveryStatus=delivered` / `lastDurationMs=592932`（約 10 分鐘）/ `consecutiveErrors=0` / 無 lastError ✅。連同 12:55 中午簡報（舊鏈自動重試成功）都係 delivered。剩低最後一個觀察點 = 22:00 健康報告 job `a6db95e0`。<!-- project: github.com/jyonline0604/website -->
+- **2026-11-11 18:33 skill 副本落後（同 session 併發 bump 造成）**：另一個 session 17:57–18:04 將 `novel-site-standards` 由 v2.9.160 bump 到 v2.9.162 並已同步 Second-brain/Max-backup，但 **workspace repo 內嘅 `.openclaw/skills/` 副本仍停留 v2.9.160** → 四處 md5 唯一數 = 2（唔一致）。已執行 `scripts/sync_skill_copies.sh` 對齊 → 四處全部 v2.9.162、md5 唯一數 = 1。**教訓：任何 session bump 完 skill 都必須即跑 `sync_skill_copies.sh`**，否則 workspace 副本會靜靜落後（HEARTBEAT.md 18:00「Skill更新檢查」就係專門捉呢個）。<!-- project: github.com/jyonline0604/website -->

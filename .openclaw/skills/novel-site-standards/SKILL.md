@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.165
+version: 2.9.166
 ---
 
 >
@@ -3302,4 +3302,37 @@ fallbacks = [
 - **排程時間要由 crontab 實測，唔可以靠 job 說明文字** —— 說明文字係人手寫嘅，一定會漂移；寫「09/15/21」嗰陣係 09:00/15:00/21:00，後來 crontab 改成 `0 10,16` 但冇人同步改文字。
 - **健康報告自己報出嘅「非故障提示」值得跟** —— 佢標註咗 `[LOOP_STATUS: OK]` 但細節入面嘅唔一致正正就係下一次誤報嘅根源（健康報告會以為 task 唔存在而誤報「消失」）。
 - 改 job message 前先 `cron list --json` 取全文、字串精確替換、edit 後再 list 核實 —— 因為 `automations` 工具 schema 壞咗，要用 CLI。
+
+---
+
+## [2026-11-11] 更新 (v2.9.166) - `cron-guardian.sh` 重建模板硬寫自我指向 fallback（令今日修好嘅 bug 會復活）+ 更正「7 層」係錯
+
+### 🔴 症狀：guardian 重建時會重新製造今日嗰個 bug
+- `scripts/cron-guardian.sh` 嘅 `rebuild_job()` 函式（6 個 job 分支）**硬寫**：
+  ```bash
+  --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \ \
+  --model     "minimax/MiniMax-M3.1-Flash@minimax:cn" \
+  ```
+- `--fallbacks` 同 `--model` **完全一樣** = 自我指向 = 等於冇 fallback。
+- **後果**：只要任何一個關鍵 job 走失（例如 Volume 5/6/7 條目曾經「遺失」過），guardian 自動重建時就會用錯鏈，令 **2026-11-11 12:55 中午簡報嗰種「429 → 重試 9 次 → 靜靜冇送達」** 再次發生。
+- 即係話：今日手動修 7 個 job 只係治標，**template 唔改就會復發**。
+
+### ✅ 修復
+- 喺 guardian 頂部加一個變數（來源：`agents.defaults.model.fallbacks`，同一條鏈）：
+  ```bash
+  FALLBACKS="openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,openrouter/cohere/north-mini-code:free,openrouter/nvidia/nemotron-3-ultra-550b-a55b:free,openrouter/poolside/laguna-s-2.1:free,openrouter/recursive/flint-v1.0:free"
+  ```
+- 6 個 `--fallbacks` 全部改成 `--fallbacks "$FALLBACKS"`（引號包法抄 `--to "$TELEGRAM_TO"` 同一行，確保 shell 語意一致）。
+- `bash -n scripts/cron-guardian.sh` 通過；變數實際展開值已用 `|...|` 包住驗證（無多餘引號）。
+
+### ⚠️ 更正：正確係 **5 層**，唔係 7 層
+- 今日 16:xx 我落手時寫過「每 job 7 層 fallback（openrouter×5 + deepseek + zai）」——**錯**。
+- 事實：`scripts/cron_model_guard.py` 會按 `agents.*.modelPolicy.allow` 清走唔合政策嘅 fallback，而 allow 清單入面 **deepseek / zai 唔存在**（只有 `minimax/MiniMax-M3.1-Flash` + 5 個 openrouter free + 對應 `@profile` 變體）。
+- 所以正確狀態 = **5 層 openrouter**（與 `agents.defaults.model.fallbacks` 完全一致）。guard 清走 deepseek/zai 係**正確行為**，唔係「漂移」。
+- 而家 7 個 agent job 全部 = 5 層 openrouter、零重複、`model` 不在 fallback 內 → **合政策且真實可用**。
+
+### 教訓
+- **修 job 綁定唔等於修好**：任何「會重建 job 嘅模板」（guardian / setup script / 部署 script）都要一併檢查，否則 bug 會喺下一次 job 走失時原形復現。
+- **fallback 唔可以自訂超出 policy allow 清單**：`cron_model_guard.py` 會自動清走，寫落去只會令人誤以為有更多層數。
+- **唔好淨睇自己寫過幾多層，要睇 modelPolicy allow 清單同 `openclaw models list` 嘅 `Auth` 欄** —— 三者交集先係真正可用的 fallback 鏈。
 

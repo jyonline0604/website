@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.169
+version: 2.9.170
 ---
 
 >
@@ -3391,3 +3391,9 @@ rebuild_job "中午簡報 12:55"
 - **修復**：新增 `scripts/ops-snapshot.sh`（唯讀，一次過輸出 gateway 狀態／版本、每個 agent cron job 嘅 errs + fallback 鏈層數、網站 HTTP、workspace git 未推送同髒檔、MEMORY.md 行數、追蹤中敏感檔、Dropbox token 新鮮度、system cron 行數）；重建 `HEARTBEAT.md`（步驟 + 單一 token 回覆規則 + 已知退役清單：system cron 簡報 08:15/17:55、Dropbox Volume 4 同步）。
 - **另一個根因**：Memory Dreaming Promotion（03:00）寫 `DREAMS.md` 但唔 commit，加上 GitHub Actions 每日新聞 CI 推 commit，令 `git push` 撞 non-fast-forward（fetch first）→ 已用「先 commit DREAMS.md → `git pull --rebase origin main` → push」收尾，HEAD `93ce46e32`，未推送 0 / 髒檔 0。
 - **驗證**：`bash scripts/ops-snapshot.sh` 實跑通過；8 個 agent cron job errs=0、重複名 0、fallback 5 層；網站 HTTP 200；Dropbox token 03:00 續期成功；workspace / Second-brain / Max-backup 三倉未推送 0、髒檔 0。
+
+## [2026-11-12] 更新 (v2.9.170) — AGENTS.md Dropbox cron 表同實際排程對齊
+- **根因**：`AGENTS.md` 一直寫住「08:00 | Dropbox第二卷同步6章 | 每天」同「資料夾 /萬古塵埃/第二卷/ (CH501-CH700)」，但實際 system crontab 由來冇過 V2 條目（12 行 active cron 只有 V5 11:00 / V6 11:00 / V7 11:30 / token 每 3 小時），而 `volume2_state.json` 顯示 V2 已處理 CH501-CH675 共 175 章、**無缺口**，CH676 起喺 V3（CH676-CH925）、CH926 起喺 V4（2026-10-02 已退役）。即係話文檔寫住一條唔存在嘅排程 → 令後續 session 以為「V2 同步失蹤」而去亂加 job。
+- **修復**：`AGENTS.md` Dropbox 段改為列出現行 12 行 system cron 真實排程，並新增「已完成／已退役嘅卷（唔好復原）」清單（V2 已完成無排程、V3 已完成無排程、V4 大肥喵 2026-10-02 指令退役），資料夾註明實際已處理 CH501-CH675。
+- **配套驗證**：`volume2_state.json` 覆蓋 501-675 缺 0；`volume3_state.json` 覆蓋 676-925；V5/V6/V7 最近一次 11-11 同步日誌全部「✅ 同步完成」；Dropbox token 06:00 續期成功；8 個 agent cron job errs=0、重複名 0；網站 HTTP 200；章節 HTML 1866 檔異常 0；workspace / Second-brain / Max-backup 三倉未推送 0、髒檔 0。
+- **教訓**：睇 crontab 實況（`crontab -l | grep -v '^[[:space:]]*#'`）再改文檔，唔好信舊文檔；一條「文件寫住但實際冇」嘅排程 = 下次誤判故障 + 可能重複加 job。

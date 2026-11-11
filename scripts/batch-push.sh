@@ -82,11 +82,22 @@ fi
 # ── Step 3: 檢查是否有任何變更，合併為單一 commit（先 commit，後 rebase）──
 # 2026-11-05 修正：原本係「先 pull 後 commit」——有本地改動時 rebase 必然失敗，
 # fallback 嘅 `git reset --hard origin/main` 會靜靜抹走未提交改動（今晚 22:00 實測中招）
-if [[ -z $(git status --porcelain) ]]; then
+# 2026-11-11 修正：原本只睇 working tree（git status --porcelain），
+# 但 update_finance.sh / update_finance_news.sh 等會先用 git-commit-locked.sh commit 咗，
+# 到 batch-push.sh 行到 Step 3 時 working tree 已經乾淨 → 直接 exit 0，
+# 結果個 commit 永遠留喺本地唔會 push（2026-11-11 16:00 實測中招：
+# commit 953c4d66c 留喺本地，要靠 16:17 心跳巡檢手動 push 先上到 GitHub）。
+# 所以要同時檢查「有冇未推送嘅 commit」。
+git fetch origin main --quiet 2>/dev/null || true
+UNPUSHED=$(git rev-list --count origin/main..HEAD 2>/dev/null || echo 0)
+if [[ -z $(git status --porcelain) ]] && [ "$UNPUSHED" -eq 0 ]; then
     echo "  📭 無變更需要推送"
     flock -u 200 2>/dev/null || true
     echo "  🔓 Git Push 鎖已釋放"
     exit 0
+fi
+if [[ -z $(git status --porcelain) ]] && [ "$UNPUSHED" -gt 0 ]; then
+    echo "  📤 工作樹乾淨但有 $UNPUSHED 個未推送 commit → 繼續推送（唔可以早退）"
 fi
 
 # 如果有自訂 commit message 就使用，否則生成統一的批次訊息

@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.153
+version: 2.9.154
 ---
 
 >
@@ -3070,4 +3070,28 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **同 provider 第二條 account** 先係真後備（runtime 支援 `auth.order` 輪換同 provider profile）；跨 provider fallback 係 fatal 陷阱，兩樣唔可以當成一樣。
 - 症狀對照：`LLM request timed out.` + 業務腳本手動跑正常 → 係 provider/account 層面問題，唔係 job 內容問題；先手動驗證業務，唔好亂改 job payload。
 - 每日 08:00 起檢查 minimax 429 / idle timeout 數量：>5 次即代表 provider 唔穩，要準備補跑。
+
+---
+
+## [2026-11-11] 更新 (v2.9.154) - push 腳本 auto-stash + reset --hard 會靜靜吞掉未提交內容（Oct 9 夢境失蹤一個月）
+
+### 症狀
+- `DREAMS.md` 明明每日 03:00 有產出，但 **2026-10-09 兩篇夢境從來冇出現過喺 git 歷史**（日期序列由 Oct 8 直接跳去 Oct 24）。
+- 排查時發現 workspace 有 2 個殘留 stash：`stash@{0}: autostash`（DREAMS.md + finance-news.json）、`stash@{1}: On main: local-test-data-09-19`。
+
+### 根因
+- `scripts/git-push-with-lock.sh` / `scripts/batch-push.sh` 嘅 fallback 路徑：`git stash push -u` → `git reset --hard origin/main` → `git stash pop`。
+- `git stash pop` 撞衝突時只印一句 warning，改動**留喺 stash**，而 push 腳本唔會再理 → 內容靜靜消失（既喺 HEAD 唔喺工作樹）。
+- 每日 03:00 dreaming 寫完 DREAMS.md 未 commit，同分鐘另一個 push 腳本 push 咗 finance/news 資料 → 撞正呢個窗口 → Oct 9 兩篇夢境就係咁樣被吞咗（殘留咗一個月先被巡檢發現）。
+
+### 修復
+1. **兩支 push 腳本**：fallback 路徑改成**先 `git add -A` + commit**，只有仍然髒先 stash；`git stash pop` 失敗時自動把 patch 導出到 `backups/stash-recovery/stash-<ts>.patch` 並大聲報告（唔再靜靜吞）。
+2. **`scripts/git-health-check.sh`** 新增 `check_stash_leftover()`：偵測到殘留 stash 就報「有 N 個殘留 git stash（改動可能卡住未合併）」，`--fix` 會導出 patch 但**唔自動 drop**（等人確認）。
+3. **救援**：由 `stash@{0}:DREAMS.md` 抽返 Oct 9 兩篇夢境，以行級插入（插入位置 = Oct 24 之前最近嘅 `---` 分隔行），並用「抽走插入段 == 原檔」精確驗證零副作用 → 2267 → 2309 行、純 42 行新增，已 commit + push。
+
+### 教訓
+- **push 腳本嘅 fallback 唔可以只靠 stash 兜底**：pop 失敗 = 內容靜靜蒸發。要 commit-first + 衝突時導出 patch + 明示警告。
+- **每日產生嘅內容檔（DREAMS.md / 記憶檔）必須自己 commit**，唔好假設「遲啲另一個 push 會帶埋」—— 佢哋可能正正就係被嗰個 push 吞。
+- 巡檢發現殘留 stash 要當**事故**處理：逐個比對 HEAD 有冇獨有內容 → 有就救返 → 冇先可以 drop。
+- 修檔案（尤其長文檔）插入內容要用**行級**操作 + 「抽走插入段 == 原檔」驗證；用 chunk 重序列化會靜靜改格式/刪內容（本次試過：2266 → 2179 行，即刻回滾）。
 

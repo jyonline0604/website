@@ -23,6 +23,10 @@ export LC_ALL=C.UTF-8
 WORKSPACE="/home/openclaw/.openclaw/workspace"
 LOG="$WORKSPACE/logs/cron-guardian.log"
 TELEGRAM_TO="5344443732"
+# 2026-11-11 修正：原本呢度寫 --fallbacks \"minimax/MiniMax-M3.1-Flash@minimax:cn\"（自我指向 = 等於冇 fallback），
+# 令 12:55 中午簡報喺 429 限流時重試 9 次後放棄、靜靜冇送達。
+# 而家改用 agents.defaults.model.fallbacks 同一條鏈（全部 openrouter free、Auth: yes、喺 modelPolicy allow 清單入面）。
+FALLBACKS="openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,openrouter/cohere/north-mini-code:free,openrouter/nvidia/nemotron-3-ultra-550b-a55b:free,openrouter/poolside/laguna-s-2.1:free,openrouter/recursive/flint-v1.0:free"
 
 mkdir -p "$WORKSPACE/logs"
 
@@ -73,7 +77,7 @@ rebuild_job() {
         "早上簡報 08:15")
             openclaw cron add --name "早上簡報 08:15" --cron "15 8 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \ \
+                --fallbacks "$FALLBACKS" \ \
                 --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --timeout-seconds 3600 \
                 --message "$(cat <<'EOF'
@@ -116,7 +120,7 @@ EOF
         "中午簡報 12:55")
             openclaw cron add --name "中午簡報 12:55" --cron "55 12 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \ \
+                --fallbacks "$FALLBACKS" \ \
                 --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --timeout-seconds 3600 \
                 --message "$(cat <<'EOF'
@@ -152,7 +156,7 @@ EOF
         "傍晚簡報 17:55 — 日結")
             openclaw cron add --name "傍晚簡報 17:55 — 日結" --cron "55 17 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \ \
+                --fallbacks "$FALLBACKS" \ \
                 --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --timeout-seconds 3600 \
                 --message "$(cat <<'EOF'
@@ -194,7 +198,7 @@ EOF
         "每日健康報告 22:00")
             openclaw cron add --name "每日健康報告 22:00" --cron "0 22 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \ \
+                --fallbacks "$FALLBACKS" \ \
                 --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --timeout-seconds 3600 \
                 --message "$(cat <<'EOF'
@@ -230,7 +234,7 @@ EOF
         "每日 Audio Sync 10:00")
             openclaw cron add --name "每日 Audio Sync 10:00" --cron "0 10 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \
+                --fallbacks "$FALLBACKS" \
                 --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --timeout-seconds 1800 \
                 --message "Run daily audio sync: exec \`cd /home/openclaw/.openclaw/workspace && python3 scripts/audio_sync_pipeline.py\` and report results. ⚠️ 執行方式：code mode 內用 exec({command: ...}) 或 shell 腳本，**唔好寫 tools.exec(...)**（會 ReferenceError）。" \
@@ -239,7 +243,7 @@ EOF
         "OpenClaw Version Check")
             openclaw cron add --name "OpenClaw Version Check" --cron "0 11 * * *" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \ \
+                --fallbacks "$FALLBACKS" \ \
                 --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --timeout-seconds 600 \
                 --message "請執行 /home/openclaw/.openclaw/workspace/scripts/check-openclaw-version.sh 並報告結果 ⚠️ 執行方式：code mode 內用 exec({command: ...}) 或 shell 腳本，**唔好寫 tools.exec(...)**（會 ReferenceError）。" \

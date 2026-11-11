@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.170
+version: 2.9.171
 ---
 
 >
@@ -3397,3 +3397,9 @@ rebuild_job "中午簡報 12:55"
 - **修復**：`AGENTS.md` Dropbox 段改為列出現行 12 行 system cron 真實排程，並新增「已完成／已退役嘅卷（唔好復原）」清單（V2 已完成無排程、V3 已完成無排程、V4 大肥喵 2026-10-02 指令退役），資料夾註明實際已處理 CH501-CH675。
 - **配套驗證**：`volume2_state.json` 覆蓋 501-675 缺 0；`volume3_state.json` 覆蓋 676-925；V5/V6/V7 最近一次 11-11 同步日誌全部「✅ 同步完成」；Dropbox token 06:00 續期成功；8 個 agent cron job errs=0、重複名 0；網站 HTTP 200；章節 HTML 1866 檔異常 0；workspace / Second-brain / Max-backup 三倉未推送 0、髒檔 0。
 - **教訓**：睇 crontab 實況（`crontab -l | grep -v '^[[:space:]]*#'`）再改文檔，唔好信舊文檔；一條「文件寫住但實際冇」嘅排程 = 下次誤判故障 + 可能重複加 job。
+
+## [2026-11-12] 更新 (v2.9.171) — HEARTBEAT.md 補 DREAMS.md 步驟 + 主動訊息工具失效確認
+- **背景**：`scripts/ops-snapshot.sh` 同 `HEARTBEAT.md` 喺 04:04 心跳已重建，但 `HEARTBEAT.md` 嘅「三倉一致性」步驟淨係叫你睇未推送／髒檔，冇講明髒檔係 `DREAMS.md`（03:00 Memory Dreaming job 產出、job 唔會自己 commit）嗰陣點處理 → 04:04 心跳就係撞 non-fast-forward，要人手 `git add DREAMS.md && git commit` → `git pull --rebase origin main` → `git push` 先推得上去。
+- **修復**：`HEARTBEAT.md` 第 3 步加咗一行明確處理次序（先 commit DREAMS.md → 再 rebase → 再 push），避免下次心跳再撞同一個坑。
+- **主動訊息路徑確認**：今日 06:09 再試 `conversations_send`（conversationRef = `conv_f50596d872f67310a70f1d6d020fb453`，delivery target = `telegram:5344443732`），**仍然失敗**：`Validation: status: must have required property 'status'; conversationRef: must have required property 'conversationRef'; channel: must have required property 'channel'; <root>: must not have additional properties: "gated"`（同 2026-11-11 18:45 記錄嘅 bug 同一個，工具多返個 `gated` 欄）。journald 核實**冇任何 telegram 出站記錄** → 即係話經 conversations_send 發嘅訊息實際上冇送達，唔可以當成已通知。**要真係通知大肥喵就必須用本回合嘅 plain assistant reply**（04:07 嗰份巡檢報告就係咁樣送達，transcript 有 `ops-snapshot.sh` 命中）。
+- **驗證**：workspace / Second-brain / Max-backup 三倉未推送 0、髒檔 0；8 個 agent cron job errs=0、重複名 0；網站 HTTP 200；章節 HTML 1866 檔異常 0；Dropbox token 06:00 續期成功；無殘留巡檢進程。

@@ -47,5 +47,6 @@ sync_set() {
   return 0
 }
 sync_set standards "$SK/SKILL.md" "$WS/SKILL.md" "$SB/SKILL.md" "$MB/SKILL.md"
+sync_set standards-history "$SK/SKILL_HISTORY.md" "$WS/SKILL_HISTORY.md" "$SB/SKILL_HISTORY.md" "$MB/SKILL_HISTORY.md"
 sync_set av "$AV/SKILL.md" "$SB/../novel-av-generator/SKILL.md" "$MB/../novel-av-generator/SKILL.md"
 log "done"

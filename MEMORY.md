@@ -385,3 +385,12 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 修復：`__main__` 改為 `main_auto()`（`git log --since=midnight` 攞真實提交 → 寫單一「每日提交摘要」條目，hash 去重，無新提交就唔寫）；清理 workspace 216 檔（864 區塊）+ Second-brain / Max-backup 記憶副本各 213 檔（各 852 區塊）；demo 條目以外內容一字無改。<!-- project: github.com/jyonline0604/website -->
 - 教訓：每日 cron 會跑嘅 python script，`__main__` 絕對唔可以係 demo/test 碼（demo 要用 flag 隔離）；記憶檔出現「時間戳靚但內容一樣」嘅條目就係有 cron 寫模板假資料；記憶備份倉會同步污染，清理要三倉一齊清。<!-- project: github.com/jyonline0604/website -->
 - skill：novel-site-standards v2.9.149、novel-av-generator v2.2.37。<!-- project: github.com/jyonline0604/website -->
+
+
+## 2026-11-11 09:30 SKILL.md 撞 256KB 上限被 loader 跳過 → 分檔瘦身 <!-- project: github.com/jyonline0604/website -->
+- 症狀：08:15 早上簡報 job 報 `cron: job interrupted by gateway restart`；journal 同秒有 `[skills] Skipping invalid skill: file=~/.openclaw/skills/novel-site-standards/SKILL.md error=File exceeds 256000 bytes` —— 標準 SKILL 已經**載入唔到**（299787 bytes > 256000 上限），loader 只喺 journal 講一句、唔通知人。<!-- project: github.com/jyonline0604/website -->
+- 根因：每次修復都往 SKILL.md 追加更新記錄（v2.9.84 → v2.9.150），檔案由 ~180KB 膨脹到 299787 bytes，越過 loader 硬上限。<!-- project: github.com/jyonline0604/website -->
+- 修復：逐章批次日誌 89 個區塊（122360 bytes）搬到同目錄 `SKILL_HISTORY.md`（內容一字無刪）；SKILL.md 保留全部操作規則 + 2026-07 起記錄 → 179791 bytes；`scripts/sync_skill_copies.sh` 加 `standards-history` 同步行，四處 md5 一致。<!-- project: github.com/jyonline0604/website -->
+- 另：主機 08:16 poweroff → 09:21 開機（uptime 5 分鐘），08:15 嗰輪 cron 被重啟打斷；已 force run 補跑。<!-- project: github.com/jyonline0604/website -->
+- 教訓：**SKILL.md 有 256000 bytes 硬上限**，加更新記錄前要 `stat -c%s` 睇大小，接近上限就要分檔（規則留主檔、流水日誌搬 SKILL_HISTORY.md）；loader skip 唔會通知人，必須自己 grep journal。<!-- project: github.com/jyonline0604/website -->
+- skill：novel-site-standards v2.9.151 + SKILL_HISTORY.md；novel-av-generator v2.2.38。<!-- project: github.com/jyonline0604/website -->

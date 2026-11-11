@@ -132,7 +132,7 @@ EOF
    - tail 各同步 log（dropbox-volume5-sync.log、dropbox-volume6-sync.log、dropbox-volume7-daily-sync.log）
    - df -h /; free -h; uptime; ps -eo pid,pcpu,pmem,etime,comm --sort=-pmem | head -8
 2. 從上面輸出整理報告（唔需要再讀檔案）。
-3. 檢查 Dropbox state：.dropbox-sync/volume5_state.json、volume6_state.json、volume7_state.json vs assets/chapters-data.json 章節數。分歧 → 自動修復並 git commit。
+3. 檢查 Dropbox state：.dropbox-sync/volume5_state.json、volume6_state.json、volume7_state.json vs assets/chapters-data.json 章節數。分歧 → 自動修復並 git commit。⚠️ 檢查線上章節數一定要加 cache-buster：curl -s "https://kofhk.com/assets/chapters-data.json?v=$(date +%s)"（無 cache-buster 會攞到 Cloudflare 舊快取，落後 6 章，會誤判為分歧）
 4. 有 consecutiveErrors>0 → 報告根因；可用 openclaw cron edit 調整（timeout-seconds 或精簡 message）。
 5. git 未推送 commit → 自動 git push。
 
@@ -174,7 +174,7 @@ EOF
    - tail 各同步 log（dropbox-volume5-sync.log、dropbox-volume6-sync.log、dropbox-volume7-daily-sync.log）
    - df -h /; free -h; uptime
 2. 從上面輸出整理報告（唔需要再讀檔案）。
-3. 檢查 Dropbox state：.dropbox-sync/volume5_state.json、volume6_state.json、volume7_state.json vs assets/chapters-data.json 章節數。分歧 → 自動修復並 git commit。
+3. 檢查 Dropbox state：.dropbox-sync/volume5_state.json、volume6_state.json、volume7_state.json vs assets/chapters-data.json 章節數。分歧 → 自動修復並 git commit。⚠️ 檢查線上章節數一定要加 cache-buster：curl -s "https://kofhk.com/assets/chapters-data.json?v=$(date +%s)"（無 cache-buster 會攞到 Cloudflare 舊快取，落後 6 章，會誤判為分歧）
 4. 有 consecutiveErrors>0 → 報告根因；可用 openclaw cron edit 調整（timeout-seconds 0 或精簡 message）。
 5. git 未推送 commit → 自動 git push。
 

@@ -438,3 +438,5 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 
 - **2026-11-11 16:20 修 `batch-push.sh` 早退 bug**：佢 Step 3 只睇 working tree（`git status --porcelain` 乾淨就 `exit 0`），但 `update_finance.sh` / `update_finance_news.sh` 係**先用 `git-commit-locked.sh` commit 咗**先叫 batch-push → 到腳本行到嗰陣樹已經乾淨 → 誤判「無變更」→ **commit 永遠留喺本地唔 push**。實測 16:00 嘅 `953c4d66c`（docs: update finance data）就係咁留咗 17 分鐘，要靠 16:17 心跳巡檢手動 push 先上到 GitHub。已改為 working tree + `git rev-list --count origin/main..HEAD` 雙重判斷，樹乾淨但有未推送 commit 就繼續推。<!-- project: github.com/jyonline0604/website -->
 - **教訓**：「工作樹乾淨」≠「冇嘢要推」（已 commit 未 push 係另一個狀態）；凡「先 commit、後叫 push 腳本」嘅流程，push 腳本必須查未推送 commit；巡檢要同時睇 `git log origin/main..HEAD` 同 `git status --short`。<!-- project: github.com/jyonline0604/website -->
+
+- **2026-11-11 16:35 `batch-push.sh` 修復已驗證**：① 真實流程測試（`git-commit-locked.sh` 先 commit → `batch-push.sh`）正常 push；② **沙盒精確重現**關鍵場景（樹乾淨 + 1 個未推送 commit）→ `🚀 推送中...` → `✅ 已推送到 GitHub`，遠端 `a6d0fd4..9b1ef13` ✅（修復前會印 `📭 無變更需要推送` 早退）。沙盒測試法已寫入 skill v2.9.160 供日後重用。<!-- project: github.com/jyonline0604/website -->

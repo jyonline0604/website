@@ -402,3 +402,12 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 修復：5 個 job 用 `openclaw cron edit --message` 補提示（每個 +206 字），連原有健康報告共 6/6 覆蓋；`scripts/cron-guardian.sh` 6 個重建 block（4 heredoc + 2 inline）同步加提示 → guardian 重建唔會再丟；09:54 補跑入隊（runId cron-request.697522dd-24e8-487a-8c60-d96209dba004）。<!-- project: github.com/jyonline0604/website -->
 - 教訓：① 修 job payload 一定要同步改重建模板（guardian / cron_model_guard），同「跨 provider fallback」同一個坑；② 同一類提示要覆蓋所有同類 job，唔可以只改出事嗰個；③ 症狀「LLM request timed out + final reply 空 + deliveryStatus=unknown」唔係模型掛，係 agent turn 內部 ReferenceError 空轉，查 session transcript 睇佢寫咗 `tools.exec` 未；④ `deliveryStatus=unknown` 唔等於冇送達（09:33 仍有 outbound send ok），要同時睇 final reply 有冇內容。<!-- project: github.com/jyonline0604/website -->
 - skill：novel-site-standards v2.9.152、novel-av-generator v2.2.39；SKILL.md 181986 bytes（71% of 256000 上限），SKILL_HISTORY.md 122518 bytes。<!-- project: github.com/jyonline0604/website -->
+
+
+## 2026-11-11 10:03 minimax 單一 account = 全線 agentTurn job 單點故障 <!-- project: github.com/jyonline0604/website -->
+- 症狀：Audio Sync 10:00 報 `LLM request timed out.`（dur 238299ms，deliveryStatus=unknown）；實際工作**冇問題** —— 直接跑 `python3 scripts/audio_sync_pipeline.py` exit 0（token 自動刷新、Dropbox 掃到 CH71–CH80 共 10 個、R2 已有 10/10）。<!-- project: github.com/jyonline0604/website -->
+- journal 實證：`[model-fetch] error provider=minimax elapsedMs=120002 message=LLM idle timeout (120s)` → `Profile minimax:cn idle timeout (model silent). No further authorized account for this provider; create a backup auth profile and add its id to auth.order to enable failover.`<!-- project: github.com/jyonline0604/website -->
+- 結構性成因：`auth.profiles` 只有 `minimax:cn` 一個 minimax profile，**冇第二個同 provider account**，而所有 agentTurn job 綁 `minimax/MiniMax-M3.1-Flash@minimax:cn`（cross-provider fallback 2026-11-10 已確認會 hard-fail）→ minimax 靜默時全線冇退路。<!-- project: github.com/jyonline0604/website -->
+- 現況數據：2026-11-11 08:00 起 minimax 429 × 8、idle timeout × 4、fetch error × 3。<!-- project: github.com/jyonline0604/website -->
+- 修復（本次）：Audio Sync 補跑入隊 `cron-request.f5dc5d34-87ba-478f-aed5-1a0cd9261e82` → 10:07:44 ok、dur 29788ms、delivered（messageId=23478），errs 1→0。<!-- project: github.com/jyonline0604/website -->
+- 待大肥喵決定：加第二條 Minimax API key → 新 profile（如 minimax:cn2）+ `auth.order` 順序 → 真正同 provider failover；否則 minimax 靜默時只有「等 runtime transient retry」同「手動補跑」兩招。<!-- project: github.com/jyonline0604/website -->

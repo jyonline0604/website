@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.155
+version: 2.9.156
 ---
 
 >
@@ -3103,3 +3103,29 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **根本原因**：`中午簡報 12:55` 12:58 執行失敗 —— `Rate-limit recovery stopped after 9 automatic retries | 429`（lastErrorReason=rate_limit）。所有 OpenClaw cron job 嘅 `payload.fallbacks` 只填咗自己 `minimax/MiniMax-M3.1-Flash@minimax:cn`，等於冇後備 → MiniMax 一限流就直接死。
 - **解決方法**：`openclaw cron edit <id> --fallbacks "deepseek/deepseek-v4-flash,zai/glm-5.3" --timeout-seconds N`；N 沿用原本值（早/晚簡報 3600、健康報告 3600、Audio Sync 1800、中午簡報 1800、版本檢查 600），唔好亂改大 job 嘅 timeout。
 - **新教訓**：設定 fallback 一定要用**唔同 provider**（deepseek / zai 都有獨立 auth profile）；填返同一個 minimax model 等於冇填。fallback 鏈順序：先 deepseek（快、穩），後 zai。
+
+---
+
+## [2026-11-11] 更新 (v2.9.156) - 補上 v2.9.155 嘅遺漏：deepseek/zai 其實都係死路，真正可用嘅係 openrouter；+ `cron edit` 會偷改 timeout
+
+### 對 v2.9.155 嘅更正
+- v2.9.155 話「跨 provider fallback（deepseek → zai）」已經修好 —— **只係修咗一半**。實測 `openclaw models list`：
+  - `deepseek` → `Model discovery authentication was rejected for deepseek`（認證被拒，deepseek 根本跑唔到）
+  - `zai` → `Configured model "zai/glm-5v-turbo" is not present in the provider's last successful server catalog`（目錄 stale）
+  - `google` → `Model discovery is unavailable for google (profile google:default)`
+  - **只有 openrouter 5 個 free 模型係 `Auth: yes`**（`nemotron-3-nano-omni-30b-a3b-reasoning:free`、`north-mini-code:free`、`nemotron-3-ultra-550b-a55b:free`、`laguna-s-2.1:free`、`flint-v1.0:free`）
+- 結論：v2.9.155 落嘅 `deepseek,zai` 兩條 = **假 fallback**（有填但跑唔到），429 時一樣會死。
+
+### 最終修復
+- 每個 agent job 嘅 `fallbacks` = `[deepseek, zai, + 5 個 openrouter free]`（保留舊嘅喺前面 + openrouter 做實體安全網）→ 每 job **7 層 fallback**。
+- 修正後：7 個 agent job 全部 `consecutiveErrors=0`、`lastRunStatus=ok`、零重複、零「fallback == primary」。
+
+### ⚠️ 三個必知陷阱
+1. **`openclaw cron edit` 會偷改 `timeoutSeconds`**：只傳 `--fallbacks` 而唔傳 `--timeout-seconds`，原本 3600 嘅 job 會被改成 **1800**（CLI 預設值）。**每次 edit 都要顯式帶原 timeout**，並在 edit 後 `cron get` 核實。
+2. **`--fallbacks` 格式係逗號分隔 CSV**（唔係 JSON array）。
+3. **`automations` 工具喺 Code Mode 壞咗**：`get` / `update` / `list` 全部回 `Tool "automations" returned details that do not match its declared outputSchema`（要求 `id`/`name`/`enabled`/`createdAtMs`… 但回傳唔啱），**side effect 不會發生**。改用 `openclaw cron list --json` / `cron get` / `cron edit` CLI，並且 edit 後一定要再 get 核實。
+
+### 驗證 fallback 真係可用嘅方法
+- 唔好淨係睇「有冇填落個欄」→ **睇 `openclaw models list` 嘅 `Auth` 欄**（`yes` 先算真係有憑證）。
+- 已用 `Auth: yes` 嘅 5 個 openrouter free 模型做跨 provider 安全網。
+

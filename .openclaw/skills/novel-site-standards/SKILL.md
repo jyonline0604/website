@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.168
+version: 2.9.169
 ---
 
 >
@@ -3385,3 +3385,9 @@ rebuild_job "中午簡報 12:55"
 - **抽函式測試要同時抽走頂層主流程**：`sed -n '1,42p'` + `sed -n '73,256p'` 分兩段抽，先至唔會觸發副作用。
 - 每次搞掂後都用 `Counter(job name)` 核實**零重複 job** —— 呢個檢查今日已經救咗兩次命。
 
+
+## [2026-11-12] 更新 (v2.9.169) — 心跳巡檢基建補回 + DREAMS.md 推送競態收尾
+- **根因**：`openclaw-selfheal-ops` skill 由開機一直叫人跑 `bash scripts/ops-snapshot.sh`，但 workspace 從來冇呢個檔（`find` 全機 0 命中、git 歷史亦冇）→ 每個 session 都要手砌十幾條一次性巡檢指令，既慢又易漏；同時 `workspace/HEARTBEAT.md` 已經喺 c09442782「cleanup migration artifacts」被刪走，但 `openclaw.json` 嘅 heartbeat prompt 仍然寫「Read HEARTBEAT.md if it exists」→ 心跳等於冇清單，靠記憶自由發揮。
+- **修復**：新增 `scripts/ops-snapshot.sh`（唯讀，一次過輸出 gateway 狀態／版本、每個 agent cron job 嘅 errs + fallback 鏈層數、網站 HTTP、workspace git 未推送同髒檔、MEMORY.md 行數、追蹤中敏感檔、Dropbox token 新鮮度、system cron 行數）；重建 `HEARTBEAT.md`（步驟 + 單一 token 回覆規則 + 已知退役清單：system cron 簡報 08:15/17:55、Dropbox Volume 4 同步）。
+- **另一個根因**：Memory Dreaming Promotion（03:00）寫 `DREAMS.md` 但唔 commit，加上 GitHub Actions 每日新聞 CI 推 commit，令 `git push` 撞 non-fast-forward（fetch first）→ 已用「先 commit DREAMS.md → `git pull --rebase origin main` → push」收尾，HEAD `93ce46e32`，未推送 0 / 髒檔 0。
+- **驗證**：`bash scripts/ops-snapshot.sh` 實跑通過；8 個 agent cron job errs=0、重複名 0、fallback 5 層；網站 HTTP 200；Dropbox token 03:00 續期成功；workspace / Second-brain / Max-backup 三倉未推送 0、髒檔 0。

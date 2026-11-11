@@ -234,7 +234,7 @@ Add whatever helps you do your job. This is your cheat sheet.
 ### Dropbox 賬號
 - **Email**: [見本地配置]
 - **Name**: [見本地配置]
-- **資料夾**: `/萬古塵埃/第二卷/` (CH501-CH700)
+- **資料夾**: `/萬古塵埃/第二卷/` (CH501-CH700；實際已處理 CH501-CH675，CH676 起喺第三卷)
 
 ### Token
 - 位置：`.token-store/dropbox-token.txt` (600 權限)
@@ -242,12 +242,21 @@ Add whatever helps you do your job. This is your cheat sheet.
 
 ### 自動化腳本
 - **主腳本**: `scripts/dropbox_volume2_sync.py` — 下載、轉換、生成HTML、更新網站、推送GitHub
-- **Cron Shell**: `scripts/dropbox-daily-sync.sh`
+- **Cron Shell**: `scripts/dropbox-daily-sync.sh`（V2 全部章節已處理完，現時無排程）
+- **各卷同步腳本**: `scripts/dropbox-volume5-daily-sync.sh` / `dropbox-volume6-...` / `dropbox-volume7-...`
 
-### Cron 定時任務
+### Cron 定時任務（system cron，2026-11-12 核實）
 | 時間 | 任務 | 頻率 |
 |------|------|------|
-| 08:00 | Dropbox第二卷同步6章 | 每天 |
+| 11:00 | Dropbox Volume 5 同步 | 每天 |
+| 11:00 | Dropbox Volume 6 同步 | 每天 |
+| 11:30 | Dropbox Volume 7 同步 | 每天 |
+| 每 3 小時 | Dropbox token 續期 | 自動 |
+
+### 已完成／已退役嘅卷（唔好復原）
+- Volume 2（CH501-CH675）：全部處理完，無缺口，現時無排程。
+- Volume 3（CH676-CH925）：全部處理完，無缺口，現時無排程。
+- Volume 4（CH926-CH1190）：2026-10-02 大肥喵指令退役，勿啟用、勿由 guardian 加返。
 
 ### 功能
 - 自動檢測 Dropbox 新章節

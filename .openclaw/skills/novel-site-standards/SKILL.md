@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.151
+version: 2.9.152
 ---
 
 >
@@ -3028,4 +3028,28 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **SKILL.md 有 256000 bytes 硬上限**：加更新記錄前要計大小，接近上限就要先分檔（規則留主檔、流水日誌搬 SKILL_HISTORY.md），唔可以無限追加。
 - `Skipping invalid skill` 只喺 journal 出現，唔會通知用戶 → 每次加完 skill 更新都要 `stat -c%s` 檢查 + 確認 loader 冇 skip。
 - 主機重啟（08:16 poweroff → 09:21 開機）令 08:15 嗰輪 cron 中斷；重啟後要補跑受影響 job。
+
+---
+
+## [2026-11-11] 更新 (v2.9.152) - code-mode 提示只加咗 1 個 job → 其餘 5 個全撞 tools.exec ReferenceError
+
+### 症狀
+- 早上簡報 08:15 連續兩輪 error：`cron: job interrupted by gateway restart`（主機 08:16 poweroff、09:21 開機）→ 補跑再撞 `LLM request timed out.`（dur 371834ms），deliveryStatus=unknown、final reply 係空 → 大肥喵嗰邊收唔到完整早報。
+- 補跑 session transcript 見到 agent 寫 `tools.exec({command: ...})` → code mode 入面 `tools` 全域唔存在 → ReferenceError → 空轉到 LLM idle timeout。
+
+### 根因
+- 2026-11-10 18:10 修「跨 provider fallback」嗰陣，code-mode 提示（用 `exec(...)` 唔好寫 `tools.exec(...)`）只加咗入**每日健康報告 22:00** 一個 job。
+- 其餘 5 個 agentTurn job（早上/中午/傍晚簡報、Audio Sync、Version Check）嘅 message 冇提示 → 一樣會撞 ReferenceError。
+- `scripts/cron-guardian.sh` 6 個重建 block 嘅 message 模板亦冇提示 → 即使補咗 job，guardian 重建都會帶返舊 message（同一類「唔改模板就會復發」陷阱）。
+
+### 修復
+1. 5 個 job 補提示：`openclaw cron edit <id> --message <原 message + 提示>`（每個 +206 字），連原有健康報告共 6/6 覆蓋。
+2. `scripts/cron-guardian.sh` 6 個重建 block（4 個 heredoc message + 2 個 inline message）同步加提示，guardian 重建唔會再丟。
+3. 補跑早報：`openclaw cron run 27d54b55-...`（runId cron-request.697522dd-24e8-487a-8c60-d96209dba004）。
+
+### 教訓
+- **修 job payload 唔止要改現存 job，仲要同步改重建模板**（guardian / cron_model_guard），否則下次重建復發 —— 同「跨 provider fallback 模板」同一個坑。
+- **同一類提示要覆蓋所有同類 job**，唔可以只改出事嗰個。
+- 症狀對照：`LLM request timed out.` + final reply 空 + deliveryStatus=unknown → 唔係模型掛，係 agent turn 內部 ReferenceError 空轉到 idle timeout；查 session transcript 睇佢寫咗 `tools.exec` 未。
+- cron `deliveryStatus=unknown` 唔代表一定冇送達（09:33 有 outbound send ok），要同時睇 transcript 嘅 final reply 有冇內容。
 

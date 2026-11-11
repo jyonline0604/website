@@ -1,4 +1,10 @@
-# HEARTBEAT.md — 心跳巡檢清單
+# 心跳巡檢清單（canonical 版）
+
+> 本檔係**版本控制嘅來源**。真正餵畀 heartbeat lane 嘅係 cron job scratch，
+> 改完本檔必須跑 `bash scripts/sync_heartbeat_scratch.sh` 同步過去（script 會自動由本檔寫入
+> `openclaw cron scratch 9dc7d6c3-617f-410d-9881-e87453c33037`）。
+> 唔好再喺 workspace 根目錄放 `HEARTBEAT.md`——新版 OpenClaw 已改用 cron-owned scratch，
+> workspace 根目錄嗰個檔只會令 `openclaw doctor` 一直報 legacy-heartbeat-file warning。
 
 每次心跳（heartbeat-main）按以下順序做，唔好憑記憶重做舊任務：
 
@@ -18,3 +24,8 @@
 ## 已知退役（唔好復原）
 - system cron `send-briefing.sh`（08:15／17:55）：2026-11-01 大肥喵指令退役，已併入 OpenClaw agent 簡報 job。
 - system cron Dropbox Volume 4 同步（CH926-1190）：2026-10-02 大肥喵指令退役，state 檔唔會再更新（唔係 bug，唔好加返）。
+- Dropbox Volume 2（CH501-675）／Volume 3（CH676-925）：已全部處理完、無排程。
+
+## 通知大肥喵嘅唯一可靠路徑
+`conversations_send` 工具而家有 outputSchema bug（多回傳 `gated` 欄 → 驗證失敗，且 journald 核實**冇實際出站**），
+所以**唔可以用佢當成已通知**；要真係通知就用本回合嘅 plain assistant reply。

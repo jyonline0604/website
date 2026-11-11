@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.171
+version: 2.9.172
 ---
 
 >
@@ -3403,3 +3403,13 @@ rebuild_job "中午簡報 12:55"
 - **修復**：`HEARTBEAT.md` 第 3 步加咗一行明確處理次序（先 commit DREAMS.md → 再 rebase → 再 push），避免下次心跳再撞同一個坑。
 - **主動訊息路徑確認**：今日 06:09 再試 `conversations_send`（conversationRef = `conv_f50596d872f67310a70f1d6d020fb453`，delivery target = `telegram:5344443732`），**仍然失敗**：`Validation: status: must have required property 'status'; conversationRef: must have required property 'conversationRef'; channel: must have required property 'channel'; <root>: must not have additional properties: "gated"`（同 2026-11-11 18:45 記錄嘅 bug 同一個，工具多返個 `gated` 欄）。journald 核實**冇任何 telegram 出站記錄** → 即係話經 conversations_send 發嘅訊息實際上冇送達，唔可以當成已通知。**要真係通知大肥喵就必須用本回合嘅 plain assistant reply**（04:07 嗰份巡檢報告就係咁樣送達，transcript 有 `ops-snapshot.sh` 命中）。
 - **驗證**：workspace / Second-brain / Max-backup 三倉未推送 0、髒檔 0；8 個 agent cron job errs=0、重複名 0；網站 HTTP 200；章節 HTML 1866 檔異常 0；Dropbox token 06:00 續期成功；無殘留巡檢進程。
+
+## [2026-11-12] 更新 (v2.9.172) — heartbeat 清單搬到 cron-owned scratch（doctor legacy warning 根治）
+- **根因**：新版 OpenClaw（2026.11.3）已把 heartbeat 指令搬去 **cron job scratch**（每個 agent 私有），`openclaw doctor --lint --only core/doctor/heartbeat-scratch-migration` 明確報 warning：`Agent "main" still stores heartbeat instructions in HEARTBEAT.md`（path = workspace/HEARTBEAT.md，requirement = legacy-heartbeat-file，fixHint = `openclaw doctor --fix`）。即係話 workspace 根目錄嘅 `HEARTBEAT.md` 已經係 legacy 位——雖然 `openclaw.json` 個 heartbeat prompt 仍然寫「Read HEARTBEAT.md if it exists (workspace context)」，但真正餵畀 lane 嘅係 job scratch（scratch 內容會作為 heartbeat monitor scratch 一齊入 prompt）。
+- **修復**：
+  1. `HEARTBEAT.md` → **`docs/heartbeat-checklist.md`**（git mv，保留歷史；呢份係版本控制嘅來源）。
+  2. 新增 `scripts/sync_heartbeat_scratch.sh`：用 `openclaw cron scratch <jobId> --file <src>` 把清單寫入 heartbeat job `9dc7d6c3-617f-410d-9881-e87453c33037` 嘅 scratch，再 `cmp` 驗證一致。
+  3. `AGENTS.md` 心跳段落改指 `docs/heartbeat-checklist.md`，並寫明「唔好再喺 workspace 根目錄放 HEARTBEAT.md」+「改完要跑 sync_heartbeat_scratch.sh」。
+- **關鍵 CLI 發現**：`openclaw cron scratch <id>` 有 `--set <text>` 同 `--file <path>`（讀／取代 job 私有 scratch）；而 `openclaw doctor --fix --only <checkId>` 唔 work（`--only` 屬 lint-only 選項，要配 `--lint`；而 `--json` 又唔可以配 `--fix`）→ 正常路徑係先 `doctor --lint --only <checkId> --json` 睇清楚，再用 `openclaw cron scratch --file` 自己寫，唔靠 doctor --fix。
+- **驗證**：workspace 根目錄已無 `HEARTBEAT.md`；`openclaw cron scratch 9dc7d6c3...` 讀出 2651 bytes，內容 = 新清單（命中 `ops-snapshot.sh`／`唔會自己 commit` 關鍵字）；`docs/heartbeat-checklist.md` 2651 bytes，兩邊一致。
+- **配套**：`conversations_send` 仍然唔送達（outputSchema 多 `gated` 欄，journald 核實冇 telegram 出站）→ 通知大肥喵唯一可靠路徑係 plain assistant reply。

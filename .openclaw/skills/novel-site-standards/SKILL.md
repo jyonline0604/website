@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.160
+version: 2.9.162
 ---
 
 >
@@ -3239,3 +3239,10 @@ fallbacks = [
 - 沙盒 `git clone` 空 remote 會印 `warning: You appear to have cloned an empty repository.` —— 正常，唔係錯誤。
 - 睇遠端有無收到 commit 要用 `git --git-dir=$T/origin.git log`（bare repo 唔能用 `git -C`）。
 
+
+---
+
+## 2026-11-11 更新
+- 修復內容：線上章節數驗證改為加 cache-buster（?v=timestamp）
+- 根本原因：CDN edge 持續 serve 舊版 assets/chapters-data.json，普通 fetch 落後 6 章（1860 vs 1866）會被誤判為同步分歧
+- 解決方法：cron-guardian.sh 嘅線上章節數檢查加入 cache-buster（?v=$(date +%s)）；驗證線上資源一律帶 cache-buster，唔好淨係睇普通 fetch 結果

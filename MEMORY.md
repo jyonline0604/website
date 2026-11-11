@@ -411,3 +411,11 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 現況數據：2026-11-11 08:00 起 minimax 429 × 8、idle timeout × 4、fetch error × 3。<!-- project: github.com/jyonline0604/website -->
 - 修復（本次）：Audio Sync 補跑入隊 `cron-request.f5dc5d34-87ba-478f-aed5-1a0cd9261e82` → 10:07:44 ok、dur 29788ms、delivered（messageId=23478），errs 1→0。<!-- project: github.com/jyonline0604/website -->
 - 待大肥喵決定：加第二條 Minimax API key → 新 profile（如 minimax:cn2）+ `auth.order` 順序 → 真正同 provider failover；否則 minimax 靜默時只有「等 runtime transient retry」同「手動補跑」兩招。<!-- project: github.com/jyonline0604/website -->
+
+
+## 2026-11-11 11:42 push 腳本 auto-stash 靜靜吞內容 → Oct 9 兩篇 DREAMS.md 夢境失蹤一個月（已救援） <!-- project: github.com/jyonline0604/website -->
+- 症狀：巡檢發現 workspace 有 2 個殘留 stash（`autostash` / `local-test-data-09-19`）；`DREAMS.md` 日期序列由 Oct 8 直接跳 Oct 24 → **2026-10-09 兩篇夢境從未入過 git**。<!-- project: github.com/jyonline0604/website -->
+- 根因：`scripts/git-push-with-lock.sh` / `scripts/batch-push.sh` fallback 路徑 = `git stash push -u` → `git reset --hard origin/main` → `git stash pop`；pop 撞衝突只印 warning，改動留喺 stash 无人理 → 每日 03:00 dreaming 寫完未 commit 就被同時段 push 吞咗。<!-- project: github.com/jyonline0604/website -->
+- 修復：① 兩支 push 腳本 fallback 改 **commit-first**（先 `git add -A` + commit，仍然髒先 stash），pop 失敗自動導出 patch 落 `backups/stash-recovery/` 並大聲報告；② `scripts/git-health-check.sh` 新增 `check_stash_leftover()`（偵測殘留 stash，`--fix` 導出 patch 但唔自動 drop）；③ 由 `stash@{0}:DREAMS.md` 行級插回 Oct 9 兩篇（用「抽走插入段 == 原檔」驗證零副作用），2267 → 2309 行、純 +42 行，已 commit `d2be879cc` + push。<!-- project: github.com/jyonline0604/website -->
+- 教訓：push 腳本 fallback 唔可以只靠 stash 兜底（pop 失敗 = 內容靜靜蒸發）；每日產生嘅內容檔要自己 commit，唔好假設其他 push 會帶埋；修長文檔插入內容要用行級操作 + 精確驗證（用 chunk 重序列化試過：2266 → 2179 行，內容被靜靜改壞，即刻回滾）。<!-- project: github.com/jyonline0604/website -->
+- skill：novel-site-standards v2.9.154、novel-av-generator v2.2.41。<!-- project: github.com/jyonline0604/website -->

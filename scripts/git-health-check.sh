@@ -71,6 +71,27 @@ check_detached_head() {
     fi
 }
 
+
+check_stash_leftover() {
+    # 2026-11-11 加：殘留 stash = 有改動被 pop 衝突卡住（2026-10-09 DREAMS.md 夢境咁樣靜靜失蹤咗一個月）
+    local n
+    n=$(git stash list 2>/dev/null | wc -l)
+    if [ "$n" -gt 0 ]; then
+        ISSUES=$((ISSUES + 1))
+        REPORT+="⚠️  有 $n 個殘留 git stash（改動可能卡住未合併）\n"
+        git stash list 2>/dev/null | head -5 | sed 's/^/      /' | while read -r l; do REPORT+="$l\n"; done
+        if $FIX_MODE; then
+            mkdir -p "$WORKSPACE/backups/stash-recovery" 2>/dev/null || true
+            local i=0
+            for sref in $(git stash list --format="%gd" 2>/dev/null); do
+                i=$((i + 1))
+                git stash show -p "$sref" > "$WORKSPACE/backups/stash-recovery/stash-$i-$(date +%Y%m%d-%H%M%S).patch" 2>/dev/null || true
+            done
+            REPORT+="✅ 已將殘留 stash 導出成 patch 到 backups/stash-recovery/（未自動 drop，等人工確認）\n"
+        fi
+    fi
+}
+
 check_merge_conflicts() {
     if git diff --check --cached 2>/dev/null | grep -q "conflict\|<<<<<<<\|=======\|>>>>>>>"; then
         ISSUES=$((ISSUES + 1))
@@ -158,6 +179,7 @@ echo ""
 
 check_rebase
 check_detached_head
+check_stash_leftover
 check_merge_conflicts
 check_unpushed_commits
 

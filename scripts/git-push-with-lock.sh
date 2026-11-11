@@ -37,13 +37,24 @@ git pull --rebase -X theirs origin main 2>/dev/null || {
     git rebase --abort 2>/dev/null || true
     echo "  ⚠️ Git 同步出錯，改用 stash 安全同步（唔會再 reset --hard 抹走改動）..."
     STASH_REF=""
+    # 2026-11-11 修：先 commit 再考慮 stash。舊做法直接 stash -u + reset --hard，
+    # 萬一 pop 撞衝突，改動就靜靜留喺 stash（2026-10-09 兩篇 DREAMS.md 夢境咁樣失蹤咗一個月）。
+    if [[ -n $(git status --porcelain) ]]; then
+        git add -A >/dev/null 2>&1
+        git commit -m "auto-commit before sync $(date +%Y%m%d-%H%M%S)" >/dev/null 2>&1 || true
+    fi
     if [[ -n $(git status --porcelain) ]]; then
         git stash push -u -m "auto-stash $(date +%Y%m%d-%H%M%S)" >/dev/null 2>&1 && STASH_REF="stash@{0}"
     fi
     git fetch origin main
     git reset --hard origin/main 2>/dev/null || true
     if [[ -n "$STASH_REF" ]]; then
-        git stash pop "$STASH_REF" >/dev/null 2>&1 || echo "  ⚠️ stash pop 有衝突，改動保留喺 stash（git stash list）"
+        if ! git stash pop "$STASH_REF" >/dev/null 2>&1; then
+            REC="$WORKSPACE/backups/stash-recovery/stash-$(date +%Y%m%d-%H%M%S).patch"
+            mkdir -p "$WORKSPACE/backups/stash-recovery" 2>/dev/null || true
+            git stash show -p "$STASH_REF" > "$REC" 2>/dev/null || true
+            echo "  ⚠️ stash pop 有衝突！改動已保留喺 stash，並導出 patch：$REC（需人工合併）"
+        fi
     fi
 }
 

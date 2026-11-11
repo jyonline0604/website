@@ -441,6 +441,6 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 
 - **2026-11-11 16:35 `batch-push.sh` 修復已驗證**：① 真實流程測試（`git-commit-locked.sh` 先 commit → `batch-push.sh`）正常 push；② **沙盒精確重現**關鍵場景（樹乾淨 + 1 個未推送 commit）→ `🚀 推送中...` → `✅ 已推送到 GitHub`，遠端 `a6d0fd4..9b1ef13` ✅（修復前會印 `📭 無變更需要推送` 早退）。沙盒測試法已寫入 skill v2.9.160 供日後重用。<!-- project: github.com/jyonline0604/website -->
 
-## U0001F310 網站驗證教訓：CDN 快取（2026-11-11）
+## 🌐 網站驗證教訓：CDN 快取（2026-11-11）
 - kofhk.com 由 Cloudflare 代理，普通 fetch 可能拿到舊版 assets/chapters-data.json（實測落後 6 章：1860 vs 真實 1866），即使 GitHub Pages 部署已 success。
 - 任何線上資源驗證都要加 cache-buster（?v=timestamp 或 Cache-Control: no-cache），否則會誤判為同步分歧並做無謂修復。<!-- project: github.com/jyonline0604/website -->

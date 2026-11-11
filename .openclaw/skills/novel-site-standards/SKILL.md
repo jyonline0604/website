@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.173
+version: 2.9.174
 ---
 
 >
@@ -3420,3 +3420,9 @@ rebuild_job "中午簡報 12:55"
 - **原因（推測）**：`--all` 會逐個跑 70 個 check，其中某啲要做慢嘅外部查詢（例如 npm registry／plugin capture），喺呢個網絡環境就卡住。
 - **修復／新規則**：巡檢一律用 `doctor --lint --only <checkId> --non-interactive --json` 逐個查要關注嘅 check；**唔好**用 `--lint --all`。如果之前跑過，先 `pkill -f '[o]penclaw doctor'` 清殘留再繼續。
 - **同時記住**：`doctor --fix --only <checkId>` 用唔到（`--only` 屬 lint-only 選項，要配 `--lint`；而 `--json` 又唔可以配 `--fix`／`--repair`／`--force`）→ 要修就自己用對應 CLI（例如 `openclaw cron scratch <jobId> --file <src>`）手動做，再跑 `--lint --only` 驗證。
+
+## [2026-11-12] 更新 (v2.9.174) — 修正 04:04 嘅錯誤根因：ops-snapshot.sh 一直存在喺 learned skill 內
+- **修正**：v2.9.169 嗰條更新記錄寫「`scripts/ops-snapshot.sh` 全機搵唔到、git 歷史亦冇 → 已建立」係**錯嘅**。真相：檔一直存在喺 learned skill 內 —— `~/.openclaw/agents/main/agent/workshop-skills/openclaw-selfheal-ops/scripts/ops-snapshot.sh`（mtime 2026-10-22 13:17）。04:04 嗰陣用 `find /home/openclaw -maxdepth 6 -name 'ops-snapshot.sh'` 搵，**maxdepth 太淺漏咗**（實際深度 8）。
+- **真正嘅缺陷**：skill 步驟 2 用相對路徑 `bash scripts/ops-snapshot.sh`（相對 CWD = workspace），但 `workspace/scripts/` 冇呢個檔 → 步驟行唔通；而 skill 內嗰版內容較舊（冇三倉 git 狀態、冇 skill 四處 md5 唯一數、冇 fallback 層數、冇章節數、冇 system cron 行數）。
+- **修復**：將兩版合併做一份 **canonical** `workspace/scripts/ops-snapshot.sh`（10 個段落：時間／gateway uptime + stability 記錄／網站 HTTP／cron errs + fallback 層數 + lastRun／近 30 分鐘 provider status／MEMORY.md + memory 目錄／三倉 git + hooks + 敏感檔 + 章節數／skill 四處 md5 唯一數／Dropbox state + token 新鮮度／system cron 行數），並用 `skill_workshop write_file` 寫入 learned skill 令兩邊 **md5 一致**；skill 步驟 2 同步驟 6 改成絕對路徑 `bash /home/openclaw/.openclaw/workspace/scripts/ops-snapshot.sh`。實跑通過（8 job errs=0、重複 0、HTTP 200、三倉 0/0、skill md5 唯一數 1）。
+- **教訓**：搵檔案唔好靠 `find -maxdepth` 估深度（用 `find <dir> -name <file>` 唔設 maxdepth 或直接 ls）；SKILL.md 內寫嘅相對路徑一定要核實 CWD 下真係存在，唔好假設「script 唔存在」。

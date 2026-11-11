@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.154
+version: 2.9.155
 ---
 
 >
@@ -3095,3 +3095,11 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 巡檢發現殘留 stash 要當**事故**處理：逐個比對 HEAD 有冇獨有內容 → 有就救返 → 冇先可以 drop。
 - 修檔案（尤其長文檔）插入內容要用**行級**操作 + 「抽走插入段 == 原檔」驗證；用 chunk 重序列化會靜靜改格式/刪內容（本次試過：2266 → 2179 行，即刻回滾）。
 
+
+---
+
+## 2026-11-11 13:20 更新
+- **內容**：cron job 全部補上跨 provider fallback chain（deepseek/deepseek-v4-flash → zai/glm-5.3），並修正中午簡報 12:55 timeout 600 → 1800s。
+- **根本原因**：`中午簡報 12:55` 12:58 執行失敗 —— `Rate-limit recovery stopped after 9 automatic retries | 429`（lastErrorReason=rate_limit）。所有 OpenClaw cron job 嘅 `payload.fallbacks` 只填咗自己 `minimax/MiniMax-M3.1-Flash@minimax:cn`，等於冇後備 → MiniMax 一限流就直接死。
+- **解決方法**：`openclaw cron edit <id> --fallbacks "deepseek/deepseek-v4-flash,zai/glm-5.3" --timeout-seconds N`；N 沿用原本值（早/晚簡報 3600、健康報告 3600、Audio Sync 1800、中午簡報 1800、版本檢查 600），唔好亂改大 job 嘅 timeout。
+- **新教訓**：設定 fallback 一定要用**唔同 provider**（deepseek / zai 都有獨立 auth profile）；填返同一個 minimax model 等於冇填。fallback 鏈順序：先 deepseek（快、穩），後 zai。

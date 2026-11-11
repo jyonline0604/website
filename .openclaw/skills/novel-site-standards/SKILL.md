@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.172
+version: 2.9.173
 ---
 
 >
@@ -3413,3 +3413,10 @@ rebuild_job "中午簡報 12:55"
 - **關鍵 CLI 發現**：`openclaw cron scratch <id>` 有 `--set <text>` 同 `--file <path>`（讀／取代 job 私有 scratch）；而 `openclaw doctor --fix --only <checkId>` 唔 work（`--only` 屬 lint-only 選項，要配 `--lint`；而 `--json` 又唔可以配 `--fix`）→ 正常路徑係先 `doctor --lint --only <checkId> --json` 睇清楚，再用 `openclaw cron scratch --file` 自己寫，唔靠 doctor --fix。
 - **驗證**：workspace 根目錄已無 `HEARTBEAT.md`；`openclaw cron scratch 9dc7d6c3...` 讀出 2651 bytes，內容 = 新清單（命中 `ops-snapshot.sh`／`唔會自己 commit` 關鍵字）；`docs/heartbeat-checklist.md` 2651 bytes，兩邊一致。
 - **配套**：`conversations_send` 仍然唔送達（outputSchema 多 `gated` 欄，journald 核實冇 telegram 出站）→ 通知大肥喵唯一可靠路徑係 plain assistant reply。
+
+## [2026-11-12] 更新 (v2.9.173) — doctor 巡檢要用 --only，唔好跑 --lint --all（會 hang）
+- **症狀**：`openclaw doctor --lint --all --non-interactive --json` 喺呢部機**一定 hang** —— 背景跑 3 次（timeout 200s／240s）輸出檔都係 0 bytes，進程要人手 `pkill -f '[o]penclaw doctor'` 先收得走；同一時間其他 health check（cron／git／HTTP／ops-snapshot）全部正常。
+- **對照**：**指定單一 check 就正常快** —— `openclaw doctor --lint --only core/doctor/heartbeat-scratch-migration --non-interactive --json` 幾秒出 `{"ok":true,"findings":[]}`。
+- **原因（推測）**：`--all` 會逐個跑 70 個 check，其中某啲要做慢嘅外部查詢（例如 npm registry／plugin capture），喺呢個網絡環境就卡住。
+- **修復／新規則**：巡檢一律用 `doctor --lint --only <checkId> --non-interactive --json` 逐個查要關注嘅 check；**唔好**用 `--lint --all`。如果之前跑過，先 `pkill -f '[o]penclaw doctor'` 清殘留再繼續。
+- **同時記住**：`doctor --fix --only <checkId>` 用唔到（`--only` 屬 lint-only 選項，要配 `--lint`；而 `--json` 又唔可以配 `--fix`／`--repair`／`--force`）→ 要修就自己用對應 CLI（例如 `openclaw cron scratch <jobId> --file <src>`）手動做，再跑 `--lint --only` 驗證。

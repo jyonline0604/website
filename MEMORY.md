@@ -427,3 +427,5 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 修復：逐 job `openclaw cron edit <id> --fallbacks <csv>` 補 5 個 openrouter free 模型（實測全部 `Auth: yes`），保留 deepseek/zai 在前 → 每個 job 7 層 fallback，零重複、零「fallback==primary」。<!-- project: github.com/jyonline0604/website -->
 - ⚠️ 教訓：`openclaw cron edit` 會順手把 `timeoutSeconds` 由 3600 改成 1800（CLI 預設），edit 時**必須顯式帶 `--timeout-seconds` 原值**並在 edit 後 `cron get` 核實；`automations` 工具 Code Mode schema 壞咗（get/update/list 全部 outputSchema 驗證失敗、side effect 不發生），改用 CLI 路徑。<!-- project: github.com/jyonline0604/website -->
 - skill：novel-site-standards v2.9.155、novel-av-generator v2.2.42。<!-- project: github.com/jyonline0604/website -->
+
+- **Dropbox V4「token 檔異常」唔使修**：`.dropbox-sync/volume4_state.json` JSON 結構正常（`processed`/`synced_to_site`/`last_batch`/`batch_count`），而 **V4 同步係 2026-10-02 大肥喵指令退役**（crontab 註釋：「CH926-1190 已完成，state 1746 — 勿啟用」）。log 尾段嘅 `RuntimeError: Dropbox token file is empty or missing` 係退役前嘅舊記錄（2026-10-22 11:00）。真正在跑嘅係 V5/V6/V7 + `renew-dropbox-token.sh`（每 3 小時，12:00 剛換新 token ✅）。<!-- project: github.com/jyonline0604/website -->

@@ -429,3 +429,6 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - skill：novel-site-standards v2.9.155、novel-av-generator v2.2.42。<!-- project: github.com/jyonline0604/website -->
 
 - **Dropbox V4「token 檔異常」唔使修**：`.dropbox-sync/volume4_state.json` JSON 結構正常（`processed`/`synced_to_site`/`last_batch`/`batch_count`），而 **V4 同步係 2026-10-02 大肥喵指令退役**（crontab 註釋：「CH926-1190 已完成，state 1746 — 勿啟用」）。log 尾段嘅 `RuntimeError: Dropbox token file is empty or missing` 係退役前嘅舊記錄（2026-10-22 11:00）。真正在跑嘅係 V5/V6/V7 + `renew-dropbox-token.sh`（每 3 小時，12:00 剛換新 token ✅）。<!-- project: github.com/jyonline0604/website -->
+
+- **2026-11-11 結案：之前標為「要用戶決定」嘅兩項，其實都唔需要用戶決定** — ①「簡報雙軌 dedup」：system cron `send-briefing.sh`（08:15/17:55）**已於 2026-11-01 按大肥喵指令退役**，天氣/交通 digest 已併入 OpenClaw cron agent 簡報（08:15 / 12:55 / 17:55），每時段得一條；crontab 兩條已註釋，**唔好再報告雙軌問題、唔好再問用戶揀方案**。②「Audio Sync / legacy mp3」：實測 Dropbox `/萬古塵埃/` 根層 mp3 共 10 個，script 正則 `chapter-\d+\.mp3` **全部 match、0 個被跳過**，無 legacy 檔待清；R2 `audio.kofhk.com/audio/chapter-71..76.mp3` 全部 HTTP/2 200；Audio Sync job `23533480` 11-11 10:07 `ok / delivered / errs=0` → **唔使處理**。<!-- project: github.com/jyonline0604/website -->
+- **診斷陷阱**：查「命名合唔合規」時判斷式要同被診斷 script 一致 —— 頭先用 `name[:-4].isdigit()` 對 `chapter-71.mp3` 必然 false，令 10 個正常檔全部誤報「非標準」，差啲寫錯結論落 MEMORY.md；應直接重用 script 嘅 `re.match(r'chapter-\d+\.mp3')`。<!-- project: github.com/jyonline0604/website -->

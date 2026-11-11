@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.166
+version: 2.9.167
 ---
 
 >
@@ -3335,4 +3335,23 @@ fallbacks = [
 - **修 job 綁定唔等於修好**：任何「會重建 job 嘅模板」（guardian / setup script / 部署 script）都要一併檢查，否則 bug 會喺下一次 job 走失時原形復現。
 - **fallback 唔可以自訂超出 policy allow 清單**：`cron_model_guard.py` 會自動清走，寫落去只會令人誤以為有更多層數。
 - **唔好淨睇自己寫過幾多層，要睇 modelPolicy allow 清單同 `openclaw models list` 嘅 `Auth` 欄** —— 三者交集先係真正可用的 fallback 鏈。
+
+---
+
+## [2026-11-12] 更新 (v2.9.167) - 唔可以直接 `source` 有頂層副作用嘅 script（我差啲造出重複 cron job）
+
+### 我自己造成嘅事故
+- 測試 `cron-guardian.sh` 重建邏輯時，我用 `source <(sed -n ... scripts/cron-guardian.sh)` 想去抽出 `rebuild_job()` 做 mock 測試 —— 但 `cron-guardian.sh` **頂層有副作用**（第 44 行 `log`、第 49 行 `openclaw cron list`、第 260 行 `for JOB in ... rebuild_job`）。
+- 結果：guardian 真係跑咗，並喺 **2026-11-12 00:07:17** 用真 `openclaw cron add` 建立咗一個**重複** job `4209134f-7c03-4b2c-866f-acf551777e99`「中午簡報 12:55」（原本 `66957fcc` 一直好好）。
+- **後果**：如果冇巡檢到，明日 12:55 大肥喵會收到**兩份**中午簡報（兩個 job 都 `announce` 去同一個 telegram 5344443732）。
+- 已 `openclaw cron rm 4209134f-...` 刪走，驗證：8 個 job、每個名 1 份、errs=0。
+
+### 教訓
+- **測試有副作用嘅 shell script：唔可以 `source` 半截**。`sed -n '1,256p'` 一樣會執行頂層代碼（我以為切走咗主流程，但其實唔係）。
+- **安全做法**：
+  1. 先 `grep -n` 睇清楚邊行係頂層、邊行係 function 定義；
+  2. 用 `bash -c` 配合 **mock PATH**（`export PATH=/tmp/mock/bin:$PATH` + 假 `openclaw`），確保唔會真係建立 job；
+  3. 或者喺副本上改，唔好 source 原檔。
+- **測試前一定要問：呢個 script 嘅頂層會唔會改系統狀態？**（cron job 建立/刪除、檔案寫入、訊息發送）
+- **巡檢要偵測「同名重複 job」**：單靠 job id 睇唔到重複，要用 `Counter(name)` —— `cron list` 出現兩個同名「中午簡報 12:55」就要即刻 `rm` 走一個。
 

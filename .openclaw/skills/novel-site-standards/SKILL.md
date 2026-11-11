@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.158
+version: 2.9.159
 ---
 
 >
@@ -3176,4 +3176,39 @@ fallbacks = [
 ### 教訓
 - **fallback 鏈唔止要睇「有冇填」，仲要睇「次序」** —— 死路排喺前面，等於喺背後擺好嘅安全網被自己擋住。
 - **`openclaw cron edit` 係逐個 job 一次過 patch**：7 個 job 逐個跑需要時間，exec timeout 唔夠時會**只改咗一部分** → 一定要喺 edit 後**逐個 job 再 list 一次核實首個 fallback**，唔好假設全部改齊（本次就係咁：第一次只改好 4 個，補做先齊）。
+
+---
+
+## [2026-11-11] 更新 (v2.9.159) - `batch-push.sh` 只睇 working tree 就早退 → commit 永遠留喺本地唔 push
+
+### 症狀
+- 2026-11-11 16:17 心跳巡檢發現：**有 1 個未推送 commit**（`953c4d66c` `docs: update finance data 2026-11-11 16:00`），工作樹乾淨、HEAD 正常。
+- `git-health-check.sh` 同步報「⚠️ 有 1 個未推送的 commit」。
+
+### 根因
+- `scripts/batch-push.sh` Step 3 只判斷 **working tree**：
+  ```bash
+  if [[ -z $(git status --porcelain) ]]; then echo "📭 無變更需要推送"; exit 0; fi
+  ```
+- 但 `scripts/update_finance.sh` / `update_finance_news.sh` 嘅流程係：先用 `scripts/git-commit-locked.sh <file> <msg>` **commit 咗**，之後先叫 `batch-push.sh`。
+- 所以到 `batch-push.sh` 行到 Step 3 時，改動**已經被 commit 咗** → working tree 乾淨 → 腳本誤判「無變更」→ **早退，commit 永遠留喺本地**。
+- 16:00 嗰次完整 log 實锤：`[main 953c4d66c] docs: update finance data...` → `🕐 偶數整點，執行批次推送` → `📭 無變更需要推送` → `🔓 Git Push 鎖已釋放`（**由頭到尾冇 push**）。
+- 補充：`git-push-with-lock.sh` 冇同款 bug（佢唔會因樹乾淨而早退，Step 5 一定會 push）。
+
+### 修復
+- `batch-push.sh` Step 3 改為 **working tree + 未推送 commit 雙重判斷**：
+  ```bash
+  git fetch origin main --quiet 2>/dev/null || true
+  UNPUSHED=$(git rev-list --count origin/main..HEAD 2>/dev/null || echo 0)
+  if [[ -z $(git status --porcelain) ]] && [ "$UNPUSHED" -eq 0 ]; then ... exit 0; fi
+  if [[ -z $(git status --porcelain) ]] && [ "$UNPUSHED" -gt 0 ]; then
+      echo "  📤 工作樹乾淨但有 $UNPUSHED 個未推送 commit → 繼續推送（唔可以早退）"
+  fi
+  ```
+
+### 教訓
+- **「工作樹乾淨」≠「冇嘢要推」**：已經 commit 但未 push，兩者係唔同狀態。判斷要推唔推，一定要睇 `git rev-list --count origin/main..HEAD`，唔可以淨睇 `git status --porcelain`。
+- **凡是「先 commit、之後叫 push 腳本」嘅流程，push 腳本就必須查未推送 commit** —— 呢個分工模式好易令人寫出錯判斷。
+- 巡檢要同時睇 `git log origin/main..HEAD` 同 `git status --short`；只用後者會漏。
+- **`git fetch` 要喺數之前做**，唔係 `origin/main` 本地 ref 舊咗就會數錯（以為有未推送 commit，其實已推）。
 

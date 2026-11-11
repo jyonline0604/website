@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.159
+version: 2.9.160
 ---
 
 >
@@ -3211,4 +3211,31 @@ fallbacks = [
 - **凡是「先 commit、之後叫 push 腳本」嘅流程，push 腳本就必須查未推送 commit** —— 呢個分工模式好易令人寫出錯判斷。
 - 巡檢要同時睇 `git log origin/main..HEAD` 同 `git status --short`；只用後者會漏。
 - **`git fetch` 要喺數之前做**，唔係 `origin/main` 本地 ref 舊咗就會數錯（以為有未推送 commit，其實已推）。
+
+---
+
+## [2026-11-11] 更新 (v2.9.160) - 修復驗證（沙盒精確重現 + 真實流程測試）
+
+### 驗證方法（可重用）
+1. **真實流程測試**：用 `git-commit-locked.sh` 先 commit（模擬 `update_finance.sh` 嘅做法），再叫 `batch-push.sh` → 觀察到佢正常 push ✅
+2. **沙盒精確重現**（關鍵場景：樹乾淨 + 有未推送 commit）：
+   ```bash
+   T=/tmp/bp-test; rm -rf $T; mkdir -p $T
+   git init --bare $T/origin.git -q; git clone -q $T/origin.git $T/ws
+   cd $T/ws; git config user.email t@t.local; git config user.name tester
+   mkdir -p scripts; echo hi > a.txt; git add -A; git commit -qm first
+   git branch -M main; git push -q -u origin main
+   # 複製真實 batch-push.sh 並改 WORKSPACE / LOCKFILE / REPO 指向沙盒
+   sed -i "s|^WORKSPACE=.*|WORKSPACE="$T/ws"|" scripts/batch-push.sh
+   sed -i "s|^LOCKFILE=.*|LOCKFILE="$T/ws/.git-push.lock"|" scripts/batch-push.sh
+   sed -i "s|^REPO=.*|REPO="nonexistent-org/nonexistent-repo"|" scripts/batch-push.sh
+   echo second >> a.txt; git add -A; git commit -qm 'second commit (clean tree)'
+   bash scripts/batch-push.sh   # 應該推，唔應該早退
+   ```
+   結果：`🚀 推送中...` → `✅ 已推送到 GitHub`，遠端 `a6d0fd4..9b1ef13` ✅（修復前同一場景會印 `📭 無變更需要推送` 早退）。
+
+### 補充驗證陷阱
+- **唔可以直接喺真實 workspace 測「乾淨樹 + 未推送 commit」**：一 commit 就即刻被 push，測唔到；要靠沙盒先重現到。
+- 沙盒 `git clone` 空 remote 會印 `warning: You appear to have cloned an empty repository.` —— 正常，唔係錯誤。
+- 睇遠端有無收到 commit 要用 `git --git-dir=$T/origin.git log`（bare repo 唔能用 `git -C`）。
 

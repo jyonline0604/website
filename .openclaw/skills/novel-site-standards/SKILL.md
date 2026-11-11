@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.164
+version: 2.9.165
 ---
 
 >
@@ -3282,4 +3282,24 @@ fallbacks = [
 ### 教訓
 - **工具報 schema 唔等於工具冇執行**：`automations.update` 報錯嗰次，實際上完全冇生效（fallbacks 冇變）→ 一定要先核實現況再決定重唔重試。
 - **Code Mode 入面 `tools.xxx` 唔存在**，只有直接注入嘅全域（`exec`、`read`、`sessions_history`…）；`catalog.search()` 只回 catalog 內嘅 callable，唔保證全域存在。
+
+---
+
+## [2026-11-11] 更新 (v2.9.165) - cron job 說明文字嘅排程時間漂移（健康報告自己報咗出嚟）
+
+### 症狀
+- 2026-11-11 22:00 每日健康報告（`a6db95e0`）自己指出：**「財務 / AQHI / 新聞備份 system cron 現時跑 10:00 / 16:00，同 job 說明入面寫嘅 09:00 / 15:00 / 21:00 時間唔一致」**（標註為「非故障」，但係真實文檔漂移）。
+- 實際 crontab：`0 10,16 * * *` = `update_finance.sh` / `update_finance_news.sh` / `update_aqhi.sh`；`10 10,16 * * *` = `news-backup-cron.sh`。
+- 過時文字出現喺兩個 job 嘅 payload message：
+  - `27d54b55` 早上簡報 08:15 → 「…、財經 09/15/21 都係 system cron…」
+  - `a6db95e0` 每日健康報告 22:00 → 「…、財經 09/15/21、AQHI 09/15/21、自動記憶 23:00…」
+
+### 修復
+- 用 `openclaw cron edit <id> --message <新全文>` 改兩個 job 嘅 payload message：`財經 09/15/21` → `財經 10:00/16:00`、`AQHI 09/15/21` → `AQHI 10:00/16:00`。
+- 驗證：8 個 agent job 全部 `09/15/21` 零殘留。
+
+### 教訓
+- **排程時間要由 crontab 實測，唔可以靠 job 說明文字** —— 說明文字係人手寫嘅，一定會漂移；寫「09/15/21」嗰陣係 09:00/15:00/21:00，後來 crontab 改成 `0 10,16` 但冇人同步改文字。
+- **健康報告自己報出嘅「非故障提示」值得跟** —— 佢標註咗 `[LOOP_STATUS: OK]` 但細節入面嘅唔一致正正就係下一次誤報嘅根源（健康報告會以為 task 唔存在而誤報「消失」）。
+- 改 job message 前先 `cron list --json` 取全文、字串精確替換、edit 後再 list 核實 —— 因為 `automations` 工具 schema 壞咗，要用 CLI。
 

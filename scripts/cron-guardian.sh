@@ -107,6 +107,9 @@ rebuild_job() {
 - OK = 全部正常
 - WARN = 有非嚴重問題（例如其他 cron 有 error，但本簡報仍正常送達）
 - FAIL = 僅當網站掛掉、磁碟快滿等嚴重問題
+⚠️ 執行方式（2026-11-11 修正）：code mode 入面只有直接注入嘅全域，exec 要寫 exec({command: ...})
+或用 shell 腳本；**唔好寫 tools.exec(...)**（會 ReferenceError，令成個 run 白撞到 LLM idle timeout）。
+檢查 cron 狀態用 exec 執行 openclaw cron list --json。
 EOF
 )" 2>>"$LOG" && log "✅ 早上簡報已重建" || log "❌ 早上簡報重建失敗"
             ;;
@@ -140,6 +143,9 @@ EOF
 
 📊 報告末尾強制輸出評估：
 [LOOP_STATUS: OK|WARN|FAIL]
+⚠️ 執行方式（2026-11-11 修正）：code mode 入面只有直接注入嘅全域，exec 要寫 exec({command: ...})
+或用 shell 腳本；**唔好寫 tools.exec(...)**（會 ReferenceError，令成個 run 白撞到 LLM idle timeout）。
+檢查 cron 狀態用 exec 執行 openclaw cron list --json。
 EOF
 )" 2>>"$LOG" && log "✅ 中午簡報已重建" || log "❌ 中午簡報重建失敗"
             ;;
@@ -179,6 +185,9 @@ EOF
 📊 結尾輸出：
 [LOOP_STATUS: OK|WARN|FAIL]
 [LOOP_DAILY: 簡報✅/⚠️, Dropbox✅/⚠️, 網站✅/⚠️, 系統✅/⚠️]
+⚠️ 執行方式（2026-11-11 修正）：code mode 入面只有直接注入嘅全域，exec 要寫 exec({command: ...})
+或用 shell 腳本；**唔好寫 tools.exec(...)**（會 ReferenceError，令成個 run 白撞到 LLM idle timeout）。
+檢查 cron 狀態用 exec 執行 openclaw cron list --json。
 EOF
 )" 2>>"$LOG" && log "✅ 傍晚簡報已重建" || log "❌ 傍晚簡報重建失敗"
             ;;
@@ -212,6 +221,9 @@ EOF
 
 📊 結尾輸出：[LOOP_STATUS: OK|WARN|FAIL]
 [LOOP_DAILY: 網站✅/⚠️, Dropbox✅/⚠️, 系統✅/⚠️, Cron✅/⚠️, Git✅/⚠️]
+⚠️ 執行方式（2026-11-11 修正）：code mode 入面只有直接注入嘅全域，exec 要寫 exec({command: ...})
+或用 shell 腳本；**唔好寫 tools.exec(...)**（會 ReferenceError，令成個 run 白撞到 LLM idle timeout）。
+檢查 cron 狀態用 exec 執行 openclaw cron list --json。
 EOF
 )" 2>>"$LOG" && log "✅ 健康報告已重建" || log "❌ 健康報告重建失敗"
             ;;
@@ -221,7 +233,7 @@ EOF
                 --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --timeout-seconds 1800 \
-                --message "Run daily audio sync: exec \`cd /home/openclaw/.openclaw/workspace && python3 scripts/audio_sync_pipeline.py\` and report results." \
+                --message "Run daily audio sync: exec \`cd /home/openclaw/.openclaw/workspace && python3 scripts/audio_sync_pipeline.py\` and report results. ⚠️ 執行方式：code mode 內用 exec({command: ...}) 或 shell 腳本，**唔好寫 tools.exec(...)**（會 ReferenceError）。" \
                 2>>"$LOG" && log "✅ Audio Sync 已重建" || log "❌ Audio Sync 重建失敗"
             ;;
         "OpenClaw Version Check")
@@ -230,7 +242,7 @@ EOF
                 --fallbacks "minimax/MiniMax-M3.1-Flash@minimax:cn" \ \
                 --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
                 --timeout-seconds 600 \
-                --message "請執行 /home/openclaw/.openclaw/workspace/scripts/check-openclaw-version.sh 並報告結果" \
+                --message "請執行 /home/openclaw/.openclaw/workspace/scripts/check-openclaw-version.sh 並報告結果 ⚠️ 執行方式：code mode 內用 exec({command: ...}) 或 shell 腳本，**唔好寫 tools.exec(...)**（會 ReferenceError）。" \
                 2>>"$LOG" && log "✅ Version Check 已重建" || log "❌ Version Check 重建失敗"
             ;;
         *)

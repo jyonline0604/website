@@ -394,3 +394,11 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 另：主機 08:16 poweroff → 09:21 開機（uptime 5 分鐘），08:15 嗰輪 cron 被重啟打斷；已 force run 補跑。<!-- project: github.com/jyonline0604/website -->
 - 教訓：**SKILL.md 有 256000 bytes 硬上限**，加更新記錄前要 `stat -c%s` 睇大小，接近上限就要分檔（規則留主檔、流水日誌搬 SKILL_HISTORY.md）；loader skip 唔會通知人，必須自己 grep journal。<!-- project: github.com/jyonline0604/website -->
 - skill：novel-site-standards v2.9.151 + SKILL_HISTORY.md；novel-av-generator v2.2.38。<!-- project: github.com/jyonline0604/website -->
+
+
+## 2026-11-11 09:47 code-mode 提示只覆蓋 1 個 job → 早報兩輪空轉未送達（已修 6/6） <!-- project: github.com/jyonline0604/website -->
+- 症狀：早上簡報 08:15 兩輪 error（errs=2）：09:23 `cron: job interrupted by gateway restart`（主機 08:16 poweroff、09:21 開機）→ 09:33 補跑 `LLM request timed out.`（dur 371834ms），final reply 係空、deliveryStatus=unknown → 大肥喵收唔到完整早報。<!-- project: github.com/jyonline0604/website -->
+- 根因：2026-11-10 18:10 修跨 provider fallback 嗰陣，code-mode 提示（用 `exec(...)`、**唔好寫 `tools.exec(...)`**）只加咗入「每日健康報告 22:00」一個 job；其餘 5 個 agentTurn job 嘅 message 冇提示 → agent turn 內 `tools` 全域唔存在 → ReferenceError → 空轉到 LLM idle timeout。<!-- project: github.com/jyonline0604/website -->
+- 修復：5 個 job 用 `openclaw cron edit --message` 補提示（每個 +206 字），連原有健康報告共 6/6 覆蓋；`scripts/cron-guardian.sh` 6 個重建 block（4 heredoc + 2 inline）同步加提示 → guardian 重建唔會再丟；09:54 補跑入隊（runId cron-request.697522dd-24e8-487a-8c60-d96209dba004）。<!-- project: github.com/jyonline0604/website -->
+- 教訓：① 修 job payload 一定要同步改重建模板（guardian / cron_model_guard），同「跨 provider fallback」同一個坑；② 同一類提示要覆蓋所有同類 job，唔可以只改出事嗰個；③ 症狀「LLM request timed out + final reply 空 + deliveryStatus=unknown」唔係模型掛，係 agent turn 內部 ReferenceError 空轉，查 session transcript 睇佢寫咗 `tools.exec` 未；④ `deliveryStatus=unknown` 唔等於冇送達（09:33 仍有 outbound send ok），要同時睇 final reply 有冇內容。<!-- project: github.com/jyonline0604/website -->
+- skill：novel-site-standards v2.9.152、novel-av-generator v2.2.39；SKILL.md 181986 bytes（71% of 256000 上限），SKILL_HISTORY.md 122518 bytes。<!-- project: github.com/jyonline0604/website -->

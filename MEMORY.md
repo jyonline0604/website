@@ -419,3 +419,11 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - 修復：① 兩支 push 腳本 fallback 改 **commit-first**（先 `git add -A` + commit，仍然髒先 stash），pop 失敗自動導出 patch 落 `backups/stash-recovery/` 並大聲報告；② `scripts/git-health-check.sh` 新增 `check_stash_leftover()`（偵測殘留 stash，`--fix` 導出 patch 但唔自動 drop）；③ 由 `stash@{0}:DREAMS.md` 行級插回 Oct 9 兩篇（用「抽走插入段 == 原檔」驗證零副作用），2267 → 2309 行、純 +42 行，已 commit `d2be879cc` + push。<!-- project: github.com/jyonline0604/website -->
 - 教訓：push 腳本 fallback 唔可以只靠 stash 兜底（pop 失敗 = 內容靜靜蒸發）；每日產生嘅內容檔要自己 commit，唔好假設其他 push 會帶埋；修長文檔插入內容要用行級操作 + 精確驗證（用 chunk 重序列化試過：2266 → 2179 行，內容被靜靜改壞，即刻回滾）。<!-- project: github.com/jyonline0604/website -->
 - skill：novel-site-standards v2.9.154、novel-av-generator v2.2.41。<!-- project: github.com/jyonline0604/website -->
+
+
+## 2026-11-11 13:30 cron agent job fallback 鏈等於 primary → 429 零回退，12:55 中午簡報靜靜冇送達（已修） <!-- project: github.com/jyonline0604/website -->
+- 症狀：job `66957fcc-9c64-492a-a931-51efd3c8dbd2`（中午簡報 12:55）12:55 失敗，錯誤 `Rate-limit recovery stopped after 9 automatic retries without a completed model response. | 429`，`consecutiveErrors=2`、`lastDeliveryStatus=unknown` → 今日份中午簡報冇送達。<!-- project: github.com/jyonline0604/website -->
+- 根因兩層：① 所有 agent job 原本 `fallbacks=[minimax/MiniMax-M3.1-Flash@minimax:cn]` 同 `model` **完全相同** → 429 時回退返同一個被限流模型，重試 9 次都係死路；② 其它 job 嘅 `deepseek/deepseek-v4-flash` + `zai/glm-5.3` fallback 實測 `openclaw models list` 顯示 **deepseek 認證被拒絕**、**zai 目錄 stale** → 假 fallback。<!-- project: github.com/jyonline0604/website -->
+- 修復：逐 job `openclaw cron edit <id> --fallbacks <csv>` 補 5 個 openrouter free 模型（實測全部 `Auth: yes`），保留 deepseek/zai 在前 → 每個 job 7 層 fallback，零重複、零「fallback==primary」。<!-- project: github.com/jyonline0604/website -->
+- ⚠️ 教訓：`openclaw cron edit` 會順手把 `timeoutSeconds` 由 3600 改成 1800（CLI 預設），edit 時**必須顯式帶 `--timeout-seconds` 原值**並在 edit 後 `cron get` 核實；`automations` 工具 Code Mode schema 壞咗（get/update/list 全部 outputSchema 驗證失敗、side effect 不發生），改用 CLI 路徑。<!-- project: github.com/jyonline0604/website -->
+- skill：novel-site-standards v2.9.155、novel-av-generator v2.2.42。<!-- project: github.com/jyonline0604/website -->

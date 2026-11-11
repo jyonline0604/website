@@ -278,7 +278,8 @@ When you receive a heartbeat poll (message matches the configured heartbeat prom
 Default heartbeat prompt:
 `Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK.`
 
-You are free to edit `HEARTBEAT.md` with a short checklist or reminders. Keep it small to limit token burn.
+You are free to edit `docs/heartbeat-checklist.md` with a short checklist or reminders. Keep it small to limit token burn.
+**注意**：新版本 OpenClaw 已改用 cron-owned scratch 餵 heartbeat lane，唔好再喺 workspace 根目錄放 `HEARTBEAT.md`（會令 `openclaw doctor` 一直報 legacy-heartbeat-file warning）。改完清單要跑 `bash scripts/sync_heartbeat_scratch.sh` 同步入 heartbeat job `9dc7d6c3` 嘅 scratch。
 
 ### Heartbeat vs Cron: When to Use Each
 
@@ -297,7 +298,7 @@ You are free to edit `HEARTBEAT.md` with a short checklist or reminders. Keep it
 - One-shot reminders ("remind me in 20 minutes")
 - Output should deliver directly to a channel without main session involvement
 
-**Tip:** Batch similar periodic checks into `HEARTBEAT.md` instead of creating multiple cron jobs. Use cron for precise schedules and standalone tasks.
+**Tip:** Batch similar periodic checks into `docs/heartbeat-checklist.md` instead of creating multiple cron jobs. Use cron for precise schedules and standalone tasks.
 
 **Things to check (rotate through these, 2-4 times per day):**
 

@@ -208,30 +208,17 @@ EOF
                 --message "$(cat <<'EOF'
 【每日健康報告 22:00】
 
-檢查以下項目，**發現問題必須自動修復，不只報告**：
+⚡ 執行方式（2026-11-12 修正）：**只做一次 exec**，跑現成腳本；唔好喺 code mode 入面逐項手寫指令：
+exec({command: "bash /home/openclaw/.openclaw/workspace/scripts/health_report.sh"})
+該腳本已一次過做齊：① 現況快照（網站 HTTP／8 個 cron job errs+fallback 層數+lastRun／三倉 git 未推送+髒檔／MEMORY.md 行數／敏感檔／章節數／兩個 skill 四處 md5 唯一性／Dropbox state+token 新鮮度／system cron 行數）② 自動修復（三倉未推送 commit→push、DREAMS.md→commit+push、untracked 暫存檔→rm）③ 判定（[LOOP_STATUS]／[LOOP_DAILY]）。
 
-1. 🌐 網站狀態：curl -sI https://kofhk.com
-2. 📦 Dropbox Vol4 同步：.dropbox-sync/volume4_state.json
-3. 💾 系統資源：df -h /, free -h, uptime
-4. 🔄 Cron 健康：用 exec 執行 openclaw cron list --json + crontab -l 檢查所有 cron job
-⚠️ 檢查 cron 狀態必須用 exec 執行「openclaw cron list --json」或「crontab -l」，**絕對唔好用 cron tool**（isolated session 有 scoping，只顯示自己 agent 嘅 job，會誤判其他 jobs 消失！）
-⚠️ 以下任務係 **system cron（crontab -l）**，唔會出現喺 OpenClaw cron list：記憶備份 08:00/20:00、Volume 5 Dropbox 11:00、財經 09/15/21、AQHI 09/15/21、自動記憶 23:00 —— 見到佢哋喺 crontab 就係正常，**唔係消失**！
-- 2026-11-01 起 system cron 簡報（send-briefing.sh）已退休，天氣 digest 併入早上/傍晚簡報；**唔好再報告「雙軌簡報」問題**
+⚠️ 絕對唔好寫 tools.exec(...)：code mode 只有直接注入嘅全域，寫成 tools.* 會 ReferenceError，白撞到 LLM idle timeout（2026-11-12 22:00 就係咁由 5 分鐘拖到 21 分鐘）。
+⚠️ 唔好用 cron tool 睇 cron 狀態（isolated session 有 scoping，只顯示自己 agent 嘅 job，會誤判其他 jobs 消失）——腳本第 4 段已用 openclaw cron list --json 攞齊。
+⚠️ 以下係 **system cron（crontab -l）**，唔會出現喺 OpenClaw cron list：記憶備份 08:00/20:00、Volume 5 Dropbox 11:00、財經 10:00/16:00、AQHI 10:00/16:00、自動記憶 23:00 —— 見到佢哋喺 crontab 就係正常，**唔係消失**！
+- 2026-11-01 起 system cron 簡報（send-briefing.sh）已退休，天氣 digest 併入早上/傍晚簡報；**唔好再報告「雙軌簡報」問題**。
 
-5. 📝 Git 狀態：untracked 檔案、未推送 commit
-
-🔧 自動修復規則（強制執行，唔准只報告）：
-- untracked 暫存檔（*_output.txt, *.tmp 等）→ 直接 rm 刪除
-- Git 有未推送 commit → 立即 git push
-- cron_output.txt 之類遺留檔 → 直接清理，唔洗問
-- 網站唔通 → 診斷原因並報告
-- consecutiveErrors > 0 → 列出受影響 job
-
-📊 結尾輸出：[LOOP_STATUS: OK|WARN|FAIL]
-[LOOP_DAILY: 網站✅/⚠️, Dropbox✅/⚠️, 系統✅/⚠️, Cron✅/⚠️, Git✅/⚠️]
-⚠️ 執行方式（2026-11-11 修正）：code mode 入面只有直接注入嘅全域，exec 要寫 exec({command: ...})
-或用 shell 腳本；**唔好寫 tools.exec(...)**（會 ReferenceError，令成個 run 白撞到 LLM idle timeout）。
-檢查 cron 狀態用 exec 執行 openclaw cron list --json。
+📋 你要做的：讀上面 exec 嘅輸出 → 整理成健康報告（每個項目 ✅/⚠️ + 列出腳本自動修復咗咩）→ 交付 Telegram。
+結尾一定要保留腳本輸出嘅 [LOOP_STATUS: ...] 同 [LOOP_DAILY: ...] 兩行。
 EOF
 )" 2>>"$LOG" && log "✅ 健康報告已重建" || log "❌ 健康報告重建失敗"
             ;;

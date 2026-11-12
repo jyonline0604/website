@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.179
+version: 2.9.180
 ---
 
 >
@@ -3499,3 +3499,12 @@ rebuild_job "中午簡報 12:55"
 - **模板錯名要同 job 自身 message 一齊修**：guardian 只會喺 job「缺失」時先重建，job 存在就唔會覆寫 message → 單改模板唔夠
 - **`tail` 一個唔存在嘅 log 唔會令 job 失敗**（exit code 有 `|| true` 或容錯）→ 簡報會靜靜「睇唔到」某個同步狀態而照樣報綠。巡檢要主動核對「命令入面嘅路徑」真係存在，唔可以只睇 job status=ok
 - 教訓同一類：**觀測路徑失效 = 假綠**（同 2026-11-12 10:50 巡檢工具盲點、21:03 裸 URL CDN 快取兩單同源）
+
+---
+
+## [2026-11-12 22:40] 更新 (v2.9.180) — 每日健康報告 22:00 job 改用單一腳本入口（治 tools.exec ReferenceError 由 5 分拖到 21 分）
+- **症狀**：2026-11-12 22:00 嘅健康報告 job 用咗 **21 分鐘**（平時 5 分鐘）先完成，但最後仍然成功交付（Telegram messageId=23505，22:20:53）。慢嘅原因唔係 job 壞，而係 code mode 內反覆寫錯 API。
+- **根本原因**：journalctl 顯示該 run 撞咗 **3 次** `ReferenceError: tools is not defined`（code mode 只注入直接注入嘅全域，`tools.exec(...)` 呢個寫法根本唔存在 → 每次都要重試），再加上 minimax **2 次 429**（其中一次 `elapsedMs=89767`，即係等咗 90 秒）。今日全機共 7 次 `tools is not defined`，分佈喺 6 個 cron job（健康報告 3、中午簡報 1、其餘 3）。**舊 message 已經有「唔好寫 tools.exec(...)」嘅警告，但模型照寫 —— 靠文字警告冇用，要減少 code mode 嘅呼叫次數。**
+- **解決方法**：(1) 新建 `scripts/health_report.sh` —— 單一入口，一次過做齊：① 現況快照（直接叫 `scripts/ops-snapshot.sh`）② 自動修復（三倉未推送 commit → pull --rebase + push；`DREAMS.md` → commit + push（唔係刪）；untracked 暫存檔 `*_output.txt` / `*.tmp` / `cron_output.txt` → rm）③ 判定（輸出 `[LOOP_STATUS: OK|WARN|FAIL]` 同 `[LOOP_DAILY: ...]`，並列出 consecutiveErrors > 0 嘅 job）。實跑 rc=0、68 行輸出、判定正確（HTTP=200 / disk=16% / mem 3398M/7172M / cron_errs=0 / token_age=92min）。(2) `openclaw cron edit a6db95e0 --message <新訊息>` —— 新 message 只叫 agent 做**一次** exec：`exec({command: "bash /home/openclaw/.openclaw/workspace/scripts/health_report.sh"})`，之後只負責整理輸出同交付。(3) `scripts/cron-guardian.sh` 模板同步改（重建時唔會還原舊 message），並驗證模板抽出嘅 message 與 live job **byte-identical（1070 bytes）**、無反引號／`$(`／`EOF` 危險字元、`bash -n` 通過。
+- **驗證**：`cron edit` 後逐項比對 payload —— `model` / `fallbacks`（5 層，**全部帶 `@openrouter:default` 綁定**）/ `inferenceBinding` / `timeoutSeconds` / `toolsAllow` / `delivery` / `schedule` / `agentId` / `sessionTarget` / `enabled` / `name` / `description` **13 項全部 SAME**，只有 `message` 改變（避免重演 2026-11-12 08:15 嘅 fallback 綁定被洗掉事故）。
+- **教訓**：(a) **靠 prompt 文字警告模型唔會聽 —— 要用結構減少犯錯機會**；同一個「唔好寫 tools.exec」警告喺多個 job message 存在咗仍然每日被犯 7 次。(b) cron job message 越簡單、code mode 呼叫越少，就越少撞 ReferenceError 同 429（429 一等就等 90 秒，直接拖慢個 run）。(c) 改 cron job message 前後**必須逐項 diff payload**（尤其 fallback 嘅 `@profile` 綁定同 `inferenceBinding`），唔可以只睇 `cron list` 一眼就算。(d) 改 live job 之後**同步改 guardian 模板**，否則下次重建就會還原；並用「由模板抽出 message 同 live job 比對」嚟驗證兩邊一致。

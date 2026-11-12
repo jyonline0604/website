@@ -91,3 +91,9 @@ chat-test.html
 node_modules/
 
 # Node.js 依賴（npm install 產生，唔可以入 git）
+
+# 2026-11-12 Pages artifact 瘦身：以下兩個目錄係開發/快取用，唔係網站內容，
+# 但之前被 track 住 → 每次 Pages build 都要 upload（artifact 102MB / 6230 檔），
+# 拖慢 Pages syncing_files 階段、容易撞 GitHub 側 timeout。untrack 後改由 .gitignore 排除。
+graphify-out/
+.dropbox-sync/downloaded/

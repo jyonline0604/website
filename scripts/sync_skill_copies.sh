@@ -5,6 +5,7 @@ set -u
 SK=/home/openclaw/.openclaw/skills/novel-site-standards
 AV=/home/openclaw/.openclaw/skills/novel-av-generator
 WS=/home/openclaw/.openclaw/workspace/.openclaw/skills/novel-site-standards
+WS_AV=/home/openclaw/.openclaw/workspace/.openclaw/skills/novel-av-generator
 SB=/home/openclaw/Second-brain/skills/novel-site-standards
 MB=/home/openclaw/Max-backup/skills/novel-site-standards
 LOG=/home/openclaw/.openclaw/workspace/logs/skill-sync.log
@@ -48,5 +49,5 @@ sync_set() {
 }
 sync_set standards "$SK/SKILL.md" "$WS/SKILL.md" "$SB/SKILL.md" "$MB/SKILL.md"
 sync_set standards-history "$SK/SKILL_HISTORY.md" "$WS/SKILL_HISTORY.md" "$SB/SKILL_HISTORY.md" "$MB/SKILL_HISTORY.md"
-sync_set av "$AV/SKILL.md" "$SB/../novel-av-generator/SKILL.md" "$MB/../novel-av-generator/SKILL.md"
+sync_set av "$AV/SKILL.md" "$WS_AV/SKILL.md" "$SB/skills/novel-av-generator/SKILL.md" "$MB/skills/novel-av-generator/SKILL.md"
 log "done"

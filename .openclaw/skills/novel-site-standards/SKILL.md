@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.175
+version: 2.9.176
 ---
 
 >
@@ -3434,3 +3434,15 @@ rebuild_job "中午簡報 12:55"
 - **根本原因**：2026-11-11 改 guardian 重建模板時，`scripts/cron-guardian.sh` 嘅 `FALLBACKS=` 被改成**未綁 account** 嘅 openrouter free 鏈（`openrouter/...:free`），7 個 agentTurn job 嘅 `payload.fallbacks` 全部被洗掉 `@profile`；fallback 一旦由 minimax 切去 openrouter 就係跨 provider → runtime 拒絕採用另一個 account → hard-fail（2026-11-10 已踩過同一個坑）。modelPolicy allow 清單一直有綁定變體（`@openrouter:default`），只係 job payload 同模板冇用。
 - **解決方法**：(1) `openclaw cron edit <id> --fallbacks <5 條帶 @openrouter:default 嘅鏈> --model minimax/MiniMax-M3.1-Flash@minimax:cn` 重綁全部 agentTurn job，`openclaw cron list --json` 驗證全部 fb_bound=True；(2) `scripts/cron-guardian.sh` 嘅 `FALLBACKS=` 同步加回 `@openrouter:default` 綁定（唔改模板，guardian 重建時會帶返 bug），`bash -n` 語法檢查通過；(3) 實跑 `python3 scripts/check_openclaw_update.py` 刷新停更嘅 `openclaw-version.json`（current 2026.11.1 → 2026.11.3），修好 digest 誤報「有更新可用」。
 - **新增教訓**：(a) fallback 值一定要帶 `@profile` 綁定；(b) 改 guardian 重建模板要連 job `payload.fallbacks` 實際值一齊驗，唔可以只睇 allow 清單有綁定變體就當冇事；(c) 版本顯示唔可以淨係信 `openclaw-version.json`，要同 `openclaw --version` + `npm view openclaw version` 對照（2026-11-08 同一教訓復發）。
+
+---
+
+## [2026-11-12 10:40] 更新 (v2.9.176) — sync_skill_copies.sh 嘅 av 路徑寫錯，novel-av-generator 副本從來冇同步過
+
+- **症狀**：心跳巡檢步驟 4「Skill 副本唯一性」要求 novel-site-standards 同 novel-av-generator 四處 md5 唯一數 = 1。實測 novel-av-generator 只有三處（installed / Second-brain / Max-backup），workspace 副本 /home/openclaw/.openclaw/workspace/.openclaw/skills/novel-av-generator/ 根本唔存在；三處 md5 雖然啱啱好一致，但嗰個係手動 copy 出嚟嘅巧合，唔係機制保證。
+
+- **根本原因**：scripts/sync_skill_copies.sh 最後一行寫咗 sync_set av "$AV/SKILL.md" "$SB/../novel-av-generator/SKILL.md" "$MB/../novel-av-generator/SKILL.md" —— $SB 同 $MB 本身已經係 .../skills/novel-site-standards 檔案路徑，再加 /../novel-av-generator/ 會 resolve 去 /home/openclaw/novel-av-generator/SKILL.md（該目錄唔存在，ls 確認 No such file or directory）。即係 nightly（23:20）同步對 av skill 長期無效，cmp 永遠唔 match，cp 失敗但被 >/dev/null 2>&1 吞掉 → 靜默失敗、零告警。
+
+- **解決方法**：(1) 修正路徑為 "$AV/SKILL.md" "$WS_AV/SKILL.md" "$SB/skills/novel-av-generator/SKILL.md" "$MB/skills/novel-av-generator/SKILL.md"，並新增 WS_AV=/home/openclaw/.openclaw/workspace/.openclaw/skills/novel-av-generator；(2) 補建 workspace av 副本（由 installed 版複製）；(3) bash -n 語法檢查通過 + 實跑 sync_skill_copies.sh 驗證四處 md5 唯一數 = 1。
+
+- **教訓**：腳本入面嘅路徑要 ls 過確認存在先算數，唔好靠肉眼睇 .. 睇落合理；cp >/dev/null 2>&1 會將路徑錯誤變成靜默失敗 —— 同步類腳本至少要目標存在性檢查。四處唯一性檢查要逐個 skill 分開數（今次就係淨查咗 standards 漏咗 av）。

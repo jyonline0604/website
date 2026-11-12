@@ -55,13 +55,23 @@ echo -n "  hooks: "; ls .git/hooks/pre-commit .git/hooks/pre-push 2>/dev/null | 
 echo -n "  敏感檔命中: "; git status --short 2>/dev/null | grep -cE "openclaw.json|\.backup-pass|api_key|github_pat|sk-" || true
 echo -n "  章節檔案數: "; ls chapter-*.html 2>/dev/null | wc -l
 
-echo "=== 8. Skill 副本唯一性 ==="
-SK=/home/openclaw/.openclaw/skills/novel-site-standards/SKILL.md
-for f in "$SK" "$WS/.openclaw/skills/novel-site-standards/SKILL.md" /home/openclaw/Second-brain/skills/novel-site-standards/SKILL.md /home/openclaw/Max-backup/skills/novel-site-standards/SKILL.md; do
-  [ -f "$f" ] && printf "  %s %s\n" "$(md5sum "$f" | awk '{print $1}')" "$f"
-done
-echo "  唯一 md5 數: $(md5sum "$SK" "$WS/.openclaw/skills/novel-site-standards/SKILL.md" /home/openclaw/Second-brain/skills/novel-site-standards/SKILL.md /home/openclaw/Max-backup/skills/novel-site-standards/SKILL.md 2>/dev/null | awk '{print $1}' | sort -u | wc -l)"
-
+echo "=== 8. Skill 副本唯一性（每個 skill 分開數）==="
+check_skill() {
+  local skill=$1
+  local paths=(/home/openclaw/.openclaw/skills/$skill/SKILL.md "$WS/.openclaw/skills/$skill/SKILL.md" /home/openclaw/Second-brain/skills/$skill/SKILL.md /home/openclaw/Max-backup/skills/$skill/SKILL.md)
+  local f
+  for f in "${paths[@]}"; do
+    if [ -f "$f" ]; then printf "  %s %s\n" "$(md5sum "$f" | awk '{print $1}')" "$f"; else printf "  MISSING %s\n" "$f"; fi
+  done
+  local uniq
+  uniq=$(for f in "${paths[@]}"; do [ -f "$f" ] && md5sum "$f" | awk '{print $1}'; done | sort -u | wc -l)
+  local found
+  found=$(for f in "${paths[@]}"; do [ -f "$f" ] && echo 1; done | wc -l)
+  echo "  → $skill: 存在 $found/4 處 | 唯一 md5 數 $uniq（期望 4 處 & 唯一數=1）"
+  if [ "$found" -ne 4 ] || [ "$uniq" -ne 1 ]; then echo "  ⚠️ $skill 副本缺失或漂移！"; fi
+}
+check_skill novel-site-standards
+check_skill novel-av-generator
 echo "=== 9. Dropbox state + token 新鮮度 ==="
 ls "$WS"/.dropbox-sync/volume*_state.json 2>/dev/null | sed 's/^/  /'
 TOK="$WS/.token-store/dropbox-token.txt"

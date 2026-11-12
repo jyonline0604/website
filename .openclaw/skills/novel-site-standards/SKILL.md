@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.178
+version: 2.9.179
 ---
 
 >
@@ -3475,3 +3475,27 @@ rebuild_job "中午簡報 12:55"
 - **自動 rerun 一定要有護欄，唔可以無腦重跑**：只 rerun `head_sha == 現時 origin/main HEAD` 嘅失敗 run（避免部署舊內容令網站章節倒退）＋ 線上章節數 < 本地先 rerun ＋ 每個 run 最多 2 次 ＋ always exit 0（唔好令 cron 報錯）。
 - **「部署失敗」唔等於「網站壞咗」**：GitHub 側事故期間線上照舊正常，唔好因為 email alert 就亂改網站內容；先睇 job log 同 status.github.com 判定係邊邊責任。
 - **一個 duplicate log entry 會令成個 config 讀取中斷**：11-01 logrotate 事故同源 —— 唔止影響嗰個檔案，所有 log 都不輪轉，要當 P1 睇。
+
+---
+
+## [2026-11-12] 更新 (v2.9.179) - Volume 7 同步 log 檔名寫錯（guardian 模板 + 中午/傍晚簡報 job message）
+
+### 問題描述
+- `scripts/cron-guardian.sh` 第 140、182 行（guardian 內置嘅「中午簡報 / 傍晚簡報」重建模板）寫住要 tail **`dropbox-volume7-daily-sync.log`**
+- 但 crontab 真正嘅 redirect 目標係 **`logs/dropbox-volume7-sync.log`**（`dropbox-volume7-daily-sync.log` 係**腳本名**，唔係 log 名）
+- 結果：中午簡報 12:55 / 傍晚簡報 17:55 兩個 job 每次都 `tail` 一個**從來冇存在過**嘅檔 → 讀到 V7 同步狀態嘅步驟永遠失敗（`tail: cannot open ... No such file or directory`），兩個簡報實際上**睇唔到 V7 同步結果**
+- 同一個錯名亦出現喺兩條 cron job 嘅 payload message（`66957fcc` 中午簡報、`f8b447b6` 傍晚簡報）—— 就算手改 template，job 自己嘅 message 仲係錯
+
+### 根因
+- 2026-10-22 建立 V7 排程時，**腳本檔名**（`dropbox-volume7-daily-sync.sh`）同 **log 檔名**（`dropbox-volume7-sync.log`）命名唔一致；模板寫 log 時直接用咗腳本名，冇對過 crontab 實際 redirect 行
+- 錯名一直「冇爆」：V7 同步本身正常（11:30 跑、6 章上限、state 正常），錯嘅只係**簡報嘅觀測路徑**——所以每日健康報告巡檢都見唔到（因為當時冇人 tail 嗰個名）
+
+### 修復
+1. `scripts/cron-guardian.sh`：兩處 `dropbox-volume7-daily-sync.log` → `dropbox-volume7-sync.log`（sed 精準替換，只改 log 名，唔動 `dropbox-volume7-daily-sync.sh` 腳本名同 `DROPBOX_CRON` 模板行）；`bash -n` 語法檢查通過、executable bit 保留（100755）
+2. 兩條 cron job message 用 `openclaw cron edit <id> --message <改後全文>` 精準替換（同樣只換 log 名，其餘 payload 一字唔改）；事後 `openclaw cron list --json` 逐項核對：schedule / model / fallbacks(5) / delivery / timeout / enabled 全部同改動前一致 ✅
+
+### 教訓
+- **寫 log 檔名要對 crontab 實際 redirect 行，唔可以由腳本名推導** —— 兩者唔一定同名（V5/V6 就係腳本 `dropbox-volume{5,6}-daily-sync.sh` → log `dropbox-volume{5,6}-sync.log`）
+- **模板錯名要同 job 自身 message 一齊修**：guardian 只會喺 job「缺失」時先重建，job 存在就唔會覆寫 message → 單改模板唔夠
+- **`tail` 一個唔存在嘅 log 唔會令 job 失敗**（exit code 有 `|| true` 或容錯）→ 簡報會靜靜「睇唔到」某個同步狀態而照樣報綠。巡檢要主動核對「命令入面嘅路徑」真係存在，唔可以只睇 job status=ok
+- 教訓同一類：**觀測路徑失效 = 假綠**（同 2026-11-12 10:50 巡檢工具盲點、21:03 裸 URL CDN 快取兩單同源）

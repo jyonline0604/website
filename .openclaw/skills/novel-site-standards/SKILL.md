@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.174
+version: 2.9.175
 ---
 
 >
@@ -3426,3 +3426,11 @@ rebuild_job "中午簡報 12:55"
 - **真正嘅缺陷**：skill 步驟 2 用相對路徑 `bash scripts/ops-snapshot.sh`（相對 CWD = workspace），但 `workspace/scripts/` 冇呢個檔 → 步驟行唔通；而 skill 內嗰版內容較舊（冇三倉 git 狀態、冇 skill 四處 md5 唯一數、冇 fallback 層數、冇章節數、冇 system cron 行數）。
 - **修復**：將兩版合併做一份 **canonical** `workspace/scripts/ops-snapshot.sh`（10 個段落：時間／gateway uptime + stability 記錄／網站 HTTP／cron errs + fallback 層數 + lastRun／近 30 分鐘 provider status／MEMORY.md + memory 目錄／三倉 git + hooks + 敏感檔 + 章節數／skill 四處 md5 唯一數／Dropbox state + token 新鮮度／system cron 行數），並用 `skill_workshop write_file` 寫入 learned skill 令兩邊 **md5 一致**；skill 步驟 2 同步驟 6 改成絕對路徑 `bash /home/openclaw/.openclaw/workspace/scripts/ops-snapshot.sh`。實跑通過（8 job errs=0、重複 0、HTTP 200、三倉 0/0、skill md5 唯一數 1）。
 - **教訓**：搵檔案唔好靠 `find -maxdepth` 估深度（用 `find <dir> -name <file>` 唔設 maxdepth 或直接 ls）；SKILL.md 內寫嘅相對路徑一定要核實 CWD 下真係存在，唔好假設「script 唔存在」。
+
+---
+
+## [2026-11-12 08:15] 更新 (v2.9.175) — fallback 必須帶 @profile 綁定，唔可以淨係寫 provider/model
+- **症狀**：早上簡報 08:15 job error（errs=1、deliveryStatus=unknown、完全冇送出）：`Automation candidate is incompatible with its recorded inference account and route. The selected model uses a different provider from this job's stored account.`
+- **根本原因**：2026-11-11 改 guardian 重建模板時，`scripts/cron-guardian.sh` 嘅 `FALLBACKS=` 被改成**未綁 account** 嘅 openrouter free 鏈（`openrouter/...:free`），7 個 agentTurn job 嘅 `payload.fallbacks` 全部被洗掉 `@profile`；fallback 一旦由 minimax 切去 openrouter 就係跨 provider → runtime 拒絕採用另一個 account → hard-fail（2026-11-10 已踩過同一個坑）。modelPolicy allow 清單一直有綁定變體（`@openrouter:default`），只係 job payload 同模板冇用。
+- **解決方法**：(1) `openclaw cron edit <id> --fallbacks <5 條帶 @openrouter:default 嘅鏈> --model minimax/MiniMax-M3.1-Flash@minimax:cn` 重綁全部 agentTurn job，`openclaw cron list --json` 驗證全部 fb_bound=True；(2) `scripts/cron-guardian.sh` 嘅 `FALLBACKS=` 同步加回 `@openrouter:default` 綁定（唔改模板，guardian 重建時會帶返 bug），`bash -n` 語法檢查通過；(3) 實跑 `python3 scripts/check_openclaw_update.py` 刷新停更嘅 `openclaw-version.json`（current 2026.11.1 → 2026.11.3），修好 digest 誤報「有更新可用」。
+- **新增教訓**：(a) fallback 值一定要帶 `@profile` 綁定；(b) 改 guardian 重建模板要連 job `payload.fallbacks` 實際值一齊驗，唔可以只睇 allow 清單有綁定變體就當冇事；(c) 版本顯示唔可以淨係信 `openclaw-version.json`，要同 `openclaw --version` + `npm view openclaw version` 對照（2026-11-08 同一教訓復發）。

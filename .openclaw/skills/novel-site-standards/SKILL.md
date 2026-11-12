@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.176
+version: 2.9.177
 ---
 
 >
@@ -3446,3 +3446,12 @@ rebuild_job "中午簡報 12:55"
 - **解決方法**：(1) 修正路徑為 "$AV/SKILL.md" "$WS_AV/SKILL.md" "$SB/skills/novel-av-generator/SKILL.md" "$MB/skills/novel-av-generator/SKILL.md"，並新增 WS_AV=/home/openclaw/.openclaw/workspace/.openclaw/skills/novel-av-generator；(2) 補建 workspace av 副本（由 installed 版複製）；(3) bash -n 語法檢查通過 + 實跑 sync_skill_copies.sh 驗證四處 md5 唯一數 = 1。
 
 - **教訓**：腳本入面嘅路徑要 ls 過確認存在先算數，唔好靠肉眼睇 .. 睇落合理；cp >/dev/null 2>&1 會將路徑錯誤變成靜默失敗 —— 同步類腳本至少要目標存在性檢查。四處唯一性檢查要逐個 skill 分開數（今次就係淨查咗 standards 漏咗 av）。
+
+---
+
+## [2026-11-12 10:50] 更新 (v2.9.177) — ops-snapshot.sh 第 8 段改為逐個 skill 檢查四處 md5（原本只查 standards，令 av 漂移長期無人察覺）
+- **症狀**：v2.9.176 修好 `novel-av-generator` 四處副本之後，追查「點解 av 副本會缺失咁耐先有人察覺」—— 發現巡檢工具本身有盲點。
+- **根本原因**：`scripts/ops-snapshot.sh` 第 8 段「Skill 副本唯一性」**只硬編碼 `novel-site-standards` 一個 skill**（`SK=...novel-site-standards/SKILL.md` + 3 個固定路徑），而心跳清單 `docs/heartbeat-checklist.md` 步驟 4 要求查**兩個** skill（`novel-site-standards` 同 `novel-av-generator`）。即係話清單要求嘅嘢，工具做唔到 —— 每次心跳睇到 standards 唯一數 = 1 就當步驟 4 完成咗，`novel-av-generator` 少咗 workspace 副本（實際只有 3/4 處）**長期無人察覺**，nightly 同步又因為路徑 bug 靜默失敗，兩者疊加就冇人發現。
+- **解決方法**：重寫 `scripts/ops-snapshot.sh` 第 8 段 → 新增 `check_skill()` 函式，逐個 skill（`novel-site-standards` 同 `novel-av-generator`）獨立列出四處 md5、計算「存在 N/4 處」同「唯一 md5 數」，任何一個唔滿足（存在 ≠ 4 或唯一數 ≠ 1）就印 `⚠️ <skill> 副本缺失或漂移！`；缺失檔案會明示 `MISSING <path>`（原本只 `md5sum` 存在嘅檔，缺失會被靜默略過）。實跑結果：兩個 skill 都係 **4/4 處、唯一 md5 數 1** ✅。
+- **同步**：已用 `skill_workshop write_file` 寫入 learned skill `openclaw-selfheal-ops` 嘅 `scripts/ops-snapshot.sh`，兩邊 md5 一致 = `6b4da253ad395be07c8f19a3b2b089d4`。
+- **教訓**：**巡檢清單要求同巡檢工具能力要對齊** —— 清單寫咗要查兩個 skill，但工具只查一個，就等於個一項長期失效；寫清單時要同時確認工具真的做到（否則就係「假綠」）。另外，檢查工具對「檔案缺失」要顯式標示，唔可以靠 `md5sum` 存在檔靜默略過 —— 咁樣會令「少咗一份」睇落同「全部一致」一樣。

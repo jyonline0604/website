@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.177
+version: 2.9.178
 ---
 
 >
@@ -3455,3 +3455,23 @@ rebuild_job "中午簡報 12:55"
 - **解決方法**：重寫 `scripts/ops-snapshot.sh` 第 8 段 → 新增 `check_skill()` 函式，逐個 skill（`novel-site-standards` 同 `novel-av-generator`）獨立列出四處 md5、計算「存在 N/4 處」同「唯一 md5 數」，任何一個唔滿足（存在 ≠ 4 或唯一數 ≠ 1）就印 `⚠️ <skill> 副本缺失或漂移！`；缺失檔案會明示 `MISSING <path>`（原本只 `md5sum` 存在嘅檔，缺失會被靜默略過）。實跑結果：兩個 skill 都係 **4/4 處、唯一 md5 數 1** ✅。
 - **同步**：已用 `skill_workshop write_file` 寫入 learned skill `openclaw-selfheal-ops` 嘅 `scripts/ops-snapshot.sh`，兩邊 md5 一致 = `6b4da253ad395be07c8f19a3b2b089d4`。
 - **教訓**：**巡檢清單要求同巡檢工具能力要對齊** —— 清單寫咗要查兩個 skill，但工具只查一個，就等於個一項長期失效；寫清單時要同時確認工具真的做到（否則就係「假綠」）。另外，檢查工具對「檔案缺失」要顯式標示，唔可以靠 `md5sum` 存在檔靜默略過 —— 咁樣會令「少咗一份」睇落同「全部一致」一樣。
+
+---
+
+## [2026-11-12] 更新 (v2.9.178) - GitHub Pages build 失敗（GitHub 側事故）+ artifact 瘦身 + 失敗自動 rerun
+
+### 修復內容
+- **症狀**：2026-11-12 早上收到 email alert「[jyonline0604/website] Run failed: pages build and deployment - main (8b880a7)」。run #18536（id 43095077027，2026-11-11T20:17:18Z）job 130781703711 死喺 Step 3「Upload artifact」，build 階段跑咗 10 分 39 秒。
+- **真正根因（唔關 repo 事）**：tarball 其實成功建立（6258 個檔案全列出），係 upload 去 GitHub artifact API 時 GitHub 回咗 **HTML 錯誤頁而唔係 JSON** → `Failed to CreateArtifact: Failed to make request after 5 attempts: Unexpected token '<', "<!DOCTYPE "... is not valid JSON`。GitHub 官方 status 同期有 critical 事故「Impact across multiple GitHub products including Actions, Pages, and Copilot products」20:48→21:21 UTC ＋「Incident with Webhooks」20:22→20:26，同時間窗完全對得上。另外 #18437（11-10）、#18393（11-07）兩次死喺 deploy job「Timeout reached, aborting!」（syncing_files 階段），同屬 GitHub 側 deploy timeout。
+- **線上實況無受影響**：kofhk.com HTTP 200、worker `/api/status` → chapters 1872、線上 chapters-data.json 正常、chapter-1 / chapter-1000 / chapter-1872 / sitemap.xml 全部可讀；事故後所有 pages run 全綠。
+- **加固 1（artifact 瘦身）**：repo 有兩坨**唔係網站內容**嘅目錄被 track 住 → 每次 Pages build 都要 upload：`graphify-out/`（2284 檔 28.1 MB）＋ `.dropbox-sync/downloaded/`（1372 檔 14.9 MB）。已 `git rm -r --cached`（**本地檔案保留**）＋ .gitignore 加規則（防止其他 script 嘅 `git add -A` 加返）→ 追蹤檔案 6230 → 2574、artifact 102.3 MB → 約 59 MB，直接減少 upload 失敗同 deploy timeout 機會。已確認網站 HTML 無引用呢兩個目錄（grep 全站 HTML = 0）。
+- **加固 2（失敗自動 rerun）**：新增 `scripts/pages_deploy_recovery.py` + crontab 每小時 :25 自動執行 —— 偵測到 Pages build 失敗就自動 `POST /actions/runs/<id>/rerun`。
+- **驗證**：commit `7c01a946321ab957e33c2c1f11ee05ab415ab0e2` 已 push（local main == origin/main）；新 build **#18564**（同一 sha，瘦身後）**success** ✅；復原腳本已喺 origin/main（raw.githubusercontent 實讀確認 5 項守欄齊全）；復原腳本實跑一次 → 正確辨識 #18536 並按護欄「唔 rerun」。
+
+### 教訓
+- **Pages workflow 係 GitHub 自動生成（`path=dynamic/pages/pages-build-deployment`）**：唔喺 repo 入面所以根本改唔到，只能靠 API rerun。而且 `GET /actions/workflows/<name>/runs` 對佢會回 **404**（因為佢唔係檔案式 workflow），要改用通用 `GET /actions/runs?per_page=N` 再按 `name == "pages build and deployment"` 篩選 —— 呢個 API 端點差異係自己第一次寫腳本時踩到（log 顯示首次實跑 404，修正後正常）。
+- **job log 要用 basic auth 先攞到**：`curl -u "x-access-token:PAT"`（用 Bearer 會 401 Bad credentials），係診斷 GitHub Actions 失敗嘅前提。
+- **artifact 瘦身係防禦 GitHub 側 timeout 嘅實質手段**：6230 檔 / 102 MB → 2574 檔 / 59 MB，upload 同 syncing_files 都快好多。追蹤嘅嘢唔等於網站要公開嘅嘢 —— 開發快取（graphify-out）同 Dropbox 下載快取（.dropbox-sync/downloaded）都唔應該入 Pages artifact。
+- **自動 rerun 一定要有護欄，唔可以無腦重跑**：只 rerun `head_sha == 現時 origin/main HEAD` 嘅失敗 run（避免部署舊內容令網站章節倒退）＋ 線上章節數 < 本地先 rerun ＋ 每個 run 最多 2 次 ＋ always exit 0（唔好令 cron 報錯）。
+- **「部署失敗」唔等於「網站壞咗」**：GitHub 側事故期間線上照舊正常，唔好因為 email alert 就亂改網站內容；先睇 job log 同 status.github.com 判定係邊邊責任。
+- **一個 duplicate log entry 會令成個 config 讀取中斷**：11-01 logrotate 事故同源 —— 唔止影響嗰個檔案，所有 log 都不輪轉，要當 P1 睇。

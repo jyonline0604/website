@@ -23,10 +23,14 @@ export LC_ALL=C.UTF-8
 WORKSPACE="/home/openclaw/.openclaw/workspace"
 LOG="$WORKSPACE/logs/cron-guardian.log"
 TELEGRAM_TO="5344443732"
+# 2026-11-12 修正：每條 fallback 必須綁同 provider 配對嘅 account（@openrouter:default），
+# 否則 fallback 切去 openrouter 會觸發「Automation candidate is incompatible with its recorded
+# inference account and route」hard-fail（2026-11-12 08:15 早上簡報就係咁死咗，errs=1、delivery=unknown）。
+# 教訓：fallback 值一定要帶 @profile 綁定，唔可以淨係寫 provider/model。
 # 2026-11-11 修正：原本呢度寫 --fallbacks \"minimax/MiniMax-M3.1-Flash@minimax:cn\"（自我指向 = 等於冇 fallback），
 # 令 12:55 中午簡報喺 429 限流時重試 9 次後放棄、靜靜冇送達。
 # 而家改用 agents.defaults.model.fallbacks 同一條鏈（全部 openrouter free、Auth: yes、喺 modelPolicy allow 清單入面）。
-FALLBACKS="openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,openrouter/cohere/north-mini-code:free,openrouter/nvidia/nemotron-3-ultra-550b-a55b:free,openrouter/poolside/laguna-s-2.1:free,openrouter/recursive/flint-v1.0:free"
+FALLBACKS="openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default,openrouter/cohere/north-mini-code:free@openrouter:default,openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/poolside/laguna-s-2.1:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default"
 
 mkdir -p "$WORKSPACE/logs"
 

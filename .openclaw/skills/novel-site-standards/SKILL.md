@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.180
+version: 2.9.181
 ---
 
 >
@@ -3508,3 +3508,10 @@ rebuild_job "中午簡報 12:55"
 - **解決方法**：(1) 新建 `scripts/health_report.sh` —— 單一入口，一次過做齊：① 現況快照（直接叫 `scripts/ops-snapshot.sh`）② 自動修復（三倉未推送 commit → pull --rebase + push；`DREAMS.md` → commit + push（唔係刪）；untracked 暫存檔 `*_output.txt` / `*.tmp` / `cron_output.txt` → rm）③ 判定（輸出 `[LOOP_STATUS: OK|WARN|FAIL]` 同 `[LOOP_DAILY: ...]`，並列出 consecutiveErrors > 0 嘅 job）。實跑 rc=0、68 行輸出、判定正確（HTTP=200 / disk=16% / mem 3398M/7172M / cron_errs=0 / token_age=92min）。(2) `openclaw cron edit a6db95e0 --message <新訊息>` —— 新 message 只叫 agent 做**一次** exec：`exec({command: "bash /home/openclaw/.openclaw/workspace/scripts/health_report.sh"})`，之後只負責整理輸出同交付。(3) `scripts/cron-guardian.sh` 模板同步改（重建時唔會還原舊 message），並驗證模板抽出嘅 message 與 live job **byte-identical（1070 bytes）**、無反引號／`$(`／`EOF` 危險字元、`bash -n` 通過。
 - **驗證**：`cron edit` 後逐項比對 payload —— `model` / `fallbacks`（5 層，**全部帶 `@openrouter:default` 綁定**）/ `inferenceBinding` / `timeoutSeconds` / `toolsAllow` / `delivery` / `schedule` / `agentId` / `sessionTarget` / `enabled` / `name` / `description` **13 項全部 SAME**，只有 `message` 改變（避免重演 2026-11-12 08:15 嘅 fallback 綁定被洗掉事故）。
 - **教訓**：(a) **靠 prompt 文字警告模型唔會聽 —— 要用結構減少犯錯機會**；同一個「唔好寫 tools.exec」警告喺多個 job message 存在咗仍然每日被犯 7 次。(b) cron job message 越簡單、code mode 呼叫越少，就越少撞 ReferenceError 同 429（429 一等就等 90 秒，直接拖慢個 run）。(c) 改 cron job message 前後**必須逐項 diff payload**（尤其 fallback 嘅 `@profile` 綁定同 `inferenceBinding`），唔可以只睇 `cron list` 一眼就算。(d) 改 live job 之後**同步改 guardian 模板**，否則下次重建就會還原；並用「由模板抽出 message 同 live job 比對」嚟驗證兩邊一致。
+
+## [2026-11-13 19:30] 更新 (v2.9.181) — 跨 provider fallback 死鏈：5 個 isolated cron job 全日被 billing 打死的根因修復
+- **症狀**：2026-11-13 由 00:04 到 17:55，5 個 isolated agentTurn job（早上簡報 08:15、Audio Sync 10:00、Version Check 11:00、中午簡報 12:55、傍晚簡報 17:55）全部 consecutiveErrors=1、lastRunStatus=error，三個時段嘅簡報全部失投；job error 訊息係 `Automation candidate is incompatible with its recorded inference account and route`（睇落似 account 綁錯，實際係**每一條 fallback 都被拒絕**）。
+- **根本原因**：① MiniMax API 全日回 **402 `insufficient_balance_error`**（餘額耗盡，journal 76 次 402、profile `minimax:cn`），primary 一死 runtime 就轉 fallback；② 但 7 個 job 每個都記錄咗 `inferenceBinding.provider=minimax`，runtime `assertCandidate()` 一比較 `provider !== binding.provider` 就 throw → 5 條 openrouter fallback **全部被逐一拒絕**，所以「有 fallback」實際等於冇 fallback；③ 同一時間 `openrouter/poolside/laguna-s-2.1:free` 已被 OpenRouter 下架（HTTP 404），鏈內有死模型。
+- **解決方法**：① 7 個 isolated agentTurn job 改用 OpenRouter free primary（`openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default`）+ 同 provider 3 層 fallback（ultra-550b → north-mini-code → flint），每個 job 用 `cron edit` **帶齊** model / fallbacks / timeout-seconds / message / tools（漏帶會被重設成預設值）；② 由 6 個位清走退役嘅 `poolside/laguna-s-2.1:free`（defaults.fallbacks / 兩份 modelPolicy.allow / defaults.models / job payload.fallbacks / guardian 模板）；③ `scripts/cron_model_guard.py` 改成喺**同一 provider 內**修鏈 + 去掉自我指向（原本 fallback 修復分支會把 primary 重綁返 minimax，令死鏈復活）；④ `scripts/cron-guardian.sh` 模板同步（`--model` × 6 + `FALLBACKS`）。
+- **驗證**：Version Check（19:23）、Audio Sync（19:26）、傍晚簡報（19:29）三個 job 用新鏈實跑全部 status=ok、provider=openrouter，傍晚簡報正常交付；`bash -n scripts/cron-guardian.sh` 通過；`python3 scripts/cron_model_guard.py` → "OK: every job model override is within policy allow list"；逐 job 核對 message / timeoutSeconds / toolsAllow / fallback 數目冇被覆寫。
+- **教訓**：(a) **「有 fallback」唔等於「fallback 用得著」** —— 2026.11 每個 job 記錄 inference account，跨 provider fallback 會被逐一拒絕；chain 必須同一 provider + 同一 `@profile`，而且唔可以重複 primary。(b) **`cron edit --clear-model` 唔會清走 recorded binding**，改 provider 要靠 `--model <provider/model>@<profile>`。(c) **provider 層故障會喺 job 層放大**（minimax 402 → 5 個 job 全死 + 全日簡報失投）；修鏈要 job payload 同 guardian 模板一齊改（MEMORY 教訓 26）。(d) 巡檢要睇**同一個 provider 內**嘅候選鏈有幾多條、每條係咪真實 call 得到，唔可以只數 fallback 層數。

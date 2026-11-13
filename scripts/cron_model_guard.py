@@ -154,6 +154,47 @@ def main():
                         fixed += 1
                     else:
                         print("WARN: fallback fix failed for %s: %s" % (name, r.stderr.strip()[:200]))
+        # 2026-11-13：自我指向（primary 出現喺自己 fallback 鏈）+ 跨 provider chain 無條件檢查
+        # 背景：a6db95e0 改 message 時把 primary 塞返入自己 fallback 鏈（fb 3->4、SELFREF=True），
+        # 自我指向 = 該棒零回退；而 2026.11 runtime 只接受同 provider 候選，跨 provider 會被直接拒絕。
+        if model and fbs:
+            selfref = [f for f in fbs if f == model]
+            mprov = model.split("/", 1)[0]
+            xprov = sorted(set(f.split("/", 1)[0] for f in fbs if f.split("/", 1)[0] != mprov))
+            if selfref or xprov:
+                print("WARN: %s chain 唔合法 selfref=%s cross_provider=%s" % (name, selfref, xprov))
+                if FIX:
+                    good = dedupe_chain([f for f in fbs if f.split("/", 1)[0] == mprov], model)
+                    good = [f for f in good if f in allow or f.split("@", 1)[0] in allow]
+                    if not good:
+                        pv = chain_model([], allow, primary)
+                        good = [pv] if pv else []
+                    if good:
+                        # cron edit 會重置未指定嘅 payload 欄位 → 帶齊 model/fallbacks/timeout/message/tools；
+                        # message 經臨時檔傳入，確保逐字不變（唔用 shell 引號轉義）。
+                        msgfile = "/tmp/cron_guard_msg_%s.txt" % jid.replace("-", "")
+                        try:
+                            with open(msgfile, "w") as fh:
+                                fh.write(payload.get("message") or "")
+                            args = (CLI + " cron edit %s --model %s --fallbacks %s"
+                                    % (jid, model, ",".join(good)))
+                            to = payload.get("timeoutSeconds")
+                            if to:
+                                args += " --timeout-seconds %s" % to
+                            args += ' --message "$(cat %s)"' % msgfile
+                            if payload.get("toolsAllow"):
+                                args += " --tools %s" % ",".join(payload["toolsAllow"])
+                            r = run(args)
+                        finally:
+                            try:
+                                os.unlink(msgfile)
+                            except OSError:
+                                pass
+                        if r.returncode == 0:
+                            print("FIXED: %s chain -> %s | fallbacks %s" % (name, model, ",".join(good)))
+                            fixed += 1
+                        else:
+                            print("WARN: chain fix failed for %s: %s" % (name, r.stderr.strip()[:200]))
         state = j.get("state") or {}
         ce = state.get("consecutiveErrors") or 0
         if ce >= 3:

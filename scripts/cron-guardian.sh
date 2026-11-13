@@ -208,17 +208,19 @@ EOF
                 --message "$(cat <<'EOF'
 【每日健康報告 22:00】
 
-⚡ 執行方式（2026-11-12 修正）：**只做一次 exec**，跑現成腳本；唔好喺 code mode 入面逐項手寫指令：
-exec({command: "bash /home/openclaw/.openclaw/workspace/scripts/health_report.sh"})
-該腳本已一次過做齊：① 現況快照（網站 HTTP／8 個 cron job errs+fallback 層數+lastRun／三倉 git 未推送+髒檔／MEMORY.md 行數／敏感檔／章節數／兩個 skill 四處 md5 唯一性／Dropbox state+token 新鮮度／system cron 行數）② 自動修復（三倉未推送 commit→push、DREAMS.md→commit+push、untracked 暫存檔→rm）③ 判定（[LOOP_STATUS]／[LOOP_DAILY]）。
+⚡ 執行方式（2026-11-13 修正）：**只做一次 exec**，跑現成腳本嘅 --deliver 模式；佢 stdout 已經係最終報告：
+exec({command: "bash /home/openclaw/.openclaw/workspace/scripts/health_report.sh --deliver"})
+
+📋 你要做的：將上面 exec 嘅 stdout **逐字原樣**交付 Telegram。
+- 唔好重新整理、唔好改寫任何數字、唔好自己加推斷、唔好漏 [LOOP_STATUS] 同 [LOOP_DAILY] 兩行。
+- 腳本已一次過做齊：① 現況快照（網站 HTTP／8 個 cron job errs＋fallback 層數＋lastRun／三倉 git 未推送同髒檔／MEMORY.md 行數／敏感檔／章節數（線上 vs 本地）／兩個 skill 四處 md5 唯一性／Dropbox state＋token 新鮮度／system cron 行數）② 自動修復（三倉未推送 commit→push、DREAMS.md→commit+push、untracked 暫存檔→rm）③ 判定（[LOOP_STATUS]／[LOOP_DAILY]）；詳細快照寫入 logs/health_report-YYYY-MM-DD.log。
+
+⚠️ 2026-11-13 22:00 曾經交咗**假綠**報告（寫「MEMORY.md 1234 行／章節 56／cron 錯誤 0 個」，實際係 513 行／1878 章／errs 2，仲將 [LOOP_STATUS: FAIL] 改成 OK）→ 弱模型會捏造數字。所以**唔好再「整理成健康報告」**，原文照貼就夠。
 
 ⚠️ 絕對唔好寫 tools.exec(...)：code mode 只有直接注入嘅全域，寫成 tools.* 會 ReferenceError，白撞到 LLM idle timeout（2026-11-12 22:00 就係咁由 5 分鐘拖到 21 分鐘）。
-⚠️ 唔好用 cron tool 睇 cron 狀態（isolated session 有 scoping，只顯示自己 agent 嘅 job，會誤判其他 jobs 消失）——腳本第 4 段已用 openclaw cron list --json 攞齊。
-⚠️ 以下係 **system cron（crontab -l）**，唔會出現喺 OpenClaw cron list：記憶備份 08:00/20:00、Volume 5 Dropbox 11:00、財經 10:00/16:00、AQHI 10:00/16:00、自動記憶 23:00 —— 見到佢哋喺 crontab 就係正常，**唔係消失**！
+⚠️ 唔好用 cron tool 睇 cron 狀態（isolated session 有 scoping，會誤判其他 jobs 消失）——腳本第 4 段已用 openclaw cron list --json 攞齊。
+⚠️ 以下係 **system cron（crontab -l）**，唔會出現喺 OpenClaw cron list：記憶備份 08:00/20:00、Volume 5 Dropbox 11:00、財經 10/16、AQHI 10/16、自動記憶 23:00 —— 見到佢哋喺 crontab 就係正常，**唔係消失**！
 - 2026-11-01 起 system cron 簡報（send-briefing.sh）已退休，天氣 digest 併入早上/傍晚簡報；**唔好再報告「雙軌簡報」問題**。
-
-📋 你要做的：讀上面 exec 嘅輸出 → 整理成健康報告（每個項目 ✅/⚠️ + 列出腳本自動修復咗咩）→ 交付 Telegram。
-結尾一定要保留腳本輸出嘅 [LOOP_STATUS: ...] 同 [LOOP_DAILY: ...] 兩行。
 EOF
 )" 2>>"$LOG" && log "✅ 健康報告已重建" || log "❌ 健康報告重建失敗"
             ;;

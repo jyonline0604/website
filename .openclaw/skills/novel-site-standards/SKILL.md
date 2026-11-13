@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.181
+version: 2.9.182
 ---
 
 >
@@ -3515,3 +3515,10 @@ rebuild_job "中午簡報 12:55"
 - **解決方法**：① 7 個 isolated agentTurn job 改用 OpenRouter free primary（`openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default`）+ 同 provider 3 層 fallback（ultra-550b → north-mini-code → flint），每個 job 用 `cron edit` **帶齊** model / fallbacks / timeout-seconds / message / tools（漏帶會被重設成預設值）；② 由 6 個位清走退役嘅 `poolside/laguna-s-2.1:free`（defaults.fallbacks / 兩份 modelPolicy.allow / defaults.models / job payload.fallbacks / guardian 模板）；③ `scripts/cron_model_guard.py` 改成喺**同一 provider 內**修鏈 + 去掉自我指向（原本 fallback 修復分支會把 primary 重綁返 minimax，令死鏈復活）；④ `scripts/cron-guardian.sh` 模板同步（`--model` × 6 + `FALLBACKS`）。
 - **驗證**：Version Check（19:23）、Audio Sync（19:26）、傍晚簡報（19:29）三個 job 用新鏈實跑全部 status=ok、provider=openrouter，傍晚簡報正常交付；`bash -n scripts/cron-guardian.sh` 通過；`python3 scripts/cron_model_guard.py` → "OK: every job model override is within policy allow list"；逐 job 核對 message / timeoutSeconds / toolsAllow / fallback 數目冇被覆寫。
 - **教訓**：(a) **「有 fallback」唔等於「fallback 用得著」** —— 2026.11 每個 job 記錄 inference account，跨 provider fallback 會被逐一拒絕；chain 必須同一 provider + 同一 `@profile`，而且唔可以重複 primary。(b) **`cron edit --clear-model` 唔會清走 recorded binding**，改 provider 要靠 `--model <provider/model>@<profile>`。(c) **provider 層故障會喺 job 層放大**（minimax 402 → 5 個 job 全死 + 全日簡報失投）；修鏈要 job payload 同 guardian 模板一齊改（MEMORY 教訓 26）。(d) 巡檢要睇**同一個 provider 內**嘅候選鏈有幾多條、每條係咪真實 call 得到，唔可以只數 fallback 層數。
+
+## [2026-11-13 23:55] 更新 (v2.9.182) — 22:00 健康報告假綠（模型捏造數字）→ 腳本 --deliver 結構性收口 + a6db95e0 自我指向 fallback 修正
+- **症狀**：2026-11-13 22:00 嘅健康報告 job 交付咗一份**內容全部捏造**嘅報告（Telegram 22:00:31 delivered）：寫「MEMORY.md 1234 行／章節數 56／Cron job 錯誤 0 個／三倉髒檔 0／System cron 15 行」並將 `[LOOP_STATUS: FAIL]` 改成 `[LOOP_STATUS: OK]`。實際值（ops-snapshot 實測）：MEMORY.md **513 行**、章節 **1878**、cron errs **2**、system cron **13** 行、`[LOOP_STATUS: FAIL]`。
+- **根本原因**：舊 job message 要求模型「讀 exec 輸出 → **整理成健康報告** → 交付 Telegram」。該 job 當時跑喺 openrouter `nemotron-3-nano-omni-30b-a3b-reasoning:free`（弱模型），佢冇照抄腳本 stdout 而係自己「整理」出另一組數字 → 弱模型做匯總／改寫就會捏造。健康報告最需要可信，卻最經模型轉述。
+- **解決方法**：① `scripts/health_report.sh` 新增 `--deliver` 模式 —— stdout **只輸出最終報告**，所有數字由腳本自己實測（script 唔做推理），詳細快照另寫入 `logs/health_report-YYYY-MM-DD.log`；② `scripts/cron-guardian.sh` 重建模板嘅 22:00 job message 改成「**只做一次 exec** 跑 `health_report.sh --deliver`，將 stdout **逐字原樣**交付，唔好重新整理／改寫數字／自己加推斷／漏兩行 LOOP_*」；③ job message 明文記低今日案例，防止日後改返做「整理」。④ 同一晚 `a6db95e0` 改 message 時把 primary 塞返入自己 fallback 鏈（fb 3→4、SELFREF=True = 自我指向零回退），已用帶齊 model／fallbacks／timeout-seconds／message／tools 嘅 `cron edit` 重寫並驗證。
+- **驗證**：`health_report.sh --deliver` → rc=0、stdout 20 行且數字全部腳本實測（513 行／1878=1878／errs 3／敏感檔 0／兩個 skill md5=1／6 states／13 行），`[LOOP_STATUS: FAIL]` 原樣保留冇被改成 OK；`bash -n` 通過；7 個 agentTurn job 全部 fb=3、SELFREF=False、同 provider、全部帶 @profile。
+- **教訓**：(a) **報告唔應該經模型轉述** —— 數字要由產生佢嗰個腳本直接交付，模型只做「貼上」唔做「整理」。(b) **改 job payload 時唔好將 primary 塞入自己嘅 fallback 鏈**，改完即場核對 SELFREF／同 provider／@profile。(c) `cron edit` 會重置未指定 payload 欄位 → 一律帶齊 model／fallbacks／timeout-seconds／message／tools 再改，改完逐項核對。

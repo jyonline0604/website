@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.182
+version: 2.9.183
 ---
 
 >
@@ -3522,3 +3522,10 @@ rebuild_job "中午簡報 12:55"
 - **解決方法**：① `scripts/health_report.sh` 新增 `--deliver` 模式 —— stdout **只輸出最終報告**，所有數字由腳本自己實測（script 唔做推理），詳細快照另寫入 `logs/health_report-YYYY-MM-DD.log`；② `scripts/cron-guardian.sh` 重建模板嘅 22:00 job message 改成「**只做一次 exec** 跑 `health_report.sh --deliver`，將 stdout **逐字原樣**交付，唔好重新整理／改寫數字／自己加推斷／漏兩行 LOOP_*」；③ job message 明文記低今日案例，防止日後改返做「整理」。④ 同一晚 `a6db95e0` 改 message 時把 primary 塞返入自己 fallback 鏈（fb 3→4、SELFREF=True = 自我指向零回退），已用帶齊 model／fallbacks／timeout-seconds／message／tools 嘅 `cron edit` 重寫並驗證。
 - **驗證**：`health_report.sh --deliver` → rc=0、stdout 20 行且數字全部腳本實測（513 行／1878=1878／errs 3／敏感檔 0／兩個 skill md5=1／6 states／13 行），`[LOOP_STATUS: FAIL]` 原樣保留冇被改成 OK；`bash -n` 通過；7 個 agentTurn job 全部 fb=3、SELFREF=False、同 provider、全部帶 @profile。
 - **教訓**：(a) **報告唔應該經模型轉述** —— 數字要由產生佢嗰個腳本直接交付，模型只做「貼上」唔做「整理」。(b) **改 job payload 時唔好將 primary 塞入自己嘅 fallback 鏈**，改完即場核對 SELFREF／同 provider／@profile。(c) `cron edit` 會重置未指定 payload 欄位 → 一律帶齊 model／fallbacks／timeout-seconds／message／tools 再改，改完逐項核對。
+
+## [2026-11-14 00:15] 更新 (v2.9.183) — 健康報告 job 改 command payload（報告完全唔經模型）：根治假綠 + 交付 timeout
+- **症狀（兩個層次）**：(a) 2026-11-13 22:00 交付咗**內容全部捏造**嘅報告（Telegram 22:00:31 delivered）：寫「MEMORY.md 1234 行／章節數 56／Cron job 錯誤 0 個／三倉髒檔 0／System cron 15 行」並將 `[LOOP_STATUS: FAIL]` 改成 `[LOOP_STATUS: OK]`；實際值 **513 行／1878 章／errs 2／13 行／FAIL**。(b) 改用 agentTurn + `--deliver` 後 23:43 同 23:52 兩次仍然**完全冇交付**（「⚠️ Tool Call failed」、「LLM request timed out」347 秒），但 `logs/health_report-2026-11-13.log` 顯示腳本一直正常跑（23:54:15 有新 entry、數字正確、FAIL 保留）。
+- **根本原因**：報告**交付仍然要經模型**——舊 message 要求「exec 跑腳本 → 模型整理成健康報告 → 交付」，弱模型捏造；改 --deliver（腳本 stdout 就係最終報告）雖然冇得捏造，但要模型「逐字原樣貼 stdout」，變成**交付依賴模型可用性**：模型慢／timeout 就零交付。只要交付路徑仲有模型，報告就唔可信。
+- **解決方法**：`a6db95e0`（每日健康報告 22:00）由 agentTurn 改成 **command payload**：`--command "bash $WORKSPACE/scripts/health_report.sh --deliver"`，交付 = 腳本 stdout，**全程冇模型**。schedule／delivery（announce telegram 5344443732）／failureAlert（after 2）保留；`cron-guardian.sh` 重建模板同步改用 `--command`，落地前用臨時 job 實測過模板指令。
+- **驗證**：00:08 實跑 status=ok、delivered=True，交付內容係腳本原文（MEMORY.md 522 行／線上章節 1878＝本地 1878／errs 3／敏感檔 0／兩個 skill md5 唯一數 1／三倉未推送 0 髒檔 0），**含 `[LOOP_STATUS: FAIL]` 而冇改成 OK**；反查交付字串：'1234'／'56 '／'LOOP_STATUS: OK' 三者都**唔存在**（22:00 嗰份三者都存在）。
+- **教訓**：(a) **報告唔應該經模型轉述**——數字要由產生佢嗰個腳本直接交付，「叫模型照貼」都係依賴模型。(b) **交付路徑本身要當關鍵故障點**：delivery 依賴弱模型 = 報告可信度依賴弱模型。(c) 重建模板要同 job 現狀一致，並在落地前用臨時 job 實測模板指令。(d) job 卡住（`runningAtMs` 未清）時 `cron run` 會回 "already-running"，清法係 `cron disable` + `cron enable`。

@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.183
+version: 2.9.184
 ---
 
 >
@@ -3529,3 +3529,10 @@ rebuild_job "中午簡報 12:55"
 - **解決方法**：`a6db95e0`（每日健康報告 22:00）由 agentTurn 改成 **command payload**：`--command "bash $WORKSPACE/scripts/health_report.sh --deliver"`，交付 = 腳本 stdout，**全程冇模型**。schedule／delivery（announce telegram 5344443732）／failureAlert（after 2）保留；`cron-guardian.sh` 重建模板同步改用 `--command`，落地前用臨時 job 實測過模板指令。
 - **驗證**：00:08 實跑 status=ok、delivered=True，交付內容係腳本原文（MEMORY.md 522 行／線上章節 1878＝本地 1878／errs 3／敏感檔 0／兩個 skill md5 唯一數 1／三倉未推送 0 髒檔 0），**含 `[LOOP_STATUS: FAIL]` 而冇改成 OK**；反查交付字串：'1234'／'56 '／'LOOP_STATUS: OK' 三者都**唔存在**（22:00 嗰份三者都存在）。
 - **教訓**：(a) **報告唔應該經模型轉述**——數字要由產生佢嗰個腳本直接交付，「叫模型照貼」都係依賴模型。(b) **交付路徑本身要當關鍵故障點**：delivery 依賴弱模型 = 報告可信度依賴弱模型。(c) 重建模板要同 job 現狀一致，並在落地前用臨時 job 實測模板指令。(d) job 卡住（`runningAtMs` 未清）時 `cron run` 會回 "already-running"，清法係 `cron disable` + `cron enable`。
+
+## [2026-11-14] cron job description 過時修正 + guardian 模板補 --description
+- **修復內容**：6 個 cron job（75d65637 / 27d54b55 / 66957fcc / f8b447b6 / 23533480 / a6db95e0）嘅 `description` 仍然寫住舊設計「model: minimax/MiniMax-M3.1-Flash + 3 fallbacks」，實際 payload 已經係 OpenRouter free primary + 同 provider 3 層 fallback；`a6db95e0` 更加已經係 command payload（冇 model）。metadata 同實際配置對唔上會令診斷睇錯方向。
+- **根本原因**：2026-11-13 provider 單一化、2026-11-14 command payload 兩次改動只更新 payload 冇同步 description；`cron-guardian.sh` 重建模板亦冇傳 `--description`，復原路徑會洗走修正。
+- **解決方法**：① `openclaw cron edit <id> --description "..."` 逐個改正 6 個 job；② `scripts/cron-guardian.sh` 6 個 `cron add` 模板全部補 `--description`。
+- **驗證**：先用臨時 job 實測「只改 description」嘅副作用——agentTurn 與 command 兩種 kind 都係 message／model／fallbacks／timeoutSeconds／toolsAllow／argv／binding／delivery／schedule 全部逐字不變（command 唔會被改成 agentTurn），測完即刪；實機 6 個 job 改完用 SQLite 讀 `cron_jobs.job_json` 逐欄比對 11 個關鍵欄位全部不變，只有 description 改變；`bash -n scripts/cron-guardian.sh` 通過。
+- **教訓**：改 metadata 前要先量度副作用（`cron edit` 唔帶齊 payload 會重設未指定欄位）；配置同 metadata 要一齊改；重建模板要包含 description，否則復原會洗走修正。

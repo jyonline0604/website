@@ -5,6 +5,15 @@ Detects and repairs automation model overrides that agents.*.modelPolicy.allow
 would reject. Root cause of the 2026-10-21 outage: guardian only checked
 "job exists + enabled", never the model override, so jobs looked healthy while
 every run was rejected by policy.
+
+2026-11-13 addition — provider-consistency rule:
+OpenClaw 2026.11 records an inference account per job (model@profile) and the
+runtime rejects any fallback candidate whose provider differs from the recorded
+one ("Automation candidate is incompatible with its recorded inference account
+and route"). So a job's primary and its whole fallback chain MUST live in the
+same provider+profile, and the chain must not repeat the primary. This guard
+therefore repairs chains inside one provider instead of resetting the primary to
+agents.defaults.model.primary (which used to silently resurrect a dead chain).
 """
 import json, os, subprocess, sys
 
@@ -48,6 +57,29 @@ def profile_variant(base, allow):
     return None
 
 
+def chain_model(fbs, allow, primary):
+    """揀一個同 fallback 鏈同一 provider+profile 嘅 model（避免跨 provider 死鏈）。"""
+    for f in fbs:
+        base = f.split("@", 1)[0]
+        pv = profile_variant(base, allow)
+        if pv:
+            return pv
+    if primary:
+        return profile_variant(primary, allow) or primary
+    return None
+
+
+def dedupe_chain(fbs, model):
+    """fallback 鏈唔可以重複 primary（自我指向 = 等於冇 fallback）。"""
+    out, seen = [], set()
+    for f in fbs:
+        if f == model or f in seen:
+            continue
+        seen.add(f)
+        out.append(f)
+    return out
+
+
 def main():
     cfg = load_cfg()
     allow = allowed_models(cfg)
@@ -76,17 +108,18 @@ def main():
         if model and model not in allow and base not in allow:
             print("WARN: %s model override %r not in policy allow list" % (name, model))
             if FIX and primary:
-                # 保留原本嘅 @profile 綁定（2026.11 起舊 job 冇 recorded inference account 就會報錯）
-                suffix = ("@" + model.split("@", 1)[1]) if model and "@" in model else ""
-                cand = profile_variant(primary, allow) or (primary + suffix)
+                # 保留原 chain 嘅 provider（2026.11 起跨 provider fallback 會被 runtime 直接拒絕）
+                cand = chain_model(fbs, allow, primary)
+                if not cand:
+                    continue
                 r = run(CLI + " cron edit %s --model %s" % (jid, cand))
                 if r.returncode == 0:
-                    print("FIXED: %s model -> %s" % (name, primary))
+                    print("FIXED: %s model -> %s" % (name, cand))
                     fixed += 1
                 else:
                     print("WARN: model fix failed for %s: %s" % (name, r.stderr.strip()[:200]))
         if model and "@" not in model and primary:
-            pv = profile_variant(primary, allow)
+            pv = chain_model(fbs, allow, primary)
             if pv:
                 print("WARN: %s model override 冇 @profile（2026.11 起需要 recorded inference account）" % name)
                 if FIX:
@@ -107,19 +140,20 @@ def main():
                     if pv:
                         good.append(pv)
                 if not good:
-                    pv = profile_variant(primary, allow) if primary else None
+                    pv = chain_model([], allow, primary)
                     good = [pv] if pv else []
                 if good:
-                    r = run(CLI + " cron edit %s --fallbacks %s" % (jid, ",".join(good)))
+                    # primary 必須同 chain 同一 provider，且唔可以喺 chain 內重複
+                    cand = chain_model(good, allow, primary)
+                    good = dedupe_chain(good, cand)
+                    if not good:
+                        good = [cand]
+                    r = run(CLI + " cron edit %s --model %s --fallbacks %s" % (jid, cand, ",".join(good)))
                     if r.returncode == 0:
-                        print("FIXED: %s fallbacks -> %s" % (name, ",".join(good)))
+                        print("FIXED: %s -> %s | fallbacks %s" % (name, cand, ",".join(good)))
                         fixed += 1
-                        # fallback 編輯會改動 job 記錄嘅 inference account → 即刻重綁 primary
-                        cand = profile_variant(primary, allow) if primary else None
-                        if cand:
-                            run(CLI + " cron edit %s --model %s" % (jid, cand))
                     else:
-                        print("WARN: fallback fix failed for %s" % name)
+                        print("WARN: fallback fix failed for %s: %s" % (name, r.stderr.strip()[:200]))
         state = j.get("state") or {}
         ce = state.get("consecutiveErrors") or 0
         if ce >= 3:

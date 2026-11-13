@@ -30,7 +30,7 @@ TELEGRAM_TO="5344443732"
 # 2026-11-11 修正：原本呢度寫 --fallbacks \"minimax/MiniMax-M3.1-Flash@minimax:cn\"（自我指向 = 等於冇 fallback），
 # 令 12:55 中午簡報喺 429 限流時重試 9 次後放棄、靜靜冇送達。
 # 而家改用 agents.defaults.model.fallbacks 同一條鏈（全部 openrouter free、Auth: yes、喺 modelPolicy allow 清單入面）。
-FALLBACKS="openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default,openrouter/cohere/north-mini-code:free@openrouter:default,openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/poolside/laguna-s-2.1:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default"
+FALLBACKS="openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/cohere/north-mini-code:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default"
 
 mkdir -p "$WORKSPACE/logs"
 
@@ -82,7 +82,7 @@ rebuild_job() {
             openclaw cron add --name "早上簡報 08:15" --cron "15 8 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
                 --fallbacks "$FALLBACKS" \ \
-                --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
+                --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
                 --timeout-seconds 3600 \
                 --message "$(cat <<'EOF'
 【早上簡報 08:15】
@@ -125,7 +125,7 @@ EOF
             openclaw cron add --name "中午簡報 12:55" --cron "55 12 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
                 --fallbacks "$FALLBACKS" \ \
-                --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
+                --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
                 --timeout-seconds 3600 \
                 --message "$(cat <<'EOF'
 【中午簡報 12:55】
@@ -161,7 +161,7 @@ EOF
             openclaw cron add --name "傍晚簡報 17:55 — 日結" --cron "55 17 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
                 --fallbacks "$FALLBACKS" \ \
-                --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
+                --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
                 --timeout-seconds 3600 \
                 --message "$(cat <<'EOF'
 【傍晚簡報 17:55 — 日結】
@@ -203,7 +203,7 @@ EOF
             openclaw cron add --name "每日健康報告 22:00" --cron "0 22 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
                 --fallbacks "$FALLBACKS" \ \
-                --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
+                --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
                 --timeout-seconds 3600 \
                 --message "$(cat <<'EOF'
 【每日健康報告 22:00】
@@ -226,7 +226,7 @@ EOF
             openclaw cron add --name "每日 Audio Sync 10:00" --cron "0 10 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
                 --fallbacks "$FALLBACKS" \
-                --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
+                --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
                 --timeout-seconds 1800 \
                 --message "Run daily audio sync: exec \`cd /home/openclaw/.openclaw/workspace && python3 scripts/audio_sync_pipeline.py\` and report results. ⚠️ 執行方式：code mode 內用 exec({command: ...}) 或 shell 腳本，**唔好寫 tools.exec(...)**（會 ReferenceError）。" \
                 2>>"$LOG" && log "✅ Audio Sync 已重建" || log "❌ Audio Sync 重建失敗"
@@ -235,7 +235,7 @@ EOF
             openclaw cron add --name "OpenClaw Version Check" --cron "0 11 * * *" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
                 --fallbacks "$FALLBACKS" \ \
-                --model "minimax/MiniMax-M3.1-Flash@minimax:cn" \
+                --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
                 --timeout-seconds 600 \
                 --message "請執行 /home/openclaw/.openclaw/workspace/scripts/check-openclaw-version.sh 並報告結果 ⚠️ 執行方式：code mode 內用 exec({command: ...}) 或 shell 腳本，**唔好寫 tools.exec(...)**（會 ReferenceError）。" \
                 2>>"$LOG" && log "✅ Version Check 已重建" || log "❌ Version Check 重建失敗"

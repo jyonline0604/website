@@ -80,6 +80,7 @@ rebuild_job() {
     case "$name" in
         "早上簡報 08:15")
             openclaw cron add --name "早上簡報 08:15" --cron "15 8 * * *" --tz "Asia/Hong_Kong" \
+                --description "model: openrouter free primary + 3 層同 provider fallback（2026-11-13 由 minimax 改 OpenRouter；2026-11-14 修 description 過時：實際已非 minimax primary）" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
                 --fallbacks "$FALLBACKS" \ \
                 --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
@@ -123,6 +124,7 @@ EOF
             ;;
         "中午簡報 12:55")
             openclaw cron add --name "中午簡報 12:55" --cron "55 12 * * *" --tz "Asia/Hong_Kong" \
+                --description "model: openrouter free primary + 3 層同 provider fallback（2026-11-13 provider 單一化；timeout 3600s 為 2026-10-22 修 12:55 超時）" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
                 --fallbacks "$FALLBACKS" \ \
                 --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
@@ -159,6 +161,7 @@ EOF
             ;;
         "傍晚簡報 17:55 — 日結")
             openclaw cron add --name "傍晚簡報 17:55 — 日結" --cron "55 17 * * *" --tz "Asia/Hong_Kong" \
+                --description "model: openrouter free primary + 3 層同 provider fallback（2026-11-13 provider 單一化）" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
                 --fallbacks "$FALLBACKS" \ \
                 --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
@@ -208,6 +211,7 @@ EOF
             # 2026-11-13 23:43 同 23:52 兩次都係模型 timeout → 完全冇交付。
             # 而家直接用 command payload：腳本 stdout 就係交付內容，冇模型就冇捏造、冇 timeout。
             openclaw cron add --name "每日健康報告 22:00" --cron "0 22 * * *" --tz "Asia/Hong_Kong" \
+                --description "command payload：腳本 stdout 直接交付，完全唔經模型（2026-11-14 修正：舊 agentTurn 設計會捏造數字 + 交付 timeout；舊 description 錯寫 minimax primary）" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
                 --command "bash $WORKSPACE/scripts/health_report.sh --deliver" \
                 --timeout-seconds 3600 \
@@ -215,6 +219,7 @@ EOF
             ;;
         "每日 Audio Sync 10:00")
             openclaw cron add --name "每日 Audio Sync 10:00" --cron "0 10 * * *" --tz "Asia/Hong_Kong" \
+                --description "model: openrouter free primary + 3 層同 provider fallback（2026-11-13 provider 單一化；timeout 1800s）" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
                 --fallbacks "$FALLBACKS" \
                 --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
@@ -224,6 +229,7 @@ EOF
             ;;
         "OpenClaw Version Check")
             openclaw cron add --name "OpenClaw Version Check" --cron "0 11 * * *" \
+                --description "model: openrouter free primary（nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default）+ 3 層同 provider fallback（2026-11-13 provider 單一化：fallback 必須同 primary 同一 provider+profile，否則 runtime 拒收）" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
                 --fallbacks "$FALLBACKS" \ \
                 --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \

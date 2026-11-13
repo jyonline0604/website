@@ -200,29 +200,18 @@ EOF
 )" 2>>"$LOG" && log "✅ 傍晚簡報已重建" || log "❌ 傍晚簡報重建失敗"
             ;;
         "每日健康報告 22:00")
+            # 2026-11-14 修正：呢個 job 改成 **command payload**（報告完全唔經模型）。
+            # 背景：22:00 舊設計係「exec 跑腳本 → 模型整理成健康報告 → 交付」，
+            # 弱模型（openrouter nemotron）會捏造數字（寫 MEMORY.md 1234 行／章節 56／
+            # cron 錯誤 0 個／[LOOP_STATUS: OK]，實際 513 行／1878 章／errs 2／FAIL）→ 假綠。
+            # 改成 agentTurn + --deliver 都唔夠：交付仍然要模型逐字貼 stdout，
+            # 2026-11-13 23:43 同 23:52 兩次都係模型 timeout → 完全冇交付。
+            # 而家直接用 command payload：腳本 stdout 就係交付內容，冇模型就冇捏造、冇 timeout。
             openclaw cron add --name "每日健康報告 22:00" --cron "0 22 * * *" --tz "Asia/Hong_Kong" \
                 --agent main --session isolated --announce --channel telegram --to "$TELEGRAM_TO" \
-                --fallbacks "$FALLBACKS" \ \
-                --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
+                --command "bash $WORKSPACE/scripts/health_report.sh --deliver" \
                 --timeout-seconds 3600 \
-                --message "$(cat <<'EOF'
-【每日健康報告 22:00】
-
-⚡ 執行方式（2026-11-13 修正）：**只做一次 exec**，跑現成腳本嘅 --deliver 模式；佢 stdout 已經係最終報告：
-exec({command: "bash /home/openclaw/.openclaw/workspace/scripts/health_report.sh --deliver"})
-
-📋 你要做的：將上面 exec 嘅 stdout **逐字原樣**交付 Telegram。
-- 唔好重新整理、唔好改寫任何數字、唔好自己加推斷、唔好漏 [LOOP_STATUS] 同 [LOOP_DAILY] 兩行。
-- 腳本已一次過做齊：① 現況快照（網站 HTTP／8 個 cron job errs＋fallback 層數＋lastRun／三倉 git 未推送同髒檔／MEMORY.md 行數／敏感檔／章節數（線上 vs 本地）／兩個 skill 四處 md5 唯一性／Dropbox state＋token 新鮮度／system cron 行數）② 自動修復（三倉未推送 commit→push、DREAMS.md→commit+push、untracked 暫存檔→rm）③ 判定（[LOOP_STATUS]／[LOOP_DAILY]）；詳細快照寫入 logs/health_report-YYYY-MM-DD.log。
-
-⚠️ 2026-11-13 22:00 曾經交咗**假綠**報告（寫「MEMORY.md 1234 行／章節 56／cron 錯誤 0 個」，實際係 513 行／1878 章／errs 2，仲將 [LOOP_STATUS: FAIL] 改成 OK）→ 弱模型會捏造數字。所以**唔好再「整理成健康報告」**，原文照貼就夠。
-
-⚠️ 絕對唔好寫 tools.exec(...)：code mode 只有直接注入嘅全域，寫成 tools.* 會 ReferenceError，白撞到 LLM idle timeout（2026-11-12 22:00 就係咁由 5 分鐘拖到 21 分鐘）。
-⚠️ 唔好用 cron tool 睇 cron 狀態（isolated session 有 scoping，會誤判其他 jobs 消失）——腳本第 4 段已用 openclaw cron list --json 攞齊。
-⚠️ 以下係 **system cron（crontab -l）**，唔會出現喺 OpenClaw cron list：記憶備份 08:00/20:00、Volume 5 Dropbox 11:00、財經 10/16、AQHI 10/16、自動記憶 23:00 —— 見到佢哋喺 crontab 就係正常，**唔係消失**！
-- 2026-11-01 起 system cron 簡報（send-briefing.sh）已退休，天氣 digest 併入早上/傍晚簡報；**唔好再報告「雙軌簡報」問題**。
-EOF
-)" 2>>"$LOG" && log "✅ 健康報告已重建" || log "❌ 健康報告重建失敗"
+                2>>"$LOG" && log "✅ 健康報告已重建" || log "❌ 健康報告重建失敗"
             ;;
         "每日 Audio Sync 10:00")
             openclaw cron add --name "每日 Audio Sync 10:00" --cron "0 10 * * *" --tz "Asia/Hong_Kong" \

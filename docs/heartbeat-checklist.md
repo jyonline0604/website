@@ -16,6 +16,11 @@
    - 若髒檔只有 `DREAMS.md`（03:00 Memory Dreaming job 產出，唔會自己 commit）：先 `git add DREAMS.md && git commit`，再 `git pull --rebase origin main`，最後 `git push` —— 直接 push 會撞 CI 每日新聞 commit 造成 non-fast-forward。
 4. Skill 副本唯一性：`novel-site-standards` 同 `novel-av-generator` 四處 md5 唯一數 = 1（睇 md5，唔係淨睇版本號）。
 
+## ⏱️ 心跳回合必須短（2026-11-14 教訓）
+- heartbeat-main 有 **600 秒硬 timeout**。2026-11-14 14:34 嗰輪就係因為喺心跳回合堆咗太多步驟（ops-snapshot + 逐個 job 查 receipt + 追查 poweroff 根因 + 多輪驗證）撞 timeout → `cron: job execution timed out`、errs=1。
+- **做法**：一次 `ops-snapshot.sh` 攞齊現況 → 一次三倉/skill/守衛/網站核驗 → 出結論。**發現需要深挖嘅問題（根因追查、逐欄 payload 比對、歷史 journal 分析）只記低事實，唔好喺心跳回合即場展開**——留返普通 turn 做，唔好再堆工具呼叫。
+- skipped 唔算 error，所以 timeout 後下一輪 skipped 已經令 errs 自然清零，唔需要手動 disable/enable 清 running 狀態。
+
 ## 回覆規則
 - 全部正常 → 淨係回覆單一 token `HEARTBEAT_OK`（唔好加 greeting／emoji／狀態報告／總結）。
 - 有真實故障、錯誤、或需要大肥喵出手（充值、改設定、授權指令）先發訊息；之前已講過嘅唔好重複。

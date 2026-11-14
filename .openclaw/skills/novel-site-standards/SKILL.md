@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.185
+version: 2.9.186
 ---
 
 >
@@ -3543,3 +3543,10 @@ rebuild_job "中午簡報 12:55"
 - **解決方法**：① `.dropbox-sync/volume4_RETIRED` marker（寫明退役日期 + 復活條件）；② 守衛放喺真正入口——`scripts/dropbox_volume4_sync.py` 的 `process_batch()` 同 `scripts/dropbox-volume4-daily-sync.sh` wrapper 兩邊都檢查 marker，存在就即刻 skip（唔改 state、唔推 Git、唔 source backup-memory.sh）；③ 拆指示——`27d54b55` 第 3 步改查 V5/6/7 並明文「唔准執行任何 V4 腳本」，`66957fcc` 嘅 system cron 清單改為 V5/6 11:00 + V7 11:30（V4 本來就唔喺 crontab），`cron-guardian.sh` 重建模板同步。
 - **驗證**：wrapper 實跑 + `python3 scripts/dropbox_volume4_sync.py` 實跑都印「⛔ 已退役…跳過」，`volume4_state.json` md5 before/after 完全相同；`bash -n` + `py_compile` 通過；兩個簡報 job message 改完用 SQLite 逐欄比對，kind/model/fallbacks/timeoutSeconds/toolsAllow/argv/inferenceBinding/delivery/schedule/description 全部不變，只有 message 改變；`docs/heartbeat-checklist.md` 補 V4 守衛說明並 `sync_heartbeat_scratch.sh` 同步入 scratch。
 - **教訓**：(a)「已退役」只靠排程層面移除（crontab + guardian 兩個名單）唔夠——任何有 exec 權力嘅 agent 見到 state 分歧就能復活佢，退役要有腳本層守衛。(b) 簡報 job 嘅「自動修復」權力會越過退役指令，message 內部矛盾（一邊叫佢查 V4、一邊叫佢自動修復）就足以復活管線，指示要同退役事實對齊。(c) 守衛要放喺真正執行入口（.py），唔可以只放 wrapper，因為 agent 唔會跟 wrapper 走。(d) 副作用鏈要睇全：wrapper 尾 `source backup-memory.sh` 令三倉多推 commit，要睇 Git log 先發現。
+
+## [2026-11-14] 心跳 lane 自身超時（600s）→ 巡檢回合必須精簡
+- **修復內容**：heartbeat-main（`9dc7d6c3`）11-14 14:34:28 → 14:44:29 dur 600367ms、`cron: job execution timed out`、consecutiveErrors=1；14:44 嗰輪 skipped 後 errs 自然清零。
+- **根本原因**：心跳回合做咗過多步驟（ops-snapshot + 逐個 job 查 receipt + 追查主機 poweroff 根因 + 連續多輪 exec 驗證），總時長撞 heartbeat job 嘅 600 秒硬 timeout——自己把自己嘅巡檢 lane 打成 error。
+- **解決方法**：心跳回合收斂成「一次 ops-snapshot → 一次三倉/skill/守衛/網站核驗 → 出結論」；任何需要深挖嘅問題（根因追查、逐欄 payload 比對）改到普通 turn 處理，心跳回合只記低事實同結論。
+- **驗證**：timeout 後下一輪 skipped，`consecutiveErrors` 隨即清零（skipped 唔算 error，唔需要 disable/enable 清 running）；8 個 job errs 合計 0、三倉 0 未推送 0 髒檔、網站 200。
+- **教訓**：每個 cron job 都有硬 timeout，心跳 lane 堆工具呼叫 = 自傷；心跳回合要短，深挖留返普通 turn。

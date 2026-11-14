@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.184
+version: 2.9.185
 ---
 
 >
@@ -3536,3 +3536,10 @@ rebuild_job "中午簡報 12:55"
 - **解決方法**：① `openclaw cron edit <id> --description "..."` 逐個改正 6 個 job；② `scripts/cron-guardian.sh` 6 個 `cron add` 模板全部補 `--description`。
 - **驗證**：先用臨時 job 實測「只改 description」嘅副作用——agentTurn 與 command 兩種 kind 都係 message／model／fallbacks／timeoutSeconds／toolsAllow／argv／binding／delivery／schedule 全部逐字不變（command 唔會被改成 agentTurn），測完即刪；實機 6 個 job 改完用 SQLite 讀 `cron_jobs.job_json` 逐欄比對 11 個關鍵欄位全部不變，只有 description 改變；`bash -n scripts/cron-guardian.sh` 通過。
 - **教訓**：改 metadata 前要先量度副作用（`cron edit` 唔帶齊 payload 會重設未指定欄位）；配置同 metadata 要一齊改；重建模板要包含 description，否則復原會洗走修正。
+
+## [2026-11-14] 已退役嘅 Volume 4 管線被簡報 job 復活 → marker + 雙重守衛 + 拆指示
+- **修復內容**：08:15 早上簡報 job 跑完（status=ok、Telegram 交付成功），但 `.dropbox-sync/volume4_state.json` mtime 變 08:16、`synced_to_site` 由 1746 跳到 1878（note=auto-reconciled），三倉亦多咗一次 08:16 記憶備份 commit —— **Volume 4 明明係 2026-10-02 大肥喵指令退役**（crontab 冇條目、guardian 守護名單亦冇）。
+- **根本原因**：簡報 job message 第 3 步寫「Dropbox 同步狀態：**Volume 4** 最後執行結果」，同一份 message 又授權「自動修復：state 分歧就直接修復，不需等人類指示」。V4 state 停喺 1746 而網站有 1878 → agent 判為 state 分歧 → 自行執行已退役嘅 `dropbox-volume4-daily-sync.sh` → auto-reconcile 分支 union 網站章節落 V4 state → wrapper 尾 `source backup-memory.sh` 順帶多推一次 commit。冇新章上網，純粹係管線復活。
+- **解決方法**：① `.dropbox-sync/volume4_RETIRED` marker（寫明退役日期 + 復活條件）；② 守衛放喺真正入口——`scripts/dropbox_volume4_sync.py` 的 `process_batch()` 同 `scripts/dropbox-volume4-daily-sync.sh` wrapper 兩邊都檢查 marker，存在就即刻 skip（唔改 state、唔推 Git、唔 source backup-memory.sh）；③ 拆指示——`27d54b55` 第 3 步改查 V5/6/7 並明文「唔准執行任何 V4 腳本」，`66957fcc` 嘅 system cron 清單改為 V5/6 11:00 + V7 11:30（V4 本來就唔喺 crontab），`cron-guardian.sh` 重建模板同步。
+- **驗證**：wrapper 實跑 + `python3 scripts/dropbox_volume4_sync.py` 實跑都印「⛔ 已退役…跳過」，`volume4_state.json` md5 before/after 完全相同；`bash -n` + `py_compile` 通過；兩個簡報 job message 改完用 SQLite 逐欄比對，kind/model/fallbacks/timeoutSeconds/toolsAllow/argv/inferenceBinding/delivery/schedule/description 全部不變，只有 message 改變；`docs/heartbeat-checklist.md` 補 V4 守衛說明並 `sync_heartbeat_scratch.sh` 同步入 scratch。
+- **教訓**：(a)「已退役」只靠排程層面移除（crontab + guardian 兩個名單）唔夠——任何有 exec 權力嘅 agent 見到 state 分歧就能復活佢，退役要有腳本層守衛。(b) 簡報 job 嘅「自動修復」權力會越過退役指令，message 內部矛盾（一邊叫佢查 V4、一邊叫佢自動修復）就足以復活管線，指示要同退役事實對齊。(c) 守衛要放喺真正執行入口（.py），唔可以只放 wrapper，因為 agent 唔會跟 wrapper 走。(d) 副作用鏈要睇全：wrapper 尾 `source backup-memory.sh` 令三倉多推 commit，要睇 Git log 先發現。

@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.186
+version: 2.9.187
 ---
 
 >
@@ -3550,3 +3550,10 @@ rebuild_job "中午簡報 12:55"
 - **解決方法**：心跳回合收斂成「一次 ops-snapshot → 一次三倉/skill/守衛/網站核驗 → 出結論」；任何需要深挖嘅問題（根因追查、逐欄 payload 比對）改到普通 turn 處理，心跳回合只記低事實同結論。
 - **驗證**：timeout 後下一輪 skipped，`consecutiveErrors` 隨即清零（skipped 唔算 error，唔需要 disable/enable 清 running）；8 個 job errs 合計 0、三倉 0 未推送 0 髒檔、網站 200。
 - **教訓**：每個 cron job 都有硬 timeout，心跳 lane 堆工具呼叫 = 自傷；心跳回合要短，深挖留返普通 turn。
+
+## [2026-11-14] 主機 poweroff 根因確認 = GNOME 桌面 session 主動關機（非 apt／非 cron／非崩潰）
+- **修復內容**：08:28 主機 poweroff → 08:59 重開機（31 分鐘空窗）根因已由 `journalctl -b -1` 確認：`gnome-session-shutdown.target` → `shutdown.target` → `systemd-poweroff.service: Finished` → `poweroff.target`，即 GNOME 桌面 session 主動關機。同 2026-11-12 08:37 嗰次**完全同一 pattern**。
+- **根本原因**：**有人從桌面 session 關機**（人手撳關機／桌面自動登出觸發關機／遙控送關機指令）。佐證排除：08:2x 冇 apt/dpkg 活動、冇 `/var/run/reboot-required`、repo 內冇任何 script 呼叫 `poweroff`/`reboot`、auth.log 冇 sudo poweroff、systemd timer 冇相關條目。
+- **解決方法**：診斷步驟寫入 MEMORY.md（`journalctl -b -1` → 睇 shutdown chain）；若再發生的處理建議 = 查 `org.gnome.SessionManager auto-poweroff`／螢幕鎖定自動登出／遙控來源。
+- **驗證**：`journalctl -b -1` 同 `journalctl -b -2` 兩次都見到同一條 `gnome-session-shutdown.target` → `systemd-poweroff` chain；影響實測輕微（只漏 08:33 一次心跳，8 個 job errs 合計 0，三倉乾淨，網站 200）。
+- **教訓**：主機「乾淨 poweroff」唔等於崩潰——`systemd-logind` 出「will power off now!」代表有人 request 乾淨關機；**判別方法係 `journalctl -b -1` 睇 shutdown chain**（`gnome-session-shutdown.target` = 桌面人手；`unattended-upgrades` + reboot-required flag = 自動更新）。

@@ -24,6 +24,7 @@
 ## 已知退役（唔好復原）
 - system cron `send-briefing.sh`（08:15／17:55）：2026-11-01 大肥喵指令退役，已併入 OpenClaw agent 簡報 job。
 - system cron Dropbox Volume 4 同步（CH926-1190）：2026-10-02 大肥喵指令退役，state 檔唔會再更新（唔係 bug，唔好加返）。
+  - ⚠️ 2026-11-14 加咗**雙重守衛**：`.dropbox-sync/volume4_RETIRED` marker 存在時，`scripts/dropbox-volume4-daily-sync.sh` 同 `scripts/dropbox_volume4_sync.py` 都會即刻 skip（唔改 state、唔推 Git、唔 source backup-memory.sh）。因為簡報 job 有「自動修復：state 分歧就直接修復」權力，08:16 曾自行執行咗已退役嘅 V4 腳本（改寫 state + 多推一次 commit）。要復活 V4 必須先由大肥喵確認，然後刪走 marker。
 - Dropbox Volume 2（CH501-675）／Volume 3（CH676-925）：已全部處理完、無排程。
 
 ## 通知大肥喵嘅唯一可靠路徑

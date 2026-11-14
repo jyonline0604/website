@@ -98,7 +98,7 @@ rebuild_job() {
 
 1. 網站狀態：檢查 https://kofhk.com 是否正常回傳 200
 2. 系統健康：磁碟用量、記憶體、運行時間
-3. Dropbox 同步狀態：Volume 4 最後執行結果
+3. Dropbox 同步狀態：Volume 5/6/7 最後執行結果（Volume 4 已於 2026-10-02 退役，**唔准**執行 dropbox-volume4-daily-sync.sh 或任何 V4 腳本；state 分歧只處理 V5/V6/V7）
 4. 今日 cron 排程一覽
 5. 已知問題追蹤
 
@@ -148,7 +148,7 @@ EOF
 
 ⚠️ 檢查 cron job 時請使用正確的名字「早上簡報 08:15」，不要使用 08:00！
 ⚠️ 檢查 cron 狀態必須用 exec 執行「openclaw cron list --json」或「crontab -l」，**絕對唔好用 cron tool**（isolated session 有 scoping，只顯示自己 agent 嘅 job，會誤判其他 jobs 消失！）
-⚠️ 以下任務係 **system cron（crontab -l）**，唔會出現喺 OpenClaw cron list：記憶備份 08:00/20:00、Volume 4/5/6 Dropbox 11:00、財經 10:00/16:00、AQHI 10:00/16:00、新聞備份 10:10/16:10、cron-guardian 09:30/21:30、Dropbox token 續期每 3 小時、OpenClaw 版本檢查 11:00、自動記憶 23:00 —— 見到佢哋喺 crontab 就係正常，**唔係消失**！
+⚠️ 以下任務係 **system cron（crontab -l）**，唔會出現喺 OpenClaw cron list：記憶備份 08:00/20:00、Volume 5/6 Dropbox 11:00、Volume 7 11:30、財經 10:00/16:00、AQHI 10:00/16:00、新聞備份 10:10/16:10、cron-guardian 09:30/21:30、Dropbox token 續期每 3 小時、OpenClaw 版本檢查 11:00、自動記憶 23:00 —— 見到佢哋喺 crontab 就係正常，**唔係消失**！
 - 2026-11-01 起 system cron 簡報（send-briefing.sh）已退休，天氣 digest 併入早上/傍晚簡報；**唔好再報告「雙軌簡報」問題**
 
 📊 報告末尾強制輸出評估：

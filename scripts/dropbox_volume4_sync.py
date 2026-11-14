@@ -635,6 +635,17 @@ def git_commit_and_push(ch_start, ch_end):
 
 def process_batch():
     """主流程：處理一批（6章）"""
+    # 2026-11-14 守衛：Volume 4 已於 2026-10-02 按大肥喵指令退役（勿啟用、勿由 guardian 加返）。
+    # 2026-11-14 08:16 「早上簡報 08:15」job 因 message 寫住「Dropbox 同步狀態：Volume 4 最後執行結果」
+    # +「自動修復：state 分歧就直接修復」，自行執行咗呢個已退役嘅腳本 → 改寫咗 volume4_state.json
+    # （note=auto-reconciled）並順帶 source 咗 backup-memory.sh，令三倉多推咗一次 commit。
+    # marker 存在就唔准執行（唔好淨係靠 wrapper 守衛，agent 可能直接 call .py）。
+    # 要復活 V4 必須先由大肥喵確認，然後刪走 marker 檔。
+    _retired_marker = Path(WORKSPACE) / ".dropbox-sync" / "volume4_RETIRED"
+    if _retired_marker.exists():
+        log("⛔ Volume 4 已退役（2026-10-02 大肥喵指令，勿啟用）；本次跳過，唔會改 state、唔會推 Git")
+        log(f"   （要復活必須先由大肥喵確認，然後刪走 {_retired_marker}）")
+        return 0
     log("=" * 50)
     log(f"🚀 開始處理批次 ({datetime.now().strftime('%Y-%m-%d %H:%M')})")
     log("=" * 50)

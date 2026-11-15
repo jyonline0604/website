@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.187
+version: 2.9.188
 ---
 
 >
@@ -3557,3 +3557,11 @@ rebuild_job "中午簡報 12:55"
 - **解決方法**：診斷步驟寫入 MEMORY.md（`journalctl -b -1` → 睇 shutdown chain）；若再發生的處理建議 = 查 `org.gnome.SessionManager auto-poweroff`／螢幕鎖定自動登出／遙控來源。
 - **驗證**：`journalctl -b -1` 同 `journalctl -b -2` 兩次都見到同一條 `gnome-session-shutdown.target` → `systemd-poweroff` chain；影響實測輕微（只漏 08:33 一次心跳，8 個 job errs 合計 0，三倉乾淨，網站 200）。
 - **教訓**：主機「乾淨 poweroff」唔等於崩潰——`systemd-logind` 出「will power off now!」代表有人 request 乾淨關機；**判別方法係 `journalctl -b -1` 睇 shutdown chain**（`gnome-session-shutdown.target` = 桌面人手；`unattended-upgrades` + reboot-required flag = 自動更新）。
+
+---
+
+## 2026-11-15 更新
+- **新增教訓：主機／gateway 離線後，排程會喺重啟時「catch-up」一次過補做，唔係漏做**（2026-11-14 22:00 → 2026-11-15 10:13 離線 → 10:15 三個 job 同時補做：`27d54b55` 早上簡報由 08:15 順延 10:15、`23533480` Audio Sync 10:00 順延 10:15、`fb128f67` Memory Dreaming 03:00 補做）。**判斷交付要睇 journald `outbound send ok`（messageId 23524 @ 10:15:58、23525 @ 10:17:14），唔可以淨睇 cron state 嘅 delivery 欄**；簡報遲到但真係送到，唔算漏交付。
+- **新增教訓：`provider=minimax` 會喺 thinking 被 clamp（`thinking.type="disabled"`／`reasoning.effort=none`）時回 400** —— body = `invalid params, model "MiniMax-M3.1-Flash" requires adaptive thinking ... (2013)`。要靠 openrouter free fallback 頂住；見到 400 + adaptive thinking 就知係 thinking clamp，唔係 key／額度問題。
+- **新增教訓：MEMORY.md 已記錄嘅 poweroff 根因為「主機層面／人手乾淨關機」，到 2026-11-15 已是第 3 次（11-12 08:16、11-14 08:28、11-14 22:00→11-15 10:13）**，範圍擴大到過夜 12 小時 → 建議大肥喵向 provider 層面查。
+- **修復驗證**：`DREAMS.md` 髒檔按「commit → `git pull --rebase origin main` → `git push`」處理（rebase 撞到 CI 每日新聞 commit `547568e11`），三倉回復未推送 0 / 髒檔 0；MEMORY.md 三倉 md5 唯一數 = 1。

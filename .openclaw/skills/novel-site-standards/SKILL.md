@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.188
+version: 2.9.189
 ---
 
 >
@@ -3565,3 +3565,9 @@ rebuild_job "中午簡報 12:55"
 - **新增教訓：`provider=minimax` 會喺 thinking 被 clamp（`thinking.type="disabled"`／`reasoning.effort=none`）時回 400** —— body = `invalid params, model "MiniMax-M3.1-Flash" requires adaptive thinking ... (2013)`。要靠 openrouter free fallback 頂住；見到 400 + adaptive thinking 就知係 thinking clamp，唔係 key／額度問題。
 - **新增教訓：MEMORY.md 已記錄嘅 poweroff 根因為「主機層面／人手乾淨關機」，到 2026-11-15 已是第 3 次（11-12 08:16、11-14 08:28、11-14 22:00→11-15 10:13）**，範圍擴大到過夜 12 小時 → 建議大肥喵向 provider 層面查。
 - **修復驗證**：`DREAMS.md` 髒檔按「commit → `git pull --rebase origin main` → `git push`」處理（rebase 撞到 CI 每日新聞 commit `547568e11`），三倉回復未推送 0 / 髒檔 0；MEMORY.md 三倉 md5 唯一數 = 1。
+
+---
+
+## 2026-11-16 更新
+- **新增教訓：Dropbox V5/V6 同步「無新章節」嗰條路徑會令 workspace 留低髒 state 檔**。`scripts/dropbox_volume5_sync.py` / `dropbox_volume6_sync.py` 只有喺 `git_commit_and_push()`（有新章節嗰條路徑）先會 commit；但 11:00 system cron 跑「未處理: 0 個」時，`auto-reconciled` 步驟仍會改寫 `.dropbox-sync/volume5_state.json` / `volume6_state.json`（`last_batch` 由 CH1879-1884 → CH1885-1890）**但唔 commit** → 心跳回合見到 workspace 髒檔 2。**處理方法**：同 `DREAMS.md` 一樣直接 `git add .dropbox-sync/volume*_state.json && git commit` → `git pull --rebase origin main` → `git push`（今日：`5cff41589..e607f87d6`）。
+- **判斷要點**：見到 `.dropbox-sync/volume5_state.json` / `volume6_state.json` 髒住唔好當故障，睇 `git diff` 係咪只有 `last_batch` + `processed_chapters` 尾巴增長 → 就係 auto-reconcile 嘅正常更新，commit 落去就得。

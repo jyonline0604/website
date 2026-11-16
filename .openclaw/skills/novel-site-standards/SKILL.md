@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.189
+version: 2.9.190
 ---
 
 >
@@ -3571,3 +3571,10 @@ rebuild_job "中午簡報 12:55"
 ## 2026-11-16 更新
 - **新增教訓：Dropbox V5/V6 同步「無新章節」嗰條路徑會令 workspace 留低髒 state 檔**。`scripts/dropbox_volume5_sync.py` / `dropbox_volume6_sync.py` 只有喺 `git_commit_and_push()`（有新章節嗰條路徑）先會 commit；但 11:00 system cron 跑「未處理: 0 個」時，`auto-reconciled` 步驟仍會改寫 `.dropbox-sync/volume5_state.json` / `volume6_state.json`（`last_batch` 由 CH1879-1884 → CH1885-1890）**但唔 commit** → 心跳回合見到 workspace 髒檔 2。**處理方法**：同 `DREAMS.md` 一樣直接 `git add .dropbox-sync/volume*_state.json && git commit` → `git pull --rebase origin main` → `git push`（今日：`5cff41589..e607f87d6`）。
 - **判斷要點**：見到 `.dropbox-sync/volume5_state.json` / `volume6_state.json` 髒住唔好當故障，睇 `git diff` 係咪只有 `last_batch` + `processed_chapters` 尾巴增長 → 就係 auto-reconcile 嘅正常更新，commit 落去就得。
+
+## [2026-11-16] poweroff 第 4 次（08:42，空窗縮到約 2 分鐘）→ 唔漏排程，provider 查詢照舊
+- **修復內容**：11-16 08:42:16 journald `got dbus signal - shutdown detected!` → `systemd-poweroff.service: Finished`（08:42:23）→ 08:44:11 重開機（gateway `ActiveEnterTimestamp=Mon 2026-11-16 08:44:16 HKT`），**空窗約 2 分鐘**，係 poweroff pattern 第 4 次（11-12 08:16、11-14 08:28、11-14 22:00→11-15 10:13、11-16 08:42）。
+- **根本原因**：同一「GNOME 桌面 session 主動關機 → `systemd-poweroff`」chain（`journalctl -b -1` 實測），非 apt／非 OOM／非崩潰。
+- **解決方法**：冇程式層修復可做（主機層面／人手關機）→ 診斷步驟寫入 MEMORY.md，**待大肥喵向 provider 層面查**；重點係**每次事件後即刻對數排程有冇漏做**。
+- **驗證**：今次**冇漏做、冇 catch-up** —— 08:00 記憶備份（log `08:00:13 ✅`）、08:15 早上簡報（outbound `messageId 23530 @ 08:17:45`）、10:00 Audio Sync（`messageId 23531 @ 10:01:17`）、10:00 財經更新全部照跑；8 job errs 合計 0、三倉未推送 0 / 髒檔 0、網站 HTTP 200、`chapter-*.html` 抽查 5 份結構正常、兩個 skill 四處 md5 唯一數 = 1。
+- **教訓**：(a) poweroff pattern 由「31 分鐘空窗」縮到「2 分鐘空窗」，**唔代表唔使查**——空窗短只係少啲排程受影響。(b) 重開機後先睇 boot 清單（`journalctl --list-boots`）對時間線，再對數排程，唔好靠估。(c) 判斷有冇漏做靠三樣：journald `outbound send ok`、各 system cron log 時間戳、cron receipt 連續性。

@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.190
+version: 2.9.191
 ---
 
 >
@@ -3578,3 +3578,9 @@ rebuild_job "中午簡報 12:55"
 - **解決方法**：冇程式層修復可做（主機層面／人手關機）→ 診斷步驟寫入 MEMORY.md，**待大肥喵向 provider 層面查**；重點係**每次事件後即刻對數排程有冇漏做**。
 - **驗證**：今次**冇漏做、冇 catch-up** —— 08:00 記憶備份（log `08:00:13 ✅`）、08:15 早上簡報（outbound `messageId 23530 @ 08:17:45`）、10:00 Audio Sync（`messageId 23531 @ 10:01:17`）、10:00 財經更新全部照跑；8 job errs 合計 0、三倉未推送 0 / 髒檔 0、網站 HTTP 200、`chapter-*.html` 抽查 5 份結構正常、兩個 skill 四處 md5 唯一數 = 1。
 - **教訓**：(a) poweroff pattern 由「31 分鐘空窗」縮到「2 分鐘空窗」，**唔代表唔使查**——空窗短只係少啲排程受影響。(b) 重開機後先睇 boot 清單（`journalctl --list-boots`）對時間線，再對數排程，唔好靠估。(c) 判斷有冇漏做靠三樣：journald `outbound send ok`、各 system cron log 時間戳、cron receipt 連續性。
+
+---
+
+## 2026-11-17 更新
+- **新增教訓：11:00 Dropbox Volume 5/6 同步會改 `.dropbox-sync/volume{5,6}_state.json` 而唔會自己 commit** → 心跳回合見到 workspace 髒檔出現 state 檔（正常運作痕跡，唔係 bug）時，用同一套流程：`git add` 該 state → `git commit` → `git pull --rebase origin main` → `git push`。**Volume 4 仍然唔准郁**（`.dropbox-sync/volume4_RETIRED` marker 存在就要 skip）。
+- **新增教訓：OpenClaw 有新版本（2026.11.4）時，agent 唔可以自己升級** —— 唔准 exec 跑 `openclaw update` / `npm install -g openclaw` / 停 gateway；只可以叫大肥喵喺 chat 送 `/update`（owner + `commands.restart` 預設開啟）。版本檢查 script 已經自動發 Telegram 通知，唔好重複通知。

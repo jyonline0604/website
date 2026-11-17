@@ -31,6 +31,12 @@ TELEGRAM_TO="5344443732"
 # 令 12:55 中午簡報喺 429 限流時重試 9 次後放棄、靜靜冇送達。
 # 而家改用 agents.defaults.model.fallbacks 同一條鏈（全部 openrouter free、Auth: yes、喺 modelPolicy allow 清單入面）。
 FALLBACKS="openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/cohere/north-mini-code:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default"
+# 2026-11-17 修正：agentTurn job 一定要有 send + message 喺 toolsAllow。
+# 原因：每次 turn 嘅 runtime context 都會注入「Message tool: `send`: `target` + `message`」，
+# 模型會跟住呼叫 send 工具；如果 toolsAllow 冇 send，就會出現「⚠️ Send blocked」→
+# 整個 agent run 判定失敗（2026-11-17 12:55 中午簡報就係咁：errs=1、delivery=not-delivered、
+# 12:55 完全冇送出）。cron add 唔帶 --tools 會得返 n=1 嘅預設清單，所以每個 agentTurn 分支都要顯式帶 --tools。
+TOOLS="read,edit,write,apply_patch,exec,process,cron,image_generate,music_generate,video_generate,get_goal,create_goal,update_goal,skill_workshop,update_plan,sessions_list,sessions_history,sessions_send,sessions_spawn,sessions_yield,subagents,session_status,web_search,web_fetch,view_image,memory_search,memory_get,send,message"
 
 mkdir -p "$WORKSPACE/logs"
 
@@ -85,6 +91,7 @@ rebuild_job() {
                 --fallbacks "$FALLBACKS" \ \
                 --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
                 --timeout-seconds 3600 \
+                --tools "$TOOLS" \
                 --message "$(cat <<'EOF'
 【早上簡報 08:15】
 
@@ -129,6 +136,7 @@ EOF
                 --fallbacks "$FALLBACKS" \ \
                 --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
                 --timeout-seconds 3600 \
+                --tools "$TOOLS" \
                 --message "$(cat <<'EOF'
 【中午簡報 12:55】
 
@@ -166,6 +174,7 @@ EOF
                 --fallbacks "$FALLBACKS" \ \
                 --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
                 --timeout-seconds 3600 \
+                --tools "$TOOLS" \
                 --message "$(cat <<'EOF'
 【傍晚簡報 17:55 — 日結】
 
@@ -224,6 +233,7 @@ EOF
                 --fallbacks "$FALLBACKS" \
                 --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
                 --timeout-seconds 1800 \
+                --tools "$TOOLS" \
                 --message "Run daily audio sync: exec \`cd /home/openclaw/.openclaw/workspace && python3 scripts/audio_sync_pipeline.py\` and report results. ⚠️ 執行方式：code mode 內用 exec({command: ...}) 或 shell 腳本，**唔好寫 tools.exec(...)**（會 ReferenceError）。" \
                 2>>"$LOG" && log "✅ Audio Sync 已重建" || log "❌ Audio Sync 重建失敗"
             ;;
@@ -234,6 +244,7 @@ EOF
                 --fallbacks "$FALLBACKS" \ \
                 --model "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free@openrouter:default" \
                 --timeout-seconds 600 \
+                --tools "$TOOLS" \
                 --message "請執行 /home/openclaw/.openclaw/workspace/scripts/check-openclaw-version.sh 並報告結果 ⚠️ 執行方式：code mode 內用 exec({command: ...}) 或 shell 腳本，**唔好寫 tools.exec(...)**（會 ReferenceError）。" \
                 2>>"$LOG" && log "✅ Version Check 已重建" || log "❌ Version Check 重建失敗"
             ;;

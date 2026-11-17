@@ -16,6 +16,11 @@
    - 若髒檔只有 `DREAMS.md`（03:00 Memory Dreaming job 產出，唔會自己 commit）：先 `git add DREAMS.md && git commit`，再 `git pull --rebase origin main`，最後 `git push` —— 直接 push 會撞 CI 每日新聞 commit 造成 non-fast-forward。
 4. Skill 副本唯一性：`novel-site-standards` 同 `novel-av-generator` 四處 md5 唯一數 = 1（睇 md5，唔係淨睇版本號）。
 
+## 簡報／agentTurn job 交付核對（2026-11-17 教訓）
+- **每個 agentTurn job 嘅 `payload.toolsAllow` 必須有 `send` 同 `message`** —— runtime context 每 turn 注入「Message tool: `send`」，模型會跟住呼叫 send；冇 allow 就係 **「⚠️ Send blocked」** → 整個 run 判失敗 → 零交付（2026-11-17 12:55 中午簡報 `66957fcc` 就係咁：errs=1、delivery=not-delivered、journald 完全冇 outbound send ok）。對照 `27d54b55` 有 send+message 就正常。
+- **`openclaw cron add` 唔帶 `--tools` 只得返 n=1 預設清單** → `scripts/cron-guardian.sh` 已加 `TOOLS` 變數同 5 個 agentTurn 分支嘅 `--tools "$TOOLS"`，重建唔會再洗走。
+- **判斷交付**：以 journald `outbound send ok`（chatId=5344443732）+ cron receipt 兩個欄為準；只睇 cron state 個 delivery 欄會誤判（11-14 poweroff 同 11-17 Send blocked 兩次都係咁）。
+
 ## ⏱️ 心跳回合必須短（2026-11-14 教訓）
 - heartbeat-main 有 **600 秒硬 timeout**。2026-11-14 14:34 嗰輪就係因為喺心跳回合堆咗太多步驟（ops-snapshot + 逐個 job 查 receipt + 追查 poweroff 根因 + 多輪驗證）撞 timeout → `cron: job execution timed out`、errs=1。
 - **做法**：一次 `ops-snapshot.sh` 攞齊現況 → 一次三倉/skill/守衛/網站核驗 → 出結論。**發現需要深挖嘅問題（根因追查、逐欄 payload 比對、歷史 journal 分析）只記低事實，唔好喺心跳回合即場展開**——留返普通 turn 做，唔好再堆工具呼叫。

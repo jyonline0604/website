@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.191
+version: 2.9.192
 ---
 
 >
@@ -3584,3 +3584,11 @@ rebuild_job "中午簡報 12:55"
 ## 2026-11-17 更新
 - **新增教訓：11:00 Dropbox Volume 5/6 同步會改 `.dropbox-sync/volume{5,6}_state.json` 而唔會自己 commit** → 心跳回合見到 workspace 髒檔出現 state 檔（正常運作痕跡，唔係 bug）時，用同一套流程：`git add` 該 state → `git commit` → `git pull --rebase origin main` → `git push`。**Volume 4 仍然唔准郁**（`.dropbox-sync/volume4_RETIRED` marker 存在就要 skip）。
 - **新增教訓：OpenClaw 有新版本（2026.11.4）時，agent 唔可以自己升級** —— 唔准 exec 跑 `openclaw update` / `npm install -g openclaw` / 停 gateway；只可以叫大肥喵喺 chat 送 `/update`（owner + `commands.restart` 預設開啟）。版本檢查 script 已經自動發 Telegram 通知，唔好重複通知。
+
+---
+
+## 2026-11-17 更新
+- **新增教訓：agentTurn cron job 嘅 `toolsAllow` 必須包含 `send` 同 `message`** —— runtime context 每 turn 都會注入「Message tool: `send`: `target` + `message`」，模型會跟住呼叫 send；冇 allow 就會 **「⚠️ Send blocked」** → 整個 run 判定失敗 → 零交付（2026-11-17 12:55 中午簡報 `66957fcc` 就係咁：errs=1、delivery=not-delivered、journald 完全冇 outbound send ok）。對照：`27d54b55` 有 send+message 就正常。
+- **新增教訓：`openclaw cron add` 唔帶 `--tools` 只會得返 n=1 預設清單** → 所有重建路徑（`scripts/cron-guardian.sh`）必須顯式帶 `--tools`（現已加 `TOOLS` 變數，29 項含 send/message，5 個 agentTurn 分支全部帶；健康報告 22:00 係 command payload 唔加）。
+- **新增教訓：`cron edit` 會重置未指定嘅 payload 欄位** → 改 toolsAllow 時要帶齊 model / fallbacks / timeout / message（`scripts/cron_model_guard.py` 已做齊）。
+- **判斷交付**：以 journald `outbound send ok` + cron receipt 兩個欄為準（2026-11-17 補跑 `66957fcc` → 13:23:28 messageId 23541 送達，errs 回到 0）。

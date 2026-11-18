@@ -65,4 +65,16 @@ sync_set() {
 sync_set standards "$SK" "$WS" "$SB" "$MB"
 sync_set standards-history "$SK_DIR/SKILL_HISTORY.md" "$WS_DIR/novel-site-standards/SKILL_HISTORY.md" "$SB_DIR/novel-site-standards/SKILL_HISTORY.md" "$MB_DIR/novel-site-standards/SKILL_HISTORY.md"
 sync_set av "$AV" "$WS_AV" "$SB_DIR/novel-av-generator/SKILL.md" "$MB_DIR/novel-av-generator/SKILL.md"
+# 2026-11-18：SKILL.md 有 256000 bytes 硬上限，超咗 loader 會 skip 個 skill（成日失效）。
+# 加完更新記錄後一定要檢查大小，> 200000 bytes 就要先分檔去 SKILL_HISTORY.md。
+SKILL_SIZE_WARN=0
+for f in "$SK" "$WS" "$SB" "$MB" "$AV" "$WS_AV"; do
+    [ -f "$f" ] || continue
+    sz=$(stat -c%s "$f" 2>/dev/null || echo 0)
+    if [ "$sz" -gt 200000 ]; then
+        log "⚠️ SKILL.md 接近 256000 bytes 硬上限：$f = $sz bytes（loader 超過 256000 就會 skip 呢個 skill）→ 必須分檔去 SKILL_HISTORY.md"
+        SKILL_SIZE_WARN=1
+    fi
+done
+[ "$SKILL_SIZE_WARN" = "1" ] && log "⚠️ 有 skill 檔案過大，需要人手分檔"
 log "done"

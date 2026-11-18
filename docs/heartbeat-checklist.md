@@ -15,6 +15,7 @@
 3. 三倉一致性：workspace / Second-brain / Max-backup 未推送 = 0、髒檔 = 0。
    - 若髒檔只有 `DREAMS.md`（03:00 Memory Dreaming job 產出，唔會自己 commit）：先 `git add DREAMS.md && git commit`，再 `git pull --rebase origin main`，最後 `git push` —— 直接 push 會撞 CI 每日新聞 commit 造成 non-fast-forward。
 4. Skill 副本唯一性：`novel-site-standards` 同 `novel-av-generator` 四處 md5 唯一數 = 1（睇 md5，唔係淨睇版本號）。
+   - **順手查大小**：`stat -c%s .openclaw/skills/*/SKILL.md` —— loader 硬上限 **256000 bytes**，超過會 `Skipping invalid skill`（成日失效，2026-11-17 13:35→11-18 全日 skip 544 次）。**> 200000 bytes 就要先分檔**去 `SKILL_HISTORY.md`（SKILL.md 同 SKILL_HISTORY.md 四處要一齊同步）。
 
 ## 簡報／agentTurn job 交付核對（2026-11-17 教訓）
 - **每個 agentTurn job 嘅 `payload.toolsAllow` 必須有 `send` 同 `message`** —— runtime context 每 turn 注入「Message tool: `send`」，模型會跟住呼叫 send；冇 allow 就係 **「⚠️ Send blocked」** → 整個 run 判失敗 → 零交付（2026-11-17 12:55 中午簡報 `66957fcc` 就係咁：errs=1、delivery=not-delivered、journald 完全冇 outbound send ok）。對照 `27d54b55` 有 send+message 就正常。

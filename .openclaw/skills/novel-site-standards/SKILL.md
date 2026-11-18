@@ -1,17 +1,70 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.192
+version: 2.9.193
 ---
 
 >
-> 📚 **歷史記錄已分檔**：2026-04～05 嘅逐章批次日誌（CH 列表、境界檢查表）已搬到同目錄 `SKILL_HISTORY.md`（內容一字無刪）。
+> 📚 **歷史記錄已分檔**：2026-04～05 嘅逐章批次日誌（CH 列表、境界檢查表）+ **2026-04～09 嘅 dated 更新記錄段落（51 段）**已搬到同目錄 `SKILL_HISTORY.md`（內容一字無刪，標題索引見下）。
 > 呢個主檔只保留**操作規則 + 修復經驗 + 近期記錄**。查舊章節批次記錄 → `SKILL_HISTORY.md`。
-> ⚠️ 檔案有 **256000 bytes 硬上限**（超過 loader 會 skip 個 skill）——加更新記錄前先 `stat -c%s` 睇大小，超就要再分檔。
+> ⚠️ 檔案有 **256000 bytes 硬上限**（超過 loader 會 skip 個 skill）——加更新記錄前先 `stat -c%s` 睇大小，超就要再分檔（**2026-11-18 事實**：加咗 2 段更新記錄就爆 256640 bytes，loader 連續 544 次 skip 呢個 skill → 每次加記錄前必查大小）。
 
 
 ---
 
+## 📦 已分檔到 `SKILL_HISTORY.md` 嘅段落索引（51 段，2026-04～09）
+
+- [2026-07-28] 更新 (v2.9.72) - Audio Sync DAILY_LIMIT=1 + Volume 5 bug fix
+- [2026-07-04] 更新 (v2.9.57) - Git Pre-Commit 安全機制 + Git History 掃描器
+- [2026-07-03] 更新 (v2.9.56) - 減少 Push 頻率（防止 GitHub Pages build 失敗）
+- [2026-07-03] 更新 (v2.9.55) - Git Push Lock 機制（防止多 cron 衝突）
+- [2026-05-26] 更新 (v2.9.54) - 網站背景圖清理 + Service Worker 修復
+- [2026-05-12] 更新 (v2.9.53) - chapters-data.json 重複條目導致「共549章」
+- [2026-05-10] 更新 (v2.9.53) - Dropbox 同步章節未推送問題修復
+- [2026-05-08] 更新 (v2.9.47) - chapters.html 隱藏 div 重複腐壞問題修復
+- [2026-05-08] 更新 (v2.9.48) - chapters-data.json 重複條目導致顯示525章
+- [2026-07-07] 更新 (v2.9.61) - chapters-data.json field name + home.html 未更新 + Cloudflare cache
+- [2026-05-04] 更新 (v2.9.57) - update_chapters_simple.py 正則表達式修復
+- [2026-05-04] 更新 (v2.9.58) - 章節標題顯示修復（BOM + · 前綴）
+- [2026-05-04] 更新 (v2.9.59) - CH410, CH412-CH420 修真內容置換
+- [2026-05-04] 更新 (v2.9.60) - CH401-CH411 修真內容替換（第二批）
+- [2026-05-04] 更新 (v2.9.61) - 修復章節目錄顯示問題
+- [2026-05-04] 更新 - 章節 351-440 更新
+- [2026-05-05] 更新 (v2.9.64) - home.html 章節標題顯示修復
+- [2026-05-05] 更新 (v2.9.65) - 強化章節處理檢查清單
+- [2026-05-05] 更新 (v2.9.68) - CH472, CH473, CH478 補充上傳
+- [2026-05-05] 更新 (v2.9.69) - CH471, CH477, CH479 第四批上傳
+- [2026-05-05] 更新 (v2.9.70) - CH491, CH500 第五批上傳
+- [2026-05-05] 更新 (v2.9.72) - 500章標題全部唯一
+- [2026-05-05] 更新 (v2.9.73) - 章節總數修復（400→500）+ JSON修復
+- [2026-05-06] 更新 (v2.9.53) - 首頁章節數量顯示錯誤修復
+- [2026-05-06] 更新 (v2.9.55) - CHECKLIST 更新以包含 index.html
+- [2026-05-07] 更新 (v2.9.54) - Dropbox 第二卷自動化同步系統
+- [2026-05-07] 更新 (v2.9.55) - Dropbox 自動刷新 Token
+- [2026-05-08] 更新 (v2.9.48) - chapters-data.json 重複條目問題修復
+- [2026-05-16] 更新 (v2.9.53) - 小說名稱修復：科技修真傳 → 萬古塵埃
+- [2026-07-05] 更新 (v2.9.58) - 安全防線強化 + Dropbox Token 刷新修復
+- [2026-07-05] 更新 (v2.9.59) - 傍晚簡報 isolated cron timeout 修復
+- [2026-07-06] 更新 (v2.9.60) - 網站大規模優化 + Dropbox 同步 pipeline 加 Minify step
+- [2026-07-08] 更新 (v2.9.62) - chapter-template.html 外部化修復
+- [2026-07-11] 更新 (v2.9.63) - handleHash() 降序排序 group 跳頁錯誤
+- [2026-07-11] 更新 (v2.9.64) - chapters.html v2 全面重構
+- [2026-07-11] 更新 (v2.9.65) - chapters-v2 cache-busting + DOMContentLoaded fix
+- [2026-07-11] 更新 (v2.9.66) - 全站升級
+- [2026-07-11] 更新 (v2.9.68) - chapters.html UI + 背景圖更換流程
+- [2026-07-13] 更新 (v2.9.69) - home.html/index.html UI 雙重時鐘 + 日期計算錯誤修復
+- [2026-07-17] 更新 (v2.9.70) - OpenRouter Free Model Fallback 全面修復
+- [2026-07-17] 更新 (v2.9.71) - Chapter 7 Audio 修復 + Script Filename Bug
+- [2026-09-06] 更新 (v2.9.74) - 簡報 timeout 加固 + 同步腳本假失敗修復
+- [2026-09-12] 更新 (v2.9.75) - 補記：Audio Sync fallback 修復（隔離 session 週五執行）
+- [2026-09-13] 更新 (v2.9.76) - AQHI push 併發競爭修復
+- [2026-09-16] 更新 (v2.9.77) - Volume 6 啟動 + 財經 3-tier fallback + Dropbox token auto-renew
+- [2026-09-19] 更新 (v2.9.78) - OpenClaw 2026.9.2 → 2026.9.5 + Node 升級教訓
+- [2026-09-19] 更新 (v2.9.77) - OpenClaw 2026.9.5 更新完成（外部修復代理）
+- [2026-09-20] 更新 (v2.9.78) - 版本檢查腳本誤報修復
+- [2026-09-20] 更新 (v2.9.79) - send-briefing.sh schema 失配修復
+- [2026-09-22] 更新 (v2.9.80) - AQHI rebase autostash 完整修復
+- [2026-09-22] 更新 (v2.9.81) - AQHI push 重試循環（競賽根治）
 ## [2026-10-21] 更新 (v2.9.84) - Volume 5 system cron 條目遺失 + cron-guardian 權限修復
 
 ### 問題描述
@@ -34,246 +87,6 @@ version: 2.9.192
 - **system cron 同 OpenClaw cron 係兩套機制**：guardian 只保 OpenClaw cron jobs；system cron 條目要自己用 crontab -l 核對
 - 改完 shell script 一定要睇 git diff 嘅 mode 行（755->644 = 權限跌咗）
 - 修 crontab 永遠用 append，唔好覆蓋式寫入
-
-## [2026-07-28] 更新 (v2.9.72) - Audio Sync DAILY_LIMIT=1 + Volume 5 bug fix
-
-### 問題描述
-1. **Audio Sync 一次過處理 10 章**：大肥喵指定每日只更新 1 章
-2. **Volume 5 cron crash**：`dropbox_volume5_sync.py` 中 `sorted(set(list + set))` 出錯
-   - `state['synced_to_site'] = sorted(set(state.get('synced_to_site', []) + existing))`
-   - `existing` 係 `set`，不能直接用 `+` 串接 `list`
-3. **Volume 2 & Volume 4 已完成但 cron 未停用**：
-   - Volume 2 cron 仍每日 10:00 執行
-   - Volume 4 cron 每日 11:00 與 Volume 5 同一時間，可能 git conflict
-
-### 修復
-1. **`audio_sync_pipeline.py`**：新增 `DAILY_LIMIT = 1` config，每日只處理 1 章
-2. **`dropbox_volume5_sync.py`**：`sorted(set(... + list(existing)))` ✅
-3. **System crontab**：Volume 2 & Volume 4 cron 已 disable
-4. **Volume 5 cron**：保持 `CHAPTERS_PER_BATCH = 6` 不變
-5. **Git 修復**：`git pull --rebase && git push` 成功推送 CH1191-CH1197
-
-### 今日成功同步
-- 🎧 Audio Sync：CH31-CH40（因為改 config 前已 run）
-- 📖 Volume 5：CH1191-CH1197（7章）
-
-### 預防措施
-- 更改 batch size 前必須確認係 Audio 定 Text sync
-- 已完成 Volume 嘅 cron 要 disable 避免 git conflict
-
----
-
-## [2026-07-04] 更新 (v2.9.57) - Git Pre-Commit 安全機制 + Git History 掃描器
-
-### 問題描述
-- Dropbox credentials 曾被意外 commit 到 GitHub 公開 repo
-- 舊 credentials 仍存在 git history 中，任何人都可 git log 查看
-- 沒有人手去確保每次 commit 前檢查敏感資料
-
-### 修復
-1. **Pre-commit hook** (`.git/hooks/pre-commit`)：每次 commit 自動掃描，block 敏感檔案
-   - 檢查 `.token-store/`, `.backup-pass`, `openclaw.json` 等敏感路徑
-   - 檢查 API Key 模式 (`sk-`, `ghp_`, Dropbox tokens 等)
-   - 檢查 Private Key / PEM 檔案
-   - 檢查 Secrets / Passwords 檔案
-2. **Git History 掃描器** (`scripts/scan-git-history.sh`)：掃描整條 git history
-   - 支援 verbose 模式
-   - 可每日 cron 檢查
-3. **更新 HEARTBEAT.md**：加入每日自動 git history 掃描
-
-### 經驗
-- 人類記憶唔可靠，commit 前必須有自動化檢查
-- Git pre-commit hook 係最前端嘅防線
-- `.gitignore` + pre-commit hook 雙重保護先穩陣
-
-## [2026-07-03] 更新 (v2.9.56) - 減少 Push 頻率（防止 GitHub Pages build 失敗）
-
-### 問題描述
-即使加上 Push Lock 機制，大肥喵仍收到 GitHub email alert 關於 "Run failed"。
-
-### 根因
-**GitHub Pages build 失敗**。每次 push 到 main branch 都自動觸發 Pages deployment，
-每日約 50+ 次 push（每30分鐘一次），Pages 無法處理高頻 deployment queue，
-大量 build 失敗或 timeout。
-
-### 修復
-1. **`update_finance.sh`**：數據每30分鐘照常收集，但**只有偶數整點（:00 且 hour%2==0）才 push**
-   - 即每日 0、2、4、6、8、10、12、14、16、18、20、22 時（12次/日）
-   - 比之前 48 次/日減少 75%
-2. **`update_finance_news.sh`**：同上，只在偶數整點 push
-3. **`fetch_aqhi_data.py`**：同上，只在偶數整點 push
-
-### 效果
-- 每日 push 次數：~50 → ~14（集中在偶數整點，同時只 push 一次）
-- GitHub Pages build 頻率：每 30 分鐘一次 → 每 2 小時一次
-- Linux `flock` 鎖確保同時只 push 一次
-
-### 經驗
-- GitHub Pages 有 deployment rate limit，push 太頻繁會導致 build 失敗
-- 數據收集頻率和 push 頻率應該分離：收集可以頻繁，push 要控制
-- `set -e` 在 cron scripts 很危險
-
-## [2026-07-03] 更新 (v2.9.55) - Git Push Lock 機制（防止多 cron 衝突）
-
-### 問題描述
-多個 cron jobs 同時 push 到同一 GitHub repo 導致 "cannot lock ref" / "non-fast-forward" 錯誤，
-GitHub 每30分鐘發送 email alert 給大肥喵。
-
-### 影響的 cron jobs
-- `update_finance.sh`（每30分鐘，`:00` 和 `:30`）
-- `update_finance_news.sh`（每小時，`:00`）
-- `fetch_aqhi_data.py`（每小時，`:00` 直接調用 git push）
-- `fetch_ai_news.py`（每6小時，直接調用 git push）
-
-### 修復
-1. **新增 `scripts/git-push-with-lock.sh`**：使用 `flock` 實現文件鎖，120 秒超時
-2. **重寫 `update_finance.sh`、`update_finance_news.sh`**：移除 `set -e`（避免靜默失敗），改用 lock 同步
-3. **更新 `fetch_aqhi_data.py`、`fetch_ai_news.py`**：`git push origin main` → `bash scripts/git-push-with-lock.sh`
-
-### 設計原則
-- `flock` 是 Linux 原生文件鎖，不會有 race condition
-- 鎖文件 `.git-push.lock` 在 workspace 根目錄
-- 120 秒超時確保即使一個 script hang 住也不會永久阻塞
-- 推之前自動 `git pull --rebase`，推失敗自動重試 3 次
-- 最終失敗仍 fallback 到 `--force-with-lease`
-
-### 經驗
-- 多個 cron jobs push 同一 repo 必須用鎖隔離
-- `set -e` 在 cron scripts 很危險：Python 腳本失敗會讓 bash script 靜默退出
-- Python 直接調用 `subprocess.run(['git', 'push'])` 無法利用 bash 的錯誤處理邏輯
-
-## [2026-05-26] 更新 (v2.9.54) - 網站背景圖清理 + Service Worker 修復
-
-### 問題描述
-- 22個無用背景圖佔用 ~5MB 空間（news-bg 多版本、index-bg.png 2MB、chapters-bg 等）
-- Service Worker 引用不存在的 av-novels.html
-- CACHE_NAME 使用 Date.now() 導致舊快取無法清除（每次部署產生新快取）
-- index.html 中 og:title 與 <title> 不一致（「首頁」vs「官方網站」）
-
-### 修復
-- git rm 移除 22 個未引用背景圖
-- Service Worker：移除 av-novels.html staticUrls、CACHE_NAME 改為靜態版號 v2.1.0
-- 統一 index.html og:title / twitter:title 與 <title> 為「官方網站」
-- 已推送 GitHub（commit 172acf1b）
-
-### 經驗
-- repo 中有大量未引用圖片需定期清理
-- Service Worker 的 cache key 不應該用 Date.now()，應用固定版本號
-- OG meta 標籤應與 <title> 一致
-
----
-
-## [2026-05-12] 更新 (v2.9.53) - chapters-data.json 重複條目導致「共549章」
-
-### 問題描述
-kofhk.com/chapters.html 顯示「共549章」，但實際只有536章。
-
-### 根本原因
-1. `scripts/dropbox_volume2_sync.py` 使用 `re.match(r"chapter-(\d+)\.html", fname)` 匹配文件
-2. 存在 `chapter-1-restored.html` 和 `chapter-1-working.html` 兩個舊文件
-3. 正則將兩個文件誤匹配為 chapter-1，導致 JSON 產生13個重複條目
-4. 動態JS（`loadChaptersData()`）讀取 JSON 後顯示 `chaptersData.length`（549），覆蓋了靜態HTML的正確計數
-
-### 修復內容
-1. `scripts/dropbox_volume2_sync.py`：`re.match` → `re.fullmatch`（兩處）
-2. 重新生成 `assets/chapters-data.json`（536獨特條目，無重複）
-3. 刪除誤匹配的舊文件 `chapter-1-restored.html`、`chapter-1-working.html`
-4. 修復 chapters.html 中錯誤的「126章」描述為「536章」
-
-### 預防措施
-- 正則匹配文件名必須使用 `re.fullmatch` 而非 `re.match`
-- 每次生成 chapters-data.json 必須完整重新生成，不能追加
-- 文件中不要保留 `chapter-N-xxx.html` 這種容易誤匹配的命名
-
-## [2026-05-10] 更新 (v2.9.53) - Dropbox 同步章節未推送問題修復
-
-### 問題描述
-用戶反映 kofhk.com 看不到第519-524章節。
-
-### 根本原因
-`git push origin main` 被拒絕（遠端有新提交），但我**沒有注意到推送失敗**，繼續其他工作。 Commit `52ee7235` 只存在於本地，未能推送到 GitHub。
-
-```
-error: failed to push some refs to 'https://github.com/jyonline0604/website.git'
-hint: Updates were rejected because the remote contains work that you do not
-```
-
-### 修復流程
-1. `git stash` — 保存本地未提交的更改
-2. `git pull origin main --rebase` — 拉取遠端並變基
-3. `git stash pop` — 恢復本地更改
-4. `git push origin main` — 重新推送
-
-### 預防措施
-**⚠️ 每次執行 `git push` 後，必須確認輸出是否包含 `main -> main` 或 `Everything up-to-date`**
-
-| 推送結果 | 判斷 |
-|---------|------|
-| `main -> main` | ✅ 成功 |
-| `Everything up-to-date` | ✅ 成功（無需推送） |
-| `rejected` / `fetch first` | ❌ 失敗，需 `git pull --rebase` 後重新推送 |
-
-**如果推送失敗，必須立即修復，不得遺留到下一個工作！**
-
-### 為何之前沒發現？
-- 推送腳本有預檢查（HTML結構驗證），但**沒有在推送失敗時發出警告**
-- 我誤以為腳本 output 包含 `✅ 所有檢查通過，可以推送！` 就是成功
-
----
-
-## [2026-05-08] 更新 (v2.9.47) - chapters.html 隱藏 div 重複腐壞問題修復
-
-### 問題描述
-chapters.html 文件存在嚴重腐壞：
-- 每個章節組的隱藏 `<div id="group-XXX-YYY">` 被複製了 75-76 次
-- 存在虛假的章節組（如 `group-3751-3860`、`group-3851-3860` 等）
-- 文件大小從正常的 ~200KB 膨脹到 663KB
-- Google 等搜索引擎可能索引到這些錯誤數據
-
-### 根本原因
-`update_chapters_simple.py` 每次運行都會在 chapter-groups 區域之前**添加**新的 hidden divs，但**不會刪除**舊的。隨著章節增加（從 400 → 500 → 512），這些 hidden divs 不斷累積並重複。
-
-### 修復內容
-1. 手動清理 chapters.html 中所有在 chapter-groups 之前的 hidden divs
-2. 重新運行 `python3 scripts/update_chapters_simple.py` 生成正確的章節組
-3. 驗證三處章節數量同步（author.html、chapters.html meta、JSON-LD）
-4. 推送 GitHub
-
-### 受影響指標
-| 項目 | 修復前 | 修復後 |
-|------|--------|--------|
-| 文件大小 | 663 KB | 204 KB |
-| 文件行數 | 8306 行 | 4596 行 |
-| hidden div 數量 | 3760 個（75+倍重複） | 52 個（每組1個）|
-
-### 預防措施
-- 未來修改 `update_chapters_simple.py` 時，確保完全替換而非追加 hidden divs
-- 定期檢查 chapters.html 文件大小是否合理
-- **重要**：每次章節變更（新增/修改）後，必須同步重新生成 `assets/chapters-data.json`
-
----
-
-## [2026-05-08] 更新 (v2.9.48) - chapters-data.json 重複條目導致顯示525章
-
-### 問題描述
-用戶反映即使刷新後仍顯示「共525章」而非正確的512章。
-
-### 根本原因
-`assets/chapters-data.json` 包含 525 個條目（13個章節重複了）：
-- CH66(×2), 67(×2), 78(×2), 80(×3), 81(×2), 82(×2), 90(×3), 92(×3), 93(×3)
-- JavaScript 動態載入此 JSON 計算章節數量
-
-### 修復內容
-1. 重新掃描所有 `chapter-*.html` 文件，提取章節號和標題
-2. 生成乾淨的 `chapters-data.json`（移除重複，保留最後出現的正確標題）
-3. 從 525 條 → 512 條
-4. 推送 GitHub
-
-### 為何之前沒發現？
-- 我一直只檢查 HTML 結構和 meta tags，忽略了 JavaScript 動態載入的 JSON 數據源
-- **教訓**：遇到數量顯示問題時，必須檢查所有可能的數據來源
-
----
 
 ## 🔧 維護八誡（快速查找）
 
@@ -360,34 +173,6 @@ python3 scripts/chapter_task_checklist.py
 
 **沒有通過檢查，無法執行任務！**
 
-## [2026-07-07] 更新 (v2.9.61) - chapters-data.json field name + home.html 未更新 + Cloudflare cache
-
-### 問題1：chapters-data.json field name 搞錯（嚴重！）
-- **現象**：chapters.html 全部 link 變成 `chapter-undefined.html`
-- **根因**：regenerate JSON 時用咗 `chapter` 做 field name
-- **JS code 用 `ch.num`** — 兩者唔匹配
-- **修復**：JSON field name 必須係 `num`，唔係 `chapter`
-
-### 問題2：home.html 未隨 Dropbox sync 更新
-- **現象**：home.html 最新章節停喺 CH1009，但網站已有 CH1015
-- **根因**：Dropbox sync script 話更新 home.html 但實際冇郁到
-- **檢測方法**：每次 Dropbox sync batch 後，檢查 home.html 最下面6張 chapter-card 係咪最新
-- **修復**：手動執行 `python3 scripts/update_home_simple.py`
-
-### 問題3：Cloudflare Cache max-age 錯用 43200（12小時）
-- **問題**：`max-age=43200` 秒 = 12小時，但以爲係 2小時
-- **修復**：改爲 `max-age=7200`（2小時）
-- **教訓**：`max-age` 係**秒為單位**，唔好同小時搞錯
-
-### 強制檢查清單新增
-每次 Dropbox sync batch 完，必須驗證：
-1. ✅ chapters-data.json (1015條, field=num)
-2. ✅ chapters.html (JS用 ch.num)
-3. ✅ home.html (最新6章 chapter-card)
-4. ✅ Cloudflare cache header (max-age=7200)
-
----
-
 ## 📝 重要修復經驗總結 (2026-04-28)
 
 ### 1. txt源文件標題格式
@@ -434,7 +219,6 @@ python3 scripts/chapter_task_checklist.py
 - **問題**：今天發現 `update_home_simple.py` 和 `update_chapters_simple.py` 正則不一致
 - **後果**：chapters.html 修復了，但 home.html 還是顯示錯誤標題
 - **預防**：修復正則表達式時，必須檢查所有相關脚本
-
 
 ## 🎨 漫畫系統 (2026-04-29)
 
@@ -684,826 +468,6 @@ python3 scripts/add_manga_button.py 5
 
 ---
 
-## [2026-05-04] 更新 (v2.9.57) - update_chapters_simple.py 正則表達式修復
-
-### 問題描述
-章節標題顯示不正確，chapters.html 中只顯示「第381章」而非「裂空蟲潮」。
-
-### 根本原因
-正則表達式中的 `[^<]+?` 非貪心匹配在某些情況下失效，無法正確提取標題。
-
-### 修復內容
-```python
-# 舊（失效）
-title_match = re.search(r'<title>第[零一二三四五六七八九十百千萬\d]+章\s*[·:：]\s*([^<]+?)(?:\s*-\s*萬古塵埃)?</title>', content)
-
-# 新（正確）
-title_match = re.search(r'<title>第[零一二三四五六七八九十百千萬\d]+章\s+([^<]+?)\s*[·-]\s*萬古塵埃</title>', content)
-```
-
-### 關鍵改動
-1. `[·:：]` → `\\s+` — 匹配空格分隔符
-2. `[^<]+?` 非貪心 → `[^<]+` 貪心 — 確保正確匹配
-
-### GitHub推送
-- **Commit**: `1b7327a0`
-
-### SKILL 更新
-- ✅ v2.9.57 已同步至 Second-brain 和 Max-backup
-
-
----
-
-## [2026-05-04] 更新 (v2.9.58) - 章節標題顯示修復（BOM + · 前綴）
-
-### 問題描述
-1. **BOM 問題**：部分章節（如 CH400）HTML 檔案 title 標籤內含 BOM（`\ufeff`），導致正則表達式匹配失敗
-2. **· 前綴問題**：CH1 等章節顯示為「· 落葉歸根」而非「落葉歸根」
-
-### 根本原因
-1. 某些章節 HTML 檔案含 BOM（chapter-382, 383, 386, 390, 394, 397, 398, 399, 400）
-2. 正則表達式 `[^<]+?` 提取了「· 落葉歸根」
-
-### 修復內容
-1. **BOM 移除**：使用 `encoding='utf-8-sig'` 自動移除 BOM
-2. **正則更新**：
-   - 格式A: `<title>第X章 · 標題 - 萬古塵埃</title>` → 提取 `標題`
-   - 格式B: `<title>第三百八十一章 標題 · 萬古塵埃</title>` → 提取 `標題`
-3. **移除 · 前綴**：使用 `lstrip('·').strip()`
-
-### GitHub推送
-- **Commit**: `40b70f02`
-
-### SKILL 更新
-- ✅ v2.9.58 已同步至 Second-brain 和 Max-backup
-
-
----
-
-## [2026-05-04] 更新 (v2.9.59) - CH410, CH412-CH420 修真內容置換
-
-### 任務背景
-大肥喵上傳10個txt文件（CH410, CH412-CH420），替換現有的科幻HTML內容。
-
-### 上傳檔案（10個）
-| 檔案名 | 章節 | 標題 |
-|--------|------|------|
-| 第四百一十章_古城滄州---... | CH410 | 古城滄州 |
-| 第四百一十二章_黑市交易---... | CH412 | 黑市交易 |
-| 第四百一十三章_危機四伏---... | CH413 | 危機四伏 |
-| 第四佰一十四章_絕望平原---... | CH414 | 絕望平原 |
-| 第四百一十五章_幻境考驗---... | CH415 | 幻境考驗 |
-| 第四百一十六章_登山之路---... | CH416 | 登山之路 |
-| 第四百一十七章_劍斬守護---... | CH417 | 劍斬守護 |
-| 第四百一十八章_巨門之前---... | CH418 | 巨門之前 |
-| 第四百一十九章_門後世界---... | CH419 | 門後世界 |
-| 第四百二十章_葉家淵源---... | CH420 | 葉家淵源 |
-
-### 修真關鍵詞驗證
-- 葉塵 ✓
-- 天淵門 ✓
-- 深淵之門 ✓
-- 葉滄瀾 ✓
-
-### 技術修復
-1. **num_to_cn() 函數**：正確處理 410→四百一十、420→四百二十
-2. **UTF-8 BOM 處理**：使用 encoding='utf-8-sig'
-
-### GitHub推送
-- **Commit**: `3fb45671`
-
-### SKILL 更新
-- ✅ v2.9.59 已同步至 Second-brain 和 Max-backup
-
-
----
-
-## [2026-05-04] 更新 (v2.9.60) - CH401-CH411 修真內容替換（第二批）
-
-### 任務背景
-大肥喵上傳剩餘的10個txt文件，替換舊版科幻HTML內容。
-
-### 上傳檔案（10個）
-| 檔案名 | 章節 | 標題 | 段落 |
-|--------|------|------|------|
-| 第四百零一章_東行啟程---... | CH401 | 東行啟程 | 63段 |
-| 第四百零二章_荒山夜宿---... | CH402 | 荒山夜宿 | 51段 |
-| 第四百零三章_古廟奇遇---... | CH403 | 古廟奇遇 | 19段 |
-| 第四百零四章_輪迴殿使---... | CH404 | 輪迴殿使 | 31段 |
-| 第四百零五章_令牌之秘---... | CH405 | 令牌之秘 | 17段 |
-| 第四百零六章_風雲暗湧---... | CH406 | 風雲暗湧 | 19段 |
-| 第四百零七章_天淵追兵---... | CH407 | 天淵追兵 | 23段 |
-| 第四百零八章_一戰驚鴻---... | CH408 | 一戰驚鴻 | 18段 |
-| 第四百零九章_東域見聞---... | CH409 | 東域見聞 | 17段 |
-| 第四百一十一章_暗夜襲殺---... | CH411 | 暗夜襲殺 | 17段 |
-
-### 修真關鍵詞驗證
-- 葉塵 ✓
-- 天淵門 ✓
-- 輪迴令 ✓
-- 深淵之門 ✓
-- 葉滄瀾 ✓
-
-### 技術修復
-1. **num_to_cn() 函數**：修復 401→四百零一、409→四百零九
-2. **數字顯示**：第四百零一章（不是四百一章）
-
-### 數字轉換邏輯
-```
-if n >= 100: parts.append(digits[n//100] + '百'); n = n % 100
-if n >= 10: parts.append(digits[n//10] + '十'); n = n % 10
-elif len(parts) > 0: parts.append('零')  # 補足零
-```
-
-### GitHub推送
-- **Commit**: `fda67425`
-
-### SKILL 更新
-- ✅ v2.9.60 已同步至 Second-brain 和 Max-backup
-
-
----
-
-## [2026-05-04] 更新 (v2.9.61) - 修復章節目錄顯示問題
-
-### 問題描述
-章節目錄（chapters.html）中 CH401-420 顯示「第401章」而非實際標題（如「東行啟程」）。
-
-### 根本原因
-1. 新生成的 HTML 使用 title 格式：`第四百零一章 · 東行啟程`（不含「- 萬古塵埃」後綴）
-2. `update_chapters_simple.py` 的正則表達式只支援：
-   - `第50章 · 陳雷尋仇 - 萬古塵埃`
-   - `第四百章 遠方之路 · 萬古塵埃`
-3. 無法匹配新的中文數字格式
-
-### 修復方案
-新增 `title_match_c` 正則表達式：
-```python
-title_match_c = re.search(r'<title>第[零一二三四五六七八九十百千萬\d]+章\s+[·]\s*([^<]+?)(?:\s*-\s*萬古塵埃)?</title>', content)
-```
-
-### 驗證結果
-| 章節 | 標題 |
-|------|------|
-| CH401 | 東行啟程 |
-| CH402 | 荒山夜宿 |
-| CH403 | 古廟奇遇 |
-| CH410 | 古城滄州 |
-| CH420 | 葉家淵源 |
-
-### GitHub推送
-- **Commit**: `33a39ff9`
-
-### SKILL 更新
-- ✅ v2.9.61 已同步至 Second-brain 和 Max-backup
-
-
-## [2026-05-04] 更新 - 章節 351-440 更新
-- 更新章節 351-440 HTML 檔案
-- 更新 chapters.html 和 home.html
-- GitHub推送完成
-
----
-
-## [2026-05-05] 更新 (v2.9.64) - home.html 章節標題顯示修復
-
-### 問題
-首頁最新章節區域的章節標題顯示不正確：
-- `<h3 class="chapter-title">` 只顯示「第460章」而非「萬古荒漠」
-- 原因是 update_home_simple.py 的正則表達式未正確匹配新版HTML格式
-
-### 根本原因
-新生成的HTML標題格式為：
-- `<title>第四百六十章 · 萬古荒漠</title>` （無「- 萬古塵埃」後綴）
-
-但正則表達式要求結尾必須有 `-\s*萬古塵埃`：
-```python
-# 舊（錯誤）
-r'<title>第[零一二三四五六七八九十百千萬\d]+章\s*[·:：]\s*(.+?)\s*-\s*萬古塵埃</title>'
-
-# 新（正確）
-r'<title>第[零一二三四五六七八九十百千萬\d]+章\s*[·:：]\s*(.+?)(?:\s*-\s*萬古塵埃)?</title>'
-```
-
-### 修復內容
-- 修改 `scripts/update_home_simple.py` 的正則表達式，使用可選非捕獲組 `(?:\s*-\s*萬古塵埃)?`
-- 重新生成 home.html
-
-### GitHub推送
-- **Commit**: `1b8cdd74`
-
-### SKILL 更新
-- ✅ v2.9.64 已同步至 Second-brain 和 Max-backup
-
----
-
-## [2026-05-05] 更新 (v2.9.65) - 強化章節處理檢查清單
-
-### 問題
-CH441-460和CH421-440接連出現標題錯誤，根本原因是沒有強制驗證機制。
-
-### 修復內容
-更新 `scripts/chapter_task_checklist.py` 為 v2 版本：
-1. 新增 `verify_html_title()` - 驗證HTML標題是否與inbound匹配
-2. 新增 `verify_home_chapter_cards()` - 驗證home.html顯示標題而非章號
-3. 新增 `check_simplified_chars()` - 檢測簡體字符
-4. 改進 `get_new_chapters()` - 正確匹配「第四百XX章_標題」格式
-
-### 驗證命令（每次生成後必須執行）
-```bash
-# 驗證HTML標題
-grep '<title>' chapter-XX.html
-# 正確：<title>第四百六十章 · 萬古荒漠</title>
-# 錯誤：<title>第四百六章 · 頻率網絡的深層探索</title>
-
-# 驗證home.html卡片
-grep 'chapter-title' home.html | head -5
-# 正確：<h3 class="chapter-title">萬古荒漠</h3>
-# 錯誤：<h3 class="chapter-title">第460章</h3>
-```
-
-### GitHub推送
-- **Commit**: `chapter_task_checklist.py` 已更新
-
-### SKILL 更新
-- ✅ v2.9.65 已同步至 Second-brain 和 Max-backup
-
----
-
-## [2026-05-05] 更新 (v2.9.68) - CH472, CH473, CH478 補充上傳
-
-### 處理記錄
-大肥喵再次上傳3個章節，修復了之前缺失的CH472、CH473、CH478。
-
-### 統計
-| 上傳時間 | 章節 |
-|----------|------|
-| 20:08 (第一批) | CH461-470, CH480-489 (20章) |
-| 20:29 (第二批) | CH474-476 (3章) |
-| 20:32 (第三批) | CH472, CH473, CH478 (3章) |
-
-### 仍未入庫
-CH471、CH477、CH479 — 等待大肥喵上傳
-
-### CH476/CH478/CH480 截斷問題
-- inbound 檔案在段落中斷，未含完整章節內容
-- 已標註，但仍生成HTML發布
-
-### SKILL 更新
-- ✅ v2.9.68 已同步至 Second-brain 和 Max-backup
-
----
-
-## [2026-05-05] 更新 (v2.9.69) - CH471, CH477, CH479 第四批上傳
-
-### 處理結果
-全部 20 個章節（CH461-489）已完成入庫。
-
-### 章節統計（最終）
-| 章節 | 標題 | 段落 | 狀態 |
-|------|------|------|------|
-| CH471 | 歸途之路 | 59 | ✅ 完整 |
-| CH477 | 輪迴之聲 | 26 | ⚠️ 截斷 |
-| CH479 | 跨越門檻 | 23 | ⚠️ 截斷 |
-
-### 截斷檔案說明
-- CH476、CH477、CH478、CH479、CH480 的 inbound 檔案均不完整
-- CH471-475 完整其餘章節段落正常
-
-### 最終完成度
-- **總章節數**: 489 章
-- **GitHub**: `3aeabfe9`
-
-### SKILL 更新
-- ✅ v2.9.69 已同步至 Second-brain 和 Max-backup
-
----
-
-## [2026-05-05] 更新 (v2.9.70) - CH491, CH500 第五批上傳
-
-### 新增章節
-| 章節 | 標題 | 段落 | 備註 |
-|------|------|------|------|
-| CH491 | 巔峰劫難 | 23 | ⚠️ 截斷（~2276字） |
-| CH500 | 塵埃落定 | 58 | ✅ 完整（第一卷完） |
-
-### 進度
-- **總章節**: 490 章
-- **最新章節**: CH500 塵埃落定（第一卷完）
-- **GitHub**: `2aca8388`
-
-### 截斷統計（已入庫但內容不完整）
-CH476, CH477, CH478, CH479, CH480, CH491
-
-### SKILL 更新
-- ✅ v2.9.70 已同步至 Second-brain 和 Max-backup
-
----
-
-## [2026-05-05] 更新 (v2.9.72) - 500章標題全部唯一
-
-### 問題
-24個標題重複，共53章需要改名：
-- 暗流湧動 出現4次
-- 天劫降臨、出現3次
-- 鞏固根基、鞏固境界 各出現3次
-- 其餘19個標題各出現2次
-
-### 修改內容
-| 原標題 | 次數 | 新標題 |
-|--------|------|--------|
-| 暗流湧動 | 4 | 劍氣凝煉/神秘老者/暗處的眼睛/長老會議 |
-| 天劫降臨 | 3 | 築基天劫/三重天劫/元嬰極境 |
-| 鞏固根基 | 3 | 靈力蛻變/感知天地/瀑布悟道 |
-| 鞏固境界 | 3 | 靈力掌控/閉關沉澱/元嬰穩固 |
-| 蒼瀾歷練 | 2 | 野獸出沒/古蹟探險 |
-| 風雨欲來 | 2 | 修煉體系/危機徵兆 |
-| 再入蒼瀾 | 2 | 潛行之術/隊友重逢 |
-| 雖敗猶榮 | 2 | 大師兄風範/一招制敵 |
-| 衝刺巔峰 | 2 | 元氣流轉/山洞隱居 |
-| 藏經悟道 | 2 | 功法研讀/瓶頸困擾 |
-| 遠古遺跡 | 2 | 壁畫秘密/符文陣法 |
-| 塵淵揚威 | 2 | 百年天才/十六強對決 |
-| 滿載而歸 | 2 | 地下通道/輪迴領悟 |
-| 衝擊瓶頸 | 2 | 紫靈丹效/凝神瓶頸 |
-| 塵埃未定 | 2 | 宿命對決/元氣恢復 |
-| 劫後餘生 | 2 | 慘勝代價/傷後閒暇 |
-| 凝神之秘 | 2 | 傳承空間/元氣液化 |
-| 後期巔峰 | 2 | 力量飛躍/元嬰對話 |
-| 塵埃未落 | 2 | 隱藏實力/劍招打磨 |
-| 塵淵真意 | 2 | 凝神契機/傷疤經驗 |
-| 苏醒的代價 | 2 | 頻率感知/核心意識 |
-| 新的黎明 | 2 | 地裂關閉/共生共存 |
-| 父親的足跡 | 2 | 神秘筆跡/第四個守望 |
-| 深淵之門 | 2 | 晨光重現/裂縫探查 |
-
-### GitHub
-- Commit: `66e66f50`
-
-### 驗證
-- ✅ 500章標題全部唯一
-- ✅ chapters.html 已更新
-- ✅ home.html 已更新
-
----
-
-## [2026-05-05] 更新 (v2.9.73) - 章節總數修復（400→500）+ JSON修復
-
-### 問題描述
-大肥喵在網站截圖中發現兩處章節總數錯誤：
-1. **author.html**: `<span id="chapterCount">400</span>` 顯示「已有400章」
-2. **chapters.html**: meta description 顯示「完整收錄400章」
-
-### 修復內容
-
-#### 1. author.html 修復
-```html
-<!-- 修復前 -->
-<span id="chapterCount">400</span>
-
-<!-- 修復後 -->
-<span id="chapterCount">500</span>
-```
-
-#### 2. chapters.html meta 修復
-```html
-<!-- 修復前 -->
-<meta name="description" content="《萬古塵埃》章節列表 - 完整收錄400章...">
-<meta property="og:description" content="...完整收錄400章...">
-<meta name="twitter:description" content="...收錄400章...">
-
-<!-- 修復後 -->
-完整收錄500章
-```
-
-#### 3. assets/chapters-data.json 隱藏問題 ⚠️
-**問題**: JSON檔案只包含135章（當時生成後未更新）
-**影響**: JavaScript動態載入時顯示不正確的章節數
-**修復**: 重新生成完整500章的JSON檔案
-
-### GitHub Commit
-- `9580ef7e` - fix: update chapter count from 400 to 500
-- `13c61b9c` - fix: update chapters-data.json from 460 to 500 chapters
-
-### 預防措施
-日後任何章節變更（新增/修改/刪除），必須同時更新：
-- [x] author.html 的 chapterCount
-- [x] chapters.html 的 meta description (3處)
-- [x] assets/chapters-data.json（完整重新生成）
-
----
-
-## [2026-05-06] 更新 (v2.9.53) - 首頁章節數量顯示錯誤修復
-
-### 問題描述
-首頁 (index.html) 顯示「460+章節」，但實際有 500 章節。
-
-### 發現的問題
-| 文件 | 問題 | 修復後 |
-|------|------|--------|
-| index.html | meta description: 460+ | 500+ |
-| index.html | 文字描述: 460+ | 500+ |
-| index.html | 統計數字: 460+ | 500+ |
-| home.html | meta description: 130+ | 500+ |
-| home.html | JSON-LD numberOfPages: 130 | 500 |
-| chapters.html | JSON-LD numberOfItems: 400 | 500 |
-
-### 修復內容
-- `index.html`: 三處 460+ → 500+
-- `home.html`: 兩處 130/130 → 500/500
-- `chapters.html`: 一處 400 → 500
-
-### GitHub推送
-- **Commit**: `c295d617`
-
-### 預防措施
-章節數量顯示需要同步檢查多個位置：
-1. index.html (meta description, 文字描述, 統計數字)
-2. home.html (meta description, JSON-LD)
-3. chapters.html (meta description, JSON-LD)
-4. author.html (chapterCount span)
-
----
-
-## [2026-05-06] 更新 (v2.9.55) - CHECKLIST 更新以包含 index.html
-
-### 更新背景
-今日修復首頁章節數量顯示錯誤（index.html 顯示 460+ 而非 500+），發現 CHECKLIST 需要更新以包含 index.html。
-
-### CHECKLIST 更新內容
-
-#### 四處章節數量同步（更新版）
-**舊版**：author.html + chapters.html meta + chapters-data.json
-
-**新版**：需要檢查四個位置：
-1. **index.html** (meta description, 文字描述, 統計數字)
-2. **home.html** (meta description, JSON-LD numberOfPages)
-3. **chapters.html** (meta description, JSON-LD numberOfItems)
-4. **author.html** (chapterCount span)
-
-### 修復的文件
-- `index.html`: 460+ → 500+ (三處)
-- `home.html`: 130 → 500 (兩處)
-- `chapters.html`: 400 → 500 (一處)
-
-### chapter_task_checklist.py 更新
-已更新預設章節數從 460 → 500，並在【6】項新增 index.html 檢查。
-
-### GitHub推送
-- **Commit**: `c295d617`
-
-### 預防措施
-每次更新章節數量時，必須檢查所有四個位置：
-1. ✅ index.html (meta description, 文字描述, 統計數字)
-2. ✅ home.html (meta description, JSON-LD numberOfPages)
-3. ✅ chapters.html (meta description, JSON-LD numberOfItems)
-4. ✅ author.html (chapterCount span)
-
----
-
-## [2026-05-07] 更新 (v2.9.54) - Dropbox 第二卷自動化同步系統
-
-### 新增功能
-Dropbox 自動化同步系統建立，每天08:00自動從Dropbox第二卷下載6章並更新網站。
-
-### 系統組件
-1. **Token**: `./token-store/dropbox-token.txt` (600權限)
-2. **主腳本**: `scripts/dropbox_volume2_sync.py`
-3. **Cron Shell**: `scripts/dropbox-daily-sync.sh`
-4. **狀態追蹤**: `.dropbox-sync/volume2_state.json`
-5. **Cron Job**: OpenClaw cron @ 08:00 daily
-
-### 流程
-1. 掃描 Dropbox `/萬古塵埃/第二卷/` (CH501-CH700)
-2. 比對網站已有章節 (CH1-500)
-3. 取前6章未處理的
-4. 下載 → 簡轉繁 → 生成 HTML → 驗證 → 更新網站 → 推送 GitHub
-
-### 已知限制
-- Link checker 顯示舊章節有441個預先存在的鏈接問題（kofhk.com URL vs 相對路徑）
-- 這些是歷史遺留問題，不影響新章節
-
-### GitHub推送
-- **Commit**: `81354ed9`
-
-
-## [2026-05-07] 更新 (v2.9.55) - Dropbox 自動刷新 Token
-
-### 修復內容
-解決 Dropbox Access Token 4小時過期問題
-
-### 解決方案
-使用 OAuth2 Refresh Token 實現自動 Token 刷新：
-1. 建立 Dropbox App （key: hqpy450lnc4wn7b）
-2. 通過 PKCE 授權流程獲取 Refresh Token
-3. Token 過期時腳本自動使用 Refresh Token 換新
-
-### 相關文件
-- `.token-store/dropbox-refresh-token.txt` (Refresh Token, 永不過期)
-- `.token-store/dropbox-app-creds.txt` (App Key + App Secret + Refresh Token)
-- `.token-store/dropbox-token.txt` (Access Token, 自動刷新)
-
-### 腳本更新
-- `scripts/dropbox_volume2_sync.py`: 新增 `refresh_access_token()` 函數
-- `get_dropbox_client()` 現在會自動檢測 Token 過期並刷新
-
-
----
-
-## [2026-05-08] 更新 (v2.9.48) - chapters-data.json 重複條目問題修復
-
-### 問題描述
-用戶反映即使刷新後仍顯示「共525章」而非正確的512章。
-
-### 根本原因
-`assets/chapters-data.json` 包含 525 個條目，其中 13 個章節有重複：
-- CH66, 67, 78, 80(×3), 81, 82, 90(×3), 92(×3), 93(×3)
-- 導致 JavaScript 載入時計算出 525 章
-
-### 修復內容
-1. 從頭掃描所有 `chapter-*.html` 文件重新生成 `chapters-data.json`
-2. 移除重複條目，保留正確標題
-3. 從 525 條 → 512 條
-4. 推送到 GitHub
-
-### 預防措施
-- 未來生成 chapters-data.json 前先檢查並移除重複條目
-- 考慮將 chapters-data.json 生成邏輯整合到 update_chapters_simple.py
-
----
-
-## [2026-05-16] 更新 (v2.9.53) - 小說名稱修復：科技修真傳 → 萬古塵埃
-
-### 問題描述
-用戶反映 dashboard.html、finance.html、news.html 中的左上方仍使用舊小說名字「科技修真傳」，應為「萬古塵埃」。
-
-### 根本原因
-在之前的章節更新中，僅更新了章節頁面和目錄頁面，但未同步更新網站的其他頁面（dashboard、finance、news）。
-
-### 修復內容
-1. 使用 `sed` 命令批量替換以下文件中的「科技修真傳」為「萬古塵埃」：
-   - `/home/openclaw/.openclaw/workspace/dashboard.html`
-   - `/home/openclaw/.openclaw/workspace/finance.html`
-   - `/home/openclaw/.openclaw/workspace/news.html`
-2. 替換範圍包括：meta 標籤、title 標籤、JSON-LD 結構化數據、導航列Logo、頁腳版權聲明等。
-
-### 驗證
-- 確認上述三個文件中不再出現「科技修真傳」字樣。
-- 確認所有替換後的文件在本地預覽正常。
-
-### GitHub推送
-- **Commit**: `待產生` - 將在修復後推送至 GitHub。
-
-### 預防措施
-- 以後更新小說名稱時，必須同時更新所有網站頁面，而不僅是章節頁面。
-- 更新 SKILL.md 並同步到 Second-brain 和 Max-backup。
-
----
-
-## [2026-07-05] 更新 (v2.9.58) - 安全防線強化 + Dropbox Token 刷新修復
-
-### 問題
-1. Dropbox App 被停用，需更換 credentials
-2. 安全過濾系統將 `cat > file << EOF` 寫入的機密替換為 `***`
-3. Python `requests.post` 與 Dropbox API token refresh 不相容
-4. Nemotron 模型在 isolated cron 中無法回應
-5. `seedream-image-gen/SKILL.md` 的 API Key 存在 git history 中
-
-### 修復
-1. **Credentials 安全管理**：使用 `scripts/save-dropbox-creds.py` 寫入機密，不經 exec 輸出層
-2. **Token refresh**：三個 dropbox_volume*_sync.py 的 token refresh 改用 `subprocess.run(['curl', ...])` 替代 `requests.post`
-3. **Cron job 模型**：Dropbox cron 改為 deepseek-v4-flash 為主，Nemotron 為 fallback
-4. **Pre-push hook**：新增 `.git/hooks/pre-push`，push 前掃描所有待推送 commits（就算 `--no-verify` 繞過 pre-commit 也會攔截）
-
-### 安全防線（五層）
-1. `.gitignore` → `.token-store/` 永不追蹤
-2. `pre-commit` → commit 前攔截
-3. `pre-push` 🆕 → push 前攔截
-4. `scripts/scan-git-history.sh` → 定期深度掃描
-5. 記憶檔加密備份 → `openssl enc -aes-256-cbc`
-
-### 敏感資料清除
-- 使用 `git filter-repo --replace-text` 從三個倉庫徹底清除 API Key
-- 驗證方法：`git log --all --oneline -S "sk-kNFHUJo"` 回傳 0
-
-### 教訓
-- 機密寫入不要用 heredoc，用 Python 腳本從 stdin/argv 接收
-- Dropbox API → curl，不是 requests
-- Nemotron 不可靠，不適合 cron job
-- pre-commit 可被 `--no-verify` 繞過，pre-push 才是最後防線
-- 定期 `git log -S` 掃描所有倉庫找敏感資料
-
----
-
-## [2026-07-05] 更新 (v2.9.59) - 傍晚簡報 isolated cron timeout 修復
-
-### 問題
-傍晚簡報 cron job 連續 4 次 timeout：
-`cron: job execution timed out (last phase: model-call-started)`
-每次 exactly 120 秒。
-
-### 錯誤診斷過程
-1. 最初判斷為 DeepSeek API 負載問題
-2. 大肥喵指出：main session 用緊同一個 DeepSeek 但正常回應
-3. 查 OpenClaw docs 發現 isolated cron session 有獨立 watchdog timeout
-4. 出處：*"These watchdogs are capped independently from long timeoutSeconds values so cold-start/auth/context failures surface quickly"*
-
-### 根本原因
-OpenClaw isolated cron session（`sessionTarget: "isolated"`）的 model init 階段有硬性 watchdog（~120s），
-獨立於 payload 的 `timeoutSeconds` 設定。
-Main session 冇呢個限制。
-
-### 修復
-將傍晚簡報 cron job 改為 main session systemEvent：
-- `sessionTarget`: `isolated` → `main`
-- `payload.kind`: `agentTurn` → `systemEvent`
-- `payload.message`: 「【傍晚簡報】」→ 「發送傍晚簡報到 Telegram」
-
-### 經驗
-- 不要先入為主以為問題在 API — 先確認 main session 能否正常 call model
-- Isolated cron 的 watchdog 與 timeoutSeconds 無關，無法加長
-- 純文字輸出嘅 cron job（簡報、提醒）用 main session 比 isolated 更穩定
-
----
-
-## [2026-07-06] 更新 (v2.9.60) - 網站大規模優化 + Dropbox 同步 pipeline 加 Minify step
-
-### 網站改動（由大肥喵完成）
-
-| # | 建議 | 狀態 |
-|:---:|---|---|
-| 2 | chapters.html 分頁 | ✅ 每頁100章，1.15MB→854KB |
-| 4 | HTML 壓縮 | ✅ 11.9MB→8.7MB，-26.7% |
-| 6 | 清理 repo 雜物 | ✅ 刪除30個 .py 腳本等 |
-| 7 | 導覽一致性 | ✅ index.html 跳轉+canonical |
-| 8 | 多媒體優化 | ✅ 移除4MB未引用 mp3/mp4 |
-| 9 | 手機閱讀體驗 | ✅ 浮動導覽列+閱讀進度 |
-
-### chapters.html 新架構
-- **不再伺服器渲染全部章節**（舊：寫入所有 `<a class="chapter-item">`）
-- **改為 assets/chapters-data.json 載入資料**
-- **JavaScript 客户端分頁**：100章/頁
-- dropbox sync pipeline 已識別此變更並保留 JSON 更新邏輯
-
-### Dropbox Volume4 同步 pipeline 更新
-- ✅ 新增 `run_minify()` step 於 link check 之前
-- 新章節生成後自動 minify，保持與現有章節一致性
-- `minify_html.py` 已存在（SKIP: chapter-template.html）
-
-### 影響的自動化任務
-1. **Dropbox Volume4 同步（08:00）** → 已更新，pipeline 最終運行：
-   ```
-   生成HTML → 驗證 → Update scripts → Minify → Link check → JSON更新 → Git push
-   ```
-2. 其他 cron jobs 不受影響 ✅
-
-### 注意事項
-- `chapter-template.html` 需保持非 minified（模板文件）
-- chapters-data.json 更新邏輯在 sync script 內，不需外部腳本
-- 現有 chapters.html 有重複 group IDs，下次 run 會自動清理
-
-## [2026-07-08] 更新 (v2.9.62) - chapter-template.html 外部化修復
-
-### 背景
-GitHub Actions 執行咗 11 項網站優化，包括章節頁 CSS/JS 外部化。
-所有 1021 章已移除 inline style/script，改為引用 `assets/chapter.css` + `assets/chapter.js`。
-
-### 問題
-`chapter-template.html` 未同步更新，仍包含 inline `<style>` 和 `<script>`。
-聽朝 Dropbox sync 生成新章節時會產生不一致：
-- 重複 CSS（inline + 冇 external link）
-- 沒有 `chapter.js` → 冇主題切換、閱讀時間
-
-### 修復
-- 移除 template 中 inline `<style>...</style>`，改為 `<link rel="stylesheet" href="assets/chapter.css">`
-- 移除 inline `<script>...</script>`，改為 `<script src="assets/chapter.js" defer></script>`
-- 保留 `chapter-nav.js` 引用
-- 同步到備份倉庫 + GitHub push
-
-### 教訓
-網站外部優化後必須同步檢查所有 template 文件。
-
----
-
-## [2026-07-11] 更新 (v2.9.63) - handleHash() 降序排序 group 跳頁錯誤
-
-### 問題
-- `chapters.html` 中 `handleHash()` 用 `Math.ceil(target / PER_PAGE)` 計頁數，只適用升序排列
-- Default sort 係 desc（降序），1039章時 `#group-1031-1039`：
-  - 應該跳第1頁（1039→940），1031-1039 全部可見
-  - 實際跳第11頁（39→1），完全錯晒
-- 大肥喵反映 group button 點擊後顯示錯誤章節
-
-### 根因
-`handleHash()` 假設章節升序排列（1→1039），從未考慮降序場景。大多數 user 用 default desc sort 都會 hit 呢個 bug。
-
-### 修復
-```javascript
-function handleHash() {
-  // ...
-  let page;
-  if (currentSort === 'desc') {
-    const position = allChapters.length - target;
-    page = Math.floor(position / PER_PAGE) + 1;
-  } else {
-    page = Math.ceil(target / PER_PAGE);
-  }
-  // ...
-}
-```
-
-### 教訓
-- 任何與排序相關的計算（page、anchor、hash routing）都要檢查 sort direction
-- `update_chapters_simple.py` 只更新 HTML structure，不改 JS — fix 保留在 chapters.html 中
-- GitHub Pages 部署 ~30s 延遲，Cloudflare 可能有短暫 stale cache
-
----
-
-## [2026-07-11] 更新 (v2.9.64) - chapters.html v2 全面重構
-
-### 問題
-- 舊版 407KB，1039 條靜態 HTML chapter items hardcode
-- 3000章時會有 ~1.2MB + 300 個 group buttons
-- 冇搜尋、冇快速跳轉、10章一組極難用
-
-### 新設計
-- **檔案**: 407KB → 26.7KB (-94%)，全動態從 `chapters-data.json` 加載
-- **Volume tabs**: 取代 100+ group buttons，只顯示有內容的卷
-- **搜尋欄**: 章節號碼 + 標題關鍵字，300ms debounce
-- **快速跳轉**: Hero 區輸入章節號碼，click 直達 `chapter-N.html`
-- **PER_PAGE**: 20 章/頁
-- **Scroll buttons**: 回到頂部 ⬆ + 直達底部 ⬇（與 chat widget 對齊）
-- **Hash 兼容**: `#group-1031-1039` → 自動跳轉對應 Volume tab，`#vol-4` → filter 第四卷
-- **保留**: header/nav/hamburger/PWA/chat-widget/RSS/footer 全部不變
-
-### 同步更新
-- `update_chapters_simple.py`: 完全重寫 → 只更新 meta description，不再生成靜態 HTML
-- Dropbox sync 流程不變（仍會 call update_chapters_simple.py）
-- 舊版備份：`chapters-v1-backup.html`
-
-### 注意
-- 章節列表完全由 JS 動態渲染，依賴 `chapters-data.json` 正確
-- 如果 chapters-data.json 載入失敗，會顯示「載入失敗」提示
-- Volume definitions 在 JS 中 hardcode，若卷數結構變更需要同步更新 JS
-
----
-
-## [2026-07-11] 更新 (v2.9.65) - chapters-v2 cache-busting + DOMContentLoaded fix
-
-### 問題
-- 大肥喵反映 v2 上線後仍見到最新章節只有 1033（非 1039）
-- 排查發現 chapters-data.json 和其他邏輯均正確
-
-### 修復三項
-1. **Cache-busting**: `assets/chapters-data.json?v=20260711v2` → 瀏覽器強制重新載入 JSON
-2. **DOMContentLoaded race condition**: 
-   ```javascript
-   if (document.readyState === 'loading') {
-     document.addEventListener('DOMContentLoaded', init);
-   } else {
-     init();
-   }
-   ```
-   防止 script 在 DOMContentLoaded 後執行導致 init() 永不觸發
-3. **Footer v2 標記**: 頁底加入 `<span>v2</span>` 方便 debug 確認版本
-
-### 教訓
-- 頁尾 script 不能用單純 `DOMContentLoaded` listener，必須檢查 `readyState`
-- 動態 JSON 載入應加 version parameter 防 browser cache
-- 部署後要加 visible version marker 方便確認新版上線
-
----
-
-## [2026-07-11] 更新 (v2.9.66) - 全站升級
-
-### chapters.html v3 人性化功能
-1. **已讀/未讀標記**: localStorage `readChapters`，click 章節自動標記，✅ 圖標 + 綠色邊框
-2. **閱讀進度條**: Hero 區「已讀 X/1039 章 · Y%」，漸變進度條
-3. **書籤功能**: ☆/★ toggle，獨立書籤 filter，localStorage `bookmarks`
-4. **NEW badge**: 最新 20 章 🆕 標記，最新 6 章顯示「新章節」
-
-### home.html v2 人性化功能
-5. **搜尋直達**: 入數字即跳章節，打關鍵字有 dropdown suggestions，從 chapters-data.json 加載
-6. **閱讀 Streak**: localStorage `readingDays`，連續天數 + 鼓勵語句（🔥 連續閱讀 X 天）
-7. **相對更新時間**: 🕐 X分鐘前/小時前/天前更新，60秒 auto-refresh
-
-### 漫畫版下線
-- 1040 章節 manga button 全部移除
-- characters.html + 20 張 assets/manga-characters/ 圖片已刪除
-- add_manga_button.py 已刪除
-
-### 全站導航統一
-- 建立 `unify_nav.py` 統一全站導航列
-- 11 個頁面統一：首頁|章節|AI新聞|財經|ITV|儀表板|巴士|作者
-- 移除 chapters.html 中 av-novels.html / aqhi.html (404) 連結
-
-### 腳本更新
-- `update_chapters_simple.py`: meta-only（v2 已重寫，v3 相容）
-- `update_home_simple.py`: 相容（仍用 chapter-grid class）
-- `unify_nav.py`: 新增 11 頁統一導航腳本
-
----
-
 ## 🚨 [2026-07-11] 嚴重事故 (v2.9.67) - sed line-delete 砍掉 1009 章內容
 
 ### 事故
@@ -1529,265 +493,6 @@ sed -i 's|<a href="https://kofhk.com/manga/[^"]*" class="manga-btn">[^<]*</a>||g
 2. **Bulk operation 前必須先 test 1-2 files**
 3. **Verify 內容完整性**：唔只 check HTTP status，要 check `<main>` tag, body size, actual content
 4. **Git diff before commit**：大規模改動前 `git diff --stat` 確認改動範圍合理
-
----
-
-## [2026-07-11] 更新 (v2.9.68) - chapters.html UI + 背景圖更換流程
-
-### chapters.html 背景圖顯示問題
-- 背景圖 1280×720（16:9）在 ultrawide 螢幕僅 40vh 時只顯示 ~30%
-- **修複**: Hero 高度桌面 40→70vh / 手機 35→50vh
-- **漸層遮罩**: 用 `::after` 偽元素（上 30%→下 75%）比 inline gradient 更靈活
-- **背景定位**: `center top/cover` 比 `center/cover` 顯示更多上部內容
-
-### UI 透明化
-- `.toolbar` 背景透明：`background: var(--card-bg)` → `transparent`
-- `.vol-tabs` 背景透明
-- `.chapter-list` 背景透明
-
-### 背景圖更換流程
-1. 大肥喵 send 圖時要確認清楚邊張圖用邊頁
-2. 最好叫佢分別用「home」同「chapter」標明
-3. Telegram media 可能有 compression，inbound file 可能唔係原圖
-4. 若大肥喵話「唔係我新上傳的圖片」，請佢重新 send 一次
-
-### 教訓
-- 兩張圖要分開放，唔好搞錯邊張係邊頁
-- 背景圖顯示效果要考慮 hero height + gradient overlay + toolbar transparency 三者配合
-- Cache-buster（`?v=2`）係解決瀏覽器 cache 嘅快速方案
-
----
-
-## [2026-07-13] 更新 (v2.9.69) - home.html/index.html UI 雙重時鐘 + 日期計算錯誤修復
-
-### 問題描述
-另一個AI將 home.html 和 index.html 改為 JS 動態渲染（從 chapters-data.json 載入），但遺留三個前端 bug：
-1. **雙重時鐘 🕐🕐**：HTML 已有 `<span>🕐</span>`，JS 文字又加 `'🕐 ...'` 前綴
-2. **"5 天前更新"**：`renderLatestChapters()` 用 `now - (latest.length - 1)` = `now - 5天` 計算日期
-3. **"無法取得更新時間"**：standalone script 在 XHR 完成前已執行，找不到 DOM 日期數據
-
-### 根因
-- 另一個AI改了靜態卡片→JS動態渲染但沒同步修正日期計算邏輯
-- 獨立 relative-time script 沒有處理「章節數據尚未載入」的過渡狀態
-
-### 修復內容
-1. 移除所有 JS 文字中的 🕐 前綴，只保留 HTML `<span>🕐</span>`
-2. 修正 `renderLatestChapters()` footer 日期：移除 `d0.setDate(d0.getDate() - (latest.length - 1))`，直接用 `now`
-3. Standalone script：XHR 未完成時顯示「載入中…」並 `setTimeout(1000)` 重試
-4. `renderLatestChapters()` 不再設定 `#updateTimeText`，由 standalone script 統一處理
-5. 同步修復 home.html 和 index.html
-
-### 對系統影響
-- ✅ **零影響** Cron 任務（Dropbox sync、簡報、健康檢查等）
-- ✅ **零影響** 後端數據腳本（chapters-data.json、update_*.py）
-- ✅ 純前端 JS/CSS 修改，僅影響頁面顯示
-
-### 教訓
-- JS 動態渲染引入新 bug 時，必須全面檢查日期計算、DOM 操作、過渡狀態
-- 靜態→動態遷移後，原有 standalone scripts 的執行時序可能改變
-- 應統一由一個 script 處理時間顯示，避免多處邏輯衝突
-
----
-
-## [2026-07-17] 更新 (v2.9.70) - OpenRouter Free Model Fallback 全面修復
-
-### 問題
-- 多個 isolated cron sessions（簡報、audio-tts、version-check）連續 failure
-- 根因：(1) 部分 job 完全冇 fallbacks，(2) 部分 fallbacks 用錯 `openrouter/` prefix 格式，(3) DeepSeek free tier timeout + Gemini quota exhausted
-
-### 修復
-1. 從 OpenRouter 344 models 中 review 出 16 個適合做 agent fallback 嘅 free models（✅ tools support）
-2. 最佳 fallback chain：NVIDIA Nemotron Ultra/Super → Qwen Next → Gemma 4 → openrouter/free
-3. 已更新 4 個 cron jobs 嘅 fallbacks（daily-audio-tts、早上簡報、傍晚簡報、Version Check）
-4. 深夜簡報 timeout 由 180s→300s；Version Check timeout 由 180s→300s
-
-### 任務影響
-- ✅ 零負面影響：只改 fallback model list + timeout，不改業務邏輯
-- ⚠️ 中午簡報 (66957fcc)：list 有但 get 唔到，可能 orphan，需要手動檢查
-
----
-
-## [2026-07-17] 更新 (v2.9.71) - Chapter 7 Audio 修復 + Script Filename Bug
-
-### 問題
-- Chapter 7 AI 語音朗讀冇反應
-- 根因：`generate_tts()` output `chapter-{N}-final.mp3`，但 `inject_audio_player.py` expects `chapter-{N}.mp3`
-- R2 upload 返 200 success 但 public URL 404（filename mismatch）
-
-### 修復
-1. 手動上傳 `chapter-7.mp3` 到 R2 → ✅ HTTP 200
-2. Fix `daily_audio_sync.py`: compressed output 由 `-final.mp3` 改為 `.mp3`，用 `shutil.move()` rename temp file
-
-### 教訓
-- Pipeline filename convention 要統一 — upstream output name = downstream expected name
-- R2 upload success ≠ public URL accessible，要 verify 最終 URL
-
----
-
-## [2026-09-06] 更新 (v2.9.74) - 簡報 timeout 加固 + 同步腳本假失敗修復
-
-### 修復內容
-1. 三個簡報 cron job（早上 08:15 / 中午 12:55 / 傍晚 17:55）timeout 300s→600s：zai 推理模型回應慢，300s 會超時（傍晚簡報 17:55 首 run 超時實證）。CLI：`openclaw cron edit <id> --timeout-seconds 600`
-2. dropbox_volume4/5_sync.py 移除 update_home_simple.py 呼叫：home.html 已改為 JS 動態載入 chapters-data.json，靜態網格不存在，呼叫必定失敗並令同步回報假失敗。真實數據由 update_chapters_simple.py + update_chapter_counts.py 覆蓋
-
-### 根本原因
-- home.html 2026 年中改版為動態渲染後，舊靜態更新腳本無同步退役
-- 推理模型（glm-5.3-flash）回應時間長，job timeout 要預鬆
-
-### 解決方法
-- 過時腳本呼叫直接移除（先實測確認必敗 + 驗證無數據遺漏）
-- cron timeout 用 CLI edit 而非 automations tool（isolated session 受限）
-
----
-
-## [2026-09-12] 更新 (v2.9.75) - 補記：Audio Sync fallback 修復（隔離 session 週五執行）
-
-### 修復內容
-- 每日 Audio Sync 10:00 job fallbacks 由死透嘅 openrouter free models 改為 zai/glm-5.3-flash + 備援測試；timeout 300s→600s（Sep 12 10:00 首跑成功驗證）
-- 每日健康報告 22:00 model 轉 MiniMax-M3 + OpenRouter free fallbacks（避 zai 週配額，2026-09-12 晚生效）
-
-### 根本原因
-- OpenRouter key Sep 6 換新後週中失效（401），舊 fallback 全滅放大咗 zai 配額爆嘅影響
-
-### 教訓
-- 隔離 session 執行嘅修復都要補入 skill 日誌（config 更改追溯性）
-
----
-
-## [2026-09-13] 更新 (v2.9.76) - AQHI push 併發競爭修復
-
-### 修復內容
-- update_aqhi.sh push 前加 `git pull --rebase origin main`：消除與財經/新聞/Vol5 同步 job 併發 push 嘅「fetch first」拒絕（aqhi-update.log 長期警告源）
-
-### 根本原因
-- 多個 cron job 同時 push 同一 repo，fast-forward 檢查失敗；原腳本 push 失敗只 log 唔重試
-
----
-
-## [2026-09-16] 更新 (v2.9.77) - Volume 6 啟動 + 財經 3-tier fallback + Dropbox token auto-renew
-
-### 新增功能
-- **Volume 6 Dropbox 同步 infra**：
-  - `scripts/dropbox_volume6_sync.py`（mirror V5，fix boundary 1190→1460 + chapters/vol6-only scan）
-  - `scripts/dropbox-volume6-daily-sync.sh`（11:00 HKT 每日）
-  - `.dropbox-sync/volume6_state.json`
-  - 系統 crontab 加 `0 11 * * *` → `dropbox-volume6-daily-sync.sh`
-  - cron-guardian.sh 加 V6 rebuild case + FIXED + SYSTEM_TASKS lists
-  - 首批 6 章已 publish：CH1461-CH1466（2026-09-16）
-
-- **財經數據 fallback chain 全面加固**（commit `32ce63814` + `6f3d2066b`）：
-  - Crypto 3-tier：CoinGecko（primary + retry/backoff）→ CoinCap → CoinPaprika
-  - Commodities 3-tier：Yahoo Finance → Stooq.com（CSV API）→ hardcoded mock
-  - Stocks/Forex/Bonds：加 `is_fallback: True` 標記（透明度統一）
-  - 全 5 個 category fallback path 都有 `is_fallback: True` flag
-
-- **Dropbox token auto-renew**（commit `4f30c6241`）：
-  - `scripts/renew_dropbox_token.py`：3次 retry + exponential backoff (1/2/4s)
-  - `scripts/renew-dropbox-token.sh`：wrapper，timeout 60s + 失敗 Telegram 通知
-  - 系統 crontab `0 */3 * * *`（token 4hr 過期，3hr cron buffer）
-
-### 修復內容
-- fetch_finance_data.py 修 sed patch 撞 regex bug（success path 唔再被標 is_fallback）
-- 統一 `_mark_fallback` + `_request_with_retry` helper 畀全 5 個 category 用
-- V6 state.json init bug：`synced_to_site: 0` (int) → `[]` (list) 避免 TypeError
-
-### 根本原因
-- 09-16 21:00 cron 因 CoinGecko read timeout + CoinCap DNS 失敗導致 crypto 跌入 hardcoded fallback 但無 transparency 標記 → 用戶揭發財經版數據虛構
-- 09-12 token 過期慘劇：cron job 全部死但無自動 renew 機制
-
-### 教訓
-- 任何 fallback data 必須標 `is_fallback: True` 避免誤導（透明度係 trust 嘅基礎）
-- Copy+edit+deploy 後必須 run test 確認（script syntax OK ≠ runtime OK）
-- 重要 token 必須 auto-renew（token lifetime 4hr → cron 3hr 留 buffer）
-- 多 source fallback chain 設計：Tier 1 primary + Tier 2 backup + Tier 3 mock，唔好淨係靠單一 source
-
-
----
-
-## [2026-09-19] 更新 (v2.9.78) - OpenClaw 2026.9.2 → 2026.9.5 + Node 升級教訓
-
-### 修復內容
-- **Node v22.23.2 → v24.21.0**（via nvm）：OpenClaw 2026.9.5 需要 Node ≥24.16
-- **OpenClaw npm 版本升級**：2026.9.2 → 2026.9.5（commit `npm i -g openclaw@latest`）
-- **self-contained binary 阻擋升級**：`/home/openclaw/.openclaw/tmp/agent-cli/openclaw` 帶 embedded Node v22.23.2 搶 PATH priority；**必須 `rm` 咗先升級有效**
-
-### 根本原因
-1. OpenClaw CLI 首次運行會喺 `~/.openclaw/tmp/agent-cli/` 生成 self-contained binary（含 embedded Node），後續 upgrade npm 版本唔會 touch 呢個 binary
-2. `~/.npmrc` 嘅 `prefix=/home/openclaw/.npm-global` 同 nvm 全局 node 衝突，要 `nvm use --delete-prefix v24.21.0` 清 prefix
-3. systemd gateway service 自動重啟後會重生成 tmp/agent-cli binary — 每次 restart 後都要 rm
-
-### 教訓
-- **PATH 優先順序陷阱**：agent-cli binary 永遠搶先 npm-global → 要做系統級 upgrade 必須刪 agent-cli
-- **`openclaw update` 唔會跨 binary**：self-contained 同 npm 兩套裝置並存，update 只 touch 一邊
-- **node 同 binary 必須匹配**：embedded node v22.23.2 + npm node v24.21.0 = 不一致會跑出唔同行為
-- **`nvm use --delete-prefix` 係關鍵**：解決 `.npmrc` prefix 同 nvm global 衝突
-
-### 升級 checklist（2026-09-19 實戰）
-1. `nvm install 24` → 裝 v24.21.0
-2. `nvm use --delete-prefix v24.21.0` → 解 npmrc prefix 衝突
-3. `rm /home/openclaw/.openclaw/tmp/agent-cli/openclaw` → 刪 self-contained binary
-4. `npm i -g openclaw@latest` → 升 npm 版到 v2026.9.5
-5. `systemctl --user restart openclaw-gateway` → 重啟揾新 binary
-6. `which openclaw && openclaw --version` → 確認指 npm version
-7. `journalctl --user -u openclaw-gateway -n 20` → 確認 startup log
-
-Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 'B'
-
----
-
-## [2026-09-19] 更新 (v2.9.77) - OpenClaw 2026.9.5 更新完成（外部修復代理）
-
-### 事件
-- Node 升級 v24.21.0 後，update 撞「global-install-foreign-destination」（nvm node 24 有第二套 OpenClaw，服務用 ~/.npm-global 嗰套）
-- update 系統自動啟動 opencode 修復代理完成收尾：2026.9.5 安裝成功、13 日「update in progress」旗標清除、gateway 重啟 healthy
-
----
-
-## [2026-09-20] 更新 (v2.9.78) - 版本檢查腳本誤報修復
-
-### 修復內容
-- check-openclaw-version.sh PATH 移除排先嘅 ~/.npm-global/bin，改用 nvm node24 bin
-- 根因：gateway 已改用 nvm 安裝（2026.9.5，systemd ExecStart 已指向），舊 ~/.npm-global（2026.9.2）係孤兒；腳本硬編碼 PATH 讀咗孤兒版本 → 每日誤報「有新版本」
-- 驗證：2026.9.5 == latest 2026.9.5 ✅
-
-### 教訓
-- 安裝位置遷移後，所有硬編碼舊路徑嘅腳本都要同步檢查
-
----
-
-## [2026-09-20] 更新 (v2.9.79) - send-briefing.sh schema 失配修復
-
-### 修復內容
-- send-briefing.sh PATH 移除 ~/.npm-global/bin，改用 nvm node24 CLI（同 v2.9.78 版本檢查腳本同一類病）
-- 根因：gateway 升級 2026.9.5 後 SQLite schema 15→17，孤兒舊 CLI（2026.9.2 schema 15）啟動即拒絕 → 9/19 傍晚、9/20 早上 system cron 簡報連續發送失敗
-- 驗證：新 CLI cron list 讀 schema17 數據庫正常 ✅
-
-### 教訓
-- 安裝遷移後受影響腳本：check-openclaw-version.sh、send-briefing.sh（仲有冇其他 ~/.npm-global 硬編碼要逐步排查）
-- OpenClaw cron jobs（走 gateway）唔受影響；受影響嘅係 system cron 直調 CLI 嘅腳本
-
----
-
-## [2026-09-22] 更新 (v2.9.80) - AQHI rebase autostash 完整修復
-
-### 修復內容
-- update_aqhi.sh 嘅 `git pull --rebase` 加 `--autostash`：DREAMS.md（Memory Dreaming job 輸出）長期未提交令 rebase 靜默拒絕 → push 持續被拒（9/13 嘅修補唔完整）
-- 實測：髒工作區下 rebase 成功（Already up to date）
-
-### 教訓
-- 修併發 push 競爭時要考慮工作區有其他 job 嘅未提交輸出（autostash 係正解）
-- Vol5→Vol6 係正常交接（Vol6 由 CH1461 接手，1-1521 無缺口），簡報「Vol5 orphaned 需補返」係誤判，切勿補返
-
----
-
-## [2026-09-22] 更新 (v2.9.81) - AQHI push 重試循環（競賽根治）
-
-### 修復內容
-- update_aqhi.sh push 改 3 次重試循環（pull --rebase --autostash → push，失敗等 10s 再試）
-- 根因升級認知：9/20 autostash 只解決 DREAMS.md 髒工作區；真兇係 16:00 財經 job 同分鐘寫 finance-news.json — autostash 剛 stash 完，rebase 又見新改動 → 「Cannot fast-forward」abort
-
-### 教訓
-- 共享工作區多 job 併發 git 操作，單次 attempt 贏唔到秒級競賽，要重試循環
 
 ---
 
@@ -1999,6 +704,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - isolated cron job 一律限制工具呼叫次數；加大 timeout 只係買時間，唔係根治。
 - crontab 直接呼叫 python3 scripts/x.py 會漏掉 wrapper 入面嘅加鎖邏輯，一律改 wrapper。
 - 12:55 job 另需檢查「上午各 job 最後一次 lastRunStatus」而非只看條目存在。
+
 ## [2026-10-22] 更新 (v2.9.93) — Dropbox 三卷同步 token 競態 + 記憶備份 push 撞車
 
 ### 問題描述
@@ -2025,6 +731,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 同一時間跑嘅 cron job 如果共用 token / 共用 git repo，要用 flock 序列化，原子寫入只解決一半
 - crontab 一律叫 wrapper script（`bash scripts/xxx.sh`），唔好直接 `python3 scripts/xxx.py`，否則加鎖、清理、備份等邏輯會漏
 - 同時令多個 job 觸發同一個 git push 前，先 `git pull --rebase`（否則 remote rejected）
+
 ## [2026-10-22] 更新 (v2.9.92) - 退役 Vol4 crontab 條目 + 11:00 token 競態
 
 ### 修復內容
@@ -2198,6 +905,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
   - [ ] 三倉 `git rev-list --left-right --count origin/main...HEAD` → 0 0
 
 ---
+
 ## [2026-10-25] 更新 - 版本檢查 Telegram 通知路徑修復（cron 環境冇 env token）
 
 ### 修復內容
@@ -2210,6 +918,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 
 
 ---
+
 ## [2026-10-25] 更新 - 版本檢查 .py 報錯版本 + 升級建議修正
 
 ### 修復內容
@@ -2277,6 +986,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **git pull --rebase 前一定先 commit / stash**：有 unstaged changes 會被直接拒絕（2026-10-24、10-26、10-28 連續三次驗證同一件事）
 - **判定線上章節數一定要加 cache-buster**：裸路徑 `/assets/chapters-data.json` 有 Cloudflare 舊快取，加 `?cb=<ts>` 先係真實值（今日線上 1776 = 本地 chapters-data.json 1776 = 本地 chapter-*.html 1776 檔 + template）
 - **volume state 合計數 ≠ 線上章節數係正常**：今日 V2-V7 state 合計 1263 章，線上 1776 章，差額係 CH1-500 早期章 + 手動加落站嘅章節（同步腳本 guard 以本地 chapter-*.html 檔名為準，唔會重複下載），唔好當成 state 分歧去修
+
 ## [2026-10-28] 更新 - chat-worker 依賴目錄入 .gitignore + chapter-titles 章數修正
 
 ### 修復內容（隔離 session 執行，小肥喵補記 skill 日誌）
@@ -2289,6 +999,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 章節標題索引（chapter-titles.json）同主索引（chapters-data.json）要同批更新，否則網站前端會少 6 章
 
 ---
+
 ## [2026-10-28] 更新 (v2.9.108) - chat-worker CI 結構性 bug 修復 + OpenRouter free 模型退役
 
 ### 修復內容
@@ -2307,6 +1018,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **2026-10-26 pages 部署失敗係 GitHub 側暫時性 OIDC 問題**（`Failed to get ID Token: Request timeout`），之後連續 20+ 次 pages run 全綠 → 唔使改 workflow。
 
 ---
+
 ## [2026-10-29] 更新 (v2.9.109) - logrotate duplicate log entry 復發 + 每日 state 零分歧基線
 
 ### 修復內容
@@ -2349,6 +1061,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 檢查重點：Dropbox Volume 4 同步已退役（大肥喵 2026-10-02 指令，synced_to_site=1746、batch 44），crontab 註釋明寫「勿啟用，勿由 guardian 加返」→ 任何自動修復都**唔可以**加返 V4 條目
 
 ---
+
 ## [2026-10-30] 更新 - cron 條目判定陷阱（redirect log 空 ≠ 未執行）
 
 ### 教訓（三路對照，缺一不可）
@@ -2381,6 +1094,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 每日簡報雙軌係「已知設計」，報告時要講明兩軌都正常，唔好誤判成重複 bug 自己亂改 crontab
 
 ---
+
 ## [2026-10-31] 更新 (v2.9.115) - 升級後殘留舊 nvm install 令版本檢查報錯版本
 
 ### 修復內容
@@ -2504,6 +1218,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - **線上一致性一定要加 cache-buster**（issue #14）：?v=20261104 先至係用戶見到嘅版本
 
 ---
+
 ## [2026-11-04] 更新 - skill 副本漂移：已安裝副本可能落後於備份倉
 
 ### 問題
@@ -2538,6 +1253,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - push 之後照舊用 `git fetch origin` + `git status -sb` 判斷真實狀態（已記錄於 2026-11-04 早上簡報教訓）
 
 ---
+
 ## [2026-11-05] 更新 - 版本檢查收單軌（退役 system crontab 軌）
 
 ### 修復內容
@@ -2572,6 +1288,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 4. 同步 SKILL.md 四份副本（local / website repo / Second-brain / Max-backup），版本 +0.0.1
 
 ---
+
 ## [2026-11-05] 更新 - 收單軌只係刪 crontab 唔夠：cron-guardian 會加返
 
 ### 問題
@@ -2631,6 +1348,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 判定線上一致性唔可以只 curl 一條 URL，要三來源對照（線上 JSON / 本地檔 / state）
 
 ---
+
 ## [2026-11-06] 更新 - 2026.11 升級後舊 cron job 失去 inference account（全部報錯）
 
 ### 症狀
@@ -2650,6 +1368,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 
 
 ---
+
 ## [2026-11-06] 更新（補） - cron_model_guard 會把 @profile 綁定改返落去
 
 ### 第二個陷阱
@@ -2667,6 +1386,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 
 
 ---
+
 ## [2026-11-07] 更新 - 自動生成數據檔 push 衝突（finance-data / finance-news）
 
 ### 症狀
@@ -2685,6 +1405,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 
 
 ---
+
 ## [2026-11-07] 更新 - 22:00 健康報告巡檢（CI commit 落後同步 + 全綠確認）
 
 ### 症狀
@@ -2700,6 +1421,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - `.token-store/dropbox-token.txt.bak` 係 renew_dropbox_token.py 每次續期自動重建嘅回滾副本（權限 600），唔係遺留檔，唔好刪
 
 ---
+
 ## [2026-11-07] 更新 - skill 副本漂移復發（已安裝副本落後一個版本）
 
 ### 症狀
@@ -2713,6 +1435,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 
 
 ---
+
 ## [2026-11-07] 更新（補） - skill 副本漂移根治：新增 nightly 自動對齊 cron
 
 ### 為乜要做
@@ -2727,6 +1450,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 
 
 ---
+
 ## [2026-11-08] 更新 - openclaw-version.json 狀態檔停更 → 每日簡報錯報「有更新可用」
 
 ### 症狀
@@ -2792,6 +1516,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - timeout edit 後要即刻 `openclaw cron list --json` 睇 payload 確認新值，並確認新 run 已用新 revision
 - 核對簡報有冇送達要睇 deliveryStatus + delivered 欄位（教訓 #10 同款），唔可以只信 memory 筆記
 ---
+
 ## [2026-11-08] 更新 - provider 掛死令排程失送 + provider 級 timeout 快速失敗
 
 ### 症狀（2026-11-08 早上）
@@ -2816,6 +1541,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
   → 診斷時要分清「job 失敗」同「lane 排隊」，唔好誤判為 job 壞
 
 ---
+
 ## [2026-11-08] 更新 - MiniMax 推理停擺 + agent 回合 timeout 太短
 
 ### 症狀
@@ -2832,6 +1558,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 互動回合被 Request timed out 截斷時，先查 agents.defaults.timeoutSeconds 而唔係亂加 exec timeout
 
 ---
+
 ## [2026-11-08] 更新 - 跨 provider fallback 必須各自綁 account（否則切換即硬失敗）
 
 ### 症狀
@@ -2848,6 +1575,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 2026.11 起：job 嘅 inference account 一旦綁定，跨 provider fallback 必須各自綁 account，否則 fallback 唔會被採用（會直接硬失敗）
 - 升級或改 model@profile 時，fallbacks 要一併檢查同樣式，唔可以只睇 primary
 ---
+
 ## [2026-11-08] 更新 - 自動生成資料檔 rebase 衝突：殘留衝突標記曾被推上線
 
 ### 症狀
@@ -2883,6 +1611,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 同步：scripts/cron-guardian.sh 重建模板嘅 --model / --fallbacks 一樣要帶 @profile，否則下次重建會還原壞狀態。
 
 ---
+
 ## [2026-11-10] 更新 - cron 全線爆一日嘅真正根因（guardian 重建順序）+ 防復發加固
 
 ### 真正根因（runtime 原始碼 captureCronInferenceBinding + 實測時間線）
@@ -2909,6 +1638,7 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 根本原因：automation 記錄嘅 inference account / route 綁定過期，需用 openclaw cron edit 重綁 model + fallbacks + delivery（announce / telegram / to）
 - 解決方法：openclaw cron edit <id> --model minimax/MiniMax-M3.1-Flash@minimax:cn --fallbacks <openrouter 清單> --timeout-seconds 3600 --announce --channel telegram --to <chatId>；用 openclaw cron list --json 檢查 consecutiveErrors / lastDeliveryError
 ---
+
 ## [2026-11-10] 更新 - code mode 入面要用 exec(...) 直接呼叫，唔可以用 tools.exec(...)
 
 ### 症狀
@@ -3385,7 +2115,6 @@ rebuild_job "中午簡報 12:55"
 - **抽函式測試要同時抽走頂層主流程**：`sed -n '1,42p'` + `sed -n '73,256p'` 分兩段抽，先至唔會觸發副作用。
 - 每次搞掂後都用 `Counter(job name)` 核實**零重複 job** —— 呢個檢查今日已經救咗兩次命。
 
-
 ## [2026-11-12] 更新 (v2.9.169) — 心跳巡檢基建補回 + DREAMS.md 推送競態收尾
 - **根因**：`openclaw-selfheal-ops` skill 由開機一直叫人跑 `bash scripts/ops-snapshot.sh`，但 workspace 從來冇呢個檔（`find` 全機 0 命中、git 歷史亦冇）→ 每個 session 都要手砌十幾條一次性巡檢指令，既慢又易漏；同時 `workspace/HEARTBEAT.md` 已經喺 c09442782「cleanup migration artifacts」被刪走，但 `openclaw.json` 嘅 heartbeat prompt 仍然寫「Read HEARTBEAT.md if it exists」→ 心跳等於冇清單，靠記憶自由發揮。
 - **修復**：新增 `scripts/ops-snapshot.sh`（唯讀，一次過輸出 gateway 狀態／版本、每個 agent cron job 嘅 errs + fallback 鏈層數、網站 HTTP、workspace git 未推送同髒檔、MEMORY.md 行數、追蹤中敏感檔、Dropbox token 新鮮度、system cron 行數）；重建 `HEARTBEAT.md`（步驟 + 單一 token 回覆規則 + 已知退役清單：system cron 簡報 08:15/17:55、Dropbox Volume 4 同步）。
@@ -3592,3 +2321,11 @@ rebuild_job "中午簡報 12:55"
 - **新增教訓：`openclaw cron add` 唔帶 `--tools` 只會得返 n=1 預設清單** → 所有重建路徑（`scripts/cron-guardian.sh`）必須顯式帶 `--tools`（現已加 `TOOLS` 變數，29 項含 send/message，5 個 agentTurn 分支全部帶；健康報告 22:00 係 command payload 唔加）。
 - **新增教訓：`cron edit` 會重置未指定嘅 payload 欄位** → 改 toolsAllow 時要帶齊 model / fallbacks / timeout / message（`scripts/cron_model_guard.py` 已做齊）。
 - **判斷交付**：以 journald `outbound send ok` + cron receipt 兩個欄為準（2026-11-17 補跑 `66957fcc` → 13:23:28 messageId 23541 送達，errs 回到 0）。
+
+---
+
+## 2026-11-18 更新
+- **事故**：`SKILL.md` 累加更新記錄後爆到 **256640 bytes**（loader 硬上限 256000）→ 2026-11-17 13:35 起 gateway 每分鐘記一次 `[skills] Skipping invalid skill: file=~/.openclaw/skills/novel-site-standards/SKILL.md error=File exceeds 256000 bytes`，**11-18 全日 544 次** → 呢個 skill 成日冇被載入（規則實際上收唔到）。
+- **根因**：每次事故後都「版本 +0.0.1 + 追加更新記錄」，但冇人睇過主檔大小；而頂部雖然有寫 256000 上限警告，實際執行時冇人檢查。
+- **修復**：把 **2026-04～09 嘅 51 段 dated 更新記錄**（54738 bytes，內容一字無刪）搬到同目錄 `SKILL_HISTORY.md` → 主檔 **206171 bytes**（分檔後 + 本次更新記錄），HISTORY 177429 bytes；主檔頂部加「已分檔段落索引」方便查返。**段落標題零遺失**（分檔前 167 段全部保留喺新主檔或 HISTORY）。
+- **新流程（唔好再踩）**：① 追加任何更新記錄前先 `stat -c%s SKILL.md`；② **> 200000 bytes 就必須先分檔**（搬最舊 dated 段落去 `SKILL_HISTORY.md`，主檔保留索引）；③ 分檔後四處（installed / workspace / Second-brain / Max-backup）**SKILL.md 同 SKILL_HISTORY.md 都要一齊同步**，唔可以只搬一份；④ `scripts/sync_skill_copies.sh` 已加 **> 200000 bytes 即報警**（防再爆）。

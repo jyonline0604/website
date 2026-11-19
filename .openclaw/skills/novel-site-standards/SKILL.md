@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.197
+version: 2.9.198
 ---
 
 >
@@ -1818,3 +1818,9 @@ rebuild_job "中午簡報 12:55"
 ## 2026-11-19 更新（續）
 - **新增教訓：零交付偵測要分清楚「設計如此」同「真故障」** —— receipt `status=ok` + `delivery_attempt_state=not-started` 對 **agentTurn 簡報 job** 係零交付（要即刻補跑），但對 `kind=heartbeat` 嘅 `9dc7d6c3` 係**設計如此**（`delivery=null`，心跳唔派送 Telegram），唔可以當零交付，否則每次巡檢都誤報。
 - **新增教訓：workspace 髒檔唔止 `DREAMS.md` 同 `.dropbox-sync/*_state.json`** —— 其它流程（例如 MoonTV upstream watchdog）都會直接改 workspace 內嘅 script；巡檢時要睇 `git diff` 內容判斷，唔好假設只有兩種來源。
+
+---
+
+## 2026-11-19 更新（續 2）
+- **新增教訓：`bash -n` 通過唔代表 shell script 正確** —— 引號不平衡時語法仍然合法，只係 `|` 會被當成 pipeline，於是行內字串被當 command 執行（`fork: command not found`）。改完 `scripts/health_report.sh` 一定要**真係試跑一次**（`bash scripts/health_report.sh` 唔帶 --deliver）再睇 stderr。22:00 健康報告係 command payload，script 嘅 stderr 會原樣送出去。
+- **新增教訓：`verbose` 行用 `|` 分隔欄位時，行內雙引號必須平衡**（2026-11-19 MoonTV 段落加落去時出咗事）。

@@ -161,6 +161,8 @@ EOF
 
 📊 報告末尾強制輸出評估：
 [LOOP_STATUS: OK|WARN|FAIL]
+
+⚠️ 交付規則（2026-11-19 修正）：最終回覆**必須有實質內容**（最少一行 `[LOOP_STATUS: OK|WARN|FAIL]` + 報告摘要），**唔可以空字串**——空回覆 = announce 冇嘢可送 = 零交付但唔報錯（2026-11-19 12:55 就係咁：status=ok、errs=0、但 journald 冇 outbound send ok）。收集資料嗰條 exec 指令**唔好用嵌套引號**（`python3 -c '...'` 內含雙引號會 syntax error）：改用 heredoc `python3 - <<'PY' ... PY`，或直接行 `bash scripts/ops-snapshot.sh`。
 ⚠️ 執行方式（2026-11-11 修正）：code mode 入面只有直接注入嘅全域，exec 要寫 exec({command: ...})
 或用 shell 腳本；**唔好寫 tools.exec(...)**（會 ReferenceError，令成個 run 白撞到 LLM idle timeout）。
 檢查 cron 狀態用 exec 執行 openclaw cron list --json。

@@ -22,11 +22,17 @@ ver() { grep -m1 "^version:" "$1" 2>/dev/null | awk "{print \$2}"; }
 sync_set() {
   local label=$1; shift
   local best="" bestv=""
+  local bestsz=0
   for f in "$@"; do
     [ -f "$f" ] || continue
     local v=$(ver "$f")
-    [ -n "$v" ] || continue
-    if [ -z "$bestv" ] || [ "$(printf "%s\n%s\n" "$bestv" "$v" | sort -V | tail -1)" = "$v" ]; then bestv=$v; best=$f; fi
+    [ -n "$v" ] || v="0"   # 2026-11-19 修正：SKILL_HISTORY.md 冇 version 行，之前被 \`continue\` 跳過 → HISTORY 永遠唔會同步
+    local sz=$(stat -c%s "$f" 2>/dev/null || echo 0)
+    if [ -z "$best" ]; then best=$f; bestv=$v; bestsz=$sz; continue; fi
+    local cand=$(printf "%s\n%s\n" "$bestv" "$v" | sort -V | tail -1)
+    if [ "$cand" != "$bestv" ] || { [ "$cand" = "$v" ] && [ "$sz" -gt "$bestsz" ]; }; then
+      best=$f; bestv=$v; bestsz=$sz
+    fi
   done
   [ -z "$best" ] && return 0
   local changed=0 failed=0

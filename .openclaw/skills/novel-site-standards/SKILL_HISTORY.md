@@ -4681,3 +4681,569 @@ Refs: 大肥喵 2026-09-19 11:08 '怎樣更新ubuntu 主機內的 node' + 11:13 
 - 共享工作區多 job 併發 git 操作，單次 attempt 贏唔到秒級競賽，要重試循環
 
 ---
+
+---
+
+## 已分檔段落（2026-10 更新記錄，2026-11-19 分檔）
+
+---
+
+## 2026-10-30 更新
+- 自動修復（git 分歧第 4 次同型）：DREAMS.md 未提交 + CI commit 同時撞埋 → 必須先 commit DREAMS.md，再 `git pull --rebase origin main`，最後 push；巡檢時用 `git fetch` + `log HEAD..origin/main` 睇分歧。
+- 線上一致性判定加硬規則：Cloudflare 裸路徑 `/assets/chapters-data.json` 會有舊快取（age 過日），必須加 `?v=YYYYMMDD`（或隨機 query）再 curl，否則會誤報「線上少章」嘅假分歧（issues #14）。
+- Volume 4 維持退役（2026-10-02 指令）：crontab 註釋 + cron-guardian 明文排除；2026-10-22 最後一次實跑因 token 競態中止，唔算故障，只作記錄。
+
+---
+
+## 2026-10-30 更新 - 章節索引 cache-buster 每小時 key（Hourly Cache-Buster）（assets/chapters-data.json）用戶端最長 24 小時見唔到新章（今日線上索引只列到 CH1788，線上源已到 CH1794）
+- 根本原因：chapters.html / index.html / home.html 用 `?v=YYYYMMDD` 日級 cache-buster，Cloudflare edge 同 Service Worker（cache-first）各自快取同一個 key，要等 UTC 換日先失效
+- 解決方法：cache-buster 改為每小時一個 key（`?v=YYYYMMDDHH`，slice(0,13).replace(/[-:T]/g,'')），滯後由 ~24h 降至 ≤1h；已 commit + push
+- 檢查重點：裸路徑 /assets/chapters-data.json 可能係 Cloudflare 舊快取（假分歧），要同時驗 `?v=<當前小時key>`；/api/status 反映線上源真實章節數
+
+---
+
+---
+
+## 2026-10-30 更新 - 健康檢查診斷法修正（空 redirect log ≠ 腳本冇行）+ logrotate 重複條目
+- 修復內容：更正 10-29 / 10-30 健康報告中「system cron send-briefing.sh（08:15/17:55）+ check_openclaw_update.py（11:00）實際冇執行過」嘅誤判；同時定位 logrotate.service 持續 failed 嘅根因
+- 根本原因（診斷法錯咗）：判定 system cron 有冇行，**唔可以只睇 crontab redirect 目標 log**。send-briefing.sh 內部用自己嘅 `LOG_FILE=logs/briefing-send.log`、check_openclaw_update.py 用 `logs/openclaw-update.log`，stdout 冇輸出 → `logs/briefing-morning.log` / `briefing-evening.log` / `openclaw-check.log` 永遠 0 bytes，但腳本其實每次都有跑（syslog 有 CRON 行、送達有 Msg ID）
+  - 正確判定三路對照：① `grep CRON /var/log/syslog`（有冇 spawn）② 腳本內部 LOG_FILE（跑成唔成）③ 實際送達紀錄（Msg ID / ✅ 行）
+  - 今日實測：10-30 08:15:01 / 11:00:01 / 17:55:01 三條 CRON 行齊全；17:55 簡報生成 1031 字符、送達成功（Msg 23362）；11:00 版本檢查寫入 openclaw-update.log（偵測到 2026.10.9 可更新）
+- 解決方法：已寫入 MEMORY.md 教訓清單 #31；health 檢查以後必查 syslog CRON 行，唔再單靠 redirect log 空檔判斷
+- 附帶根因（logrotate.service failed）：`/etc/logrotate.d/cloud-init-base` 同 `/etc/logrotate.d/cloud-init` 內容完全重複（都係 `/var/log/cloud-init*.log`，Jul 24 cloud-init 升級多出）→ logrotate "duplicate log entry" exit 1 → systemd failed
+  - 修復需 root：`sudo rm /etc/logrotate.d/cloud-init-base && sudo systemctl reset-failed logrotate`（兩檔 root 擁有，無人值守 session 嘅 sudo 需要互動密碼 → 留待大肥喵手動執行）
+  - 影響輕微：只影響 /var/log 系統日誌輪轉；workspace logs（44M）唔受影響
+- 檢查重點：Dropbox Volume 4 同步已退役（大肥喵 2026-10-02 指令，synced_to_site=1746、batch 44），crontab 註釋明寫「勿啟用，勿由 guardian 加返」→ 任何自動修復都**唔可以**加返 V4 條目
+
+---
+
+## [2026-10-30] 更新 - cron 條目判定陷阱（redirect log 空 ≠ 未執行）
+
+### 教訓（三路對照，缺一不可）
+- 判定 system cron 條目有冇執行，必須三路對照：(1) syslog CRON 行（含 /var/log/syslog.1，rotation 會令早段行唔喺當前檔）(2) 腳本內部 LOG_FILE 嘅發送記錄 (3) openclaw cron list + crontab -l
+- **redirect 目標 log 空 ≠ 腳本冇行**：send-briefing.sh / check_openclaw_update.py 自己寫 LOG_FILE，crontab 的 >> 重定向檔自然空 —— 我 10-30 13:10 因此誤判「三條條目死咗、冇後備」，仲差啲叫大肥喵移除重建
+- **雙軌並存 = 每日兩份簡報**：system crontab 腳本版（每日兩次「發送任務完成」）+ OpenClaw cron agent 版（較詳細）—— 報告一份嘅講法只係針對其中一軌
+- 判斷要睇「實際投遞幾多次」，唔係睇 log 有幾多行
+
+### 處理
+- A/B 選項（重建 vs 移除 crontab 條目）作廢：後備機制正常，唔好動 crontab
+
+---
+
+## [2026-10-31] 更新 - 重啟後復原巡檢 + 每日雙軌簡報確認（已知設計，待大肥喵決定）
+
+### 檢查內容
+- 主機 2026-10-31 07:55:37 重啟（uptime 由 4 日 14 小時 → 20 分鐘）後第一次簡報巡檢：cron.service 07:55:37 啟動 → 08:00 記憶備份、08:15 system cron 簡報（Msg 23365）都有 syslog 執行記錄；OpenClaw cron 8 個 job 全部 enabled + lastStatus=ok + consecutiveErrors=0
+
+### 發現（已知設計，唔算 bug）
+- 每日簡報雙軌並存：system cron send-briefing.sh（08:15 / 17:55）同 OpenClaw cron agent job（早上簡報 08:15 / 傍晚簡報 17:55）都會送達 → 大肥喵每日收 2 份（今日 08:15：Msg 23365 + agent 版）
+  - 唔可以用 shell dedup 解決：system cron 08:15:07 先送，agent 報告約 08:19 先到（去重方向相反）
+  - 真正去重必須揀一套：保留 system cron 做後備（移除 OpenClaw 簡報 job）或者只留 OpenClaw cron（移除 crontab 兩條）— 屬大肥喵決定，guardian 唔會自動改
+
+### 附帶確認
+- Dropbox 零分歧：本地 chapters-data.json 1794 章 = V7 state synced_to_site max 1794；V4 仍退役（state 1746 / batch 44，唔加返）
+- logrotate 重複條目仍在（/etc/logrotate.d/cloud-init-base vs cloud-init）：重啟後 systemctl --failed 只剩 apport-autoreport.service（無關），但下次輪轉仍會 duplicate log entry fail → 需 root：sudo rm /etc/logrotate.d/cloud-init-base && sudo systemctl reset-failed logrotate（unattended session 冇 sudo 密碼）
+
+### 教訓
+- 開機 / 重啟後第一次巡檢要加驗三路：cron.service 啟動時間 + syslog CRON 行（記憶備份 08:00、簡報 08:15）+ OpenClaw cron job 狀態
+- 每日簡報雙軌係「已知設計」，報告時要講明兩軌都正常，唔好誤判成重複 bug 自己亂改 crontab
+
+---
+
+## [2026-10-31] 更新 (v2.9.115) - 升級後殘留舊 nvm install 令版本檢查報錯版本
+
+### 修復內容
+- **症狀**：2026-10-31 大肥喵 12:40 已 `/update` 升級到 OpenClaw 2026.10.9 (8b18b55)，但 11:00 版本檢查 Telegram 通知同中午簡報仍然報「當前版本 2026.10.5 → 最新 2026.10.9，有更新」→ 假警報。
+- **根因**：升級會安裝到**新嘅 nvm node 目錄**（v24.22.2 = OpenClaw 2026.10.9），但**舊 install 唔會自動移除**（v24.21.0 = OpenClaw 2026.10.5 仍然喺磁碟）。5 個 workspace 腳本硬編碼 `export PATH="/home/openclaw/.nvm/versions/node/v24.21.0/bin:..."` → 讀到嘅永遠係舊 CLI。gateway 自己（systemd ExecStart + tmp/agent-cli wrapper）已經用新版本，所以只有「腳本報版本」會錯，實際運作冇問題。
+- **修復**：5 個腳本（`check-openclaw-version.sh`、`check_openclaw_update.py`、`update_openclaw.sh`、`send-briefing.sh`、`cron-guardian.sh`）改成**動態解析** —— 列出 `~/.nvm/versions/node/v*//` 用 `sort -V -r` 由新到舊，揀第一個有 `bin/openclaw` 嘅目錄，fallback v24.22.2。以後升級唔使再改腳本。
+- **驗證**：`env -i bash scripts/check-openclaw-version.sh`（清空環境變數）→ 報 `OpenClaw 2026.10.9 (8b18b55)` + `✅ 版本已是最新`；commit `482c05db4` 已 push。
+- **順帶確認**：`agents.defaults.models` 已乾淨（無退役 `:free` 模型殘留、5 隻新 free 模型齊全）、fallback 鏈 5 隻全部實測 chat/completions 可用；systemd unit 嘅 `.reconcile-*.bak` 備份檔內 v24.21.0 引用只係備份檔，唔生效。
+
+### 教訓
+- **升級後唔好淨係睇 `/status`**：要三方對照 —— (1) gateway 實際進程用邊個 node（`ps -eo pid,args | grep openclaw`）、(2) systemd unit 嘅 ExecStart / PATH、(3) workspace 腳本有冇硬編碼舊 nvm 路徑。三者唔一致就會出現「gateway 已更新但腳本報舊版」。
+- **nvm 裝多版本 = 孤兒 install 會留低**：`nvm install` 唔會自動清舊版本，目錄仲喺度就仲行到舊 CLI。所有腳本引用 nvm node 路徑都應該動態解析，唔好硬編碼版本號。
+- **`sort -V -r` 揀 node 目錄一定要加存在性檢查**（`-x bin/openclaw`），因為可能有更新嘅 node 目錄但未裝 openclaw。
+- **報「有新版」之前要核對 gateway 進程版本**，唔好照抄腳本輸出 —— 假版本警報會消耗大肥喵對自動通知嘅信任。
+
+---
+
+## [2026-10-31] 更新 (v2.9.116) - logrotate 長期失敗修復（duplicate entry + ConditionACPower）
+
+### 修復內容
+- **症狀**：`systemctl --failed` 長期有 failed unit；journal 顯示 logrotate 每日失敗或被 skip。
+- **根因 1（duplicate entry）**：`/etc/logrotate.d/cloud-init` 同 `cloud-init-base` 兩個檔案內容完全相同（都係 `/var/log/cloud-init*.log`），但係由**兩個唔同 dpkg 套件**擁有（`cloud-init` 同 `cloud-init-base`，26.1-0ubuntu3~26.04.1）→ logrotate 報 `duplicate log entry for /var/log/cloud-init.log`，整個 config 讀取中斷 → **其它所有 log 都唔輪轉**。
+- **根因 2（ConditionACPower）**：Ubuntu 預設 `logrotate.service` 有 `ConditionACPower=true`，部機以電池供電（ADP1 online=0）→ 每日 timer 觸發都被 skip（journal 大量 "skipped, unmet condition check"）。
+- **修復 1（duplicate）**：**唔可以直接 `rm`**（兩個檔案都係 dpkg 擁有，rm 會令 dpkg 檔案清單不一致 + 套件更新時復原）。正確做法係 `dpkg-divert --local --rename --add --divert /root/cloud-init-base.logrotate.disabled /etc/logrotate.d/cloud-init-base` → 檔案移出 include 目錄，dpkg 記錄 diversion，`dpkg -V` 乾淨、套件更新唔會復原。**注意**：單純 `dpkg-divert --rename` 改名做 `.distrib` 唔夠 —— logrotate 只 skip 副檔名以 `~` 開頭/結尾嘅，`.distrib` 照樣會被讀取 → duplicate 仍在，必須 divert 去 include 目錄外。
+- **修復 2（ACPower）**：建立 drop-in `/etc/systemd/system/logrotate.service.d/override.conf` 寫 `[Unit] ConditionACPower=`（空值 = 取消條件），原 unit 檔案完全不動（可逆、唔會被套件更新覆蓋），跟 `systemctl daemon-reload`。
+- **驗證**：`/usr/sbin/logrotate -d /etc/logrotate.conf` exit=0（之前 exit=1）；`systemctl start logrotate.service` → `status=0/SUCCESS`（之前 skipped/failed）；`systemctl --failed` = 0。
+
+### 教訓
+- **logrotate 工具唔喺預設 PATH**：`logrotate` 實際路徑係 `/usr/sbin/logrotate`，exec 環境冇 `/usr/sbin` 會出現 "command not found" → 之前用 `logrotate -d` 驗證時錯誤被 grep 食咗，睇落好似「冇 duplicate」。驗證 logrotate 一定要用 `/usr/sbin/logrotate` 或 `sudo`。
+- **duplicate log entry 會令成個 config 讀取中斷**，唔止影響嗰個檔案 —— 一個重複條目就令所有 log 唔輪轉，要當 P1 睇。
+- **dpkg 擁有嘅設定檔唔好用 rm**：用 `dpkg-divert --local --rename --add --divert <目錄外位置>` 保持 dpkg 一致性，並用 `dpkg -V <pkg>` 驗證。
+- **systemd Condition 可以用 drop-in 清空**：`[Unit] ConditionXxx=` 空值即取消，比直接改 `/usr/lib/systemd/system` 嘅 unit 檔安全（唔會被更新覆蓋、隨時刪 drop-in 復原）。
+- **24x7 服務機唔應該因為「插電定放電」而唔做日誌輪轉**。
+
+---
+
+## [2026-11-01] 更新 (v2.9.117) - 清理 ignored 殘留必須用 git clean -fdX（唔可以用 rm -rf）
+
+### 修復內容
+- **症狀**：每日健康報告清理 media/inbound 嘅 openclaw-staged-* 殘留時，用 find -mtime +7 -exec rm -rf {} +，結果 git status 出現 4 個 D（deleted）—— 呢 4 張 jpg 其實已被 git 追蹤（網站圖片），唔係純 ignored 殘留。
+- **根因**：media/inbound/openclaw-staged-*/ 入面每個目錄都有自己嘅 .gitignore（忽略目錄內容），但已經被 commit 過嘅圖片檔本身係 tracked；用 rm -rf 唔會理會 tracked / ignored 之分 → 直接刪走 tracked 檔。
+- **解決方法**：
+  1. 即時 git checkout -- media/inbound/ 還原 4 個 tracked 檔（驗證：git status 乾淨 + git ls-files media/inbound 全部存在於 disk）。
+  2. 之後改用 git clean -fdX <path> 清理 —— -X = 只刪 ignored 檔案，tracked 檔案永遠唔會郁。
+  3. 清理前先用 git clean -ndX <path> dry-run 睇清楚會刪咩。
+- **驗證**：清理後 media/inbound 由 2.1M 降到 220K，4 個 tracked 圖片全部在 disk，git status --porcelain 空、git status -sb = main...origin/main。
+
+### 教訓
+- **「gitignore 咗」≠「可以 rm」**：一個目錄入面嘅檔案可能一部分 ignored、一部分 tracked，清理前必須分清。
+- **清理前先 dry-run**：git clean -ndX <path> 唔會真刪，但會列出所有會被移除嘅檔案 —— 見到有 tracked 內容就停手。
+- **tracked 檔被誤刪唔好 commit 落去**：即刻 git checkout -- <path> 還原，確認 git status 乾淨先繼續。
+- **主機重啟後要主動補跑漏咗嘅 system cron**：停機期間嘅記憶備份 20:00、自動記憶 23:00、cron-guardian 21:30、健康報告 22:00 會靜靜漏跑，開機後要人手/健康報告補做（記憶備份可手動跑 scripts/backup-memory.sh）。
+
+---
+
+## [2026-11-01] 更新 — v2.9.118
+- 修復內容：website repo push non-fast-forward 導致簡報/健康 job 推送失敗
+- 根本原因：同一個 website repo 由多個 cron job（bus ETA 數據、財經、AQHI、簡報記憶）同時寫入，本機未 fetch 就 push 會被 remote 進度擋住
+- 解決方法：push 前必須 git fetch origin，再檢查 git log HEAD..origin/main，有 behind 就 git pull --rebase origin main，然後再 push
+- 附加教訓：workspace memory/ 目錄被 .gitignore 忽略，記憶備份要靠 scripts/backup-memory.sh（Second-brain + Max-backup）或手動 cp，唔會自動進 website repo
+
+---
+
+## [2026-11-01] 更新 (v2.9.119) - 退休 system cron 簡報軌（雙軌簡報 → 單軌）
+
+### 修復內容
+- **問題**：每日早上/傍晚各送兩次簡報 —— system cron（`scripts/send-briefing.sh` 08:15/17:55，用 `openclaw message send` 直接送 Telegram）同 OpenClaw cron agent 版（08:15/12:55/17:55，agent 產出報告）。
+- **關鍵發現（唔係重複而係互補）**：system cron 版送嘅係「📰 香港簡報」digest（天氣/天氣警告/預報/展望/特別交通消息/港鐵列車到站/娛樂/科技/財經，實測 978 字、6 秒），agent 版送嘅係系統狀態報告（網站/Dropbox/cron/git/自動修復）。**兩者內容唔重疊**，所以唔可以直接刪 system cron 而唔補內容。
+- **修復（退休 system cron 軌 + digest 併入 agent 版）**：
+  1. `crontab`：`send-briefing.sh` 兩條（08:15 / 17:55）**註釋**（保留原行 + 「勿啟用、勿由 guardian 加返」註記，照 Volume 4 退役做法）
+  2. `scripts/cron-guardian.sh` `SYSTEM_TASKS` **移除** `send-briefing.sh` —— 唔移除會被 guardian 自動加返（Volume 4 就係咁中招）
+  3. 4 個 OpenClaw cron job message 更新（早上 08:15 / 中午 12:55 / 傍晚 17:55 — 日結 / 每日健康報告 22:00）：早上同傍晚加入 digest 步驟（1 次 exec 跑 `generate-briefing-full-v5.py`，stdout 原樣貼報告最前；超 3600 字就只留 5 段），4 個都移除「簡報 08:15/17:55 係 system cron」嘅 system cron 清單描述 + 加「已退休，唔好再報告雙軌簡報問題」註記
+  4. guardian 嘅 4 個 heredoc 同步換成同一份 message（避免 guardian 重建 job 時回退舊 prompt）
+  5. `scripts/send-briefing.sh` 保留但標記退役（可還原）
+- **驗證**：手動實跑 `cron-guardian.sh` → **冇加返** `send-briefing.sh`（crontab active 行 = 0）；4 個 job message 確認 digest 步驟在位、反引號無多餘反斜杠、已退役註記在位。
+- **效果**：每個時段得一條訊息，內容 = 天氣 digest + 系統狀態報告（合共）。
+
+### 教訓
+- **「雙軌」唔一定係重複**：退休前一定要先比對兩軌實際內容（用 `cron list --json` 抽 `payload.message` + 實跑生成器睇輸出），否則會漏咗其中一軌嘅獨有內容。呢次 system cron 版嘅天氣 digest 就係 agent 版冇嘅。
+- **退役一個 system cron 條目要改三個地方**：crontab（註釋）、guardian `SYSTEM_TASKS`（移除，否則自動加返）、guardian 嘅 rebuild heredoc（同步，否則重建時回退）。漏咗第二項 = 條目復活；漏咗第三項 = prompt 內容回退。
+- **改 cron job message 要用 `openclaw cron edit <id> --message "$(cat file)"`**，同時要同步 guardian heredoc（兩份 source of truth）。
+- **退休嘅任務唔好由 agent 繼續當成「已知問題」報告**：要喺新 message 內加一句「已退役，唔好再報告」，否則簡報會每日繼續叫人做同一個決定。
+- **Python heredoc 寫入含反引號嘅字串要小心 escape**：用 `\`` 會喺輸出留低反斜杠（SyntaxWarning: invalid escape sequence），寫入檔案後要 grep 一次 `cat -A` 核對。
+
+---
+
+## [2026-11-02] 更新 (v2.9.120) - 早上簡報全綠 + issue #7（logrotate duplicate）結案
+
+### 修復內容
+- **DREAMS.md 未提交**：03:00 Memory Dreaming Promotion 每日寫入 DREAMS.md，但網站 repo 一直留低 1 個 unstaged 檔案 → 每日早上簡報 commit + `git pull --rebase origin main` + push origin/main，三倉 0/0。
+- **issue #7 結案**：`/etc/logrotate.d/cloud-init-base`（duplicate log entry 根因檔）已經唔存在，`systemctl --failed` = 0 failed units → 之前連續多日「logrotate failed」係真·已修好，唔使再等大肥喵人手做 `sudo mv`。
+- **SKILL.md 同步**：local + website repo（force-add）+ Second-brain + Max-backup 四份 v2.9.120 md5 一致。
+
+### 巡檢要點（2026-11-02 驗證有效）
+- **線上一致性一定要加 cache-buster**：`assets/chapters-data.json?v=YYYYMMDD` 先至係用戶見到嘅版本；裸路徑係 Cloudflare 舊快取（issue #14）。
+- **Dropbox V4 保持退役**（勿加返）：V5/V6/V7 三條 11:00/11:00/11:30 就夠；V7 已接棒到 CH1806，線上 = 本地 = state = 1806 零分歧。
+- **早簡報 digest 併入 agent 版**（2026-11-01 起）：單一 exec 跑 `generate-briefing-full-v5.py` 攞 stdout 就夠，唔使再跑已退休嘅 `send-briefing.sh`，亦唔好再報「雙軌簡報」。
+- **system cron 檢查用 `crontab -l` + `openclaw cron list --json`（exec 執行）**，唔好用 cron tool（isolated session scoping 會令其他 job 唔見）。
+
+### 教訓
+- **每日 03:00 dreaming 產出要納入早上簡報嘅自動修復流程**：唔好等到 human 發現，先 commit（+ rebase + push）就係最平成本的修法。
+- **睇 systemctl --failed 之後要再睇根因檔案**：logrotate 有 ConditionACPower=true，「skipped」唔等於健康；duplicate 檔真係唔存在，先可以結案。
+
+---
+
+## [2026-11-04] 更新 (v2.9.121) - 早上簡報巡檢：git 分歧第 4 次復發（自動修復）+ 三份 SKILL.md 一致性驗證
+
+### 事件（2026-11-04 08:15 早上簡報）
+- **症狀**：website repo（= workspace，jyonline0604/website）git fetch 後本地落後 origin/main 1 個 CI commit（b62c22eba..ab1073884，GitHub Actions 新聞/財務/RSS 自動更新），同時 git status 有未提交嘅 M DREAMS.md（03:00 Memory Dreaming Promotion 產出 14 行）
+- **修復**：先 commit DREAMS.md → git pull --rebase origin main（rebase 成功，CI 冇碰 DREAMS.md）→ git push origin main（ab1073884..124039b5e）→ 分歧 0/0、工作區乾淨
+- **巡檢全部綠**：kofhk.com 200（0.75s）；線上 assets/chapters-data.json?v=20261104 = 1818 章 = 本地 chapters-data.json 1818 = V7 state max CH1818 → 零分歧；systemctl --failed = 0（issue #7 根因檔真係已移除，連續 3 日清零）；磁碟 / 16%（68G/468G、377G 可用）；Mem available 3.0Gi / 7.0Gi、swap 0；uptime 1 日 10 小時、load 0.69
+- **Dropbox**：V5 270 章 / V6 273 章（max CH1740）/ V7 78 章（max CH1818）2026-11-03 全部「未處理 0」；V7 11:30 加載 CH1813-CH1818 6/6 成功；V4 維持退役（state 265 章 CH926-1190 全處理，勿加返）
+- **Cron**：OpenClaw 8 個 job 全部 enabled + lastStatus=ok + consecutiveErrors=0 + delivered；system cron（crontab -l）條目全在位；cron-guardian 2026-11-03 21:30 實跑「全部正常，無需修復」
+- **SKILL.md 同步**：local + Second-brain + Max-backup 三份 v2.9.120 md5 一致（f40d8f673959，5756 行）→ 改為 v2.9.121 後再同步三份
+
+### 教訓
+- **「記憶備份 08:00 已成功」唔等於「網站 repo 已同步」**：08:00 記憶備份只打包 MEMORY.md + memory/*.md，網站 repo 嘅 CI commit 係另一條線 → 早上簡報一定要自己做 git fetch + git status --porcelain 雙查
+- **git 分歧係第 4 次復發（#11 / #13 / 10-31 / 今日）**：根治方向係 03:00 dreaming 直接 commit + push，或者加一個 05:00 嘅 git pull --rebase && git push system cron；目前靠簡報巡檢兜底
+- **SKILL.md 同步前一定要 md5 + 行數雙驗**（issue #12/#14 教訓）：今日三份一致（5756 行 / md5 f40d8f673959），確認無分叉先改
+- **同一天多個 session 唔好用同一個標題 append**（issue #14 教訓）：今日標題用「(v2.9.121) - 早上簡報巡檢：git 分歧第 4 次復發」以便辨識
+- **線上一致性一定要加 cache-buster**（issue #14）：?v=20261104 先至係用戶見到嘅版本
+
+---
+
+## [2026-11-04] 更新 - skill 副本漂移：已安裝副本可能落後於備份倉
+
+### 問題
+- 18:00 Skill更新檢查發現：已安裝 skill ( ~/.openclaw/skills/novel-site-standards/SKILL.md ) 停留喺 v2.9.120，而 workspace 副本 + Second-brain + Max-backup 都已係 v2.9.121
+- 即係當日新寫嘅條目（cache-buster 修復、logrotate 結案、git 分歧自癒、cron 退休等）並未載入 runtime 實際讀取嘅 skill
+
+### 修復
+- 以備份倉最新版本覆蓋已安裝副本，並將四處副本（已安裝 / workspace 副本 / Second-brain / Max-backup）重新對齊同一版本
+- 新增本條 + 版本號 bump 同步四處
+
+### 教訓
+- skill 有四個副本（已安裝目錄、workspace 內 .openclaw/skills 副本、Second-brain、Max-backup）；任何一處更新後都要 md5 + 版本號四處核對，否則 runtime 讀嘅可能係舊版本
+- 更新後務必核對：md5sum 四處 + grep version 四處，唔好只睇 git push 成功
+
+
+---
+
+## [2026-11-04] 更新 - git add 對「已被 .gitignore 忽略但仍被追蹤」檔案會 exit 1，&& 鏈會斷
+
+### 問題
+- workspace 嘅 .gitignore 忽略 `.openclaw/` 同 `memory/`，但 `memory/2026-11-04.md` 同 `.openclaw/skills/novel-site-standards/SKILL.md` 其實係**已被追蹤**（tracked）嘅檔案
+- 執行 `git add -A memory/2026-11-04.md .openclaw/skills/.../SKILL.md && git commit ...` 時，git 印出 "The following paths are ignored by one of your .gitignore files" 並 **exit code = 1**
+- 但實際上檔案**已經 stage 成功**（`git status --porcelain` 顯示 `M ` 而唔係 ` M`）—— 因為 exit 1，&& 鏈令 git commit **被完全跳過**，令人誤以為 add 失敗
+
+### 修復
+- 將 `git add` 同 `git commit` 拆開做，先睇 `git status --porcelain` 確認已 staged（`M ` = staged，` M` = 只係工作區改動）
+- 需要的話用 `git add -f` 強制加入被 ignore 但已追蹤嘅路徑
+
+### 教訓
+- **`git add` exit code 唔等於「有冇 stage 到」**：對 tracked-but-ignored 檔案，git 會 warn + exit 1，但 staging 其實成功
+- 唔好將 `git add` 用 `&&` 直接串去 `git commit`；改為分開執行 + 用 `git status --porcelain` 實測 staged 狀態
+- push 之後照舊用 `git fetch origin` + `git status -sb` 判斷真實狀態（已記錄於 2026-11-04 早上簡報教訓）
+
+---
+
+## [2026-11-05] 更新 - 版本檢查收單軌（退役 system crontab 軌）
+
+### 修復內容
+- 移除 system crontab 的「OpenClaw版本檢查 每天11:00」條目（check_openclaw_update.py），保留 OpenClaw cron job「OpenClaw Version Check」作唯一軌
+- 解決：同一個腳本兩軌各行一次 → 大肥喵每日收兩次完全相同嘅版本 Telegram 通知（11:00:09 + 11:03:22）
+- 與簡報軌一致（11-01 已退役 system cron 簡報軌、保留 OpenClaw cron 軌）→ 全面單軌
+
+### 保留軌的好處
+- OpenClaw cron job 照跑同一個腳本 → Telegram 通知照發（大肥喵一樣收到）
+- 額外多一份好處：執行結果會入 agent 對話（可做交接/審計），system crontab 軌唔會
+- 若將來想回復雙軌，只要把 crontab 條目加返即可（已安裝腳本不變）
+
+---
+
+## [2026-11-05 13:15 更新] 簡報送達驗證 + 連環重啟處理
+
+### 修復內容
+- 更正 memory/2026-11-05.md 嘅錯誤記述：08:44 嘅 catch-up 補跑其實喺 08:49 被 gateway restart 打斷、**未送達**（真係送達係 13:15 重試）
+- memory/issues.md #10 補上今日第 6、7 次重啟嘅復發記錄（boot -2 08:07:00 → boot -1 08:41:06→08:49:29 → boot 0 08:50:21）
+
+### 根本原因
+- 機房連環人手關機（GNOME 桌面），起機後 OpenClaw scheduler 自動 catch-up，但 catch-up 排程會撞正下一次重啟 → 被 gateway restart 中斷
+
+### 解決方法
+- 簡報送達狀態一律以 automations runs 嘅 delivered / deliveryStatus 為準，唔用 memory 筆記做準
+- catch-up 被斬斷時由 scheduler 自動重試，唔需人手補跑；重試成功後更正 memory 紀錄
+
+### 步驟
+1. 睇 journalctl --list-boots 對齊每次重啟時間窗
+2. 睇 automations runs 確認 job 係 delivered 定 interrupted
+3. 修正 memory/2026-11-05.md + issues.md #10
+4. 同步 SKILL.md 四份副本（local / website repo / Second-brain / Max-backup），版本 +0.0.1
+
+---
+
+## [2026-11-05] 更新 - 收單軌只係刪 crontab 唔夠：cron-guardian 會加返
+
+### 問題
+- 11:45 移除 system crontab 版本檢查條目（收單軌），但 cron-guardian.sh 嘅 SYSTEM_TASKS 仍列住 check_openclaw_update.py
+- guardian 每 30 分鐘巡檢一次「缺失 = 加返」→ 今晚 21:30 就會把條目加返，雙軌重現
+- 教訓同 send-briefing.sh 退役（11-01）完全一樣：守護機制會同「退役」對抗
+
+### 修復
+- cron-guardian.sh：把 check_openclaw_update.py 從 SYSTEM_TASKS 移除（照 send-briefing.sh / Vol4 退役做法加註說明：crontab 冇佢係正確狀態，唔好加返）
+- 清理 crontab 殘留註釋行
+- 實跑 guardian 驗證：冇加返，單軌維持 ✅（crontab 11 條）
+
+### 教訓
+- 「退役某個 system cron 條目」係三步：(1) 刪 crontab 行 (2) 從 cron-guardian SYSTEM_TASKS 移除 (3) 實跑 guardian 驗證唔會加返 — 淨做 (1) 一定會喺下一輪巡檢復發
+
+
+---
+
+## [2026-11-05 22:00] 更新 - push 腳本嘅 reset --hard 會靜靜抹走未提交改動
+
+### 問題（今晚 22:00 健康報告實測中招）
+- `scripts/git-push-with-lock.sh` / `scripts/batch-push.sh` 順序係「先 `git pull --rebase` → 後 commit」
+- 一有本地未提交改動，rebase 必然報 "cannot pull with rebase: You have unstaged changes" → fallback 行 `git reset --hard origin/main`
+- 後果：未提交改動被靜靜刪走（今晚 SKILL.md v2.9.126 + memory/2026-11-05.md 紀錄就係咁消失，仲要靠 Second-brain 副本先搶返）
+- 同一個 bug 今日 10:11 新聞後備 log 已經出現過一次「rebase/push 失敗」，當時只當作普通失敗，冇追根因為 destructive fallback
+
+### 修復
+- 兩個腳本都改成「先 commit → 後 pull --rebase → 最後 push」
+- fallback 改用 stash 安全同步：`git stash push -u` → fetch/reset → `git stash pop`，唔再無條件 `reset --hard`
+- 同步四份 SKILL.md 副本（local ~/.openclaw/skills / website repo / Second-brain / Max-backup）
+
+### 教訓
+- 任何腳本入面嘅 `git reset --hard` fallback 都係「最後手段」級危險：同步失敗時佢唔會報錯，只會靜靜刪資料
+- 「rebase/push 失敗」呢類 log 唔可以當雜訊，要追落 fallback 邏輯先算修好
+- 推前必須先 commit，rebase 嘅前提就係乾淨工作區
+
+---
+
+## [2026-11-06] 更新 (v2.9.128) - 早上簡報巡檢：git 分歧第 6 次復發自動修復 + 線上一致性三來源核對法
+
+### 事件（2026-11-06 08:15 早上簡報）
+- 巡檢全綠：kofhk.com 200（0.68s）／磁碟 16%（68G/468G、377G 可用）／Mem available 2.8Gi／uptime 23h25m（boot 0 自 11-05 08:50:21，今日無重啟）／systemctl --failed = 0
+- 線上一致性：assets/chapters-data.json?v=20261106 = 1830 章 = 本地 chapter-N.html 1830 檔（1-1830 零缺口）= V7 state max CH1830 → 零分歧
+- Dropbox：V4 依 2026-10-02 指令退役（勿加返）；V5/V6/V7 2026-11-05 全部正常（V5/V6「未處理 0」、V7 6/6 成功）
+- 自動修復：workspace 落後 origin/main 1 個 CI commit + DREAMS.md、memory/2026-11-05.md 未提交 → commit → pull --rebase → push → 三倉 0/0
+
+### 新增：線上一致性三來源核對法
+- 三個來源必須對齊先算「零分歧」：
+  1. 線上索引：https://kofhk.com/assets/chapters-data.json?v=YYYYMMDD（必須帶 cache-buster；裸路徑 /chapters-data.json 係 404，裸 /assets/… 可能有舊快取）
+  2. 本地實際檔：ls chapter-*.html | grep -E 'chapter-[0-9]+\.html' | wc -l（要扣 chapter-template.html / chapters.html），再檢 1..N 無缺口
+  3. 各卷 state max：.dropbox-sync/volume7_state.json（最前卷）嘅 ch_num 最大值
+- 三者數字相等 → 零分歧；唔等就要逐個來源查邊個係舊值
+- 裸路徑 /chapters-data.json 回 404 係正常（網站只有 assets/ 版本），唔好誤報成「索引遺失」
+
+### 教訓
+- git 分歧已連續 6 次復發（10-24、10-28、10-31、11-04、11-05、11-06），成因係 GitHub Actions 直接推同一 repo → 根治方向仍然係「每日簡報巡檢固定 fetch + status 雙查並自動 rebase push」
+- 判定線上一致性唔可以只 curl 一條 URL，要三來源對照（線上 JSON / 本地檔 / state）
+
+---
+
+## [2026-11-06] 更新 - 2026.11 升級後舊 cron job 失去 inference account（全部報錯）
+
+### 症狀
+- 部機升到 OpenClaw 2026.11.1 後，中午簡報 12:55 報錯：Automation has no recorded inference account. Explicitly select its account with a model@profile update before running it
+- 後果：該次簡報完全冇送出（deliveryStatus unknown），而其餘 agentTurn job（傍晚簡報 17:55、健康報告 22:00、Audio Sync、版本檢查、早上簡報）隨時會同樣爆 — 等於整個 automation 停擺
+- 注意：升級前最後一次成功係 11:00 版本檢查（報 2026.10.9），即係升級喺 11:00-12:55 之間發生
+
+### 修法（官方 docs：docs/automation/cron-jobs/troubleshooting.md）
+- openclaw cron edit <jobId> --model "<provider/model>@<profileId>"
+- profileId = openclaw.json auth.profiles 嘅 key（例如 minimax:cn、openrouter:default、zai:default）
+- 已對 6 個 agentTurn job 全部綁定 minimax/MiniMax-M3.1-Flash@minimax:cn
+
+### 教訓
+- **每次升級 OpenClaw（尤其 minor 版）之後，一定要批量重綁 cron job 嘅 model@profile** —— 舊 job 冇 recorded inference account 就會全線報錯，唔止一個 job
+- 檢查方法：openclaw cron list --json 睇 payload.model 有冇 @profile；errs>0 睇 state.lastError（會直接寫明根因）
+- 症狀同 2026-10-21 升級炸 cron（模型改名）同類，但今次係 account 綁定機制改變
+
+
+---
+
+## [2026-11-06] 更新（補） - cron_model_guard 會把 @profile 綁定改返落去
+
+### 第二個陷阱
+- 綁完 model@profile 之後，scripts/cron_model_guard.py 會判定 payload.model「唔喺 modelPolicy.allow 白名單」→ 自動 --fix 改返無 profile 嘅 primary model
+- 即係話：綁 profile 修好 automation 之后，guard 會喺下一輪把綁定還原 → 17:55 / 22:00 又會報 "no recorded inference account" 爆
+
+### 修復
+- cron_model_guard.py：比較時用 base model（剝走 @profile）對白名單；fallbacks 同樣處理；--fix 時保留原本嘅 @profile suffix（唔會還原走）
+- openclaw.json 嘅 modelPolicy.allow（defaults + entries.main）加入 minimax/MiniMax-M3.1-Flash@minimax:cn
+- 實跑驗證：OK: every job model override is within policy allow list ✅
+
+### 教訓
+- 升級後綁 model@profile 係必須，但要同步睇 cron_model_guard.py 同 modelPolicy.allow，否則守衛會靜靜還原
+- 任何「自動修復」型守衛腳本，都要檢查佢嘅白名單／比對邏輯會唔會抵銷我哋啱啱做嘅修復
+
+
+---
+
+## [2026-11-07] 更新 - 自動生成數據檔 push 衝突（finance-data / finance-news）
+
+### 症狀
+- 09:15 推送驗證發現有未推送 commit，執行 git pull --rebase 時卡住：both modified: finance-news.json
+- 繼續 rebase 再撞：finance-data.json（同一批 16:00 數據）
+- 根因：本地 system cron（update_finance_news.sh / update_finance.sh，10/16 時段）同 GitHub Actions 喺同一個時間窗各自寫同一份自動生成 JSON → 兩邊都改同一檔 → rebase 必然衝突
+
+### 處理
+- 逐個解決衝突：git checkout --theirs（rebase 中 = 正在重放嘅 commit 版本）→ git add → 驗證 JSON 有效 → GIT_EDITOR=true git rebase --continue，迴圈至 rebase 完成 → git push
+- 結果：rebase 完成、push 成功（d2c71fbc4..78c06367c）、0 未推送 / 0 髒檔、線上 finance-data.json 正常
+
+### 教訓
+- 自動生成數據檔（finance-data.json / finance-news.json / aqhi-data.json）每日必然出現 rebase 衝突，唔係故障
+- 處理流程固定：checkout --theirs → add → 驗 JSON → rebase --continue（迴圈）→ push
+- 唔好因為衝突就 git reset --hard 或 abort（會丟失當日已生成數據）
+
+
+---
+
+## [2026-11-07] 更新 - 22:00 健康報告巡檢（CI commit 落後同步 + 全綠確認）
+
+### 症狀
+- `git fetch` 發現 origin/main 多 1 個 commit（b60a56985 CI 每日自動更新新聞/市場數據/sitemap/RSS，13:41 UTC），本地 behind 1、ahead 0、工作區乾淨 → 唔係故障，係 CI 正常推播
+
+### 處理
+- `git pull --rebase origin main` → 零衝突（因為本地冇改同一批自動生成 JSON）→ 分歧即刻歸 0/0
+- 追加 22:00 健康報告記憶 → commit + push（b60a56985..a85e76fd4）→ 0 未推送 / 0 髒檔
+
+### 教訓
+- 每日健康報告出現 behind 1（CI 自動生成數據 commit）時，先 fetch + `pull --rebase`；只要本地冇同一批數據改動就零衝突，唔需要 `checkout --theirs` 迴圈
+- 真正需要迴圈解決嘅情況：本地 system cron（財經/財經新聞/AQHI 10,16）同 CI 寫同一批 JSON（見 2026-11-07 09:15 條目）
+- `.token-store/dropbox-token.txt.bak` 係 renew_dropbox_token.py 每次續期自動重建嘅回滾副本（權限 600），唔係遺留檔，唔好刪
+
+---
+
+## [2026-11-07] 更新 - skill 副本漂移復發（已安裝副本落後一個版本）
+
+### 症狀
+- 22:00 健康報告出新條目（v2.9.132）並 push 到 Second-brain / Max-backup / workspace 副本
+- 但**已安裝**副本（~/.openclaw/skills/novel-site-standards/SKILL.md，runtime 真正讀嗰份）停留喺 v2.9.131 → 今日新教訓未入 runtime 指引
+- 18:00 Skill更新檢查靠「四處 md5 唯一值 = 1」捉到（唯一值 = 2 即漂移）
+
+### 修復
+- 以三處一致嘅 v2.9.132 覆蓋已安裝副本，再 bump 到 v2.9.133 並四處同步
+- 教訓重申：更新 skill 必須四處同步（已安裝 / workspace 副本 / Second-brain / Max-backup）；每日檢查要核對「四處 md5 唯一值 == 1」，唔係只睇 git push 成功
+
+
+---
+
+## [2026-11-07] 更新（補） - skill 副本漂移根治：新增 nightly 自動對齊 cron
+
+### 為乜要做
+- 副本漂移今日第二次復發（已安裝 v2.9.131 vs 其餘三處 v2.9.132）→ runtime 讀緊舊指引
+- 18:00 檢查可以捉到並手動修，但「22:00 健康報告出新版本」呢類事發生喺檢查之後 → 只能等第二日
+- 根治：新增 scripts/sync_skill_copies.sh + system crontab 23:20 自動對齊四處（以版本號最高嗰份為準）並 commit/push
+
+### 用法
+- scripts/sync_skill_copies.sh：四處（已安裝 / workspace 副本 / Second-brain / Max-backup）對齊 standards + av-generator，備份倉有變更就自動 commit + push
+- crontab：20 23 * * *（記憶備份 23:00、自動記憶日誌之後）
+- 每日檢查仍要核對「四處 md5 唯一值 == 1」做雙保險
+
+
+---
+
+## [2026-11-08] 更新 - openclaw-version.json 狀態檔停更 → 每日簡報錯報「有更新可用」
+
+### 症狀
+- 早上簡報 digest 長期顯示「⚠️ OpenClaw：有更新可用（v2026.10.10）」
+- 但實際 `openclaw --version` = 2026.11.1、`npm view openclaw version` = 2026.11.1 → 根本冇更新
+
+### 根本原因
+- `scripts/generate-briefing-full-v5.py` 讀 `workspace/openclaw-version.json` 顯示版本狀態
+- 該檔只由 `scripts/check_openclaw_update.py` 更新
+- 但 OpenClaw cron「OpenClaw Version Check」行嘅係 `scripts/check-openclaw-version.sh`（純 shell，**唔寫** version.json）
+- 結果 version.json 停留喺 2026-10-05（current 2026.10.9 / latest 2026.10.10 / update_available=true）→ 每日簡報都係報假版本
+
+### 修復
+- `scripts/check-openclaw-version.sh` 尾端加：跑 `check_openclaw_update.py` 同步刷新 version.json（冇更新時唔會誤發 Telegram）
+- 即時補跑一次 → version.json 更新為 current=2026.11.1 / latest=2026.11.1 / update_available=false
+- 驗證：重跑 digest → 顯示「✅ OpenClaw：v2026.11.1（最新）」✅
+
+### 教訓
+- 簡報顯示嘅狀態要同「實際執行嘅那個腳本」對齊：cron 行 shell 版、狀態檔由 python 版寫 → 兩者必須串埋
+- 巡檢見到「有更新可用」要即場核對 `openclaw --version` vs `npm view openclaw version`，唔可以只信狀態檔
+
+---
+
+## [2026-11-08] 更新 - 早上簡報 08:15 job 撞 1200s timeout → 該輪報告未送達
+
+### 症狀
+- 08:15 該輪 job 跑足 1203.771s（> timeoutSeconds 1200）→ `cron: job execution timed out (last phase: model-call-started)`
+- lastRunStatus=error、consecutiveErrors=1、lastDeliveryStatus=unknown → **Telegram 冇收到早上簡報**（報告已寫好但announce 送達前先被閘）
+- scheduler 08:35 自動補跑本輪
+
+### 根本原因
+- 該輪同時做咗「修 openclaw-version.json + SKILL.md 四份同步 + 三倉 git push + 記憶寫入」
+- 每一步都係獨立 model call，累積耗時撞 1200s 上限 → job 被閘死，announce 無機會送達
+
+### 修復
+- `openclaw cron edit 27d54b55-3523-4475-8ad5-b07445cc4378 --timeout-seconds 1800`（1200 → 1800）
+- 驗證：`openclaw cron list --json` → payload.timeoutSeconds = 1800
+
+### 教訓
+- 簡報類 job timeoutSeconds 要按「實際工作負載 × 單步 model call 成本」估，唔好淨係跟其他 job 一律 1200s
+- 同一輪做「巡檢 + 修復 + SKILL 同步 + 三倉 push」時，總時長好易超標 → 要么放寬 timeout，要么將 git push / SKILL 同步拆去獨立 job
+- 睇 job 有冇送達要睇 `lastDeliveryStatus` + `automations runs` 嘅 delivered/error 欄位，唔可以只睇 job 存在（教訓 #10 同款）
+
+---
+
+## [2026-11-08 08:56] 更新 - `cron edit --timeout-seconds` 只對下一次 run 生效；補跑輪自我犧牲
+
+### 症狀
+- 08:15 輪跑足 1203.771s 撞 1200s 上限 -> `cron: job execution timed out (last phase: model-call-started)`、deliveryStatus=unknown -> 未送達
+- 08:35 scheduler 補跑輪：同一輪內完成 `openclaw cron edit ... --timeout-seconds 1800` + SKILL v2.9.136 + 三倉 push，但**同一個 run** 仍用開跑時嘅 1200s -> 再被閘死（dur=1200.4s）-> consecutiveErrors=2
+- 結果：08:15 + 08:35 兩輪都冇到 Telegram；08:56 輪（1800s 上限）先交付
+
+### 根本原因
+- `openclaw cron edit` 改 payload 只由**下一次 run** 生效；正在跑嘅 run 沿用啟動時嘅 config revision -> 補跑輪改咗都救唔到自己
+- 補跑輪把「修復 + SKILL 同步 + 三倉 push」塞入同一輪 -> 工作量必然長過 1200s -> 再次自我犧牲
+
+### 修復
+- timeoutSeconds 1200 -> 1800（`openclaw cron list --json` -> payload.timeoutSeconds=1800，已驗證）
+- 08:56 輪以 1800s 上限完成巡檢 + 報告，經 message tool 直接送達
+
+### 教訓
+- 補跑/重試輪係「最低成本交付」嘅最後機會：只做巡檢 + 報告，唔做維修；SKILL 同步 / 三倉 push 留俾 22:00 健康報告
+- timeout edit 後要即刻 `openclaw cron list --json` 睇 payload 確認新值，並確認新 run 已用新 revision
+- 核對簡報有冇送達要睇 deliveryStatus + delivered 欄位（教訓 #10 同款），唔可以只信 memory 筆記
+---
+
+## [2026-11-08] 更新 - provider 掛死令排程失送 + provider 級 timeout 快速失敗
+
+### 症狀（2026-11-08 早上）
+- 早上簡報 08:15 job errs=2、status=error、delivered=None → 大肥喵完全收唔到早上簡報
+- lastError: cron: job execution timed out (last phase: model-call-started)，每次都係 20 分鐘（1200 秒）
+- gateway log: provider=minimax api=anthropic-messages 連續 60 秒級 error 之後 TimeoutError
+- 補跑（08:35 / 08:55）同樣掛死 → 證明唔係單次偶發
+
+### 根因
+- minimax anthropic-messages 路由今朝極慢/無回應，isolated cron lane 喺 model-call 階段無限等
+- job payload timeoutSeconds=1800 保護唔到（lane 20 分鐘先被剪），所以成個 job 靜靜死咗，
+  大肥喵收到唔到簡報而通知亦冇送出去
+
+### 修復
+- openclaw.json: models.providers.minimax.timeoutSeconds = 120（原本冇設定）
+  → provider 請求 120 秒內無回應就快速失敗，scheduler 即刻切換 fallback（openrouter 5 個 free model）
+  → 由「掛死 20 分鐘全線失送」變成「2 分鐘內 fallback 接手」
+- 教訓：provider 級 timeout 一定要設；只靠 job timeoutSeconds 唔夠，因為失送發生喺 lane 剪斷之前
+
+### 附帶發現
+- cron run 手動觸發時，若主 session lane 仍忙，會回 already-running（唔係 job 壞）
+  → 診斷時要分清「job 失敗」同「lane 排隊」，唔好誤判為 job 壞
+
+---
+
+## [2026-11-08] 更新 - MiniMax 推理停擺 + agent 回合 timeout 太短
+
+### 症狀
+- 早上簡報 08:15 job 連續三輪失敗（08:15 / 08:35 / 08:55）：cron: job execution timed out (last phase: model-call-started) → 模型端唔回應，唔係腳本問題
+- 09:04 第 4 輪成功交付（errs 清零、delivered=True）→ scheduler catch-up 自癒成功，簡報無漏
+- 同一日 agent 互動回合亦被 120s 逾時切斷（報 Request timed out before a response was generated）
+
+### 修復
+- agents.defaults.timeoutSeconds 120 -> 600（主 agent 回合上限太短，重工具巡檢回合易被腰斬）
+- job 本身 timeoutSeconds=1800 維持不變（cron 專用），fallbacks 5 條（openrouter free 模型）保持
+
+### 教訓
+- job execution timed out (last phase: model-call-started) = 模型端停擺，唔係工作腳本壞；睇 runs 記錄就分得出（model-call-started vs 其他 phase）
+- 互動回合被 Request timed out 截斷時，先查 agents.defaults.timeoutSeconds 而唔係亂加 exec timeout
+
+---
+
+## [2026-11-08] 更新 - 跨 provider fallback 必須各自綁 account（否則切換即硬失敗）
+
+### 症狀
+- 每日 Audio Sync 10:00 job 報錯：Automation candidate is incompatible with its recorded inference account and route.
+- 2026.11.1 邏輯（dist/run-executor）：binding 存在時，若 candidate provider != binding.provider 就 throw，唔會靜默切換
+- 即係：job 綁咗 minimax:cn（11-06 升級後修 inference account 時綁定），但 fallback 係 openrouter/* 冇綁 account → 一旦 MiniMax timeout 要切 fallback 就硬失敗
+- 只係 Audio Sync 中招：今日 10:00 撞正 MiniMax 停擺；其他 job 撞正就一樣爆
+
+### 修復
+- 6 個 agentTurn job 嘅 5 條 fallback 全部改為 model@openrouter:default（每個 fallback 帶自己嘅 stored account）
+- Audio Sync 補跑 11:34 → status=ok、delivered=True、errs 歸零
+
+### 教訓
+- 2026.11 起：job 嘅 inference account 一旦綁定，跨 provider fallback 必須各自綁 account，否則 fallback 唔會被採用（會直接硬失敗）
+- 升級或改 model@profile 時，fallbacks 要一併檢查同樣式，唔可以只睇 primary
+---
+
+## [2026-11-08] 更新 - 自動生成資料檔 rebase 衝突：殘留衝突標記曾被推上線
+
+### 症狀
+- 16:0x 拉遠端更新時 git pull --rebase 撞 finance-news.json / finance-data.json 衝突（本地 16:00 新資料 vs 遠端 CI 14:53 舊資料）
+- 解決衝突時用錯方向：finance-news.json 取到遠端版 + 帶住衝突標記版本，被 git add 後隨 rebase 一起 commit 並 push（b5cde377b）
+- 驗證階段先發現：finance-news.json INVALID JSON、含 2 個衝突標記 → 線上新聞資料檔一度無效
+
+### 修復
+- 重取乾淨版本：git show 37566baae:finance-news.json（本地 16:00 有效版本）→ 覆寫 → commit 70d55ddae → push
+- 驗證：本地 / origin/main / 線上 https://kofhk.com/finance-news.json 全部 valid JSON、0 衝突標記
+
+### 教訓
+- rebase 解決衝突時，ours/theirs 喺 rebase 語意相反：ours = 上游（遠端），theirs = 正在重放嘅本地 commit；本地更新嘅話要取 theirs
+- 任何寫入自動生成資料檔嘅 commit，push 前必須驗 JSON 有效性 + 衝突標記數（grep -c "<<<<<<<"），唔好靠肉眼
+- 解完衝突要即刻驗檔案內容，唔好等到下一次巡檢先發現
+

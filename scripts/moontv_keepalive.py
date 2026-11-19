@@ -259,11 +259,11 @@ def main():
             m = re.search(r"upstream_sync_repo:\s*(\S+)", content)
             up = m.group(1) if m else "?"
             if up and EXPECTED_UPSTREAM not in up:
-                issues.append("ℹ️ fork 嘅 sync.yml 指向 %s，但真正上游係 %s（2146 stars，仍活躍）。"
-                              "而家兩邊 main 內容一致、暫時無影響，但上游一改就同步唔到。"
-                              "要改需要對 %s 有寫入權限嘅 token。" %
-                              (up, EXPECTED_UPSTREAM, REPO))
-                notify_once(state, "wrong_upstream", hours=168)
+                if notify_once(state, "wrong_upstream", hours=168):
+                    issues.append("ℹ️ fork 嘅 sync.yml 指向 %s，但真正上游係 %s（2146 stars，仍活躍）。"
+                                  "而家兩邊 main 內容一致、暫時無影響，但上游一改就同步唔到。"
+                                  "要改需要對 %s 有寫入權限嘅 token。" %
+                                  (up, EXPECTED_UPSTREAM, REPO))
                 log("ℹ️ sync.yml upstream 指向 %s（應為 %s）" % (up, EXPECTED_UPSTREAM))
         except Exception as e:
             log("ℹ️ sync.yml 檢查失敗: %s" % e)

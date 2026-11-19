@@ -18,6 +18,31 @@ ls -t "$HOME/.openclaw/logs/stability/" 2>/dev/null | head -3
 echo "=== 3. 網站 ==="
 curl -s -o /dev/null -w "kofhk.com: %{http_code} %{time_total}s\n" --max-time 10 https://kofhk.com/ 2>/dev/null
 
+echo "=== 3b. MoonTV (itv.kofhk.com / jyonline0604/MoonTV) ==="
+# 2026-11-19：跟用戶要求加入每日任務 check。
+# 重點：GitHub 會喺 repo 連續 60 日無活動後自動停用 scheduled workflow（Upstream Sync），
+# 所以要睇「距上次 push 幾多日」，>45 日就要預警（watchdog 會自動推空 commit 重置）。
+_mtv_http=$(curl -sL -o /dev/null -w "%{http_code}" --max-time 20 https://itv.kofhk.com/ 2>/dev/null || echo 000)
+_mtv_days=-1; _mtv_sync="?"
+_mtv_tok="$WS/.token-store/github-moontv-token.txt"
+if [ -f "$_mtv_tok" ]; then
+  _mtv_tokv=$(tr -d '\n' < "$_mtv_tok" 2>/dev/null)
+  _mtv_json=$(curl -s -u "x-access-token:$_mtv_tokv" --max-time 20 https://api.github.com/repos/jyonline0604/MoonTV 2>/dev/null)
+  _mtv_pushed=$(printf '%s' "$_mtv_json" | python3 -c 'import json,sys
+try: print(json.load(sys.stdin).get("pushed_at","")[:10])
+except Exception: print("")' 2>/dev/null)
+  if [ -n "$_mtv_pushed" ]; then
+    _mtv_days=$(( ( $(date -u +%s) - $(date -u -d "$_mtv_pushed" +%s 2>/dev/null || echo 0) ) / 86400 ))
+  fi
+  _mtv_sync=$(curl -s -u "x-access-token:$_mtv_tokv" --max-time 20 https://api.github.com/repos/jyonline0604/MoonTV/actions/workflows/sync.yml 2>/dev/null | python3 -c 'import json,sys
+try: print(json.load(sys.stdin).get("state","?"))
+except Exception: print("?")' 2>/dev/null)
+fi
+echo "  itv.kofhk.com: HTTP $_mtv_http"
+echo "  fork 最後 push: ${_mtv_days} 日前（60 日後 GitHub 會自動停用 Upstream Sync）"
+echo "  Upstream Sync workflow: $_mtv_sync"
+echo "  watchdog: $(crontab -l 2>/dev/null | grep -c moontv_keepalive) 條 crontab 規則 | $([ -f "$WS/logs/moontv-keepalive.log" ] && echo 有日誌 || echo 無日誌)"
+
 echo "=== 4. Cron jobs（名／errs／fallback 層數／lastRun）==="
 openclaw cron list --json 2>/dev/null | python3 -c '
 import json,sys,datetime

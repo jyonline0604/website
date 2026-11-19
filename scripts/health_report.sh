@@ -111,21 +111,73 @@ for r in "$WS" /home/openclaw/Second-brain /home/openclaw/Max-backup; do
 done
 dbsync=$(ls "$WS"/.dropbox-sync/volume*_state.json 2>/dev/null | wc -l)
 
+# --- MoonTV (itv.kofhk.com -> jyonline0604/MoonTV) ---
+# 2026-11-19：跟用戶要求加入每日任務 check。
+# 兩個重點：(1) itv 網站仲在唔在線；(2) fork 距上次 push 幾多日 ——
+#          GitHub 會喺 repo 連續 60 日無活動後自動停用 scheduled workflow
+#          （Upstream Sync），所以 >45 日就要預警。
+MTV_INFO=$(python3 - "$WS" <<'PYMTV' 2>/dev/null
+import calendar, json, os, sys, time, urllib.request, urllib.error
+WS = sys.argv[1]
+http = "000"; days = -1; sync = "?"
+try:
+    req = urllib.request.Request("https://itv.kofhk.com/", headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=20) as r:
+        http = str(r.status)
+except urllib.error.HTTPError as e:
+    http = str(e.code)
+except Exception:
+    pass
+tok = os.path.join(WS, ".token-store", "github-moontv-token.txt")
+try:
+    tokv = open(tok).read().strip()
+except Exception:
+    tokv = ""
+if tokv:
+    def api(path):
+        rq = urllib.request.Request("https://api.github.com" + path)
+        rq.add_header("Authorization", "x-access-token " + tokv)
+        rq.add_header("Accept", "application/vnd.github+json")
+        with urllib.request.urlopen(rq, timeout=20) as rr:
+            return json.loads(rr.read().decode("utf-8", "replace"))
+    try:
+        pa = api("/repos/jyonline0604/MoonTV").get("pushed_at")
+        if pa:
+            days = int((time.time() - calendar.timegm(time.strptime(pa, "%Y-%m-%dT%H:%M:%SZ"))) / 86400)
+    except Exception:
+        pass
+    try:
+        sync = api("/repos/jyonline0604/MoonTV/actions/workflows/sync.yml").get("state", "?")
+    except Exception:
+        pass
+print("%s|%s|%s" % (http, days, sync))
+PYMTV
+)
+mtv_http=${MTV_INFO%%|*}; mtv_rest=${MTV_INFO#*|}
+mtv_days=${mtv_rest%%|*}; mtv_sync=${mtv_rest##*|}
+
 web=OK; [ "$http" = "200" ] || web=WARN
 dba=OK; if [ "$dbsync" -lt 1 ] || [ "$tokage" -lt 0 ] || [ "$tokage" -gt 240 ]; then dba=WARN; fi
 sys=OK; if [ "$disk" -ge 90 ] 2>/dev/null; then sys=WARN; fi
 if [ "$memtotal" -gt 0 ] 2>/dev/null && [ "$memavail" -lt $(( memtotal / 10 )) ]; then sys=WARN; fi
 crn=OK; if [ "$cronerrs" -gt 0 ] 2>/dev/null; then crn=WARN; fi
 git=OK; if [ "$gitdirty" -gt 0 ] || [ "$gitunpushed" -gt 0 ]; then git=WARN; fi
+mtv=OK
+if [ "$mtv_http" != "200" ] && [ "$mtv_http" != "000" ]; then mtv=FAIL; fi
+if [ "$mtv_http" = "000" ]; then mtv=WARN; fi
+if [ "$mtv_sync" != "active" ]; then mtv=WARN; fi
+if [ "$mtv_days" -ge 45 ] 2>/dev/null; then mtv=WARN; fi
 
 STATUS=OK
 if [ "$http" != "200" ] || [ "$cronerrs" -gt 0 ] 2>/dev/null; then STATUS=FAIL; fi
-if [ "$web" = "WARN" ] || [ "$dba" = "WARN" ] || [ "$sys" = "WARN" ] || [ "$crn" = "WARN" ] || [ "$git" = "WARN" ]; then
+if [ "$mtv" = "FAIL" ] 2>/dev/null; then STATUS=FAIL; fi
+if [ "$web" = "WARN" ] || [ "$dba" = "WARN" ] || [ "$sys" = "WARN" ] || [ "$crn" = "WARN" ] || [ "$git" = "WARN" ] || [ "$mtv" = "WARN" ]; then
   [ "$STATUS" = "OK" ] && STATUS=WARN
 fi
 [ "${#FAILED[@]}" -gt 0 ] && STATUS=FAIL
 
-verbose "  網站 HTTP=$http | disk=${disk}% | mem_avail=${memavail}M/${memtotal}M | cron_errs=$cronerrs | token_age=${tokage}min | git髒檔=$gitdirty 未推送=$gitunpushed | dropbox_states=$dbsync"
+verbose "  網站 HTTP=$http | disk=${disk}% | mem_avail=${memavail}M/${memtotal}M | cron_errs=$cronerrs | token_age=${tokage}min | git髒檔=$gitdirty 未推
+verbose "  MoonTV: itv HTTP=$mtv_http | fork 最後 push ${mtv_days} 日前 | Upstream Sync=$mtv_sync | mtv=$mtv"送=$gitunpushed | dropbox_states=$dbsync"
 verbose "  受影響 job（consecutiveErrors > 0）:"
 openclaw cron list --json 2>/dev/null | python3 -c '
 import json,sys
@@ -135,13 +187,14 @@ bad=[(j.get("name"),(j.get("state",{}) or {}).get("consecutiveErrors") or 0) for
 print("    "+(", ".join(n+"("+str(e)+")" for n,e in bad) if bad else "無"))
 ' >> "$LOGFILE" 2>/dev/null
 verbose "  [LOOP_STATUS: $STATUS]"
-verbose "  [LOOP_DAILY: 網站$web, Dropbox$dba, 系統$sys, Cron$crn, Git$git]"
+verbose "  [LOOP_DAILY: 網站$web, Dropbox$dba, 系統$sys, Cron$crn, Git$git, MoonTV$mtv]"
 verbose "=== 完 ==="
 
 # ---------- --deliver：最終報告（數字全部本腳本實測，唔經模型）----------
 if [ "$DELIVER" = 1 ]; then
   export WS HTTP="$http" DISK="$disk" MEMAVAIL="$memavail" MEMTOTAL="$memtotal"
   export CRONERRS="$cronerrs" TOKAGE="$tokage" GITDIRTY="$gitdirty" GITUNPUSHED="$gitunpushed"
+export MTV_HTTP="$mtv_http" MTV_DAYS="$mtv_days" MTV_SYNC="$mtv_sync" MTV="$mtv"
   export DBSYNC="$dbsync" STATUS="$STATUS" WEB="$web" DBA="$dba" SYS="$sys" CRN="$crn" GIT="$git"
   export REPAIRED_JOINED="$(printf '%s
 ' "${REPAIRED[@]:-}" | grep -v '^$' | paste -sd ';' -)"
@@ -243,6 +296,13 @@ print("🖥 系統 — disk %s%%、記憶體可用 %sM/%sM %s"
       % (os.environ.get("DISK"), os.environ.get("MEMAVAIL"), os.environ.get("MEMTOTAL"),
          mark(os.environ.get("SYS") == "OK")))
 print("📦 system cron — %s 行" % syscron)
+_mtvd = os.environ.get("MTV_DAYS") or "?"
+_mtvs = os.environ.get("MTV_SYNC") or "?"
+_mtvh = os.environ.get("MTV_HTTP") or "?"
+_mtvwarn = (os.environ.get("MTV") == "WARN") or (os.environ.get("MTV") == "FAIL")
+print("🎬 MoonTV (itv.kofhk.com) — HTTP %s %s | fork 最後 push %s 日前 | Upstream Sync=%s%s"
+      % (_mtvh, "" if _mtvh == "200" else " ⚠️", _mtvd, _mtvs,
+         "  ⚠️ 距 60 日自動停用門檻好近" if str(_mtvd).isdigit() and int(_mtvd) >= 45 else ""))
 print("🔧 自動修復 — %d 項%s" % (len(repaired), ("：" + "、".join(repaired)) if repaired else ""))
 if failed:
     print("   ❌ 修復失敗：%s" % "、".join(failed))
@@ -251,9 +311,9 @@ print("📤 三倉 git — 未推送 %s、髒檔 %s %s"
          mark(os.environ.get("GITUNPUSHED") == "0" and os.environ.get("GITDIRTY") == "0")))
 print()
 print("[LOOP_STATUS: %s]" % os.environ.get("STATUS"))
-print("[LOOP_DAILY: 網站%s, Dropbox%s, 系統%s, Cron%s, Git%s]"
+print("[LOOP_DAILY: 網站%s, Dropbox%s, 系統%s, Cron%s, Git%s, MoonTV%s]"
       % (os.environ.get("WEB"), os.environ.get("DBA"), os.environ.get("SYS"),
-         os.environ.get("CRN"), os.environ.get("GIT")))
+         os.environ.get("CRN"), os.environ.get("GIT"), os.environ.get("MTV")))
 PYEOF
   [ -n "$SNAP" ] && rm -f "$SNAP"
 fi

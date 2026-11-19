@@ -176,8 +176,8 @@ if [ "$web" = "WARN" ] || [ "$dba" = "WARN" ] || [ "$sys" = "WARN" ] || [ "$crn"
 fi
 [ "${#FAILED[@]}" -gt 0 ] && STATUS=FAIL
 
-verbose "  網站 HTTP=$http | disk=${disk}% | mem_avail=${memavail}M/${memtotal}M | cron_errs=$cronerrs | token_age=${tokage}min | git髒檔=$gitdirty 未推
-verbose "  MoonTV: itv HTTP=$mtv_http | fork 最後 push ${mtv_days} 日前 | Upstream Sync=$mtv_sync | mtv=$mtv"送=$gitunpushed | dropbox_states=$dbsync"
+verbose "  網站 HTTP=$http | disk=${disk}% | mem_avail=${memavail}M/${memtotal}M | cron_errs=$cronerrs | token_age=${tokage}min | git髒檔=$gitdirty 未推送=$gitunpushed | dropbox_states=$dbsync"
+verbose "  MoonTV: itv HTTP=$mtv_http | fork 最後 push ${mtv_days} 日前 | Upstream Sync=$mtv_sync | mtv=$mtv"
 verbose "  受影響 job（consecutiveErrors > 0）:"
 openclaw cron list --json 2>/dev/null | python3 -c '
 import json,sys

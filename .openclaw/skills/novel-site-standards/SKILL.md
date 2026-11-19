@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.196
+version: 2.9.197
 ---
 
 >
@@ -1812,3 +1812,9 @@ rebuild_job "中午簡報 12:55"
 - **查「某個 repo 有冇用」唔可以只 grep repo 名**：我頭先只 grep `moontv` 就斷言「本機無部署」，漏咗 `itv.kofhk.com` —— 應該連域名/部署來源一齊查
 - **fork 嘅 sync.yml 可能指緊另一個 upstream**：GitHub parent（`parent`/`source` 欄位）同 workflow 內寫嘅 `upstream_sync_repo` 未必一致，要兩邊都核對
 - **跨 repo compare 要用對 endpoint**：`/repos/{owner}/{repo}/compare/{base}...{head}` 跨 repo 會 404，要分別取兩邊 sha 再逐個 compare
+
+---
+
+## 2026-11-19 更新（續）
+- **新增教訓：零交付偵測要分清楚「設計如此」同「真故障」** —— receipt `status=ok` + `delivery_attempt_state=not-started` 對 **agentTurn 簡報 job** 係零交付（要即刻補跑），但對 `kind=heartbeat` 嘅 `9dc7d6c3` 係**設計如此**（`delivery=null`，心跳唔派送 Telegram），唔可以當零交付，否則每次巡檢都誤報。
+- **新增教訓：workspace 髒檔唔止 `DREAMS.md` 同 `.dropbox-sync/*_state.json`** —— 其它流程（例如 MoonTV upstream watchdog）都會直接改 workspace 內嘅 script；巡檢時要睇 `git diff` 內容判斷，唔好假設只有兩種來源。

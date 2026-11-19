@@ -21,6 +21,7 @@
 - **每個 agentTurn job 嘅 `payload.toolsAllow` 必須有 `send` 同 `message`** —— runtime context 每 turn 注入「Message tool: `send`」，模型會跟住呼叫 send；冇 allow 就係 **「⚠️ Send blocked」** → 整個 run 判失敗 → 零交付（2026-11-17 12:55 中午簡報 `66957fcc` 就係咁：errs=1、delivery=not-delivered、journald 完全冇 outbound send ok）。對照 `27d54b55` 有 send+message 就正常。
 - **`openclaw cron add` 唔帶 `--tools` 只得返 n=1 預設清單** → `scripts/cron-guardian.sh` 已加 `TOOLS` 變數同 5 個 agentTurn 分支嘅 `--tools "$TOOLS"`，重建唔會再洗走。
 - **判斷交付**：以 journald `outbound send ok`（chatId=5344443732）+ cron receipt 兩個欄為準；只睇 cron state 個 delivery 欄會誤判（11-14 poweroff 同 11-17 Send blocked 兩次都係咁）。
+- ⚠️ **豁免**：`9dc7d6c3` heartbeat-main 係 `kind=heartbeat`、`delivery=null` → receipt 一定係 `not-started`（心跳唔會派送 Telegram，唔算零交付）。零交付檢查只適用於 **agentTurn 簡報／job**。
 - **新模式：`receipt status=ok` 但 `delivery_attempt_state=not-started` → 零交付**（2026-11-19 12:55 中午簡報 `66957fcc`：agent 條 exec 指令 quoting syntax error → 最終回覆係**空字串** → announce 冇嘢可送 → journald 冇 outbound send ok，但 cron state 顯示 `status=ok` + `errs=0`，**淨睇 errs 完全睇唔出**）。**對策**：巡檢逐個 job 對 receipt `delivery_attempt_state` + journald `outbound send ok`；見到 `status=ok` + `delivery=not-started` 即刻 `openclaw cron run <job-id>` 補跑（11-19 實測補跑 → 13:05:40 messageId **23556** 送達，errs 維持 0）。
 
 ## ⏱️ 心跳回合必須短（2026-11-14 教訓）

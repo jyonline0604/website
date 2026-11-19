@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.195
+version: 2.9.196
 ---
 
 >
@@ -1787,3 +1787,28 @@ rebuild_job "中午簡報 12:55"
 - **修正 `scripts/sync_skill_copies.sh` 一個真 bug**：揀基準檔靠 `grep ^version:`，但 **`SKILL_HISTORY.md` 根本冇 version 行** → 全部被跳過 → **HISTORY 永遠唔會同步**（2026-11-19 實測：分檔後 workspace 223459 bytes vs 三倉 177429 bytes，唯一 md5 數 = 2）。已改成「版本大者勝，同版本取較大檔案，冇版本當 0」。
 - **再分檔一次**：加完 11-19 更新記錄後 SKILL.md 回到 **208613 bytes**（逼近 256000）→ 再把 3 段 **2026-10-30** 記錄搬去 `SKILL_HISTORY.md`，主檔降至 **163331 bytes** 以下，索引已加條目，內容零遺失。
 # 版本 2.9.195
+---
+
+## [2026-11-19] 更新 (v2.9.196) - MoonTV Upstream Sync 保活（GitHub 60 日停用規則）
+
+### 修復內容
+- **症狀**：2026-11-19 收到 GitHub email「The 'Upstream Sync' workflow in jyonline0604/MoonTV will be disabled soon」。`jyonline0604/MoonTV` = `itv.kofhk.com` 背後嘅 MoonTV app（大肥喵確認有用）。
+- **根因**：GitHub 規則 —— repo **連續 60 日無活動**，scheduled workflow 會被自動停用。fork 最後 push = 2026-02-05 → **286 日**。當時 Upstream Sync 仍 `state=active`（`cron: 0 */6 * * *`，最近 3 次 run #174/#175/#176 全 success）→ 屬預警未發難。
+- **影響範圍（已逐項核實）**：
+  - 只影響 **schedule 觸發**嘅 workflow；push 觸發嘅 `Build & Push Docker image` 不受影響 → **itv 網站唔會倒**
+  - 上游落差：fork main sha == `samqin123/MoonTV` main sha == `c0bba763`（behind 0 / ahead 0 / identical）→ 上游 samqin123 main 自 2025-08-04 冇新 commit → **即使停用都唔會即時令 itv 變舊**
+  - itv.kofhk.com 線上正常（307 → /login，Cloudflare 前置），kofhk.com 200
+- **發現 fork 個 sync.yml 指錯上游**：寫 `upstream_sync_repo: senshinya/MoonTV`（442 stars、2025-08 停更），而 GitHub parent 係 `samqin123/MoonTV`（2146 stars、仍活躍）→ 可能同步錯目標（惟目前無內容落差）。
+- **修復**：新增 `scripts/moontv_keepalive.py` + crontab 每日 06:47 巡檢：
+  - ≥45 日無 push → 用 Git Data API 推**空 commit**（tree 不變、parent = 現 main）→ 重置 60 日倒數。零檔案改動 → 不觸發 Docker build、不污染內容、無 merge 衝突
+  - workflow 被停用 → `PUT /actions/workflows/{id}/enable` 自動復原
+  - 有寫入權限就自動做；冇就發 Telegram 通知（合併成一條、去重 72h）附手動步驟
+  - 永遠 exit 0；token 來源優先 `.token-store/github-moontv-token.txt` → git remote → `.git-credentials`
+
+### 教訓
+- **GitHub scheduled workflow 60 日停用規則只計 schedule 觸發**：push 觸發嘅 workflow 唔受影響，所以「workflow 被停用」≠「網站服務中斷」，唔好過度反應
+- **保持 repo 活躍嘅最低成本手段係推空 commit（tree 不變）**：唔好為咗保活亂改檔案，空 commit 零檔案改動、唔觸發下游 CI、唔會造成 merge 衝突
+- **fine-grained PAT 嘅寫入權限係 per repo + per permission type 授權**：GET 200 唔代表 POST 有權；Actions:write / Contents:write / Issues:write 各自獨立，測試時要逐個 endpoint 試
+- **查「某個 repo 有冇用」唔可以只 grep repo 名**：我頭先只 grep `moontv` 就斷言「本機無部署」，漏咗 `itv.kofhk.com` —— 應該連域名/部署來源一齊查
+- **fork 嘅 sync.yml 可能指緊另一個 upstream**：GitHub parent（`parent`/`source` 欄位）同 workflow 內寫嘅 `upstream_sync_repo` 未必一致，要兩邊都核對
+- **跨 repo compare 要用對 endpoint**：`/repos/{owner}/{repo}/compare/{base}...{head}` 跨 repo 會 404，要分別取兩邊 sha 再逐個 compare

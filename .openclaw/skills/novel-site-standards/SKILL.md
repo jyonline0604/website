@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.193
+version: 2.9.194
 ---
 
 >
@@ -2329,3 +2329,10 @@ rebuild_job "中午簡報 12:55"
 - **根因**：每次事故後都「版本 +0.0.1 + 追加更新記錄」，但冇人睇過主檔大小；而頂部雖然有寫 256000 上限警告，實際執行時冇人檢查。
 - **修復**：把 **2026-04～09 嘅 51 段 dated 更新記錄**（54738 bytes，內容一字無刪）搬到同目錄 `SKILL_HISTORY.md` → 主檔 **206171 bytes**（分檔後 + 本次更新記錄），HISTORY 177429 bytes；主檔頂部加「已分檔段落索引」方便查返。**段落標題零遺失**（分檔前 167 段全部保留喺新主檔或 HISTORY）。
 - **新流程（唔好再踩）**：① 追加任何更新記錄前先 `stat -c%s SKILL.md`；② **> 200000 bytes 就必須先分檔**（搬最舊 dated 段落去 `SKILL_HISTORY.md`，主檔保留索引）；③ 分檔後四處（installed / workspace / Second-brain / Max-backup）**SKILL.md 同 SKILL_HISTORY.md 都要一齊同步**，唔可以只搬一份；④ `scripts/sync_skill_copies.sh` 已加 **> 200000 bytes 即報警**（防再爆）。
+
+---
+
+## 2026-11-19 更新
+- **新增教訓：第三種交付失效模式 —— `receipt status=ok` 但 `delivery_attempt_state=not-started`** = **零交付但唔報錯**（2026-11-19 12:55 中午簡報 `66957fcc`：agent 條 exec 指令 quoting syntax error → 最終回覆空字串 → announce 冇嘢可送；journald 冇 outbound send ok，但 cron state 顯示 ok + errs=0）。**交付判定必須同時睇 receipt `delivery_attempt_state` 同 journald `outbound send ok`**，淨睇 errs/state 會漏。發現即 `openclaw cron run <job-id>` 補跑（實測 → 13:05:40 messageId 23556 送達）。
+- **新增教訓：agent 最終回覆空字串 = 零交付** → 簡報 job 嘅 message 要硬性要求「最終回覆必須有實質內容（最少 LOOP_STATUS 一行）」；已加落 `66957fcc` 同 `scripts/cron-guardian.sh` 模板。
+- **新增教訓：exec 指令避免 `python3 -c` 嵌套引號**（2026-11-19 12:55 死因）→ 一律用 heredoc `python3 - <<'PY' ... PY` 或現成 shell helper（`scripts/ops-snapshot.sh`）。

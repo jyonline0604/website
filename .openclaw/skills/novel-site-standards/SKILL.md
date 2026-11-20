@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.198
+version: 2.9.199
 ---
 
 >
@@ -1824,3 +1824,11 @@ rebuild_job "中午簡報 12:55"
 ## 2026-11-19 更新（續 2）
 - **新增教訓：`bash -n` 通過唔代表 shell script 正確** —— 引號不平衡時語法仍然合法，只係 `|` 會被當成 pipeline，於是行內字串被當 command 執行（`fork: command not found`）。改完 `scripts/health_report.sh` 一定要**真係試跑一次**（`bash scripts/health_report.sh` 唔帶 --deliver）再睇 stderr。22:00 健康報告係 command payload，script 嘅 stderr 會原樣送出去。
 - **新增教訓：`verbose` 行用 `|` 分隔欄位時，行內雙引號必須平衡**（2026-11-19 MoonTV 段落加落去時出咗事）。
+
+---
+
+## 2026-11-20 更新
+- **修復內容**：釐清並記錄 2026-11-20 heartbeat-main 兩輪 error（20:33→20:34:59、21:03→21:13:04）嘅根因 —— journald 有 4 次 `[provider-error] code=malformed_tool_call_arguments provider=minimax model=MiniMax-M3.1-Flash`（`repairAttempted=true` 仍失敗），令 exec 呼叫被拒；後者正正 600 秒 = 撞 heartbeat hard timeout。<!-- project: github.com/jyonline0604/website -->
+- **根本原因**：① provider 層回傳畸形 tool-call JSON，gateway 自動 repair 失敗 → 同一條大型 exec 重複送出反而再觸發同樣錯誤；② 心跳回合堆咗多輪 exec（重犯 2026-11-14 教訓），600 秒 timeout 被撞爆。<!-- project: github.com/jyonline0604/website -->
+- **解決方法**：① provider 出 `malformed_tool_call_arguments` 時唔好原封不動重試同一條大 exec —— 縮細、拆細或直接換 provider；② 心跳回合維持「一次 ops-snapshot + 一次核驗 + 出結論」；③ 呢類 error 唔使手動 disable/enable job，下一輪 skipped（skipped 唔算 error）即令 `consecutiveErrors` 自然清零。<!-- project: github.com/jyonline0604/website -->
+- **附帶確認**：2026-11-19 分檔已收尾 —— `novel-site-standards/SKILL.md` 168385 bytes、`SKILL_HISTORY.md` 223459 bytes，四處 md5 唯一數各 = 1；`scripts/sync_skill_copies.sh` 已有 `sync_set standards-history` 一行，HISTORY 唔會再被覆蓋返。<!-- project: github.com/jyonline0604/website -->

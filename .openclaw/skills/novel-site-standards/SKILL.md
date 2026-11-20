@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.199
+version: 2.9.200
 ---
 
 >
@@ -1832,3 +1832,10 @@ rebuild_job "中午簡報 12:55"
 - **根本原因**：① provider 層回傳畸形 tool-call JSON，gateway 自動 repair 失敗 → 同一條大型 exec 重複送出反而再觸發同樣錯誤；② 心跳回合堆咗多輪 exec（重犯 2026-11-14 教訓），600 秒 timeout 被撞爆。<!-- project: github.com/jyonline0604/website -->
 - **解決方法**：① provider 出 `malformed_tool_call_arguments` 時唔好原封不動重試同一條大 exec —— 縮細、拆細或直接換 provider；② 心跳回合維持「一次 ops-snapshot + 一次核驗 + 出結論」；③ 呢類 error 唔使手動 disable/enable job，下一輪 skipped（skipped 唔算 error）即令 `consecutiveErrors` 自然清零。<!-- project: github.com/jyonline0604/website -->
 - **附帶確認**：2026-11-19 分檔已收尾 —— `novel-site-standards/SKILL.md` 168385 bytes、`SKILL_HISTORY.md` 223459 bytes，四處 md5 唯一數各 = 1；`scripts/sync_skill_copies.sh` 已有 `sync_set standards-history` 一行，HISTORY 唔會再被覆蓋返。<!-- project: github.com/jyonline0604/website -->
+
+---
+
+## 2026-11-20 更新（2）
+- **新增事實**：`openclaw cron edit` **冇辦法為 heartbeat-kind job 釘 per-job model / fallbacks** —— 一旦傳 `--model` 或 `--fallbacks`，CLI 會將 payload 判定為 `kind=agentTurn` 並報 `invalid cron.update params: cron.update payload.kind="agentTurn" requires message`；傳短 id（如 `9dc7d6c3`）會報 `Automation not found`，必須用完整 UUID。
+- **影響**：`9dc7d6c3` heartbeat-main 只能沿用 `agents.defaults.model.primary`（現時 `minimax/MiniMax-M3.1-Flash`）—— 即係今次 `malformed_tool_call_arguments`（provider=minimax）嘅唯一來源。heartbeat lane 冇 job 級逃生門。
+- **對策**：heartbeat 回合本身要短、細 exec（減少 provider 組裝畸形 tool-call 參數嘅機會）；若要換模型，只剩改 `agents.defaults.model`（全域，需 gateway 重啟先生效）一條路。

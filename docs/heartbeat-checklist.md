@@ -43,3 +43,8 @@
 ## 通知大肥喵嘅唯一可靠路徑
 `conversations_send` 工具而家有 outputSchema bug（多回傳 `gated` 欄 → 驗證失敗，且 journald 核實**冇實際出站**），
 所以**唔可以用佢當成已通知**；要真係通知就用本回合嘅 plain assistant reply。
+
+## 2026-11-20 教訓：provider `malformed_tool_call_arguments` + 心跳 600 秒 timeout
+- journald 今日 20:34:15 / 20:34:53 / 20:38:32 / 20:39:00 有 4 次 `[provider-error] code=malformed_tool_call_arguments provider=minimax model=MiniMax-M3.1-Flash`（`repairAttempted=true` 仍失敗）→ 嗰幾個 exec 呼叫被拒（"rejected before it ran"），exec 變成 pending/空 output。
+- 結果：`9dc7d6c3` heartbeat-main 20:33:04→20:34:59 同 21:03:04→21:13:04 兩輪 **error**（後者正正 600 秒 = 撞 hard timeout）。
+- **對策**：① provider 出 `malformed_tool_call_arguments` 時唔好原封不動重試同一條大 exec —— 縮細、拆細，或者直接換 provider；② 心跳回合保持「一次 ops-snapshot + 一次核驗 + 出結論」，唔好堆多輪 exec；③ 呢類 error 唔使手動 disable/enable job —— 下一輪 skipped（skipped 唔算 error）就會令 `consecutiveErrors` 自然清零。

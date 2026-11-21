@@ -12,6 +12,8 @@
 1. 一次過攞齊現況：`bash scripts/ops-snapshot.sh`
    （gateway 狀態／版本、8 個 agent cron job 嘅 errs 同 fallback 鏈、網站 HTTP、workspace git 未推送同髒檔、MEMORY.md 行數、追蹤中敏感檔、Dropbox token 新鮮度、system cron 行數）
 2. 章節 HTML 結構抽查（每日一次）：每個 `chapter-*.html` 只有 1 個 `<html>` 同 1 個 `<h1>`；數量合理。
+   ⚠️ **2026-11-22 修正**：模板實際寫 `<html lang="zh-Hant">`，所以**唔可以用 `grep -c '<html>'`**（會數到 0，假警報）。
+   正確做法：`grep -c -E '<html[ >]'` 同 `grep -c -E '<h1[ >]'`（同步腳本用 `content.count('<html')` 邏輯係啱嘅，唔使改）。
 3. 三倉一致性：workspace / Second-brain / Max-backup 未推送 = 0、髒檔 = 0。
    - 若髒檔只有 `DREAMS.md`（03:00 Memory Dreaming job 產出，唔會自己 commit）：先 `git add DREAMS.md && git commit`，再 `git pull --rebase origin main`，最後 `git push` —— 直接 push 會撞 CI 每日新聞 commit 造成 non-fast-forward。
 4. Skill 副本唯一性：`novel-site-standards` 同 `novel-av-generator` 四處 md5 唯一數 = 1（睇 md5，唔係淨睇版本號）。

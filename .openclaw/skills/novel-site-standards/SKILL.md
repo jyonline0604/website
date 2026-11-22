@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.200
+version: 2.9.201
 ---
 
 >
@@ -1839,3 +1839,10 @@ rebuild_job "中午簡報 12:55"
 - **新增事實**：`openclaw cron edit` **冇辦法為 heartbeat-kind job 釘 per-job model / fallbacks** —— 一旦傳 `--model` 或 `--fallbacks`，CLI 會將 payload 判定為 `kind=agentTurn` 並報 `invalid cron.update params: cron.update payload.kind="agentTurn" requires message`；傳短 id（如 `9dc7d6c3`）會報 `Automation not found`，必須用完整 UUID。
 - **影響**：`9dc7d6c3` heartbeat-main 只能沿用 `agents.defaults.model.primary`（現時 `minimax/MiniMax-M3.1-Flash`）—— 即係今次 `malformed_tool_call_arguments`（provider=minimax）嘅唯一來源。heartbeat lane 冇 job 級逃生門。
 - **對策**：heartbeat 回合本身要短、細 exec（減少 provider 組裝畸形 tool-call 參數嘅機會）；若要換模型，只剩改 `agents.defaults.model`（全域，需 gateway 重啟先生效）一條路。
+
+---
+
+## 2026-11-22 更新
+- **新增事實（簡報零交付新模式）**：`27d54b55` 早上簡報 08:15 執行失敗，receipt `error` + `delivery_attempt_state=not-started`，errs=1，journald 完全冇 outbound send ok；根因係 **`openclaw_repeated_tool_failures`**（`OpenClaw stopped this turn after 3 consecutive identical tool failures`），provider=openrouter / model=`nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free` —— 即係 **免費 omni 模型冇原生 tool calling，發同一條壞 exec 連續 3 次**就俾 OpenClaw 腰斬整個 turn。<!-- project: github.com/jyonline0604/website -->
+- **解決方法**：`openclaw cron run 27d54b55-3523-4475-8ad5-b07445cc4378` 補跑 → receipt 08:39:27→08:41:35 **ok / delivery=started**，journald `outbound send ok chatId=5344443732 messageId 23608 @08:41:33` → 簡報補回送達，errs 維持 1（下一輪成功會清零）。**補跑係有效對策**，同 11-19 `66957fcc` 情況一致。<!-- project: github.com/jyonline0604/website -->
+- **教訓**：(a) **免費 openrouter omni 模型（nemotron-3-nano-omni）原生 tool calling 唔穩**，簡報 job 係 agentTurn + 大量 exec，一條壞 exec 重複 3 次就零交付；遇 `openclaw_repeated_tool_failures` 要即刻補跑，唔好等下一個排程。(b) `openclaw cron run` 係 **enqueue 語意**（回 `ok:true, enqueued:true, runId`），唔係同步等完成 —— 補跑後要另外查 receipt + journald 確認送達，唔好見到 `ok:true` 就當送咗。<!-- project: github.com/jyonline0604/website -->

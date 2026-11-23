@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.202
+version: 2.9.203
 ---
 
 >
@@ -1852,3 +1852,10 @@ rebuild_job "中午簡報 12:55"
 ## 2026-11-22 更新（2）
 - **新增事實**：`66957fcc` 中午簡報 2026-11-23 12:55 再次零交付 —— receipt `status=ok` 但 `delivery_attempt_state=not-started`、errs=0，journald 由 12:55 起**完全冇** `outbound send ok`；補跑兩次（12:58 nohup、13:04 同步）都冇出站。與 11-19 同型（agent turn 完成但最終回覆空字串 → announce 冇嘢可派 → 零交付但唔報錯）。<!-- project: github.com/jyonline0604/website -->
 - **對策**：① 零交付時**唔好只睇 errs**，必須逐個 job 對 receipt `delivery_attempt_state` + journald `outbound send ok`；② 補跑未必即刻出站（`openclaw cron run` 係 enqueue 語意），要等 receipt 出現再核實；③ 補跑都唔出站時，用**本回合 plain assistant reply** 直接把簡報內容補送畀大肥喵（heartbeat lane 冇 `message` 工具，`conversations_send` 有 outputSchema bug）。<!-- project: github.com/jyonline0604/website -->
+
+---
+
+## 2026-11-23 更新
+- **新增事實（provider 會喺免費計劃上突然移除模型）**：中午簡報 66957fcc 2026-11-23 12:55 零交付（receipt status=ok + delivery_attempt_state=not-delivered + message=NO_REPLY）嘅根因鏈：minimax 429「已达到 Token Plan 用量上限」→ fallback nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free 撞 output token limit（reason=format）→ fallback openrouter/cohere/north-mini-code:free 已被 OpenRouter 移除（HTTP 404，no provider serves this model anymore）→ 最終回覆空字串 → announce 冇嘢可派。<!-- project: github.com/jyonline0604/website -->
+- **修正（推翻本檔較早段落嘅模型清單）**：cohere/north-mini-code:free 已死（HTTP 404）、poolside/laguna-s-2.1:free 同样已死 —— 上面「OpenRouter free 模型退役」（2026-10-22 條目）、「5 個 free 模型係 Auth: yes」（v2.9.155 更正）、「最終正確次序」同 guardian FALLBACKS 模板（2026-11-11 條目）講嘅 north-mini-code / laguna 已經唔可以再用；現存可用 free 鏈 = nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free → nvidia/nemotron-3-ultra-550b-a55b:free → recursive/flint-v1.0:free（2026-11-23 17:39 實測 HTTP 200）。<!-- project: github.com/jyonline0604/website -->
+- **教訓**：① openclaw models list 顯示 Auth: yes **唔代表**仲有 provider serve（north-mini-code 一直係 Auth: yes，實際已 404）—— fallback 鏈每次加/換模型後必須用 scripts/probe_providers.py 實測 HTTP 狀態，唔可以只睇 Auth 標記。② 404 下架嘅模型要**移除**，唔係排到鏈尾（排尾只會延遲失敗，最後一樣空回覆）。③ 鏈入面留住死模型 = 上游一限流就必然觸發空回覆 → 零交付。④ 零交付三重條件仍然係「errs=0 + receipt del=not-started + journald 冇 outbound send ok」，單靠 errs 一定睇唔出。<!-- project: github.com/jyonline0604/website -->

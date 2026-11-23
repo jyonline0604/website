@@ -30,7 +30,7 @@ TELEGRAM_TO="5344443732"
 # 2026-11-11 修正：原本呢度寫 --fallbacks \"minimax/MiniMax-M3.1-Flash@minimax:cn\"（自我指向 = 等於冇 fallback），
 # 令 12:55 中午簡報喺 429 限流時重試 9 次後放棄、靜靜冇送達。
 # 而家改用 agents.defaults.model.fallbacks 同一條鏈（全部 openrouter free、Auth: yes、喺 modelPolicy allow 清單入面）。
-FALLBACKS="openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/cohere/north-mini-code:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default"
+FALLBACKS="openrouter/nvidia/nemotron-3-ultra-550b-a55b:free@openrouter:default,openrouter/recursive/flint-v1.0:free@openrouter:default"
 # 2026-11-17 修正：agentTurn job 一定要有 send + message 喺 toolsAllow。
 # 原因：每次 turn 嘅 runtime context 都會注入「Message tool: `send`: `target` + `message`」，
 # 模型會跟住呼叫 send 工具；如果 toolsAllow 冇 send，就會出現「⚠️ Send blocked」→

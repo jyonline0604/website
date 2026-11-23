@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.201
+version: 2.9.202
 ---
 
 >
@@ -1846,3 +1846,9 @@ rebuild_job "中午簡報 12:55"
 - **新增事實（簡報零交付新模式）**：`27d54b55` 早上簡報 08:15 執行失敗，receipt `error` + `delivery_attempt_state=not-started`，errs=1，journald 完全冇 outbound send ok；根因係 **`openclaw_repeated_tool_failures`**（`OpenClaw stopped this turn after 3 consecutive identical tool failures`），provider=openrouter / model=`nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free` —— 即係 **免費 omni 模型冇原生 tool calling，發同一條壞 exec 連續 3 次**就俾 OpenClaw 腰斬整個 turn。<!-- project: github.com/jyonline0604/website -->
 - **解決方法**：`openclaw cron run 27d54b55-3523-4475-8ad5-b07445cc4378` 補跑 → receipt 08:39:27→08:41:35 **ok / delivery=started**，journald `outbound send ok chatId=5344443732 messageId 23608 @08:41:33` → 簡報補回送達，errs 維持 1（下一輪成功會清零）。**補跑係有效對策**，同 11-19 `66957fcc` 情況一致。<!-- project: github.com/jyonline0604/website -->
 - **教訓**：(a) **免費 openrouter omni 模型（nemotron-3-nano-omni）原生 tool calling 唔穩**，簡報 job 係 agentTurn + 大量 exec，一條壞 exec 重複 3 次就零交付；遇 `openclaw_repeated_tool_failures` 要即刻補跑，唔好等下一個排程。(b) `openclaw cron run` 係 **enqueue 語意**（回 `ok:true, enqueued:true, runId`），唔係同步等完成 —— 補跑後要另外查 receipt + journald 確認送達，唔好見到 `ok:true` 就當送咗。<!-- project: github.com/jyonline0604/website -->
+
+---
+
+## 2026-11-22 更新（2）
+- **新增事實**：`66957fcc` 中午簡報 2026-11-23 12:55 再次零交付 —— receipt `status=ok` 但 `delivery_attempt_state=not-started`、errs=0，journald 由 12:55 起**完全冇** `outbound send ok`；補跑兩次（12:58 nohup、13:04 同步）都冇出站。與 11-19 同型（agent turn 完成但最終回覆空字串 → announce 冇嘢可派 → 零交付但唔報錯）。<!-- project: github.com/jyonline0604/website -->
+- **對策**：① 零交付時**唔好只睇 errs**，必須逐個 job 對 receipt `delivery_attempt_state` + journald `outbound send ok`；② 補跑未必即刻出站（`openclaw cron run` 係 enqueue 語意），要等 receipt 出現再核實；③ 補跑都唔出站時，用**本回合 plain assistant reply** 直接把簡報內容補送畀大肥喵（heartbeat lane 冇 `message` 工具，`conversations_send` 有 outputSchema bug）。<!-- project: github.com/jyonline0604/website -->

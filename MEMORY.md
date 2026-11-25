@@ -699,3 +699,12 @@ _最後更新：2026-09-06 14:36 HKT（瘦身版 v2：44k→約12k chars；舊�
 - **更正**：11-24 記錄嘅「最新 2026.11.7」已再跳一版 → 11-25 為 **2026.11.9**（每日一版，舊行保留作歷史，**跟 openclaw-version.json / npm view 為準**）。<!-- project: github.com/jyonline0604/website -->
 - **待大肥喵出手（沿用同一條，唔重複問）**：升級仍需大肥喵喺 chat 送 `/update`（agent 唔可以自己 exec `openclaw update`／npm 全域安裝／停 gateway）；MiniMax Token Plan 額度充值（11-23 爆過，之後已恢復）。<!-- project: github.com/jyonline0604/website -->
 - **死鏈退役後連續兩日零補跑**：11-24 08:15 早上簡報 messageId **23623** @08:17:35、11-25 08:15 早上簡報 messageId **23631** @08:16:23（gateway 08:10 systemd 一次性正常重啟後第一次排程簡報照樣一次過達）→ 退役 north-mini-code 之後再冇出現過「status=ok 但零交付」。<!-- project: github.com/jyonline0604/website -->
+
+## 2026-11-25 16:15 心跳巡檢：全綠（死鏈退役後連續三日排程簡報即達）<!-- project: github.com/jyonline0604/website -->
+- **cron**：8 個 job errs 合計 0、全部 status=ok；08:15 早上簡報 27d54b55、10:00 Audio Sync 23533480、11:00 版本檢查 75d65637、12:55 中午簡報 66957fcc（receipt status=ok / del=started，journald outbound send ok messageId **23635** @12:57:02）、03:00 Memory Dreaming fb128f67、heartbeat lane 各輪 ok 無 timeout。<!-- project: github.com/jyonline0604/website -->
+- **交付**：今日出站 5 次（23631 @08:16:23 早上簡報、23632 @10:00:50 Audio Sync、23633/23634 @11:01 版本檢查、23635 @12:57:02 中午簡報）→ 與 receipt 一一對應，**零交付 = 0**（退役 north-mini-code 後連續三日排程簡報即達、零補跑）。<!-- project: github.com/jyonline0604/website -->
+- **provider**：00:00→16:15 真 provider-error / lane task error 只 1 次（03:03:31 minimax 400 requires adaptive thinking）——已知問題、fallback 接住、errs=0；08:00 後 0 次。<!-- project: github.com/jyonline0604/website -->
+- **三倉**：dirty=0 / 未推送=0（workspace c15ec1685、Second-brain 42768de、Max-backup 5c95338）；MEMORY.md 701 行、memory/2026-11-25.md 三倉 md5 一致。<!-- project: github.com/jyonline0604/website -->
+- **skill**：兩個 skill 四處 md5 唯一數 = 1（standards cfbf32ed / 175249 bytes、av 2b8be88b / 41408 bytes，均低於 200000 分檔門檻）；Skipping invalid skill = 0。<!-- project: github.com/jyonline0604/website -->
+- **其他**：章節 1951 份、敏感檔命中 0、網站 kofhk.com HTTP 200、Dropbox token 15:00:03 續期、system cron 14 行；gateway 08:10 重啟後穩定（新 PID 1484、stability 無新 stop_close_failed）。<!-- project: github.com/jyonline0604/website -->
+- **待用戶事項（沿用同一條，唔重複催）**：OpenClaw 2026.11.3 → 2026.11.9 需大肥喵喺 chat 送 /update（通知已由版本檢查 script 自動送達，見 11:05 條目）；MiniMax Token Plan 額度充值。<!-- project: github.com/jyonline0604/website -->

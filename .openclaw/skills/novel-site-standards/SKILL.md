@@ -1,7 +1,7 @@
 ---
 name: novel-site-standards
 description: 小說網站維護、章節更新、HTML修復、推送GitHub前必讀。規範章節標題唯一、日期合理、導航統一、結構驗證等標準流程。
-version: 2.9.203
+version: 2.9.204
 ---
 
 >
@@ -1859,3 +1859,10 @@ rebuild_job "中午簡報 12:55"
 - **新增事實（provider 會喺免費計劃上突然移除模型）**：中午簡報 66957fcc 2026-11-23 12:55 零交付（receipt status=ok + delivery_attempt_state=not-delivered + message=NO_REPLY）嘅根因鏈：minimax 429「已达到 Token Plan 用量上限」→ fallback nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free 撞 output token limit（reason=format）→ fallback openrouter/cohere/north-mini-code:free 已被 OpenRouter 移除（HTTP 404，no provider serves this model anymore）→ 最終回覆空字串 → announce 冇嘢可派。<!-- project: github.com/jyonline0604/website -->
 - **修正（推翻本檔較早段落嘅模型清單）**：cohere/north-mini-code:free 已死（HTTP 404）、poolside/laguna-s-2.1:free 同样已死 —— 上面「OpenRouter free 模型退役」（2026-10-22 條目）、「5 個 free 模型係 Auth: yes」（v2.9.155 更正）、「最終正確次序」同 guardian FALLBACKS 模板（2026-11-11 條目）講嘅 north-mini-code / laguna 已經唔可以再用；現存可用 free 鏈 = nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free → nvidia/nemotron-3-ultra-550b-a55b:free → recursive/flint-v1.0:free（2026-11-23 17:39 實測 HTTP 200）。<!-- project: github.com/jyonline0604/website -->
 - **教訓**：① openclaw models list 顯示 Auth: yes **唔代表**仲有 provider serve（north-mini-code 一直係 Auth: yes，實際已 404）—— fallback 鏈每次加/換模型後必須用 scripts/probe_providers.py 實測 HTTP 狀態，唔可以只睇 Auth 標記。② 404 下架嘅模型要**移除**，唔係排到鏈尾（排尾只會延遲失敗，最後一樣空回覆）。③ 鏈入面留住死模型 = 上游一限流就必然觸發空回覆 → 零交付。④ 零交付三重條件仍然係「errs=0 + receipt del=not-started + journald 冇 outbound send ok」，單靠 errs 一定睇唔出。<!-- project: github.com/jyonline0604/website -->
+
+---
+
+## 2026-11-25 更新
+- **新增事實（主機 poweroff 令 agent cron 錯過原定時段）**：2026-11-25 21:52:42 systemd-logind 主動 poweroff（成部機關機，唔係 gateway 崩潰）→ 23:28:31 重開機、gateway 由 systemd 自動拉起（PID 1489、NRestarts=0、ExecMainStatus=0、stability 無新 crash 檔）→ **22:00 健康報告 job 錯過原定時段**，gateway 復原後 23:30:36 補跑、23:31:24 出站送達（journald outbound send ok messageId 23637）；heartbeat lane 22:13／22:43／23:13 三輪因服務停機而無跑（skipped 唔算 error）。<!-- project: github.com/jyonline0604/website -->
+- **判斷「gateway 空窗」根因嘅正確次序**：① 先睇 system journal 有冇 systemd-logind「The system will power off now!」／poweroff.target → 有就係**主機關機**（人為或 power key，唔係崩潰、唔使查 stability 檔）；② `uptime -s`／`who -b` 睇實際開機時間；③ 先至排除崩潰（stability 檔 + NRestarts + ExecMainStatus + journald shutdown 段）。**見到舊 PID 乾淨 shutdown（completed cleanly）+ 新 PID NRestarts=0，就唔好當成崩潰去深挖**。<!-- project: github.com/jyonline0604/website -->
+- **交付核對補充**：主機關機期間錯過嘅 agentTurn job，復原後 gateway 會**自動補跑**（本次 23:30:36 receipt status=ok / delivery=started → 23:31:24 出站），唔使人手 `openclaw cron run`；但要照常用 receipt `delivery_attempt_state` + journald `outbound send ok` 兩條去核實有冇真送到。<!-- project: github.com/jyonline0604/website -->
